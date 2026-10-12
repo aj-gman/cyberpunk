@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/gigs/2021/free-reign/","tags":["#gig","#4cw"],"dg-note-properties":{"tags":["#gig","#4cw"]}}
+{"dg-publish":true,"permalink":"/night-city/gigs/2021/free-reign/","dg-note-properties":{}}
 ---
 
 #gig #4cw [[Rules/NCOverdrive/Neon City Overdrive (HUB)\|Neon City Overdrive]] [[Night City/Fourth Corporate War\|Fourth Corporate War]]
@@ -16,7 +16,7 @@ They have now arrived at the northern edge of [[Night City/Locations/Districts/S
 
 Upon descending into [[Night City/Locations/Districts/South Night City\|South Night City]], they encountered some [[Rules/CPRED/Roles/Solo\|Solo squad]] who wanted to rob them. Their quick thinking eventually ended the situation without blood being spilled. They tried convincing [[Night City/Characters/2021/gangers/Corpse Reviver\|Corpse Reviver]] to join the struggle against the [[Night City/Organizations/Gangs/Maelstrom\|Maelstrom]], but she backed off.
 
-They climbed on top of a nearby building in order to survey the [[Night City/Organizations/Gangs/Maelstrom\|Maelstrom]] garage. They saw an [[Night City/Others/Vehicles/AV\|AV]] being taken down and then towed to the building, so they formed a plan to infiltrate it. They disguised as [[Night City/Organizations/Gangs/Maelstrom\|Maelstromites]] and got to take a look at [[Night City/Others/Events/The Great Work\|the Punknaught]], but there were ~20 [[Night City/Organizations/Gangs/Maelstrom\|Maelstromites]] so they backed off. 
+They climbed on top of a nearby building in order to survey the [[Night City/Organizations/Gangs/Maelstrom\|Maelstrom]] garage. They saw an [[Night City/Others/Technology/AV\|AV]] being taken down and then towed to the building, so they formed a plan to infiltrate it. They disguised as [[Night City/Organizations/Gangs/Maelstrom\|Maelstromites]] and got to take a look at [[Night City/Others/Events/The Great Work\|the Punknaught]], but there were ~20 [[Night City/Organizations/Gangs/Maelstrom\|Maelstromites]] so they backed off. 
 
 >[!tip]- [[Night City/Characters/!pc/Ze\|Ze's]] picture of [[Night City/Others/Events/The Great Work\|the Punknaught]]
 ![PIC-THETANK.png\|452](/img/user/Pictures/PIC-THETANK.png)

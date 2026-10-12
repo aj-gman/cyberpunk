@@ -14,6 +14,11 @@
 	- [ ] Economy
 	- [ ] Transportation
 
+### October 2026
+#### 12.10
+- 
+#### 09.10
+- Updated [map](https://gman-cyberpunk.vercel.app/img/map-viewer/) to match events in [[Night City/Gigs/2021/Deep Six\|Deep Six]]
 
 ### September 2026
 #### 28.09
@@ -27,7 +32,7 @@
 #### 25.09
 - Finished most of the [[Night City/Locations/Night City\|Night City]] page; still needs writing: Education, Transportation, Economy
 	- Added pictures to most of the #district and #dependency, giving a good visual identity to them.
-- Added secondary pages that explain extra info from the [[Rules/Cyberpunk Universe\|Cyberpunk Universe]]: [[Night City/Others/Vehicles/AV\|AV]], [[Night City/Others/Vehicles/Drones\|Drones]], [[Night City/Others/Vehicles/NCART\|NCART]], [[Night City/Others/Combat Zone\|Combat Zone]]
+- Added secondary pages that explain extra info from the [[Rules/Cyberpunk Universe\|Cyberpunk Universe]]: [[Night City/Others/Technology/AV\|AV]], [[Night City/Others/Technology/Drones\|Drones]], [[Night City/Others/Technology/NCART\|NCART]], [[Night City/Others/Combat Zone\|Combat Zone]]
 - Added basic information to all #stratum, cross-copied via [[Night City/Locations/Night City#Demographics\|Night City#Demographics]]
 - Updated [[z-SITE/AI Policy\|AI Policy]]
 - Added pages for [[Night City/Organizations/NCPD\|NCPD]] and [[Night City/Organizations/Gangs/Maelstrom\|Maelstrom]], marking the first detailed view on a #boostergang;

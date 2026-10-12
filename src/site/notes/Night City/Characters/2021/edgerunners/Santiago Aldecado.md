@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/characters/2021/edgerunners/santiago-aldecado/","tags":["#npc","#4cw"],"dg-note-properties":{"tags":["#npc","#4cw"]}}
+{"dg-publish":true,"permalink":"/night-city/characters/2021/edgerunners/santiago-aldecado/","dg-note-properties":{}}
 ---
 
 #npc #4cw [[Night City/Strata/Edgerunners\|Edgerunner]], [[Rules/CPRED/Roles/Nomad\|Nomad]], leader of the [[Night City/Organizations/Gangs/Aldecaldos\|Aldecaldos]]

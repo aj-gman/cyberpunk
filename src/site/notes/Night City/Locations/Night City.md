@@ -24,12 +24,12 @@ By 1998, most of the construction had finished, but [[Night City/Characters/2021
 
 By 2000, [[Night City/Locations/Districts/South Night City\|South Night City]] is declared a [[Night City/Others/Combat Zone\|Combat Zone]]. [[Night City/Organizations/Gangs/Boostergangs of Night City\|Gangs]] became proeminent actors both in [[Night City/Locations/Districts/South Night City\|the Zone]] and outside of it. Corporations started dividing the land how they saw fit and the construction companies, bankrolled and controlled by organized crime, began expanding into the services industries.
 
-The years since the new millennium saw Corporate [[Night City/Locations/Night City\|NC]] retreating into its own few zones - [[Night City/Locations/Districts/City Center\|City Center]], [[Night City/Locations/Dependencies/Rancho Coronado\|Rancho Coronado]], [[Night City/Locations/Districts/Westside\|Westside]] - and maintaining a strict security detail in and around them. Transportation was done via [[Night City/Others/Vehicles/NCART\|NCART]], armored buses or [[Night City/Others/Vehicles/AV\|AVs]].
+The years since the new millennium saw Corporate [[Night City/Locations/Night City\|NC]] retreating into its own few zones - [[Night City/Locations/Districts/City Center\|City Center]], [[Night City/Locations/Dependencies/Rancho Coronado\|Rancho Coronado]], [[Night City/Locations/Districts/Westside\|Westside]] - and maintaining a strict security detail in and around them. Transportation was done via [[Night City/Others/Technology/NCART\|NCART]], armored buses or [[Night City/Others/Technology/AV\|AVs]].
 
 By 2009, [[Night City/Locations/Night City\|Night City]] became renowned for its violence come sundown - drugs, prostitution, racketeering, random violence and cybernetic terrorism were all commonplace occurrences, to the point that [[Night City/Organizations/Gangs/The Mob\|The Mob]] seized on this by bankrolling a betting company that would become the [[Body Lotto\|Body Lotto]]. The [[Night City/Locations/Night City#Government & Politics\|City Council]] was controlled by organized crime and everything was going to shit.
 
 ### Resurgence
-In May of 2009, [[Night City/Organizations/Corporations/Arasaka\|Arasaka]] had had enough. [[Night City/Locations/Night City\|Night City]] was a project they'd invested quite a hefty sum in and, backed by [[Merill, Asukaga & Finch\|Merill, Asukaga & Finch]] and [[Night City/Organizations/Corporations/EBM\|EBM]], they initiated an extensive counterattack against [[Night City/Organizations/Gangs/The Mob\|The Mob]] in what is known as [the Mob War](https://cyberpunk.fandom.com/wiki/Night_City/History#Mob_War_(2009_-_2011)). This meant tanks in the streets, hired mercenaries, paramilitary troops coming down in [[Night City/Others/Vehicles/AV\|Aerodynes]] and even strategic bombings.
+In May of 2009, [[Night City/Organizations/Corporations/Arasaka\|Arasaka]] had had enough. [[Night City/Locations/Night City\|Night City]] was a project they'd invested quite a hefty sum in and, backed by [[Merill, Asukaga & Finch\|Merill, Asukaga & Finch]] and [[Night City/Organizations/Corporations/EBM\|EBM]], they initiated an extensive counterattack against [[Night City/Organizations/Gangs/The Mob\|The Mob]] in what is known as [the Mob War](https://cyberpunk.fandom.com/wiki/Night_City/History#Mob_War_(2009_-_2011)). This meant tanks in the streets, hired mercenaries, paramilitary troops coming down in [[Night City/Others/Technology/AV\|Aerodynes]] and even strategic bombings.
 
 Since the end of the Mob War in 2011, [[Night City/Organizations/Corporations/Arasaka\|Arasaka]] has been largely seen as the guardian angel of [[Night City/Locations/Night City\|Night City]], taking a guiding role in both politics and business. 
 ## Government & Politics
@@ -96,7 +96,7 @@ Night City University
 ## Transportation
 >[!warning] THIS section severely lacks information.
 - Taxis
-- [[Night City/Others/Vehicles/NCART\|NCART]] (maglev)
+- [[Night City/Others/Technology/NCART\|NCART]] (maglev)
 
 ## Economy
 >[!warning] THIS section severely lacks information.

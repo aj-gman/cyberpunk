@@ -81,7 +81,7 @@ Premise: [[Eurotour/The Crew\|The Crew]] stops for the final show in the [[Eurot
 - [ ] [[Eurotour/Adventures/Heist Netrun.canvas\|Heist Netrun.canvas]]
 
 ### Turning Point
-After the heist is done, [[Eurotour/The Crew\|The Crew]] is immediately shipped off to the concert, close to the airport, where they have to account for riotous sentiment and ganggoons acting like football gangs - do some backstreet brawling if you have to, and make it bloody, because these Slavs don't fuck around. By the time the concert's hitting it's climax, **General Skroup**, a favorite of the [[Eurotour/Organizations/EEC\|EEC]], descends upon the stadium in an [[Night City/Others/Vehicles/AV\|AV]], announcing that there has been a coup and he is leading the countercoup. Time to GTFO.
+After the heist is done, [[Eurotour/The Crew\|The Crew]] is immediately shipped off to the concert, close to the airport, where they have to account for riotous sentiment and ganggoons acting like football gangs - do some backstreet brawling if you have to, and make it bloody, because these Slavs don't fuck around. By the time the concert's hitting it's climax, **General Skroup**, a favorite of the [[Eurotour/Organizations/EEC\|EEC]], descends upon the stadium in an [[Night City/Others/Technology/AV\|AV]], announcing that there has been a coup and he is leading the countercoup. Time to GTFO.
 #### Player Goals
 - [ ] Give your best at the concert. Prioritize problems.
 - [ ] [Enjoy the fuckin' album](https://music.youtube.com/watch?v=PEy-6nzfuis&list=OLAK5uy_mNBDWhTLARsupvpu8p4rcmGFxJDaq_OCw)

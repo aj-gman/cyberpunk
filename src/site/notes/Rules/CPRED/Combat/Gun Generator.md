@@ -16,6 +16,6 @@ Picks fron the [[Rules/CPRED/Combat/Combat#Gun Brands\|Brands]], [[Rules/CPRED/C
 
 
 ### Generator
-<div><div><b>Brand:</b> <a href="Kang Tao" class="internal-link">Kang Tao</a></div><div><b>Archetype:</b> Grenade Launcher</div><div><b>Gun Type:</b> <a href="Power" class="internal-link">Power</a></div><div><b>Price:</b> 1250 eb</div></div><button class="gun-gen-btn"><span>Regenerate</span></button>
+<div><div><b>Brand:</b> <a href="Militech" class="internal-link">Militech</a></div><div><b>Archetype:</b> Assault Rifle</div><div><b>Gun Type:</b> <a href="Power" class="internal-link">Power</a></div><div><b>Price:</b> 750 eb</div></div><button class="gun-gen-btn"><span>Regenerate</span></button>
 
 

@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/locations/districts/south-night-city/","tags":["#district","#location"],"dg-note-properties":{"tags":["#district","#location"]}}
+{"dg-publish":true,"permalink":"/night-city/locations/districts/south-night-city/","tags":["district","location"],"dg-note-properties":{"tags":["district","location"]}}
 ---
 
 >[!info]- [Map of Night City](https://gman-cyberpunk.vercel.app/img/map-viewer/)
