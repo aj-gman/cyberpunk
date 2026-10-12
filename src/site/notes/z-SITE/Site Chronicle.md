@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-path":"Site Chronicle.md","permalink":"/site-chronicle/","dg-note-properties":{}}
+{"dg-publish":true,"dg-path":"Site Chronicle.md","permalink":"/site-chronicle/","tags":["#ideology","#fashion","#news","#district","#dependency","#stratum","#boostergang","#npc","#role"],"dg-note-properties":{"tags":["#ideology","#fashion","#news","#district","#dependency","#stratum","#boostergang","#npc","#role"]}}
 ---
 
 ### To-Do
@@ -16,7 +16,9 @@
 
 ### October 2026
 #### 12.10
-- 
+- Added new #news and tagged it with the relevant session it appeared in.
+- Added page for [[Night City/Characters/2021/corpos/Elizabeth Kress\|Elizabeth Kress]]
+- Wrote up the premise of 13.10 session, [[Night City/Gigs/2021/Seven Nation Army\|Seven Nation Army]];
 #### 09.10
 - Updated [map](https://gman-cyberpunk.vercel.app/img/map-viewer/) to match events in [[Night City/Gigs/2021/Deep Six\|Deep Six]]
 

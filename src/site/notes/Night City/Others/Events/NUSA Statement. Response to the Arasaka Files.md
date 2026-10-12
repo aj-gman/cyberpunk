@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/others/events/nusa-statement-response-to-the-arasaka-files/","dg-note-properties":{}}
+{"dg-publish":true,"permalink":"/night-city/others/events/nusa-statement-response-to-the-arasaka-files/","tags":["#news"],"dg-note-properties":{"tags":["#news"]}}
 ---
 
 #news [[Night City/Organizations/Corporations/Network News 54\|Network News 54]]
