@@ -1,0 +1,164 @@
+{
+  "_version": "1.0.1.3",
+  "_game": "Neon City Overdrive",
+  "nickname": "Liam Bright Burn",
+  "appearance": "Tall, buzz cut with light brown hair. Broad shouldered. Black wolf tattoos that go up chest and neck. Large cigar.",
+  "personality": "Liam is a big hulking man and he knows it. He is quick to smile and generally easy going. That's because he knows most people aren't stupid enough to bump shoulders with him. And if they do? He'd love to show how he earned the name brightburn.",
+  "money": 0,
+  "eddies": 0,
+  "trademarks": [
+    {
+      "name": "Former Navy SEAL",
+      "triggers": [],
+      "edges": [
+        "Obstacle master",
+        "tactical mind"
+      ]
+    },
+    {
+      "name": "Black belt in karate",
+      "triggers": [],
+      "edges": [
+        "Fast kicks",
+        "Power strike"
+      ]
+    },
+    {
+      "name": "Mercenary for hire",
+      "triggers": [],
+      "edges": [
+        "Greedy",
+        "Callous"
+      ]
+    },
+    {
+      "name": "Secret stash",
+      "triggers": [],
+      "edges": [
+        "vault of weapons",
+        "black market contact"
+      ]
+    },
+    {
+      "name": "",
+      "triggers": [],
+      "edges": []
+    }
+  ],
+  "gear": [
+    {
+      "type": "basic",
+      "title": "Thick Leather coat",
+      "tags": "",
+      "notes": "",
+      "size": 1
+    },
+    {
+      "type": "basic",
+      "title": "budget arms auto 3",
+      "tags": "",
+      "notes": "heavy pistol",
+      "size": 1
+    },
+    {
+      "type": "basic",
+      "title": "Motorcycle",
+      "tags": "",
+      "notes": "",
+      "size": 1
+    },
+    {
+      "type": "basic",
+      "title": "",
+      "tags": "",
+      "notes": "",
+      "size": 1
+    }
+  ],
+  "inventory": {
+    "container": "jacket",
+    "misc": {
+      "enabled": true,
+      "value": 1
+    },
+    "items": []
+  },
+  "cyberware": [
+    {
+      "title": "Big knuck",
+      "tags": "",
+      "notes": "",
+      "value": 1
+    },
+    {
+      "title": "infrared vision ",
+      "tags": "",
+      "notes": "",
+      "value": 1
+    },
+    {
+      "title": "Hydraulic Ram",
+      "tags": "",
+      "notes": "",
+      "value": 1
+    }
+  ],
+  "hitsCount": 3,
+  "hits": [
+    false,
+    false,
+    false
+  ],
+  "trackers": {
+    "cyberpsy": 0,
+    "humanity": 7
+  },
+  "conditions": {
+    "custom": []
+  },
+  "traumas": [
+    {
+      "marked": false,
+      "text": ""
+    },
+    {
+      "marked": false,
+      "text": ""
+    },
+    {
+      "marked": false,
+      "text": ""
+    },
+    {
+      "marked": false,
+      "text": ""
+    }
+  ],
+  "flaws": [
+    {
+      "text": "sick daughter"
+    },
+    {
+      "text": "Addicted to painkillers"
+    }
+  ],
+  "flaw1": "sick daughter",
+  "flaw2": "Addicted to painkillers",
+  "stuntPoints": 0,
+  "drive": {
+    "text": "See the world they said. Liam joined the Navy SEALs to help with world policing for the state. When he was young he didn't quite want to fight. But he needed money for his young wife and soon to be coming baby. He dropped out of school and couldn't quite hack blue collar work. After arduous training and two deployments, the state proved to be an aweful employer. Dishonerably discharged on bullshit narcotics drugs and screwed out of military packages, Liam went back to be poor with his family. But at least he knew how to fight now and kept some friends with big weapons.\n\nNow his wife has vanished into city life and his daughter needs a heart transplant. There is one thing that Liam understands. He can't be poor anymore. He can smell war on the horizon and the corps have deep pockets. Maybe if he can make a name for himself, he can score a contract that will give his daughter a new heart and a new home.",
+    "pips": [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ]
+  },
+  "experiencePoints": 0
+}
