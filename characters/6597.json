@@ -4,8 +4,8 @@
   "nickname": "Hex",
   "appearance": "Tall muscular, orange pink mohawk",
   "personality": "",
-  "money": 4450,
-  "eddies": 4450,
+  "money": 5550,
+  "eddies": 5550,
   "trademarks": [
     {
       "name": "Prodigal Son",
@@ -188,7 +188,7 @@
     false
   ],
   "trackers": {
-    "cyberpsy": 5,
+    "cyberpsy": 10,
     "humanity": 6
   },
   "conditions": {
@@ -210,7 +210,7 @@
   ],
   "flaw1": "Exile",
   "flaw2": "Arrogant",
-  "stuntPoints": 2,
+  "stuntPoints": 3,
   "drive": {
     "text": "A desire to be free.",
     "pips": [
@@ -226,5 +226,5 @@
       false
     ]
   },
-  "experiencePoints": 9
+  "experiencePoints": 6
 }
