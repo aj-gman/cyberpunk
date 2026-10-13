@@ -114,7 +114,7 @@
       {
         "type": "special",
         "title": "M71 Liberator",
-        "tags": "Militech, Modular, Bullpup, Scoped, Zero Recoil, Suppresed",
+        "tags": "Militech, Modular, Bullpup, Scoped, Zero Recoil, Suppressed",
         "notes": "Recoil compensation system, excellent design and balancing. \nThe bullet retains a flat trajectory, and is light (scope)\nACIA muzzle brake",
         "size": 2
       },
@@ -157,7 +157,7 @@
     },
     {
       "title": "IEC Language Archiver",
-      "tags": "French, North Italian, German, Swedish, Russian, Street Japanese (Fluent, Default)",
+      "tags": "French, North Italian, German, Swedish, Russian, Street Japanese",
       "notes": "Speak foreign languages using language chips. ",
       "value": 2
     },
@@ -205,7 +205,7 @@
     false
   ],
   "trackers": {
-    "cyberpsy": 2,
+    "cyberpsy": 4,
     "humanity": 7
   },
   "conditions": {
@@ -239,7 +239,7 @@
   ],
   "flaw1": "Family ties (Camorra)",
   "flaw2": "Infamous",
-  "stuntPoints": 2,
+  "stuntPoints": 3,
   "drive": {
     "text": "Values vengeance against the corps. He wants to start a revolution.",
     "pips": [
