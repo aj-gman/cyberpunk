@@ -188,7 +188,7 @@
     false
   ],
   "trackers": {
-    "cyberpsy": 10,
+    "cyberpsy": 6,
     "humanity": 6
   },
   "conditions": {
@@ -210,7 +210,7 @@
   ],
   "flaw1": "Exile",
   "flaw2": "Arrogant",
-  "stuntPoints": 3,
+  "stuntPoints": 2,
   "drive": {
     "text": "A desire to be free.",
     "pips": [
