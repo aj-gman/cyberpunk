@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/characters/2021/corpos/dt-spinner/","tags":["#npc","#4cw"],"dg-note-properties":{"tags":["#npc","#4cw"]}}
+{"dg-publish":true,"permalink":"/night-city/characters/2021/corpos/dt-spinner/","dg-note-properties":{}}
 ---
 
 #npc #4cw [[Night City/Organizations/Corporations/Militech\|Militech]] [[Rules/CPRED/Roles/Exec\|Exec]]

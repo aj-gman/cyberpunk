@@ -4,7 +4,7 @@
 
 #news 
 
-Who really is [[Night City/Characters/!pc/OTHER/RAY_PUBLIC\|Ray Null]], esteemed crewmember of [[Eurotour/Characters/Core Crew/Jack Entropy\|Jack Entropy]]? From his initial rise during the [[Eurotour/Locations/Liverpool\|Liverpool]] bombings, his fights with the [[Eurotour/Organizations/MLA\|MLA]] and his revolutionary stance, uncover **THE REAL [[Rules/CPRED/Roles/Nomad\|NOMAD SUPERSTAR]]** that is shaping the [[Eurotour/Organizations/EEC\|European Entropy tour!]]
+Who really is [[Night City/Characters/!pc/OTHER/Ray (GM)\|Ray Null]], esteemed crewmember of [[Eurotour/Characters/Core Crew/Jack Entropy\|Jack Entropy]]? From his initial rise during the [[Eurotour/Locations/Liverpool\|Liverpool]] bombings, his fights with the [[Eurotour/Organizations/MLA\|MLA]] and his revolutionary stance, uncover **THE REAL [[Rules/CPRED/Roles/Nomad\|NOMAD SUPERSTAR]]** that is shaping the [[Eurotour/Organizations/EEC\|European Entropy tour!]]
 
 At only 25 and part of the [[Night City/Characters/!pc/Relevant NPCs/Nolasco Family/Nolasco Family\|Nolascos]], [[Night City/Characters/!pc/Ray Null\|our Nomad]] has been fighting all his life, forced to grow out of his shell by a corrupt [[Eurotour/Organizations/EEC\|European elite]] constantly pushing him into worse and worse scenarios.
 

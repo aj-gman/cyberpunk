@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/characters/2021/gangers/easy/","tags":["#npc","#4cw"],"dg-note-properties":{"tags":["#npc","#4cw"]}}
+{"dg-publish":true,"permalink":"/night-city/characters/2021/gangers/easy/","dg-note-properties":{}}
 ---
 
 #npc #4cw [[Night City/Organizations/Gangs/Maelstrom\|Maelstrom]] [[Rules/CPRED/Roles/Techie\|Techie]]

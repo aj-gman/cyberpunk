@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/organizations/corporations/iec/","tags":["#corporation"],"dg-note-properties":{"tags":["#corporation"]}}
+{"dg-publish":true,"permalink":"/night-city/organizations/corporations/iec/","tags":["corporation"],"dg-note-properties":{"tags":["corporation"]}}
 ---
 
 >[!warning] This page is plagiarized from the [Cyberpunk Wiki](https://cyberpunk.fandom.com/wiki/International_Electric_Corporation)

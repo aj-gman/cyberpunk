@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/characters/2021/corpos/elizabeth-kress/","tags":["#npc","#4cw"],"dg-note-properties":{"tags":["#npc","#4cw"]}}
+{"dg-publish":true,"permalink":"/night-city/characters/2021/corpos/elizabeth-kress/","dg-note-properties":{}}
 ---
 
 #npc #4cw [[Rules/CPRED/Roles/Exec\|Exec]] [[Night City/Strata/Powerdealers\|Powerdealers]]

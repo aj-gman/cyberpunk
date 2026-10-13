@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/gigs/2077/electric-tornado/","tags":["#gig"],"dg-note-properties":{"tags":["#gig"]}}
+{"dg-publish":true,"permalink":"/night-city/gigs/2077/electric-tornado/","dg-note-properties":{}}
 ---
 
 #gig

@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/others/events/militech-executives-die-in-poison-attack/","tags":["#news"],"dg-note-properties":{"tags":["#news"]}}
+{"dg-publish":true,"permalink":"/night-city/others/events/militech-executives-die-in-poison-attack/","dg-note-properties":{}}
 ---
 
 #news [[Night City/Organizations/Corporations/Network News 54\|Network News 54]]

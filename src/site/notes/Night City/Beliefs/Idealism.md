@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/beliefs/idealism/","tags":["#ideology"],"dg-note-properties":{"tags":["#ideology"]}}
+{"dg-publish":true,"permalink":"/night-city/beliefs/idealism/","tags":["ideology"],"dg-note-properties":{"tags":["ideology"]}}
 ---
 
 Idealism in the [[Rules/Cyberpunk Universe\|Cyberpunk Universe]] refers to the belief that corporations are mostly forces for positive change. It posits that [captains of industry](https://en.wikipedia.org/wiki/Captain_of_industry) are taking the charge in making the world a better place.

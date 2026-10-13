@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/others/events/militech-penetrates-combat-zone-border/","tags":["#news"],"dg-note-properties":{"tags":["#news"]}}
+{"dg-publish":true,"permalink":"/night-city/others/events/militech-penetrates-combat-zone-border/","dg-note-properties":{}}
 ---
 
 #news [[Night City/Organizations/Corporations/Network News 54\|Network News 54]]
