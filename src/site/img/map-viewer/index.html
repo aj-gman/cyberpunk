@@ -51,10 +51,9 @@
     pointer-events: none;
     border-radius: 3px;
   }
-  #resetBtn {
+  #resetBtn,
+  #backBtn {
     position: absolute;
-    top: 12px;
-    right: 12px;
     z-index: 1000;
     background: transparent;
     border: 1px solid var(--neon-cyan);
@@ -67,7 +66,16 @@
     border-radius: 3px;
     font-family: 'Lexend', monospace;
   }
-  #resetBtn:hover {
+  #resetBtn {
+    top: 12px;
+    right: 12px;
+  }
+  #backBtn {
+    top: 56px;
+    left: 12px;
+  }
+  #resetBtn:hover,
+  #backBtn:hover {
     background: var(--neon-cyan);
     color: #000;
     box-shadow: 0 0 12px var(--neon-cyan);
@@ -134,6 +142,7 @@
 <div id="hud">Night City // scroll or pinch to zoom</div>
 <div id="presetSwitcher"></div>
 <div id="mapTooltip"></div>
+<button id="backBtn" aria-label="Return to previous page" onclick="returnToPreviousPage()">Back</button>
 <button id="resetBtn" onclick="resetView()">Reset View</button>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -193,6 +202,7 @@
         { label: 'Inquisitors',        color: '#f97316' },
         { label: 'Wild Things',        color: '#fb923c' },
         // Organized — purple to blue to cyan
+        { label: 'NUSA Militarism',  color: '#145fc1' },
         { label: 'El Norte Cartel',  color: '#22d3ee' },
         { label: 'Sun On Yee',       color: '#0ea5e9' },
         { label: 'Tyger Clawz',      color: '#3b82f6' },
@@ -268,6 +278,14 @@
   function resetView() {
     map.invalidateSize();
     map.setView(center, DEFAULT_ZOOM, { animate: false });
+  }
+
+  function returnToPreviousPage() {
+    if (window.history.length > 1) {
+      window.history.back();
+    } else {
+      window.location.href = '/night-city/locations/night-city/';
+    }
   }
 
   resetView();
