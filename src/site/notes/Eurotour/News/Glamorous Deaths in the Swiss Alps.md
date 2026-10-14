@@ -1,8 +1,10 @@
 ---
-{"dg-publish":true,"permalink":"/eurotour/news/glamorous-deaths-in-the-swiss-alps/","dg-note-properties":{}}
+{"dg-publish":true,"permalink":"/eurotour/news/glamorous-deaths-in-the-swiss-alps/","tags":["#news","#eurotour"],"dg-note-properties":{"tags":["#news","#eurotour"]}}
 ---
 
 #news ZIG-POST 158901295-lavn2 #eurotour 
+**April 2021,** [[Eurotour/Adventures/4.5 Hunting the Hunter\|4.5 Hunting the Hunter]]
+
 Five missing persons cases were answered this morning as a blood trail was discovered leading down into a ravine near the Hilton-[[Night City/Organizations/Corporations/Wortrac\|Wortrac]] Lodge in Bern, Switzerland. Of the five, only two are still alive, although in grave condition, at the Intensive Care Unit in [[Night City/Organizations/Corporations/Trauma Team\|Trauma Team]]'s Bern Clinic.
 ![PIC-crackedige.png\|500](/img/user/Pictures/PIC-crackedige.png)
 

@@ -1,8 +1,10 @@
 ---
-{"dg-publish":true,"permalink":"/eurotour/news/who-let-entropy-have-a-chainsaw/","dg-note-properties":{}}
+{"dg-publish":true,"permalink":"/eurotour/news/who-let-entropy-have-a-chainsaw/","tags":["#news","#eurotour"],"dg-note-properties":{"tags":["#news","#eurotour"]}}
 ---
 
 #news #eurotour 
+**April 2021** [[Eurotour/Adventures/4 Menace in Venice\|4 Menace in Venice]]
+
 [[Eurotour/Adventures/4 Menace in Venice\|Venice]] is up in flames after last night's [[Eurotour/Characters/Core Crew/Jack Entropy\|Jack Entropy]] concert. Despite what many of his fans say, it is a miracle that [[Eurotour/Characters/Core Crew/Jack Entropy\|Entropy's]] stage performance - a floating mess of cables, wires, speakers and pyrotechnics - was even approved by the [[Eurotour/Organizations/EEC\|EEC]], let alone actually survived the waters of [[Eurotour/Adventures/4 Menace in Venice\|Venice]].
 
 But you came here for the juicy deets - did [[Eurotour/Characters/Core Crew/Jack Entropy\|Jack Entropy]] blow up? Well, the short answer is no, although don't get your panties in a twist! Word on the street is that kimono-wearing ninjas (biiiiig loooook towards [[Night City/Organizations/Corporations/Arasaka\|'saka counterintel]]) took to the canals to eliminate **Alessandro Benetti**, a local trattoria owner. This led us down an interesting path: we questioned Signore **Benneti**, which described what we can only assume were some [[Night City/Organizations/Corporations/Militech\|poorly dressed undercovers from across the pond]]. Eventually, we reached where we found breadcrumbs last time: a bomb plot!
