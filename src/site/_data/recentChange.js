@@ -27,6 +27,7 @@ module.exports = () => {
 
   const lines = raw.split(/\r?\n/);
   let currentDay = null;
+  let currentDayMonth = "";
   let currentItems = [];
 
   for (const line of lines) {
@@ -41,12 +42,13 @@ module.exports = () => {
       // Save previous entry
       if (currentDay && currentItems.length > 0) {
         entries.push({
-          month: currentMonth,
+          month: currentDayMonth,
           day: currentDay,
           items: currentItems,
         });
       }
       currentDay = dayMatch[1].trim();
+      currentDayMonth = currentMonth;
       currentItems = [];
       continue;
     }
@@ -62,7 +64,7 @@ module.exports = () => {
   // Push last entry
   if (currentDay && currentItems.length > 0) {
     entries.push({
-      month: currentMonth,
+      month: currentDayMonth,
       day: currentDay,
       items: currentItems,
     });
