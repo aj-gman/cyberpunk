@@ -4,8 +4,8 @@
   "nickname": "Azelia 'Ze' Nicoletti",
   "appearance": "Ze is an Italian-American woman of average height and build, with short black hair and dark emerald eyes. Her typical outfit is comprised of a flannels, cargo pants, and combat boots.",
   "personality": "Ze is level headed and can be incredibly cynical, it's only natural in a city like this. But with those lucky few, she can be a wam presence.",
-  "money": 700,
-  "eddies": 700,
+  "money": 550,
+  "eddies": 550,
   "trademarks": [
     {
       "name": "Mob Daughter",
@@ -76,7 +76,32 @@
       }
     ]
   },
-  "cyberware": [],
+  "cyberware": [
+    {
+      "title": "Cyber Eyes",
+      "tags": "Recording, Zoom",
+      "notes": "",
+      "value": 1
+    },
+    {
+      "title": "Cyberaudio",
+      "tags": "Focused Hearing",
+      "notes": "",
+      "value": 1
+    },
+    {
+      "title": "Social Engine",
+      "tags": "Lie Detector",
+      "notes": "",
+      "value": 1
+    },
+    {
+      "title": "Cortex Booster",
+      "tags": "Danger Sense",
+      "notes": "",
+      "value": 1
+    }
+  ],
   "hitsCount": 3,
   "hits": [
     false,
@@ -91,6 +116,10 @@
     "custom": [
       {
         "text": "Glitching Cybereye",
+        "state": "off"
+      },
+      {
+        "text": "Healing",
         "state": "off"
       }
     ]
@@ -123,7 +152,7 @@
   ],
   "flaw1": "Obvious Mark",
   "flaw2": "Enemies in low places",
-  "stuntPoints": 1,
+  "stuntPoints": 3,
   "drive": {
     "text": "",
     "pips": [
