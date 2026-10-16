@@ -139,10 +139,10 @@ body {
     --dg-external-link-padding: 16px;
     overflow-x: hidden;
     contain: none !important;  // Override obsidian-base to allow position: fixed to work
-    --note-icon-1: url(../img/tree-1.svg);
-    --note-icon-2: url(../img/tree-2.svg);
-    --note-icon-3: url(../img/tree-3.svg);
-    --note-icon-fallback: url(../img/default-note-icon.svg);
+    --note-icon-1: url(/img/tree-1.svg);
+    --note-icon-2: url(/img/tree-2.svg);
+    --note-icon-3: url(/img/tree-3.svg);
+    --note-icon-fallback: url(/img/default-note-icon.svg);
     --graph-main: var(--dg-graph-node-color);
     --graph-muted: var(--dg-graph-node-color-muted);
 }
@@ -289,7 +289,7 @@ body:has(.content.canvas-page) .filetree-wrapper {
 .external-link {
     background-position: center right;
     background-repeat: no-repeat;
-    background-image: linear-gradient(transparent, transparent), url("../img/outgoing.svg");
+    background-image: linear-gradient(transparent, transparent), url("/img/outgoing.svg");
     background-size: var(--dg-external-link-icon-size);
     padding-right: var(--dg-external-link-padding);
     background-position-y: 4px;
