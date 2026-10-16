@@ -1,7 +1,6 @@
 require("dotenv").config();
 const settings = require("../../helpers/constants");
 const { pickNoteMetadata } = require("../../helpers/bases-engine/noteMetadata");
-const { buildNewsItems } = require("../../helpers/newsData");
 const pluginLoader = require("../../helpers/pluginLoader");
 
 // Core note settings plus any per-note flags declared by enabled plugins
@@ -34,10 +33,6 @@ module.exports = {
         metadata: pickNoteMetadata(item.data),
         fileSlug: item.fileSlug,
       }));
-    },
-    newsItems: (data) => {
-      if (!data.newsDashboard || !data.collections?.note) return [];
-      return buildNewsItems(data.collections.note);
     },
     settings: (data) => {
       const noteSettings = {};
