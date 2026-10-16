@@ -877,6 +877,12 @@ module.exports = function(eleventyConfig) {
     return prefixRootRelativeUrls(content);
   });
 
+  eleventyConfig.addTemplate("nojekyll.njk", "", {
+    permalink: "/.nojekyll",
+    eleventyExcludeFromCollections: true,
+    eleventyAllowMissingExtension: true,
+  });
+
   eleventyConfig.addTransform("jsonMinifier", async (content, outputPath) => {
     if (
       (process.env.NODE_ENV === "production" || process.env.ELEVENTY_ENV === "prod") &&
