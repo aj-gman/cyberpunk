@@ -88,5 +88,9 @@ permalink: "notes/{{ page.fileSlug | slugify }}/"
     {% endif %}
     {% include "components/basesScript.njk" %}
     {% include "components/excalidrawScript.njk" %}
+    {% if newsDashboard %}
+      <div id="news-view-data" data-items="{{ newsItems | jsonify | escape }}" hidden></div>
+      <script defer src="/scripts/news-page.js"></script>
+    {% endif %}
   </body>
 </html>

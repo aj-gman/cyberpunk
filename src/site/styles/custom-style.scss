@@ -289,6 +289,24 @@ main {
     color: var(--links-hover) !important;
 }
 
+.news-view-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.news-random-result img {
+    display: block;
+    height: auto;
+    margin: 12px 0;
+    max-width: 100%;
+}
+
+.news-random-result p:last-child {
+    margin-bottom: 0;
+}
+
 .site-footer {
     width: auto;
     margin: 32px calc(var(--dg-sidebar-max-width) + var(--dg-sidebar-gap) + 20px) 16px calc(var(--dg-filetree-min-width) + var(--dg-filetree-gap));
