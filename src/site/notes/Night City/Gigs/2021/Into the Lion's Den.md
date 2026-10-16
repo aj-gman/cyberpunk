@@ -15,4 +15,4 @@ GM Screen: [[Night City/Gigs/2021/Into the Lion's Den.canvas\|Into the Lion's De
 
 [[Night City/Characters/!pc/The Gang\|The Gang]] managed to infiltrate [[Night City/Organizations/Gangs/Maelstrom\|Maelstrom]] and, as [[Night City/Others/Events/The Great Work\|the Dreadnaught]] was finished, they assaulted the building, eventually engaging it on the road to [[Night City/Locations/Dependencies/Pacifica\|Pacifica]].
 
-Later, they found out that 17 important [[Night City/Organizations/Corporations/Militech\|Militech]] [[Night City/Strata/Powerdealers\|Powerdealers]] had been killed via poisoning in their letters, their delivered food etc., of which one victim was [[Night City/Characters/!pc/Hex\|Hex]]'s own mother.
+Later, they found out that 17 important [[Night City/Organizations/Corporations/Militech\|Militech]] [[Night City/!society/Strata/Powerdealers\|Powerdealers]] had been killed via poisoning in their letters, their delivered food etc., of which one victim was [[Night City/Characters/!pc/Hex\|Hex]]'s own mother.

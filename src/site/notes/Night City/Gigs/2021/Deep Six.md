@@ -8,9 +8,9 @@ GM Screen (inaccessible): [[Night City/Gigs/2021/Deep Six.canvas\|Deep Six.canva
 ## Premise
 ### Open-world sandbox exploration
 ## After Action Report
-[[Night City/Gigs/2021/Into the Lion's Den\|Into the Lion's Den]]: 17 [[Night City/Organizations/Corporations/Militech\|Militech]] [[Night City/Strata/Powerdealers\|Powerdealers]] were assassinated via poisoning, including [[Night City/Characters/!pc/Hex\|Hex]]'s mother.
+[[Night City/Gigs/2021/Into the Lion's Den\|Into the Lion's Den]]: 17 [[Night City/Organizations/Corporations/Militech\|Militech]] [[Night City/!society/Strata/Powerdealers\|Powerdealers]] were assassinated via poisoning, including [[Night City/Characters/!pc/Hex\|Hex]]'s mother.
 
-Before all of this: a meeting between three [[Night City/Strata/Powerdealers\|Powerdealers]]: an [[Night City/Organizations/Corporations/Arasaka\|Arasaka]], a [[Night City/Organizations/Corporations/Militech\|Militech]] and a [[Night City/Organizations/Corporations/Eurobank\|Eurobank]]. Nothing came of it and, worse, the [[Night City/Organizations/Corporations/Arasaka\|Arasaka]] [[Rules/CPRED/Roles/Exec\|Exec]] died mysteriously.
+Before all of this: a meeting between three [[Night City/!society/Strata/Powerdealers\|Powerdealers]]: an [[Night City/Organizations/Corporations/Arasaka\|Arasaka]], a [[Night City/Organizations/Corporations/Militech\|Militech]] and a [[Night City/Organizations/Corporations/Eurobank\|Eurobank]]. Nothing came of it and, worse, the [[Night City/Organizations/Corporations/Arasaka\|Arasaka]] [[Rules/CPRED/Roles/Exec\|Exec]] died mysteriously.
 
 [[Night City/Characters/!pc/The Gang\|The Gang]] met with [[Night City/Characters/2021/corpos/Bruce Skiv\|Bruce Skiv]], who treated them like people. He agreed to help, reformatting the deed to the warehouse in [[Night City/Locations/Districts/Little Asia\|Japantown]]
 

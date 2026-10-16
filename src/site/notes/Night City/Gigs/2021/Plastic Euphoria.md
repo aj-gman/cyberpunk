@@ -24,5 +24,5 @@ Just make sure he can't do that. He's got friends in high places, enough so that
 
 Oh, and while you're there, why not take advantage of another of [[Night City/Characters/2021/corpos/Victor Campbell\|Mr. Campbell]]'s side hustle and print some eurodollars? 
 
-Or, better yet - catch him as he's getting home and extort him for [[Night City/Organizations/Corporations/EBM\|EBM]] balances - who cares if a [[Night City/Strata/Corpzoners\|Corpzoners]] gets hung out to dry?
+Or, better yet - catch him as he's getting home and extort him for [[Night City/Organizations/Corporations/EBM\|EBM]] balances - who cares if a [[Night City/!society/Strata/Corpzoners\|Corpzoners]] gets hung out to dry?
 

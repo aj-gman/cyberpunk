@@ -2,7 +2,7 @@
 {"dg-publish":true,"permalink":"/night-city/locations/dependencies/rancho-coronado/","tags":["dependency","location"],"dg-note-properties":{"tags":["dependency","location"]}}
 ---
 
-[[Night City/Strata/Beavers\|Beaverville]].
+[[Night City/!society/Strata/Beavers\|Beaverville]].
 
 ```image-layout
 ---
