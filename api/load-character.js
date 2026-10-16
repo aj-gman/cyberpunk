@@ -2,6 +2,8 @@
 // Loads a character JSON from the GitHub repo, verifying the hashed password.
 
 const crypto = require('crypto');
+const GITHUB_OWNER = 'aj-gman';
+const GITHUB_REPO = 'cyberpunk';
 
 module.exports = async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Credentials', true);
@@ -19,11 +21,8 @@ module.exports = async function handler(req, res) {
   }
 
   const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
-  const GITHUB_OWNER = process.env.GITHUB_OWNER;
-  const GITHUB_REPO  = process.env.GITHUB_REPO;
-
-  if (!GITHUB_TOKEN || !GITHUB_OWNER || !GITHUB_REPO) {
-    return res.status(500).json({ error: 'Server misconfiguration: missing GitHub env vars.' });
+  if (!GITHUB_TOKEN) {
+    return res.status(500).json({ error: 'Server misconfiguration: missing GITHUB_TOKEN.' });
   }
 
   const SALT   = 'cyberpunk-red-salt-2077-night-city';

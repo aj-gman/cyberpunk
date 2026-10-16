@@ -2018,6 +2018,8 @@
   // SAVE / LOAD TO GITHUB (via serverless proxy at /api/character)
   // No token or repo config lives in this page — the server holds that.
   // ═══════════════════════════════════════════════════════
+  const characterApiUrl = 'https://gman-cyberpunk.vercel.app/api/character';
+
   function setGHStatus(msg, isError) {
     const el = document.getElementById('gh-status');
     el.textContent = msg;
@@ -2064,7 +2066,7 @@
     setGHStatus('Saving…', false);
     try {
       const data = buildExport();
-      const resp = await fetch('/api/character', {
+      const resp = await fetch(characterApiUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ id: charId, data: data })
@@ -2085,7 +2087,7 @@
     }
     setGHStatus('Loading…', false);
     try {
-      const resp = await fetch('/api/character?id=' + encodeURIComponent(charId));
+      const resp = await fetch(characterApiUrl + '?id=' + encodeURIComponent(charId));
       if (resp.status === 404) {
         setGHStatus('No save found for "' + charId + '"', true);
         return;

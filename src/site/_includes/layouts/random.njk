@@ -8,7 +8,7 @@
       const publishedNotes = [
         {% for note in collections.note %}
           {% if note.data['dg-publish'] %}
-            "{{ note.url }}",
+            "{{ note.url | url }}",
           {% endif %}
         {% endfor %}
       ];
@@ -19,7 +19,7 @@
         window.location.href = randomUrl;
       } else {
         // Fallback to home if no notes found
-        window.location.href = "/";
+        window.location.href = "{{ "/" | url }}";
       }
     </script>
   </head>

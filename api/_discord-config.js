@@ -9,7 +9,7 @@ function required(name) {
 function getConfig() {
   return {
     githubOwner: process.env.GITHUB_OWNER || 'aj-gman',
-    githubRepo: process.env.GITHUB_REPO || 'cyberpunk-ttrpg',
+    githubRepo: process.env.GITHUB_REPO || 'cyberpunk',
     githubBranch: process.env.GITHUB_BRANCH || 'main',
     githubToken: required('GITHUB_DISCORD_TOKEN'),
     githubWebhookSecret: required('GITHUB_WEBHOOK_SECRET'),

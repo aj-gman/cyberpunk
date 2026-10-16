@@ -11,7 +11,7 @@
 // Change them here if the repo, branch, or folder ever changes.
 
 const GITHUB_OWNER = 'aj-gman';
-const GITHUB_REPO = 'cyberpunk-ttrpg';
+const GITHUB_REPO = 'cyberpunk';
 const GITHUB_BRANCH = 'main';
 const GITHUB_FOLDER = 'characters';
 

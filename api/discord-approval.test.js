@@ -10,7 +10,7 @@ describe('Discord approval integration helpers', () => {
   it('aggregates described commits and changed files', () => {
     const summary = commitSummary({
       ref: 'refs/heads/main',
-      repository: { full_name: 'aj-gman/cyberpunk-ttrpg' },
+      repository: { full_name: 'aj-gman/cyberpunk' },
       commits: [
         { id: 'a', message: '', added: ['ignored.txt'] },
         { id: 'b', message: 'Update sheet\n\nDetails', modified: ['src/site/img/NCO-sheet.html'], removed: ['old.txt'] }
