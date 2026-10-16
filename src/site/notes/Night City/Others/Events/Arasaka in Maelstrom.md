@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/others/events/arasaka-in-maelstrom/","tags":["#news","#4cw"],"dg-note-properties":{"tags":["#news","#4cw"]}}
+{"dg-publish":true,"permalink":"/night-city/others/events/arasaka-in-maelstrom/","dg-note-properties":{}}
 ---
 
 #news #4cw [[Night City/Organizations/Corporations/Network News 54\|Network News 54]], **July 2021**, [[Night City/Gigs/2021/Deep Six\|Deep Six]]
