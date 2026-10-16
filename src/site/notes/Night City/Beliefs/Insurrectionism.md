@@ -21,7 +21,7 @@ The acts of violence it encourages also reinforce the idea that corporations mus
 
 ### Patrons
 Although many [[Night City/Beliefs/Insurrectionism\|Insurrectionists]] look up to these individuals, they are not necessarily believers themselves. Some **Patrons** use the [[Night City/Beliefs/Insurrectionism\|anti-corporate]] [[Night City/Beliefs/Fashion/Kitsch\|aesthetic]] to further their own goals.
-- [[Johnny Silverhand\|Johnny Silverhand]], famed [[Rules/CPRED/Roles/Rockerboy\|Rockerboy]] responsible for the 2013 attack on the [[Night City/Organizations/Corporations/Arasaka\|Arasaka]] [[Night City/Locations/Night City\|NC HQ]] and a staunch rival of [[Night City/Organizations/Corporations/Arasaka\|Arasaka]]
+- [[Night City/Characters/2021/edgerunners/Johnny Silverhand\|Johnny Silverhand]], famed [[Rules/CPRED/Roles/Rockerboy\|Rockerboy]] responsible for the 2013 attack on the [[Night City/Organizations/Corporations/Arasaka\|Arasaka]] [[Night City/Locations/Night City\|NC HQ]] and a staunch rival of [[Night City/Organizations/Corporations/Arasaka\|Arasaka]]
 - [[Eurotour/Characters/Core Crew/Jack Entropy\|Jack Entropy]], world-renown [[Rules/CPRED/Roles/Rockerboy\|Rockerboy]] with a strong [[Night City/Beliefs/Insurrectionism\|anti-corporate message]] who sowed dissent across the [[Eurotour/Organizations/EEC\|EEC]] during his recent [[Eurotour/Eurotour\|Eurotour]], including starting a revolt in the [[Eurotour/Locations/United Kingdom\|UK]];
 - [[Betty Ice\|Betty Ice]], the leader of the [[Night City/Organizations/Gangs/Street Queens\|Street Queens]] gang and a known anarchist voice in the [[Night City/Locations/Night City\|Night City]] underground
 

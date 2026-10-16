@@ -2,8 +2,7 @@
 {"dg-publish":true,"permalink":"/eurotour/news/nomad-rockstars-beware/","tags":["#news","#eurotour"],"dg-note-properties":{"tags":["#news","#eurotour"]}}
 ---
 
-#news #eurotour 
-**February 2021**, [[Eurotour/Adventures/1 Paper Trail\|1 Paper Trail]]
+#news #eurotour, **February 2021**, [[Eurotour/Adventures/1 Paper Trail\|1 Paper Trail]]
 
 Who really is [[Night City/Characters/!pc/OTHER/Ray (GM)\|Ray Null]], esteemed crewmember of [[Eurotour/Characters/Core Crew/Jack Entropy\|Jack Entropy]]? From his initial rise during the [[Eurotour/Locations/Liverpool\|Liverpool]] bombings, his fights with the [[Eurotour/Organizations/MLA\|MLA]] and his revolutionary stance, uncover **THE REAL [[Rules/CPRED/Roles/Nomad\|NOMAD SUPERSTAR]]** that is shaping the [[Eurotour/Organizations/EEC\|European Entropy tour!]]
 

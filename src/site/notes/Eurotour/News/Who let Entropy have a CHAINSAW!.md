@@ -2,8 +2,7 @@
 {"dg-publish":true,"permalink":"/eurotour/news/who-let-entropy-have-a-chainsaw/","tags":["#news","#eurotour"],"dg-note-properties":{"tags":["#news","#eurotour"]}}
 ---
 
-#news #eurotour 
-**April 2021** [[Eurotour/Adventures/4 Menace in Venice\|4 Menace in Venice]]
+#news #eurotour **April 2021** [[Eurotour/Adventures/4 Menace in Venice\|4 Menace in Venice]]
 
 [[Eurotour/Adventures/4 Menace in Venice\|Venice]] is up in flames after last night's [[Eurotour/Characters/Core Crew/Jack Entropy\|Jack Entropy]] concert. Despite what many of his fans say, it is a miracle that [[Eurotour/Characters/Core Crew/Jack Entropy\|Entropy's]] stage performance - a floating mess of cables, wires, speakers and pyrotechnics - was even approved by the [[Eurotour/Organizations/EEC\|EEC]], let alone actually survived the waters of [[Eurotour/Adventures/4 Menace in Venice\|Venice]].
 

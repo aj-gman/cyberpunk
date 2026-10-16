@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/characters/2021/corpos/iwasao-koremichi/","dg-note-properties":{}}
+{"dg-publish":true,"permalink":"/night-city/characters/2021/corpos/iwasao-koremichi/","tags":["#npc","#4cw"],"dg-note-properties":{"tags":["#npc","#4cw"]}}
 ---
 
 #npc #4cw [[Night City/Organizations/Corporations/Arasaka\|Arasaka]] [[Rules/CPRED/Roles/Exec\|Exec]], within the Banking branch
@@ -12,4 +12,4 @@ Iwasao Koremichi is always accompanied by his personal guard, [[Sho\|Sho]].
 
 He is the [[Night City/Locations/Night City#Districts\|District Manager]] of the [[Night City/Locations/Districts/City Center\|City Center]], although his personal assistant, [[Aoki Tomomi\|Aoki Tomomi]], takes care of the day-to-day of administrative work.
 
-![iwasao.jpg\|250](/img/user/iwasao.jpg)
+![NPC-Iwasao.jpg\|250](/img/user/Pictures/NPC-Iwasao.jpg)

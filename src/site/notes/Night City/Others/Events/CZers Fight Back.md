@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/others/events/c-zers-fight-back/","tags":["#news","#4cw"],"dg-note-properties":{"tags":["#news","#4cw"]}}
+{"dg-publish":true,"permalink":"/night-city/others/events/c-zers-fight-back/","dg-note-properties":{}}
 ---
 
 #news #4cw [[Night City/Organizations/Corporations/Network News 54\|Network News 54]]

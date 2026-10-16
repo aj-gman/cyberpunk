@@ -53,7 +53,7 @@ In [[Eurotour/Locations/Stockholm\|Stockholm]], they'll find that [[Eurotour/Cha
 - [x] Introduce [[Eurotour/Characters/Lars-Olov Skeppsholm\|Lars' disappearance]] as worrysome and urgent[^1], as well as **threatening**
 	- [x] Clues![DEETS-cluessweden.png](/img/user/Pictures/DEETS-cluessweden.png)
 - [x] Introduce the patron of the Rockcave, **Margrethe Auken**.
-	- [x] The entire bar's atmosphere is easy-going, although Auken claims this is a dangerous, yet respectable establishment. Even [[Johnny Silverhand\|Silverhand]] sung here back when [[SAMURAI\|SAMURAI]] was together. You might get additional information about the [[Eurotour/Characters/Maddogs\|Maddogs]] being bad news from other patrons, but...
+	- [x] The entire bar's atmosphere is easy-going, although Auken claims this is a dangerous, yet respectable establishment. Even [[Night City/Characters/2021/edgerunners/Johnny Silverhand\|Silverhand]] sung here back when [[SAMURAI\|SAMURAI]] was together. You might get additional information about the [[Eurotour/Characters/Maddogs\|Maddogs]] being bad news from other patrons, but...
 - [x] [[Eurotour/The Crew\|The Crew]] learns of the [[Eurotour/Characters/Maddogs\|Maddogs]]' regular hideout, the basement of a seamy counterculture store, selling anything from [[Rules/CPRED/Roles/Medtechie\|tattoos]] to booze, niche CDs and drug paraphernalia. 
 	- [x] Guess what, they're not home! [[Eurotour/Characters/Lars-Olov Skeppsholm\|Lars' kidnapping]] has forced them out of the hideout.
 	- [x] 3 guards at the entrance, 1 is alone. Some [[Rules/CPRED/Cyberware/Cyberware\|Rules/CPRED/Cyberware/Cyberware]], max [[Rules/CPRED/Quality\|Quality]] 3
