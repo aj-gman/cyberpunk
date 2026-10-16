@@ -1,14 +1,11 @@
 const fs = require("fs");
 const path = require("path");
-const { extractSearchHeadings } = require("./searchIndex");
 
 // Same tag pattern as the core taggify filter (.eleventy.js).
 const tagRegex = /(^|\s|\>)(#[^\s!@#$%^&*()=+\.,\[{\]};:'"?><]+)(?!([^<]*>))/g;
 
 module.exports = {
   setupEleventy(eleventyConfig, context) {
-    eleventyConfig.addFilter("searchableHeadings", extractSearchHeadings);
-
     eleventyConfig.addFilter("stripForSearch", function (content) {
       return content
         .replace(/<[^>]*>/g, "")
