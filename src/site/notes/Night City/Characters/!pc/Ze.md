@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/characters/pc/ze/","tags":["#crew","#4cw"],"dg-note-properties":{"tags":["#crew","#4cw"]}}
+{"dg-publish":true,"permalink":"/night-city/characters/pc/ze/","dg-note-properties":{}}
 ---
 
 #crew #4cw [[Rules/CPRED/Roles/Media\|Media]]
