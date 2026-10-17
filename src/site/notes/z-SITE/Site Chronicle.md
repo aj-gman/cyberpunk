@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-path":"Site Chronicle.md","permalink":"/site-chronicle/","tags":["#fashion","#ideology","#npc","#news","#district","#dependency","#stratum","#boostergang","#role"],"dg-note-properties":{"tags":["#fashion","#ideology","#npc","#news","#district","#dependency","#stratum","#boostergang","#role"]}}
+{"dg-publish":true,"dg-path":"Site Chronicle.md","permalink":"/site-chronicle/","dg-note-properties":{}}
 ---
 
 ### To-Do

@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/society/strata/edgerunners/","tags":["#stratum"],"dg-note-properties":{"tags":["#stratum"]}}
+{"dg-publish":true,"permalink":"/night-city/society/strata/edgerunners/","dg-note-properties":{}}
 ---
 
 #stratum 

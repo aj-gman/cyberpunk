@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/society/beliefs/fashion/neomilitarism/","tags":["#fashion"],"dg-note-properties":{"tags":["#fashion"]}}
+{"dg-publish":true,"permalink":"/night-city/society/beliefs/fashion/neomilitarism/","tags":["fashion"],"dg-note-properties":{"tags":["fashion"]}}
 ---
 
 Closely associated with [[Night City/!society/Beliefs/Realism\|Realism]].

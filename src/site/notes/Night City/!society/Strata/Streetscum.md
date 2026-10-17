@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/society/strata/streetscum/","tags":["#stratum"],"dg-note-properties":{"tags":["#stratum"]}}
+{"dg-publish":true,"permalink":"/night-city/society/strata/streetscum/","dg-note-properties":{}}
 ---
 
 #stratum 
