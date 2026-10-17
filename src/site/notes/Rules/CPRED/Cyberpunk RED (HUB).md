@@ -11,7 +11,7 @@
 
 [[Rules/CPRED/Cyberpunk RED (HUB)\|Cyberpunk RED]] is the sequel to [[Cyberpunk 2020\|Cyberpunk 2020]] and was created during the active development of [Cyberpunk 2077](https://en.wikipedia.org/wiki/Cyberpunk_2077) as a way to bridge the gap between 2077's world and 2020's. Set in [[2045\|2045]], during the "Time of the Red", it proposes an interesting dilemma: corporations aren't top dog anymore in [[Night City/Locations/Night City\|Night City]], fighting for the rights to extort the local population with gangs, organized crime and amongst themselves.
 
-The Cyberpunk system is iconic for its use of #role as a way to flag the 10 different [[Night City/Strata/Edgerunners\|edgerunners]] stereotypes that are playable in the [[Rules/Cyberpunk Universe\|Cyberpunk Universe]].
+The Cyberpunk system is iconic for its use of #role as a way to flag the 10 different [[Night City/!society/Strata/Edgerunners\|edgerunners]] stereotypes that are playable in the [[Rules/Cyberpunk Universe\|Cyberpunk Universe]].
 
 >[!note]- [Cyberpunk RED Character Sheet](https://gman-cyberpunk.vercel.app/img/sheet.html)
 

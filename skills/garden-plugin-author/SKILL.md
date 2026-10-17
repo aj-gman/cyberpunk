@@ -44,11 +44,13 @@ src/plugins/reading-time/
 }
 ```
 
+{% raw %}
 ```njk
 {% if settings.dgReadingTime === true %}
 <div class="reading-time">{{ ((content | striptags).split(" ").length / 200) | round }} min read</div>
 {% endif %}
 ```
+{% endraw %}
 
 `id`, `name`, `version`, `description`, `author` are required. Everything
 else is optional. All declared paths must be relative, use `/`, and
@@ -99,7 +101,7 @@ Currently: `navigation` (default: the core navbar; the shipped
 
 A custom navigation plugin gets the full data cascade, including the
 core-computed `filetree` data structure, and may include core components
-(e.g. fall back to `{% include "components/navbar.njk" %}`) and render
+(e.g. fall back to {% raw %}`{% include "components/navbar.njk" %}`{% endraw %}) and render
 sub-slots via `components/pluginSlot.njk`. Users switch navigations by
 disabling `dg-filetree` and enabling yours. Read
 `src/plugins/dg-filetree/` in the template as the reference.
@@ -108,7 +110,7 @@ A navigation plugin MUST render the surfaces other extensions rely on,
 in its own markup: the `navbar.actions` and `filetree.actions` plugin
 slots (the search button lives there), and the site owner's custom
 filetree components —
-`{% for imp in dynamics.filetree.beforeTitle %}{% include imp %}{% endfor %}`
+{% raw %}`{% for imp in dynamics.filetree.beforeTitle %}{% include imp %}{% endfor %}`{% endraw %}
 plus the same for `dynamics.filetree.afterTitle`. `dg-filetree` does
 both; copy its template as the starting point.
 

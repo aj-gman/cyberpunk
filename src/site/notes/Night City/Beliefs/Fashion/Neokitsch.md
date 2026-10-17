@@ -1,8 +1,0 @@
----
-{"dg-publish":true,"permalink":"/night-city/beliefs/fashion/neokitsch/","tags":["fashion"],"dg-note-properties":{"tags":["fashion"]}}
----
-
-Closely associated with [[Night City/Beliefs/Idealism\|Idealism]].
-[[Night City/Beliefs/Idealism\|Idealists]] believe incommensurable wealth is attainable and as such will splurge on luxury items to signal their adherence to these values. To that end, they are willing to "fake it till they make it" - they'd rather go hungry in an expensive mansion than eat kibble in a megaplex.
-
-![fashion-neokitsch.png](/img/user/Pictures/fashion-neokitsch.png)

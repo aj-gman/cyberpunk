@@ -1,12 +1,10 @@
 ---
-{"dg-publish":true,"dg-path":"Site Chronicle.md","permalink":"/site-chronicle/","dg-note-properties":{}}
+{"dg-publish":true,"dg-path":"Site Chronicle.md","permalink":"/site-chronicle/","tags":["#fashion","#ideology","#npc","#news","#district","#dependency","#stratum","#boostergang","#role"],"dg-note-properties":{"tags":["#fashion","#ideology","#npc","#news","#district","#dependency","#stratum","#boostergang","#role"]}}
 ---
 
 ### To-Do
-- [ ] Finish write-up for #ideology and their respective fashions:
-	- [x] [[Night City/Beliefs/Insurrectionism\|Insurrectionism]]
-	- [ ] [[Night City/Beliefs/Parallelism\|Parallelism]]
-	- [ ] [[Night City/Beliefs/Realism\|Realism]]
+- [ ] Create an interactive *by month/week* map of [[Night City/Locations/Night City\|Night City]]
+- [ ] Finish write-up for #fashion 
 	- [ ] #fashion
 - [ ] Briefly write the most important details of [[Night City/Locations/Night City\|Night City]]
 	- [ ] Education
@@ -15,6 +13,13 @@
 	- [ ] Transportation
 
 ### October 2026
+#### 16.10
+- Added [[Night City/Others/News\|News]] page that displays all news by date and campaign + random news
+- Finished all #ideology write-up
+- Ported website for quicker uploads from Vercel to GithubPages
+- Published [[Night City/Gigs/2021/Seven Nation Army\|Seven Nation Army]] webpage
+- Modified and updated [map](https://gman-cyberpunk.vercel.app/img/map-viewer/)
+- Added more #npc: [[Night City/Characters/2021/edgerunners/Johnny Silverhand\|Johnny Silverhand]], [[Night City/Characters/2021/edgerunners/Morgan Blackhand\|Morgan Blackhand]], [[Night City/Characters/2021/edgerunners/Rache Bartmoss\|Rache Bartmoss]] 
 #### 12.10
 - Added new #news and tagged it with the relevant session it appeared in.
 - Added page for [[Night City/Characters/2021/corpos/Elizabeth Kress\|Elizabeth Kress]]
@@ -28,7 +33,7 @@
 - Implemented [Working with the garage door up mindset](https://notes.andymatuschak.org/zCMhncA1iSE74MKKYQS5PBZ)
 #### 26.09
 - Changed glitch-header.njk
-- Finished write-up of [[Night City/Beliefs/Insurrectionism\|Insurrectionism]]
+- Finished write-up of [[Night City/!society/Beliefs/Insurrectionism\|Insurrectionism]]
 - Openedd NPC pages for all of the [[Night City/Locations/Night City#Government & Politics\|District Managers]]
 - Created a few new pages for corporations
 #### 25.09
@@ -39,7 +44,7 @@
 - Updated [[z-SITE/AI Policy\|AI Policy]]
 - Added pages for [[Night City/Organizations/NCPD\|NCPD]] and [[Night City/Organizations/Gangs/Maelstrom\|Maelstrom]], marking the first detailed view on a #boostergang;
 #### 22.09
-- Updated [[z-SITE/NCOverdrive Sheet\|NCOverdrive Sheet]] to 1.2.1.0
+- Updated [[NCOverdrive Sheet\|NCOverdrive Sheet]] to 1.2.1.0
 	- New Inventory System;
 	- [[Rules/NCOverdrive/Cyberware\|Cyberware]] Quality introduced;
 	- Fixed minor issues
@@ -47,7 +52,7 @@
 - Finalized [[Night City/Locations/Night City\|Night City]]'s History chapter
 - Made some more #npc public (that [[Night City/Characters/!pc/The Gang\|The Gang]] have met)
 #### 14.09
-- Made public the #stratum, with a relevant description for [[Night City/Strata/Powerdealers\|Powerdealers]];
+- Made public the #stratum, with a relevant description for [[Night City/!society/Strata/Powerdealers\|Powerdealers]];
 - Added Demographics to [[Night City/Locations/Night City\|Night City]] page;
 - Added Dependencies ([[Night City/Locations/Dependencies/Pacifica\|Pacifica]] etc.) to the [[Night City/Locations/Night City\|Night City]] page;
 #### 11.09
@@ -68,11 +73,11 @@
 - Changed homepage to a header first for easier navigation
 #### 05.09
 - Updated #ideology, changed up fashion association
-- Did initial write-up for the fashions: [[Night City/Beliefs/Fashion/Neomilitarism\|Neomilitarism]], [[Night City/Beliefs/Fashion/Neokitsch\|Neokitsch]], [[Night City/Beliefs/Fashion/Kitsch\|Kitsch]], [[Night City/Beliefs/Fashion/Entropism\|Entropism]]
+- Did initial write-up for the fashions: [[Night City/!society/Beliefs/Fashion/Neomilitarism\|Neomilitarism]], [[Night City/!society/Beliefs/Fashion/Neokitsch\|Neokitsch]], [[Night City/!society/Beliefs/Fashion/Kitsch\|Kitsch]], [[Night City/!society/Beliefs/Fashion/Entropism\|Entropism]]
 - Update [NCOverdrive Character Sheet](https://gman-cyberpunk.vercel.app/img/NCO-sheet.html) to 1.2.0.0 ([see GitHub repo for more info](https://github.com/aj-gman/cyberpunk-ttrpg/commit/6a83423e0d207666c4d65bcfd2b60a523d0c9ee5))
 - Introduced the rules for [[Rules/NCOverdrive/Cyberware\|Rules/NCOverdrive/Cyberware]], as well as sheet implementation
 #### 04.09
-- Added #ideology : full write-up for [[Night City/Beliefs/Idealism\|Idealism]], half-write-up for [[Night City/Beliefs/Insurrectionism\|Insurrectionism]], [[Night City/Beliefs/Parallelism\|Parallelism]], [[Night City/Beliefs/Realism\|Realism]]
+- Added #ideology : full write-up for [[Night City/!society/Beliefs/Idealism\|Idealism]], half-write-up for [[Night City/!society/Beliefs/Insurrectionism\|Insurrectionism]], [[Night City/!society/Beliefs/Parallelism\|Parallelism]], [[Night City/!society/Beliefs/Realism\|Realism]]
 - Added #stratum : needs write-up for all
 - Added fashion folder, as each #ideology  is associated with an aesthetic
 - Published character profiles for [[Night City/Characters/2021/edgerunners/Big Wu\|Big Wu]], [[Night City/Characters/2021/edgerunners/Theresa Valentino\|Theresa Valentino]], [[Night City/Characters/2021/corpos/Victor Campbell\|Victor Campbell]], [[Night City/Characters/2021/gangers/Corpse Reviver\|Corpse Reviver]].
@@ -88,14 +93,14 @@
 - Published information regarding [[Eurotour/Locations/St. Petersburg\|St. Petersburg]].
 - Updated and corrected minor details regarding [[Rules/NCOverdrive/Neon City Overdrive (HUB)\|Neon City Overdrive (HUB)]] rules.
 #### 20.08
-- Brought [[z-SITE/NCOverdrive Sheet\|NCOverdrive Sheet]] to 1.1.0.0. 
+- Brought [[NCOverdrive Sheet\|NCOverdrive Sheet]] to 1.1.0.0. 
 	**Key new features:**
 	- Fixed a bug with Eurodollars & Flaws not saving in .json format
 	- Added GitHub-connected save via Character ID
 	- Adjusted Gear & Cyberware (Page 2) to have adjustable widths via row formatting (1, 2 or 3 rows);
 	- Added drag & drop feature to Gear & Cyberware for more efficient listing.
 #### 25.08
-- [[z-SITE/NCOverdrive Sheet\|Updated NCOverdrive Sheet to 1.1.1.0]]
+- [[NCOverdrive Sheet\|Updated NCOverdrive Sheet to 1.1.1.0]]
 	- Added load/save modal that asks for local or cloud sync
 	- Changed page naming to clearly state what it is
 	- Removed export-to-pdf functionality
@@ -109,7 +114,7 @@
 		- [ ] +++ Core Ideologies: **Corpo Realism** (its not the best, but it's the best we got), **Corpo Idealism** (you CAN make it big if you try hard enough), **Anti-Corpo** (burn it all to the ground), **Parallelism** (inspired by [Parallel Polis](https://en.wikipedia.org/wiki/Parallel_Polis), with communities evolving without the need of corporations to supply them with goods)
 ### June 2026
 #### *03.06*
-- Updated [[z-SITE/CPRED Sheet\|CPRED Sheet]] with features (Still work in progress):
+- Updated [[CPRED Sheet\|CPRED Sheet]] with features (Still work in progress):
 	- ~~Added Cloud Sync feature (save in-browser to the site's Repo and load from there)~~
 		Currently broken. No idea why.
 	- Added Nerve Degeneration, Rep & IP trackers.
@@ -132,7 +137,7 @@
 - Revamped the [[Rules/CPRED/Cyberware/Cyberware\|Rules/CPRED/Cyberware/Cyberware]] page to link into [[Rules/CPRED/Cyberware/Cyberpsychosis Symptoms\|Cyberpsychosis Symptoms]], [[Rules/CPRED/Cyberware/Cyberware Classes\|Cyberware Classes]] and [[Rules/CPRED/Cyberware/Humanity\|Humanity]] so you don't have to navigate
 - Updated the Site's CSS to match in colors and vibe to the Obsidian Vault
 #### *18.05*
-- Added a [[z-SITE/CPRED Sheet\|CPRED Sheet]] (Work in Progress)
+- Added a [[CPRED Sheet\|CPRED Sheet]] (Work in Progress)
 	Features:
 	- [[Rules/CPRED/Cyberware/Cyberware#Cyberpsychosis\|Cyberpsychosis ]]tracker, [[Rules/CPRED/Cyberware/Humanity\|Humanity]] calculator & full [[Rules/CPRED/Cyberware/Cyberware\|Rules/CPRED/Cyberware/Cyberware]] rule implementation
 	- Multiple pages for easy navigation
@@ -145,7 +150,7 @@
 - Added a common price for all [[Rules/CPRED/Drugs/Drugs\|Rules/CPRED/Drugs/Drugs]]
 - Cleaned up webpages
 - Added two news articles, [[Eurotour/News/Who let Entropy have a CHAINSAW!\|Who let Entropy have a CHAINSAW!]] & [[Executive Executions on Rhin-Ruhr Rooftops\|Executive Executions on Rhin-Ruhr Rooftops]]
-- Brought the [[z-SITE/CPRED Sheet\|CPRED Sheet]] to a stable 1.0.1.1 version
+- Brought the [[CPRED Sheet\|CPRED Sheet]] to a stable 1.0.1.1 version
 - Added an [[z-SITE/AI Policy\|AI disclaimer]] in the footer of all webpages (except, for some reason, the [[QuickNav\|QuickNav]]?)
 - Added descriptions for all of the main [[Eurotour/Eurotour\|Eurotour]] locations: [[Eurotour/Locations/Liverpool\|Liverpool]], [[Eurotour/Locations/Brussels\|Brussels]], [[Eurotour/Locations/Paris\|Paris]], [[Eurotour/Locations/Venice\|Venice]], [[Eurotour/Locations/Rhine-Ruhr Conurb\|Rhine-Ruhr Conurb]], [[Eurotour/Locations/Stockholm\|Stockholm]], [[Prague\|Prague]]
 - Added initial descriptions for the #role s, as well as their Role Abilities
@@ -153,13 +158,13 @@
 - Broke down [[Rules/CPRED/Combat/Combat\|Rules/CPRED/Combat/Combat]] into [[Rules/CPRED/Combat/Combat\|Rules/CPRED/Combat/Combat]], [[Rules/CPRED/Combat/Critical Injuries\|Critical Injuries]] & [[Rules/CPRED/Combat/Firearms of Cyberpunk\|Firearms of Cyberpunk]]
 #### *24.05*
 - Added [[Eurotour/Locations/Stockholm\|Stockholm]] and information on [[Eurotour/Adventures/5 Touring the Margin\|5 Touring the Margin]] (restricted access)
-- [[z-SITE/CPRED Sheet\|CPRED Sheet]] has been brought to a stable patch, v1.0.1.1.
+- [[CPRED Sheet\|CPRED Sheet]] has been brought to a stable patch, v1.0.1.1.
 - Cleared up some more on the [[Rules/CPRED/Cyberware/Cyberware\|Rules/CPRED/Cyberware/Cyberware]] webpage
 
 
 
 ## TO DO
-- [ ] **[[z-SITE/CPRED Sheet\|CPRED Sheet]] needs:**
+- [ ] **[[CPRED Sheet\|CPRED Sheet]] needs:**
 	- [ ] Page for Notes, Backstory, Lore etc.
 	- [ ] Links to the wiki when inserting: role abilities, skills, stats
 - [ ] Update [[Rules/CPRED/Drugs/Omega Blockers\|Omega Blockers]], [[Rules/CPRED/Drugs/Weed\|Weed]], [[Rules/CPRED/Drugs/Regen 21\|Regen 21]] & [[Rules/CPRED/Drugs/Speedheal\|Speedheal]] with rules for [[Rules/NCOverdrive/Neon City Overdrive (HUB)\|Neon City Overdrive (HUB)]]
