@@ -115,47 +115,6 @@ const { basesPlugin } = require("./src/helpers/basesPlugin");
 
 const Image = require("@11ty/eleventy-img");
 const { isDecodableImage } = require("./src/helpers/imageFormat.js");
-const sitePathPrefix = normalizePathPrefix(process.env.SITE_PATH_PREFIX);
-
-function normalizePathPrefix(value) {
-  const prefix = (value || "/").trim();
-  if (prefix === "/") return "/";
-  return `/${prefix.replace(/^\/+|\/+$/g, "")}/`;
-}
-
-function prefixRootRelativeUrl(value) {
-  if (
-    typeof value !== "string" ||
-    sitePathPrefix === "/" ||
-    !value.startsWith("/") ||
-    value.startsWith("//") ||
-    value === sitePathPrefix.slice(0, -1) ||
-    value.startsWith(sitePathPrefix)
-  ) {
-    return value;
-  }
-  return `${sitePathPrefix.slice(0, -1)}${value}`;
-}
-
-function prefixRootRelativeUrls(html) {
-  if (typeof html !== "string" || sitePathPrefix === "/") return html;
-  const parsed = parse(html);
-  for (const element of parsed.querySelectorAll(
-    "[href], [src], [srcset], [poster], [action], [data-href]"
-  )) {
-    for (const attribute of ["href", "src", "srcset", "poster", "action", "data-href"]) {
-      const value = element.getAttribute(attribute);
-      if (!value) continue;
-      const prefixed = attribute === "srcset"
-        ? value.replace(/(^|,\s*)(\/(?!\/)[^\s,]+)/g, (_, separator, url) =>
-            separator + prefixRootRelativeUrl(url)
-          )
-        : prefixRootRelativeUrl(value);
-      if (prefixed !== value) element.setAttribute(attribute, prefixed);
-    }
-  }
-  return parsed.toString();
-}
 
 // Build containers have few CPUs and little memory; the default queue
 // concurrency of 10 holds ~10 decoded images in memory at once without
@@ -509,8 +468,6 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addFilter("isoDate", function(date) {
     return date && date.toISOString();
   });
-
-  eleventyConfig.addFilter("prefixRootRelativeUrls", prefixRootRelativeUrls);
 
   eleventyConfig.addFilter("link", function(str) {
     return (
@@ -870,19 +827,6 @@ module.exports = function(eleventyConfig) {
     return content;
   });
 
-  eleventyConfig.addTransform("sitePathPrefix", function(content) {
-    if (!content || !(this.page.outputPath || "").endsWith(".html")) {
-      return content;
-    }
-    return prefixRootRelativeUrls(content);
-  });
-
-  eleventyConfig.addTemplate("nojekyll.njk", "", {
-    permalink: "/.nojekyll",
-    eleventyExcludeFromCollections: true,
-    eleventyAllowMissingExtension: true,
-  });
-
   eleventyConfig.addTransform("jsonMinifier", async (content, outputPath) => {
     if (
       (process.env.NODE_ENV === "production" || process.env.ELEVENTY_ENV === "prod") &&
@@ -902,7 +846,6 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/site/img");
   eleventyConfig.addPassthroughCopy("src/site/scripts");
   eleventyConfig.addPassthroughCopy("src/site/styles/_theme.*.css");
-  eleventyConfig.addPassthroughCopy({ "src/site/favicon.svg": "favicon.svg" });
   eleventyConfig.addPassthroughCopy({ "src/site/logo.*": "/" });
   eleventyConfig.on("eleventy.before", () => {
     normalizeFavicon(FAVICON_SOURCE, FAVICON_NORMALIZED);
@@ -964,7 +907,6 @@ module.exports = function(eleventyConfig) {
   userEleventySetup(eleventyConfig);
 
   return {
-    pathPrefix: sitePathPrefix,
     dir: {
       input: "src/site",
       output: "dist",
