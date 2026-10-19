@@ -30,6 +30,11 @@ jobs:
         env:
           SITE_BASE_URL: https://aj-gman.github.io
           SITE_PATH_PREFIX: /cyberpunk/
+          THEME: ${{ vars.THEME }}
+      - name: Verify built Pages site
+        run: node scripts/verify-pages-build.js
+        env:
+          SITE_PATH_PREFIX: /cyberpunk/
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
@@ -46,3 +51,21 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+      - name: Verify deployed Pages site
+        env:
+          PAGE_URL: ${{ steps.deployment.outputs.page_url }}
+        run: |
+          set -eu
+          url="${PAGE_URL}?deployment=${GITHUB_SHA}"
+          for attempt in $(seq 1 12); do
+            html="$(curl --fail --silent --show-error "$url")" || html=""
+            if printf '%s' "$html" | grep -Fq 'cm-s-obsidian'; then
+              break
+            fi
+            if [ "$attempt" -eq 12 ]; then
+              echo "The deployed URL is not serving the generated Digital Garden. Check Settings > Pages and select GitHub Actions as the publishing source."
+              exit 1
+            fi
+            sleep 10
+          done
+          curl --fail --silent --show-error "${PAGE_URL}styles/digital-garden-base.css" -o /dev/null

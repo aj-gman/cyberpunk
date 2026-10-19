@@ -115,6 +115,15 @@ const { basesPlugin } = require("./src/helpers/basesPlugin");
 
 const Image = require("@11ty/eleventy-img");
 const { isDecodableImage } = require("./src/helpers/imageFormat.js");
+const {
+  normalizeSitePathPrefix,
+  prefixHtmlRootUrls,
+  prefixManifestIcons,
+} = require("./src/helpers/sitePath");
+
+const sitePathPrefix = normalizeSitePathPrefix(
+  process.env.SITE_PATH_PREFIX || "/"
+);
 
 // Build containers have few CPUs and little memory; the default queue
 // concurrency of 10 holds ~10 decoded images in memory at once without
@@ -126,6 +135,21 @@ Image.concurrency = 2;
 // eleventy.after hook below so the build doesn't linger — or get killed —
 // doing invisible work after Eleventy reports completion.
 const pendingImageJobs = [];
+
+function prefixHtmlOutputFiles(directory, prefix) {
+  for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
+    const entryPath = nodePath.join(directory, entry.name);
+    if (entry.isDirectory()) {
+      prefixHtmlOutputFiles(entryPath, prefix);
+    } else if (entry.isFile() && entry.name.endsWith(".html")) {
+      const html = fs.readFileSync(entryPath, "utf8");
+      const prefixedHtml = prefixHtmlRootUrls(html, prefix);
+      if (prefixedHtml !== html) {
+        fs.writeFileSync(entryPath, prefixedHtml);
+      }
+    }
+  }
+}
 
 // Note: fillPictureSourceSets only references the first two widths; the
 // full-size original is served via the <img src> fallback, so a full
@@ -799,6 +823,18 @@ module.exports = function(eleventyConfig) {
     }
   });
 
+  eleventyConfig.addTransform("site-path-prefix", function(content, outputPath) {
+    if (
+      sitePathPrefix === "/" ||
+      !outputPath ||
+      !outputPath.endsWith(".html")
+    ) {
+      return content;
+    }
+
+    return prefixHtmlRootUrls(content, sitePathPrefix);
+  });
+
   eleventyConfig.addTransform("htmlMinifier", async function(content) {
     if (
       (process.env.NODE_ENV === "production" || process.env.ELEVENTY_ENV === "prod") &&
@@ -858,6 +894,17 @@ module.exports = function(eleventyConfig) {
       console.log(`[image] Image optimization complete`);
       pendingImageJobs.length = 0;
     }
+    if (sitePathPrefix !== "/") {
+      prefixHtmlOutputFiles("dist", sitePathPrefix);
+      const manifestPath = nodePath.join("dist", "manifest.webmanifest");
+      if (fs.existsSync(manifestPath)) {
+        const manifest = prefixManifestIcons(
+          JSON.parse(fs.readFileSync(manifestPath, "utf8")),
+          sitePathPrefix
+        );
+        fs.writeFileSync(manifestPath, JSON.stringify(manifest));
+      }
+    }
   });
   eleventyConfig.addWatchTarget(FAVICON_SOURCE);
   eleventyConfig.addPlugin(faviconsPlugin, { outputDir: "dist" });
@@ -907,6 +954,7 @@ module.exports = function(eleventyConfig) {
   userEleventySetup(eleventyConfig);
 
   return {
+    pathPrefix: sitePathPrefix,
     dir: {
       input: "src/site",
       output: "dist",
