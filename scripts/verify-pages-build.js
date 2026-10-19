@@ -36,6 +36,24 @@ if (html.includes("Jekyll v")) {
   throw new Error("dist/index.html contains Jekyll output instead of the garden");
 }
 
+const searchIndexPath = path.join(outputDir, "searchIndex.json");
+if (!fs.existsSync(searchIndexPath)) {
+  throw new Error("The Pages build did not produce dist/searchIndex.json");
+}
+const searchIndex = JSON.parse(fs.readFileSync(searchIndexPath, "utf8"));
+if (!Array.isArray(searchIndex)) {
+  throw new Error("dist/searchIndex.json must contain an array of search results");
+}
+for (const result of searchIndex) {
+  if (
+    !result ||
+    typeof result.url !== "string" ||
+    result.url !== prefixRootRelativeUrl(result.url, prefix)
+  ) {
+    throw new Error(`Search result URL is missing the site prefix: ${result.url}`);
+  }
+}
+
 function findHtmlFiles(directory) {
   return fs.readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
     const entryPath = path.join(directory, entry.name);
