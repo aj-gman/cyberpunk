@@ -55,6 +55,13 @@ if (gardenPages.length === 0) {
   throw new Error("The Pages build did not produce any Digital Garden note pages");
 }
 
+const gardenPagePath = path
+  .relative(outputDir, gardenPages[0].file)
+  .split(path.sep)
+  .map(encodeURIComponent)
+  .join("/")
+  .replace(/(^|\/)index\.html$/, "$1");
+
 for (const { file, html: pageHtml } of gardenPages) {
   if (!pageHtml.includes(`href="${prefix}ai-policy/"`)) {
     throw new Error(
@@ -177,6 +184,13 @@ if (fs.existsSync(manifestPath)) {
       throw new Error(`Manifest icon is missing from dist: ${relativePath}`);
     }
   }
+}
+
+if (process.env.GITHUB_OUTPUT) {
+  fs.appendFileSync(
+    process.env.GITHUB_OUTPUT,
+    `garden_page_path=${gardenPagePath}\n`
+  );
 }
 
 console.log(

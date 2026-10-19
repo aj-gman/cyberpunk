@@ -15,6 +15,8 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    outputs:
+      garden_page_path: ${{ steps.verify.outputs.garden_page_path }}
     permissions:
       contents: read
       pages: read
@@ -31,6 +33,7 @@ jobs:
           SITE_BASE_URL: https://aj-gman.github.io
           SITE_PATH_PREFIX: /cyberpunk/
       - name: Verify built Pages site
+        id: verify
         run: node scripts/verify-pages-build.js
         env:
           SITE_PATH_PREFIX: /cyberpunk/
@@ -53,9 +56,11 @@ jobs:
       - name: Verify deployed Pages site
         env:
           PAGE_URL: ${{ steps.deployment.outputs.page_url }}
+          GARDEN_PAGE_PATH: ${{ needs.build.outputs.garden_page_path }}
         run: |
           set -eu
-          url="${PAGE_URL}?deployment=${GITHUB_SHA}"
+          base_url="${PAGE_URL%/}/"
+          url="${base_url}${GARDEN_PAGE_PATH}?deployment=${GITHUB_SHA}"
           for attempt in $(seq 1 12); do
             html="$(curl --fail --silent --show-error "$url")" || html=""
             if printf '%s' "$html" | grep -Fq 'cm-s-obsidian'; then
@@ -67,4 +72,4 @@ jobs:
             fi
             sleep 10
           done
-          curl --fail --silent --show-error "${PAGE_URL}styles/digital-garden-base.css" -o /dev/null
+          curl --fail --silent --show-error "${base_url}styles/digital-garden-base.css" -o /dev/null
