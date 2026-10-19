@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/characters/2021/gangers/corpse-reviver/","dg-note-properties":{}}
+{"dg-publish":true,"dg-path":"Night City/Characters/gangers/Corpse Reviver.md","permalink":"/night-city/characters/gangers/corpse-reviver/","dg-note-properties":{}}
 ---
 
 #npc [[Night City/Locations/Night City\|Night City]]

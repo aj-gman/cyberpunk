@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/characters/2021/corpos/iwasao-koremichi/","dg-note-properties":{}}
+{"dg-publish":true,"dg-path":"Night City/Characters/corpos/Iwasao Koremichi.md","permalink":"/night-city/characters/corpos/iwasao-koremichi/","dg-note-properties":{}}
 ---
 
 #npc #4cw [[Night City/Organizations/Corporations/Arasaka\|Arasaka]] [[Rules/CPRED/Roles/Exec\|Exec]], within the Banking branch

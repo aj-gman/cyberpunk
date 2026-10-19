@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/characters/2021/edgerunners/big-wu/","dg-note-properties":{}}
+{"dg-publish":true,"dg-path":"Night City/Characters/edgerunners/Big Wu.md","permalink":"/night-city/characters/edgerunners/big-wu/","dg-note-properties":{}}
 ---
 
 #npc #4cw [[Night City/Locations/Night City\|Night City]]

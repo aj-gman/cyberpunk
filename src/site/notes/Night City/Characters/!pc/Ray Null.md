@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/characters/pc/ray-null/","tags":["#crew","#eurotour","#4cw"],"dg-note-properties":{"permalink":"/night-city/characters/pc/ray-null/","tags":["#crew","#eurotour","#4cw"]}}
+{"dg-publish":true,"dg-path":"Player Characters/Ray Null.md","permalink":"/player-characters/ray-null/","tags":["#crew","#eurotour","#4cw"],"dg-note-properties":{"permalink":"/night-city/characters/pc/ray-null/","tags":["#crew","#eurotour","#4cw"]}}
 ---
 
 

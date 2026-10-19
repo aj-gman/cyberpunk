@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/characters/2021/gangers/reznor/","dg-note-properties":{}}
+{"dg-publish":true,"dg-path":"Night City/Characters/gangers/Reznor.md","permalink":"/night-city/characters/gangers/reznor/","dg-note-properties":{}}
 ---
 
 #npc #4cw [[Rules/CPRED/Roles/Solo\|Solo]] [[Night City/Organizations/Gangs/Blood Razors\|Blood Razors]]

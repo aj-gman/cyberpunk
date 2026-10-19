@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/society/strata/powerdealers/","dg-note-properties":{}}
+{"dg-publish":true,"dg-path":"Night City/Society/Strata/Powerdealers.md","permalink":"/night-city/society/strata/powerdealers/","dg-note-properties":{}}
 ---
 
 #stratum 

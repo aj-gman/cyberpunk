@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/characters/2021/corpos/victor-campbell/","dg-note-properties":{}}
+{"dg-publish":true,"dg-path":"Night City/Characters/corpos/Victor Campbell.md","permalink":"/night-city/characters/corpos/victor-campbell/","dg-note-properties":{}}
 ---
 
 #npc [[Night City/Locations/Night City\|Night City]]

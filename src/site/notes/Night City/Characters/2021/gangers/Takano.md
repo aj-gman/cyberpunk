@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/characters/2021/gangers/takano/","dg-note-properties":{}}
+{"dg-publish":true,"dg-path":"Night City/Characters/gangers/Takano.md","permalink":"/night-city/characters/gangers/takano/","dg-note-properties":{}}
 ---
 
 [[Night City/Organizations/Gangs/Tyger Clawz\|Tyger Clawz]] [[Rules/CPRED/Roles/Medtechie\|Ripperdoc]]

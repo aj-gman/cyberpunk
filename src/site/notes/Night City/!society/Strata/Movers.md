@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/society/strata/movers/","dg-note-properties":{}}
+{"dg-publish":true,"dg-path":"Night City/Society/Strata/Movers.md","permalink":"/night-city/society/strata/movers/","dg-note-properties":{}}
 ---
 
 #stratum 
