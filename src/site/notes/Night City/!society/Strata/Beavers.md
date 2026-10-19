@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/society/strata/beavers/","dg-note-properties":{}}
+{"dg-publish":true,"dg-path":"Night City/Society/Strata/Beavers.md","permalink":"/night-city/society/strata/beavers/","dg-note-properties":{}}
 ---
 
 #stratum 

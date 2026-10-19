@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/characters/pc/other/laz-gm/","dg-note-properties":{}}
+{"dg-publish":true,"dg-path":"Player Characters/OTHER/Laz (GM).md","permalink":"/player-characters/other/laz-gm/","dg-note-properties":{}}
 ---
 
 Not much is known about the reclusive [[Night City/Organizations/Corporations/SovOil\|SovOil]]-affiliated [[Rules/CPRED/Roles/Netrunner\|Netrunner]]-for-hire that joined the [[Eurotour/Characters/Core Crew/Jack Entropy\|Total Entropy Tour]], apart from the fact that he dresses well[^1], has the mannerisms of an [[Rules/CPRED/Roles/Exec\|Exec]] and has a particular love for gruesome [[Rules/CPRED/Netrunning/Quickhacks\|Quickhacks]].

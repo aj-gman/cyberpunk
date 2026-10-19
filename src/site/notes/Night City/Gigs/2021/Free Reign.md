@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/gigs/2021/free-reign/","dg-note-properties":{}}
+{"dg-publish":true,"dg-path":"Night City/Gigs/Free Reign.md","permalink":"/night-city/gigs/free-reign/","dg-note-properties":{}}
 ---
 
 #gig #4cw [[Rules/NCOverdrive/Neon City Overdrive (HUB)\|Neon City Overdrive]] [[Night City/Fourth Corporate War\|Fourth Corporate War]]

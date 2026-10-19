@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/gigs/2021/plastic-euphoria/","dg-note-properties":{}}
+{"dg-publish":true,"dg-path":"Night City/Gigs/Plastic Euphoria.md","permalink":"/night-city/gigs/plastic-euphoria/","dg-note-properties":{}}
 ---
 
 #gig #4cw [[Rules/NCOverdrive/Neon City Overdrive (HUB)\|Neon City Overdrive]] [[Night City/Fourth Corporate War\|Fourth Corporate War]]

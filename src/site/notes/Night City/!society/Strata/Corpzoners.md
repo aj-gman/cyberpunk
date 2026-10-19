@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/society/strata/corpzoners/","dg-note-properties":{}}
+{"dg-publish":true,"dg-path":"Night City/Society/Strata/Corpzoners.md","permalink":"/night-city/society/strata/corpzoners/","dg-note-properties":{}}
 ---
 
 #stratum
