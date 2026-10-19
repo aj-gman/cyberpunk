@@ -1,6 +1,7 @@
 ---
-{"dg-publish":true,"permalink":"/eurotour/locations/rhine-ruhr-conurb/","dg-note-properties":{}}
+{"dg-publish":true,"permalink":"/eurotour/locations/rhine-ruhr-conurb/","tags":["#location","#eurotour"],"dg-note-properties":{"permalink":"/eurotour/locations/rhine-ruhr-conurb/","tags":["#location","#eurotour"]}}
 ---
+
 
 #location #eurotour 
 # You want to get into the EC's crown jewel, [GERMANY](/eurotour/locations/germany/)?

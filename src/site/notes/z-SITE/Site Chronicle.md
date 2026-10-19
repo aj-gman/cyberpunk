@@ -1,6 +1,7 @@
 ---
-{"dg-publish":true,"dg-path":"Site Chronicle.md","permalink":"/site-chronicle/","dg-note-properties":{}}
+{"dg-publish":true,"dg-path":"Site Chronicle.md","permalink":"/site-chronicle/","tags":["#fashion","#ideology","#npc","#news","#district","#dependency","#stratum","#boostergang","#role"],"dg-note-properties":{"permalink":"/site-chronicle/","tags":["#fashion","#ideology","#npc","#news","#district","#dependency","#stratum","#boostergang","#role"]}}
 ---
+
 
 ### To-Do
 - [ ] Create an interactive *by month/week* map of [[Night City/Locations/Night City\|Night City]]

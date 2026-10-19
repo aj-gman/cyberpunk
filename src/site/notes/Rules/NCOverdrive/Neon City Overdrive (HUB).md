@@ -1,6 +1,7 @@
 ---
-{"dg-publish":true,"dg-path":"NCOverdrive (HUB).md","permalink":"/nc-overdrive-hub/","dg-note-properties":{}}
+{"dg-publish":true,"dg-path":"NCOverdrive (HUB).md","permalink":"/nc-overdrive-hub/","dg-note-properties":{"permalink":"/nc-overdrive-hub/"}}
 ---
+
 
 > [!abstract]- Why [[Rules/NCOverdrive/Neon City Overdrive (HUB)\|NCOverdrive]]?
 > Simply put, I was looking through many alternatives to [[Rules/CPRED/Cyberpunk RED (HUB)\|CPRED]] because [[Eurotour/The Crew\|The Crew]] had reached a point where *some* of their STATS were getting results that heavily outpaced the [[Rules/CPRED/Difficulty Rating\|Difficulty Rating]] schema proposed by the system and "balancing" would've meant just spiking the difficulty on the NPC's ends as well.

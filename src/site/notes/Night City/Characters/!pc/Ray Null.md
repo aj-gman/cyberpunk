@@ -1,6 +1,7 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/characters/pc/ray-null/","dg-note-properties":{}}
+{"dg-publish":true,"permalink":"/night-city/characters/pc/ray-null/","tags":["#crew","#eurotour","#4cw"],"dg-note-properties":{"permalink":"/night-city/characters/pc/ray-null/","tags":["#crew","#eurotour","#4cw"]}}
 ---
+
 
 #crew #eurotour #4cw [[Rules/CPRED/Roles/Nomad\|Nomad]]
 **GM-only: [[Night City/Characters/!pc/OTHER/Ray (GM)\|Ray (GM)]]**

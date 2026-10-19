@@ -1,6 +1,7 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/locations/dependencies/north-oak/","tags":["dependency","location"],"dg-note-properties":{"tags":["dependency","location"]}}
+{"dg-publish":true,"permalink":"/night-city/locations/dependencies/north-oak/","tags":["#dependency","#location"],"dg-note-properties":{"permalink":"/night-city/locations/dependencies/north-oak/","tags":["#dependency","#location"]}}
 ---
+
 
 Home to [[NorCal Military Base\|NorCal Military Base]].
 

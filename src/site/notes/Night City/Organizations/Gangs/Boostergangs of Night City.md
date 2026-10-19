@@ -1,6 +1,7 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/organizations/gangs/boostergangs-of-night-city/","dg-note-properties":{}}
+{"dg-publish":true,"permalink":"/night-city/organizations/gangs/boostergangs-of-night-city/","dg-note-properties":{"permalink":"/night-city/organizations/gangs/boostergangs-of-night-city/"}}
 ---
+
 
 See them in [the Map](/img/map-viewer/), under the Influence tab.
 ### [[Night City/Locations/Districts/City Center\|City Center]]
