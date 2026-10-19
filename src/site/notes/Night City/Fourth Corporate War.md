@@ -20,7 +20,7 @@ Survive the [[Night City/Fourth Corporate War\|Fourth Corporate War]] from its b
 >- [[Night City/Characters/!pc/Hex\|Hex]]
 >- [[Night City/Characters/!pc/Ray Null\|Ray Null]]
 >- [[Night City/Characters/!pc/Ze\|Ze]]
->- [[Liam Brightburn\|Liam Brightburn]]
+>- [[Night City/Characters/2021/edgerunners/Liam Brightburn\|Liam Brightburn]]
 
 > [!abstract] [[Night City/Locations/Night City\|Learn about Night City]]
 
