@@ -1,5 +1,6 @@
 const fs = require("fs");
 const path = require("path");
+require("dotenv").config();
 const {
   normalizeSitePathPrefix,
   prefixRootRelativeUrl,
@@ -27,6 +28,15 @@ const themeStylesheets = Array.from(
 );
 if (themeStylesheets.length === 0) {
   throw new Error("The home page does not link a theme stylesheet");
+}
+
+if (
+  process.env.THEME &&
+  !themeStylesheets.some((stylesheet) => /\/_theme\.[^/]+\.css(?:[?#]|$)/.test(stylesheet))
+) {
+  throw new Error(
+    "THEME is configured, but the generated page does not link its downloaded theme stylesheet"
+  );
 }
 
 for (const stylesheet of themeStylesheets) {

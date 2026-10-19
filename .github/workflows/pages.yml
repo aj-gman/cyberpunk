@@ -30,7 +30,6 @@ jobs:
         env:
           SITE_BASE_URL: https://aj-gman.github.io
           SITE_PATH_PREFIX: /cyberpunk/
-          THEME: ${{ vars.THEME }}
       - name: Verify built Pages site
         run: node scripts/verify-pages-build.js
         env:
