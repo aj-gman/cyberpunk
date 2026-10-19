@@ -148,6 +148,11 @@ a.internal-link:hover, a.external-link:hover {
     padding: 2px 6px;
 }
 
+/* Prevent a leading hashtag parsed as a Markdown heading from becoming a visible heading. */
+main.content > :is(h1, h2, h3, h4, h5, h6):has(> a.tag):not(:has(> :not(a.tag))) {
+    display: none;
+}
+
 /* --- Global Elements & Lists --- */
 ul {
     list-style-type: disc;
