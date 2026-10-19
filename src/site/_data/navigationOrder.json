@@ -1,31 +1,14 @@
 {
   "/": [
-    "Home",
     "NCOverdrive (HUB)",
     "CPRED (HUB)",
-    "Player Characters",
     "Rules",
     "Night City",
     "Eurotour",
     "AI Policy",
     "G-man",
-    "Site Chronicle"
-  ],
-  "/Player Characters": [
-    "OTHER",
-    "Relevant NPCs",
-    "The Gang"
-  ],
-  "/Player Characters/OTHER": [
-    "HEX_PUBLIC",
-    "LAZARUS_PUBLIC",
-    "RAY_PUBLIC"
-  ],
-  "/Player Characters/Relevant NPCs": [
-    "Nolasco Family"
-  ],
-  "/Player Characters/Relevant NPCs/Nolasco Family": [
-    "Nolasco Family"
+    "Site Chronicle",
+    "Gallery Assets"
   ],
   "/Rules": [
     "NCOverdrive",
@@ -143,41 +126,107 @@
     "Techie"
   ],
   "/Night City": [
-    "Beliefs",
+    "!society",
     "Characters",
     "Organizations",
     "Others",
     "Locations",
+    "Gigs",
     "Fourth Corporate War"
   ],
-  "/Night City/Beliefs": [
+  "/Night City/!society": [
+    "Beliefs",
+    "Strata"
+  ],
+  "/Night City/!society/Beliefs": [
+    "Fashion",
     "Idealism",
-    "Realism",
     "Insurrectionism",
     "Parallelism",
-    "Fashion"
+    "Realism"
   ],
-  "/Night City/Beliefs/Fashion": [
+  "/Night City/!society/Beliefs/Fashion": [
     "Entropism",
     "Kitsch",
     "Neokitsch",
     "Neomilitarism"
   ],
+  "/Night City/!society/Strata": [
+    "Beavers",
+    "Corpzoners",
+    "Edgerunners",
+    "Mallplexers",
+    "Movers",
+    "Powerdealers",
+    "Streetscum"
+  ],
   "/Night City/Characters": [
-    "2021",
-    "Richard Night"
+    "!pc",
+    "2021"
+  ],
+  "/Night City/Characters/!pc": [
+    "OTHER",
+    "Relevant NPCs",
+    "Hex",
+    "Ray Null",
+    "The Gang",
+    "Ze"
+  ],
+  "/Night City/Characters/!pc/OTHER": [
+    "Laz (GM)"
+  ],
+  "/Night City/Characters/!pc/Relevant NPCs": [
+    "Nolasco Family",
+    "Nat"
+  ],
+  "/Night City/Characters/!pc/Relevant NPCs/Nolasco Family": [
+    "Nolasco Family"
   ],
   "/Night City/Characters/2021": [
-    "Big Wu",
-    "Corpse Reviver",
-    "Theresa Valentino",
+    "corpos",
+    "edgerunners",
+    "gangers"
+  ],
+  "/Night City/Characters/2021/corpos": [
+    "Bruce Skiv",
+    "Dt. Spinner",
+    "Elizabeth Kress",
+    "Hoyt Paulsen",
+    "Isaac Erikson",
+    "Iwasao Koremichi",
+    "Oburo Tatsunaga",
+    "Richard Night",
+    "Romano Skiv",
+    "Rory Steiger",
     "Victor Campbell"
+  ],
+  "/Night City/Characters/2021/edgerunners": [
+    "Big Wu",
+    "Johnny Silverhand",
+    "Morgan Blackhand",
+    "Rache Bartmoss",
+    "Santiago Aldecado",
+    "Savvy",
+    "Theresa Valentino"
+  ],
+  "/Night City/Characters/2021/gangers": [
+    "Bearbull",
+    "Corpse Reviver",
+    "Easy",
+    "Laura Aldecado",
+    "Reznor",
+    "Screwball",
+    "Skell",
+    "Takano",
+    "Who-Who"
   ],
   "/Night City/Organizations": [
     "Gangs",
     "Corporations",
     "NUSA",
-    "Highrider Confederation"
+    "Highrider Confederation",
+    "MAXTAC",
+    "NCPD"
   ],
   "/Night City/Organizations/Gangs": [
     "Aldecaldos",
@@ -198,7 +247,8 @@
     "Tyger Clawz",
     "Voodoo Boys",
     "Weng Fang Tong",
-    "Wild Things"
+    "Wild Things",
+    "Raffen Shiv"
   ],
   "/Night City/Organizations/Corporations": [
     "Arasaka",
@@ -217,24 +267,78 @@
     "SovOil",
     "Techtronika",
     "Tsunami Arms",
-    "Wortrac"
+    "Wortrac",
+    "IEC",
+    "Network News 54",
+    "Zetatech"
   ],
   "/Night City/Others": [
-    "About Cyberpsychosis"
+    "Corporate News",
+    "Independent News",
+    "News",
+    "About Cyberpsychosis",
+    "Combat Zone",
+    "Events",
+    "Technology"
+  ],
+  "/Night City/Others/Events": [
+    "Arasaka in Maelstrom",
+    "CZers Fight Back",
+    "Militech Executives Die in Poison Attack",
+    "Militech penetrates Combat Zone Border",
+    "NUSA Statement. Response to the Arasaka Files"
+  ],
+  "/Night City/Others/Technology": [
+    "AV",
+    "NCART",
+    "SM-Dragon",
+    "weird device"
   ],
   "/Night City/Locations": [
     "Night City",
-    "Night City History"
+    "Dependencies",
+    "Districts"
+  ],
+  "/Night City/Locations/Dependencies": [
+    "Badlands",
+    "Heywood",
+    "NorthOak",
+    "Pacifica",
+    "Rancho Coronado",
+    "Westbrook"
+  ],
+  "/Night City/Locations/Districts": [
+    "City Center",
+    "Little Asia",
+    "Little Europe",
+    "Nightlife District",
+    "South Night City",
+    "University District",
+    "Westside"
+  ],
+  "/Night City/Gigs": [
+    "2021",
+    "2077"
+  ],
+  "/Night City/Gigs/2021": [
+    "Deep Six",
+    "Free Reign",
+    "Into the Lion's Den",
+    "Plastic Euphoria",
+    "Seven Nation Army"
+  ],
+  "/Night City/Gigs/2077": [
+    "Electric Tornado"
   ],
   "/Eurotour": [
     "Characters",
     "Locations",
     "News",
-    "Eurotour",
     "Organizations",
-    "EYE",
     "Adventures",
-    "The Crew"
+    "Eurotour",
+    "The Crew",
+    "EYE"
   ],
   "/Eurotour/Characters": [
     "France",
@@ -279,14 +383,12 @@
     "Czechoslovakia no more",
     "Czechoslovakian Unrest Continues",
     "Entropy too chaotic",
-    "Eurotour Shows Available",
-    "Executive Executions on Rhin-Ruhr Rooftops",
     "I borged out Entropy",
     "Marcel Reve Faces Trial",
     "Marcel Reve, Acquited",
     "Masquerade Or Foul Play",
-    "The Czech Republic",
-    "Who let Entropy have a CHAINSAW!"
+    "Who let Entropy have a CHAINSAW!",
+    "The New Czech Republic"
   ],
   "/Eurotour/Organizations": [
     "DangerCrewz",

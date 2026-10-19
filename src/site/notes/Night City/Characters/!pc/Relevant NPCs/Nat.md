@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/characters/pc/relevant-np-cs/natalie-michaels/","dg-note-properties":{}}
+{"dg-publish":true,"permalink":"/night-city/characters/pc/relevant-np-cs/nat/","dg-note-properties":{}}
 ---
 
 #npc #eurotour #4cw 

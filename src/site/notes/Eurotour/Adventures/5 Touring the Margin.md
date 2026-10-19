@@ -29,7 +29,7 @@ In [[Eurotour/Locations/Stockholm\|Stockholm]], they'll find that [[Eurotour/Cha
 	- [x] [[Night City/Characters/!pc/OTHER/Lazarus\|Lazarus]]'s recurring nightmares relating to his aunt
 	- [x] Pick the new [[Night City/Organizations/Corporations/SovOil\|SovOil]] company member for [[Night City/Characters/!pc/OTHER/Lazarus\|Lazarus]]
 		- [ ] [[Night City/Organizations/Corporations/SovOil\|SovOil]] [[Rules/CPRED/Roles/Medtechie\|Surgeon]], [[Valodia\|Valodia]]
-	- [x] [[Night City/Characters/!pc/Hex\|Hex]], [[Night City/Characters/!pc/Relevant NPCs/Natalie Michaels\|Natalie]] and [[Eurotour/Characters/Captain Effirm Danala\|the elephant in the room]]
+	- [x] [[Night City/Characters/!pc/Hex\|Hex]], [[Night City/Characters/!pc/Relevant NPCs/Nat\|Natalie]] and [[Eurotour/Characters/Captain Effirm Danala\|the elephant in the room]]
 - [x] Settle down in [[Eurotour/Locations/Stockholm\|Stockholm]] and suspect that [[Eurotour/Characters/Lars-Olov Skeppsholm\|Lars-Olov Skeppsholm]] is missing.
 	- [x] Begin the investigation
 	- [x] Spend 70eb on the taxi ride to the hotel. Single Rooms 

@@ -1,6 +1,7 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/characters/pc/hex/","dg-note-properties":{}}
+{"dg-publish":true,"permalink":"/night-city/characters/pc/hex/","tags":["#crew","#eurotour","#4cw","#boostergang"],"dg-note-properties":{"permalink":"/night-city/characters/pc/hex/","tags":["#crew","#eurotour","#4cw","#boostergang"]}}
 ---
+
 
 #crew #eurotour #4cw [[Rules/CPRED/Roles/Techie\|Techie]]
 **GM-only: [[Night City/Characters/!pc/OTHER/Hex (GM)\|Hex (GM)]]**
