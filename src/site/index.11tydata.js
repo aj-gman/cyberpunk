@@ -1,20 +1,18 @@
 require("dotenv").config();
+const fs = require("fs");
 const path = require("path");
 const settings = require("../helpers/constants");
 const pluginLoader = require("../helpers/pluginLoader");
 const { hasHomePageNote } = require("../helpers/homePage");
 
-// Fallback front page, rendered only when no published note is marked as the
-// garden's home page (`dg-home` in Obsidian, which the plugin turns into the
-// `gardenEntry` tag). Without it a garden with notes but no home page served a
-// 404 at `/`, which read as "the site is broken" to new gardeners.
+// Fallback front page for gardens without a selected note or custom front page.
 //
-// A note with the gardenEntry tag takes the `/` permalink (see
-// notes/notes.11tydata.js), so this template must step aside whenever one
-// exists or Eleventy fails the build with an output conflict. The check reads
-// the notes from disk because permalinks are resolved before collections
-// exist, so `collections.gardenEntry` is not available here.
+// The custom glitch header takes `/` unless a note is selected as the garden
+// home page. The fallback must step aside for either case to avoid an output
+// conflict. The note check reads from disk because permalinks are resolved
+// before collections exist.
 const hasHomePage = hasHomePageNote(path.join(__dirname, "notes"));
+const hasGlitchHeader = fs.existsSync(path.join(__dirname, "glitch-header.njk"));
 
 const allSettings = [
   ...settings.ALL_NOTE_SETTINGS,
@@ -31,7 +29,7 @@ module.exports = {
   layout: "layouts/index.njk",
   eleventyExcludeFromCollections: true,
   isFallbackIndex: true,
-  permalink: hasHomePage ? false : "/",
+  permalink: hasHomePage || hasGlitchHeader ? false : "/",
   eleventyComputed: {
     title: (data) => (data.meta && data.meta.siteName) || "Notes",
     // Notes get their per-page settings from notes/notes.11tydata.js; this

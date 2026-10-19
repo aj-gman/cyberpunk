@@ -2,7 +2,7 @@
 {"dg-publish":true,"permalink":"/night-city/locations/districts/south-night-city/","tags":["district","location"],"dg-note-properties":{"tags":["district","location"]}}
 ---
 
->[!info]- [Map of Night City](https://gman-cyberpunk.vercel.app/img/map-viewer/)
+>[!info]- [Map of Night City](/img/map-viewer/)
 
 >[!danger]- Gang Activity
 >- [[Night City/Organizations/Gangs/Blood Razors\|Blood Razors]]
@@ -23,5 +23,4 @@ carouselShowThumbnails: true
 ![[LOC-SNC2.png|491]]
 ![[LOC-SNC1.png|491]]
 ```
-
 

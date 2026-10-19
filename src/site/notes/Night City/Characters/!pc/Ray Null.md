@@ -13,7 +13,7 @@ Ray Null? Everybody's heard of Ray Null! [[Rules/CPRED/Roles/Nomad\|Best class s
 >	The British Combined Forces have an open contract on him: Dead or Alive.
 >3. Is a public enemy of [[Night City/Organizations/Gangs/Maelstrom\|Maelstrom]].
 >
->**What are three things you'd like [[Eurotour/The Crew\|The Crew]] and other viewers of [G-man's Cyberpunk](https://gman-cyberpunk.vercel.app/) to know about [[Night City/Characters/!pc/Ray Null\|Ray Null]]?**
+>**What are three things you'd like [[Eurotour/The Crew\|The Crew]] and other viewers of [G-man's Cyberpunk](/) to know about [[Night City/Characters/!pc/Ray Null\|Ray Null]]?**
 >1. He views himself as an anti-corpo Che Guevara: anything from edgerunner groups, to boostergangs, to crime organizations, he wants to unite them against corporations in a grand revolution. 
 >2. He's a big proponent of 'work hard, play hard', but with a Eurosolo twist: after a gig he can be found enjoying a bottle of natural wine (stolen from a corpo who can afford it), reading a e-book on leftist theory, maybe romancing an output (speedware salsa, anyone?). 
 >3. His favored tactic in gigs involves his internal holster, an AR and infiltrating the middle of an enemy crowd. At that point, his bad temper is the driver to his success: nobody expects autofire coming out of a tuxedo!

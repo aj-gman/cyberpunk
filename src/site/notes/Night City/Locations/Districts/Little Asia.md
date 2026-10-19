@@ -2,7 +2,7 @@
 {"dg-publish":true,"permalink":"/night-city/locations/districts/little-asia/","tags":["district","location"],"dg-note-properties":{"tags":["district","location"]}}
 ---
 
->[!info]- [Map of Night City](https://gman-cyberpunk.vercel.app/img/map-viewer/)
+>[!info]- [Map of Night City](/img/map-viewer/)
 
 >[!danger]- Gang Activity
 >- [[Night City/Organizations/Gangs/Blood Razors\|Blood Razors]] in Japantown
@@ -35,6 +35,5 @@ layout: masonry-2
 ![[LOC-LITTLECHINA2 1.png|455]]
 ![[LOC-CHINATOWN2.png|452]]
 ```
-
 
 

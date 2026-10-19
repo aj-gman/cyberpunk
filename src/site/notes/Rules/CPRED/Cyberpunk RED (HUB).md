@@ -13,7 +13,7 @@
 
 The Cyberpunk system is iconic for its use of #role as a way to flag the 10 different [[Night City/!society/Strata/Edgerunners\|edgerunners]] stereotypes that are playable in the [[Rules/Cyberpunk Universe\|Cyberpunk Universe]].
 
->[!note]- [Cyberpunk RED Character Sheet](https://gman-cyberpunk.vercel.app/img/sheet.html)
+>[!note]- [Cyberpunk RED Character Sheet](/img/sheet.html)
 
 >[!abstract]- For more about the Roles, see here.
 > - [[Rules/CPRED/Roles/Exec\|Exec]]
@@ -47,5 +47,4 @@ The Cyberpunk system is iconic for its use of #role as a way to flag the 10 diff
 >- [[Rules/NCOverdrive/Damage/Combat\|Combat]]
 >- [[Rules/CPRED/Combat/Critical Injuries\|Critical Injuries]]
 >- [[Rules/CPRED/Combat/Firearms of Cyberpunk\|Firearms of Cyberpunk]], [[Rules/CPRED/Combat/Power Guns\|Power Guns]], [[Rules/CPRED/Combat/Smart Guns\|Smart Guns]], [[Rules/CPRED/Combat/Tech Guns\|Tech Guns]]
-
 

@@ -2,7 +2,7 @@
 {"dg-publish":true,"permalink":"/night-city/organizations/gangs/boostergangs-of-night-city/","dg-note-properties":{}}
 ---
 
-See them in [the Map](https://gman-cyberpunk.vercel.app/img/map-viewer/), under the Influence tab.
+See them in [the Map](/img/map-viewer/), under the Influence tab.
 ### [[Night City/Locations/Districts/City Center\|City Center]]
 - [[Night City/Organizations/Gangs/Street Queens\|Street Queens]] in Civic Center
 - [[Night City/Organizations/Gangs/Sun On Yee\|Sun On Yee]] in Corporate Center

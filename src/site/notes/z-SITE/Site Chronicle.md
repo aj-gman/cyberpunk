@@ -18,14 +18,14 @@
 - Finished all #ideology write-up
 - Ported website for quicker uploads from Vercel to GithubPages
 - Published [[Night City/Gigs/2021/Seven Nation Army\|Seven Nation Army]] webpage
-- Modified and updated [map](https://gman-cyberpunk.vercel.app/img/map-viewer/)
+- Modified and updated [map](/img/map-viewer/)
 - Added more #npc: [[Night City/Characters/2021/edgerunners/Johnny Silverhand\|Johnny Silverhand]], [[Night City/Characters/2021/edgerunners/Morgan Blackhand\|Morgan Blackhand]], [[Night City/Characters/2021/edgerunners/Rache Bartmoss\|Rache Bartmoss]] 
 #### 12.10
 - Added new #news and tagged it with the relevant session it appeared in.
 - Added page for [[Night City/Characters/2021/corpos/Elizabeth Kress\|Elizabeth Kress]]
 - Wrote up the premise of 13.10 session, [[Night City/Gigs/2021/Seven Nation Army\|Seven Nation Army]];
 #### 09.10
-- Updated [map](https://gman-cyberpunk.vercel.app/img/map-viewer/) to match events in [[Night City/Gigs/2021/Deep Six\|Deep Six]]
+- Updated [map](/img/map-viewer/) to match events in [[Night City/Gigs/2021/Deep Six\|Deep Six]]
 
 ### September 2026
 #### 28.09
@@ -74,7 +74,7 @@
 #### 05.09
 - Updated #ideology, changed up fashion association
 - Did initial write-up for the fashions: [[Night City/!society/Beliefs/Fashion/Neomilitarism\|Neomilitarism]], [[Night City/!society/Beliefs/Fashion/Neokitsch\|Neokitsch]], [[Night City/!society/Beliefs/Fashion/Kitsch\|Kitsch]], [[Night City/!society/Beliefs/Fashion/Entropism\|Entropism]]
-- Update [NCOverdrive Character Sheet](https://gman-cyberpunk.vercel.app/img/NCO-sheet.html) to 1.2.0.0 ([see GitHub repo for more info](https://github.com/aj-gman/cyberpunk-ttrpg/commit/6a83423e0d207666c4d65bcfd2b60a523d0c9ee5))
+- Update [NCOverdrive Character Sheet](/img/NCO-sheet.html) to 1.2.0.0 ([see GitHub repo for more info](https://github.com/aj-gman/cyberpunk-ttrpg/commit/6a83423e0d207666c4d65bcfd2b60a523d0c9ee5))
 - Introduced the rules for [[Rules/NCOverdrive/Cyberware\|Rules/NCOverdrive/Cyberware]], as well as sheet implementation
 #### 04.09
 - Added #ideology : full write-up for [[Night City/!society/Beliefs/Idealism\|Idealism]], half-write-up for [[Night City/!society/Beliefs/Insurrectionism\|Insurrectionism]], [[Night City/!society/Beliefs/Parallelism\|Parallelism]], [[Night City/!society/Beliefs/Realism\|Realism]]
@@ -84,7 +84,7 @@
 - Added permanent Header & Footer on webpages (shouldn't break on Digital Garden template update)
 - Reorganized folders & webpages for clearer navigation
 #### 02.09
-- Updated [The Map](https://gman-cyberpunk.vercel.app/img/map-viewer/) with full label-on-hover functionality for the Socioeconomic and Influence panels. These display the social strata of [[Night City/Locations/Night City\|Night City]]'s inhabitants and the [[Night City/Organizations/Gangs/Boostergangs of Night City\|gang]] or [[Night City/Fourth Corporate War\|corporation]] that is most influent in the region.
+- Updated [The Map](/img/map-viewer/) with full label-on-hover functionality for the Socioeconomic and Influence panels. These display the social strata of [[Night City/Locations/Night City\|Night City]]'s inhabitants and the [[Night City/Organizations/Gangs/Boostergangs of Night City\|gang]] or [[Night City/Fourth Corporate War\|corporation]] that is most influent in the region.
 	- The map should correctly identify all gangs by color upon hovering and should be generally bug-free.
 - Fixed Cyberpsychosis not scaling past 10.
 ### August 2026
@@ -106,7 +106,7 @@
 	- Removed export-to-pdf functionality
 
 #### 26.08
-- Updated [[Night City/Locations/Night City\|Night City]] map (check [here](https://gman-cyberpunk.vercel.app/img/map-viewer/)) with a more accurate rendition of the districts provided by [Night City 2045](https://rtalsoriangames.com/night-city-2045/)'s redrawing of 2020's city
+- Updated [[Night City/Locations/Night City\|Night City]] map (check [here](/img/map-viewer/)) with a more accurate rendition of the districts provided by [Night City 2045](https://rtalsoriangames.com/night-city-2045/)'s redrawing of 2020's city
 	- Socioeconomic Class view updated to match.
 	- [ ] **Political Map** will also include Threat Levels (or coloring in that direction)
 		- [ ] +++ sway/control of [[Night City/Organizations/Corporations/Militech\|Militech]] and [[Night City/Organizations/Corporations/Arasaka\|Arasaka]] using anything from subsidiaries to gangs to minds;

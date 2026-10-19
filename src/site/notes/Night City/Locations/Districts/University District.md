@@ -2,7 +2,7 @@
 {"dg-publish":true,"permalink":"/night-city/locations/districts/university-district/","tags":["district","location"],"dg-note-properties":{"tags":["district","location"]}}
 ---
 
->[!info]- [Map of Night City](https://gman-cyberpunk.vercel.app/img/map-viewer/)
+>[!info]- [Map of Night City](/img/map-viewer/)
 
 >[!danger]- Gang Activity
 >- [[Night City/Organizations/Gangs/The Pack\|The Pack]] in Lake Park
@@ -33,5 +33,4 @@ layout: masonry-2
 ![[LOC-LAKEPARK5.png]]
 ![[loc-lakepark6.png]]
 ```
-
 

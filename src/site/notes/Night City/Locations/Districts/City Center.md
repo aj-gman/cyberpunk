@@ -2,7 +2,7 @@
 {"dg-publish":true,"permalink":"/night-city/locations/districts/city-center/","tags":["district","location"],"dg-note-properties":{"tags":["district","location"]}}
 ---
 
->[!info]- [Map of Night City](https://gman-cyberpunk.vercel.app/img/map-viewer/)
+>[!info]- [Map of Night City](/img/map-viewer/)
 
 >[!danger]- Gang Activity
 >- [[Night City/Organizations/Gangs/Street Queens\|Street Queens]] in Civic Center
@@ -52,6 +52,5 @@ layout: d
 ![[loc-medcenter3.png]]
 ![[loc-medcenter2.png]]
 ```
-
 
 

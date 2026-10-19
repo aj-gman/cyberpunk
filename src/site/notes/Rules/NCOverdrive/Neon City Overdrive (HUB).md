@@ -7,7 +7,7 @@
 > I first looked at [CBR+PNK](https://emanoelmelo.itch.io/cbrpnk-core), which I was already familiar with, but it was too simple (with no way to go up). Then, [The Sprawl](https://www.drivethrurpg.com/en/product/171286/the-sprawl-midnight) & [The Veil](https://composedreamgames.co.uk/the-veil-pdf) were interesting, but neither was hitting the mark.
 > Eventually, I found [Neon City Overdrive](https://www.perilplanet.com/neon-city-overdrive/), which had both [[Rules/NCOverdrive/Trademarks/Trademarks\|an interesting core mechanic]] and was very much player-facing.
 
->[!note]- [NCOverdrive Character Sheet](https://gman-cyberpunk.vercel.app/img/NCO-sheet.html)
+>[!note]- [NCOverdrive Character Sheet](/img/NCO-sheet.html)
 ### For more about the mechanics, see here:
 
 > [!todo] [[Rules/NCOverdrive/Basebuilding\|Basebuilding]] (Homebrew)

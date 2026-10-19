@@ -9,33 +9,82 @@ const {
 const prefix = normalizeSitePathPrefix(process.env.SITE_PATH_PREFIX || "/");
 const outputDir = path.resolve("dist");
 const indexPath = path.join(outputDir, "index.html");
+const legacyHost = "gman-cyberpunk.vercel.app";
+const characterApiUrl = `https://${legacyHost}/api/character`;
 
 if (!fs.existsSync(indexPath)) {
   throw new Error("The Pages build did not produce dist/index.html");
 }
 
 const html = fs.readFileSync(indexPath, "utf8");
-if (!html.includes("cm-s-obsidian")) {
-  throw new Error("dist/index.html is not a generated Digital Garden page");
+if (!html.includes('class="hero"')) {
+  throw new Error("dist/index.html is not the configured glitch-header front page");
+}
+if (html.includes(legacyHost)) {
+  throw new Error("The glitch-header homepage still links to the old Vercel site");
+}
+for (const href of [
+  `${prefix}img/map-viewer/`,
+  `${prefix}img/NCO-sheet.html`,
+  `${prefix}ai-policy/`,
+]) {
+  if (!html.includes(`href="${href}"`)) {
+    throw new Error(`The glitch-header homepage is missing its local link to ${href}`);
+  }
 }
 if (html.includes("Jekyll v")) {
   throw new Error("dist/index.html contains Jekyll output instead of the garden");
 }
 
+function findHtmlFiles(directory) {
+  return fs.readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
+    const entryPath = path.join(directory, entry.name);
+    if (entry.isDirectory()) return findHtmlFiles(entryPath);
+    return entry.isFile() && entry.name.endsWith(".html") ? [entryPath] : [];
+  });
+}
+
+const gardenPages = findHtmlFiles(outputDir)
+  .filter((file) => file !== indexPath)
+  .map((file) => ({
+    file,
+    html: fs.readFileSync(file, "utf8"),
+  }))
+  .filter(({ html }) => html.includes("cm-s-obsidian"));
+if (gardenPages.length === 0) {
+  throw new Error("The Pages build did not produce any Digital Garden note pages");
+}
+
+for (const { file, html: pageHtml } of gardenPages) {
+  if (!pageHtml.includes(`href="${prefix}ai-policy/"`)) {
+    throw new Error(
+      `AI policy footer link is not local in ${path.relative(outputDir, file)}`
+    );
+  }
+}
+
 const themeStylesheets = Array.from(
-  html.matchAll(/href=["']([^"']*\/styles\/(?:style|_theme[^/]*|obsidian-base)\.css[^"']*)["']/g),
-  (match) => match[1]
+  gardenPages.flatMap(({ html }) =>
+    Array.from(
+      html.matchAll(
+        /href=["']([^"']*\/styles\/(?:style|_theme[^/]*|obsidian-base)\.css[^"']*)["']/g
+      ),
+      (match) => match[1]
+    )
+  )
 );
 if (themeStylesheets.length === 0) {
-  throw new Error("The home page does not link a theme stylesheet");
+  throw new Error("Digital Garden note pages do not link a theme stylesheet");
 }
 
 if (
   process.env.THEME &&
-  !themeStylesheets.some((stylesheet) => /\/_theme\.[^/]+\.css(?:[?#]|$)/.test(stylesheet))
+  !themeStylesheets.some((stylesheet) =>
+    /\/_theme\.[^/]+\.css(?:[?#]|$)/.test(stylesheet)
+  )
 ) {
   throw new Error(
-    "THEME is configured, but the generated page does not link its downloaded theme stylesheet"
+    "THEME is configured, but no Digital Garden note page links its downloaded theme stylesheet"
   );
 }
 
@@ -57,24 +106,13 @@ for (const stylesheet of themeStylesheets) {
   }
 }
 
-for (const asset of [
-  "styles/digital-garden-base.css",
-  "styles/custom-style.css",
-]) {
+for (const asset of ["styles/digital-garden-base.css", "styles/custom-style.css"]) {
   if (!fs.existsSync(path.join(outputDir, asset))) {
     throw new Error(`Required site stylesheet is missing from dist: ${asset}`);
   }
-  if (!html.includes(`${prefix}${asset}`)) {
-    throw new Error(`Home page does not reference ${prefix}${asset}`);
+  if (!gardenPages.some(({ html }) => html.includes(`${prefix}${asset}`))) {
+    throw new Error(`Digital Garden note pages do not reference ${prefix}${asset}`);
   }
-}
-
-function findHtmlFiles(directory) {
-  return fs.readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
-    const entryPath = path.join(directory, entry.name);
-    if (entry.isDirectory()) return findHtmlFiles(entryPath);
-    return entry.isFile() && entry.name.endsWith(".html") ? [entryPath] : [];
-  });
 }
 
 const urlAttributePattern =
@@ -82,6 +120,12 @@ const urlAttributePattern =
 
 for (const htmlFile of findHtmlFiles(outputDir)) {
   const pageHtml = fs.readFileSync(htmlFile, "utf8");
+  const htmlWithoutCharacterApi = pageHtml.replaceAll(characterApiUrl, "");
+  if (htmlWithoutCharacterApi.includes(legacyHost)) {
+    throw new Error(
+      `A generated page still references the old site: ${path.relative(outputDir, htmlFile)}`
+    );
+  }
   for (const match of pageHtml.matchAll(urlAttributePattern)) {
     const attribute = match[1].toLowerCase();
     const urls =
@@ -99,6 +143,14 @@ for (const htmlFile of findHtmlFiles(outputDir)) {
       }
     }
   }
+}
+
+const overdriveSheetPath = path.join(outputDir, "img/NCO-sheet.html");
+if (
+  !fs.existsSync(overdriveSheetPath) ||
+  !fs.readFileSync(overdriveSheetPath, "utf8").includes(characterApiUrl)
+) {
+  throw new Error("The NCO sheet is missing its Vercel cloud-save API endpoint");
 }
 
 const digitalGardenStylesheet = fs.readFileSync(
@@ -127,4 +179,6 @@ if (fs.existsSync(manifestPath)) {
   }
 }
 
-console.log(`Verified Digital Garden output and theme assets at ${prefix}`);
+console.log(
+  `Verified glitch-header homepage, Digital Garden theme assets, and path prefix ${prefix}`
+);

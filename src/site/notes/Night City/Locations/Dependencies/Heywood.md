@@ -2,7 +2,7 @@
 {"dg-publish":true,"permalink":"/night-city/locations/dependencies/heywood/","tags":["dependency","location"],"dg-note-properties":{"tags":["dependency","location"]}}
 ---
 
->[!info]- [Map of Night City](https://gman-cyberpunk.vercel.app/img/map-viewer/)
+>[!info]- [Map of Night City](/img/map-viewer/)
 
 >[!danger]- Gang Activity
 >[[Night City/Organizations/Gangs/El Norte Cartel\|El Norte Cartel]], especially in the numerous warehouses that ship locally;

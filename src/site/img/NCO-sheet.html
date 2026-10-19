@@ -941,7 +941,7 @@
 
   <!-- CYBERPSYCHOSIS TRACKERS -->
   <div class="panel" style="border-color:var(--purple);">
-    <h2 class="cyberpsy-title" style="color:var(--purple);border-color:var(--purple);"><a href="https://gman-cyberpunk.vercel.app/rules/nc-overdrive/cyberware-nc-overdrive/" target="_blank" rel="noopener">Cyberpsychosis Trackers</a></h2>
+    <h2 class="cyberpsy-title" style="color:var(--purple);border-color:var(--purple);"><a href="/rules/nc-overdrive/cyberware-nc-overdrive/" target="_blank" rel="noopener">Cyberpsychosis Trackers</a></h2>
     <div class="tracker-row">
       <span class="tracker-label" style="color:var(--danger-red);">Cyberpsychosis</span>
       <div class="tracker-controls">
@@ -984,7 +984,7 @@
 <div id="sheet-page5" style="max-width:1200px;margin:0 auto;">
   <div class="page-break"></div>
   <div style="padding:0;margin:0;height:calc(100vh - 120px);min-height:500px;">
-    <iframe src="https://gman-cyberpunk.vercel.app/" style="width:100%;height:100%;border:none;border-radius:2px;background:#1a1c2e;" allowfullscreen></iframe>
+    <iframe src="/" style="width:100%;height:100%;border:none;border-radius:2px;background:#1a1c2e;" allowfullscreen></iframe>
   </div>
 </div><!-- end sheet-page5 -->
 
@@ -1019,11 +1019,11 @@
     body.innerHTML =
       '<div class="trademark-body-grid">' +
         '<div class="triggers-section">' +
-          '<label><a href="https://gman-cyberpunk.vercel.app/rules/nc-overdrive/trademarks/triggers/" target="_blank" rel="noopener">&#9656; Triggers</a></label>' +
+          '<label><a href="/rules/nc-overdrive/trademarks/triggers/" target="_blank" rel="noopener">&#9656; Triggers</a></label>' +
           '<textarea class="tm-triggers" rows="5" placeholder="Enter triggers, one per line&#8230;">' + escHtml((data.triggers || []).join('\n')) + '</textarea>' +
         '</div>' +
         '<div class="edges-section">' +
-          '<label><a href="https://gman-cyberpunk.vercel.app/rules/nc-overdrive/trademarks/edges/" target="_blank" rel="noopener">&#9672; Edges</a></label>' +
+          '<label><a href="/rules/nc-overdrive/trademarks/edges/" target="_blank" rel="noopener">&#9672; Edges</a></label>' +
           '<textarea class="tm-edges" rows="5" placeholder="Enter edges, one per line&#8230;">' + escHtml((data.edges || []).join('\n')) + '</textarea>' +
         '</div>' +
       '</div>';
@@ -2272,12 +2272,15 @@
   setupSplitDivider('.desc-grid', 'desc-grid-divider', 240, 240);
 </script>
 <script>
-  const domain = "https://gman-cyberpunk.vercel.app/";
+  const siteRoot = new URL('../', window.location.href);
   
   document.querySelectorAll('.dynamic-header').forEach(element => {
     const title = (element.getAttribute('data-url-text') || element.textContent).trim().toLowerCase();
     const folderPath = element.getAttribute('data-path');
-    const fullUrl = `${domain}${folderPath}/${encodeURIComponent(title)}/`;
+    const fullUrl = new URL(
+      `${folderPath.replace(/^\/+/, '').replace(/\/+$/, '')}/${encodeURIComponent(title)}/`,
+      siteRoot
+    ).href;
     
     element.innerHTML = `<a href="${fullUrl}" style="color: inherit; text-decoration: none; display: inline-block;">${element.textContent}</a>`;
   });

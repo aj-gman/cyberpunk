@@ -2,7 +2,7 @@
 {"dg-publish":true,"permalink":"/night-city/locations/districts/westside/","tags":["district","location"],"dg-note-properties":{"tags":["district","location"]}}
 ---
 
->[!info]- [Map of Night City](https://gman-cyberpunk.vercel.app/img/map-viewer/)
+>[!info]- [Map of Night City](/img/map-viewer/)
 
 >[!danger]- Gang Activity
 >- [[Night City/Organizations/Gangs/Voodoo Boys\|Voodoo Boys]] in West Hill Gardens
@@ -30,6 +30,5 @@ layout: a
 ![[LOC-OLDDOWNTOWN2.png|417]]
 ![[LOC-OLDDOWNTOWN.png|414]]
 ```
-
 
 

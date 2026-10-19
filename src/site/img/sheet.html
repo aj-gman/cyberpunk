@@ -916,7 +916,8 @@ function previewWikiSearch() {
   if (!query) return;
   const portal = document.getElementById('wiki-hover-portal');
   const frame  = document.getElementById('wiki-frame');
-  frame.src = `https://gman-cyberpunk.vercel.app/?search=${encodeURIComponent(query)}`;
+  const siteRoot = new URL('../', window.location.href);
+  frame.src = new URL(`?search=${encodeURIComponent(query)}`, siteRoot).href;
   portal.style.display = 'flex';
   frame.onload = function() {
     try {
@@ -1659,4 +1660,3 @@ ipTotal.addEventListener('change', validateIP);
 </script>
 </body>
 </html>
-

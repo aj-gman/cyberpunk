@@ -20,6 +20,5 @@ All of this has given [[Night City/Organizations/Corporations/Militech\|Militech
 
 Keep in mind [[Night City/Characters/!pc/The Gang\|The Gang]] has been holding on to about 30kg of [[Rules/CPRED/Drugs/Beauties\|Beauties]] from [[Night City/Organizations/Gangs/Piranhas\|Piranhas]]. 
 
-Now that [[Night City/Characters/2021/gangers/Easy\|Easy]]'s dealt with, [[Night City/Organizations/Gangs/Blood Razors\|Blood Razors]] encroach on [[Night City/Organizations/Gangs/Maelstrom\|Maelstrom]] territory as they're fleeing the [[Night City/Organizations/Corporations/Militech\|Militech]] invasion of [[Night City/Locations/Districts/South Night City\|South Night City]]. View [the Map](https://gman-cyberpunk.vercel.app/img/map-viewer/) to see how [[Night City/Locations/Night City\|Night City]] has changed.
-
+Now that [[Night City/Characters/2021/gangers/Easy\|Easy]]'s dealt with, [[Night City/Organizations/Gangs/Blood Razors\|Blood Razors]] encroach on [[Night City/Organizations/Gangs/Maelstrom\|Maelstrom]] territory as they're fleeing the [[Night City/Organizations/Corporations/Militech\|Militech]] invasion of [[Night City/Locations/Districts/South Night City\|South Night City]]. View [the Map](/img/map-viewer/) to see how [[Night City/Locations/Night City\|Night City]] has changed.
 

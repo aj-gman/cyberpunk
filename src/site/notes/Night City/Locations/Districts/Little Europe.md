@@ -2,7 +2,7 @@
 {"dg-publish":true,"permalink":"/night-city/locations/districts/little-europe/","tags":["district","location"],"dg-note-properties":{"tags":["district","location"]}}
 ---
 
->[!info]- [Map of Night City](https://gman-cyberpunk.vercel.app/img/map-viewer/)
+>[!info]- [Map of Night City](/img/map-viewer/)
 
 >[!danger]- Gang Activity
 >- [[Night City/Organizations/Gangs/The Mob\|The Mob]] in Little Italy, Upper Marina
@@ -56,6 +56,5 @@ layout: e
 ![[LOC-EASTMARINA1.png|434]]
 ![[LOC-MARINA.png|435]]
 ```
-
 
 

@@ -2,7 +2,7 @@
 {"dg-publish":true,"permalink":"/night-city/locations/districts/nightlife-district/","tags":["district","location"],"dg-note-properties":{"tags":["district","location"]}}
 ---
 
->[!info]- [Map of Night City](https://gman-cyberpunk.vercel.app/img/map-viewer/)
+>[!info]- [Map of Night City](/img/map-viewer/)
 
 >[!danger]- Gang Activity
 >- [[Night City/Organizations/Gangs/Piranhas\|Piranhas]] in Upper Eastside
@@ -55,6 +55,5 @@ layout: c
 ![[LOC-CHARTERHILL1.png|416]]
 ![[LOC-CHARTERHILL.png|408]]
 ```
-
 
 
