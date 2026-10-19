@@ -2,13 +2,34 @@
   "/": [
     "NCOverdrive (HUB)",
     "CPRED (HUB)",
+    "Player Characters",
     "Rules",
     "Night City",
     "Eurotour",
     "AI Policy",
     "G-man",
     "Site Chronicle",
-    "Gallery Assets"
+    "Gallery Assets",
+    "Corporate News",
+    "Independent News"
+  ],
+  "/Player Characters": [
+    "OTHER",
+    "Relevant NPCs",
+    "Hex",
+    "Ray Null",
+    "The Gang",
+    "Ze"
+  ],
+  "/Player Characters/OTHER": [
+    "Laz (GM)"
+  ],
+  "/Player Characters/Relevant NPCs": [
+    "Nolasco Family",
+    "Nat"
+  ],
+  "/Player Characters/Relevant NPCs/Nolasco Family": [
+    "Nolasco Family"
   ],
   "/Rules": [
     "NCOverdrive",
@@ -126,68 +147,20 @@
     "Techie"
   ],
   "/Night City": [
-    "!society",
     "Characters",
     "Organizations",
     "Others",
     "Locations",
     "Gigs",
-    "Fourth Corporate War"
-  ],
-  "/Night City/!society": [
-    "Beliefs",
-    "Strata"
-  ],
-  "/Night City/!society/Beliefs": [
-    "Fashion",
-    "Idealism",
-    "Insurrectionism",
-    "Parallelism",
-    "Realism"
-  ],
-  "/Night City/!society/Beliefs/Fashion": [
-    "Entropism",
-    "Kitsch",
-    "Neokitsch",
-    "Neomilitarism"
-  ],
-  "/Night City/!society/Strata": [
-    "Beavers",
-    "Corpzoners",
-    "Edgerunners",
-    "Mallplexers",
-    "Movers",
-    "Powerdealers",
-    "Streetscum"
+    "Fourth Corporate War",
+    "Society"
   ],
   "/Night City/Characters": [
-    "!pc",
-    "2021"
-  ],
-  "/Night City/Characters/!pc": [
-    "OTHER",
-    "Relevant NPCs",
-    "Hex",
-    "Ray Null",
-    "The Gang",
-    "Ze"
-  ],
-  "/Night City/Characters/!pc/OTHER": [
-    "Laz (GM)"
-  ],
-  "/Night City/Characters/!pc/Relevant NPCs": [
-    "Nolasco Family",
-    "Nat"
-  ],
-  "/Night City/Characters/!pc/Relevant NPCs/Nolasco Family": [
-    "Nolasco Family"
-  ],
-  "/Night City/Characters/2021": [
     "corpos",
     "edgerunners",
     "gangers"
   ],
-  "/Night City/Characters/2021/corpos": [
+  "/Night City/Characters/corpos": [
     "Bruce Skiv",
     "Dt. Spinner",
     "Elizabeth Kress",
@@ -200,7 +173,7 @@
     "Rory Steiger",
     "Victor Campbell"
   ],
-  "/Night City/Characters/2021/edgerunners": [
+  "/Night City/Characters/edgerunners": [
     "Big Wu",
     "Johnny Silverhand",
     "Morgan Blackhand",
@@ -209,7 +182,7 @@
     "Savvy",
     "Theresa Valentino"
   ],
-  "/Night City/Characters/2021/gangers": [
+  "/Night City/Characters/gangers": [
     "Bearbull",
     "Corpse Reviver",
     "Easy",
@@ -273,8 +246,6 @@
     "Zetatech"
   ],
   "/Night City/Others": [
-    "Corporate News",
-    "Independent News",
     "News",
     "About Cyberpsychosis",
     "Combat Zone",
@@ -317,10 +288,7 @@
     "Westside"
   ],
   "/Night City/Gigs": [
-    "2021",
-    "2077"
-  ],
-  "/Night City/Gigs/2021": [
+    "2077",
     "Deep Six",
     "Free Reign",
     "Into the Lion's Den",
@@ -329,6 +297,32 @@
   ],
   "/Night City/Gigs/2077": [
     "Electric Tornado"
+  ],
+  "/Night City/Society": [
+    "Beliefs",
+    "Strata"
+  ],
+  "/Night City/Society/Beliefs": [
+    "Fashion",
+    "Idealism",
+    "Insurrectionism",
+    "Parallelism",
+    "Realism"
+  ],
+  "/Night City/Society/Beliefs/Fashion": [
+    "Entropism",
+    "Kitsch",
+    "Neokitsch",
+    "Neomilitarism"
+  ],
+  "/Night City/Society/Strata": [
+    "Beavers",
+    "Corpzoners",
+    "Edgerunners",
+    "Mallplexers",
+    "Movers",
+    "Powerdealers",
+    "Streetscum"
   ],
   "/Eurotour": [
     "Characters",
