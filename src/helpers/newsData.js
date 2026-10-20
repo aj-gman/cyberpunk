@@ -19,6 +19,8 @@ const MONTHS = [
 ];
 const MONTH_DATE = new RegExp(`\\b(${MONTHS.join("|")})\\s+(\\d{4})\\b`, "i");
 const INLINE_TAG = /(?:^|\s)#([\p{L}\d][\p{L}\d_/-]*)/gu;
+const CORPORATE_NEWS_ORGANIZATIONS = new Set(["n54", "network news 54"]);
+const WIKILINK = /\[\[([^\]|]+)(?:\\?\|([^\]]+))?\]\]/g;
 
 function normalizeTag(tag) {
 	return String(tag).trim().replace(/^#/, "").toLowerCase();
@@ -46,6 +48,24 @@ function collectTags(note, frontmatter, body) {
 	}
 
 	return tags;
+}
+
+function isCorporateNewsMetadata(metadata) {
+	const firstLine = String(metadata).split(/\r?\n/).find((line) => line.trim()) || "";
+	if (!/(?:^|\s)#news(?=$|[\s,;])/i.test(firstLine)) return false;
+
+	for (const match of firstLine.matchAll(WIKILINK)) {
+		const linkedName = match[1].split("/").pop().replace(/\\/g, "").trim();
+		const alias = match[2]?.replace(/\\/g, "").trim();
+		if (
+			CORPORATE_NEWS_ORGANIZATIONS.has(linkedName.toLowerCase()) ||
+			(alias && CORPORATE_NEWS_ORGANIZATIONS.has(alias.toLowerCase()))
+		) {
+			return true;
+		}
+	}
+
+	return false;
 }
 
 function formatDate(value) {
@@ -110,13 +130,13 @@ function cleanPreview(raw) {
 	if (closestSentenceEnd >= 0) {
 		return words.slice(0, closestSentenceEnd + 1).join(" ");
 	}
-	return `${words.slice(0, 50).join(" ")}…`;
+	return `${words.slice(0, 50).join(" ")}\u2026`;
 }
 
 function parseNewsNote(note, source, createdAt = null) {
 	const parsed = matter(source, matterOptions);
 	const title = path.basename(note.inputPath || note.fileSlug || "", ".md");
-	if (title === "Site Chronicle") return null;
+	if (["Site Chronicle", "Independent News", "Corporate News"].includes(title)) return null;
 
 	const tags = collectTags(note, parsed.data || {}, parsed.content);
 	if (!tags.has("news")) return null;
@@ -127,6 +147,7 @@ function parseNewsNote(note, source, createdAt = null) {
 		title,
 		url: note.url,
 		tags: [...tags],
+		isCorporateNews: isCorporateNewsMetadata(parsed.content),
 		articleDate: articleDate?.label || null,
 		articleTimestamp: articleDate?.timestamp ?? null,
 		createdAt: formatDate(createdAt),
@@ -140,14 +161,8 @@ function buildNewsItems(notes, { readFile = fs.readFileSync, statFile = fs.statS
 		.map((note) => {
 			if (!note.inputPath) return null;
 			const sourcePath = path.resolve(note.inputPath);
-			let source;
-			let stat;
-			try {
-				source = readFile(sourcePath, "utf8");
-				stat = statFile(sourcePath);
-			} catch {
-				return null;
-			}
+			const source = readFile(sourcePath, "utf8");
+			const stat = statFile(sourcePath);
 			return parseNewsNote(note, source, stat.birthtime || stat.mtime);
 		})
 		.filter(Boolean)
@@ -161,4 +176,10 @@ function buildNewsItems(notes, { readFile = fs.readFileSync, statFile = fs.statS
 		});
 }
 
-module.exports = { buildNewsItems, cleanPreview, getPreviewParagraph, parseNewsNote };
+module.exports = {
+	buildNewsItems,
+	cleanPreview,
+	getPreviewParagraph,
+	isCorporateNewsMetadata,
+	parseNewsNote,
+};

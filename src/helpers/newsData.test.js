@@ -1,7 +1,13 @@
 import { describe, expect, it } from "vitest";
 import newsData from "./newsData.js";
 
-const { buildNewsItems, cleanPreview, getPreviewParagraph, parseNewsNote } = newsData;
+const {
+	buildNewsItems,
+	cleanPreview,
+	getPreviewParagraph,
+	isCorporateNewsMetadata,
+	parseNewsNote,
+} = newsData;
 
 function note(inputPath, tags = []) {
 	return {
@@ -31,6 +37,18 @@ describe("newsData", () => {
 		expect(items[0].tags).toEqual(expect.arrayContaining(["news", "eurotour"]));
 		expect(items[0].articleDate).toBe("April 2021");
 		expect(items[0].createdAt).toBe("2020-01-02");
+	});
+
+	it("classifies corporate news from organization links in first-line metadata", () => {
+		expect(isCorporateNewsMetadata("#news [[N54]] **July 2021**")).toBe(true);
+		expect(isCorporateNewsMetadata("\n#news [[N54]] **July 2021**")).toBe(true);
+		expect(
+			isCorporateNewsMetadata(
+				"#news [[Night City/Organizations/Corporations/Network News 54\\|Network News 54]]",
+			),
+		).toBe(true);
+		expect(isCorporateNewsMetadata("#news [[Arasaka]]")).toBe(false);
+		expect(isCorporateNewsMetadata("#eurotour\n#news [[N54]]")).toBe(false);
 	});
 
 	it("uses the paragraph after metadata and detects a paragraph that is an image", () => {
@@ -65,6 +83,14 @@ describe("newsData", () => {
 		);
 
 		expect(items.map((item) => item.title)).toEqual(["Newer", "Older", "Undated"]);
+	});
+
+	it("excludes index notes even when they contain news metadata", () => {
+		for (const title of ["Site Chronicle", "Independent News", "Corporate News"]) {
+			expect(
+				parseNewsNote(note(title), "#news [[N54]]\n\nIndex page.", new Date()),
+			).toBeNull();
+		}
 	});
 
 	it("ignores a note that has no news tag", () => {

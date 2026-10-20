@@ -290,8 +290,28 @@ main {
     color: var(--links) !important;
 }
 
-.site-resource-nav a:hover {
-    color: var(--links-hover) !important;
+.site-resource-nav a.site-resource-button {
+    display: inline-flex;
+    align-items: center;
+    min-height: 32px;
+    padding: 5px 10px;
+    border: 1px solid var(--resource-accent);
+    border-left-width: 3px;
+    background: var(--resource-bg);
+    color: var(--resource-accent) !important;
+    font-size: 0.8rem;
+    font-weight: 600;
+    line-height: 1.2;
+    text-decoration: none;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.site-resource-nav a.site-resource-button:hover,
+.site-resource-nav a.site-resource-button:focus-visible {
+    background: var(--resource-bg);
+    box-shadow: 0 0 10px var(--resource-accent);
+    color: var(--resource-accent) !important;
+    outline-color: var(--resource-accent);
 }
 
 .news-view-controls {
@@ -335,7 +355,7 @@ main {
         margin: 12px 0 20px;
         padding-bottom: 12px;
         border-bottom: 1px solid #39C4B6;
-        gap: 8px 16px;
+        gap: 8px;
     }
 
     .site-footer {
