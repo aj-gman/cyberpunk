@@ -9,7 +9,9 @@
   "trademarks": [
     {
       "name": "Mob Daughter",
-      "triggers": [],
+      "triggers": [
+        "Made, Mob Ties, Notable Standing"
+      ],
       "edges": [
         "Omerta",
         "Family Name"
@@ -17,7 +19,9 @@
     },
     {
       "name": "Street Reporter",
-      "triggers": [],
+      "triggers": [
+        "Video Editing, Candid Filming, Independent"
+      ],
       "edges": [
         "Worth a Thousand Words",
         "Nightcrawler"
@@ -33,7 +37,9 @@
     },
     {
       "name": "Not Like Capone",
-      "triggers": [],
+      "triggers": [
+        "Finance Degree, Business Loopholes, Paying Taxes"
+      ],
       "edges": [
         "Legitimate Business",
         "Cooking the Books"
@@ -53,6 +59,13 @@
       "title": "$1 million",
       "tags": "",
       "notes": "Basically Fuck You money",
+      "size": 1
+    },
+    {
+      "type": "special",
+      "title": "Max Interceptor",
+      "tags": "Police Scanner, Sat. Comp., Fire Supression, Crash Web",
+      "notes": "Front and back seats are separated by ArmoPlas, Spotlight, Loudspeaker",
       "size": 1
     }
   ],
@@ -112,37 +125,25 @@
     false
   ],
   "trackers": {
-    "cyberpsy": 0,
-    "humanity": 10
+    "cyberpsy": 1,
+    "humanity": 9
   },
   "conditions": {
     "custom": [
       {
-        "text": "Glitching Cybereye",
-        "state": "off"
+        "text": "Stressed (3)",
+        "state": "red"
       },
       {
-        "text": "Healing",
-        "state": "off"
+        "text": "Need to Publish (1)",
+        "state": "red"
       }
     ]
   },
   "traumas": [
     {
-      "marked": false,
-      "text": ""
-    },
-    {
-      "marked": false,
-      "text": ""
-    },
-    {
-      "marked": false,
-      "text": ""
-    },
-    {
-      "marked": false,
-      "text": ""
+      "marked": true,
+      "text": "Pile of Bodies (3)"
     }
   ],
   "flaws": [
@@ -155,7 +156,7 @@
   ],
   "flaw1": "Obvious Mark",
   "flaw2": "Enemies in low places",
-  "stuntPoints": 3,
+  "stuntPoints": 2,
   "drive": {
     "text": "",
     "pips": [
@@ -171,5 +172,5 @@
       false
     ]
   },
-  "experiencePoints": 12
+  "experiencePoints": 15
 }
