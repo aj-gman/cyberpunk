@@ -35,7 +35,9 @@
       "edges": [
         "Gun Fu",
         "Headshot ",
-        "Grapple"
+        "Grapple",
+        "hand to hand",
+        "melee weapons"
       ]
     },
     {
@@ -69,13 +71,6 @@
       "title": "Anti Smog mask",
       "tags": "",
       "notes": "",
-      "size": 1
-    },
-    {
-      "type": "basic",
-      "title": "Frag",
-      "tags": "",
-      "notes": "1=2",
       "size": 1
     },
     {
@@ -126,6 +121,13 @@
         "title": "Agent",
         "tags": "",
         "notes": "",
+        "size": 1
+      },
+      {
+        "type": "basic",
+        "title": "Frag",
+        "tags": "",
+        "notes": "1=2",
         "size": 1
       }
     ]
@@ -194,15 +196,11 @@
     false
   ],
   "trackers": {
-    "cyberpsy": 0,
+    "cyberpsy": 1,
     "humanity": 4
   },
   "conditions": {
     "custom": [
-      {
-        "text": "stressed x1",
-        "state": "blue"
-      },
       {
         "text": "grieving x3",
         "state": "blue"
@@ -212,7 +210,7 @@
   "traumas": [
     {
       "marked": false,
-      "text": ""
+      "text": "Pile of bodies x3"
     }
   ],
   "flaws": [
@@ -241,5 +239,5 @@
       false
     ]
   },
-  "experiencePoints": 7
+  "experiencePoints": 0
 }
