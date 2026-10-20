@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/locations/districts/little-asia/","tags":["#district","#location"],"dg-note-properties":{"permalink":"/night-city/locations/districts/little-asia/","tags":["#district","#location"]}}
+{"dg-publish":true,"permalink":"/night-city/locations/districts/little-asia/","tags":["district","location"],"dg-note-properties":{"permalink":"/night-city/locations/districts/little-asia/","tags":["district","location"]}}
 ---
 
 

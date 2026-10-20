@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/eurotour/locations/rhine-ruhr-conurb/","tags":["#location","#eurotour"],"dg-note-properties":{"permalink":"/eurotour/locations/rhine-ruhr-conurb/","tags":["#location","#eurotour"]}}
+{"dg-publish":true,"permalink":"/eurotour/locations/rhine-ruhr-conurb/","dg-note-properties":{"permalink":"/eurotour/locations/rhine-ruhr-conurb/"}}
 ---
 
 

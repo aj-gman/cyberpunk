@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-path":"Night City/Gigs/Deep Six.md","permalink":"/night-city/gigs/deep-six/","tags":["#gig","#4cw"],"dg-note-properties":{"permalink":"/night-city/gigs/2021/deep-six/","tags":["#gig","#4cw"]}}
+{"dg-publish":true,"dg-path":"Night City/Gigs/Deep Six.md","permalink":"/night-city/gigs/deep-six/","dg-note-properties":{"permalink":"/night-city/gigs/2021/deep-six/"}}
 ---
 
 

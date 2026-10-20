@@ -1,8 +1,8 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/others/events/militech-executives-die-in-poison-attack/","dg-note-properties":{}}
+{"dg-publish":true,"permalink":"/night-city/others/events/militech-executives-die-in-poison-attack/","tags":["#news","#4cw"],"dg-note-properties":{"tags":["#news","#4cw"]}}
 ---
 
-#news #4cw [[Night City/Organizations/Corporations/Network News 54\|Network News 54]], **July 2021**, [[Night City/Gigs/2021/Into the Lion's Den\|Into the Lion's Den]]
+#news #4cw [[Night City/Organizations/Corporations/N54\|N54]], **July 2021**, [[Night City/Gigs/2021/Into the Lion's Den\|Into the Lion's Den]]
 
 This morning, seventeen [[Night City/Organizations/Corporations/Militech\|Militech]] [[Night City/!society/Strata/Powerdealers\|Executives]] were found killed in their homes or personal vehicles. Correlating these 17 is the common method of *suspected* assassination: highly lethal poisons with a large delay in their activation, allowing them to be ingested without triggering standard poison detection alarms.
 

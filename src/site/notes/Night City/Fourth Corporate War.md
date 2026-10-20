@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/fourth-corporate-war/","dg-note-properties":{}}
+{"dg-publish":true,"permalink":"/night-city/fourth-corporate-war/","tags":["#campaign","#4cw","#ideology"],"dg-note-properties":{"tags":["#campaign","#4cw","#ideology"]}}
 ---
 
 #campaign #4cw
@@ -12,7 +12,7 @@ Settle into the Free State of [[Night City/Locations/Night City\|Night City]], h
 
 [[Rules/NCOverdrive/Basebuilding\|Build your own base]] and grow your ideas into reality, doing more than just Edgerunner gigs. Learn to really *live* in this world. 
 
-Survive the [[Night City/Fourth Corporate War\|Fourth Corporate War]] from its beginning to its precipice. Experience everything from the dirty espionage and planned paratrooper attacks of the Shadow War to full-scale invasions and carpet bombings of the Hot War. Interact with such icons as [[Night City/Characters/2021/edgerunners/Johnny Silverhand\|Johnny Silverhand]], [[Rogue\|Rogue]], [[Night City/Characters/2021/edgerunners/Santiago Aldecado\|Santiago]], [[Adam Smasher\|Adam Smasher]] and even...[[Night City/Characters/2021/edgerunners/Morgan Blackhand\|Morgan Blackhand]]. 
+Survive the [[Night City/Fourth Corporate War\|Fourth Corporate War]] from its beginning to its precipice. Experience everything from the dirty espionage and planned paratrooper attacks of the Shadow War to full-scale invasions and carpet bombings of the Hot War. Interact with such icons as [[Night City/Characters/2021/edgerunners/Johnny Silverhand\|Johnny Silverhand]], [[Rogue\|Rogue]], [[Night City/Characters/2021/edgerunners/Santiago Aldecado\|Santiago]], [[Night City/Characters/2021/edgerunners/Adam Smasher\|Adam Smasher]] and even...[[Night City/Characters/2021/edgerunners/Morgan Blackhand\|Morgan Blackhand]]. 
 
 [[Rules/NCOverdrive/Drugs\|Take drugs]], [[Rules/NCOverdrive/Cyberware\|suffer from Cyberpsychosis]] and love. Do whatever it takes to make it 'till the next sunrise.
 

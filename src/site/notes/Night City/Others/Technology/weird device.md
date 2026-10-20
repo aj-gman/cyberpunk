@@ -6,4 +6,4 @@
 
 Has no distinctive features in terms of circuitry or trademarks that would link it to any corporation.
 
-![Pasted image 20261019201520.png\|351](/img/user/Pasted%20image%2020261019201520.png)
+![OBJ-weirddevice.png\|351](/img/user/Pictures/OBJ-weirddevice.png)
