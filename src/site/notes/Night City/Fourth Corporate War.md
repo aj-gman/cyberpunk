@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/fourth-corporate-war/","tags":["#campaign","#4cw","#ideology"],"dg-note-properties":{"tags":["#campaign","#4cw","#ideology"]}}
+{"dg-publish":true,"permalink":"/night-city/fourth-corporate-war/","dg-note-properties":{}}
 ---
 
 #campaign #4cw
@@ -8,7 +8,7 @@
 
 The [[Night City/Fourth Corporate War\|Fourth Corporate War]] is the current campaign ran by [[z-SITE/G-man\|G-man]] following the end of the [[Eurotour/Eurotour\|Eurotour]].
 
-Settle into the Free State of [[Night City/Locations/Night City\|Night City]], home to both the world's first [[Night City/Others/Combat Zone\|Combat Zone]] and [[Night City/Organizations/Corporations/Arasaka\|it's largest Corporate HQ]]. Start your [[Night City/Characters/!pc/The Gang\|own faction]] from the ground up and choose between one of four #ideology. 
+Settle into the Free State of [[Night City/Locations/Night City\|Night City]], home to both the world's first [[Combat Zone\|Combat Zone]] and [[Night City/Organizations/Corporations/Arasaka\|it's largest Corporate HQ]]. Start your [[Night City/Characters/!pc/The Gang\|own faction]] from the ground up and choose between one of four #ideology. 
 
 [[Rules/NCOverdrive/Basebuilding\|Build your own base]] and grow your ideas into reality, doing more than just Edgerunner gigs. Learn to really *live* in this world. 
 

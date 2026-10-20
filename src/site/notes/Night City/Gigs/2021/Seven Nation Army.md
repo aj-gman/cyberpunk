@@ -9,7 +9,7 @@ GM Screen: [[Night City/Gigs/2021/Seven Nation Army.canvas\|Seven Nation Army.ca
 
 [[Night City/Characters/!pc/The Gang\|The Gang]] managed to defend against the onslaught, although many notable [[Night City/!society/Strata/Powerdealers\|Powerdealers]] and [[Night City/!society/Strata/Corpzoners\|Corpzoners]] were killed in the crossfire. [[Night City/Characters/2021/corpos/Bruce Skiv\|Bruce Skiv]] also attended the meeting, stealing [[Night City/Characters/!pc/Ray Null\|Ray Null]]'s gun and shooting into [[Night City/Characters/2021/corpos/Steiger\|Steiger]], putting him dow.
 
-[[Night City/Characters/2021/corpos/Bruce Skiv\|Bruce Skiv]] was arrested by the [[Night City/Organizations/NCPD\|NCPD]], [[Night City/Organizations/Corporations/Trauma Team\|Trauma Team]] arrived on the scene and [[Night City/Characters/2021/edgerunners/Big Wu\|Big Wu]] barely survived. The entire incident did not appear on [[Night City/Others/Corporate News\|Corporate News]], althought some [[Night City/Others/Independent News\|Independent News]] did cover it.
+[[Night City/Characters/2021/corpos/Bruce Skiv\|Bruce Skiv]] was arrested by the [[Night City/Organizations/NCPD\|NCPD]], [[Night City/Organizations/Corporations/Trauma Team\|Trauma Team]] arrived on the scene and [[Night City/Characters/2021/edgerunners/Big Wu\|Big Wu]] barely survived. The entire incident did not appear on [[Corporate News\|Corporate News]], althought some [[Independent News\|Independent News]] did cover it.
 
 ![AAR-sevennation.png](/img/user/Pictures/AAR-sevennation.png)
 

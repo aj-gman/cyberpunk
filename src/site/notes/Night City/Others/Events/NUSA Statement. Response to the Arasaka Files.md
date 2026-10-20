@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/others/events/nusa-statement-response-to-the-arasaka-files/","tags":["#news","#4cw"],"dg-note-properties":{"tags":["#news","#4cw"]}}
+{"dg-publish":true,"permalink":"/night-city/others/events/nusa-statement-response-to-the-arasaka-files/","dg-note-properties":{}}
 ---
 
 #news #4cw [[Night City/Organizations/Corporations/N54\|N54]], **July 2021**, [[Night City/Gigs/2021/Deep Six\|Deep Six]]
