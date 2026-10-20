@@ -32,9 +32,12 @@
       ]
     },
     {
-      "name": "",
+      "name": "Not Like Capone",
       "triggers": [],
-      "edges": []
+      "edges": [
+        "Legitimate Business",
+        "Cooking the Books"
+      ]
     }
   ],
   "gear": [
@@ -168,5 +171,5 @@
       false
     ]
   },
-  "experiencePoints": 10
+  "experiencePoints": 12
 }
