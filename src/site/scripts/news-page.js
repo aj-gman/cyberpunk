@@ -2,6 +2,8 @@
 	const listRoot = document.querySelector("[data-news-list]");
 	if (!listRoot) return;
 
+	const siteBaseUrl = new URL("../", document.currentScript.src);
+
 	function showMessage(message, role = "status") {
 		const notice = document.createElement("p");
 		notice.setAttribute("role", role);
@@ -12,7 +14,8 @@
 	showMessage("Loading news...");
 
 	try {
-		const response = await fetch(listRoot.dataset.newsSource || "/news.json");
+		const newsUrl = new URL(listRoot.dataset.newsSource || "news.json", siteBaseUrl);
+		const response = await fetch(newsUrl);
 		if (!response.ok) {
 			throw new Error(`News request failed with status ${response.status}.`);
 		}
@@ -49,7 +52,7 @@
 
 			const link = document.createElement("a");
 			link.className = "internal-link";
-			link.href = item.url;
+			link.href = new URL(item.url.replace(/^\/+/, ""), siteBaseUrl).href;
 			link.textContent = item.title;
 			entry.append(link);
 			list.append(entry);
