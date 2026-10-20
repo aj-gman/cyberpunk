@@ -4,8 +4,8 @@
   "nickname": "Hex",
   "appearance": "Tall muscular, orange pink mohawk",
   "personality": "",
-  "money": 5550,
-  "eddies": 5550,
+  "money": 550,
+  "eddies": 550,
   "trademarks": [
     {
       "name": "Prodigal Son",
@@ -13,7 +13,7 @@
         "Educated, Corpo Politics, Militech Connections, institutional wealth, "
       ],
       "edges": [
-        "Education, Militech Connections "
+        "Education, militech connections "
       ]
     },
     {
@@ -133,13 +133,13 @@
   "cyberware": [
     {
       "title": "Militech cyberarm",
-      "tags": "MonoWire, Tool Hand, Tactile Boost",
+      "tags": "Tool Hand, Tactile Boost",
       "notes": "- can be used at close range and melee, Causes Trauma easily \n- contains tools to repair and maintain most electronics\n- sense movement within 20m",
       "value": 1
     },
     {
       "title": "Kiroshi ",
-      "tags": "Thermal, NV, Anti-Dazzle, Dart Gun",
+      "tags": "Thermal, NV, Anti-Dazzle,",
       "notes": "EMP hardened \nConcealed Dartgun in Eye",
       "value": 1
     },
@@ -178,6 +178,12 @@
       "tags": "Ignore Trauma, Bypass Condition",
       "notes": "Activate to ignore Danger Dice from a Trauma/Condition.",
       "value": 1
+    },
+    {
+      "title": "Militech Linear Frame Sigma",
+      "tags": "concealable, Powerful, quick, resilient",
+      "notes": "concealable (under trenchcoats etc.), powerful, quick, resilient, can lift a car",
+      "value": 1
     }
   ],
   "hitsCount": 4,
@@ -188,16 +194,25 @@
     false
   ],
   "trackers": {
-    "cyberpsy": 6,
-    "humanity": 6
+    "cyberpsy": 0,
+    "humanity": 4
   },
   "conditions": {
-    "custom": []
+    "custom": [
+      {
+        "text": "stressed x1",
+        "state": "blue"
+      },
+      {
+        "text": "grieving x3",
+        "state": "blue"
+      }
+    ]
   },
   "traumas": [
     {
       "marked": false,
-      "text": "withdrawl"
+      "text": ""
     }
   ],
   "flaws": [
@@ -226,5 +241,5 @@
       false
     ]
   },
-  "experiencePoints": 6
+  "experiencePoints": 7
 }
