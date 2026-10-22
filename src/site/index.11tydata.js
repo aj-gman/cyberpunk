@@ -5,12 +5,16 @@ const settings = require("../helpers/constants");
 const pluginLoader = require("../helpers/pluginLoader");
 const { hasHomePageNote } = require("../helpers/homePage");
 
-// Fallback front page for gardens without a selected note or custom front page.
+// Fallback front page, rendered only when no published note is marked as the
+// garden's home page (`dg-home` in Obsidian, which the plugin turns into the
+// `gardenEntry` tag). Without it a garden with notes but no home page served a
+// 404 at `/`, which read as "the site is broken" to new gardeners.
 //
-// The custom glitch header takes `/` unless a note is selected as the garden
-// home page. The fallback must step aside for either case to avoid an output
-// conflict. The note check reads from disk because permalinks are resolved
-// before collections exist.
+// A note with the gardenEntry tag takes the `/` permalink (see
+// notes/notes.11tydata.js), so this template must step aside whenever one
+// exists or Eleventy fails the build with an output conflict. The check reads
+// the notes from disk because permalinks are resolved before collections
+// exist, so `collections.gardenEntry` is not available here.
 const hasHomePage = hasHomePageNote(path.join(__dirname, "notes"));
 const hasGlitchHeader = fs.existsSync(path.join(__dirname, "glitch-header.njk"));
 
