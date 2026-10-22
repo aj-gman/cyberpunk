@@ -57,7 +57,7 @@ Teamwork makes the dream work. But does it when you can't choose your mates?
 ### End
 - Secure [[Night City/Characters/2077/Lieutenant Hook\|Lieutenant Hook]], dead or alive.
 - Kill or arrest all [[Night City/Organizations/Gangs/Maelstrom\|Maelstrom]]. You can leave once you complete this objective. You can also sabotage [[Night City/Organizations/Corporations/Petrochem\|Petrochem]] for the following reason:
-	- [[Night City/Characters/2077/Ryder\|Ryder]] tells you that the [[Night City/Organizations/Gangs/Maelstrom\|Maelstrom]] are actually doing this because [[Night City/Organizations/Corporations/Petrochem\|Petrochem]] is threatening to cut all electricity to [[Night City/Locations/Districts (2077)/Northside\|Northside]], pretty much declaring it a [[Night City/Others/Combat Zone\|Combat Zone]] indirectly;
+	- [[Night City/Characters/2077/Ryder\|Ryder]] tells you that the [[Night City/Organizations/Gangs/Maelstrom\|Maelstrom]] are actually doing this because [[Night City/Organizations/Corporations/Petrochem\|Petrochem]] is threatening to cut all electricity to [[Night City/Locations/Districts (2077)/Northside\|Northside]], pretty much declaring it a [[Combat Zone\|Combat Zone]] indirectly;
 
 
 ### Inspiration

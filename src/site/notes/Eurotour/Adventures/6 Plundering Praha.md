@@ -103,7 +103,7 @@ Once at the airport, you're greeted by [[Eurotour/Organizations/EEC\|EDF soldier
 #### Player Goals
 - [x] Get [[Eurotour/Characters/Core Crew/Jack Entropy\|Jack Entropy]] on the plane.
 - [ ] Deal with [[Eurotour/Characters/Core Crew/Catherine Clements\|Catherine Clements]].
-- [x] Deal with [[Eurotour/Characters/Claire Monet\|Claire Monet]]'s request.
+- [x] Deal with [[Eurotour/Characters/Claire Monet (GM)\|Claire Monet (GM)]]'s request.
 
 - [x] [What the fuck was in that sangria?](https://music.youtube.com/watch?v=y3gQeT7hW9E)
 - [ ] [Just this playlist entirely tbh](https://music.youtube.com/watch?v=pdiWUYi5y38&list=PL5cO8QXfMKw6xkEaekpIhBzMIC4Nfbr44)
@@ -113,7 +113,7 @@ Once at the airport, you're greeted by [[Eurotour/Organizations/EEC\|EDF soldier
 	- [ ] One of the cars in the convoy gets into a crash. [[Eurotour/Characters/Core Crew/Jimenez\|Jimenez]]/[[Eurotour/Characters/Core Crew/Ace McLeod\|Ace McLeod]].
 	- [x] Good moment to reintroduce [[Eurotour/Characters/Core Crew/Angus Kessler\|Angus Kessler]]
 - [ ] And, as [[Eurotour/The Crew\|The Crew]] arrive at the airport...
-	- [x] [[Eurotour/Characters/Claire Monet\|Claire Monet]] is here to take in [[Night City/Characters/!pc/Ray Null\|Ray Null]]. She's got a warrant and everything.
+	- [x] [[Eurotour/Characters/Claire Monet (GM)\|Claire Monet (GM)]] is here to take in [[Night City/Characters/!pc/Ray Null\|Ray Null]]. She's got a warrant and everything.
 
 [^1]: The thieves are linked with [[Eurotour/Characters/France/Beatrice Fahida\|Beatrice Fahida]]. 
 ![deets-baxheist.png\|214](/img/user/Pictures/deets-baxheist.png)

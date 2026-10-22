@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/fourth-corporate-war/","dg-note-properties":{}}
+{"dg-publish":true,"permalink":"/night-city/fourth-corporate-war/","tags":["#campaign","#4cw","#ideology"],"dg-note-properties":{"tags":["#campaign","#4cw","#ideology"]}}
 ---
 
 #campaign #4cw
@@ -30,4 +30,5 @@ Survive the [[Night City/Fourth Corporate War\|Fourth Corporate War]] from its b
 >3. [[Night City/Gigs/2021/Into the Lion's Den\|Into the Lion's Den]]
 >4. [[Night City/Gigs/2021/Deep Six\|Deep Six]]
 >5. [[Night City/Gigs/2021/Seven Nation Army\|Seven Nation Army]]
+>6. [[Night City/Gigs/2021/Fated, Faithful, Fatal\|Fated, Faithful, Fatal]]
 

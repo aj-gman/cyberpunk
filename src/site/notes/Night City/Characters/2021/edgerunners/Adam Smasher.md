@@ -1,0 +1,9 @@
+---
+{"dg-publish":true,"dg-path":"Night City/Characters/edgerunners/Adam Smasher.md","permalink":"/night-city/characters/edgerunners/adam-smasher/","tags":["#npc","#4cw"],"dg-note-properties":{"tags":["#npc","#4cw"]}}
+---
+
+#npc #4cw [[Night City/Organizations/Corporations/Arasaka\|Arasaka]] [[Rules/CPRED/Roles/Solo\|Solo]]
+==Imperial (Prestige) | Arrogant, Cold, Superior==
+
+*"This is real leather, choom."*
+ ![NPC-AdamSmasher-Covert.png\|425](/img/user/Pictures/NPC-AdamSmasher-Covert.png)

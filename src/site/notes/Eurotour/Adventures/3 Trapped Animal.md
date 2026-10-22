@@ -5,7 +5,7 @@
 #gig #eurotour 
 Quickly after leaving [[Eurotour/Locations/Brussels\|Brussels]] with a successful concert, [[Eurotour/The Crew\|The Crew]] arrives with little fuss in [[Eurotour/Locations/Paris\|Paris]]. The French care little for the [[Eurotour/Adventures/2 European Graffiti\|2 European Graffiti]], as "another radical fan" paints the streets - very well so, they say!
 
-Thick [[Eurotour/Characters/Claire Monet\|Interpol presence]], along with Metropolitain police assure that the arrival is uneventul (cordons, limos, all that jazz).
+Thick [[Eurotour/Characters/Claire Monet (GM)\|Interpol presence]], along with Metropolitain police assure that the arrival is uneventul (cordons, limos, all that jazz).
 
 First thing [[Eurotour/Characters/Core Crew/Jack Entropy\|Jack Entropy]] does upon arriving is go out to get some [[Rules/CPRED/Cyberware/Cyberware\|Rules/CPRED/Cyberware/Cyberware]]. Those who would notice his disappearance could go to [[Eurotour/Characters/Core Crew/Tinker\|Tinker]], who has placed a tracker in his skin after [[Eurotour/Adventures/1 Paper Trail\|1 Paper Trail]].
 
@@ -36,7 +36,7 @@ First thing [[Eurotour/Characters/Core Crew/Jack Entropy\|Jack Entropy]] does up
 	- [x] Get [[Eurotour/Characters/Core Crew/Jack Entropy\|Entropy]] to safety without any female friends; ([[Eurotour/Characters/Core Crew/Ace McLeod\|Ace McLeod]] gives the job)
 - **Storyteller Goals:** Present things to do while the situation escalates, with [[Eurotour/Characters/Core Crew/Jack Entropy\|Jack Entropy]] meeting [[Eurotour/Characters/France/Beatrice Fahida\|Beatrice Fahida]] and falling in love at first sight, [[Eurotour/Characters/Core Crew/Angus Kessler\|Angus Kessler]] worrying about this terribly
 	- [x] "Saw a glint in a window, go check it out. Take the AV" - nearby skyscraper has a Militech AV parked, with [[Eurotour/Characters/France/Johnson-4\|Johnson-4]] and others providing cover for [[Eurotour/Characters/France/Frederic Germain\|Frederic Germain]]'s party
-	- [x] Keep a watchful gaze on [[Eurotour/The Crew\|The Crew]] due to [[Eurotour/Characters/Claire Monet\|Claire Monet]];
+	- [x] Keep a watchful gaze on [[Eurotour/The Crew\|The Crew]] due to [[Eurotour/Characters/Claire Monet (GM)\|Claire Monet (GM)]];
 	- [x] Introduce Opportunities and Consequences for [[Eurotour/The Crew\|The Crew]], keeping them constantly on their toes and giving them the chance to roleplay
 	- [x] Introduce the kidnapping plot, with [[Eurotour/Characters/Core Crew/Angus Kessler\|Angus Kessler]] being very worried that [[Eurotour/Characters/France/Beatrice Fahida\|Beatrice Fahida]] keeps prancing around [[Eurotour/Characters/Core Crew/Jack Entropy\|Jack]]
 
