@@ -1,4 +1,4 @@
-.stock-ticker {
+﻿.stock-ticker {
   display: flex;
   align-items: center;
   flex: 1 1 18rem;
@@ -79,6 +79,13 @@
 .stock-ticker:focus-within .stock-ticker__track {
   animation-play-state: paused;
 }
+
+/* Hide the stock ticker while a link preview tooltip is showing (hovering over a link). */
+.stock-ticker:has(.internal-link:hover),
+.stock-ticker:has(.stock-ticker__link:hover) {
+  display: none;
+}
+
 
 @keyframes stock-ticker-scroll {
   to {
