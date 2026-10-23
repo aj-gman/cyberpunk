@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-path":"Night City/Characters/gangers/Skell.md","dg-note-properties":{}}
+{"dg-publish":true}
 ---
 
 #npc #4cw [[Night City/Organizations/Gangs/Maelstrom\|Maelstrom]]

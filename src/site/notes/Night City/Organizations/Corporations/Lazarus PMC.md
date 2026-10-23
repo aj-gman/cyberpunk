@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"tags":["#corporation","#4cw"],"dg-note-properties":{"tags":["#corporation","#4cw"]}}
+{"dg-publish":true,"tags":["#corporation","#4cw"]}
 ---
 
 #corporation #4cw 

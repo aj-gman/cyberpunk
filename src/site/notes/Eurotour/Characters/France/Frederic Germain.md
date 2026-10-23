@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-note-properties":{}}
+{"dg-publish":true}
 ---
 
 #npc #eurotour [[Eurotour/Adventures/3 Trapped Animal\|3 Trapped Animal]] [[Rules/CPRED/Roles/Fixer\|Fixer]]

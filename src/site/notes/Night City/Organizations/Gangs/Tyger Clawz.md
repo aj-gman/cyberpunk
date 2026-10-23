@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-note-properties":{}}
+{"dg-publish":true}
 ---
 
 w#boostergang [[Night City/Locations/Night City\|Night City]]

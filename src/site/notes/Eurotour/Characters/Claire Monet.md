@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-note-properties":{}}
+{"dg-publish":true}
 ---
 
 #npc #eurotour [[Rules/CPRED/Roles/Lawman\|Lawman]], works for Interpol.

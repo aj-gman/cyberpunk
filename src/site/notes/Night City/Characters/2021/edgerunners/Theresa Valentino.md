@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-path":"Night City/Characters/edgerunners/Theresa Valentino.md","dg-note-properties":{}}
+{"dg-publish":true}
 ---
 
 #npc #4cw 

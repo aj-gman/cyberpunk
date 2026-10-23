@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-note-properties":{}}
+{"dg-publish":true}
 ---
 
 **...are specific advantages, traits or benefits directly associated with or derived from a [[Rules/NCOverdrive/Trademarks/Trademarks\|trademark]].** They often represent a focus, interest, specialisation or talent related to the broader concept.

@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-path":"Night City/Characters/corpos/Victor Campbell.md","dg-note-properties":{}}
+{"dg-publish":true}
 ---
 
 #npc [[Night City/Locations/Night City\|Night City]]

@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-note-properties":{}}
+{"dg-publish":true}
 ---
 
 Commonly abbreviated as AV (pronounced "Ay-Vee"), an Aerodyne Vehicle is a vertical takeoff and landing (VTOL) aircraft powered by ducted jet fans.

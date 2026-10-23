@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-path":"G-man.md","dg-note-properties":{}}
+{"dg-publish":true}
 ---
 
 I go by the same identity on most places online, although I sometimes use the moniker G-man, especially when Storytelling tabletop RPGs.

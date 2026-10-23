@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-note-properties":{}}
+{"dg-publish":true}
 ---
 
 Rephrased versions of [[Rules/CPRED/Drugs/Drugs\|Rules/CPRED/Drugs/Drugs]] (from [BlackHammer Project](http://ambient.ca/cpunk/drugs.html#5)) to fit with [[Rules/NCOverdrive/Neon City Overdrive (HUB)\|Neon City Overdrive (HUB)]]'s [[Rules/NCOverdrive/Conditions\|Conditions]].

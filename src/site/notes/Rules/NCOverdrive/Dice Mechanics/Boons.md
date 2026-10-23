@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-note-properties":{}}
+{"dg-publish":true}
 ---
 
 **When you make a check and get multiple 6’s, things have gone particularly well.** The first six rolled indicates the action succeeded while **each additional remaining six is a boon.** 

@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-note-properties":{}}
+{"dg-publish":true}
 ---
 
 #news [[Eurotour/Locations/Brussels\|Brussels]], [[Marcel Reve\|Marcel Reve]], [[Eurotour/Locations/Paris\|Paris]], [[Night City/Organizations/Corporations/Biotechnica\|Biotechnica]] #eurotour **May 2021,** [[Eurotour/Adventures/6 Plundering Praha\|6 Plundering Praha]]

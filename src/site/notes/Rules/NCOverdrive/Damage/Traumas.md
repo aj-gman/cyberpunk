@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-note-properties":{}}
+{"dg-publish":true}
 ---
 
 Traumas are tags that represent serious injuries or ongoing physical, emotional or psychological harm.There are as many different traumas as there are ways to be harmed.

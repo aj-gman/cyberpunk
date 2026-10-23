@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-note-properties":{}}
+{"dg-publish":true}
 ---
 
 #news [[Prague\|Prague]], [[Eurotour/Organizations/EEC\|EEC]], [[Eurotour/Characters/Core Crew/Jack Entropy\|Jack Entropy]], #eurotour 

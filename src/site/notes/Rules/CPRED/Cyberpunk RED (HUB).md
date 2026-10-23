@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-path":"CPRED (HUB).md","dg-note-properties":{}}
+{"dg-publish":true}
 ---
 
 

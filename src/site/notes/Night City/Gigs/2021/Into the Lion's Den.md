@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-path":"Night City/Gigs/Into the Lion's Den.md","dg-note-properties":{}}
+{"dg-publish":true}
 ---
 
 #gig #4cw [[Rules/NCOverdrive/Neon City Overdrive (HUB)\|Neon City Overdrive]] [[Night City/Locations/Buildings/Fourth Corporate War\|Fourth Corporate War]]

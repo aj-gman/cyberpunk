@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-note-properties":{}}
+{"dg-publish":true}
 ---
 
 #campaign #eurotour [[Eurotour/The Crew\|The Crew]]

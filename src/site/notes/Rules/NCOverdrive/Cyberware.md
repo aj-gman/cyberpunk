@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-note-properties":{}}
+{"dg-publish":true}
 ---
 
 [[Rules/Homebrew\|Homebrew]] adaptation of the original [[Rules/CPRED/Cyberware/Cyberware\|Rules/CPRED/Cyberware/Cyberware]] rules implemented in [[Rules/CPRED/Cyberpunk RED (HUB)\|Cyberpunk RED (HUB)]].

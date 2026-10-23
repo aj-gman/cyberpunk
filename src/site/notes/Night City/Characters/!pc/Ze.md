@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-path":"Player Characters/Ze.md","dg-note-properties":{}}
+{"dg-publish":true}
 ---
 
 #crew #4cw [[Rules/CPRED/Roles/Media\|Media]]

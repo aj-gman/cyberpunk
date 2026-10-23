@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-note-properties":{}}
+{"dg-publish":true}
 ---
 
 In [[Rules/CPRED/Cyberpunk RED (HUB)\|Cyberpunk RED (HUB)]], Quality is measured by the price of a given item (Price Bands). However, Weapon Quality is measured by a three-category system (Poor < Standard < Excellent). 

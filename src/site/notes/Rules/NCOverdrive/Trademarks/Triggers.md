@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-note-properties":{}}
+{"dg-publish":true}
 ---
 
 ...represent skills, knowledge, or traits associated with the **[[Rules/NCOverdrive/Trademarks/Trademarks\|Trademarks]]**. They guide in-game decisions but are non-exhaustive.

@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-note-properties":{}}
+{"dg-publish":true}
 ---
 
 [[Rules/Homebrew\|Homebrewed]] completely from the ground up.

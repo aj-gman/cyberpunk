@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-note-properties":{}}
+{"dg-publish":true}
 ---
 
 The timeline of the Cyberpunk series diverges dramatically from our own around roughly the 1990s—although other divergences do occur well before then, albeit smaller in size and scope—where the fall of the [Soviet Union](https://cyberpunk.fandom.com/wiki/Soviet_Union "Soviet Union") at the end of the Cold War leads to a dissemination of nuclear weapons on the black market. Coupled with a US government "deep state" called the [Gang of Four](https://cyberpunk.fandom.com/wiki/Gang_of_Four "Gang of Four"), the world soon finds itself in the midst of an economic crisis and the [Collapse](https://cyberpunk.fandom.com/wiki/Collapse "Collapse"). 

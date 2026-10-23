@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-note-properties":{}}
+{"dg-publish":true}
 ---
 
 loose #family of [[Rules/CPRED/Roles/Nomad\|Nomads]], organized under a federation of gangs, both within [[Night City/Locations/Night City\|Night City]] borders as well as in the [[Night City/Locations/Dependencies/Badlands\|Badlands]].

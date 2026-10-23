@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-note-properties":{}}
+{"dg-publish":true}
 ---
 
 #news #eurotour **April 2021** [[Eurotour/Adventures/4 Menace in Venice\|4 Menace in Venice]]

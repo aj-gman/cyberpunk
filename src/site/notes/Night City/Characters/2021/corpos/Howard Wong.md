@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-path":"Night City/Characters/corpos/Howard Wong.md","dg-note-properties":{}}
+{"dg-publish":true}
 ---
 
 #npc #4cw [[Rules/CPRED/Roles/Exec\|Exec]], [[Night City/!society/Beliefs/Realism\|Realist]]

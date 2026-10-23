@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-note-properties":{}}
+{"dg-publish":true}
 ---
 
 Once a Character exceeds their [[Rules/CPRED/Cyberware/Humanity\|Humanity]] on their [[Rules/CPRED/Cyberware/Cyberpsychosis\|Cyberpsychosis Tracker]], they roll a d10 and deal with the results.

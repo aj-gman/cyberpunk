@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-note-properties":{}}
+{"dg-publish":true}
 ---
 
 ...is the equipment and weapons your character takes on jobs. Gear can be either basic or specialised. 

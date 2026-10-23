@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-path":"Player Characters/Relevant NPCs/Nat.md","dg-note-properties":{}}
+{"dg-publish":true}
 ---
 
 #npc #eurotour #4cw 

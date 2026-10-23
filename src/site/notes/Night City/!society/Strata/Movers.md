@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-path":"Night City/Society/Strata/Movers.md","dg-note-properties":{}}
+{"dg-publish":true}
 ---
 
 #stratum 

@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-note-properties":{}}
+{"dg-publish":true}
 ---
 
 A type of [[Rules/CPRED/Drugs/Drugs\|street drug]]. Sunnies are an all-purpose euphoric pick-me-up and invicibility pill, rolled into one! With no noteable side-effects and a nice long duration, Sunnies are a heavily abused drug in many edgerunner environments.

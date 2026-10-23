@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-path":"Player Characters/Hex.md","dg-note-properties":{}}
+{"dg-publish":true}
 ---
 
 

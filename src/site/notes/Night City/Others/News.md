@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-note-properties":{}}
+{"dg-publish":true}
 ---
 
 [[Corporate News\|Corporate News]] [[Independent News\|Independent News]]

@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-note-properties":{}}
+{"dg-publish":true}
 ---
 
 ![Tech-EYE.jpg\|right\|300](/img/user/Pictures/Tech-EYE.jpg)

@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-path":"Player Characters/Ray Null.md","dg-note-properties":{}}
+{"dg-publish":true}
 ---
 
 

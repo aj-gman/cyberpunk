@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-note-properties":{}}
+{"dg-publish":true}
 ---
 
 Elevated Maglev Line that goes through [[Night City/Locations/Night City\|the Greater Night City Area]]

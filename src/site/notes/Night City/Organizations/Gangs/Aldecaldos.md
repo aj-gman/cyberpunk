@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-note-properties":{}}
+{"dg-publish":true}
 ---
 
 #family spanning across the [[Night City/Organizations/NUSA\|NUSA]], with many camps in the [[Night City/Locations/Dependencies/Badlands\|Badlands]] of [[Night City/Locations/Night City\|Night City]].

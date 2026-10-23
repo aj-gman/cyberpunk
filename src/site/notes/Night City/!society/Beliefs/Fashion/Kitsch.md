@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-path":"Night City/Society/Beliefs/Fashion/Kitsch.md","tags":["fashion"],"dg-note-properties":{"tags":["fashion"]}}
+{"dg-publish":true,"tags":["fashion"]}
 ---
 
 Closely associated with [[Night City/!society/Beliefs/Insurrectionism\|Insurrectionism]].

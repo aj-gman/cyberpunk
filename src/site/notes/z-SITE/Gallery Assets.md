@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-path":"Gallery Assets.md","hide":true,"tags":["site/internal"],"dg-note-properties":{"tags":["site/internal"]}}
+{"dg-publish":true,"hide":true,"tags":["site/internal"]}
 ---
 
 # Gallery Assets Registry

@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-note-properties":{}}
+{"dg-publish":true}
 ---
 
 #news #4cw [[Night City/Organizations/Corporations/N54\|N54]], **July 2021**, [[Night City/Gigs/2021/Deep Six\|Deep Six]]

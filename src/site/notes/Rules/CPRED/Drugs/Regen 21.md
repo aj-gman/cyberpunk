@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-note-properties":{}}
+{"dg-publish":true}
 ---
 
 > [[Rules/CPRED/Quality\|Common Price:]] Cheap (10-20eb)

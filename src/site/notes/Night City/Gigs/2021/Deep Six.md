@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-path":"Night City/Gigs/Deep Six.md","dg-note-properties":{}}
+{"dg-publish":true}
 ---
 
 

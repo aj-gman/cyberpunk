@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-path":"Night City/Characters/corpos/Dt. Spinner.md","dg-note-properties":{}}
+{"dg-publish":true}
 ---
 
 #npc #4cw [[Night City/Organizations/Corporations/Militech\|Militech]] [[Rules/CPRED/Roles/Exec\|Exec]]

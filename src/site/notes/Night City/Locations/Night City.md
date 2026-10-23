@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"tags":["location","4cw"],"dg-note-properties":{"tags":["location","4cw"]}}
+{"dg-publish":true,"tags":["location","4cw"]}
 ---
 
 The **Free City of Night City (NC)** is an autonomous city-state founded on the shores of [Del Coronado Bay](https://cyberpunk.fandom.com/wiki/Del_Coronado_Bay) by [[Night City/Characters/2021/corpos/Richard Night\|Richard Night]] in the 1990s, before and during [The Collapse](https://cyberpunk.fandom.com/wiki/The_Collapse_of_the_United_States). Formally located in [Northern California](https://cyberpunk.fandom.com/wiki/North_California), **Night City** functions without interference from **NorCal**, although the [[Night City/Organizations/NUSA\|NUSA]] built the [[NorCal Military Base\|NorCal Military Base]] in [[Night City/Locations/Dependencies/NorthOak\|NorthOak]] in 2016.

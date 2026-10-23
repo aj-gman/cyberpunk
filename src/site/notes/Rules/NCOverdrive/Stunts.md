@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-note-properties":{}}
+{"dg-publish":true}
 ---
 
 Stunt points are a resource you spend during a job to improve your chances of success. A character can spend a stunt point to do one of the following: 

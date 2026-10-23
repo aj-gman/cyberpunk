@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-note-properties":{}}
+{"dg-publish":true}
 ---
 
 > [[Rules/CPRED/Quality\|Common Price:]] Premium (100-500eb)

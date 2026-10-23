@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-path":"Night City/Characters/gangers/Reznor.md","dg-note-properties":{}}
+{"dg-publish":true}
 ---
 
 #npc #4cw [[Rules/CPRED/Roles/Solo\|Solo]] [[Night City/Organizations/Gangs/Blood Razors\|Blood Razors]]

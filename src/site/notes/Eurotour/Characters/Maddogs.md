@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-note-properties":{}}
+{"dg-publish":true}
 ---
 
 ![NPC-maddogs.png](/img/user/Pictures/NPC-maddogs.png)

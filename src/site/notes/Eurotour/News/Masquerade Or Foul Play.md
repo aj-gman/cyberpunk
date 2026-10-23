@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-note-properties":{}}
+{"dg-publish":true}
 ---
 
 #news [[Night City/Organizations/Corporations/Wortrac\|Wortrac]], [[Eurotour/Characters/Core Crew/Jack Entropy\|Jack Entropy]], [[Eurotour/Locations/Venice\|Venice]], [[Eurotour/Adventures/4 Menace in Venice\|4 Menace in Venice]]  #eurotour **April 2021**

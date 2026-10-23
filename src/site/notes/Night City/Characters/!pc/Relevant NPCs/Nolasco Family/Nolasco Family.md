@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-path":"Player Characters/Relevant NPCs/Nolasco Family/Nolasco Family.md","dg-note-properties":{}}
+{"dg-publish":true}
 ---
 
 #family

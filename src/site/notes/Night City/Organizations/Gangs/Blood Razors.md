@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-note-properties":{}}
+{"dg-publish":true}
 ---
 
 #boostergang [[Night City/Locations/Districts/South Night City\|South Night City]]

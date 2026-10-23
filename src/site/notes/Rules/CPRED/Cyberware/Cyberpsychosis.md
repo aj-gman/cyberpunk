@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-note-properties":{}}
+{"dg-publish":true}
 ---
 
 > For more about the lore of *Cyberpsychosis*, see [[Night City/Others/About Cyberpsychosis\|this page]].

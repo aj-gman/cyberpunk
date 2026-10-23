@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-path":"Night City/Characters/edgerunners/Savvy.md","dg-note-properties":{}}
+{"dg-publish":true}
 ---
 
 #npc #4cw [[Rules/CPRED/Roles/Techie\|Techie]]

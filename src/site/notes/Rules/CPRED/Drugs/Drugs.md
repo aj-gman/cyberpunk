@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-note-properties":{}}
+{"dg-publish":true}
 ---
 
 [The BlackHammer CyberPunk Project](http://ambient.ca/cpunk/drugs.html) details a list of drugs for Cyberpunk 2020. 

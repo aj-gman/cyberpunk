@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-path":"Night City/Characters/edgerunners/Lyle McClellan.md","dg-note-properties":{}}
+{"dg-publish":true}
 ---
 
 #npc #4cw [[Rules/CPRED/Roles/Media\|Media]], [[Night City/!society/Beliefs/Insurrectionism\|Insurrectionist]]

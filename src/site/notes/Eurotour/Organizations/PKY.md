@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-note-properties":{}}
+{"dg-publish":true}
 ---
 
 #organization as part of the [[Eurotour/Organizations/MLA\|MLA]]

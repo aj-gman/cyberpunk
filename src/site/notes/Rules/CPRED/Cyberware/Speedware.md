@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-note-properties":{}}
+{"dg-publish":true}
 ---
 
 Speedware is a specific type of [[Rules/CPRED/Cyberware/Cyberware\|Rules/CPRED/Cyberware/Cyberware]] that is installed as an [[Rules/CPRED/Cyberware/Cyberware Classes\|Operating System]] and provides the user with passive or active reflex boosters. The user is able to perceive reality with heightened senses and react much quicker than before, either when triggered (Active, Sandevistan) or always (Passive, Kerenzikov), each with their drawbacks.

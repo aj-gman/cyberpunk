@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"tags":["dependency","location"],"dg-note-properties":{"tags":["dependency","location"]}}
+{"dg-publish":true,"tags":["dependency","location"]}
 ---
 
 

@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-note-properties":{}}
+{"dg-publish":true}
 ---
 
 #news [[Prague\|Prague]], [[Eurotour/Organizations/EEC\|EEC]], #eurotour, **May 2021,** [[Eurotour/Adventures/6 Plundering Praha\|6 Plundering Praha]]

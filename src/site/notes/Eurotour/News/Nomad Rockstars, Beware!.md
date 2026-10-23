@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-note-properties":{}}
+{"dg-publish":true}
 ---
 
 #news #eurotour, **February 2021**, [[Eurotour/Adventures/1 Paper Trail\|1 Paper Trail]]

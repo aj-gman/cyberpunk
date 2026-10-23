@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"tags":["boostergang"],"dg-note-properties":{"tags":["boostergang"]}}
+{"dg-publish":true,"tags":["boostergang"]}
 ---
 
 >[!info] [[Night City/Organizations/NCPD\|NCPD]] DATA

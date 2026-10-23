@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-note-properties":{}}
+{"dg-publish":true}
 ---
 
 **Rule:** Uncharged, this gun deals 1d6 less than default. Charging (usually for 1 turn), user can fire through Thin Cover, ignoring half of the target's SP and dealing regular damage.

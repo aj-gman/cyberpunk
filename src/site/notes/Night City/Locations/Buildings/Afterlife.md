@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-note-properties":{}}
+{"dg-publish":true}
 ---
 
 #location #4cw [[Night City/Locations/Night City\|Night City]] [[Night City/Locations/Districts/City Center#Medical Center\|City Center#Medical Center]]

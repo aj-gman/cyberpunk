@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-note-properties":{}}
+{"dg-publish":true}
 ---
 
 #news ZIG-POST 158901295-lavn2 #eurotour **April 2021,** [[Eurotour/Adventures/4.5 Hunting the Hunter\|4.5 Hunting the Hunter]]

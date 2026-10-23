@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-path":"Night City/Society/Beliefs/Parallelism.md","tags":["ideology"],"dg-note-properties":{"tags":["ideology"]}}
+{"dg-publish":true,"tags":["ideology"]}
 ---
 
 Parallelism in the [[Rules/Cyberpunk Universe\|Cyberpunk Universe]] refers to the belief that contemporary structures are inefficient but impossible to tackle head on. As such, it posits that communities must develop alternative institutions and societies.

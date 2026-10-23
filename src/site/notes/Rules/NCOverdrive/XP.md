@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-note-properties":{}}
+{"dg-publish":true}
 ---
 
 **BOTCH:** You learn from failure, if you survive! Mark +1 experience point each time a check results in a botch. 
