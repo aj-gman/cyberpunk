@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true}
+{"dg-publish":true,"permalink":"/rules/cpred/netrunning/netrunner-gear/","dg-note-properties":{}}
 ---
 
 Before you enter The Mist, you will configure your entry tech to give you certain advantages once inside. To configure your tech, you will divide a certain number of points between all possible attributes to create a **Dreamer Config**. The tech you have access to may be basic or advanced depending on your circumstances and/or investment.

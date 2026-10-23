@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true}
+{"dg-publish":true,"permalink":"/rules/nc-overdrive/xp/","dg-note-properties":{}}
 ---
 
 **BOTCH:** You learn from failure, if you survive! Mark +1 experience point each time a check results in a botch. 

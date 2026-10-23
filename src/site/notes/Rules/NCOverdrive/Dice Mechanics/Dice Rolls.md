@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true}
+{"dg-publish":true,"permalink":"/rules/nc-overdrive/dice-mechanics/dice-rolls/","dg-note-properties":{}}
 ---
 
 - **Action Dice & Danger Dice**

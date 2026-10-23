@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true}
+{"dg-publish":true,"permalink":"/rules/cpred/difficulty-rating/","dg-note-properties":{}}
 ---
 
 - **9, Simple** - Most people can do without thinking.

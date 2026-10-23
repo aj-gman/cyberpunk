@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true}
+{"dg-publish":true,"permalink":"/rules/cpred/netrunning/quickhacks/","dg-note-properties":{}}
 ---
 
 Quickhacks require an [[Rules/CPRED/Cyberware/Cyberware Classes#Psychological and Neural\|Operating System]] in order to function. They can only target one person at a time and require the [[Rules/CPRED/Roles/Netrunner\|Netrunner]] to mentally overpower their target before being initiated.

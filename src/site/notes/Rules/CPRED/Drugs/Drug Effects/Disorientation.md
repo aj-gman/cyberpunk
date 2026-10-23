@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true}
+{"dg-publish":true,"permalink":"/rules/cpred/drugs/drug-effects/disorientation/","dg-note-properties":{}}
 ---
 
 #drug-effect

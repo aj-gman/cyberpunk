@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true}
+{"dg-publish":true,"permalink":"/rules/cpred/cyberware/cyberpsychosis/","dg-note-properties":{}}
 ---
 
 > For more about the lore of *Cyberpsychosis*, see [[Night City/Others/About Cyberpsychosis\|this page]].

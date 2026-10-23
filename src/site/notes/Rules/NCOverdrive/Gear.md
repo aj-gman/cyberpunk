@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true}
+{"dg-publish":true,"permalink":"/rules/nc-overdrive/gear/","dg-note-properties":{}}
 ---
 
 ...is the equipment and weapons your character takes on jobs. Gear can be either basic or specialised. 

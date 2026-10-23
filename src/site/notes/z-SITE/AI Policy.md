@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true}
+{"dg-publish":true,"dg-path":"AI Policy.md","permalink":"/ai-policy/","dg-note-properties":{}}
 ---
 
 > [!hint]- Note from G-man

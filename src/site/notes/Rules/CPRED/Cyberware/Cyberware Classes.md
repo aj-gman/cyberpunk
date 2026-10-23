@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true}
+{"dg-publish":true,"permalink":"/rules/cpred/cyberware/cyberware-classes/","dg-note-properties":{}}
 ---
 
 ## Physical, generally noticeable

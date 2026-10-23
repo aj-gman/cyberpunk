@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true}
+{"dg-publish":true,"permalink":"/rules/nc-overdrive/trademarks/trademarks/","dg-note-properties":{}}
 ---
 
 A **Trademark** defines a character's background, profession, signature equipment, or unique abilities. Each contains a **Name**, a list of **[[Rules/NCOverdrive/Trademarks/Triggers\|Triggers]]**, and example **[[Rules/NCOverdrive/Trademarks/Flaws\|Flaws]]**. These are skills, knowledges or traits someone with that trademark is known for. Use them to guide decisions in play. 

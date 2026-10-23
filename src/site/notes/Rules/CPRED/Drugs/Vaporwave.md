@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true}
+{"dg-publish":true,"permalink":"/rules/cpred/drugs/vaporwave/","dg-note-properties":{}}
 ---
 
 

@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true}
+{"dg-publish":true,"permalink":"/rules/nc-overdrive/damage/hits/","dg-note-properties":{}}
 ---
 
 Characters have a “hit track” with **three boxes**[^1] that represents their toughness, health and resilience. When a character is injured you will tick one of these boxes. 

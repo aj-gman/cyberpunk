@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true}
+{"dg-publish":true,"permalink":"/rules/cpred/drugs/neocorticine/","dg-note-properties":{}}
 ---
 
 A type of [[Rules/CPRED/Drugs/Drugs\|street drug]]. A hypnotic administered in microdot format, Neocorticine produces nightmare-like hallucinations in most users, as well as extreme illness in others.

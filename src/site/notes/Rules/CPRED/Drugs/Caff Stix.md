@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true}
+{"dg-publish":true,"permalink":"/rules/cpred/drugs/caff-stix/","dg-note-properties":{}}
 ---
 
 A type of [[Rules/CPRED/Drugs/Drugs\|street drug]]. Synthetic over-doses of super-caffeine in a smokeable stick. A mild stimulant that occasionally causes the caffeine shakes in users, these sticks are marvelously addictive and cheap.

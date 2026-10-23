@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"tags":["#fashion","#ideology","#npc","#news","#district","#dependency","#stratum","#boostergang","#role"]}
+{"dg-publish":true,"dg-path":"Site Chronicle.md","permalink":"/site-chronicle/","tags":["#fashion","#ideology","#npc","#news","#district","#dependency","#stratum","#boostergang","#role"],"dg-note-properties":{"tags":["#fashion","#ideology","#npc","#news","#district","#dependency","#stratum","#boostergang","#role"]}}
 ---
 
 
@@ -9,7 +9,6 @@
 	- [ ] #fashion
 - [ ] Briefly write the most important details of [[Night City/Locations/Night City\|Night City]]
 	- [ ] Education
-	- [x] Law Enforcement & Crime
 	- [ ] Economy
 	- [ ] Transportation
 
@@ -17,6 +16,9 @@
 #### 22.10
 - Wrote and published the After Action Report for [[Night City/Gigs/2021/Fated, Faithful, Fatal\|Fated, Faithful, Fatal]];
 - Published [[Night City/Organizations/Corporations/N54\|N54]]'s page, as well as relevant characters: [[Night City/Characters/2021/corpos/Howard Wong\|Howard Wong]], [[Night City/Characters/2021/edgerunners/Bes Isis\|Bes Isis]], [[Night City/Characters/2021/edgerunners/Fiona Hayes\|Fiona Hayes]], [[Night City/Characters/2021/edgerunners/Lyle McClellan\|Lyle McClellan]]
+- Created [[Night City/Organizations/Corporations/!stock\|!stock]] and [[Night City/Organizations/Corporations/!stock-code\|!stock-code]], which are used to display current publicly-traded companies' value increases per month;
+- Fixed bugs on the website like the buttons displaying with errors.
+- Added new locations: [[Night City/Locations/Buildings/HQ (Heywood)\|HQ (Heywood)]], [[Night City/Locations/Buildings/Midnight Slut\|Midnight Slut]], [[Night City/Locations/Buildings/Afterlife\|Afterlife]]
 #### 16.10
 - Added [[Night City/Others/News\|News]] page that displays all news by date and campaign + random news
 - Finished all #ideology write-up
@@ -88,7 +90,7 @@
 - Added permanent Header & Footer on webpages (shouldn't break on Digital Garden template update)
 - Reorganized folders & webpages for clearer navigation
 #### 02.09
-- Updated [The Map](/img/map-viewer/) with full label-on-hover functionality for the Socioeconomic and Influence panels. These display the social strata of [[Night City/Locations/Night City\|Night City]]'s inhabitants and the [[Night City/Organizations/Gangs/Boostergangs of Night City\|gang]] or [[Night City/Locations/Buildings/Fourth Corporate War\|corporation]] that is most influent in the region.
+- Updated [The Map](/img/map-viewer/) with full label-on-hover functionality for the Socioeconomic and Influence panels. These display the social strata of [[Night City/Locations/Night City\|Night City]]'s inhabitants and the [[Night City/Organizations/Gangs/Boostergangs of Night City\|gang]] or [[Night City/Fourth Corporate War\|corporation]] that is most influent in the region.
 	- The map should correctly identify all gangs by color upon hovering and should be generally bug-free.
 - Fixed Cyberpsychosis not scaling past 10.
 ### August 2026

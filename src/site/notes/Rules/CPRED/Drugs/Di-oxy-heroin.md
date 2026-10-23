@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true}
+{"dg-publish":true,"permalink":"/rules/cpred/drugs/di-oxy-heroin/","dg-note-properties":{}}
 ---
 
 A type of [[Rules/CPRED/Drugs/Drugs\|street drug]]. A synthetic heroin derivative that is currently in vogue with the rock and roll crowd, this opiate-wanna-be produces all the effects of a good old hit of smack. Without the puke!

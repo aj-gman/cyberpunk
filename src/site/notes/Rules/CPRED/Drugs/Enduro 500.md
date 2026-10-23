@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true}
+{"dg-publish":true,"permalink":"/rules/cpred/drugs/enduro-500/","dg-note-properties":{}}
 ---
 
 A type of [[Rules/CPRED/Drugs/Drugs\|street drug]]. Enduro 500 is a low-end "combat drug" produced by several pharmaceutical firms world wide. Like most of it's kind, it masks all sensations of pain and panic and convinces the body that it can run forever on nothing but... Enduro 500. Quite often users find themselves unable to recall events that occured while on Enduro 500, which isn't always a bad thing.

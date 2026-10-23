@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true}
+{"dg-publish":true,"dg-path":"CPRED (HUB).md","permalink":"/cpred-hub/","tags":["#role"],"dg-note-properties":{"tags":["#role"]}}
 ---
 
 
