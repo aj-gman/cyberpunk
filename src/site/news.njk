@@ -4,5 +4,15 @@ title: News
 permalink: /news/
 ---
 
-<div data-news-list data-news-filter="corporate" aria-live="polite"></div>
+<div class="news-view-controls" role="group" aria-label="Filter by news type">
+<button type="button" class="news-filter-button" data-news-type-filter="corporate" aria-pressed="true">Corporate</button>
+<button type="button" class="news-filter-button" data-news-type-filter="independent" aria-pressed="false">Independent</button>
+</div>
+<div class="news-view-controls" role="group" aria-label="Filter by campaign">
+<button type="button" class="news-filter-button" data-news-campaign-filter="all" aria-pressed="true">All</button>
+<button type="button" class="news-filter-button" data-news-campaign-filter="eurotour" aria-pressed="false">Eurotour</button>
+<button type="button" class="news-filter-button" data-news-campaign-filter="4cw" aria-pressed="false">4CW</button>
+</div>
+
+<div data-news-list aria-live="polite"></div>
 <script defer src="/scripts/news-page.js"></script>

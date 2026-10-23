@@ -1,66 +1,101 @@
 (async function () {
-	const listRoot = document.querySelector("[data-news-list]");
-	if (!listRoot) return;
+const listRoot = document.querySelector("[data-news-list]");
+if (!listRoot) return;
 
-	const siteBaseUrl = new URL("../", document.currentScript.src);
+const siteBaseUrl = new URL("../", document.currentScript.src);
+const typeButtons = document.querySelectorAll("[data-news-type-filter]");
+const campaignButtons = document.querySelectorAll("[data-news-campaign-filter]");
 
-	function showMessage(message, role = "status") {
-		const notice = document.createElement("p");
-		notice.setAttribute("role", role);
-		notice.textContent = message;
-		listRoot.replaceChildren(notice);
-	}
+const state = { type: "corporate", campaign: "all" };
+let items = null;
 
-	showMessage("Loading news...");
+function showMessage(message, role = "status") {
+const notice = document.createElement("p");
+notice.setAttribute("role", role);
+notice.textContent = message;
+listRoot.replaceChildren(notice);
+}
 
-	try {
-		const newsUrl = new URL(listRoot.dataset.newsSource || "news.json", siteBaseUrl);
-		const response = await fetch(newsUrl);
-		if (!response.ok) {
-			throw new Error(`News request failed with status ${response.status}.`);
-		}
+function matchesType(item) {
+if (state.type === "corporate") return item.isCorporateNews;
+return !item.isCorporateNews;
+}
 
-		const items = await response.json();
-		if (!Array.isArray(items)) {
-			throw new TypeError("The news data response must be an array.");
-		}
+function matchesCampaign(item) {
+return state.campaign === "all" || (Array.isArray(item.tags) && item.tags.includes(state.campaign));
+}
 
-		const filter = listRoot.dataset.newsFilter || "all";
-		if (!["all", "corporate", "independent"].includes(filter)) {
-			throw new Error(`Unsupported news filter: ${filter}.`);
-		}
+function syncButtons() {
+typeButtons.forEach((button) => {
+button.setAttribute("aria-pressed", String(button.dataset.newsTypeFilter === state.type));
+});
+campaignButtons.forEach((button) => {
+button.setAttribute("aria-pressed", String(button.dataset.newsCampaignFilter === state.campaign));
+});
+}
 
-		const filtered = items.filter((item) => {
-			if (filter === "corporate") return item.isCorporateNews;
-			if (filter === "independent") return !item.isCorporateNews;
-			return true;
-		});
+function render() {
+if (!items) return;
+syncButtons();
 
-		if (filtered.length === 0) {
-			showMessage("No news articles found.");
-			return;
-		}
+const filtered = items.filter((item) => matchesType(item) && matchesCampaign(item));
+if (filtered.length === 0) {
+showMessage("No news articles found.");
+return;
+}
 
-		const list = document.createElement("ul");
-		filtered.forEach((item) => {
-			const entry = document.createElement("li");
-			if (item.articleDate || item.createdAt) {
-				const date = document.createElement("span");
-				date.textContent = `${item.articleDate || item.createdAt} \u2014 `;
-				entry.append(date);
-			}
+const list = document.createElement("ul");
+filtered.forEach((item) => {
+const entry = document.createElement("li");
+if (item.articleDate || item.createdAt) {
+const date = document.createElement("span");
+date.textContent = `${item.articleDate || item.createdAt} \u2014 `;
+entry.append(date);
+}
 
-			const link = document.createElement("a");
-			link.className = "internal-link";
-			link.href = new URL(item.url.replace(/^\/+/, ""), siteBaseUrl).href;
-			link.textContent = item.title;
-			entry.append(link);
-			list.append(entry);
-		});
+const link = document.createElement("a");
+link.className = "internal-link";
+link.href = new URL(item.url.replace(/^\/+/, ""), siteBaseUrl).href;
+link.textContent = item.title;
+entry.append(link);
+list.append(entry);
+});
 
-		listRoot.replaceChildren(list);
-	} catch (error) {
-		console.error("Unable to load news articles.", error);
-		showMessage("News could not be loaded. Please try again later.", "alert");
-	}
+listRoot.replaceChildren(list);
+}
+
+typeButtons.forEach((button) => {
+button.addEventListener("click", () => {
+state.type = button.dataset.newsTypeFilter;
+render();
+});
+});
+
+campaignButtons.forEach((button) => {
+button.addEventListener("click", () => {
+state.campaign = button.dataset.newsCampaignFilter;
+render();
+});
+});
+
+showMessage("Loading news...");
+
+try {
+const newsUrl = new URL(listRoot.dataset.newsSource || "news.json", siteBaseUrl);
+const response = await fetch(newsUrl);
+if (!response.ok) {
+throw new Error(`News request failed with status ${response.status}.`);
+}
+
+const data = await response.json();
+if (!Array.isArray(data)) {
+throw new TypeError("The news data response must be an array.");
+}
+
+items = data;
+render();
+} catch (error) {
+console.error("Unable to load news articles.", error);
+showMessage("News could not be loaded. Please try again later.", "alert");
+}
 })();
