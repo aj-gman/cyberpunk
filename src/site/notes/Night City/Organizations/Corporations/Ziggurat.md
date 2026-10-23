@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/organizations/corporations/ziggurat/","tags":["#corporation"],"dg-note-properties":{"tags":["#corporation"]}}
+{"dg-publish":true,"permalink":"/night-city/organizations/corporations/ziggurat/","dg-note-properties":{}}
 ---
 
 #corporation 

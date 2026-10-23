@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-path":"Night City/Gigs/Fated, Faithful, Fatal.md","permalink":"/night-city/gigs/fated-faithful-fatal/","tags":["#gig","#4cw"],"dg-note-properties":{"tags":["#gig","#4cw"]}}
+{"dg-publish":true,"dg-path":"Night City/Gigs/Fated, Faithful, Fatal.md","permalink":"/night-city/gigs/fated-faithful-fatal/","dg-note-properties":{}}
 ---
 
 #gig #4cw [[Rules/NCOverdrive/Neon City Overdrive (HUB)\|Neon City Overdrive]] [[Night City/Fourth Corporate War\|Fourth Corporate War]]
@@ -33,7 +33,7 @@ A [[Night City/Organizations/Gangs/Maelstrom\|Maelstrom]] cold-called [[Night Ci
 - What happened to [[Night City/Characters/2021/gangers/Big Shark\|Big Shark]]?
 - What happened to [[Night City/Characters/2021/edgerunners/Lowkey\|Lowkey]]?
 - Session idea: [[Night City/Organizations/Corporations/Militech\|Militech]] in [[Night City/Locations/Districts/South Night City\|South Night City]], a la Judge Dredd
-- Session idea: Breaking [[Night City/Characters/2021/corpos/Bruce Skiv\|Bruce Skiv]] outta [[Night City/Organizations/NCPD\|NCPD]] prison
+- Session idea: Breaking [[Night City/Characters/2021/corpos/Bruce Skiv\|Bruce Skiv]] outta [[Night City/Organizations/States/NCPD\|NCPD]] prison
 
 
 [^1]: due to clashes yesterday leading to multiple deaths on both sides

@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/organizations/corporations/lazarus-pmc/","tags":["#corporation","#4cw"],"dg-note-properties":{"tags":["#corporation","#4cw"]}}
+{"dg-publish":true,"permalink":"/night-city/organizations/corporations/lazarus-pmc/","dg-note-properties":{}}
 ---
 
 #corporation #4cw 

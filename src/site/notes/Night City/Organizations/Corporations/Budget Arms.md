@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/organizations/corporations/budget-arms/","tags":["#corporation"],"dg-note-properties":{"tags":["#corporation"]}}
+{"dg-publish":true,"permalink":"/night-city/organizations/corporations/budget-arms/","dg-note-properties":{}}
 ---
 
 #corporation 

@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/organizations/corporations/arasaka/","tags":["#corporation"],"dg-note-properties":{"tags":["#corporation"]}}
+{"dg-publish":true,"permalink":"/night-city/organizations/corporations/arasaka/","dg-note-properties":{}}
 ---
 
 #corporation 

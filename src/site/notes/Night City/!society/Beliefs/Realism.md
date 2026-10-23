@@ -22,7 +22,7 @@ Most [[Night City/!society/Strata/Movers\|Movers]], [[Night City/!society/Strata
 [[Night City/!society/Beliefs/Realism\|Realists]] often still end up looking to [[Night City/!society/Beliefs/Idealism#Patrons\|Idealist Patrons]], although they perceive them as having stacked the deck in their favor in order to reach their position. Other [[Night City/!society/Beliefs/Realism\|Realists]] see legendary [[Night City/!society/Strata/Edgerunners\|Edgerunners]] as emblems of success. More often than not, the **Patrons** do not share the [[Night City/!society/Beliefs/Realism\|Realist]] ideology.
 - [[Night City/Characters/2021/edgerunners/Morgan Blackhand\|Morgan Blackhand]], the [[Rules/CPRED/Roles/Solo\|Solo]]'s [[Rules/CPRED/Roles/Solo\|Solo]]
 - [[Saburo Arasaka\|Saburo Arasaka]], CEO of [[Night City/Organizations/Corporations/Arasaka\|Arasaka]]
-- [[Night City/Characters/2021/corpos/Elizabeth Kress\|Elizabeth Kress]], ex-president of [[Night City/Organizations/Corporations/Militech\|Militech]] and Acting President of the [[Night City/Organizations/NUSA\|NUSA]]
+- [[Night City/Characters/2021/corpos/Elizabeth Kress\|Elizabeth Kress]], ex-president of [[Night City/Organizations/Corporations/Militech\|Militech]] and Acting President of the [[Night City/Organizations/States/NUSA\|NUSA]]
 - [[Eurotour/Characters/Core Crew/Jack Entropy\|Jack Entropy]], fake[^1] [[Night City/!society/Beliefs/Insurrectionism\|Insurrectionist]] [[Rules/CPRED/Roles/Rockerboy\|Rockerboy]]
 
 ### Further reading

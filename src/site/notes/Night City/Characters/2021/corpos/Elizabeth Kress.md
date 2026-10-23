@@ -4,7 +4,7 @@
 
 #npc #4cw [[Rules/CPRED/Roles/Exec\|Exec]] [[Night City/!society/Strata/Powerdealers\|Powerdealers]]
 
-Acting President of the [[Night City/Organizations/NUSA\|NUSA]] since 2018. POTNUS since 2021.
+Acting President of the [[Night City/Organizations/States/NUSA\|NUSA]] since 2018. POTNUS since 2021.
 Born in 1978 (age 43).
 
 ![NPC-kress1.jpg\|361](/img/user/Pictures/NPC-kress1.jpg)

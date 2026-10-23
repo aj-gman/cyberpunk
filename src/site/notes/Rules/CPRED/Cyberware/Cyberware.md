@@ -67,7 +67,7 @@ Although Cyberpunk 2020 and its newer brother, [[Rules/CPRED/Cyberpunk RED (HUB)
 
 [^8]: So, when using Kiroshi Deadlock Cyberoptics (Quality 4), the player would add a +4 to the Cyberpsychosis Tracker.
 
-[^10]: While [[Night City/Organizations/MAXTAC\|MAXTAC]] could use this on the Cyberpsychos they go up against, in a tactical operation throwing a syringe into a raging maniac's chest isn't quite the most efficient of putting them down.
+[^10]: While [[Night City/Organizations/States/MAXTAC\|MAXTAC]] could use this on the Cyberpsychos they go up against, in a tactical operation throwing a syringe into a raging maniac's chest isn't quite the most efficient of putting them down.
 
 [^21]: "I try to shatter the glass by using the points I have in Integumentary System. If you'll allow me, my elbow is covered by a thin line of flexible metal, which allows me to break the glass without getting any shards stuck." This would lower the already easy check of Everyday (13) to Simple (9). 
 

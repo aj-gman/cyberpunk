@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/organizations/corporations/zetatech/","tags":["#corporation"],"dg-note-properties":{"tags":["#corporation"]}}
+{"dg-publish":true,"permalink":"/night-city/organizations/corporations/zetatech/","tags":["corporation"],"dg-note-properties":{"tags":["corporation"]}}
 ---
 
 #### TICKER SYMBOL: ZTC

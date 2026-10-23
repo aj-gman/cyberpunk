@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/eurotour/adventures/7-big-trouble-in-neo-sov/","tags":["#gig","#4cw"],"dg-note-properties":{"tags":["#gig","#4cw"]}}
+{"dg-publish":true,"permalink":"/eurotour/adventures/7-big-trouble-in-neo-sov/","dg-note-properties":{}}
 ---
 
 #gig #4cw [[Rules/NCOverdrive/Neon City Overdrive (HUB)\|Neon City Overdrive (HUB)]]

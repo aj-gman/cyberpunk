@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-path":"Night City/Characters/corpos/Iwasao Koremichi.md","permalink":"/night-city/characters/corpos/iwasao-koremichi/","tags":["#npc","#4cw","#dead"],"dg-note-properties":{"tags":["#npc","#4cw","#dead"]}}
+{"dg-publish":true,"dg-path":"Night City/Characters/corpos/Iwasao Koremichi.md","permalink":"/night-city/characters/corpos/iwasao-koremichi/","dg-note-properties":{}}
 ---
 
 #npc #4cw #dead [[Night City/Organizations/Corporations/Arasaka\|Arasaka]] [[Rules/CPRED/Roles/Exec\|Exec]], within the Banking branch

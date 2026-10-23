@@ -11,7 +11,7 @@ GM Screen: [[Night City/Gigs/2021/Into the Lion's Den.canvas\|Into the Lion's De
 [[Night City/Characters/2021/edgerunners/Big Wu\|Big Wu]]'s contacts have responded: his friends can neutralize the threat, but you need to remove key VIPs from in/around the [[Night City/Others/Events/The Great Work\|punknaught]] before they can do it. Extract [[Night City/Characters/2021/gangers/Easy\|Easy]] and bring her to the [[Night City/Locations/Districts/City Center#Medical Center\|Med Center]].
 
 ## After-Action Report
-[[Night City/Characters/2021/edgerunners/Big Wu\|Big Wu]] came through, but his plan wasn't quite what [[Night City/Characters/!pc/The Gang\|The Gang]] were expecting: he reached out to contacts in the [[Night City/Organizations/NUSA\|NUSA]] and they were willing to intervene as long as they had a *casus belli*. [[Night City/Characters/!pc/The Gang\|The Gang]] decided against pursuing this, instead relying on their own efforts.
+[[Night City/Characters/2021/edgerunners/Big Wu\|Big Wu]] came through, but his plan wasn't quite what [[Night City/Characters/!pc/The Gang\|The Gang]] were expecting: he reached out to contacts in the [[Night City/Organizations/States/NUSA\|NUSA]] and they were willing to intervene as long as they had a *casus belli*. [[Night City/Characters/!pc/The Gang\|The Gang]] decided against pursuing this, instead relying on their own efforts.
 
 [[Night City/Characters/!pc/The Gang\|The Gang]] managed to infiltrate [[Night City/Organizations/Gangs/Maelstrom\|Maelstrom]] and, as [[Night City/Others/Events/The Great Work\|the Dreadnaught]] was finished, they assaulted the building, eventually engaging it on the road to [[Night City/Locations/Dependencies/Pacifica\|Pacifica]].
 

@@ -1,0 +1,10 @@
+---
+{"dg-publish":true,"permalink":"/night-city/organizations/states/maxtac/","tags":["#organization"],"dg-note-properties":{"tags":["#organization"]}}
+---
+
+#organization
+**MaxTac (Maximum Force Tactical Division)** is a specialized sub-group of the [[Night City/Organizations/States/NCPD\|NCPD]] tactical ops division. As a [C-SWAT](https://cyberpunk.fandom.com/wiki/C-SWAT "C-SWAT"), [[Night City/Organizations/States/MAXTAC\|MAXTAC]] specializes in dealing with dangerous [[Rules/CPRED/Cyberware/Cyberpsychosis Symptoms\|cyberpsychos]]. It has been known by different names such as **Cyborg Suppression Unit**, the **NCPD Psycho Squad**, **Max-Tac** or **MAX-TAC**. 
+
+![logo-maxtac.png\|410](/img/user/Pictures/logo-maxtac.png)
+
+![pic-maxtac.png\|560](/img/user/Pictures/pic-maxtac.png)

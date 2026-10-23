@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/locations/buildings/midnight-slut/","tags":["#location"],"dg-note-properties":{"tags":["#location"]}}
+{"dg-publish":true,"permalink":"/night-city/locations/buildings/midnight-slut/","dg-note-properties":{}}
 ---
 
 #location [[Night City/Locations/Districts/Nightlife District#Upper Eastside\|Nightlife District#Upper Eastside]]

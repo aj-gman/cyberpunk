@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/eurotour/characters/liudmila/","tags":["#npc","#4cw"],"dg-note-properties":{"tags":["#npc","#4cw"]}}
+{"dg-publish":true,"permalink":"/eurotour/characters/liudmila/","dg-note-properties":{}}
 ---
 
 #npc #4cw 

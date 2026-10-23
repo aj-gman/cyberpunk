@@ -22,7 +22,7 @@ People are not inherently against one another, it is the infrastructure of the s
 ### Patrons
 [[Night City/!society/Beliefs/Parallelism\|Parallelism]] is the most divided #ideology, since it relies on the frameworks provided by the Patrons on how to act in order to distance oneself from society at large. As such, Patrons might not agree with one another or even regard themselves as [[Night City/!society/Beliefs/Parallelism\|Parallelists]].
 - [[Night City/Characters/2021/edgerunners/Santiago Aldecado\|Santiago Aldecado]], leader of the [[Night City/Organizations/Gangs/Aldecaldos\|Aldecaldos]];
-- The [[Night City/Organizations/Highrider Confederation\|Highrider Confederation]], the independent high-tech colonists of LEO (Low Earth Orbit);
+- The [[Night City/Organizations/States/Highrider Confederation\|Highrider Confederation]], the independent high-tech colonists of LEO (Low Earth Orbit);
 - The [[Co-op\|Co-op]], a #corporation founded by a [New York](https://cyberpunk.fandom.com/wiki/New_York_City) [[Night City/!society/Strata/Edgerunners\|Edgerunner]] named [[Turkish\|Turkish]];
 
 ### Further reading

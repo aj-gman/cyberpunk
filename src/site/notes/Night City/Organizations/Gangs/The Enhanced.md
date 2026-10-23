@@ -2,7 +2,7 @@
 {"dg-publish":true,"permalink":"/night-city/organizations/gangs/the-enhanced/","tags":["boostergang"],"dg-note-properties":{"tags":["boostergang"]}}
 ---
 
->[!info] [[Night City/Organizations/NCPD\|NCPD]] DATA
+>[!info] [[Night City/Organizations/States/NCPD\|NCPD]] DATA
 **Noun:** Enhanced
 **Symbols:** Brains, Wiring, Short-circuits, "Zapping"
 >**Structure:** Accelerationist Doomsday Cult[^1]

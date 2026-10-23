@@ -19,6 +19,7 @@
 - Created [[Night City/Organizations/Corporations/!stock\|!stock]] and [[Night City/Organizations/Corporations/!stock-code\|!stock-code]], which are used to display current publicly-traded companies' value increases per month;
 - Fixed bugs on the website like the buttons displaying with errors.
 - Added new locations: [[Night City/Locations/Buildings/HQ (Heywood)\|HQ (Heywood)]], [[Night City/Locations/Buildings/Midnight Slut\|Midnight Slut]], [[Night City/Locations/Buildings/Afterlife\|Afterlife]]
+- Published information about the [[Night City/Others/Technology/NET\|NET]], [[Night City/Others/Technology/IntraNET\|IntraNET]] and [[Night City/Others/Technology/Data Fortress\|Data Fortress]]
 #### 16.10
 - Added [[Night City/Others/News\|News]] page that displays all news by date and campaign + random news
 - Finished all #ideology write-up
@@ -40,7 +41,7 @@
 #### 26.09
 - Changed glitch-header.njk
 - Finished write-up of [[Night City/!society/Beliefs/Insurrectionism\|Insurrectionism]]
-- Openedd NPC pages for all of the [[Night City/Locations/Night City#Government & Politics\|District Managers]]
+- Opened NPC pages for all of the [[Night City/Locations/Night City#Government & Politics\|District Managers]]
 - Created a few new pages for corporations
 #### 25.09
 - Finished most of the [[Night City/Locations/Night City\|Night City]] page; still needs writing: Education, Transportation, Economy
@@ -48,7 +49,7 @@
 - Added secondary pages that explain extra info from the [[Rules/Cyberpunk Universe\|Cyberpunk Universe]]: [[Night City/Others/Technology/AV\|AV]], [[Night City/Others/Technology/Drones\|Drones]], [[Night City/Others/Technology/NCART\|NCART]], [[Night City/Others/Combat Zone\|Combat Zone]]
 - Added basic information to all #stratum, cross-copied via [[Night City/Locations/Night City#Demographics\|Night City#Demographics]]
 - Updated [[z-SITE/AI Policy\|AI Policy]]
-- Added pages for [[Night City/Organizations/NCPD\|NCPD]] and [[Night City/Organizations/Gangs/Maelstrom\|Maelstrom]], marking the first detailed view on a #boostergang;
+- Added pages for [[Night City/Organizations/States/NCPD\|NCPD]] and [[Night City/Organizations/Gangs/Maelstrom\|Maelstrom]], marking the first detailed view on a #boostergang;
 #### 22.09
 - Updated [[NCOverdrive Sheet\|NCOverdrive Sheet]] to 1.2.1.0
 	- New Inventory System;

@@ -6,7 +6,7 @@
 >[!info]-
 [[Rules/CPRED/Cyberpunk RED (HUB)\|CPRED]] was used during the [[Eurotour/Eurotour\|Eurotour]] adventure because it was easier to access for a newly-formed group. Eventually, the number-crunching of the system was satisfying, yes, but also inhibited creative plays because the RaW had *only* small bonuses for such ideas. In the end, [[z-SITE/G-man\|G-man]] asked to run [[Rules/NCOverdrive/Neon City Overdrive (HUB)\|NCOverdrive]] during [[Eurotour/Adventures/7 Big Trouble in Neo-Sov\|7 Big Trouble in Neo-Sov]], which proved to be favorable to the players.
 > >[!tip]- If you're interested in seeing how [[Rules/CPRED/Cyberpunk RED (HUB)\|CPRED]] was used, check out:
-> > - [[Eurotour/Organizations/PKY\|PKY]], a [[Night City/Organizations/MAXTAC\|MAXTAC]]-like squad in the [[Eurotour/Locations/United Kingdom\|United Kingdom]]
+> > - [[Eurotour/Organizations/PKY\|PKY]], a [[Night City/Organizations/States/MAXTAC\|MAXTAC]]-like squad in the [[Eurotour/Locations/United Kingdom\|United Kingdom]]
 > > - [[Eurotour/Organizations/DangerCrewz\|DangerCrewz]], a boostergang in [[Eurotour/Adventures/6 Plundering Praha\|Czehoslovakia]]
 > > - [[Eurotour/Organizations/Neo-Sov\|Neo-Sov]] squad equipment
 
