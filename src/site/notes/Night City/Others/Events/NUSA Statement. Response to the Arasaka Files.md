@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true}
+{"dg-publish":true,"permalink":"/night-city/others/events/nusa-statement-response-to-the-arasaka-files/","dg-note-properties":{}}
 ---
 
 #news #4cw [[Night City/Organizations/Corporations/N54\|N54]], **July 2021**, [[Night City/Gigs/2021/Deep Six\|Deep Six]]
@@ -10,6 +10,6 @@ The following statement was issued by [[Night City/Characters/2021/corpos/Elizab
 An attempt that, of course, will fail, like all those before it.
 We cannot ignore the underlying issues.
 Rest assured that the relevant organizations within the [[Night City/Organizations/NUSA\|NUSA]] are investigating these claims, as well as their point of origin.
-To whoever released this information, then changed the [[NET\|NET]] fundamentally in order to preserve the so-called "[[Night City/Organizations/Corporations/Arasaka\|Arasaka]] Files": know we are coming for you with all we have.
+To whoever released this information, then changed the [[Night City/Others/Technology/NET\|NET]] fundamentally in order to preserve the so-called "[[Night City/Organizations/Corporations/Arasaka\|Arasaka]] Files": know we are coming for you with all we have.
 
 

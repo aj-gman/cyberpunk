@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true}
+{"dg-publish":true,"permalink":"/night-city/others/events/militech-executives-die-in-poison-attack/","dg-note-properties":{}}
 ---
 
 #news #4cw [[Night City/Organizations/Corporations/N54\|N54]], **July 2021**, [[Night City/Gigs/2021/Into the Lion's Den\|Into the Lion's Den]]

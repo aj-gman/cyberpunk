@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true}
+{"dg-publish":true,"permalink":"/night-city/others/events/night-city-bans-edgerunning/","dg-note-properties":{}}
 ---
 
 #news #4cw [[Night City/Organizations/Corporations/N54\|N54]] **August 2021**, [[Night City/Gigs/2021/Fated, Faithful, Fatal\|Fated, Faithful, Fatal]]
@@ -8,6 +8,6 @@ After fierce debates within the [[Night City/Locations/Night City#Government & P
 
 Picking up a #gig can, under the current law, lead to up to 3 years in maximum security prisons. Despite this ruling, [[Night City/!society/Strata/Edgerunners\|Edgerunners]] have continued to operate freely, claiming that the [[Night City/Organizations/NCPD\|NCPD]] cannot arrest all of them. 
 
-[[Night City/Organizations/NCPD#NETSEC\|NCPD's NETSEC division]] has called for intervention from authorized personnel since it has detected an increase in violent calls to action in [[NET\|the local Cyberspace]].
+[[Night City/Organizations/NCPD#NETSEC\|NCPD's NETSEC division]] has called for intervention from authorized personnel since it has detected an increase in violent calls to action in [[Night City/Others/Technology/NET\|the local Cyberspace]].
 
 [^1]: In a New City Democratic Mayorality, founding Members have a "+veto", meaning that they can **force** the implementation of a law instead of stopping it, as long as no other founding Member votes against it.

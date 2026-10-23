@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true}
+{"dg-publish":true,"permalink":"/night-city/organizations/highrider-confederation/","dg-note-properties":{}}
 ---
 
 #state

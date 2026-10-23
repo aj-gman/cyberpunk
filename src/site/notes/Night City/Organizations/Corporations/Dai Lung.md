@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true}
+{"dg-publish":true,"permalink":"/night-city/organizations/corporations/dai-lung/","dg-note-properties":{}}
 ---
 
 #corporation 

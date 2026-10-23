@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true}
+{"dg-publish":true,"permalink":"/night-city/organizations/corporations/stock/","dg-note-properties":{}}
 ---
 
 **Ticker snapshot (August 2021)**

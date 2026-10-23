@@ -1,8 +1,8 @@
 ---
-{"dg-publish":true,"tags":["#gig","#4cw"]}
+{"dg-publish":true,"dg-path":"Night City/Gigs/Fated, Faithful, Fatal.md","permalink":"/night-city/gigs/fated-faithful-fatal/","tags":["#gig","#4cw"],"dg-note-properties":{"tags":["#gig","#4cw"]}}
 ---
 
-#gig #4cw [[Rules/NCOverdrive/Neon City Overdrive (HUB)\|Neon City Overdrive]] [[Night City/Locations/Buildings/Fourth Corporate War\|Fourth Corporate War]]
+#gig #4cw [[Rules/NCOverdrive/Neon City Overdrive (HUB)\|Neon City Overdrive]] [[Night City/Fourth Corporate War\|Fourth Corporate War]]
 GM Screen (inaccessible): [[Night City/Gigs/2021/Fated, Faithful, Fatal.canvas\|Fated, Faithful, Fatal.canvas]]
 ## **...we're walking into a slaughterhouse... and the butcher's still there**
 *[[Night City/Characters/!pc/Hex\|Hex]] to [[Night City/Characters/!pc/The Gang\|The Gang]] upon entering the [[Night City/Locations/Buildings/Midnight Slut\|Midnight Slut]]*
@@ -26,7 +26,7 @@ Unfortunately, they didn't account for one thing: [[Night City/Characters/2021/e
 
 [[Night City/Characters/!pc/Ray Null\|Ray Null]] called [[Eurotour/Characters/Claire Monet\|Claire Monet]], asking her what the fuck was going on. She gave an unsatisfying answer to him - yet again they are on opposite sides, he's playing second fiddle for [[Night City/Organizations/Corporations/Militech\|Militech]] and she's sold her soul (or so it appears) to [[Night City/Organizations/Corporations/Arasaka\|Arasaka]].
 
-A [[Night City/Organizations/Gangs/Maelstrom\|Maelstrom]] called [[Night City/Characters/!pc/Hex\|Hex]], teasing him about catching [[Night City/Characters/!pc/Relevant NPCs/Nat\|Nat]] and her entire squad.
+A [[Night City/Organizations/Gangs/Maelstrom\|Maelstrom]] cold-called [[Night City/Characters/!pc/Hex\|Hex]], teasing him about having caught [[Night City/Characters/!pc/Relevant NPCs/Nat\|Nat]] and her entire squad.
 
 ## In the future
 - [[Night City/Characters/2021/edgerunners/Deadmeat\|Deadmeat]] has been improving the [[Rules/NCOverdrive/Basebuilding\|security systems]].

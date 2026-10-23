@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true}
+{"dg-publish":true,"permalink":"/rules/cpred/combat/gun-generator/","dg-note-properties":{}}
 ---
 
 Picks fron the [[Rules/CPRED/Combat/Combat#Gun Brands\|Brands]], [[Rules/CPRED/Combat/Combat#Core Rules\|Archetypes]] and [[Rules/CPRED/Combat/Combat#Gun Types\|Types]] to produce a randomly-generated [[Rules/CPRED/Combat/Combat#Core Rules\|gun]] and calculate its price. This price is the initial retail price at a certified gun shop, so getting the same gun from a black market dealer might prove more costly (or perhaps cheaper, if the gun has heat).
@@ -16,6 +16,6 @@ Picks fron the [[Rules/CPRED/Combat/Combat#Gun Brands\|Brands]], [[Rules/CPRED/C
 
 
 ### Generator
-<div><div><b>Brand:</b> <a href="Arasaka" class="internal-link">Arasaka</a></div><div><b>Archetype:</b> Heavy SMG</div><div><b>Gun Type:</b> <a href="Tech" class="internal-link">Tech</a></div><div><b>Price:</b> 225 eb</div></div><button class="gun-gen-btn"><span>Regenerate</span></button>
+<div><div><b>Brand:</b> <a href="Dai Lung" class="internal-link">Dai Lung</a></div><div><b>Archetype:</b> Sniper Rifle</div><div><b>Gun Type:</b> <a href="Tech" class="internal-link">Tech</a></div><div><b>Price:</b> 375 eb</div></div><button class="gun-gen-btn"><span>Regenerate</span></button>
 
 

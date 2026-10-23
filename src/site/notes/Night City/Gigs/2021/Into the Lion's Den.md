@@ -1,8 +1,8 @@
 ---
-{"dg-publish":true}
+{"dg-publish":true,"dg-path":"Night City/Gigs/Into the Lion's Den.md","permalink":"/night-city/gigs/into-the-lion-s-den/","dg-note-properties":{}}
 ---
 
-#gig #4cw [[Rules/NCOverdrive/Neon City Overdrive (HUB)\|Neon City Overdrive]] [[Night City/Locations/Buildings/Fourth Corporate War\|Fourth Corporate War]]
+#gig #4cw [[Rules/NCOverdrive/Neon City Overdrive (HUB)\|Neon City Overdrive]] [[Night City/Fourth Corporate War\|Fourth Corporate War]]
 GM Screen: [[Night City/Gigs/2021/Into the Lion's Den.canvas\|Into the Lion's Den.canvas]]
 ## Premise
 [[Night City/Others/Events/The Great Work\|The Great Work]] is finished and it begins to roll onto the streets of [[Night City/Locations/Districts/South Night City\|South Night City]].

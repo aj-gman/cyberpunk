@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true}
+{"dg-publish":true,"permalink":"/rules/cpred/combat/tech-guns/","dg-note-properties":{}}
 ---
 
 **Rule:** Uncharged, this gun deals 1d6 less than default. Charging (usually for 1 turn), user can fire through Thin Cover, ignoring half of the target's SP and dealing regular damage.

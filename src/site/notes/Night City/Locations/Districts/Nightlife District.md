@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"tags":["district","location"]}
+{"dg-publish":true,"permalink":"/night-city/locations/districts/nightlife-district/","tags":["#district","#location"],"dg-note-properties":{"tags":["#district","#location"]}}
 ---
 
 

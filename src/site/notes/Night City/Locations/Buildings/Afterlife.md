@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true}
+{"dg-publish":true,"permalink":"/night-city/locations/buildings/afterlife/","tags":["#location","#4cw"],"dg-note-properties":{"tags":["#location","#4cw"]}}
 ---
 
 #location #4cw [[Night City/Locations/Night City\|Night City]] [[Night City/Locations/Districts/City Center#Medical Center\|City Center#Medical Center]]
@@ -18,4 +18,4 @@ Although many people came here to hire [[Night City/!society/Strata/Edgerunners\
 ### Hades
 ![loc-afterlife2.png](/img/user/Pictures/loc-afterlife2.png)
 
-[^1]: Electronic Bulletin Board
+[^1]: Electronic Bulletin Board, managed via an [[Night City/Others/Technology/IntraNET\|IntraNET]]

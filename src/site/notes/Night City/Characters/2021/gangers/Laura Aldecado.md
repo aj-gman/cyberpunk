@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true}
+{"dg-publish":true,"dg-path":"Night City/Characters/gangers/Laura Aldecado.md","permalink":"/night-city/characters/gangers/laura-aldecado/","dg-note-properties":{}}
 ---
 
 #npc [[Night City/Organizations/Gangs/Aldecaldos\|Aldecaldos]] [[Rules/CPRED/Roles/Medtechie\|Medtechie]]

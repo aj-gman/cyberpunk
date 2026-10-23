@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true}
+{"dg-publish":true,"permalink":"/night-city/others/technology/ncart/","dg-note-properties":{}}
 ---
 
 Elevated Maglev Line that goes through [[Night City/Locations/Night City\|the Greater Night City Area]]

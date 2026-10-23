@@ -1,9 +1,9 @@
 ---
-{"dg-publish":true}
+{"dg-publish":true,"dg-path":"Night City/Gigs/Deep Six.md","permalink":"/night-city/gigs/deep-six/","tags":["#gig","#4cw"],"dg-note-properties":{"tags":["#gig","#4cw"]}}
 ---
 
 
-#gig #4cw [[Rules/NCOverdrive/Neon City Overdrive (HUB)\|Neon City Overdrive]] [[Night City/Locations/Buildings/Fourth Corporate War\|Fourth Corporate War]]
+#gig #4cw [[Rules/NCOverdrive/Neon City Overdrive (HUB)\|Neon City Overdrive]] [[Night City/Fourth Corporate War\|Fourth Corporate War]]
 GM Screen (inaccessible): [[Night City/Gigs/2021/Deep Six.canvas\|Deep Six.canvas]]
 
 ## Premise

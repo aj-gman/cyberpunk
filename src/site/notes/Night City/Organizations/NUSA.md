@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true}
+{"dg-publish":true,"permalink":"/night-city/organizations/nusa/","dg-note-properties":{}}
 ---
 
 #state

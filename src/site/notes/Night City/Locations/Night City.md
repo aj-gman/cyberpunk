@@ -1,10 +1,10 @@
 ---
-{"dg-publish":true,"tags":["location","4cw"]}
+{"dg-publish":true,"permalink":"/night-city/locations/night-city/","tags":["#location","#4cw"],"dg-note-properties":{"tags":["#location","#4cw"]}}
 ---
 
 The **Free City of Night City (NC)** is an autonomous city-state founded on the shores of [Del Coronado Bay](https://cyberpunk.fandom.com/wiki/Del_Coronado_Bay) by [[Night City/Characters/2021/corpos/Richard Night\|Richard Night]] in the 1990s, before and during [The Collapse](https://cyberpunk.fandom.com/wiki/The_Collapse_of_the_United_States). Formally located in [Northern California](https://cyberpunk.fandom.com/wiki/North_California), **Night City** functions without interference from **NorCal**, although the [[Night City/Organizations/NUSA\|NUSA]] built the [[NorCal Military Base\|NorCal Military Base]] in [[Night City/Locations/Dependencies/NorthOak\|NorthOak]] in 2016.
 
-It was originally known as **Coronado City**, before taking the name of its founder after [his unfortunate death in 1998](https://cyberpunk.fandom.com/wiki/Richard_Night#Night_Falls)
+It was originally known as **Coronado City**, before taking the name of its founder after [his unfortunate death in 1998](https://cyberpunk.fandom.com/wiki/Richard_Night#Night_Falls).
 ## History
 ### Inception
 [[Night City/Locations/Night City\|Night City]] came about in [[Night City/Characters/2021/corpos/Richard Night\|Richard Night]]'s mind in the early 1990s. A successful development mogul thanks to the advanced techniques him and his colleagues at [Halsey, Ferris and Night](https://cyberpunk.fandom.com/wiki/Halsey,_Ferris_and_Night?redirect=no "Halsey, Ferris and Night"), he rightfully predicted the impending [Collapse](https://cyberpunk.fandom.com/wiki/The_Collapse_of_the_United_States). With this solid portofolio, [[Night City/Characters/2021/corpos/Richard Night\|Night]] settled on a piece of land north of [Los Angeles](https://en.wikipedia.org/wiki/Los_Angeles) and got some highbrow angel investors to fund his venture in what came to be known as the **Coronado Partnership**[^1].
@@ -36,7 +36,7 @@ Since the end of the Mob War in 2011, [[Night City/Organizations/Corporations/Ar
 The government is **a New City Democratic Mayorality**, having a corporate-controlled city council that proposes and passes new legislation. Votes by the general population are cast via DataTerm, using [[Night City/Organizations/Corporations/EBM\|IdentiCard]] registration software. The City Council is composed of representatives chosen by the ten largest corporate investors (via taxes, donations, job opportunity creation etc.) in [[Night City/Locations/Night City\|Night City]].
 ### Districts
 The City is split between 6 internal districts and a [[Combat Zone\|Combat Zone]], with a City Manager assigned to protect and serve the area's best interest. In 2021, **all City Managers** were Corporate [[Rules/CPRED/Roles/Exec\|Executives]], nominated by majority vote from the **City Council**.
-- [[Night City/Locations/Districts/City Center\|City Center]], managed by [[Night City/Characters/2021/corpos/Iwasao Koremichi\|Iwasao Koremichi]]
+- [[Night City/Locations/Districts/City Center\|City Center]], ~~managed by [[Night City/Characters/2021/corpos/Iwasao Koremichi\|Iwasao Koremichi]]~~
 - [[Night City/Locations/Districts/Little Asia\|Little Asia]], managed by [[Night City/Characters/2021/corpos/Oburo Tatsunaga\|Oburo Tatsunaga]]
 - [[Night City/Locations/Districts/Little Europe\|Little Europe]], managed by [[Night City/Characters/2021/corpos/Romano Skiv\|Romano Skiv]]
 - [[Night City/Locations/Districts/Nightlife District\|Nightlife District]], managed by [[Night City/Characters/2021/corpos/Rory Steiger\|Rory Steiger]]
