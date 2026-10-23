@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true}
+{"dg-publish":true,"permalink":"/eurotour/adventures/7-big-trouble-in-neo-sov/","tags":["#gig","#4cw"],"dg-note-properties":{"tags":["#gig","#4cw"]}}
 ---
 
 #gig #4cw [[Rules/NCOverdrive/Neon City Overdrive (HUB)\|Neon City Overdrive (HUB)]]
@@ -13,7 +13,7 @@
 While I haven't quite written the story, I'm planning this to be a two-shot, as I think [[Eurotour/Locations/St. Petersburg\|St. Petersburg]] and [[Eurotour/Organizations/Neo-Sov\|Neo-Sov]] is too interesting to just do once. Also, I want to accommodate myself with [[Rules/NCOverdrive/Neon City Overdrive (HUB)\|Neon City Overdrive (HUB)]] without worrying about changing places (again).
 
 ## Prepping
-**Premise:** Infiltrating a **failed state** ([[Eurotour/Organizations/Neo-Sov\|Neo-Sov]] with **authoritarian police forces** vying for power. Go into [[Eurotour/Locations/St. Petersburg\|St. Petersburg]], a [[Night City/Organizations/Gangs/Organitskaya\|Organitskaya]]-managed city akin to [[Night City/Locations/Night City\|Night City]] and rescue [[Eurotour/Characters/Liudmila\|Liudmila]], [[Night City/Characters/!pc/OTHER/Lazarus\|Lazarus]]' aunt.
+**Premise:** Infiltrating a **failed state** ([[Eurotour/Organizations/Neo-Sov\|Neo-Sov]] with **authoritarian police forces** vying for power. Go into [[Eurotour/Locations/St. Petersburg\|St. Petersburg]], a [[Night City/Organizations/Gangs/Organitskaya\|Organitskaya]]-managed city akin to [[Night City/Locations/Night City\|Night City]] and rescue [[Eurotour/Characters/Liudmila\|Liudmila]], [[Night City/Characters/!pc/OTHER/Laz (GM)\|Laz (GM)]]' aunt.
 Any **EDGERUNNER** that doesn't belong to a group ([[Eurotour/Organizations/Neo-Sov\|Neo-Sov]], [[Night City/Organizations/Gangs/Organitskaya\|Organitskaya]] or [[Night City/Organizations/Corporations/SovOil\|SovOil]]) is against all three and willing to join **"The Cause"**.
 ### Theme
 - Everything is a market, everything can be bought and sold...for a price that can't be quantified.

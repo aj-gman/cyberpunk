@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true}
+{"dg-publish":true,"permalink":"/eurotour/adventures/2-european-graffiti/","dg-note-properties":{}}
 ---
 
 #gig #eurotour 

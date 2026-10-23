@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true}
+{"dg-publish":true,"permalink":"/eurotour/adventures/5-touring-the-margin/","tags":["#gig","#eurotour"],"dg-note-properties":{"tags":["#gig","#eurotour"]}}
 ---
 
 #gig #eurotour 
@@ -26,8 +26,8 @@ In [[Eurotour/Locations/Stockholm\|Stockholm]], they'll find that [[Eurotour/Cha
 #### Player Goals
 - [x] Resolve previous incidents
 	- [x] call from the Green Fairy (Venice) about the Black Flag anarchists swiping creds
-	- [x] [[Night City/Characters/!pc/OTHER/Lazarus\|Lazarus]]'s recurring nightmares relating to his aunt
-	- [x] Pick the new [[Night City/Organizations/Corporations/SovOil\|SovOil]] company member for [[Night City/Characters/!pc/OTHER/Lazarus\|Lazarus]]
+	- [x] [[Night City/Characters/!pc/OTHER/Laz (GM)\|Laz (GM)]]'s recurring nightmares relating to his aunt
+	- [x] Pick the new [[Night City/Organizations/Corporations/SovOil\|SovOil]] company member for [[Night City/Characters/!pc/OTHER/Laz (GM)\|Laz (GM)]]
 		- [ ] [[Night City/Organizations/Corporations/SovOil\|SovOil]] [[Rules/CPRED/Roles/Medtechie\|Surgeon]], [[Valodia\|Valodia]]
 	- [x] [[Night City/Characters/!pc/Hex\|Hex]], [[Night City/Characters/!pc/Relevant NPCs/Nat\|Natalie]] and [[Eurotour/Characters/Captain Effirm Danala\|the elephant in the room]]
 - [x] Settle down in [[Eurotour/Locations/Stockholm\|Stockholm]] and suspect that [[Eurotour/Characters/Lars-Olov Skeppsholm\|Lars-Olov Skeppsholm]] is missing.

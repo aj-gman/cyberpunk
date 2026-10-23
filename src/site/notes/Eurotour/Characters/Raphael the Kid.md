@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true}
+{"dg-publish":true,"permalink":"/eurotour/characters/raphael-the-kid/","dg-note-properties":{}}
 ---
 
 #npc #4cw 

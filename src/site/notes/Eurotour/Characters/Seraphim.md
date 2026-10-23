@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true}
+{"dg-publish":true,"permalink":"/eurotour/characters/seraphim/","dg-note-properties":{}}
 ---
 
 #npc #4cw 

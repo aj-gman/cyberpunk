@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true}
+{"dg-publish":true,"permalink":"/eurotour/characters/france/beatrice-fahida/","dg-note-properties":{}}
 ---
 
 #npc #eurotour [[Rules/CPRED/Roles/Fixer\|Fixer]]

@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true}
+{"dg-publish":true,"dg-path":"Player Characters/The Gang.md","permalink":"/player-characters/the-gang/","dg-note-properties":{}}
 ---
 
 [[Night City/Characters/!pc/The Gang\|The Gang]] is the faction started by [[Night City/Characters/!pc/OTHER/Hex (GM)\|Hex]] and [[Night City/Characters/!pc/OTHER/Ray (GM)\|Ray]] upon their arrival to [[Night City/Locations/Night City\|Night City]]. 

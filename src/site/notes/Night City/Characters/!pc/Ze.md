@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true}
+{"dg-publish":true,"dg-path":"Player Characters/Ze.md","permalink":"/player-characters/ze/","dg-note-properties":{}}
 ---
 
 #crew #4cw [[Rules/CPRED/Roles/Media\|Media]]
@@ -9,4 +9,4 @@
 
 [[Night City/Characters/!pc/Ze\|Ze]] is a street reporter, focusing most of her investigations on [[Night City/Organizations/Gangs/Boostergangs of Night City\|the gang culture]] in [[Night City/Locations/Night City\|Night City]], including befriending or interacting with lesser-known organizations like [[Night City/Organizations/Gangs/The Enhanced\|The Enhanced]], but also violent combat gangs like the [[Night City/Organizations/Gangs/Blood Razors\|Blood Razors]] and [[Night City/Organizations/Gangs/Maelstrom\|Maelstrom]].
 
-Since her joining up with [[Night City/Characters/!pc/The Gang\|The Gang]], she's been the impromptu camera, recording and mashing up the daring exploits they've gone up to into digestible social media content to scale [[Night City/Characters/!pc/Ray Null\|Ray Null]]'s popularity on the [[Night City/Locations/Night City\|NC]] [[NET\|NET]].
+Since her joining up with [[Night City/Characters/!pc/The Gang\|The Gang]], she's been the impromptu camera, recording and mashing up the daring exploits they've gone up to into digestible social media content to scale [[Night City/Characters/!pc/Ray Null\|Ray Null]]'s popularity on the [[Night City/Locations/Night City\|NC]] [[Night City/Others/Technology/NET\|NET]].

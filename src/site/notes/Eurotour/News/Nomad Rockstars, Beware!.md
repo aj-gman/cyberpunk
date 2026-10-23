@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true}
+{"dg-publish":true,"permalink":"/eurotour/news/nomad-rockstars-beware/","dg-note-properties":{}}
 ---
 
 #news #eurotour, **February 2021**, [[Eurotour/Adventures/1 Paper Trail\|1 Paper Trail]]

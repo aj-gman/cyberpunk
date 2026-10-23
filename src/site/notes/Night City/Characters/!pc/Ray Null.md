@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true}
+{"dg-publish":true,"dg-path":"Player Characters/Ray Null.md","permalink":"/player-characters/ray-null/","tags":["#crew","#eurotour","#4cw"],"dg-note-properties":{"tags":["#crew","#eurotour","#4cw"]}}
 ---
 
 

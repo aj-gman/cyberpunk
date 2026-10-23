@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true}
+{"dg-publish":true,"dg-path":"Night City/Characters/edgerunners/Big Wu.md","permalink":"/night-city/characters/edgerunners/big-wu/","dg-note-properties":{}}
 ---
 
 #npc #4cw [[Night City/Locations/Night City\|Night City]]
@@ -14,7 +14,7 @@ Eventually, however, [[Night City/Organizations/Corporations/Arasaka\|an Arasaka
 [[Night City/Characters/2021/edgerunners/Big Wu\|Big Wu]] was left with some cash, which he used to leave the area after being threatened by some East Coast MC with ties to the [[Night City/Organizations/Gangs/Tyger Clawz\|Tyger Clawz]].
 
 Once in [[Night City/Locations/Night City\|Night City]], he used the connections he had with [[Night City/Organizations/Corporations/Militech\|Militech]] to buy out a small property in [[Night City/Locations/Districts/Little Asia\|Japantown]] and turn it into [[The Golden Palace\|The Golden Palace]].
-By the [[Night City/Locations/Buildings/Fourth Corporate War\|Fourth Corporate War]], [[Night City/Characters/2021/edgerunners/Big Wu\|Big Wu]] is a sought-out [[Rules/CPRED/Roles/Fixer\|Fixer]] in his slice of the pie (i.e. [[Night City/Locations/Districts/Little Asia\|Japantown]]), with [[Night City/Organizations/Gangs/Tyger Clawz\|Tyger Clawz]] and [[Night City/Organizations/Gangs/Piranhas\|Piranhas]] fighting for gigs from him. He has some bad blood with the [[Night City/Organizations/Gangs/Maelstrom\|Maelstrom]], since their presence in [[Night City/Locations/Districts/Little Asia\|Little Asia]] is taking a hit on "good business".
+By the [[Night City/Fourth Corporate War\|Fourth Corporate War]], [[Night City/Characters/2021/edgerunners/Big Wu\|Big Wu]] is a sought-out [[Rules/CPRED/Roles/Fixer\|Fixer]] in his slice of the pie (i.e. [[Night City/Locations/Districts/Little Asia\|Japantown]]), with [[Night City/Organizations/Gangs/Tyger Clawz\|Tyger Clawz]] and [[Night City/Organizations/Gangs/Piranhas\|Piranhas]] fighting for gigs from him. He has some bad blood with the [[Night City/Organizations/Gangs/Maelstrom\|Maelstrom]], since their presence in [[Night City/Locations/Districts/Little Asia\|Little Asia]] is taking a hit on "good business".
 
 He first contacts [[Eurotour/The Crew\|The Crew]] upon their arrival in [[Night City/Locations/Night City\|Night City]] to offer them shelter and food. [[Night City/Characters/!pc/Hex\|Hex]]'s sister, [[Night City/Characters/!pc/Relevant NPCs/Nat\|Nat]], is friends with [[Night City/Characters/2021/edgerunners/Big Wu\|Big Wu]]. So he is playing at both ends.
 ![NPC-bigwu.jpg\|251](/img/user/Pictures/NPC-bigwu.jpg)

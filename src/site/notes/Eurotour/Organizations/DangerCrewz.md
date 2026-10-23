@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true}
+{"dg-publish":true,"permalink":"/eurotour/organizations/danger-crewz/","dg-note-properties":{}}
 ---
 
 #boostergang 

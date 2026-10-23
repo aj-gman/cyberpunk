@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true}
+{"dg-publish":true,"permalink":"/eurotour/adventures/3-trapped-animal/","tags":["#gig","#eurotour"],"dg-note-properties":{"tags":["#gig","#eurotour"]}}
 ---
 
 #gig #eurotour 
@@ -20,7 +20,7 @@ First thing [[Eurotour/Characters/Core Crew/Jack Entropy\|Jack Entropy]] does up
 	- [x] Introduce France as the top of society (rich, expensive, but most of all made up of a certain Intelligentsia, not just corpo douchebags)
 	- solve problems at the first Paris concert
 	- [x] [[Eurotour/Characters/Core Crew/Angus Kessler\|Angus Kessler]] introduces elements of "I've been in Paris before"
-	- [x] give corpo punishment: [[Night City/Characters/!pc/OTHER/Lazarus\|Lazarus]] receives a red envelope telling him he has been put on unpaid work for the duration of the Paris concerts for "not fulfilling expectations" - he has to work, but he loses access to his fancy items
+	- [x] give corpo punishment: [[Night City/Characters/!pc/OTHER/Laz (GM)\|Laz (GM)]] receives a red envelope telling him he has been put on unpaid work for the duration of the Paris concerts for "not fulfilling expectations" - he has to work, but he loses access to his fancy items
 		- [x] Enemy Netrunner: 14 dmg
 	- [[Eurotour/Characters/Core Crew/Jack Entropy\|Jack Entropy]] returns to his room with an array of teenage fans and security agents
 ## Scene 1 - The Party

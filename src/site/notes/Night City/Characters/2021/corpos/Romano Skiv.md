@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true}
+{"dg-publish":true,"dg-path":"Night City/Characters/corpos/Romano Skiv.md","permalink":"/night-city/characters/corpos/romano-skiv/","dg-note-properties":{}}
 ---
 
 #npc #4cw [[Night City/Organizations/Gangs/The Mob\|The Mob]] [[Rules/CPRED/Roles/Fixer\|Fixer]]

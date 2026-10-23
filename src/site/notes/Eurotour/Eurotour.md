@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true}
+{"dg-publish":true,"permalink":"/eurotour/eurotour/","tags":["#campaign","#eurotour"],"dg-note-properties":{"tags":["#campaign","#eurotour"]}}
 ---
 
 #campaign #eurotour [[Eurotour/The Crew\|The Crew]]
@@ -24,7 +24,7 @@ Eurostyle. Chill music, hot action, Brit streetscum, French goldenkids, rebels, 
 >- [[Eurotour/Adventures/4.5 Hunting the Hunter\|4.5 Hunting the Hunter]] ends the long-running conflict between [[Eurotour/Characters/Captain Effirm Danala\|Captain Effirm Danala]] and [[Night City/Characters/!pc/OTHER/Hex (GM)\|Hex]] in the [[Eurotour/Locations/Rhine-Ruhr Conurb\|Rhine-Ruhr Conurb]], after sneaking in via the [[Eurotour/Locations/Frankfurt Airport\|Frankfurt Airport]].
 >- [[Eurotour/Adventures/5 Touring the Margin\|5 Touring the Margin]] sends [[Eurotour/The Crew\|The Crew]] to the North, looking for a new tour date in the Scandinavian Peninsula, where they encounter [[Eurotour/Characters/Maddogs\|chromer bands]] and blacksite [[Eurotour/Organizations/MLA\|MLA]] agents.
 >- [[Eurotour/Adventures/6 Plundering Praha\|6 Plundering Praha]] is the final showdown, with [[Eurotour/The Crew\|The Crew]] holding their own in the crumbling state of [[Eurotour/News/Czechoslovakia no more\|Czechoslovakia]] as [[Eurotour/Characters/Core Crew/Jack Entropy\|Jack Entropy]] prepares for the last concert.
->- [[Eurotour/Adventures/7 Big Trouble in Neo-Sov\|7 Big Trouble in Neo-Sov]] serves as an epilogue, with [[Eurotour/The Crew\|The Crew]] going deep East in order to get [[Night City/Characters/!pc/OTHER/Lazarus\|Lazarus]]' loved ones out of harm's way.
+>- [[Eurotour/Adventures/7 Big Trouble in Neo-Sov\|7 Big Trouble in Neo-Sov]] serves as an epilogue, with [[Eurotour/The Crew\|The Crew]] going deep East in order to get [[Night City/Characters/!pc/OTHER/Laz (GM)\|Laz (GM)]]' loved ones out of harm's way.
 
 >[!info]- Core Crew
 >- [[Eurotour/Characters/Core Crew/Jack Entropy\|Jack Entropy]], the Main Man
@@ -34,4 +34,4 @@ Eurostyle. Chill music, hot action, Brit streetscum, French goldenkids, rebels, 
 >- [[Eurotour/Characters/Core Crew/Tinker\|Tinker]], Chief Technician
 >- [[Eurotour/Characters/Core Crew/Angus Kessler\|Angus]], Personal Bodyguard
 >- [[Eurotour/Characters/Core Crew/Tammi Lu\|Tammi Lu]], Ornament
->- [[Eurotour/The Crew\|The Crew]]: [[Night City/Characters/!pc/OTHER/Ray (GM)\|Ray Null]], [[Night City/Characters/!pc/OTHER/Hex (GM)\|Hex]], [[Night City/Characters/!pc/OTHER/Laz (GM)\|Lazarus]]
+>- [[Eurotour/The Crew\|The Crew]]: [[Night City/Characters/!pc/OTHER/Ray (GM)\|Ray Null]], [[Night City/Characters/!pc/OTHER/Hex (GM)\|Hex]], [[Night City/Characters/!pc/OTHER/Laz\|Lazarus]]

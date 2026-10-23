@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true}
+{"dg-publish":true,"permalink":"/eurotour/news/glamorous-deaths-in-the-swiss-alps/","dg-note-properties":{}}
 ---
 
 #news ZIG-POST 158901295-lavn2 #eurotour **April 2021,** [[Eurotour/Adventures/4.5 Hunting the Hunter\|4.5 Hunting the Hunter]]

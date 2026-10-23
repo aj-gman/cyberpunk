@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true}
+{"dg-publish":true,"permalink":"/eurotour/adventures/6-plundering-praha/","tags":["#gig","#eurotour"],"dg-note-properties":{"tags":["#gig","#eurotour"]}}
 ---
 
 #gig #eurotour 
@@ -74,7 +74,7 @@ Premise: [[Eurotour/The Crew\|The Crew]] stops for the final show in the [[Eurot
 #### Storyteller Goals
 - [x] [[Eurotour/Characters/Col. Dr. Barcak\|Col. Dr. Barcak]] knows [[Eurotour/The Crew\|The Crew]]'s dirty secrets and she's even willing to exchange information on [[Eurotour/Characters/Core Crew/Tammi Lu\|Tammi Lu]], something she knows [[Night City/Characters/!pc/Hex\|Hex]] will care about.
 - [x] Anatoly gonna call the [[Rules/CPRED/Roles/Medtechie\|Medtechie]]
-	- [x] Nope, [[Night City/Characters/!pc/OTHER/Lazarus\|Lazarus]] has to pay him. But he can wait.
+	- [x] Nope, [[Night City/Characters/!pc/OTHER/Laz (GM)\|Laz (GM)]] has to pay him. But he can wait.
 - [ ] Repercussions for [[Night City/Organizations/Corporations/SovOil\|SovOil]] friendly-fire
 	- [ ] Additional problems: they'll be taken in by [[Night City/Organizations/Corporations/Petrochem\|Petrochem]] agents and scrapped. You can't let that happen. *"Undo the mess you made, comrade."*
 - [x] **More Combat, More opportunities for interrogations**

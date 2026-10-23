@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true}
+{"dg-publish":true,"permalink":"/eurotour/locations/venice/","dg-note-properties":{}}
 ---
 
 #location #eurotour 

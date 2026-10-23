@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true}
+{"dg-publish":true,"dg-path":"Player Characters/Hex.md","permalink":"/player-characters/hex/","tags":["#crew","#eurotour","#4cw","#boostergang"],"dg-note-properties":{"tags":["#crew","#eurotour","#4cw","#boostergang"]}}
 ---
 
 

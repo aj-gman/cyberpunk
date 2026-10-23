@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true}
+{"dg-publish":true,"permalink":"/eurotour/the-crew/","tags":["#crew","#eurotour"],"dg-note-properties":{"tags":["#crew","#eurotour"]}}
 ---
 
 #crew #eurotour 
@@ -7,6 +7,6 @@
 	- [[Night City/Characters/!pc/OTHER/Ray (GM)\|Find out more about Ray.]]
 - [[Night City/Characters/!pc/Hex\|Hex]], [[Rules/CPRED/Roles/Techie\|Techie]] played by **Jake**
 	- [[Night City/Characters/!pc/OTHER/Hex (GM)\|Find out more about Hex.]]
-- [[Night City/Characters/!pc/OTHER/Lazarus\|Lazarus]], [[Rules/CPRED/Roles/Netrunner\|Netrunner]] played by **Sasha**
-	- [[Night City/Characters/!pc/OTHER/Laz (GM)\|Find out more about Lazarus.]]
+- [[Night City/Characters/!pc/OTHER/Laz (GM)\|Laz (GM)]], [[Rules/CPRED/Roles/Netrunner\|Netrunner]] played by **Sasha**
+	- [[Night City/Characters/!pc/OTHER/Laz\|Find out more about Lazarus.]]
 

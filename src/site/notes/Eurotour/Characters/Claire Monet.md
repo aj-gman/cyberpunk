@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true}
+{"dg-publish":true,"permalink":"/eurotour/characters/claire-monet/","dg-note-properties":{}}
 ---
 
 #npc #eurotour [[Rules/CPRED/Roles/Lawman\|Lawman]], works for Interpol.

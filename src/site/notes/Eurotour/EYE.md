@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true}
+{"dg-publish":true,"permalink":"/eurotour/eye/","dg-note-properties":{}}
 ---
 
 ![Tech-EYE.jpg\|right\|300](/img/user/Pictures/Tech-EYE.jpg)

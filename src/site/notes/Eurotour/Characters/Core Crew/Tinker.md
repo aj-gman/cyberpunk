@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true}
+{"dg-publish":true,"permalink":"/eurotour/characters/core-crew/tinker/","dg-note-properties":{}}
 ---
 
 #npc #eurotour [[Rules/CPRED/Roles/Techie\|Techie]]

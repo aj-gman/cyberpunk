@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true}
+{"dg-publish":true,"permalink":"/eurotour/news/who-let-entropy-have-a-chainsaw/","dg-note-properties":{}}
 ---
 
 #news #eurotour **April 2021** [[Eurotour/Adventures/4 Menace in Venice\|4 Menace in Venice]]
@@ -10,6 +10,6 @@ But you came here for the juicy deets - did [[Eurotour/Characters/Core Crew/Jack
 
 Remember that moment during the concert when [[Eurotour/Characters/Core Crew/Jack Entropy\|Entropy]] grabbed a chainsaw from backstage and began cutting a portion of the stage? Apparently, `anonymous sources from amongst the workers`  claim that someone had rigged a nuclear apparatus enough to detonate the entire Veneto region!
 
-Although [[Eurotour/Characters/Core Crew/Jimenez\|Entropy's manager]] has declined to comment, stories on his [[Ziggurat\|Ziggurat]] account keep hinting at the "looming war between [[Night City/Organizations/Corporations/Militech\|the Bear]] and [[Night City/Organizations/Corporations/Arasaka\|the Bull]]" - is this another marketing stunt for the upcoming [[Night City/Locations/Night City\|Night City]] concert set for next year, engineered by [[Eurotour/Characters/Core Crew/Catherine Clements\|Entropy's very own deadly blonde]]?
+Although [[Eurotour/Characters/Core Crew/Jimenez\|Entropy's manager]] has declined to comment, stories on his [[Night City/Organizations/Corporations/Ziggurat\|Ziggurat]] account keep hinting at the "looming war between [[Night City/Organizations/Corporations/Militech\|the Bear]] and [[Night City/Organizations/Corporations/Arasaka\|the Bull]]" - is this another marketing stunt for the upcoming [[Night City/Locations/Night City\|Night City]] concert set for next year, engineered by [[Eurotour/Characters/Core Crew/Catherine Clements\|Entropy's very own deadly blonde]]?
 
 *Before we go, we'd like to give a special shoutout to [[Night City/Organizations/Corporations/Wortrac\|Wortrac]], subsidiary of [[Night City/Organizations/Corporations/CINO\|CINO]], for sponsoring this segment.* `[...]`

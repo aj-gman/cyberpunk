@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true}
+{"dg-publish":true,"dg-path":"Night City/Characters/edgerunners/Bes Isis.md","permalink":"/night-city/characters/edgerunners/bes-isis/","dg-note-properties":{}}
 ---
 
 #npc #4cw [[Rules/CPRED/Roles/Media\|Media]], [[Night City/!society/Beliefs/Parallelism\|Parallelist]]

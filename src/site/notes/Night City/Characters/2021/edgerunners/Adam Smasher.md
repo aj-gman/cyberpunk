@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true}
+{"dg-publish":true,"dg-path":"Night City/Characters/edgerunners/Adam Smasher.md","permalink":"/night-city/characters/edgerunners/adam-smasher/","dg-note-properties":{}}
 ---
 
 #npc #4cw [[Night City/Organizations/Corporations/Arasaka\|Arasaka]] [[Rules/CPRED/Roles/Solo\|Solo]]

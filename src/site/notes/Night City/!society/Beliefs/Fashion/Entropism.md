@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"tags":["fashion"]}
+{"dg-publish":true,"dg-path":"Night City/Society/Beliefs/Fashion/Entropism.md","permalink":"/night-city/society/beliefs/fashion/entropism/","tags":["fashion"],"dg-note-properties":{"tags":["fashion"]}}
 ---
 
 Closely associated with [[Night City/!society/Beliefs/Parallelism\|Parallelism]]. 

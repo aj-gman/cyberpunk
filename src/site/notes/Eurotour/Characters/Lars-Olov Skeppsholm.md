@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true}
+{"dg-publish":true,"permalink":"/eurotour/characters/lars-olov-skeppsholm/","dg-note-properties":{}}
 ---
 
 
