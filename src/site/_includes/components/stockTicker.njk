@@ -1,0 +1,27 @@
+{#- Expects stockTickerSlot to be set by the caller: "navbar", "filetree", or "content". -#}
+{% macro tickerItem(item, linked) %}
+<span class="stock-ticker__item">
+  {% if linked %}<a class="stock-ticker__link" href="{{ item.href }}">{% else %}<span class="stock-ticker__link">{% endif %}
+    <span class="stock-ticker__symbol">{{ item.ticker }}</span>
+    {%- if item.direction != "neutral" %}
+    <span class="stock-ticker__arrow stock-ticker__change--{{ item.direction }}" aria-hidden="true">{{ "▲" if item.direction == "positive" else "▼" }}</span>
+    {%- endif %}
+    <span class="stock-ticker__change stock-ticker__change--{{ item.direction }}">{{ item.amount }}%</span>
+  {% if linked %}</a>{% else %}</span>{% endif %}
+</span>
+{% endmacro %}
+{% if stockTicker.items.length and page.url != "/night-city/organizations/corporations/stock/" %}
+<div class="stock-ticker stock-ticker--{{ stockTickerSlot }}{% if stockTickerSlot == 'content' %} stock-ticker--standalone{% endif %}" role="region" aria-label="Stock ticker, snapshot {{ stockTicker.timestamp }}">
+  <span class="stock-ticker__snapshot">{{ stockTicker.timestamp }}</span>
+  <div class="stock-ticker__viewport">
+    <div class="stock-ticker__track">
+      <div class="stock-ticker__group">
+        {% for item in stockTicker.items %}{{ tickerItem(item, true) }}{% endfor %}
+      </div>
+      <div class="stock-ticker__group stock-ticker__group--duplicate" aria-hidden="true">
+        {% for item in stockTicker.items %}{{ tickerItem(item, false) }}{% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}

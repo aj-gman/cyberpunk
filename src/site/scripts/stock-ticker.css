@@ -116,3 +116,19 @@
   box-sizing: border-box;
   background: var(--background-secondary, var(--surface, #0d0e14));
 }
+
+/* One slot per layout. The 1000px breakpoint matches isDesktop in filetree.njk. */
+.stock-ticker--content {
+  display: none;
+}
+
+@media (min-width: 1000px) {
+  .stock-ticker--filetree {
+    display: none;
+  }
+
+  .stock-ticker--content {
+    display: flex;
+  }
+}
+

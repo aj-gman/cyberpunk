@@ -49,6 +49,7 @@
                     {% endfor %}
                 </div>
 
+                {% set stockTickerSlot = "filetree" %}{% include "components/stockTicker.njk" %}
                 <div class="navbar-actions">
                     {% set slotName = "navbar.actions" %}{% include "components/pluginSlot.njk" %}
                     {% include "components/pagePanelButton.njk" %}

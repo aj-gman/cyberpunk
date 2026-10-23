@@ -23,6 +23,7 @@ permalink: "notes/{{ page.fileSlug | slugify }}/"
     {% include "components/pluginRegion.njk" %}
 
     <main class="content cm-s-obsidian print {{contentClasses}}">
+      {% if settings.dgShowFileTree === true %}{% set stockTickerSlot = "content" %}{% include "components/stockTicker.njk" %}{% endif %}
       <header>
         {% if settings.dgShowInlineTitle === true %}
           <h1 data-note-icon="{% if noteIcon %}{{noteIcon}}{% else %}{{meta.noteIconsSettings.default}}{% endif %}">{% if title %}{{ title }}{% else %}{{ page.fileSlug }}{% endif %}</h1>

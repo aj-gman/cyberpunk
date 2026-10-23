@@ -9,6 +9,7 @@
                 {% endif %}
             </a>
         </div>
+        {% set stockTickerSlot = "navbar" %}{% include "components/stockTicker.njk" %}
         <div class="navbar-actions">
             {% set slotName = "navbar.actions" %}{% include "components/pluginSlot.njk" %}
             {% include "components/pagePanelButton.njk" %}
@@ -16,6 +17,7 @@
     </nav>
     {%else%}
     <div class="empty-navbar" >
+        {% set stockTickerSlot = "navbar" %}{% include "components/stockTicker.njk" %}
         {% set slotName = "navbar.actions" %}{% include "components/pluginSlot.njk" %}
     </div>
 {%endif%}
