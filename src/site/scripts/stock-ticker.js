@@ -9,10 +9,59 @@
   const stockPath = stockUrl.pathname.replace(/\/+$/, "");
   if (currentPath === stockPath) return;
 
-  const host = document.querySelector(".navbar, .empty-navbar");
-  const standaloneContent = host ? null : document.querySelector(".content");
-  const target = host || document.body;
-  if (!target || target.querySelector(".stock-ticker")) return;
+  const barId = "stock-ticker-bar";
+
+  // Alpine toggles wrappers with x-show / x-if, including modifiers such as x-show.important.
+  function isAlpineToggled(element) {
+    for (let node = element; node && node !== document.body; node = node.parentElement) {
+      if (Array.from(node.attributes).some((attr) => /^x-(show|if)(\.|$)/.test(attr.name))) return true;
+    }
+    return false;
+  }
+
+  function isVisible(element) {
+    return element.getClientRects().length > 0;
+  }
+
+  // Prefer a navbar that Alpine never toggles. Otherwise use the page column,
+  // which renders at every width. Returns null when neither is visible.
+  function findMount() {
+    const navbar = Array.from(document.querySelectorAll(".navbar, .empty-navbar")).find(
+      (element) => !isAlpineToggled(element) && isVisible(element)
+    );
+    if (navbar) {
+      return {
+        parent: navbar,
+        before: navbar.querySelector(".navbar-actions") || navbar.firstChild,
+        standalone: false,
+      };
+    }
+
+    const content = document.querySelector(".content");
+    if (content && isVisible(content)) {
+      return { parent: content, before: content.firstChild, standalone: true };
+    }
+    return null;
+  }
+
+  // Alpine evaluates x-show after its own initialization, so visibility is only measured after that.
+  function whenLayoutReady() {
+    return new Promise((resolve) => {
+      const finish = () => resolve();
+      document.addEventListener("alpine:initialized", finish, { once: true });
+      setTimeout(finish, 3000);
+
+      const afterLoad = () =>
+        requestAnimationFrame(() => {
+          if (!window.Alpine) finish();
+        });
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", afterLoad, { once: true });
+      } else {
+        afterLoad();
+      }
+    });
+  }
 
   const cacheKey = "stock-ticker-snapshot-v1";
   const cacheDuration = 5 * 60 * 1000;
@@ -158,9 +207,10 @@
     parent.append(entry);
   }
 
-  function render(snapshot) {
+  function render(snapshot, mount) {
     const bar = document.createElement("div");
-    bar.className = `stock-ticker${host ? "" : " stock-ticker--standalone"}`;
+    bar.id = barId;
+    bar.className = `stock-ticker${mount.standalone ? " stock-ticker--standalone" : ""}`;
     bar.setAttribute("role", "region");
     bar.setAttribute("aria-label", `Stock ticker, snapshot ${snapshot.timestamp}`);
 
@@ -185,8 +235,8 @@
     viewport.append(track);
     bar.append(viewport);
 
-    const actions = host?.querySelector(".navbar-actions");
-    target.insertBefore(bar, standaloneContent || actions || target.firstChild);
+    if (document.getElementById(barId)) return;
+    mount.parent.insertBefore(bar, mount.before);
   }
 
   function loadStyles() {
@@ -203,7 +253,11 @@
     });
   }
 
-  getSnapshot()
-    .then((snapshot) => loadStyles().then(() => render(snapshot)))
+  whenLayoutReady()
+    .then(() => {
+      const mount = findMount();
+      if (!mount || document.getElementById(barId)) return;
+      return getSnapshot().then((snapshot) => loadStyles().then(() => render(snapshot, mount)));
+    })
     .catch(() => {});
 })();
