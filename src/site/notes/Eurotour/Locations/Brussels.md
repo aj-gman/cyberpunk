@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/eurotour/locations/brussels/","dg-note-properties":{}}
+{"dg-publish":true,"dg-note-properties":{}}
 ---
 
 #location #eurotour 

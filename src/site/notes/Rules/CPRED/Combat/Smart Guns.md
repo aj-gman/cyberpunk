@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/rules/cpred/combat/smart-guns/","dg-note-properties":{}}
+{"dg-publish":true,"dg-note-properties":{}}
 ---
 
 **Rule:** Even on a miss, every shot deals minimum damage. User rolls half of the dice pool (rounding down) of the gun's damage. Spending 1 turn for a Called Shot with a [[Rules/CPRED/Cyberware/Cyberware\|Smart Link]] completely negates the penalty (-8).

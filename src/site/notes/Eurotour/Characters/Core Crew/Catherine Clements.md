@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/eurotour/characters/core-crew/catherine-clements/","dg-note-properties":{}}
+{"dg-publish":true,"dg-note-properties":{}}
 ---
 
 #npc #eurotour 

@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/rules/cpred/combat/gun-generator/","dg-note-properties":{}}
+{"dg-publish":true,"dg-note-properties":{}}
 ---
 
 Picks fron the [[Rules/CPRED/Combat/Combat#Gun Brands\|Brands]], [[Rules/CPRED/Combat/Combat#Core Rules\|Archetypes]] and [[Rules/CPRED/Combat/Combat#Gun Types\|Types]] to produce a randomly-generated [[Rules/CPRED/Combat/Combat#Core Rules\|gun]] and calculate its price. This price is the initial retail price at a certified gun shop, so getting the same gun from a black market dealer might prove more costly (or perhaps cheaper, if the gun has heat).

@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-path":"Night City/Society/Strata/Mallplexers.md","permalink":"/night-city/society/strata/mallplexers/","dg-note-properties":{}}
+{"dg-publish":true,"dg-path":"Night City/Society/Strata/Mallplexers.md","dg-note-properties":{}}
 ---
 
 #stratum 

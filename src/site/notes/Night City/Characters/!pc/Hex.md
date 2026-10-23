@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-path":"Player Characters/Hex.md","permalink":"/player-characters/hex/","dg-note-properties":{"permalink":"/night-city/characters/pc/hex/"}}
+{"dg-publish":true,"dg-path":"Player Characters/Hex.md","dg-note-properties":{}}
 ---
 
 

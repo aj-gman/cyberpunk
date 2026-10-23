@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/rules/cpred/drugs/regen-21/","dg-note-properties":{}}
+{"dg-publish":true,"dg-note-properties":{}}
 ---
 
 > [[Rules/CPRED/Quality\|Common Price:]] Cheap (10-20eb)

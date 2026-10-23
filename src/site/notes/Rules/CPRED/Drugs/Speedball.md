@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/rules/cpred/drugs/speedball/","dg-note-properties":{}}
+{"dg-publish":true,"dg-note-properties":{}}
 ---
 
 A type of [[Rules/CPRED/Drugs/Drugs\|street drug]]. Probably the single-easiest drug to O.D. on, SpeedBalls are a manufactured combination of a SynthCoke and Di-Oxy-Heroin analog. Cheap to get and probably the hottest crank job you can inject on planet Earth, Speedballs wind you up so high that nothing will wind you down short of forced unconciousness or death.

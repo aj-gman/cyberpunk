@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-path":"Night City/Characters/gangers/Who-Who.md","permalink":"/night-city/characters/gangers/who-who/","dg-note-properties":{}}
+{"dg-publish":true,"dg-path":"Night City/Characters/gangers/Who-Who.md","dg-note-properties":{}}
 ---
 
 #npc #4cw [[Night City/Organizations/Gangs/Piranhas\|Piranhas]], [[Rules/CPRED/Roles/Solo\|Solo]]/[[Rules/CPRED/Roles/Lawman\|Lawman]]

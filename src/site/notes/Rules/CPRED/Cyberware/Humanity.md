@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/rules/cpred/cyberware/humanity/","dg-note-properties":{}}
+{"dg-publish":true,"dg-note-properties":{}}
 ---
 
 Humanity is a derived statistic in [[Rules/CPRED/Cyberpunk RED (HUB)\|Cyberpunk RED (HUB)]] used to account for [[Rules/CPRED/Cyberware/Cyberware\|Rules/CPRED/Cyberware/Cyberware]] usage and track [[Night City/Others/About Cyberpsychosis\|About Cyberpsychosis]], punishing the player for installing too much [[Rules/CPRED/Cyberware/Cyberware\|Rules/CPRED/Cyberware/Cyberware]].

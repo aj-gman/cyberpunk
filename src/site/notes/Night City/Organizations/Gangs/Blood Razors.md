@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/organizations/gangs/blood-razors/","dg-note-properties":{}}
+{"dg-publish":true,"dg-note-properties":{}}
 ---
 
 #boostergang [[Night City/Locations/Districts/South Night City\|South Night City]]

@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/locations/buildings/fourth-corporate-war/","tags":["#campaign","#4cw","#ideology"],"dg-note-properties":{"tags":["#campaign","#4cw","#ideology"]}}
+{"dg-publish":true,"tags":["#campaign","#4cw","#ideology"],"dg-note-properties":{"tags":["#campaign","#4cw","#ideology"]}}
 ---
 
 #campaign #4cw

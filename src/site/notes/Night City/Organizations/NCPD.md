@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/organizations/ncpd/","tags":["organization"],"dg-note-properties":{"tags":["organization"]}}
+{"dg-publish":true,"tags":["organization"],"dg-note-properties":{"tags":["organization"]}}
 ---
 
 [[Night City/Locations/Night City\|Night City]]'s Police Department, made possible by state funding and private sponsorships.

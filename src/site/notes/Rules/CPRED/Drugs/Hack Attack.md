@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/rules/cpred/drugs/hack-attack/","dg-note-properties":{}}
+{"dg-publish":true,"dg-note-properties":{}}
 ---
 
 A type of [[Rules/CPRED/Drugs/Drugs\|street drug]]. Probably the cleanest accelerator drug on the modern market, Hack Attack is also one of the most expensive. Boosting both the user's Intelligence and Reflexes with no side effects beyond the feeling of absolute superiority above all others and a strong sense of anxiety while coming down. Hack Attack sees use mostly by [[Rules/CPRED/Roles/Netrunner\|Netrunners]] and some Edgerunners.

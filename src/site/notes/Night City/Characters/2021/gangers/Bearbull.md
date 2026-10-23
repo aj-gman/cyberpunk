@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-path":"Night City/Characters/gangers/Bearbull.md","permalink":"/night-city/characters/gangers/bearbull/","dg-note-properties":{}}
+{"dg-publish":true,"dg-path":"Night City/Characters/gangers/Bearbull.md","dg-note-properties":{}}
 ---
 
 #npc #4cw [[Night City/Organizations/Gangs/Piranhas\|Piranhas]], [[Rules/CPRED/Roles/Exec\|Exec]]/[[Rules/CPRED/Roles/Media\|Media]]

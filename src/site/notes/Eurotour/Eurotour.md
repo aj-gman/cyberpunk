@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/eurotour/eurotour/","dg-note-properties":{}}
+{"dg-publish":true,"dg-note-properties":{}}
 ---
 
 #campaign #eurotour [[Eurotour/The Crew\|The Crew]]

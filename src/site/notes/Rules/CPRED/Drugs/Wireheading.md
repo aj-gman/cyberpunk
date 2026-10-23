@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/rules/cpred/drugs/wireheading/","dg-note-properties":{}}
+{"dg-publish":true,"dg-note-properties":{}}
 ---
 
 > [[Rules/CPRED/Quality\|Common Price:]] Strength-reliant (10-500eb)

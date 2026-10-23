@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-path":"NCOverdrive (HUB).md","permalink":"/nc-overdrive-hub/","dg-note-properties":{"permalink":"/nc-overdrive-hub/"}}
+{"dg-publish":true,"dg-path":"NCOverdrive (HUB).md","dg-note-properties":{}}
 ---
 
 

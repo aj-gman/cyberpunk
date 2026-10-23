@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/rules/cpred/drugs/synth-coke/","dg-note-properties":{}}
+{"dg-publish":true,"dg-note-properties":{}}
 ---
 
 > [[Rules/CPRED/Quality\|Common Price:]] Everyday (20-50eb)

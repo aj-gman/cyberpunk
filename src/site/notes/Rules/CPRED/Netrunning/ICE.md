@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/rules/cpred/netrunning/ice/","dg-note-properties":{}}
+{"dg-publish":true,"dg-note-properties":{}}
 ---
 
 **Intrusion Countermeasures Electronics**, commonly abbreviated to **ICE**, is a type of [Net](https://cyberpunk.fandom.com/wiki/Net "Net") security in the _[Cyberpunk](https://cyberpunk.fandom.com/wiki/Cyberpunk_series "Cyberpunk series")_ universe.

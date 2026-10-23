@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/rules/homebrew/","dg-note-properties":{}}
+{"dg-publish":true,"dg-note-properties":{}}
 ---
 
 

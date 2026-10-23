@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-path":"Player Characters/Ray Null.md","permalink":"/player-characters/ray-null/","dg-note-properties":{"permalink":"/night-city/characters/pc/ray-null/"}}
+{"dg-publish":true,"dg-path":"Player Characters/Ray Null.md","dg-note-properties":{}}
 ---
 
 

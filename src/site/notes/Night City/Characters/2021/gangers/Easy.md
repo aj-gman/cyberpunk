@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-path":"Night City/Characters/gangers/Easy.md","permalink":"/night-city/characters/gangers/easy/","dg-note-properties":{}}
+{"dg-publish":true,"dg-path":"Night City/Characters/gangers/Easy.md","dg-note-properties":{}}
 ---
 
 #npc #4cw [[Night City/Organizations/Gangs/Maelstrom\|Maelstrom]] [[Rules/CPRED/Roles/Techie\|Techie]]

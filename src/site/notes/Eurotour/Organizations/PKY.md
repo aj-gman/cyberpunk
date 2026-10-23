@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/eurotour/organizations/pky/","dg-note-properties":{}}
+{"dg-publish":true,"dg-note-properties":{}}
 ---
 
 #organization as part of the [[Eurotour/Organizations/MLA\|MLA]]

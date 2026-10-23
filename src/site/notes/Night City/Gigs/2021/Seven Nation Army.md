@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-path":"Night City/Gigs/Seven Nation Army.md","permalink":"/night-city/gigs/seven-nation-army/","dg-note-properties":{}}
+{"dg-publish":true,"dg-path":"Night City/Gigs/Seven Nation Army.md","dg-note-properties":{}}
 ---
 
 #gig #4cw [[Rules/NCOverdrive/Neon City Overdrive (HUB)\|Neon City Overdrive]] [[Night City/Locations/Buildings/Fourth Corporate War\|Fourth Corporate War]]

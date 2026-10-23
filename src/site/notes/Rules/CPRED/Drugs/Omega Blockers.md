@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/rules/cpred/drugs/omega-blockers/","dg-note-properties":{}}
+{"dg-publish":true,"dg-note-properties":{}}
 ---
 
 > [[Rules/CPRED/Quality\|Common Price:]] Costly (50-100eb)

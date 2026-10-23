@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/organizations/gangs/weng-fang-tong/","dg-note-properties":{}}
+{"dg-publish":true,"dg-note-properties":{}}
 ---
 
 #boostergang [[Night City/Locations/Night City\|Night City]], part of the [[Triads\|Triads]]

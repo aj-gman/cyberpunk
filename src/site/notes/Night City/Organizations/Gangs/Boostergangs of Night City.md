@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/organizations/gangs/boostergangs-of-night-city/","dg-note-properties":{"permalink":"/night-city/organizations/gangs/boostergangs-of-night-city/"}}
+{"dg-publish":true,"dg-note-properties":{}}
 ---
 
 

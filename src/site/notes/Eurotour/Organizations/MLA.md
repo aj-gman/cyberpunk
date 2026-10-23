@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/eurotour/organizations/mla/","dg-note-properties":{}}
+{"dg-publish":true,"dg-note-properties":{}}
 ---
 
 #state #eurotour #organization 

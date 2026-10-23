@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-path":"Night City/Society/Beliefs/Realism.md","permalink":"/night-city/society/beliefs/realism/","tags":["ideology"],"dg-note-properties":{"tags":["ideology"]}}
+{"dg-publish":true,"dg-path":"Night City/Society/Beliefs/Realism.md","tags":["ideology"],"dg-note-properties":{"tags":["ideology"]}}
 ---
 
 Realism in the [[Rules/Cyberpunk Universe\|Cyberpunk Universe]] refers to the belief that although not [[Night City/!society/Beliefs/Idealism\|ideal]], corporate governance is currently the best system. It posits that one must game the system in order to secure a decent lifestyle.

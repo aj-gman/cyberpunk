@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/locations/districts/westside/","tags":["district","location"],"dg-note-properties":{"permalink":"/night-city/locations/districts/westside/","tags":["district","location"]}}
+{"dg-publish":true,"tags":["district","location"],"dg-note-properties":{"tags":["district","location"]}}
 ---
 
 

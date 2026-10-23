@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/rules/cpred/drugs/beauties/","dg-note-properties":{}}
+{"dg-publish":true,"dg-note-properties":{}}
 ---
 
 A type of [[Rules/CPRED/Drugs/Drugs\|street drug]]. Butaqualide HC1 is a cheap and effective soporific that also generally gives the user good dreams and a general sense of well-being before drifting off into never-never land. These wonders find heavy use amongst high-stress corporates and low-end edge-runners who need a good night's sleep once in a while. Some true drug-heads will pop them just for their euphoric side effects.

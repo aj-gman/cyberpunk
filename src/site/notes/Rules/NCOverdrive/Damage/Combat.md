@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/rules/nc-overdrive/damage/combat/","dg-note-properties":{}}
+{"dg-publish":true,"dg-note-properties":{}}
 ---
 
 On their turn characters can move near and perform a quick action, or perform a focused action.

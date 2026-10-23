@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/rules/nc-overdrive/drive/","dg-note-properties":{}}
+{"dg-publish":true,"dg-note-properties":{}}
 ---
 
 Your drive is what keeps you hitting the streets, throwing yourself into danger and pushing through the hard stuff. It is a deep-seated desire or important personal goal that you constantly strive for. You continue to risk yourself in the hope of one day accruing enough money, resources or influence to see this thing come about. 

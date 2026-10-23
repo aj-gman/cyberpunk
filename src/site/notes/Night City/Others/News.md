@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/others/news/","dg-note-properties":{}}
+{"dg-publish":true,"dg-note-properties":{}}
 ---
 
 [[Corporate News\|Corporate News]] [[Independent News\|Independent News]]

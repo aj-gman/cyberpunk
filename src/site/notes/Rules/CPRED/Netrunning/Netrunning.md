@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/rules/cpred/netrunning/netrunning/","dg-note-properties":{}}
+{"dg-publish":true,"dg-note-properties":{}}
 ---
 
 > This entire section is [[Rules/Homebrew\|Homebrew]], based on [The Mist, a hacking supplement](https://mldibbs.itch.io/the-mist) for [The Sprawl](https://www.drivethrurpg.com/en/product/171286/the-sprawl-midnight).

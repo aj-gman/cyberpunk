@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/organizations/corporations/night-corp/","tags":["#organization"],"dg-note-properties":{"tags":["#organization"]}}
+{"dg-publish":true,"tags":["#organization"],"dg-note-properties":{"tags":["#organization"]}}
 ---
 
 #organization 

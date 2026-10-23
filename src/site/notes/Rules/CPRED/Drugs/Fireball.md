@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/rules/cpred/drugs/fireball/","dg-note-properties":{}}
+{"dg-publish":true,"dg-note-properties":{}}
 ---
 
 A type of [[Rules/CPRED/Drugs/Drugs\|street drug]]. Another third-generation combat drug, Fireball is a speed-booster and analgesic with an immensely long duration (12 hours or so). Luckily it also cuts out the problematic (to some) aggressive tendencies that most get under the effects of combat drugs.

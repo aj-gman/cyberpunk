@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/organizations/gangs/the-enhanced/","tags":["boostergang"],"dg-note-properties":{"tags":["boostergang"]}}
+{"dg-publish":true,"tags":["boostergang"],"dg-note-properties":{"tags":["boostergang"]}}
 ---
 
 >[!info] [[Night City/Organizations/NCPD\|NCPD]] DATA

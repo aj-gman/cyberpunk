@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-path":"Night City/Characters/corpos/Elizabeth Kress.md","permalink":"/night-city/characters/corpos/elizabeth-kress/","dg-note-properties":{}}
+{"dg-publish":true,"dg-path":"Night City/Characters/corpos/Elizabeth Kress.md","dg-note-properties":{}}
 ---
 
 #npc #4cw [[Rules/CPRED/Roles/Exec\|Exec]] [[Night City/!society/Strata/Powerdealers\|Powerdealers]]

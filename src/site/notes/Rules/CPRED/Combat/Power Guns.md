@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/rules/cpred/combat/power-guns/","dg-note-properties":{}}
+{"dg-publish":true,"dg-note-properties":{}}
 ---
 
 **Rule:** Upon dealing 5 or more damage (after calculating Armor SP), the weapon deals an additional d6. This can grant [[Rules/CPRED/Combat/Critical Injuries\|Critical Injuries]] if there are two 6s.

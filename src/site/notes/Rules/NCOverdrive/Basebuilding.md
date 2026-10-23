@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/rules/nc-overdrive/basebuilding/","dg-note-properties":{}}
+{"dg-publish":true,"dg-note-properties":{}}
 ---
 
 [[Rules/Homebrew\|Homebrew]][^1]

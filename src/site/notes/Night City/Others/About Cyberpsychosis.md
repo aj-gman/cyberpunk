@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/others/about-cyberpsychosis/","dg-note-properties":{}}
+{"dg-publish":true,"dg-note-properties":{}}
 ---
 
 ### Common misconceptions.
