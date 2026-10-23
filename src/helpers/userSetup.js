@@ -6,6 +6,12 @@ function userEleventySetup(eleventyConfig) {
   // The eleventyConfig parameter stands for the the config instantiated in /.eleventy.js.
   // Feel free to add any plugin you want here instead of /.eleventy.js
 
+  // --- Favicon generation (survives template updates) ---
+  // Serialized, lock-retrying wrapper around eleventy-plugin-gen-favicons.
+  // Fixes EBUSY on Windows when pages copy dist/favicon.svg concurrently.
+  const { serializedFaviconsPlugin } = require("../site/normalize-favicon.js");
+  eleventyConfig.addPlugin(serializedFaviconsPlugin, { outputDir: "dist" });
+
   // --- Permanent tag fixes (survive template updates) ---
 
   // Strip leading '#' from tag values. The Obsidian DG plugin outputs tags with
