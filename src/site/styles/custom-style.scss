@@ -276,12 +276,10 @@ main {
     display: flex;
     flex-wrap: wrap;
     gap: 12px 20px;
-    position: fixed;
-    top: 0;
-    right: 20px;
-    z-index: 4;
+    justify-content: flex-end;
+    position: static;
+    margin: 12px 20px 0;
     align-items: center;
-    min-height: var(--dg-navbar-height);
     box-sizing: border-box;
 }
 
@@ -297,7 +295,7 @@ main {
     padding: 5px 10px;
     border: 1px solid var(--resource-accent);
     border-left-width: 3px;
-    background: var(--resource-bg);
+    background: linear-gradient(var(--resource-bg), var(--resource-bg)), var(--background-primary);
     color: var(--resource-accent) !important;
     font-size: 0.8rem;
     font-weight: 600;
@@ -308,7 +306,7 @@ main {
 
 .site-resource-nav a.site-resource-button:hover,
 .site-resource-nav a.site-resource-button:focus-visible {
-    background: var(--resource-bg);
+    background: linear-gradient(var(--resource-bg), var(--resource-bg)), var(--background-primary);
     box-shadow: 0 0 10px var(--resource-accent);
     color: var(--resource-accent) !important;
     outline-color: var(--resource-accent);
