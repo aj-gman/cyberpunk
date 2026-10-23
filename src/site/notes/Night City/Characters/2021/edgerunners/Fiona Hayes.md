@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-path":"Night City/Characters/edgerunners/Fiona Hayes.md","permalink":"/night-city/characters/edgerunners/fiona-hayes/","tags":["#npc","#4cw"],"dg-note-properties":{"tags":["#npc","#4cw"]}}
+{"dg-publish":true,"dg-path":"Night City/Characters/edgerunners/Fiona Hayes.md","permalink":"/night-city/characters/edgerunners/fiona-hayes/","dg-note-properties":{}}
 ---
 
 #npc #4cw [[Rules/CPRED/Roles/Media\|Media]], [[Night City/!society/Beliefs/Idealism\|Idealist]]

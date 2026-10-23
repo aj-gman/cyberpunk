@@ -1,9 +1,10 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/organizations/corporations/budget-arms/","dg-note-properties":{}}
+{"dg-publish":true,"permalink":"/night-city/organizations/corporations/budget-arms/","tags":["#corporation"],"dg-note-properties":{"tags":["#corporation"]}}
 ---
 
 #corporation 
 #### BRAND TAGS: explodes-on-throw
+#### TICKER SYMBOL: BDGT
 
 *2nd Amendment is not only for the rich.*
 **Budget Arms**, often stylized as **BudgetArms**, is a weapons manufacturer in the Cyberpunk universe.

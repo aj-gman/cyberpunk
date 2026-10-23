@@ -1,9 +1,10 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/organizations/corporations/kang-tao/","dg-note-properties":{}}
+{"dg-publish":true,"permalink":"/night-city/organizations/corporations/kang-tao/","tags":["#corporation"],"dg-note-properties":{"tags":["#corporation"]}}
 ---
 
 #corporation 
 #### BRAND TAGS: smart-gun, aim assist
+#### TICKER SYMBOL: SMRT
 
 *patented smart-gun technology, expensive (like a printer, ammo costs more)*
 *This is Kang Tao. This is intelligence.*

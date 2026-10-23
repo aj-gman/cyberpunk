@@ -1,8 +1,9 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/organizations/corporations/iec/","tags":["corporation"],"dg-note-properties":{"tags":["corporation"]}}
+{"dg-publish":true,"permalink":"/night-city/organizations/corporations/iec/","tags":["#corporation"],"dg-note-properties":{"tags":["#corporation"]}}
 ---
 
 >[!warning] This page is plagiarized from the [Cyberpunk Wiki](https://cyberpunk.fandom.com/wiki/International_Electric_Corporation)
+#### TICKER SYMBOL: ELECTRIC
 
 The **International Electric Corporation** (**IEC**), simply referred to as **International Electric**, was a corporation from [Berlin](https://cyberpunk.fandom.com/wiki/Berlin "Berlin"), [Germany](https://cyberpunk.fandom.com/wiki/Germany "Germany"). [[Night City/Organizations/Corporations/IEC\|IEC]] boasted holdings and markets in consumer products, defense industry, heavy industry and durable goods, raw materials, computers, and in media. Ultimately, there was no doubt that manufacturing had been the principal milieu of [[Night City/Organizations/Corporations/IEC\|IEC]], but so many different products come out of [[Night City/Organizations/Corporations/IEC\|IEC]] plants and so many different markets are reached that it is difficult to simply say that it had been a manufacturing conglomerate and leave it at that. [[Night City/Organizations/Corporations/IEC\|IEC]]'s non-manufacturing holdings included a media company, a bank, and various diverse retailing and service subsidiaries.
 

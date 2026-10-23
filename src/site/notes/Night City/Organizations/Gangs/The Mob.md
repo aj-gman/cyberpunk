@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/organizations/gangs/the-mob/","tags":["#boostergang"],"dg-note-properties":{"tags":["#boostergang"]}}
+{"dg-publish":true,"permalink":"/night-city/organizations/gangs/the-mob/","dg-note-properties":{}}
 ---
 
 #boostergang [[Night City/Locations/Night City\|Night City]]

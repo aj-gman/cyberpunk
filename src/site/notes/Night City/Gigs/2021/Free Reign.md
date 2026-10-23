@@ -2,7 +2,7 @@
 {"dg-publish":true,"dg-path":"Night City/Gigs/Free Reign.md","permalink":"/night-city/gigs/free-reign/","dg-note-properties":{}}
 ---
 
-#gig #4cw [[Rules/NCOverdrive/Neon City Overdrive (HUB)\|Neon City Overdrive]] [[Night City/Fourth Corporate War\|Fourth Corporate War]]
+#gig #4cw [[Rules/NCOverdrive/Neon City Overdrive (HUB)\|Neon City Overdrive]] [[Night City/Locations/Buildings/Fourth Corporate War\|Fourth Corporate War]]
 GM Screen (inaccessible): [[Night City/Gigs/2021/Free Reign.canvas\|Free Reign.canvas]]
 ## After Action Report
 [[Night City/Characters/!pc/The Gang\|The Gang]] called up multiple contacts to help with the cleaning of their warehouse. 

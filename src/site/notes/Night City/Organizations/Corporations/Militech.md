@@ -1,9 +1,10 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/organizations/corporations/militech/","dg-note-properties":{}}
+{"dg-publish":true,"permalink":"/night-city/organizations/corporations/militech/","tags":["#corporation"],"dg-note-properties":{"tags":["#corporation"]}}
 ---
 
 #corporation 
 #### BRAND TAGS: unbreakable, modular, customizable
+#### TICKER SYMBOL: MILTC
 
 **Militech International Armaments** is a [megacorporation](https://cyberpunk.fandom.com/wiki/Megacorporation "Megacorporation") specializing in weapons manufacturing and private military contracting. Militech is one of the world's largest manufacturers of weapons and military vehicles, with facilities on every continent.
 
