@@ -3,18 +3,19 @@
   if (!script || script.dataset.stockTickerLoaded === "true") return;
   script.dataset.stockTickerLoaded = "true";
 
-  const stockPath = "/night-city/organizations/corporations/stock";
+  const scriptUrl = new URL(script.src, document.baseURI);
+  const stockUrl = new URL("../night-city/organizations/corporations/stock/", scriptUrl);
   const currentPath = window.location.pathname.replace(/\/+$/, "");
-  if (currentPath.endsWith(stockPath)) return;
+  const stockPath = stockUrl.pathname.replace(/\/+$/, "");
+  if (currentPath === stockPath) return;
 
   const host = document.querySelector(".navbar, .empty-navbar");
   const standaloneContent = host ? null : document.querySelector(".content");
-  if ((!host && !standaloneContent) || host?.querySelector(".stock-ticker")) return;
   const target = host || document.body;
+  if (!target || target.querySelector(".stock-ticker")) return;
 
   const cacheKey = "stock-ticker-snapshot-v1";
   const cacheDuration = 5 * 60 * 1000;
-  const scriptUrl = new URL(script.src, document.baseURI);
 
   function readCache() {
     try {
@@ -65,13 +66,19 @@
     if (!table) return null;
 
     let timestamp = "";
-    for (let element = table.previousElementSibling; element; element = element.previousElementSibling) {
-      const bold = element.matches("strong, b") ? element : element.querySelector("strong, b");
-      if (!bold) continue;
-      const match = bold.textContent.trim().match(/^Ticker snapshot\s*:?\s*\(?\s*(.+?)\s*\)?$/i);
-      if (match) {
-        timestamp = match[1].trim().toUpperCase();
-        break;
+    for (
+      let container = table;
+      container && container !== page.body && !timestamp;
+      container = container.parentElement
+    ) {
+      for (let element = container.previousElementSibling; element; element = element.previousElementSibling) {
+        const bold = element.matches("strong, b") ? element : element.querySelector("strong, b");
+        if (!bold) continue;
+        const match = bold.textContent.trim().match(/^Ticker snapshot\s*:?\s*\(?\s*(.+?)\s*\)?$/i);
+        if (match) {
+          timestamp = match[1].trim().toUpperCase();
+          break;
+        }
       }
     }
     if (!timestamp) return null;
@@ -108,7 +115,6 @@
     const cached = readCache();
     if (cached) return cached;
 
-    const stockUrl = new URL("../night-city/organizations/corporations/stock/", scriptUrl);
     const response = await fetch(stockUrl.href);
     if (!response.ok) throw new Error("Stock snapshot request failed.");
 
@@ -154,7 +160,7 @@
 
   function render(snapshot) {
     const bar = document.createElement("div");
-    bar.className = `stock-ticker${standaloneContent ? " stock-ticker--standalone" : ""}`;
+    bar.className = `stock-ticker${host ? "" : " stock-ticker--standalone"}`;
     bar.setAttribute("role", "region");
     bar.setAttribute("aria-label", `Stock ticker, snapshot ${snapshot.timestamp}`);
 
@@ -180,7 +186,7 @@
     bar.append(viewport);
 
     const actions = host?.querySelector(".navbar-actions");
-    target.insertBefore(bar, standaloneContent || actions || null);
+    target.insertBefore(bar, standaloneContent || actions || target.firstChild);
   }
 
   function loadStyles() {
