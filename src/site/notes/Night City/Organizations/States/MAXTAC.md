@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/organizations/states/maxtac/","tags":["#organization"],"dg-note-properties":{"tags":["#organization"]}}
+{"dg-publish":true,"permalink":"/night-city/organizations/states/maxtac/","dg-note-properties":{}}
 ---
 
 #organization

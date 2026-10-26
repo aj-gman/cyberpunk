@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/organizations/states/nusa/","tags":["#state"],"dg-note-properties":{"tags":["#state"]}}
+{"dg-publish":true,"permalink":"/night-city/organizations/states/nusa/","dg-note-properties":{}}
 ---
 
 #state

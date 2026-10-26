@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/others/events/justice-for-bruce-skiv/","tags":["#news","#4cw"],"dg-note-properties":{"tags":["#news","#4cw"]}}
+{"dg-publish":true,"permalink":"/night-city/others/events/justice-for-bruce-skiv/","dg-note-properties":{}}
 ---
 
 #news #4cw [[Night City/Characters/2021/edgerunners/Volk\|Volk]], **August 2021**, [[Night City/Gigs/2021/Fated, Faithful, Fatal\|Fated, Faithful, Fatal]]

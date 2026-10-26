@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/organizations/states/fang/","tags":["#organization"],"dg-note-properties":{"tags":["#organization"]}}
+{"dg-publish":true,"permalink":"/night-city/organizations/states/fang/","dg-note-properties":{}}
 ---
 
 #organization 

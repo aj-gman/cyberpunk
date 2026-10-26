@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/others/events/usa-statement-response-to-gen-lundee-s-accusations/","tags":["#news","#4cw"],"dg-note-properties":{"tags":["#news","#4cw"]}}
+{"dg-publish":true,"permalink":"/night-city/others/events/usa-statement-response-to-gen-lundee-s-accusations/","dg-note-properties":{}}
 ---
 
 #news #4cw [[Night City/Organizations/Corporations/N54\|N54]]

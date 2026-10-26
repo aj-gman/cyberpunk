@@ -2,11 +2,11 @@
 {"dg-publish":true,"permalink":"/rules/cpred/cyberware/cyberpsychosis/","dg-note-properties":{}}
 ---
 
-> For more about the lore of *Cyberpsychosis*, see [[Night City/Others/About Cyberpsychosis\|this page]].
+> For more about the lore of *Cyberpsychosis*, see [[Night City/Others/Technology/Cyberware/About Cyberpsychosis\|this page]].
 
 <mark style="background: #fee801;">MAIN RULE:</mark> Mechanically, symptoms of Cyberpsychosis begin manifesting once the player's **Cyberpsychosis Tracker** exceeds their [[Rules/CPRED/Cyberware/Humanity\|Humanity]] (=WILL+EMP). Upon this occurrence, players roll a d10. **If the result is higher than 5, [[Rules/CPRED/Cyberware/Cyberpsychosis Symptoms\|Cyberpsychosis Symptoms]] occurs.**
 
-The severity of the symptom is proportional to this result: higher values indicate worse symptoms like [[Night City/Others/About Cyberpsychosis\|Cy-rage]], while lower values may be something as simple as a nosebleed.
+The severity of the symptom is proportional to this result: higher values indicate worse symptoms like [[Night City/Others/Technology/Cyberware/About Cyberpsychosis\|Cy-rage]], while lower values may be something as simple as a nosebleed.
 
 ##### Lowering
 - decays naturally over time (1d6/week)

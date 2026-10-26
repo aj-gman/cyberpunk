@@ -85,9 +85,9 @@
 
 #### Storyteller Goals
 - [ ] Reveal where Bailey is. Hotel Danieli.
-	- [ ] [[Eurotour/Characters/Bailey\|Bailey]] is a bigger challenge than his Solos. +22 and Quality 4 Reflexware + a Berserker OS, allowing him to go [[Night City/Others/About Cyberpsychosis\|Cyberpsycho]] at will, as well as throwing knives implants (poisoned), and a speedboat to escape.
+	- [ ] [[Eurotour/Characters/Bailey\|Bailey]] is a bigger challenge than his Solos. +22 and Quality 4 Reflexware + a Berserker OS, allowing him to go [[Night City/Others/Technology/Cyberware/About Cyberpsychosis\|Cyberpsycho]] at will, as well as throwing knives implants (poisoned), and a speedboat to escape.
 	- [ ] Approaching him friendly-like will cause him to drop info, then set his goons ([[Rules/CPRED/Roles/Solo\|Solo]], +20, two) on [[Eurotour/The Crew\|The Crew]] as he escapes.
 
 [^1]: Make them a Brute Squad, they don't act individually. Rather, they try to maintain stealth (not outright sniping) while trying to eliminate [[Eurotour/The Crew\|The Crew]]. In actual combat, they all have the same stats (+18 on relevant skill) and HP (50)
 
-[^2]: Interface 7. [[Rules/CPRED/Netrunning/Quickhacks\|Quickhacks]]: Vehicles & Drone manipulation and a [[Night City/Others/About Cyberpsychosis\|About Cyberpsychosis]] chip for emergency use.
+[^2]: Interface 7. [[Rules/CPRED/Netrunning/Quickhacks\|Quickhacks]]: Vehicles & Drone manipulation and a [[Night City/Others/Technology/Cyberware/About Cyberpsychosis\|About Cyberpsychosis]] chip for emergency use.

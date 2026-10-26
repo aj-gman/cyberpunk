@@ -46,7 +46,7 @@ Cyberware should not be balanced mechanically with one another. Rather, they sho
 
 ##### Inspiration
 - [The Future is Now, Old Man](https://www.storytellersvault.com/en/product/415807/the-future-is-now-old-man); A WoD supplement for V5 that details Cyberware rules compatible with Discipline-like systems
-- [Cyberpunk: Edgerunners](https://en.wikipedia.org/wiki/Cyberpunk:_Edgerunners); for the depiction of [[Night City/Others/About Cyberpsychosis\|About Cyberpsychosis]] and the "descent" into it;
+- [Cyberpunk: Edgerunners](https://en.wikipedia.org/wiki/Cyberpunk:_Edgerunners); for the depiction of [[Night City/Others/Technology/Cyberware/About Cyberpsychosis\|About Cyberpsychosis]] and the "descent" into it;
 - [Cyberpunk 2077](https://en.wikipedia.org/wiki/Cyberpunk_2077) for the more seamless integration of mechanical prowess and diversity in Cyberware, especially for combat purposes
 
 Although Cyberpunk 2020 and its newer brother, [[Rules/CPRED/Cyberpunk RED (HUB)\|Cyberpunk RED (HUB)]] are both inspirations and foundational to this module, its very obvious that 2077's more "biology-first" approach is useful, as splitting "neuralware" into 3 enhances the portability of all its moving parts.

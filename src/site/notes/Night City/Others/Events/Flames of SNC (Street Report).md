@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/others/events/flames-of-snc-street-report/","tags":["#news","#4cw"],"dg-note-properties":{"tags":["#news","#4cw"]}}
+{"dg-publish":true,"permalink":"/night-city/others/events/flames-of-snc-street-report/","dg-note-properties":{}}
 ---
 
 #news #4cw [[Night City/Characters/2021/edgerunners/Toshi News\|Toshi News]], **July 2021**, [[Night City/Gigs/2021/Deep Six\|Deep Six]]
