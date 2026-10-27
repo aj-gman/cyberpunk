@@ -221,6 +221,18 @@
     {
       "marked": false,
       "text": ""
+    },
+    {
+      "marked": false,
+      "text": ""
+    },
+    {
+      "marked": false,
+      "text": ""
+    },
+    {
+      "marked": false,
+      "text": ""
     }
   ],
   "flaws": [
@@ -233,9 +245,9 @@
   ],
   "flaw1": "Family ties (Camorra)",
   "flaw2": "Infamous",
-  "stuntPoints": 1,
+  "stuntPoints": 3,
   "drive": {
-    "text": "Values vengeance against the corps. Wants to start a revolution.",
+    "text": "Insurrectionism: 6\nValues vengeance against the corps. Wants to start a revolution.",
     "pips": [
       false,
       false,
@@ -249,5 +261,5 @@
       false
     ]
   },
-  "experiencePoints": 4
+  "experiencePoints": 7
 }
