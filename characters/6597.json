@@ -24,7 +24,8 @@
       "edges": [
         "Disarm Explosives",
         "Weapons tech",
-        "Communications tech"
+        "Communications tech",
+        "Ambush Tactics"
       ]
     },
     {
@@ -53,13 +54,6 @@
   ],
   "gear": [
     {
-      "type": "special",
-      "title": "Malorian ",
-      "tags": "Smart, AP, Ricochet",
-      "notes": "Bullets keep their gyro/smart feature even after impacting non-organic matter, bouncing off walls and into flesh.",
-      "size": 1
-    },
-    {
       "type": "basic",
       "title": "Tech bag",
       "tags": "",
@@ -75,14 +69,28 @@
     },
     {
       "type": "basic",
-      "title": "Flash",
+      "title": "Smoke",
       "tags": "",
       "notes": "1=2",
       "size": 1
     },
     {
       "type": "basic",
-      "title": "Smoke",
+      "title": "Frag",
+      "tags": "",
+      "notes": "1=2",
+      "size": 1
+    },
+    {
+      "type": "special",
+      "title": "Malorian",
+      "tags": "silenced, Smart, AP, richochett",
+      "notes": "Bullets keep their gyro/smart feature even after impacting non-organic matter, bouncing off walls and into flesh.",
+      "size": 1
+    },
+    {
+      "type": "basic",
+      "title": "Flash",
       "tags": "",
       "notes": "1=2",
       "size": 1
@@ -112,7 +120,7 @@
       {
         "type": "special",
         "title": "Militech 'Predator V'",
-        "tags": "Very high impact, low clip, TECH",
+        "tags": "Very high impact, low clip, TECH, silenced",
         "notes": "Armor Piercing, Rail cannon, can shoot through cover when charged, Silenced\nLow Clip: add a danger die due to the need to reload. after first round of shooting",
         "size": 1
       },
@@ -121,13 +129,6 @@
         "title": "Agent",
         "tags": "",
         "notes": "",
-        "size": 1
-      },
-      {
-        "type": "basic",
-        "title": "Frag",
-        "tags": "",
-        "notes": "1=2",
         "size": 1
       }
     ]
@@ -196,13 +197,17 @@
     false
   ],
   "trackers": {
-    "cyberpsy": 1,
+    "cyberpsy": 0,
     "humanity": 4
   },
   "conditions": {
     "custom": [
       {
-        "text": "grieving x3",
+        "text": "grieving x1",
+        "state": "red"
+      },
+      {
+        "text": "Righteous Wrath x1",
         "state": "blue"
       }
     ]
@@ -210,7 +215,15 @@
   "traumas": [
     {
       "marked": false,
-      "text": "Pile of bodies x3"
+      "text": "Tenitis"
+    },
+    {
+      "marked": false,
+      "text": "paranoid"
+    },
+    {
+      "marked": false,
+      "text": "Crisis of faith"
     }
   ],
   "flaws": [
@@ -223,11 +236,11 @@
   ],
   "flaw1": "Exile",
   "flaw2": "Arrogant",
-  "stuntPoints": 2,
+  "stuntPoints": 3,
   "drive": {
-    "text": "A desire to be free.",
+    "text": "A desire to be free. Realism\nFriends Nomad Techie named Snake Eyes",
     "pips": [
-      false,
+      true,
       false,
       false,
       false,
@@ -239,5 +252,5 @@
       false
     ]
   },
-  "experiencePoints": 0
+  "experiencePoints": 1
 }
