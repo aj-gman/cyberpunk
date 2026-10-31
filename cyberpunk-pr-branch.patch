@@ -1,0 +1,668 @@
+From 1e69dd63500db73849a61e5ee5658b316359b9e3 Mon Sep 17 00:00:00 2001
+From: Instinct <instinct-agent@users.noreply.github.com>
+Date: Sat, 31 Oct 2026 05:53:21 +0200
+Subject: [PATCH] Rename CPRED sheet, route its saves through Vercel, drop
+ stale backups
+
+---
+ characters/3005bkp.json                       | 216 ------------
+ characters/6597-bkp.json                      | 324 ------------------
+ characters/default.txt                        |   1 -
+ scripts/verify-pages-build.js                 |  22 +-
+ src/site/img/{sheet.html => CPRED-sheet.html} |   4 +-
+ .../notes/Rules/CPRED/Cyberpunk RED (HUB).md  |   2 +-
+ 6 files changed, 23 insertions(+), 546 deletions(-)
+ delete mode 100644 characters/3005bkp.json
+ delete mode 100644 characters/6597-bkp.json
+ delete mode 100644 characters/default.txt
+ rename src/site/img/{sheet.html => CPRED-sheet.html} (99%)
+
+diff --git a/characters/3005bkp.json b/characters/3005bkp.json
+deleted file mode 100644
+index 9db9ae4..0000000
+--- a/characters/3005bkp.json
++++ /dev/null
+@@ -1,216 +0,0 @@
+-{
+-  "_version": "1.0.1.1",
+-  "_game": "Neon City Overdrive",
+-  "nickname": "Ray Null",
+-  "appearance": "Latin complexion, Bohemian clothing style, long and ratty hair. His outfit consists of the Nolasco Family gang colors. He has ritual scars on the inside of his palms - the mark that he is able to pilot a vehicle while wounded.",
+-  "personality": "Rebellious, antisocial, violent. He uses people for his goals, but is loyal to the end for his proven friends.",
+-  "money": 2898,
+-  "eddies": 2898,
+-  "trademarks": [
+-    {
+-      "name": "Nomad",
+-      "triggers": [
+-        "Nomad contacts, Air vehicles, Brawling, Hotwire, Alert, Spot danger, Fight dirty, Haggle, Scavenge, Hunt, Survival, Iron gut, Track"
+-      ],
+-      "edges": [
+-        "AV's, Dirty fighting"
+-      ]
+-    },
+-    {
+-      "name": "Smuggler",
+-      "triggers": [
+-        "Smuggler contacts, Smooth talker, Charming smile, Calm things down, Read motives, Dealmaking, Sucker punch, Keep them talking, Lie, Escape, Forgeries, Concealed weapon, Climb"
+-      ],
+-      "edges": [
+-        "Hide and reveal objects, Bribing"
+-      ]
+-    },
+-    {
+-      "name": "Solo",
+-      "triggers": [
+-        "Quick draw, Targeter, Steel-eyed stare, Dodge, Flashy tricks, Sneak, Athletic, Endurance, Chase, Intimidate, Awareness, Disarm, Subdue, Resistance to drugs"
+-      ],
+-      "edges": [
+-        "AR's, Grenades, Cover tactics"
+-      ]
+-    },
+-    {
+-      "name": "Revolutionary",
+-      "triggers": [
+-        "Revolutionary contacts, Propaganda, Inspire others, Quick thinker, Distract, I know my rights, Break stuff, Stare down"
+-      ],
+-      "edges": [
+-        "Improvised explosives, Firebrand"
+-      ]
+-    }
+-  ],
+-  "gear": [
+-    {
+-      "type": "special",
+-      "title": "AV",
+-      "tags": "",
+-      "notes": "Flies, Fast, \nArmored, \nBig, Cargo space, Room for 6, \nConcealed compartment.\nThumbprint Lock, whoever puts in the wrong print gets hit by a stun baton-like electrocution.\nCan tow up to 10 tons, has the tow cable for it.\nHas 2 weapons: Rhinemetall EMG-86 Railgun: Armor piercing;       Militech Mk.27 LMG: Burst fire, Collateral damage, Intimidating, Messy"
+-    },
+-    {
+-      "type": "special",
+-      "title": "M71 Liberator",
+-      "tags": "Militech, Modular",
+-      "notes": "Heavy bullet\nBullpup\nRecoil compensation system, excelent design and balancing. \nThe bullet retains a flat trajectory, controllability, and is light (scope)\nACIA muzzle brake\nSuppressed"
+-    },
+-    {
+-      "type": "special",
+-      "title": "Spiked Knuckles",
+-      "tags": "",
+-      "notes": "Quick, \nInflict bleeding, Deadly,\nConcealed, Small\nIntimidating, Messy\nQuiet"
+-    },
+-    {
+-      "type": "basic",
+-      "title": "Grapple Gun",
+-      "tags": "",
+-      "notes": "Range of 30 m."
+-    },
+-    {
+-      "type": "basic",
+-      "title": "Binoculars",
+-      "tags": "",
+-      "notes": "Up to to x3 magnification."
+-    },
+-    {
+-      "type": "basic",
+-      "title": "Gas mask",
+-      "tags": "",
+-      "notes": "Immune to inhalable dangers."
+-    },
+-    {
+-      "type": "basic",
+-      "title": "NVG's",
+-      "tags": "",
+-      "notes": "Made by Zeiss."
+-    },
+-    {
+-      "type": "basic",
+-      "title": "Agent",
+-      "tags": "",
+-      "notes": "AI powered smartphone."
+-    },
+-    {
+-      "type": "basic",
+-      "title": "Carryall",
+-      "tags": "",
+-      "notes": "Heavy ripstop nylon bags."
+-    },
+-    {
+-      "type": "basic",
+-      "title": "Radio comms earpiece",
+-      "tags": "",
+-      "notes": "1-mile range."
+-    }
+-  ],
+-  "cyberware": [
+-    {
+-      "title": "Ubermensch Speedware",
+-      "tags": "",
+-      "notes": "Dodge gunfire.\nMore difficult to hit by semiautomatic weapons.\nDash, Reaction speed, Dodge, Run."
+-    },
+-    {
+-      "title": "IEC Language Archiver",
+-      "tags": "",
+-      "notes": "Speak foreign languages using language chips. Inventory: Fluent French, North Italian, German, Swedish, Russian."
+-    },
+-    {
+-      "title": "Sycust Faceplate",
+-      "tags": "",
+-      "notes": "Can cosmetically alter my face in as low as 1 minute."
+-    },
+-    {
+-      "title": "Subdermal Armor",
+-      "tags": "",
+-      "notes": "Armor under the skin.\nProtects against up to heavy pistol calibers.\nKinetic absorption, energy absorption."
+-    },
+-    {
+-      "title": "Bioware Storage",
+-      "tags": "",
+-      "notes": "Can hide something the size of an AR inside my torso.\nPocket."
+-    },
+-    {
+-      "title": "Biomonitor",
+-      "tags": "",
+-      "notes": "Monitors my vital signs."
+-    },
+-    {
+-      "title": "IEC Interface Plugs",
+-      "tags": "",
+-      "notes": "Can act while controlling something the user is plugged into (E.g: Use the AV weapons while piloting it)."
+-    },
+-    {
+-      "title": "Heavy Weapons Skill Chip",
+-      "tags": "",
+-      "notes": ""
+-    }
+-  ],
+-  "hitsCount": 3,
+-  "hits": [
+-    false,
+-    false,
+-    false
+-  ],
+-  "trackers": {
+-    "cyberpsy": 0,
+-    "humanity": 7
+-  },
+-  "conditions": {
+-    "custom": []
+-  },
+-  "traumas": [
+-    {
+-      "marked": false,
+-      "text": ""
+-    },
+-    {
+-      "marked": false,
+-      "text": ""
+-    },
+-    {
+-      "marked": false,
+-      "text": ""
+-    },
+-    {
+-      "marked": false,
+-      "text": ""
+-    }
+-  ],
+-  "flaws": [
+-    {
+-      "text": "Family ties (Camorra)"
+-    },
+-    {
+-      "text": "Infamous"
+-    }
+-  ],
+-  "flaw1": "Family ties (Camorra)",
+-  "flaw2": "Infamous",
+-  "stuntPoints": 3,
+-  "stash": [
+-    false,
+-    false,
+-    false,
+-    false,
+-    false
+-  ],
+-  "drive": {
+-    "text": "Values vengeance against the corps. He wants to start a revolution.",
+-    "pips": [
+-      false,
+-      false,
+-      false,
+-      false,
+-      false,
+-      false,
+-      false,
+-      false,
+-      false,
+-      false
+-    ]
+-  },
+-  "experiencePoints": 4
+-}
+\ No newline at end of file
+diff --git a/characters/6597-bkp.json b/characters/6597-bkp.json
+deleted file mode 100644
+index be91b4f..0000000
+--- a/characters/6597-bkp.json
++++ /dev/null
+@@ -1,324 +0,0 @@
+-{
+-  "_version": "1.0.1.3",
+-  "_game": "Neon City Overdrive",
+-  "nickname": "Hex",
+-  "appearance": "Tall muscular, orange pink mohawk",
+-  "personality": "",
+-  "money": 6460,
+-  "eddies": 6460,
+-  "trademarks": [
+-    {
+-      "name": "Prodigal Son",
+-      "triggers": [
+-        "Educated, Corpo Politics, Militech Connections, institutional wealth, "
+-      ],
+-      "edges": [
+-        "Education"
+-      ]
+-    },
+-    {
+-      "name": "Combat Tech",
+-      "triggers": [
+-        "Jury rigging, Ambush Tactics, Explosives, Weapons Tech, Drone use, Engineer, Vehicle tech, aircraft tech, Sea vehicle tech, communications tech, Drone tech, drone flight, electronic security, Assault Rifle"
+-      ],
+-      "edges": [
+-        "Disarm Explosives",
+-        "Weapons tech",
+-        "Communications tech"
+-      ]
+-    },
+-    {
+-      "name": "Close Quatres Combatant ",
+-      "triggers": [
+-        "Handgun Use, Gun Fu, Hand to Hand, Melee Weapons, Improvised Weapons, Quick draw"
+-      ],
+-      "edges": [
+-        "Gun Fu",
+-        "Headshot ",
+-        "Grapple"
+-      ]
+-    },
+-    {
+-      "name": "On The Run",
+-      "triggers": [
+-        "Perception, Sneak, Lock picking, Concealed Weapons, Human Perception, blending in,"
+-      ],
+-      "edges": [
+-        "Perception",
+-        "Lock Picking"
+-      ]
+-    }
+-  ],
+-  "gear": [
+-    {
+-      "type": "special",
+-      "title": "Malorian Smart VHP",
+-      "tags": "Offensive, Ranged, Smart",
+-      "notes": "Armor Piercing, Smart",
+-      "size": 1
+-    },
+-    {
+-      "type": "basic",
+-      "title": "Smoke Grenade",
+-      "tags": "",
+-      "notes": "",
+-      "size": 1
+-    },
+-    {
+-      "type": "special",
+-      "title": "Hand Cannon",
+-      "tags": "Offensive, Ranged, TECH",
+-      "notes": "Armor Piercing, Rail cannon, can shoot through cover when charged, Silenced ",
+-      "size": 1
+-    },
+-    {
+-      "type": "basic",
+-      "title": "Flash Grenade",
+-      "tags": "",
+-      "notes": "",
+-      "size": 1
+-    },
+-    {
+-      "type": "basic",
+-      "title": "Tech bag",
+-      "tags": "",
+-      "notes": "",
+-      "size": 1
+-    },
+-    {
+-      "type": "special",
+-      "title": "Sandevistan",
+-      "tags": "Cyberware",
+-      "notes": "Speed ware, Harder to hit with Semi automatic weapons increases reflex",
+-      "size": 1
+-    },
+-    {
+-      "type": "basic",
+-      "title": "Anti Smog mask",
+-      "tags": "",
+-      "notes": "",
+-      "size": 1
+-    },
+-    {
+-      "type": "special",
+-      "title": "Tool Hand",
+-      "tags": "Cyberware",
+-      "notes": "",
+-      "size": 1
+-    },
+-    {
+-      "type": "basic",
+-      "title": "Agent",
+-      "tags": "",
+-      "notes": "",
+-      "size": 1
+-    },
+-    {
+-      "type": "special",
+-      "title": "Monowire",
+-      "tags": "offensive, ranged, melee",
+-      "notes": "Can be used at close range and melee, Causes Trauma easily ",
+-      "size": 1
+-    },
+-    {
+-      "type": "basic",
+-      "title": "Computer",
+-      "tags": "",
+-      "notes": "",
+-      "size": 1
+-    },
+-    {
+-      "type": "special",
+-      "title": "Subdermal Armor",
+-      "tags": "deffensive",
+-      "notes": "Up to Heavy pistols. Blocks VHP due to response matrix",
+-      "size": 1
+-    },
+-    {
+-      "type": "special",
+-      "title": "Neural port",
+-      "tags": "Cyberware",
+-      "notes": "",
+-      "size": 1
+-    },
+-    {
+-      "type": "special",
+-      "title": "Pain Editor",
+-      "tags": "Defensive cyberware ",
+-      "notes": "Can ignore Trauma and increses cyberpsychosis",
+-      "size": 1
+-    },
+-    {
+-      "type": "special",
+-      "title": "Tactile boost",
+-      "tags": "",
+-      "notes": "sense movement within 20m",
+-      "size": 1
+-    },
+-    {
+-      "type": "special",
+-      "title": "Trauma response nanomatrix",
+-      "tags": "deffensive",
+-      "notes": "Boosts subdurmal armor to Very heavy pistol block",
+-      "size": 1
+-    },
+-    {
+-      "type": "special",
+-      "title": "Cyberoptics",
+-      "tags": "",
+-      "notes": "Night vision, thermal vision, Anti dazzle, EMP hardened ",
+-      "size": 1
+-    },
+-    {
+-      "type": "special",
+-      "title": "Dartgun Eye",
+-      "tags": "offensive, ranged",
+-      "notes": "Shoots a metal dart",
+-      "size": 1
+-    },
+-    {
+-      "type": "special",
+-      "title": "Heavy weapons chip",
+-      "tags": "Offensive",
+-      "notes": "Allows better use of heavy weapons",
+-      "size": 1
+-    },
+-    {
+-      "type": "special",
+-      "title": "Demolitions chip",
+-      "tags": "Offensive",
+-      "notes": "Allows better use of Explosives and disarming ",
+-      "size": 1
+-    },
+-    {
+-      "type": "special",
+-      "title": "",
+-      "tags": "",
+-      "notes": "Gives me  very high strength, lift a car with effort",
+-      "size": 1
+-    },
+-    {
+-      "type": "special",
+-      "title": "MonoWazikashi",
+-      "tags": "Melee weapon, Monophilamant ",
+-      "notes": "",
+-      "size": 1
+-    },
+-    {
+-      "type": "special",
+-      "title": "Militech Radio gear",
+-      "tags": "High end",
+-      "notes": "Militech high quality communicator and scanner",
+-      "size": 1
+-    }
+-  ],
+-  "inventory": {
+-    "container": "jacket",
+-    "misc": {
+-      "enabled": false,
+-      "value": 1
+-    },
+-    "items": []
+-  },
+-  "cyberware": [
+-    {
+-      "title": "Cyberhand",
+-      "tags": "Cyberhand",
+-      "notes": "MonoWire, Tool Hand, Tactile Boost",
+-      "value": 1
+-    },
+-    {
+-      "title": "CyberEyes",
+-      "tags": "CyberEyes",
+-      "notes": "Thermal, Night, vision, Anti Dazzel, Dart gun, EMP hardened ",
+-      "value": 1
+-    },
+-    {
+-      "title": "CyberBody",
+-      "tags": "Cyberbody",
+-      "notes": "Pain Editor, Subdurmal armor, Trauma response matrix, Muscle and Bone lace, Sandevistan",
+-      "value": 1
+-    },
+-    {
+-      "title": "Neuroport",
+-      "tags": "Cybersystems",
+-      "notes": "interface plugs, Heavy weapons chip, Demolitions chip",
+-      "value": 1
+-    },
+-    {
+-      "title": "Moscow Language chip",
+-      "tags": "",
+-      "notes": "Moscow forces you to say comrade when addressing people",
+-      "value": 1
+-    },
+-    {
+-      "title": "Grafted Muscle and Bone lace",
+-      "tags": "",
+-      "notes": "",
+-      "value": 1
+-    }
+-  ],
+-  "hitsCount": 4,
+-  "hits": [
+-    false,
+-    false,
+-    false,
+-    false
+-  ],
+-  "trackers": {
+-    "cyberpsy": 5,
+-    "humanity": 6
+-  },
+-  "conditions": {
+-    "custom": []
+-  },
+-  "traumas": [
+-    {
+-      "marked": false,
+-      "text": ""
+-    },
+-    {
+-      "marked": false,
+-      "text": ""
+-    },
+-    {
+-      "marked": false,
+-      "text": ""
+-    },
+-    {
+-      "marked": false,
+-      "text": ""
+-    },
+-    {
+-      "marked": false,
+-      "text": ""
+-    }
+-  ],
+-  "flaws": [
+-    {
+-      "text": "Exile"
+-    },
+-    {
+-      "text": "Arrogant"
+-    }
+-  ],
+-  "flaw1": "Exile",
+-  "flaw2": "Arrogant",
+-  "stuntPoints": 0,
+-  "drive": {
+-    "text": "A desire to be free.",
+-    "pips": [
+-      false,
+-      false,
+-      false,
+-      false,
+-      false,
+-      false,
+-      false,
+-      false,
+-      false,
+-      false
+-    ]
+-  },
+-  "experiencePoints": 4
+-}
+\ No newline at end of file
+diff --git a/characters/default.txt b/characters/default.txt
+deleted file mode 100644
+index 9b42ef5..0000000
+--- a/characters/default.txt
++++ /dev/null
+@@ -1 +0,0 @@
+-creating characters folder
+diff --git a/scripts/verify-pages-build.js b/scripts/verify-pages-build.js
+index d0d0305..790494a 100644
+--- a/scripts/verify-pages-build.js
++++ b/scripts/verify-pages-build.js
+@@ -11,6 +11,11 @@ const outputDir = path.resolve("dist");
+ const indexPath = path.join(outputDir, "index.html");
+ const legacyHost = "gman-cyberpunk.vercel.app";
+ const characterApiUrl = `https://${legacyHost}/api/character`;
++const sheetApiUrls = [
++  characterApiUrl,
++  `https://${legacyHost}/api/save-character`,
++  `https://${legacyHost}/api/load-character`,
++];
+ 
+ if (!fs.existsSync(indexPath)) {
+   throw new Error("The Pages build did not produce dist/index.html");
+@@ -145,8 +150,11 @@ const urlAttributePattern =
+ 
+ for (const htmlFile of findHtmlFiles(outputDir)) {
+   const pageHtml = fs.readFileSync(htmlFile, "utf8");
+-  const htmlWithoutCharacterApi = pageHtml.replaceAll(characterApiUrl, "");
+-  if (htmlWithoutCharacterApi.includes(legacyHost)) {
++  let htmlWithoutSheetApis = pageHtml;
++  for (const apiUrl of sheetApiUrls) {
++    htmlWithoutSheetApis = htmlWithoutSheetApis.replaceAll(apiUrl, "");
++  }
++  if (htmlWithoutSheetApis.includes(legacyHost)) {
+     throw new Error(
+       `A generated page still references the old site: ${path.relative(outputDir, htmlFile)}`
+     );
+@@ -178,6 +186,16 @@ if (
+   throw new Error("The NCO sheet is missing its Vercel cloud-save API endpoint");
+ }
+ 
++const cpredSheetPath = path.join(outputDir, "img/CPRED-sheet.html");
++if (
++  !fs.existsSync(cpredSheetPath) ||
++  !fs.readFileSync(cpredSheetPath, "utf8").includes(
++    `https://${legacyHost}/api/save-character`
++  )
++) {
++  throw new Error("The CPRED sheet is missing its Vercel cloud-save API endpoint");
++}
++
+ const digitalGardenStylesheet = fs.readFileSync(
+   path.join(outputDir, "styles/digital-garden-base.css"),
+   "utf8"
+diff --git a/src/site/img/sheet.html b/src/site/img/CPRED-sheet.html
+similarity index 99%
+rename from src/site/img/sheet.html
+rename to src/site/img/CPRED-sheet.html
+index 2d2efc6..d91d44f 100644
+--- a/src/site/img/sheet.html
++++ b/src/site/img/CPRED-sheet.html
+@@ -954,7 +954,7 @@ async function saveToCloud() {
+   setCloudStatus('[ uploading... ]', 'loading');
+   const characterData = buildExportObject();
+   try {
+-    const res = await fetch('/api/save-character', {
++    const res = await fetch('https://gman-cyberpunk.vercel.app/api/save-character', {
+       method: 'POST',
+       headers: { 'Content-Type': 'application/json' },
+       body: JSON.stringify({ username, password, characterData }),
+@@ -976,7 +976,7 @@ async function loadFromCloud() {
+   if (!username || !password) { setCloudStatus('⚠ Enter callsign and access code.', 'err'); return; }
+   setCloudStatus('[ downloading... ]', 'loading');
+   try {
+-    const res = await fetch('/api/load-character', {
++    const res = await fetch('https://gman-cyberpunk.vercel.app/api/load-character', {
+       method: 'POST',
+       headers: { 'Content-Type': 'application/json' },
+       body: JSON.stringify({ username, password }),
+diff --git a/src/site/notes/Rules/CPRED/Cyberpunk RED (HUB).md b/src/site/notes/Rules/CPRED/Cyberpunk RED (HUB).md
+index 3a1dcb3..abeb11b 100644
+--- a/src/site/notes/Rules/CPRED/Cyberpunk RED (HUB).md	
++++ b/src/site/notes/Rules/CPRED/Cyberpunk RED (HUB).md	
+@@ -14,7 +14,7 @@
+ 
+ The Cyberpunk system is iconic for its use of #role as a way to flag the 10 different [[Night City/!society/Strata/Edgerunners\|edgerunners]] stereotypes that are playable in the [[Rules/Cyberpunk Universe\|Cyberpunk Universe]].
+ 
+->[!note]- [Cyberpunk RED Character Sheet](/img/sheet.html)
++>[!note]- [Cyberpunk RED Character Sheet](/img/CPRED-sheet.html)
+ 
+ >[!abstract]- For more about the Roles, see here.
+ > - [[Rules/CPRED/Roles/Exec\|Exec]]
+-- 
+2.34.1
+
