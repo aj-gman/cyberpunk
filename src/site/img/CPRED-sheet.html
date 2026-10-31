@@ -954,7 +954,7 @@ async function saveToCloud() {
   setCloudStatus('[ uploading... ]', 'loading');
   const characterData = buildExportObject();
   try {
-    const res = await fetch('/api/save-character', {
+    const res = await fetch('https://gman-cyberpunk.vercel.app/api/save-character', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ username, password, characterData }),
@@ -976,7 +976,7 @@ async function loadFromCloud() {
   if (!username || !password) { setCloudStatus('⚠ Enter callsign and access code.', 'err'); return; }
   setCloudStatus('[ downloading... ]', 'loading');
   try {
-    const res = await fetch('/api/load-character', {
+    const res = await fetch('https://gman-cyberpunk.vercel.app/api/load-character', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ username, password }),

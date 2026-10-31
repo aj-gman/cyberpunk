@@ -11,6 +11,11 @@ const outputDir = path.resolve("dist");
 const indexPath = path.join(outputDir, "index.html");
 const legacyHost = "gman-cyberpunk.vercel.app";
 const characterApiUrl = `https://${legacyHost}/api/character`;
+const sheetApiUrls = [
+  characterApiUrl,
+  `https://${legacyHost}/api/save-character`,
+  `https://${legacyHost}/api/load-character`,
+];
 
 if (!fs.existsSync(indexPath)) {
   throw new Error("The Pages build did not produce dist/index.html");
@@ -145,8 +150,11 @@ const urlAttributePattern =
 
 for (const htmlFile of findHtmlFiles(outputDir)) {
   const pageHtml = fs.readFileSync(htmlFile, "utf8");
-  const htmlWithoutCharacterApi = pageHtml.replaceAll(characterApiUrl, "");
-  if (htmlWithoutCharacterApi.includes(legacyHost)) {
+  let htmlWithoutSheetApis = pageHtml;
+  for (const apiUrl of sheetApiUrls) {
+    htmlWithoutSheetApis = htmlWithoutSheetApis.replaceAll(apiUrl, "");
+  }
+  if (htmlWithoutSheetApis.includes(legacyHost)) {
     throw new Error(
       `A generated page still references the old site: ${path.relative(outputDir, htmlFile)}`
     );
@@ -176,6 +184,16 @@ if (
   !fs.readFileSync(overdriveSheetPath, "utf8").includes(characterApiUrl)
 ) {
   throw new Error("The NCO sheet is missing its Vercel cloud-save API endpoint");
+}
+
+const cpredSheetPath = path.join(outputDir, "img/CPRED-sheet.html");
+if (
+  !fs.existsSync(cpredSheetPath) ||
+  !fs.readFileSync(cpredSheetPath, "utf8").includes(
+    `https://${legacyHost}/api/save-character`
+  )
+) {
+  throw new Error("The CPRED sheet is missing its Vercel cloud-save API endpoint");
 }
 
 const digitalGardenStylesheet = fs.readFileSync(
