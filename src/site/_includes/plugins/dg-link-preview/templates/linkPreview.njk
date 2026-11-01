@@ -169,7 +169,9 @@
             tooltipContentHtml += '<div style="font-weight: bold; unicode-bidi: plaintext;">' + titleEl.innerHTML + '</div>'
           }
           if (contentEl) {
-            tooltipContentHtml += contentEl.innerHTML
+            var contentClone = contentEl.cloneNode(true);
+            contentClone.querySelectorAll('.stock-ticker, .ticker-module, .site-resource-nav').forEach(function (el) { el.remove(); });
+            tooltipContentHtml += contentClone.innerHTML
           } else if (iframeDoc.body) {
             tooltipContentHtml += iframeDoc.body.innerHTML
           } else if (iframeDoc.documentElement) {
@@ -186,9 +188,12 @@
             if (url.indexOf("#") != -1) {
               let id = url.split('#')[1];
               const focus = tooltipWrapper.querySelector(`[id='${id}']`);
-              focus.classList.add('referred');
-              console.log(focus);
-              focus.scrollIntoView({behavior: 'smooth'}, true)
+              if (focus) {
+                focus.classList.add('referred');
+                focus.scrollIntoView({behavior: 'smooth'}, true)
+              } else {
+                tooltipWrapper.scroll(0, 0);
+              }
             } else {
               tooltipWrapper.scroll(0, 0);
             }
@@ -202,8 +207,12 @@
           if (url.indexOf("#") != -1) {
               let id = url.split('#')[1];
               const focus = tooltipWrapper.querySelector(`[id='${id}']`);
-              focus.classList.add('referred');
-              focus.scrollIntoView({behavior: 'smooth'}, true)
+              if (focus) {
+                focus.classList.add('referred');
+                focus.scrollIntoView({behavior: 'smooth'}, true)
+              } else {
+                tooltipWrapper.scroll(0, 0);
+              }
           } else {
               tooltipWrapper.scroll(0, 0);
           }
@@ -221,6 +230,7 @@
 
   function setupListeners(linkElement) {
     linkElement.addEventListener('mouseleave', function (_event) {
+      clearTimeout(linkElement._hoverIntentTimeout);
       hideTooltip();
     });
 
@@ -231,7 +241,10 @@
     linkElement.addEventListener('mouseenter', function (event) {
       clearTimeout(opacityTimeout);
       clearTimeout(contentTimeout);
-      showTooltip(event);
+      clearTimeout(linkElement._hoverIntentTimeout);
+      linkElement._hoverIntentTimeout = setTimeout(function () {
+        showTooltip(event);
+      }, 250);
     });
 
     tooltipWrapper.addEventListener('mouseenter', function (event) {
