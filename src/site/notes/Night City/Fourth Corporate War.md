@@ -1,8 +1,10 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/fourth-corporate-war/","dg-note-properties":{}}
+{"dg-publish":true,"permalink":"/night-city/fourth-corporate-war/","tags":["#campaign","#4cw","#ideology"],"dg-note-properties":{"tags":["#campaign","#4cw","#ideology"]}}
 ---
 
 #campaign #4cw
+![pic-4cw.jpg](/img/user/Pictures/pic-4cw.jpg)
+
 >[!tip]- Want to join?
 >Sign up via startplaying.games. Play every [Tuesday](https://startplaying.games/adventure/cmtt29g6501lykw04vcbwv149?ref=clerck8md0001mo08536kc22s).
 

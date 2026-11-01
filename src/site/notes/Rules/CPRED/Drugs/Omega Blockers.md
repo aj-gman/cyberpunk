@@ -4,7 +4,7 @@
 
 > [[Rules/CPRED/Quality\|Common Price:]] Costly (50-100eb)
 
-A type of [[Rules/CPRED/Drugs/Drugs\|drug]] that comes in form of black pills used for the clinical treatment of [[Night City/Others/About Cyberpsychosis\|About Cyberpsychosis]][^1]. Prolonged use is associated with Nerve Degeneration, with many pacients ending up bed-ridden or empty-headed.
+A type of [[Rules/CPRED/Drugs/Drugs\|drug]] that comes in form of black pills used for the clinical treatment of [[Night City/Others/Technology/Cyberware/About Cyberpsychosis\|About Cyberpsychosis]][^1]. Prolonged use is associated with Nerve Degeneration, with many pacients ending up bed-ridden or empty-headed.
 
 ### Main Effect
 - Lowers [[Rules/CPRED/Cyberware/Cyberware#Cyberpsychosis\|Cyberpsychosis Tracker]] by up to -5

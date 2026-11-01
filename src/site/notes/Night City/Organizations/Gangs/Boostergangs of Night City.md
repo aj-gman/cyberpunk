@@ -2,6 +2,7 @@
 {"dg-publish":true,"permalink":"/night-city/organizations/gangs/boostergangs-of-night-city/","dg-note-properties":{}}
 ---
 
+![pic-boosters.jpg](/img/user/Pictures/pic-boosters.jpg)
 
 See them in [the Map](/img/map-viewer/), under the Influence tab.
 ### [[Night City/Locations/Districts/City Center\|City Center]]

@@ -1,9 +1,9 @@
 ---
-{"dg-publish":true,"dg-path":"Player Characters/Ray Null.md","permalink":"/player-characters/ray-null/","dg-note-properties":{}}
+{"dg-publish":true,"dg-path":"Player Characters/Ray Null.md","permalink":"/player-characters/ray-null/","tags":["#crew","#eurotour","#4cw"],"dg-note-properties":{"tags":["#crew","#eurotour","#4cw"]}}
 ---
 
 
-#crew #eurotour #4cw [[Rules/CPRED/Roles/Nomad\|Nomad]]
+#crew #eurotour #4cw [[Rules/CPRED/Roles/Nomad\|Nomad]] [[Night City/!society/Strata/Edgerunners\|Edgerunner]]
 **GM-only: [[Night City/Characters/!pc/OTHER/Ray (GM)\|Ray (GM)]]**
 
 Ray Null? Everybody's heard of Ray Null! [[Rules/CPRED/Roles/Nomad\|Best class smuggler]], he can get anything from point A to point B, as long as its both points are in the [[Eurotour/Organizations/EEC\|EEC]]. Forgeries, nuclear parts, tons of [[Rules/CPRED/Drugs/SynthCoke\|SynthCoke]], you name it, he's sold/bought/traded it! Also, he's backed up by one of the toughest [[Rules/CPRED/Roles/Nomad\|Families]] around: [[Night City/Characters/!pc/Relevant NPCs/Nolasco Family/Nolasco Family\|the Nolascos]]. Only problem is, he's got a bit of a temper, that [Spanish Revolutionary](https://en.wikipedia.org/wiki/Spanish_Revolution_of_1936) blood in him - he's skyrocketed his fame with the stunts he pulled in [[Eurotour/Locations/Liverpool\|Liverpool]], holding an [[Night City/Others/Technology/AV\|AV]] in the sky near the MI6 headquarters as [[Eurotour/Characters/Core Crew/Jack Entropy\|Jack Entropy]] sung his revolutions from the side doors.

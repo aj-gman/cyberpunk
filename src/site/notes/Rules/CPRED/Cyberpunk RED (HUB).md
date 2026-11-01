@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-path":"CPRED (HUB).md","permalink":"/cpred-hub/","tags":["#role"],"dg-note-properties":{"tags":["#role"]}}
+{"dg-publish":true,"dg-path":"CPRED (HUB).md","permalink":"/cpred-hub/","dg-note-properties":{}}
 ---
 
 
@@ -14,7 +14,7 @@
 
 The Cyberpunk system is iconic for its use of #role as a way to flag the 10 different [[Night City/!society/Strata/Edgerunners\|edgerunners]] stereotypes that are playable in the [[Rules/Cyberpunk Universe\|Cyberpunk Universe]].
 
->[!note]- [Cyberpunk RED Character Sheet](/img/CPRED-sheet.html)
+>[!note]- [Cyberpunk RED Character Sheet](/img/sheet.html)
 
 >[!abstract]- For more about the Roles, see here.
 > - [[Rules/CPRED/Roles/Exec\|Exec]]
