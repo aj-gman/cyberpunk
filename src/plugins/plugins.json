@@ -74,7 +74,7 @@
       "repo": "oleeskild/garden-plugin-tag-placement",
       "installedVersion": "1.2.0",
       "installedRef": "v1.2.0",
-      "installedAt": "2026-11-01T13:15:08.024Z",
+      "installedAt": "2026-11-01T13:15:33.250Z",
       "enabled": true,
       "files": [
         "src/plugins/tag-placement/README.md",
