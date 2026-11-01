@@ -11,196 +11,124 @@ eleventyExcludeFromCollections: true
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Chakra+Petch:wght@500;700&display=swap" rel="stylesheet">
 <style>
-:root{
-  --pink:#ff2e6d;--cyan:#26f2e6;--bg:#050507;--grid:rgba(38,242,230,0.05);
-  --surface:#0d0e14;--surface-border:rgba(255,255,255,0.08);
-  --text-primary:#f2f2f5;--text-muted:#a9adb8;
-  --red:#F24848;--pink-accent:#F230B2;--teal:#29BECC;--cyan-accent:#26f2e6;
-  --blue:#3061F2;--purple:#A130F2;--yellow:#FEE801;--green:#30F291;
-}
+:root{--pink:#ff2e6d;--cyan:#26f2e6;--bg:#050507;--surface:#0d0e14;--surface-border:rgba(255,255,255,0.12);--text-primary:#f2f2f5;--text-muted:#c3c7d2;--red:#F24848;--pink-accent:#F230B2;--teal:#29BECC;--blue:#5b82ff;--purple:#A130F2;--yellow:#FEE801;--green:#30F291;}
 *{box-sizing:border-box;margin:0;padding:0;}
-html{scroll-behavior:smooth;}
+html{scroll-behavior:smooth;scroll-padding-top:4rem;}
 body{background:var(--bg);font-family:'Chakra Petch',sans-serif;overflow-x:hidden;color:var(--text-primary);}
-.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:4rem 2rem;background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:40px 40px;}
-.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 60% 40% at 30% 20%,rgba(255,46,109,0.10),transparent 70%),radial-gradient(ellipse 60% 40% at 70% 80%,rgba(38,242,230,0.10),transparent 70%);pointer-events:none;}
-.hero-inner{position:relative;z-index:1;max-width:900px;}
-.kicker{font-family:'Rajdhani',sans-serif;font-weight:600;font-size:0.9rem;letter-spacing:0.35em;color:var(--cyan);margin:0 0 1.2rem;opacity:0.85;}
-.glitch-title{position:relative;font-family:'Rajdhani',sans-serif;font-weight:700;font-size:clamp(2.8rem,8vw,6rem);line-height:1;margin:0;letter-spacing:0.01em;color:var(--text-primary);text-transform:uppercase;-webkit-font-smoothing:antialiased;}
-.glitch-title .line2{position:relative;display:block;font-size:0.55em;margin-top:0.15em;color:var(--pink);}
-.glitch-title::before,.glitch-title::after{content:attr(data-text);position:absolute;left:0;top:0;width:100%;overflow:hidden;background:var(--bg);clip-path:inset(0);}
-.glitch-title::before{color:var(--pink);transform:translate(3px,0);mix-blend-mode:screen;animation:glitchTop 2.5s infinite steps(1);}
-.glitch-title::after{color:var(--cyan);transform:translate(-3px,0);mix-blend-mode:screen;animation:glitchBottom 2.5s infinite steps(1);}
-.glitch-title .line2::before,.glitch-title .line2::after{content:attr(data-text);position:absolute;left:0;top:0;width:100%;overflow:hidden;background:var(--bg);}
-.glitch-title .line2::before{color:var(--cyan);transform:translate(-2px,0);mix-blend-mode:screen;animation:glitchBottom 2.5s infinite steps(1);}
-.glitch-title .line2::after{color:var(--pink);transform:translate(2px,0);mix-blend-mode:screen;animation:glitchTop 2.5s infinite steps(1);}
-@keyframes glitchTop{0%,100%{clip-path:inset(0);transform:translate(0)}12%{clip-path:inset(0);transform:translate(0)}13%{clip-path:inset(8% 0 65% 0);transform:translate(5px,-3px)}14%{clip-path:inset(55% 0 10% 0);transform:translate(-6px,2px)}15%{clip-path:inset(25% 0 45% 0);transform:translate(4px,1px)}16%{clip-path:inset(0);transform:translate(0)}38%{clip-path:inset(0);transform:translate(0)}39%{clip-path:inset(40% 0 25% 0);transform:translate(-8px,2px)}40%{clip-path:inset(5% 0 70% 0);transform:translate(6px,-4px)}41%{clip-path:inset(60% 0 8% 0);transform:translate(-3px,3px)}42%{clip-path:inset(0);transform:translate(0)}67%{clip-path:inset(0);transform:translate(0)}68%{clip-path:inset(15% 0 55% 0);transform:translate(4px,-2px)}69%{clip-path:inset(45% 0 20% 0);transform:translate(-5px,3px)}70%{clip-path:inset(70% 0 5% 0);transform:translate(3px,-1px)}71%{clip-path:inset(0);transform:translate(0)}}
-@keyframes glitchBottom{0%,100%{clip-path:inset(0);transform:translate(0)}12%{clip-path:inset(0);transform:translate(0)}13%{clip-path:inset(60% 0 10% 0);transform:translate(-4px,2px)}14%{clip-path:inset(10% 0 65% 0);transform:translate(5px,-3px)}15%{clip-path:inset(35% 0 35% 0);transform:translate(-3px,1px)}16%{clip-path:inset(0);transform:translate(0)}38%{clip-path:inset(0);transform:translate(0)}39%{clip-path:inset(5% 0 70% 0);transform:translate(6px,-2px)}40%{clip-path:inset(50% 0 15% 0);transform:translate(-7px,4px)}41%{clip-path:inset(20% 0 50% 0);transform:translate(4px,-1px)}42%{clip-path:inset(0);transform:translate(0)}67%{clip-path:inset(0);transform:translate(0)}68%{clip-path:inset(30% 0 40% 0);transform:translate(-5px,3px)}69%{clip-path:inset(10% 0 60% 0);transform:translate(4px,-2px)}70%{clip-path:inset(50% 0 20% 0);transform:translate(-3px,1px)}71%{clip-path:inset(0);transform:translate(0)}}
-.subhead{font-weight:500;font-size:1.05rem;color:var(--text-muted);max-width:520px;margin:2rem auto 0;line-height:1.6;}
-.scroll-hint{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:0.5rem;opacity:0.5;transition:opacity 0.4s;}
-.scroll-hint.hidden{opacity:0;pointer-events:none;}
-.scroll-hint span{font-family:'Rajdhani',sans-serif;font-size:0.7rem;letter-spacing:0.25em;color:var(--cyan);text-transform:uppercase;}
-.scroll-chevron{width:20px;height:20px;border-right:2px solid var(--cyan);border-bottom:2px solid var(--cyan);transform:rotate(45deg);animation:bounce 2s ease-in-out infinite;}
-@keyframes bounce{0%,100%{transform:translateY(0) rotate(45deg)}50%{transform:translateY(6px) rotate(45deg)}}
-.reveal{opacity:0;transform:translateY(30px);transition:opacity 0.7s cubic-bezier(0.22,1,0.36,1),transform 0.7s cubic-bezier(0.22,1,0.36,1);}
-.reveal.visible{opacity:1;transform:translateY(0);}
-.section{max-width:760px;margin:0 auto;padding:4rem 2rem;}
-.section-label{font-family:'Rajdhani',sans-serif;font-weight:700;font-size:0.7rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--cyan);margin:0 0 1.8rem;opacity:0.8;}
-.campaign-banner{display:block;text-decoration:none;position:relative;padding:1.3rem 1.8rem;background:linear-gradient(135deg,rgba(254,232,1,0.06),rgba(254,232,1,0.02));border-left:4px solid var(--yellow);color:var(--text-primary);transition:background 0.25s;clip-path:polygon(14px 0,100% 0,100% calc(100% - 14px),calc(100% - 14px) 100%,0 100%,0 14px);}
-.campaign-banner:hover{background:linear-gradient(135deg,rgba(254,232,1,0.14),rgba(254,232,1,0.06));}
-.campaign-label{font-family:'Rajdhani',sans-serif;font-size:0.65rem;font-weight:700;letter-spacing:0.3em;text-transform:uppercase;color:var(--yellow);margin:0 0 0.4rem;display:flex;align-items:center;gap:0.5rem;}
-.campaign-label svg{width:14px;height:14px;}
-.campaign-title{font-family:'Rajdhani',sans-serif;font-weight:700;font-size:1.25rem;letter-spacing:0.04em;color:var(--text-primary);margin:0;}
-.campaign-title em{font-style:normal;color:var(--yellow);}
-.campaign-arrow{position:absolute;right:1.5rem;top:50%;transform:translateY(-50%);font-size:1.4rem;color:var(--yellow);opacity:0.5;transition:opacity 0.2s,transform 0.2s;}
-.campaign-banner:hover .campaign-arrow{opacity:1;transform:translateY(-50%) translateX(3px);}
-.nav-group{margin-bottom:2rem;}.nav-group:last-child{margin-bottom:0;}
-.nav-group-label{font-family:'Rajdhani',sans-serif;font-weight:600;font-size:0.7rem;letter-spacing:0.3em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin:0 0 0.7rem;padding-left:2px;}
-.nav-group-buttons{display:flex;flex-direction:column;gap:0.5rem;}
-.nav-bar{display:flex;align-items:center;gap:0.9rem;text-decoration:none;padding:0.75rem 1.2rem;border-left:4px solid var(--bar-color);background:linear-gradient(90deg,var(--bar-bg) 0%,transparent 100%);color:var(--text-primary);transition:background 0.2s,border-color 0.2s;}
-.nav-bar:hover{background:linear-gradient(90deg,var(--bar-hover-bg) 0%,var(--bar-bg) 100%);border-color:var(--bar-hover-color);}
-.nav-bar svg{width:18px;height:18px;flex-shrink:0;color:var(--bar-color);transition:color 0.2s;}
-.nav-bar:hover svg{color:var(--bar-hover-color);}
-.nav-bar-label{font-family:'Rajdhani',sans-serif;font-weight:600;font-size:0.95rem;letter-spacing:0.06em;text-transform:uppercase;flex:1;}
-.nav-bar-arrow{font-size:1rem;color:var(--bar-color);opacity:0.35;transition:opacity 0.2s,transform 0.2s;}
-.nav-bar:hover .nav-bar-arrow{opacity:0.8;transform:translateX(3px);}
-.nav-group-row{display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;}
-@media(max-width:520px){.nav-group-row{grid-template-columns:1fr;}}
-.updates-list{display:flex;flex-direction:column;gap:1.2rem;}
-.update-card{padding:1rem 1.2rem;border-left:3px solid var(--surface-border);background:var(--surface);transition:border-color 0.2s;}
-.update-card:hover{border-color:var(--teal);}
-.update-date{font-family:'Rajdhani',sans-serif;font-weight:700;font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--teal);margin:0 0 0.5rem;display:flex;align-items:center;gap:0.5rem;}
-.update-date .month{color:rgba(255,255,255,0.35);font-weight:600;}
-.update-items{list-style:none;padding:0;margin:0;}
-.update-items li{font-size:0.88rem;color:var(--text-muted);line-height:1.5;padding:0.15rem 0 0.15rem 0.9rem;position:relative;}
-.update-items li::before{content:"";position:absolute;left:0;top:0.55rem;width:5px;height:5px;background:var(--teal);opacity:0.5;clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);}
-.updates-more{display:inline-flex;align-items:center;gap:0.4rem;margin-top:1.2rem;font-family:'Rajdhani',sans-serif;font-weight:600;font-size:0.85rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--teal);text-decoration:none;transition:color 0.2s;}
-.updates-more:hover{color:var(--cyan-accent);}
-.about-section{border-top:1px solid var(--surface-border);padding:3.5rem 2rem 4rem;max-width:760px;margin:0 auto;}
+a{color:inherit;}
+.topbar{position:sticky;top:0;z-index:10;display:flex;align-items:center;gap:1.4rem;padding:0.7rem 1.5rem;background:rgba(5,5,7,0.94);border-bottom:1px solid var(--surface-border);font-family:'Rajdhani',sans-serif;font-weight:700;font-size:0.95rem;letter-spacing:0.08em;text-transform:uppercase;}
+.topbar-name{color:var(--cyan);letter-spacing:0.12em;text-decoration:none;margin-right:auto;}
+.topbar a:not(.topbar-name){color:var(--text-muted);text-decoration:none;}
+.topbar a:not(.topbar-name):hover,.topbar a:focus-visible{color:var(--cyan);}
+.hero{text-align:center;padding:2.6rem 1.5rem 1.8rem;background-image:radial-gradient(ellipse 60% 80% at 30% 0,rgba(255,46,109,0.14),transparent 70%),radial-gradient(ellipse 60% 80% at 75% 100%,rgba(38,242,230,0.12),transparent 70%);}
+.kicker{font-family:'Rajdhani',sans-serif;font-weight:600;font-size:0.85rem;letter-spacing:0.3em;color:var(--cyan);}
+.glitch-title{font-family:'Rajdhani',sans-serif;font-weight:700;text-transform:uppercase;font-size:clamp(2.4rem,7vw,4.6rem);line-height:1;margin:0.6rem 0 0.3rem;color:var(--text-primary);text-shadow:3px 0 var(--pink),-3px 0 var(--cyan);animation:glitch 4s infinite steps(1);}
+.glitch-title .line2{display:block;font-size:0.55em;color:var(--pink);text-shadow:2px 0 var(--cyan);}
+@keyframes glitch{0%,92%,100%{text-shadow:3px 0 var(--pink),-3px 0 var(--cyan)}93%{text-shadow:7px 1px var(--pink),-7px -1px var(--cyan)}95%{text-shadow:-5px 0 var(--pink),5px 0 var(--cyan)}97%{text-shadow:3px 0 var(--pink),-3px 0 var(--cyan)}}
+.subhead{color:var(--text-muted);max-width:520px;margin:0.8rem auto 1.3rem;line-height:1.5;}
+.hero-buttons{display:flex;gap:0.8rem;justify-content:center;flex-wrap:wrap;}
+.btn{font-family:'Rajdhani',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;padding:0.8rem 1.4rem;border:2px solid var(--pink);color:#fff;background:rgba(255,46,109,0.18);text-decoration:none;transition:background 0.2s;}
+.btn:hover,.btn:focus-visible{background:rgba(255,46,109,0.4);}
+.btn.alt{border-color:var(--yellow);background:rgba(254,232,1,0.12);}
+.btn.alt:hover,.btn.alt:focus-visible{background:rgba(254,232,1,0.3);}
+main{max-width:1040px;margin:0 auto;padding:1rem 1.5rem 1rem;}
+.section-label{font-family:'Rajdhani',sans-serif;font-weight:700;font-size:0.85rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--cyan);margin:1.8rem 0 0.8rem;}
+.card{position:relative;display:block;overflow:hidden;text-decoration:none;border:1px solid var(--surface-border);border-left:4px solid var(--c);background:var(--surface);}
+.card-img{display:block;width:100%;aspect-ratio:16/7;object-fit:cover;object-position:center;opacity:0.55;transition:opacity 0.25s,transform 0.4s;}
+.card:hover .card-img,.card:focus-visible .card-img{opacity:0.85;transform:scale(1.02);}
+.card-text{position:absolute;left:0;right:0;bottom:0;padding:2.2rem 1.1rem 0.9rem;background:linear-gradient(0deg,rgba(5,5,7,0.96) 55%,transparent);}
+.card-title{font-family:'Rajdhani',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;font-size:1.35rem;color:var(--c);margin:0;}
+.card-desc{color:var(--text-muted);font-size:0.9rem;line-height:1.4;margin-top:0.15rem;}
+.card.wide .card-img{aspect-ratio:16/5.2;}.card.wide .card-title{font-size:1.7rem;}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:0.9rem;}
+.rules{display:flex;flex-wrap:wrap;gap:0.7rem;}
+.rule{flex:1 1 200px;border-left:4px solid var(--c);padding:0.8rem 1rem;background:var(--surface);font-family:'Rajdhani',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;text-decoration:none;transition:background 0.2s;}
+.rule:hover,.rule:focus-visible{background:#161824;}
+.rule small{display:block;font-family:'Chakra Petch',sans-serif;font-weight:500;text-transform:none;letter-spacing:0;color:var(--text-muted);font-size:0.8rem;}
+.update-card{border-left:3px solid var(--surface-border);background:var(--surface);padding:0.9rem 1.1rem;}
+.update-date{font-family:'Rajdhani',sans-serif;font-weight:700;font-size:0.85rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--cyan);margin-bottom:0.4rem;}
+.update-date .month{color:var(--text-muted);margin-left:0.4rem;}
+.update-items{list-style:none;padding:0;}
+.update-items li{color:var(--text-muted);font-size:0.9rem;line-height:1.5;padding:0.1rem 0 0.1rem 0.9rem;position:relative;}
+.update-items li::before{content:"";position:absolute;left:0;top:0.6rem;width:5px;height:5px;background:var(--teal);clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);}
+.updates-more{display:inline-block;margin-top:0.8rem;font-family:'Rajdhani',sans-serif;font-weight:700;font-size:0.9rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--cyan);text-decoration:none;}
+.about-section{border-top:1px solid var(--surface-border);padding:3rem 2rem 3.5rem;max-width:760px;margin:2rem auto 0;}
 .about-section p{font-size:0.9rem;color:var(--text-muted);line-height:1.7;margin:0 0 1rem;}
 .about-section p:last-child{margin-bottom:0;}
-.about-section a{color:var(--cyan-accent);text-decoration:none;transition:color 0.2s;}
+.about-section a{color:var(--cyan);text-decoration:none;}
 .about-section a:hover{color:var(--yellow);}
-.about-more{display:inline-flex;align-items:center;gap:0.4rem;margin-top:0.5rem;font-family:'Rajdhani',sans-serif;font-weight:600;font-size:0.85rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--cyan-accent);text-decoration:none;transition:color 0.2s;}
-.about-more:hover{color:var(--yellow);}
-.site-footer{text-align:center;padding:2rem;font-size:0.75rem;color:rgba(255,255,255,0.2);}
-.site-footer a{color:inherit;text-decoration:underline;text-underline-offset:2px;transition:color 0.2s;}
-.site-footer a:hover{color:var(--cyan-accent);}
-@media(max-width:600px){.hero{padding:3rem 1.5rem;}.section{padding:2.5rem 1.2rem;}.campaign-title{font-size:1.05rem;}.campaign-arrow{display:none;}.about-section{padding:2.5rem 1.2rem 3rem;}}
-@media(prefers-reduced-motion:reduce){.glitch-title,.glitch-title::before,.glitch-title::after,.glitch-title .line2::before,.glitch-title .line2::after{animation:none;}.scroll-chevron{animation:none;}.reveal{transition:none;opacity:1;transform:none;}}
+.site-footer{text-align:center;padding:2rem;font-size:0.8rem;color:#9a9eab;}
+.site-footer a{color:inherit;text-decoration:underline;text-underline-offset:2px;}
+.site-footer a:hover{color:var(--cyan);}
+@media(max-width:700px){.topbar{padding:0.6rem 1rem;gap:1rem}.topbar a:not(.topbar-name){display:none}.hero{padding:1.8rem 1rem 1.3rem}.grid2{grid-template-columns:1fr}.card-img,.card.wide .card-img{aspect-ratio:16/8}.card.wide .card-title{font-size:1.4rem}main{padding:0.5rem 1rem 1rem}.about-section{padding:2.5rem 1.2rem 3rem}}
+@media(prefers-reduced-motion:reduce){.glitch-title{animation:none}.card-img{transition:none}.card:hover .card-img{transform:none}html{scroll-behavior:auto}}
 </style>
 <script defer src="/scripts/stock-ticker.js"></script>
 </head>
 <body>
+<nav class="topbar" aria-label="Home sections">
+  <a class="topbar-name" href="#hero">G-man's Cyberpunk</a>
+  <a href="#sheets">Sheets</a><a href="#campaign">Campaign</a><a href="#factions">Factions &amp; Map</a><a href="#rules">Rules</a>
+</nav>
 <section class="hero" id="hero">
-  <div class="hero-inner">
-    <p class="kicker">OBSIDIAN DIGITAL GARDEN &middot; NIGHT CITY &amp; BEYOND</p>
-    <h1 class="glitch-title" data-text="G-MAN'S">
-      G-MAN'S
-      <span class="line2" data-text="CYBERPUNK">CYBERPUNK</span>
-    </h1>
-    <p class="subhead">The definitive archive of all things Cyberpunk from G-man — lore, homebrew rules, character sheets and much more.</p>
-  </div>
-  <div class="scroll-hint" id="scrollHint">
-    <span>Scroll</span>
-    <div class="scroll-chevron"></div>
+  <p class="kicker">OBSIDIAN DIGITAL GARDEN &middot; NIGHT CITY &amp; BEYOND</p>
+  <h1 class="glitch-title">G-MAN'S<span class="line2">CYBERPUNK</span></h1>
+  <p class="subhead">Lore, homebrew rules, character sheets and the current campaign: Fourth Corporate War.</p>
+  <div class="hero-buttons">
+    <a class="btn" href="/img/NCO-sheet.html">Character sheet</a>
+    <a class="btn alt" href="/night-city/fourth-corporate-war/">Fourth Corporate War</a>
   </div>
 </section>
-
-<div class="section">
-  <div class="reveal" style="transition-delay:0.05s">
-    <a class="campaign-banner" href="/night-city/fourth-corporate-war/">
-      <p class="campaign-label">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>
-        Active Campaign
-      </p>
-      <p class="campaign-title"><span style="color:var(--yellow)">Fourth Corporate War</span> — <span style="color:var(--text-primary)">Night City</span></p>
-      <span class="campaign-arrow">→</span>
+<main>
+  <p class="section-label" id="sheets" style="margin-top:0.6rem">Character sheet</p>
+  <a class="card wide" href="/img/NCO-sheet.html" style="--c:var(--pink-accent)">
+      <img class="card-img" src="/img/home/home-sheet.jpg" alt="Neon City Overdrive character sheet" loading="lazy" decoding="async">
+      <span class="card-text"><span class="card-title">NCOverdrive character sheet</span><span class="card-desc" style="display:block">Fill in, save and load your character.</span></span>
+    </a>
+  <p class="section-label" id="campaign">Campaign material</p>
+  <div class="grid2">
+    <a class="card" href="/night-city/fourth-corporate-war/" style="--c:var(--yellow)">
+      <img class="card-img" src="/img/user/Pictures/pic-4cw.jpg" alt="Fourth Corporate War artwork" loading="lazy" decoding="async">
+      <span class="card-text"><span class="card-title">Fourth Corporate War</span><span class="card-desc" style="display:block">The current campaign.</span></span>
+    </a>
+    <a class="card" href="/night-city/locations/night-city/" style="--c:var(--purple)">
+      <img class="card-img" src="/img/user/Pictures/FLAG-NC.webp" alt="Flag of Night City" loading="lazy" decoding="async">
+      <span class="card-text"><span class="card-title">Night City guide</span><span class="card-desc" style="display:block">History and places of the Free City.</span></span>
     </a>
   </div>
-</div>
-
-<div class="section" style="padding-top:0">
-  <p class="section-label reveal" style="transition-delay:0.1s">Navigate</p>
-  <div class="reveal" style="transition-delay:0.15s">
-    <div class="nav-group">
-      <div class="nav-group-buttons">
-        <a class="nav-bar" href="/img/NCO-sheet.html" style="--bar-color:var(--pink-accent);--bar-bg:rgba(242,48,178,0.06);--bar-hover-bg:rgba(242,48,178,0.14);--bar-hover-color:var(--pink-accent);">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 0 0-5H20"/></svg>
-          <span class="nav-bar-label">NCO Character Sheet</span>
-          <span class="nav-bar-arrow">→</span>
-        </a>
-      </div>
-    </div>
-    <div class="nav-group">
-      <p class="nav-group-label">Rules Hub</p>
-      <div class="nav-group-buttons">
-        <a class="nav-bar" href="/cpred-hub/" style="--bar-color:var(--red);--bar-bg:rgba(242,72,72,0.06);--bar-hover-bg:rgba(242,72,72,0.14);--bar-hover-color:var(--red);">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
-          <span class="nav-bar-label">CyberpunkRED</span>
-          <span class="nav-bar-arrow">→</span>
-        </a>
-        <a class="nav-bar" href="/nc-overdrive-hub/" style="--bar-color:var(--blue);--bar-bg:rgba(48,97,242,0.06);--bar-hover-bg:rgba(48,97,242,0.14);--bar-hover-color:var(--blue);">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
-          <span class="nav-bar-label">NCOverdrive</span>
-          <span class="nav-bar-arrow">→</span>
-        </a>
-      </div>
-    </div>
-    <div class="nav-group">
-      <p class="nav-group-label">Lore</p>
-      <div class="nav-group-buttons">
-        <div class="nav-group-row">
-          <a class="nav-bar" href="/eurotour/eurotour/" style="--bar-color:var(--blue);--bar-bg:rgba(48,97,242,0.06);--bar-hover-bg:rgba(48,97,242,0.14);--bar-hover-color:var(--blue);">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
-            <span class="nav-bar-label">Eurotour</span>
-            <span class="nav-bar-arrow">→</span>
-          </a>
-          <a class="nav-bar" href="/night-city/fourth-corporate-war/" style="--bar-color:var(--purple);--bar-bg:rgba(161,48,242,0.06);--bar-hover-bg:rgba(161,48,242,0.14);--bar-hover-color:var(--purple);">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v12"/><path d="M18 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/><path d="M6 21a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/><path d="M18 9a9 9 0 0 1-9 9"/></svg>
-            <span class="nav-bar-label">Fourth Corp. War</span>
-            <span class="nav-bar-arrow">→</span>
-          </a>
-        </div>
-        <div class="nav-group-row">
-          <a class="nav-bar" href="/img/map-viewer/" style="--bar-color:var(--green);--bar-bg:rgba(48,242,145,0.06);--bar-hover-bg:rgba(48,242,145,0.14);--bar-hover-color:var(--green);">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
-            <span class="nav-bar-label">Explore Night City</span>
-            <span class="nav-bar-arrow">→</span>
-          </a>
-          <a class="nav-bar" href="/night-city/locations/night-city/" style="--bar-color:var(--yellow);--bar-bg:rgba(254,232,1,0.06);--bar-hover-bg:rgba(254,232,1,0.14);--bar-hover-color:var(--yellow);">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><line x1="9" y1="6" x2="9" y2="6.01"/><line x1="15" y1="6" x2="15" y2="6.01"/><line x1="9" y1="10" x2="9" y2="10.01"/><line x1="15" y1="10" x2="15" y2="10.01"/><line x1="9" y1="14" x2="9" y2="14.01"/><line x1="15" y1="14" x2="15" y2="14.01"/><line x1="9" y1="18" x2="15" y2="18"/></svg>
-            <span class="nav-bar-label">Learn about Night City</span>
-            <span class="nav-bar-arrow">→</span>
-          </a>
-        </div>
-      </div>
-    </div>
+  <p class="section-label" id="factions">Factions and map</p>
+  <div class="grid2">
+    <a class="card" href="/night-city/organizations/gangs/boostergangs-of-night-city/" style="--c:var(--green)">
+      <img class="card-img" src="/img/user/Pictures/pic-boosters.jpg" alt="Boostergangs of Night City artwork" loading="lazy" decoding="async">
+      <span class="card-text"><span class="card-title">Boostergangs of Night City</span><span class="card-desc" style="display:block">Gangs listed by district.</span></span>
+    </a>
+    <a class="card" href="/img/map-viewer/" style="--c:var(--cyan)">
+      <img class="card-img" src="/img/home/home-map.jpg" alt="Night City map, political view" loading="lazy" decoding="async">
+      <span class="card-text"><span class="card-title">Night City map</span><span class="card-desc" style="display:block">Political, socioeconomic and influence views.</span></span>
+    </a>
   </div>
-</div>
-
+  <p class="section-label" id="rules">Rules</p>
+  <div class="rules">
+    <a class="rule" href="/cpred-hub/" style="--c:var(--red)">CyberpunkRED<small>Rules hub</small></a>
+    <a class="rule" href="/nc-overdrive-hub/" style="--c:var(--blue)">NCOverdrive<small>Rules hub</small></a>
+    <a class="rule" href="/rules/homebrew/" style="--c:var(--purple)">Homebrew<small>Rules for both or either</small></a>
+  </div>
 {% if recentChange and recentChange.length > 0 %}
-<div class="section">
-  <p class="section-label reveal" style="transition-delay:0.1s">Recent Updates</p>
-  <div class="updates-list reveal" style="transition-delay:0.15s">
-    {% for entry in recentChange %}
-    <div class="update-card">
-      <p class="update-date">
-        <span>{{ entry.day }}</span>
-        <span class="month">{{ entry.month }}</span>
-      </p>
-      <ul class="update-items">
-        {% for item in entry.items %}
-        <li>{{ item }}</li>
-        {% endfor %}
-      </ul>
-    </div>
-    {% endfor %}
+  <p class="section-label">Latest update</p>
+  {% set latest = recentChange[0] %}
+  <div class="update-card">
+    <p class="update-date"><span>{{ latest.day }}</span><span class="month">{{ latest.month }}</span></p>
+    <ul class="update-items">
+      {% for item in latest.items | batch(3) | first %}<li>{{ item }}</li>{% endfor %}
+    </ul>
+    <a class="updates-more" href="/site-chronicle/">View Site Chronicle &rarr;</a>
   </div>
-  <a class="updates-more" href="/site-chronicle/">View Site Chronicle <span>→</span></a>
-</div>
 {% endif %}
+  <p class="section-label">Past adventure</p>
+  <div class="rules"><a class="rule" href="/eurotour/eurotour/" style="--c:#8a8d99">Eurotour<small>The previous campaign</small></a></div>
+</main>
 
-<div class="about-section reveal">
+<div class="about-section">
   <p class="section-label" style="margin-bottom:1rem">About This Garden</p>
   <p>G-man's Cyberpunk encompasses all relevant content that has been made public for players and visitors. It spawned out of the Obsidian Vault used to prepare for sessions and keep track of the overarching universe.</p>
   <p>We already have the <a href="/eurotour/eurotour/">Eurotour Campaign</a> in high detail and we're slowly building the content for the <a href="/night-city/fourth-corporate-war/">Fourth Corp War</a> in <a href="/night-city/locations/night-city/">Night City</a>.</p>
@@ -208,24 +136,7 @@ body{background:var(--bg);font-family:'Chakra Petch',sans-serif;overflow-x:hidde
   <p>This site wouldn't have been possible without <a href="https://obsidian.md/" target="_blank" rel="noopener">Obsidian</a> and the <a href="https://github.com/oleeskild/obsidian-digital-garden" target="_blank" rel="noopener">Digital Garden plugin</a>. <a href="https://vaults.obsidian-community.com/" target="_blank" rel="noopener">Click here to explore other Digital Gardens as well.</a></p>
 </div>
 
-<div class="site-footer">G-man's Cyberpunk &middot; Built with Obsidian, Digital Garden Plugin, Eleventy and Vercel &middot; <a href="/ai-policy/">AI was used for coding</a>.</div>
 
-<script>
-(function(){
-  var reveals=document.querySelectorAll('.reveal');
-  if('IntersectionObserver' in window){
-    var obs=new IntersectionObserver(function(entries){
-      entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});
-    },{threshold:0.15});
-    reveals.forEach(function(el){obs.observe(el);});
-  }else{reveals.forEach(function(el){el.classList.add('visible');});}
-  var hero=document.getElementById('hero'),hint=document.getElementById('scrollHint');
-  if(hero){window.addEventListener('scroll',function(){
-    var s=window.scrollY,vh=window.innerHeight,r=Math.min(s/(vh*0.45),1);
-    hero.style.opacity=1-r;
-    if(hint){if(s>60)hint.classList.add('hidden');else hint.classList.remove('hidden');}
-  },{passive:true});}
-})();
-</script>
+<div class="site-footer">G-man's Cyberpunk &middot; Built with Obsidian, Digital Garden Plugin, Eleventy and Vercel &middot; <a href="/ai-policy/">AI was used for coding</a>.</div>
 </body>
 </html>
