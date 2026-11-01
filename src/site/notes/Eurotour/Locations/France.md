@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/eurotour/locations/france/","tags":["#location"],"dg-note-properties":{"tags":["#location"]}}
+{"dg-publish":true,"permalink":"/eurotour/locations/france/","dg-note-properties":{}}
 ---
 
 #location, [[Eurotour/Organizations/EEC\|EEC]]

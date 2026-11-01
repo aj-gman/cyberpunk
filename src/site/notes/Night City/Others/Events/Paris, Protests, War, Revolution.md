@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/others/events/paris-protests-war-revolution/","tags":["#news","#4cw"],"dg-note-properties":{"tags":["#news","#4cw"]}}
+{"dg-publish":true,"permalink":"/night-city/others/events/paris-protests-war-revolution/","dg-note-properties":{}}
 ---
 
 #news #4cw **September 2021**, [[Night City/Organizations/Corporations/N54\|N54]]
