@@ -2,8 +2,7 @@
 {"dg-publish":true,"permalink":"/night-city/fourth-corporate-war/","tags":["#campaign","#4cw","#ideology"],"dg-note-properties":{"tags":["#campaign","#4cw","#ideology"]}}
 ---
 
-#campaign #4cw
-![pic-4cw.jpg](/img/user/Pictures/pic-4cw.jpg)
+![pic-4cw.jpg\|386](/img/user/Pictures/pic-4cw.jpg)
 
 >[!tip]- Want to join?
 >Sign up via startplaying.games. Play every [Tuesday](https://startplaying.games/adventure/cmtt29g6501lykw04vcbwv149?ref=clerck8md0001mo08536kc22s).
@@ -32,7 +31,6 @@ As the war entered its fifth month, both sides began to show signs of exhaustion
 >- [[Night City/Characters/!pc/Hex\|Hex]]
 >- [[Night City/Characters/!pc/Ray Null\|Ray Null]]
 >- [[Night City/Characters/!pc/Ze\|Ze]]
->- [[Night City/Characters/2021/edgerunners/Liam Brightburn\|Liam Brightburn]]
 
 > [!abstract] [[Night City/Locations/Night City\|Learn about Night City]]
 

@@ -2,6 +2,30 @@
 {"dg-publish":true,"permalink":"/night-city/organizations/corporations/stock/","dg-note-properties":{}}
 ---
 
+
+**Ticker snapshot (September 2021)**
+
+| Ticker                         | Change (%) |
+| ------------------------------ | ---------- |
+| [[Night City/Organizations/Corporations/Constitutional Arms\|2NDAM]] | -0.2       |
+| [[Night City/Organizations/Corporations/Arasaka\|ARSKA]]             | -5.51      |
+| [[Night City/Organizations/Corporations/Budget Arms\|BDGT]]          | -2.1       |
+| [[Night City/Organizations/Corporations/Biotechnica\|BIOTC]]         | -0.3       |
+| [[Night City/Organizations/Corporations/IEC\|ELECTRIC]]              | -9.2       |
+| [[Night City/Organizations/Corporations/EBM\|EUROTC]]                | -8.7       |
+| [[Night City/Organizations/Corporations/Kendachi\|KTN]]              | -2.1       |
+| [[Night City/Organizations/Corporations/Lazarus PMC\|LZRS]]          | +3.1       |
+| [[Night City/Organizations/Corporations/Militech\|MILTC]]            | -6.3       |
+| [[Night City/Organizations/Corporations/N54\|N54]]                   | +0.2       |
+| [[Night City/Organizations/Corporations/Night Corp\|NIGHT]]          | -9.2       |
+| [[Night City/Organizations/Corporations/Orbital Air\|ORBITL]]        | -1.3       |
+| [[Night City/Organizations/Corporations/Petrochem\|PTRCHM]]          | -9.2       |
+| [[Night City/Organizations/Corporations/Kang Tao\|SMRT]]             | -4.6       |
+| [[Night City/Organizations/Corporations/SovOil\|SOV]]                | +3.6       |
+| [[Night City/Organizations/Corporations/Techtronika\|TCHNK]]         | +2.1       |
+| [[Night City/Organizations/Corporations/Trauma Team\|TT]]            | +3.1       |
+| [[Night City/Organizations/Corporations/Zetatech\|ZTC]]              | +1.2       |
+
 **Ticker snapshot (August 2021)**
 
 | Ticker                         | Change (%) |

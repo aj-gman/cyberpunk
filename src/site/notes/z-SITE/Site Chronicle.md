@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-path":"Site Chronicle.md","permalink":"/site-chronicle/","dg-note-properties":{}}
+{"dg-publish":true,"dg-path":"Site Chronicle.md","permalink":"/site-chronicle/","tags":["#fashion","#ideology","#npc","#news","#district","#dependency","#stratum","#boostergang","#role"],"dg-note-properties":{"tags":["#fashion","#ideology","#npc","#news","#district","#dependency","#stratum","#boostergang","#role"]}}
 ---
 
 
@@ -12,6 +12,11 @@
 	- [ ] Economy
 	- [ ] Transportation
 
+### November 2026
+#### 1.11
+- Updated Landing Page to be more visual and also digestible.
+- Added new [[Night City/Others/News\|News]], of course.
+- Began writing on the new adventure, [[Mirrorshades pt. 1\|Mirrorshades pt. 1]]
 ### October 2026
 #### 22.10
 - Wrote and published the After Action Report for [[Night City/Gigs/2021/Fated, Faithful, Fatal\|Fated, Faithful, Fatal]];
