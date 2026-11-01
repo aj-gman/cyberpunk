@@ -1,0 +1,23 @@
+{% if settings.dgShowTags === true %}
+<style>
+  .footer-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 2em;
+    padding-top: 1em;
+    border-top: 1px solid var(--background-modifier-border);
+  }
+  .footer-tags:not(:has(.tag)) { display: none; }
+  {% if pluginSettings.position === "bottom" %}
+  {% if tags and (page.url != "/" or pluginSettings.applyToHome) %}
+  main.content > header .header-tags { display: none; }
+  {% endif %}
+  /* Link and search previews embed another note's content, so hide its top
+     tags there too when that note shows them at the bottom. */
+  #tooltip-content:has(.footer-tags .tag) .header-tags,
+  .preview-body:has(.footer-tags .tag) .header-tags,
+  .preview-content:has(.preview-body .footer-tags .tag) > .preview-tags { display: none; }
+  {% endif %}
+</style>
+{% endif %}
