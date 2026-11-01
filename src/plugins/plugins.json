@@ -27,6 +27,32 @@
         "src/plugins/related-notes/styles/related.scss",
         "src/plugins/related-notes/templates/related.njk"
       ]
+    },
+    "resizable-panes": {
+      "repo": "koltensaccount/garden-plugin-resizable-panes",
+      "installedVersion": "1.1.5",
+      "installedRef": "v1.1.5",
+      "installedAt": "2026-11-01T13:14:06.915Z",
+      "enabled": true,
+      "files": [
+        "src/plugins/resizable-panes/LICENSE",
+        "src/plugins/resizable-panes/README.md",
+        "src/plugins/resizable-panes/VALIDATION.md",
+        "src/plugins/resizable-panes/assets/nav-tools.js",
+        "src/plugins/resizable-panes/assets/resizable-panes.js",
+        "src/plugins/resizable-panes/garden-plugin.json",
+        "src/plugins/resizable-panes/package-lock.json",
+        "src/plugins/resizable-panes/package.json",
+        "src/plugins/resizable-panes/screenshot.png",
+        "src/plugins/resizable-panes/scripts/check.cjs",
+        "src/plugins/resizable-panes/scripts/install.cjs",
+        "src/plugins/resizable-panes/styles/nav-tools.css",
+        "src/plugins/resizable-panes/styles/resizable-panes.css",
+        "src/plugins/resizable-panes/templates/config.njk",
+        "src/plugins/resizable-panes/tests/browser.test.cjs",
+        "src/plugins/resizable-panes/tests/fixtures/page-panel.css",
+        "src/plugins/resizable-panes/tests/runtime.test.cjs"
+      ]
     }
   }
 }
