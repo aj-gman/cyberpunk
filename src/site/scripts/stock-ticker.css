@@ -80,12 +80,6 @@
   animation-play-state: paused;
 }
 
-/* Hide the stock ticker while a link preview tooltip is showing (hovering over a link). */
-.stock-ticker:has(.internal-link:hover),
-.stock-ticker:has(.stock-ticker__link:hover) {
-  display: none;
-}
-
 
 @keyframes stock-ticker-scroll {
   to {
@@ -141,3 +135,103 @@
   }
 }
 
+/* === Combined ticker module: dated stocks + same-month news + resource buttons === */
+.ticker-module {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  align-items: stretch;
+  gap: 0.75rem;
+  width: 100%;
+  margin: 0;
+  padding: 0.5rem 1rem;
+  box-sizing: border-box;
+  background: var(--background-secondary, var(--surface, #0d0e14));
+  color: var(--text-normal, var(--text-primary, #f2f2f5));
+  font-size: 0.78rem;
+  line-height: 1.4;
+}
+
+.ticker-module__rows {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.15rem;
+}
+
+.ticker-module__row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+.ticker-module__news-label {
+  flex: 0 0 auto;
+  color: #fee801;
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.ticker-module__news-label:hover,
+.ticker-module__news-label:focus-visible {
+  text-decoration: underline;
+}
+
+.ticker-module__news-title {
+  white-space: nowrap;
+}
+
+.ticker-module__news-empty {
+  color: var(--text-muted, var(--text-normal, var(--text-primary, #f2f2f5)));
+  font-size: 0.72rem;
+  white-space: nowrap;
+}
+
+.stock-ticker__track--news {
+  animation-duration: 36s !important;
+}
+
+/* Resource buttons live inside the module; reuse the site-resource styles
+   but stack them vertically on the right on wide screens. */
+.ticker-module__actions.site-resource-nav {
+  flex: 0 0 auto;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: stretch;
+  gap: 6px;
+  margin: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.ticker-module__actions .site-resource-button {
+  white-space: nowrap;
+  justify-content: center;
+}
+
+@media (max-width: 1000px) {
+  /* The module now carries the stocks on small screens; drop the duplicate
+     mobile-bar ticker only where the module rendered (filetree layouts). */
+  body:has(.ticker-module) .stock-ticker--filetree {
+    display: none;
+  }
+
+  .ticker-module {
+    position: static;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .ticker-module__actions.site-resource-nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+}
