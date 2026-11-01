@@ -1,0 +1,61 @@
+{#- Combined stock + news ticker module with site resource buttons.
+    Replaces the standalone content-slot stock ticker and the header
+    site-resource nav on note pages. Rendered at every viewport width. -#}
+{% macro tickerItem(item, linked) %}
+<span class="stock-ticker__item">
+  {% if linked %}<a class="stock-ticker__link" href="{{ item.href }}">{% else %}<span class="stock-ticker__link">{% endif %}
+    <span class="stock-ticker__symbol">{{ item.ticker }}</span>
+    {%- if item.direction != "neutral" %}
+    <span class="stock-ticker__arrow stock-ticker__change--{{ item.direction }}" aria-hidden="true">{{ "▲" if item.direction == "positive" else "▼" }}</span>
+    {%- endif %}
+    <span class="stock-ticker__change stock-ticker__change--{{ item.direction }}">{{ item.amount }}%</span>
+  {% if linked %}</a>{% else %}</span>{% endif %}
+</span>
+{% endmacro %}
+{% macro newsItem(item, linked) %}
+<span class="stock-ticker__item">
+  {% if linked %}<a class="stock-ticker__link ticker-module__news-link" href="{{ item.url }}">{% else %}<span class="stock-ticker__link ticker-module__news-link">{% endif %}
+    <span class="ticker-module__news-title">{{ item.title }}</span>
+  {% if linked %}</a>{% else %}</span>{% endif %}
+</span>
+{% endmacro %}
+{% if stockTicker.items.length and page.url != "/night-city/organizations/corporations/stock/" %}
+<div class="ticker-module" role="region" aria-label="Stock and news ticker, snapshot {{ stockTicker.timestamp }}">
+  <div class="ticker-module__rows">
+    <div class="ticker-module__row">
+      <span class="stock-ticker__snapshot">{{ stockTicker.timestamp }}</span>
+      <div class="stock-ticker__viewport">
+        <div class="stock-ticker__track">
+          <div class="stock-ticker__group">
+            {% for item in stockTicker.items %}{{ tickerItem(item, true) }}{% endfor %}
+          </div>
+          <div class="stock-ticker__group stock-ticker__group--duplicate" aria-hidden="true">
+            {% for item in stockTicker.items %}{{ tickerItem(item, false) }}{% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="ticker-module__row">
+      <a class="ticker-module__news-label" href="/news/">News</a>
+      {% if newsTicker.items.length %}
+      <div class="stock-ticker__viewport">
+        <div class="stock-ticker__track stock-ticker__track--news">
+          <div class="stock-ticker__group">
+            {% for item in newsTicker.items %}{{ newsItem(item, true) }}{% endfor %}
+          </div>
+          <div class="stock-ticker__group stock-ticker__group--duplicate" aria-hidden="true">
+            {% for item in newsTicker.items %}{{ newsItem(item, false) }}{% endfor %}
+          </div>
+        </div>
+      </div>
+      {% else %}
+      <span class="ticker-module__news-empty">No news for {{ newsTicker.monthLabel }}</span>
+      {% endif %}
+    </div>
+  </div>
+  <nav class="site-resource-nav ticker-module__actions" aria-label="Site resources">
+    <a class="site-resource-button" href="/img/map-viewer/" style="--resource-accent:#30F291;--resource-bg:rgba(48,242,145,0.08)">Night City 2021 Map</a>
+    <a class="site-resource-button" href="/img/NCO-sheet.html" style="--resource-accent:#F230B2;--resource-bg:rgba(242,48,178,0.08)">Night City Overdrive Sheet</a>
+  </nav>
+</div>
+{% endif %}
