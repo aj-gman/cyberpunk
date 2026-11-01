@@ -394,6 +394,8 @@ main {
    which duplicates the Night City 2021 Map nav and note title. */
 #tooltip-wrapper nav,
 #tooltip-wrapper .site-resource-nav,
+#tooltip-wrapper .stock-ticker,
+#tooltip-wrapper .ticker-module,
 #tooltip-wrapper header {
   display: none !important;
 }
