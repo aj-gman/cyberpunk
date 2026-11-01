@@ -11,6 +11,11 @@ const STOCK_SOURCE = path.join(NOTES_DIR, "Night City", "Organizations", "Corpor
 const HEADING_RE = /^\*\*Ticker snapshot\s*:?\s*\(?\s*(.+?)\s*\)?\*\*$/i;
 const WIKILINK_RE = /^\[\[([^\]|]+)(?:\|([^\]]+))?\]\]$/;
 const NUMBER_RE = /[+-]?(?:\d+(?:\.\d*)?|\.\d+)/;
+const MONTHS = [
+  "January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December",
+];
+const MONTH_YEAR_RE = new RegExp(`\\b(${MONTHS.join("|")})\\s+(\\d{4})\\b`, "i");
 
 function fail(message) {
   throw new Error(`[stockTicker] ${message}`);
@@ -64,7 +69,13 @@ function parseStockSource(source) {
 
   const headingIndex = lines.findIndex((line) => HEADING_RE.test(line.trim()));
   if (headingIndex < 0) fail('missing "Ticker snapshot" heading');
-  const timestamp = lines[headingIndex].trim().match(HEADING_RE)[1].trim().toUpperCase();
+  const rawTimestamp = lines[headingIndex].trim().match(HEADING_RE)[1].trim();
+  const timestamp = rawTimestamp.toUpperCase();
+  const monthMatch = rawTimestamp.match(MONTH_YEAR_RE);
+  if (!monthMatch) fail(`snapshot heading needs a month and year, e.g. "August 2021": ${rawTimestamp}`);
+  const monthIndex = MONTHS.findIndex((m) => m.toLowerCase() === monthMatch[1].toLowerCase());
+  const monthLabel = `${MONTHS[monthIndex]} ${monthMatch[2]}`;
+  const monthTimestamp = Date.UTC(Number(monthMatch[2]), monthIndex, 1);
 
   let i = headingIndex + 1;
   while (i < lines.length && lines[i].trim() === "") i++;
@@ -93,7 +104,7 @@ function parseStockSource(source) {
     return { ticker, href: resolveHref(target), ...parseChange(cells[changeIndex], ticker) };
   });
 
-  return { timestamp, items };
+  return { timestamp, monthLabel, monthTimestamp, items };
 }
 
 module.exports = parseStockSource(fs.readFileSync(STOCK_SOURCE, "utf8"));
