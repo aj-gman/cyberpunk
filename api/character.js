@@ -78,7 +78,7 @@ export default async function handler(req, res) {
       } catch (e) {
         return res.status(500).json({ error: 'Saved file is not valid JSON.' });
       }
-      return res.status(200).json({ id, data });
+      return res.status(200).json({ id, data, revision: file.sha });
     }
 
     if (req.method === 'POST') {
@@ -88,6 +88,9 @@ export default async function handler(req, res) {
       if (!id) return res.status(400).json({ error: 'Missing character id' });
       if (!data || typeof data !== 'object') return res.status(400).json({ error: 'Missing character data' });
 
+      if (!Object.prototype.hasOwnProperty.call(body, 'expectedRevision') || (body.expectedRevision !== null && typeof body.expectedRevision !== 'string')) {
+        return res.status(428).json({ error: 'Reload this character with the updated sheet before saving (missing revision).' });
+      }
       const filePath = `${GITHUB_FOLDER}/${id}.json`;
 
       // Look up the existing file's sha (required by GitHub to update a file).
@@ -102,6 +105,10 @@ export default async function handler(req, res) {
       } else if (getRes.status !== 404) {
         const err = await getRes.json().catch(() => ({}));
         return res.status(getRes.status).json({ error: err.message || `GitHub error ${getRes.status}` });
+      }
+
+      if ((sha || null) !== body.expectedRevision) {
+        return res.status(409).json({ error: 'This character changed since you loaded it. Export your edits to JSON, then reload the latest save before trying again.' });
       }
 
       const contentB64 = Buffer.from(JSON.stringify(data, null, 2), 'utf-8').toString('base64');
@@ -123,7 +130,8 @@ export default async function handler(req, res) {
         return res.status(putRes.status).json({ error: err.message || `GitHub error ${putRes.status}` });
       }
 
-      return res.status(200).json({ ok: true, id });
+      const saved = await putRes.json();
+      return res.status(200).json({ ok: true, id, revision: saved.content.sha });
     }
 
     res.setHeader('Allow', ['GET', 'POST', 'OPTIONS']);
