@@ -10,27 +10,34 @@
     {
       "name": "Just Another Corpo",
       "triggers": [],
-      "edges": []
+      "edges": [
+        "Blending In",
+        "Annoying Small Talk",
+        "Lackey and Lapdog",
+        "Submission to Authority"
+      ]
     },
     {
-      "name": "",
+      "name": "Special Operations Training",
       "triggers": [],
-      "edges": []
+      "edges": [
+        "Shoot to Kill",
+        "Human Terrain",
+        "Silent and Deadly",
+        "Contortionist"
+      ]
     },
     {
-      "name": "",
-      "triggers": [],
-      "edges": []
-    },
-    {
-      "name": "",
-      "triggers": [],
-      "edges": []
-    },
-    {
-      "name": "",
-      "triggers": [],
-      "edges": []
+      "name": "Performance of the Actor",
+      "triggers": [
+        "conversation, persuasion, manipulation, playing a role, playing a character, acting out a scene, using theater techniques"
+      ],
+      "edges": [
+        "Steal Personality",
+        "Convincing Emotion",
+        "Remember Me?",
+        "Human Perception"
+      ]
     }
   ],
   "gear": [],
@@ -79,11 +86,11 @@
       "text": "Who am I?"
     },
     {
-      "text": "Psychopath"
+      "text": "OCD"
     }
   ],
   "flaw1": "Who am I?",
-  "flaw2": "Psychopath",
+  "flaw2": "OCD",
   "stuntPoints": 0,
   "drive": {
     "text": "Born to a mother and a father in a house not too expensive or cheap, [INSERT NAME] lived on a quiet street, although it would get rowdy sometimes.\n\nGanggoons appeared sometimes, but Father would manage to fend them off. Most of the time corporate security was good enough to take care of them.\n\nFollowed an Education, then graduated with a good grade.\nBecame a B-list actor used for body doubles in high-risk scenarios.\n\nWorked as a BD actor thanks to his ability to mimic intense emotions very well.\nWas hired by [COMPANY] a few years back for Special Operations.",
