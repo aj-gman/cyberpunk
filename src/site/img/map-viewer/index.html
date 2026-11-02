@@ -618,8 +618,13 @@
     // categories (user clarification), not wiped categories: omit them.
     // Influence keeps neutral "no territory" markers for vanished factions.
     const showInactive = dated.tableKey === 'religions';
+    // Zero-territory influence entries hidden per user request (2026-11-02):
+    // Streetscum Spirits (both), Mover Beliefs, Mover Ancestors, Beaver
+    // Forefathers, Beaver Ancestors, Lympsfieldism. Snapshot data untouched.
+    const hiddenInfluenceIds = new Set([1, 2, 3, 4, 5, 6, 7]);
     meta.tables[dated.tableKey]
       .filter((entry) => entry.i !== 0) // skip "Default" / "No religion"
+      .filter((entry) => dated.tableKey !== 'religions' || !hiddenInfluenceIds.has(entry.i))
       .filter((entry) => showInactive || activeIds.has(entry.i))
       .forEach((entry) => {
         const active = activeIds.has(entry.i);
