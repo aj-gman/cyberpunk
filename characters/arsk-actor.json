@@ -1,0 +1,104 @@
+{
+  "_version": "1.0.1.3",
+  "_game": "Neon City Overdrive",
+  "nickname": "ACTOR",
+  "appearance": "Everything about your physicality is redundant. You're a double of a double. A nobody, another Corporate Mover. Short dark hair, always shaved, skinny black tie. Always with a briefcase.",
+  "personality": "Damn near psychopathic, without accounting for the Cyberware.\nIf it were up to you, life would be focused only on work. Work's the goal.\nYou do well in squads as long as THEY. DO. THEIR. FUCKING. WORK.\nYou're an actor, you can be whatever you want.",
+  "money": 0,
+  "eddies": 0,
+  "trademarks": [
+    {
+      "name": "Just Another Corpo",
+      "triggers": [],
+      "edges": []
+    },
+    {
+      "name": "",
+      "triggers": [],
+      "edges": []
+    },
+    {
+      "name": "",
+      "triggers": [],
+      "edges": []
+    },
+    {
+      "name": "",
+      "triggers": [],
+      "edges": []
+    },
+    {
+      "name": "",
+      "triggers": [],
+      "edges": []
+    }
+  ],
+  "gear": [],
+  "inventory": {
+    "container": "jacket",
+    "misc": {
+      "enabled": false,
+      "value": 1
+    },
+    "items": []
+  },
+  "cyberware": [],
+  "hitsCount": 3,
+  "hits": [
+    false,
+    false,
+    false
+  ],
+  "trackers": {
+    "cyberpsy": 0,
+    "humanity": 10
+  },
+  "conditions": {
+    "custom": []
+  },
+  "traumas": [
+    {
+      "marked": false,
+      "text": ""
+    },
+    {
+      "marked": false,
+      "text": ""
+    },
+    {
+      "marked": false,
+      "text": ""
+    },
+    {
+      "marked": false,
+      "text": ""
+    }
+  ],
+  "flaws": [
+    {
+      "text": "Who am I?"
+    },
+    {
+      "text": "Psychopath"
+    }
+  ],
+  "flaw1": "Who am I?",
+  "flaw2": "Psychopath",
+  "stuntPoints": 0,
+  "drive": {
+    "text": "Born to a mother and a father in a house not too expensive or cheap, [INSERT NAME] lived on a quiet street, although it would get rowdy sometimes.\n\nGanggoons appeared sometimes, but Father would manage to fend them off. Most of the time corporate security was good enough to take care of them.\n\nFollowed an Education, then graduated with a good grade.\nBecame a B-list actor used for body doubles in high-risk scenarios.\n\nWorked as a BD actor thanks to his ability to mimic intense emotions very well.\nWas hired by [COMPANY] a few years back for Special Operations.",
+    "pips": [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ]
+  },
+  "experiencePoints": 0
+}
