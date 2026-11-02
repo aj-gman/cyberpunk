@@ -1,0 +1,97 @@
+{
+  "_version": "1.1.0",
+  "_game": "Neon City Overdrive",
+  "nickname": "TAC",
+  "appearance": "Pink eyeshadow and visible tattoos on right hand. Long platinum blonde hair tied in a low bun. Always with a earpiece. Long trenchcoat, thick turtleneck underneath. Comfortable trousers that look like jeans but are sportswear.",
+  "personality": "Quiet but always up to something.",
+  "money": 0,
+  "eddies": 0,
+  "trademarks": [
+    {
+      "name": "",
+      "triggers": [],
+      "edges": []
+    },
+    {
+      "name": "",
+      "triggers": [],
+      "edges": []
+    },
+    {
+      "name": "",
+      "triggers": [],
+      "edges": []
+    },
+    {
+      "name": "",
+      "triggers": [],
+      "edges": []
+    },
+    {
+      "name": "",
+      "triggers": [],
+      "edges": []
+    }
+  ],
+  "gear": [],
+  "inventory": {
+    "container": "jacket",
+    "misc": {
+      "enabled": false,
+      "value": 1
+    },
+    "items": []
+  },
+  "cyberware": [],
+  "hitsCount": 3,
+  "hits": [
+    false,
+    false,
+    false
+  ],
+  "trackers": {
+    "cyberpsy": 0,
+    "humanity": 10
+  },
+  "conditions": {
+    "custom": []
+  },
+  "traumas": [
+    {
+      "marked": false,
+      "text": ""
+    },
+    {
+      "marked": false,
+      "text": ""
+    },
+    {
+      "marked": false,
+      "text": ""
+    },
+    {
+      "marked": false,
+      "text": ""
+    }
+  ],
+  "flaws": [],
+  "flaw1": "",
+  "flaw2": "",
+  "stuntPoints": 0,
+  "drive": {
+    "text": "Listen, when you're standing to be kicked out from the Beaverville where you grew up, where you made friends, where you had your first crush and your college diploma you have to do something.\n\nAnd something you did. You fuckin' fried that desk jockey who found out what your Dad did to secure that cushy job at that corp. And not in Netspace either. You fucked with his hardware, straight up making his cyberdeck explode.\n\nThat's when Arasaka first noticed you. Then, it was a tango, until they eventually promised you what you really wanted: a cushy life, as long as you'd sometimes attend their \"special shows\". And you really know how to put on fireworks.",
+    "pips": [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ]
+  },
+  "experiencePoints": 0
+}
