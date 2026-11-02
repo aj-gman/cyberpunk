@@ -33,6 +33,8 @@ describe('synthetic NCO character regressions', () => {
   const w=sheet(); expect(w.document.querySelector('.affects-humanity')).toBeNull(); expect(w.document.body.textContent).not.toContain('Affects Humanity');
   w.applyImport({traumas:[{text:'physical',marked:true,affectsHumanity:false},{text:'emotional',marked:true},{text:'old',marked:false}]}); expect(w.getHumanityMax()).toBe(8);
   expect(w.buildExport().traumas.every(x=>!('affectsHumanity' in x))).toBe(true); expect(w.document.querySelector('.logo-version').textContent).toBe('v1.3.0.0');
+  w.applyImport({traumas:[{text:'broken arm',marked:false},{text:'grief',marked:true}]}); expect(w.getHumanityMax()).toBe(9); expect(w.buildExport().traumas.map(x=>[x.text,x.marked])).toEqual([['broken arm',false],['grief',true]]);
+  w.cleanupEmpty('traumas-container','.trauma-row',1); expect(w.buildExport().traumas).toHaveLength(2); expect(w.document.querySelector('.trauma-mark').getAttribute('aria-label')).toBe('Trauma reduces Humanity');
   w.addTrauma({marked:true}); const n=w.buildExport().traumas.length; w.cleanupEmpty('traumas-container','.trauma-row',1); expect(w.buildExport().traumas).toHaveLength(n);
   w.addCondition(); const pip=w.document.querySelector('.condition-pip'); w.cycleConditionPip(pip); w.cleanupEmpty('custom-conditions','.custom-condition',1); expect(pip.isConnected).toBe(true);
  });
