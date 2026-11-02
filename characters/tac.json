@@ -3,34 +3,39 @@
   "_game": "Neon City Overdrive",
   "nickname": "TAC",
   "appearance": "Pink eyeshadow and visible tattoos on right hand. Long platinum blonde hair tied in a low bun. Always with a earpiece. Long trenchcoat, thick turtleneck underneath. Comfortable trousers that look like jeans but are sportswear.",
-  "personality": "Quiet but always up to something.",
+  "personality": "Angry at it all and willing to use this newfound power to screw over the idiots who are fucking up the world. The Bauhaus movement only came after the War. That's what we have to do, you tell yourself: destroy so we can rebuild. Opportunistic in that sense, but morally dubious even to herself.",
   "money": 0,
   "eddies": 0,
   "trademarks": [
     {
-      "name": "",
+      "name": "Insurrectionist Zealot",
       "triggers": [],
-      "edges": []
+      "edges": [
+        "Rage against the Machine",
+        "Identify Firebrands",
+        "Justify",
+        "Never back down"
+      ]
     },
     {
-      "name": "",
+      "name": "Jury-rigged Techie",
       "triggers": [],
-      "edges": []
+      "edges": [
+        "Drone Expertise",
+        "Layers of Systems Of Wires and Plugs",
+        "Old-School Hacker",
+        "Disconnect, Fry, Jack Out"
+      ]
     },
     {
-      "name": "",
+      "name": "Corpo-Groomed",
       "triggers": [],
-      "edges": []
-    },
-    {
-      "name": "",
-      "triggers": [],
-      "edges": []
-    },
-    {
-      "name": "",
-      "triggers": [],
-      "edges": []
+      "edges": [
+        "Manners & Flattery",
+        "Streetwise (Corporate)",
+        "Attractive, Alluring",
+        "Highly Educated"
+      ]
     }
   ],
   "gear": [],
@@ -60,23 +65,18 @@
     {
       "marked": false,
       "text": ""
-    },
-    {
-      "marked": false,
-      "text": ""
-    },
-    {
-      "marked": false,
-      "text": ""
-    },
-    {
-      "marked": false,
-      "text": ""
     }
   ],
-  "flaws": [],
-  "flaw1": "",
-  "flaw2": "",
+  "flaws": [
+    {
+      "text": "FUCK THE SYSTEM"
+    },
+    {
+      "text": "Depersonalized"
+    }
+  ],
+  "flaw1": "FUCK THE SYSTEM",
+  "flaw2": "Depersonalized",
   "stuntPoints": 0,
   "drive": {
     "text": "Listen, when you're standing to be kicked out from the Beaverville where you grew up, where you made friends, where you had your first crush and your college diploma you have to do something.\n\nAnd something you did. You fuckin' fried that desk jockey who found out what your Dad did to secure that cushy job at that corp. And not in Netspace either. You fucked with his hardware, straight up making his cyberdeck explode.\n\nThat's when Arasaka first noticed you. Then, it was a tango, until they eventually promised you what you really wanted: a cushy life, as long as you'd sometimes attend their \"special shows\". And you really know how to put on fireworks.",
