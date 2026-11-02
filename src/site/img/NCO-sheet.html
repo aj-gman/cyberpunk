@@ -366,6 +366,7 @@
     .custom-condition { display: flex; gap: 5px; align-items: center; margin-top: 5px; }
     .custom-condition .cond-mark { flex-shrink: 0; }
     .custom-condition input[type="text"] { font-size: 11px; }
+    .condition-count { flex: none; width: 44px; font-size: 11px; padding: 6px 2px; background: #000; color: var(--text-color); border: 1px solid #333; border-radius: 3px; }
     .conditions-add-row { display: flex; gap: 6px; align-items: center; }
     .conditions-add-row input[type="text"] { flex: 1; font-size: 11px; }
 
@@ -734,8 +735,6 @@
 
     button.hit-pip, button.pip, button.trauma-mark { padding:0; font:inherit; color:inherit; }
     :focus-visible { outline:2px solid var(--neon-cyan); outline-offset:3px; }
-    .trauma-humanity { font-size:9px; display:flex; align-items:center; gap:3px; }
-    .trauma-humanity input { flex:none; width:auto; }
     .top-bar-title { flex-wrap:wrap; min-width:0; }
     input, textarea, .panel, .gear-block { min-width:0; }
     @media(max-width:600px) {
@@ -778,7 +777,7 @@
     <div class="nco-logo">
       <span><span class="logo-neon">NIGHT </span><span class="logo-city">CITY</span></span>
       <span class="logo-over">OVERDRIVE</span>
-      <span class="logo-version">v1.2.1.1</span>
+      <span class="logo-version">v1.3.0.0</span>
     </div>
     <span style="color:#444;font-size:20px;">|</span>
     <span style="color:var(--dim);font-size:11px;text-transform:uppercase;letter-spacing:1px;">Character Sheet</span>
@@ -1485,11 +1484,18 @@
   // CONDITIONS SYSTEM
   // ═══════════════════════════════════════════════════════
 
+  function conditionCountOptions(value) {
+    var n = Math.min(9, Math.max(1, parseInt(value, 10) || 1));
+    var out = '';
+    for (var i = 1; i <= 9; i++) out += '<option value="' + i + '"' + (i === n ? ' selected' : '') + '>' + i + '</option>';
+    return out;
+  }
+
   function addCondition() {
     const container = document.getElementById('custom-conditions');
     const div = document.createElement('div');
     div.className = 'custom-condition';
-    div.innerHTML = '<div class="condition-pip" data-state="off" onclick="cycleConditionPip(this)" role="button" tabindex="0" aria-label="Condition severity: off"></div><input type="text" placeholder="Custom condition&#8230;" style="font-size:11px;">';
+    div.innerHTML = '<div class="condition-pip" data-state="off" onclick="cycleConditionPip(this)" role="button" tabindex="0" aria-label="Condition severity: off"></div><select class="condition-count" aria-label="Condition counter">'+conditionCountOptions(1)+'</select><input type="text" placeholder="Custom condition&#8230;" style="font-size:11px;">';
     div.querySelector('.condition-pip').addEventListener('keydown', function (event) {
       if (event.key === 'Enter' || event.key === ' ') {
         event.preventDefault();
@@ -1517,9 +1523,8 @@
     const container = document.getElementById('traumas-container');
     const div = document.createElement('div');
     div.className = 'trauma-row';
-    div.innerHTML = '<button type="button" class="trauma-mark empty" aria-label="Trauma active" aria-pressed="false" onclick="toggleTrauma(this)"></button><input type="text" placeholder="Trauma description&#8230;"><label class="trauma-humanity"><input type="checkbox" class="affects-humanity" onchange="updateHumanityLimit()">Affects Humanity</label>';
+    div.innerHTML = '<button type="button" class="trauma-mark empty" aria-label="Trauma active" aria-pressed="false" onclick="toggleTrauma(this)"></button><input type="text" placeholder="Trauma description&#8230;">';
     div.querySelector('input[type=text]').value = data.text || '';
-    div.querySelector('.affects-humanity').checked = data.affectsHumanity === true;
     div.querySelector('.trauma-mark').classList.toggle('empty', !data.marked);
     div.querySelector('.trauma-mark').setAttribute('aria-pressed', String(!!data.marked));
     container.appendChild(div);
@@ -1581,7 +1586,7 @@
   const cyberpsyMax = 20;
 
   function getActiveTraumaCount() {
-    return Array.from(document.querySelectorAll('#traumas-container .trauma-row')).filter(row => !row.querySelector('.trauma-mark').classList.contains('empty') && row.querySelector('.affects-humanity').checked).length;
+    return Array.from(document.querySelectorAll('#traumas-container .trauma-row')).filter(row => !row.querySelector('.trauma-mark').classList.contains('empty')).length;
   }
 
   function getHumanityMax() {
@@ -1682,7 +1687,7 @@
     var rows = document.querySelectorAll('#' + containerId + ' ' + selector);
     rows.forEach(function (row) {
       var input = row.querySelector('input');
-      if (input && input.value.trim() === '' && !row.querySelector('.trauma-mark:not(.empty)') && !row.querySelector('.affects-humanity:checked') && !row.querySelector('.condition-pip[data-state=blue], .condition-pip[data-state=red]')) {
+      if (input && input.value.trim() === '' && !row.querySelector('.trauma-mark:not(.empty)') && !row.querySelector('.condition-pip[data-state=blue], .condition-pip[data-state=red]')) {
         row.remove();
       }
     });
@@ -1786,7 +1791,6 @@
     const traumas = Array.from(document.querySelectorAll('#traumas-container .trauma-row')).map(function (row) {
       return {
         marked: !row.querySelector('.trauma-mark').classList.contains('empty'),
-        affectsHumanity: row.querySelector('.affects-humanity').checked,
         text: row.querySelector('input') ? row.querySelector('input').value : ''
       };
     });
@@ -1824,7 +1828,8 @@
       conditions: {
         custom: Array.from(document.querySelectorAll('#custom-conditions .custom-condition input')).map(function (input) {
           var pip = input.parentNode.querySelector('.condition-pip');
-          return { text: input.value, state: pip ? (pip.dataset.state || 'off') : 'off' };
+          var counter = input.parentNode.querySelector('.condition-count');
+          return { text: input.value, state: pip ? (pip.dataset.state || 'off') : 'off', count: counter ? (parseInt(counter.value, 10) || 1) : 1 };
         }).filter(function (condition) { return condition.text.trim() || condition.state !== 'off'; })
       },
       traumas: traumas,
@@ -1941,7 +1946,7 @@
     array(data.gear,'gear',gear); array(data.cyberware,'cyberware',gear);
     if(data.inventory !== undefined) { fields(data.inventory,'inventory',['container']); array(data.inventory.items,'inventory.items',gear); if(data.inventory.misc !== undefined) { object(data.inventory.misc,'inventory.misc'); bool(data.inventory.misc.enabled,'inventory.misc.enabled'); number(data.inventory.misc.value,'inventory.misc.value'); } }
     if(data.trackers !== undefined) { object(data.trackers,'trackers'); ['cyberpsy','humanity'].forEach(k=>number(data.trackers[k],'trackers.'+k)); }
-    if(data.conditions !== undefined) { object(data.conditions,'conditions'); array(data.conditions.custom,'conditions.custom',(v,p) => { if(typeof v === 'string') return; fields(v,p,['text','state']); bool(v.checked,p+'.checked'); if(v.state !== undefined && !['off','blue','red'].includes(v.state)) fail(p+'.state'); }); }
+    if(data.conditions !== undefined) { object(data.conditions,'conditions'); array(data.conditions.custom,'conditions.custom',(v,p) => { if(typeof v === 'string') return; fields(v,p,['text','state']); number(v.count,p+'.count'); if(v.count !== undefined && (v.count < 1 || v.count > 9)) fail(p+'.count'); bool(v.checked,p+'.checked'); if(v.state !== undefined && !['off','blue','red'].includes(v.state)) fail(p+'.state'); }); }
     array(data.traumas,'traumas',(v,p) => { fields(v,p,['text']); bool(v.marked,p+'.marked'); bool(v.affectsHumanity,p+'.affectsHumanity'); });
     if(Array.isArray(data.flaws)) array(data.flaws,'flaws',(v,p)=>fields(v,p,['text']));
     else if(data.flaws !== undefined) fields(data.flaws,'flaws',['flaw1','flaw2']);
@@ -2035,7 +2040,7 @@
         div.className = 'custom-condition';
         var text = typeof cc === 'string' ? cc : (cc.text || '');
         var state = typeof cc === 'string' ? 'off' : (cc.state || (cc.checked ? 'blue' : 'off'));
-        div.innerHTML = '<div class="condition-pip ' + (state === 'blue' || state === 'red' ? state : '') + '" data-state="' + (state === 'blue' || state === 'red' ? state : 'off') + '" onclick="cycleConditionPip(this)" role="button" tabindex="0" aria-label="Condition severity: ' + (state || 'off') + '"></div><input type="text" placeholder="Custom condition&#8230;" style="font-size:11px;" value="' + escHtml(text) + '">';
+        div.innerHTML = '<div class="condition-pip ' + (state === 'blue' || state === 'red' ? state : '') + '" data-state="' + (state === 'blue' || state === 'red' ? state : 'off') + '" onclick="cycleConditionPip(this)" role="button" tabindex="0" aria-label="Condition severity: ' + (state || 'off') + '"></div><select class="condition-count" aria-label="Condition counter">'+conditionCountOptions(cc.count)+'</select><input type="text" placeholder="Custom condition&#8230;" style="font-size:11px;" value="' + escHtml(text) + '">';
         div.querySelector('.condition-pip').addEventListener('keydown', function (event) {
           if (event.key === 'Enter' || event.key === ' ') {
             event.preventDefault();
@@ -2049,7 +2054,7 @@
     // Traumas
     document.getElementById('traumas-container').innerHTML = '';
     (data.traumas || []).forEach(function (t) {
-      addTrauma({ ...t, affectsHumanity: t.affectsHumanity === undefined ? true : t.affectsHumanity });
+      addTrauma(t);
     });
     if (!data.traumas || !data.traumas.length) addTrauma();
     updateHumanityLimit();
