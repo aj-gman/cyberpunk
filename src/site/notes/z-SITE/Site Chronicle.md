@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-path":"Site Chronicle.md","permalink":"/site-chronicle/","tags":["#fashion","#ideology","#npc","#news","#district","#dependency","#stratum","#boostergang","#role"],"dg-note-properties":{"tags":["#fashion","#ideology","#npc","#news","#district","#dependency","#stratum","#boostergang","#role"]}}
+{"dg-publish":true,"dg-path":"Site Chronicle.md","permalink":"/site-chronicle/","dg-note-properties":{}}
 ---
 
 
@@ -15,6 +15,8 @@
 ### November 2026
 #### 1.11
 - Updated Landing Page to be more visual and also digestible.
+- Update [Map](https://aj-gman.github.io/cyberpunk/img/map-viewer/#layer=political&date=2021-09) to also include a TIMELINE so you can see how it looked way back when;
+	- This timeline is a bit WIP since i dont have some of the files from August 2021
 - Added new [[Night City/Others/News\|News]], of course.
 - Began writing on the new adventure, [[Mirrorshades pt. 1\|Mirrorshades pt. 1]]
 ### October 2026

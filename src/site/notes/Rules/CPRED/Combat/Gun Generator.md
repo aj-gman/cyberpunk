@@ -16,6 +16,6 @@ Picks fron the [[Rules/CPRED/Combat/Combat#Gun Brands\|Brands]], [[Rules/CPRED/C
 
 
 ### Generator
-<div><div><b>Brand:</b> <a href="Budget Arms" class="internal-link">Budget Arms</a></div><div><b>Archetype:</b> Sniper Rifle</div><div><b>Gun Type:</b> <a href="Tech" class="internal-link">Tech</a></div><div><b>Price:</b> 375 eb</div></div><button class="gun-gen-btn"><span>Regenerate</span></button>
+<div><div><b>Brand:</b> <a href="Arasaka" class="internal-link">Arasaka</a></div><div><b>Archetype:</b> SMG</div><div><b>Gun Type:</b> <a href="Tech" class="internal-link">Tech</a></div><div><b>Price:</b> 225 eb</div></div><button class="gun-gen-btn"><span>Regenerate</span></button>
 
 

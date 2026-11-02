@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/locations/laguna-bend/","tags":["#location","#4cw"],"dg-note-properties":{"tags":["#location","#4cw"]}}
+{"dg-publish":true,"permalink":"/night-city/locations/laguna-bend/","dg-note-properties":{}}
 ---
 
 #location #4cw [[Night City/Locations/Dependencies/Badlands\|Badlands]]

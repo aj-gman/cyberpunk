@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/others/events/law-and-entropy/","tags":["#news","#4cw","#boostergang","#corporation"],"dg-note-properties":{"tags":["#news","#4cw","#boostergang","#corporation"]}}
+{"dg-publish":true,"permalink":"/night-city/others/events/law-and-entropy/","tags":["news","4cw"],"dg-note-properties":{"tags":["news","4cw"]}}
 ---
 
 **September 2021**, [[Eurotour/Locations/France\|French]]-[[Eurotour/Organizations/Neo-Sov\|Soviet]] [[Rules/CPRED/Roles/Media\|Media]]

@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/others/events/in-loving-memory-of-tammi-lu/","tags":["#news","#4cw"],"dg-note-properties":{"tags":["#news","#4cw"]}}
+{"dg-publish":true,"permalink":"/night-city/others/events/in-loving-memory-of-tammi-lu/","tags":["news","4cw"],"dg-note-properties":{"tags":["news","4cw"]}}
 ---
 
 **September 2021, [[EyeSpy\|EyeSpy]]**

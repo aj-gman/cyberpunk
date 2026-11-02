@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/others/events/the-psycho-coalition-crumbles/","tags":["#news","#4cw"],"dg-note-properties":{"tags":["#news","#4cw"]}}
+{"dg-publish":true,"permalink":"/night-city/others/events/the-psycho-coalition-crumbles/","tags":["news","4cw"],"dg-note-properties":{"tags":["news","4cw"]}}
 ---
 
 **September 2021, [[Night City/Gigs/2021/Man That You Fear\|Man That You Fear]], [[Night City/Organizations/Corporations/N54\|N54]]**
