@@ -1523,7 +1523,7 @@
     const container = document.getElementById('traumas-container');
     const div = document.createElement('div');
     div.className = 'trauma-row';
-    div.innerHTML = '<button type="button" class="trauma-mark empty" aria-label="Trauma active" aria-pressed="false" onclick="toggleTrauma(this)"></button><input type="text" placeholder="Trauma description&#8230;">';
+    div.innerHTML = '<button type="button" class="trauma-mark empty" aria-label="Trauma reduces Humanity" aria-pressed="false" onclick="toggleTrauma(this)"></button><input type="text" placeholder="Trauma description&#8230;">';
     div.querySelector('input[type=text]').value = data.text || '';
     div.querySelector('.trauma-mark').classList.toggle('empty', !data.marked);
     div.querySelector('.trauma-mark').setAttribute('aria-pressed', String(!!data.marked));
