@@ -574,6 +574,29 @@
   const svgCache = {};           // url -> Promise<SVGElement>
   const metaCache = {};          // dateId -> Promise<meta.json object>
 
+  // ── Dated raster snapshots ─────────────────────────────────────
+  // A timeline date with no FMG .map save can instead carry its own
+  // rendered tile folders (manifest entry `tiles`, one folder per
+  // preset key). Such a date renders exactly like the current tiles
+  // (same hover mapping); groups build lazily and cache per date.
+  // cache key includes the date id, so folders never collide.
+  const datedLayerGroups = {};
+  let shownGroup = null; // tile group currently on the map
+
+  function datedTilesFolderFor(presetKey) {
+    const date = dates[dateIndex];
+    if (!date || !date.tiles) return null;
+    return date.tiles[presetKey] || null;
+  }
+
+  function tileGroupFor(presetKey) {
+    const folder = datedTilesFolderFor(presetKey);
+    if (!folder) return layerGroups[presetKey];
+    const cacheKey = dates[dateIndex].id + '/' + presetKey;
+    if (!datedLayerGroups[cacheKey]) datedLayerGroups[cacheKey] = buildLayerGroup(folder);
+    return datedLayerGroups[cacheKey];
+  }
+
   // ── Wiki page index (built at site build time) ─────────────────
   // map-page-index.json lists every note's title + URL. Names are matched
   // case-insensitively; titles shared by more than one page are treated as
@@ -684,7 +707,10 @@
     const preset = TILE_SETS.find((entry) => entry.key === currentKey);
     const dated = datedFileFor(preset);
 
-    map.removeLayer(layerGroups[currentKey]);
+    if (shownGroup) {
+      map.removeLayer(shownGroup);
+      shownGroup = null;
+    }
     if (datedOverlay) {
       map.removeLayer(datedOverlay);
       datedOverlay = null;
@@ -696,8 +722,10 @@
     tooltipEl.classList.remove('visible');
 
     if (!dated) {
-      // Tile fallback: original behaviour for this preset.
-      layerGroups[currentKey].addTo(map);
+      // Tile behaviour for this preset: the current tiles, or the
+      // date's own raster snapshot when the timeline entry has tiles.
+      shownGroup = tileGroupFor(currentKey);
+      shownGroup.addTo(map);
       updateHash();
       if (currentKey === 'political') setupPoliticalLabelLinks(token);
       return;
@@ -730,7 +758,10 @@
       try { baseFromSave = !!(await addOverlay('basemap', false)); } catch (error) { /* tile base */ }
     }
     if (token !== renderToken) return;
-    if (!baseFromSave) layerGroups.political.addTo(map);
+    if (!baseFromSave) {
+      shownGroup = tileGroupFor('political');
+      shownGroup.addTo(map);
+    }
 
     // Region fills: hover names joined from the save's own tables (paths
     // carry culture<N>/religion<N> ids; "-gap" stroke twins are skipped).
@@ -740,7 +771,8 @@
     if (!svgEl) {
       extraOverlays.forEach((overlay) => map.removeLayer(overlay));
       extraOverlays = [];
-      layerGroups[currentKey].addTo(map); // fetch failed: fall back to tiles
+      shownGroup = tileGroupFor(currentKey); // fetch failed: fall back to tiles
+      shownGroup.addTo(map);
       updateHash();
       return;
     }
@@ -867,8 +899,13 @@
         chip.style.background = entry.color;
         // Strata pages are plural ("Edgerunners") while legend names are
         // singular: socioeconomic entries retry with a plural -s.
+        // Faction legends map to their parent organization's page
+        // (user-specified 2026-11-02): Statism -> NUSA, Arasaka Loyalty ->
+        // Arasaka, Militech Superiority -> Militech.
+        const LEGEND_PAGE_ALIASES = { 'Statism': 'NUSA', 'Arasaka Loyalty': 'Arasaka', 'Militech Superiority': 'Militech' };
         const url = lookupPage(pageIndex, entry.name)
-          || (dated.tableKey === 'cultures' ? lookupPage(pageIndex, entry.name + 's') : null);
+          || (dated.tableKey === 'cultures' ? lookupPage(pageIndex, entry.name + 's') : null)
+          || (LEGEND_PAGE_ALIASES[entry.name] ? lookupPage(pageIndex, LEGEND_PAGE_ALIASES[entry.name]) : null);
         const name = document.createElement(url ? 'a' : 'span');
         name.textContent = entry.name;
         if (url) {
@@ -972,7 +1009,10 @@
 
   function switchTileSet(key) {
     if (key === currentKey || !layerGroups[key]) return;
-    map.removeLayer(layerGroups[currentKey]);
+    if (shownGroup) {
+      map.removeLayer(shownGroup);
+      shownGroup = null;
+    }
     currentKey = key;
     updatePresetButtons();
     render();
@@ -1007,7 +1047,8 @@
   }
 
   applyHash(); // layer part works even without a timeline manifest
-  layerGroups[currentKey].addTo(map);
+  shownGroup = layerGroups[currentKey];
+  shownGroup.addTo(map);
   resetView();
   window.addEventListener('load', resetView);
   initTimeline();
@@ -1113,7 +1154,7 @@
     const pixelX = Math.floor(x - columnIndex * TILE_W);
     const pixelY = Math.floor(yDown - rowIndex * TILE_H);
 
-    getTileCanvas(preset.folder, row, column, (context) => {
+    getTileCanvas(datedTilesFolderFor(preset.key) || preset.folder, row, column, (context) => {
       const inspectPixel = (baseContext) => {
         if (baseContext) {
           const basePixel = baseContext.getImageData(pixelX, pixelY, 1, 1).data;
@@ -1193,7 +1234,7 @@
       if (currentKey === 'political') {
         identifyPixel();
       } else {
-        getTileCanvas('tiles-pol', row, column, inspectPixel);
+        getTileCanvas(datedTilesFolderFor('political') || 'tiles-pol', row, column, inspectPixel);
       }
     });
   });
