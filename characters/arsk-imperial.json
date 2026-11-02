@@ -2,35 +2,40 @@
   "_version": "1.1.0",
   "_game": "Neon City Overdrive",
   "nickname": "IMPERIAL",
-  "appearance": "",
-  "personality": "",
+  "appearance": "Old man, short hair with white beard. Visible scars and wandering eyes. \nSlight limp, most likely not real. Well groomed. Peak health.\n",
+  "personality": "Cold, distant, seemingly unaffected. But this requires work, this requires you to keep yourself from getting attached. You've had some great crews and it made you cry when you found out one or another had been killed.\nDetachment is needed in this industry. You try to keep your distance but you still crave the closeness, the teamwork, the feeling that you are all just organs in a single organism.",
   "money": 0,
   "eddies": 0,
   "trademarks": [
     {
-      "name": "",
+      "name": "Old Dog",
       "triggers": [],
-      "edges": []
+      "edges": [
+        "Traditional Methodology",
+        "Prediction of People",
+        "Before Everyone Else",
+        "Stars & Medals"
+      ]
     },
     {
-      "name": "",
+      "name": "Weapon Expert",
       "triggers": [],
-      "edges": []
+      "edges": [
+        "Critical Shot",
+        "Ricochet Angle",
+        "Weapon Modification",
+        "Counting Bullets (works on enemies!)"
+      ]
     },
     {
-      "name": "",
+      "name": "Strategic Mastermind",
       "triggers": [],
-      "edges": []
-    },
-    {
-      "name": "",
-      "triggers": [],
-      "edges": []
-    },
-    {
-      "name": "",
-      "triggers": [],
-      "edges": []
+      "edges": [
+        "Flank Routes",
+        "Architectural Prowess",
+        "Controlled Explosions",
+        "Grand Strategy"
+      ]
     }
   ],
   "gear": [
@@ -72,43 +77,39 @@
     "items": []
   },
   "cyberware": [],
-  "hitsCount": 3,
+  "hitsCount": 4,
   "hits": [
+    false,
     false,
     false,
     false
   ],
   "trackers": {
     "cyberpsy": 0,
-    "humanity": 10
+    "humanity": 9
   },
   "conditions": {
     "custom": []
   },
   "traumas": [
     {
-      "marked": false,
-      "text": ""
-    },
-    {
-      "marked": false,
-      "text": ""
-    },
-    {
-      "marked": false,
-      "text": ""
-    },
-    {
-      "marked": false,
-      "text": ""
+      "marked": true,
+      "text": "War. War never changes. (PERMANENT)"
     }
   ],
-  "flaws": [],
-  "flaw1": "",
-  "flaw2": "",
+  "flaws": [
+    {
+      "text": "Reliant on Omega Blockers"
+    },
+    {
+      "text": "Remember her?"
+    }
+  ],
+  "flaw1": "Reliant on Omega Blockers",
+  "flaw2": "Remember her?",
   "stuntPoints": 0,
   "drive": {
-    "text": "",
+    "text": "You've seen everything from the melted polar icecaps where there were once polar bears to the few dense jungles still in the Amazon. You've fought and killed countless guerillas, PMCs and armies. War is hate. War never changes.\n\nYou don't remember what it's like to live life beyond this. You've made a fortune doing what you're doing - killing, extracting, infiltrating - but it doesn't help. You keep saying you'll buy an island or something and retire, but you know you're just lying to yourself.\n\nYou keep looking for her. You'll never find her but if you do, you'll lay your arms in front of her. You'll bury every single bullet and skull just to be with her again.",
     "pips": [
       false,
       false,
