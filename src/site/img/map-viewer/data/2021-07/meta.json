@@ -1,0 +1,197 @@
+{
+  "label": "July 2021",
+  "tables": {
+    "cultures": [
+      {
+        "i": 0,
+        "name": "Default"
+      },
+      {
+        "i": 1,
+        "name": "Mover",
+        "color": "#797594"
+      },
+      {
+        "i": 2,
+        "name": "Beaver",
+        "color": "#f6478d"
+      },
+      {
+        "i": 3,
+        "name": "Corpzoner",
+        "color": "#2d3d63"
+      },
+      {
+        "i": 4,
+        "name": "Streetscum",
+        "color": "#5a5cd0"
+      },
+      {
+        "i": 5,
+        "name": "Mallplexer",
+        "color": "#8d6348"
+      },
+      {
+        "i": 6,
+        "name": "Edgerunner",
+        "color": "#1bc1c8"
+      },
+      {
+        "i": 7,
+        "name": "Powerdealer",
+        "color": "#4a24d8"
+      },
+      {
+        "i": 8,
+        "name": "Beaver",
+        "color": "#344b24"
+      },
+      {
+        "i": 9,
+        "name": "Edgerunner",
+        "color": "#b329a4"
+      },
+      {
+        "i": 10,
+        "name": "Streetscum",
+        "color": "#581724"
+      }
+    ],
+    "religions": [
+      {
+        "i": 0,
+        "name": "No religion"
+      },
+      {
+        "i": 1,
+        "name": "Streetscum Spirits",
+        "color": "#797594"
+      },
+      {
+        "i": 2,
+        "name": "Mover Beliefs",
+        "color": "#2d3d63"
+      },
+      {
+        "i": 3,
+        "name": "Mover Ancestors",
+        "color": "#8d6348"
+      },
+      {
+        "i": 4,
+        "name": "Beaver Forefathers",
+        "color": "#4a24d8"
+      },
+      {
+        "i": 5,
+        "name": "Beaver Ancestors",
+        "color": "#344b24"
+      },
+      {
+        "i": 6,
+        "name": "Lympsfieldism",
+        "color": "#b329a4"
+      },
+      {
+        "i": 7,
+        "name": "Streetscum Spirits",
+        "color": "#581724"
+      },
+      {
+        "i": 8,
+        "name": "Street Queens",
+        "color": "#4ade80"
+      },
+      {
+        "i": 9,
+        "name": "Arasaka Loyalty",
+        "color": "#ffffff"
+      },
+      {
+        "i": 10,
+        "name": "Militech Superiority",
+        "color": "#ffe135"
+      },
+      {
+        "i": 11,
+        "name": "Sun On Yee",
+        "color": "#0ea5e9"
+      },
+      {
+        "i": 12,
+        "name": "The Enhanced",
+        "color": "#ec4899"
+      },
+      {
+        "i": 13,
+        "name": "Blood Razors",
+        "color": "#7f1d1d"
+      },
+      {
+        "i": 14,
+        "name": "Tyger Clawz",
+        "color": "#3b82f6"
+      },
+      {
+        "i": 15,
+        "name": "Piranhas",
+        "color": "#14b8a6"
+      },
+      {
+        "i": 16,
+        "name": "Weng Fang Tong",
+        "color": "#8b5cf6"
+      },
+      {
+        "i": 17,
+        "name": "Maelstrom",
+        "color": "#ef4444"
+      },
+      {
+        "i": 18,
+        "name": "The Mob",
+        "color": "#6366f1"
+      },
+      {
+        "i": 19,
+        "name": "Organitskaya",
+        "color": "#a855f7"
+      },
+      {
+        "i": 20,
+        "name": "Wild Things",
+        "color": "#fb923c"
+      },
+      {
+        "i": 21,
+        "name": "Inquisitors",
+        "color": "#f97316"
+      },
+      {
+        "i": 22,
+        "name": "El Norte Cartel",
+        "color": "#22d3ee"
+      },
+      {
+        "i": 23,
+        "name": "The Pack",
+        "color": "#a3e635"
+      },
+      {
+        "i": 24,
+        "name": "Voodoo Boys",
+        "color": "#166534"
+      },
+      {
+        "i": 25,
+        "name": "Bozos",
+        "color": "#6ee7b7"
+      },
+      {
+        "i": 26,
+        "name": "Red Chrome Legion",
+        "color": "#f43f5e"
+      }
+    ]
+  }
+}
