@@ -1,0 +1,7 @@
+---json
+{
+  "permalink": "/map-page-index.json",
+  "eleventyExcludeFromCollections": true
+}
+---
+[{% for post in collections.note | notHidden %}{"title": {% if post.data.title %}{{ post.data.title | jsonify | safe }}{% else %}{{ post.fileSlug | jsonify | safe }}{% endif %}, "url": {{ post.url | url | jsonify | safe }}}{% if not loop.last %},{% endif %}{% endfor %}]
