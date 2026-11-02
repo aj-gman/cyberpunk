@@ -10,37 +10,37 @@
     {
       "name": "Just Another Corpo",
       "triggers": [
-        "in the crowd, leaving work, business casual, corpo slang, streetwise (corp), opinions"
+        "In the crowd, Commuting, Business casual, Corpo slang, Streetwise (Corp), Opinions"
       ],
       "edges": [
-        "Blending In",
-        "Annoying Small Talk",
-        "Lackey and Lapdog",
-        "Submission to Authority"
+        "Blending in",
+        "Annoying small talk",
+        "Lackey and lapdog",
+        "Submission to authority"
       ]
     },
     {
       "name": "Special Operations Training",
       "triggers": [
-        "shooting, violence, anger, armored goons, surveillance tech, focus, execution"
+        "Shooting, Violence, Anger, Armored goons, Surveillance tech, Focus, Execution"
       ],
       "edges": [
-        "Shoot to Kill",
-        "Human Terrain",
-        "Silent and Deadly",
+        "Shoot to kill",
+        "Human terrain",
+        "Silent and deadly",
         "Contortionist"
       ]
     },
     {
-      "name": "Performance of the Actor",
+      "name": "Performance Actor",
       "triggers": [
-        "conversation, persuasion, manipulation, playing a role, playing a character, acting out a scene, using theater techniques"
+        "Conversation, Persuasion, Manipulation, Playing a role, Playing a character, Acting out a scene, Using theater techniques"
       ],
       "edges": [
-        "Steal Personality",
-        "Convincing Emotion",
-        "Remember Me?",
-        "Human Perception"
+        "Steal personality",
+        "Convincing emotion",
+        "Remember me?",
+        "Human perception"
       ]
     }
   ],
@@ -134,9 +134,9 @@
   ],
   "flaw1": "Who am I?",
   "flaw2": "OCD",
-  "stuntPoints": 0,
+  "stuntPoints": 3,
   "drive": {
-    "text": "Born to a mother and a father in a house not too expensive or cheap, [INSERT NAME] lived on a quiet street, although it would get rowdy sometimes.\n\nGanggoons appeared sometimes, but Father would manage to fend them off. Most of the time corporate security was good enough to take care of them.\n\nFollowed an Education, then graduated with a good grade.\nBecame a B-list actor used for body doubles in high-risk scenarios.\n\nWorked as a BD actor thanks to his ability to mimic intense emotions very well.\nWas hired by [COMPANY] a few years back for Special Operations.",
+    "text": "Born to a mother and a father in a house not too expensive or cheap, Dexter Carrington lived on a quiet street, although it would get rowdy sometimes.\n\nGanggoons appeared sometimes, but Father would manage to fend them off. Most of the time corporate security was good enough to take care of them.\n\nFollowed an Education, then graduated with a good grade.\nBecame a B-list actor used for body doubles in high-risk scenarios.\n\nWorked as a BD actor thanks to his ability to mimic intense emotions very well.\nWas hired by Arasaka a few years back for Special Operations.",
     "pips": [
       false,
       false,
