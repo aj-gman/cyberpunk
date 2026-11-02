@@ -731,6 +731,31 @@
     .storage-dialog h2 { margin-bottom: 14px; }
     .storage-options { display: grid; gap: 8px; }
     .storage-dialog .btn { width: 100%; }
+
+    button.hit-pip, button.pip, button.trauma-mark { padding:0; font:inherit; color:inherit; }
+    :focus-visible { outline:2px solid var(--neon-cyan); outline-offset:3px; }
+    .trauma-humanity { font-size:9px; display:flex; align-items:center; gap:3px; }
+    .trauma-humanity input { flex:none; width:auto; }
+    .top-bar-title { flex-wrap:wrap; min-width:0; }
+    input, textarea, .panel, .gear-block { min-width:0; }
+    @media(max-width:600px) {
+      body { padding:8px; }
+      .top-bar { padding:10px; }
+      .top-bar-title { gap:8px; }
+      .nickname-row { flex-wrap:wrap !important; padding:8px; }
+      .nickname-row > #nickname { flex:1 1 70% !important; width:0; }
+      .nickname-row > span { display:none; }
+      .top-tracker { flex-wrap:wrap; }
+      .tracker-row { flex-wrap:wrap; }
+      .tracker-bar { flex:1 1 100%; }
+      .trauma-row { flex-wrap:wrap; }
+      .trauma-row > input { flex:1; width:60%; }
+      .gear-header { flex-wrap:wrap; }
+      .gear-title-input { width:100%; flex:1 1 100%; order:5; }
+      .panel-header-row { flex-wrap:wrap; }
+      .trauma-flaw-grid { grid-template-columns:1fr; }
+      .gear-section { grid-template-columns:1fr !important; }
+    }
   </style>
 </head>
 <body>
@@ -767,7 +792,7 @@
   <div class="top-bar-actions">
     <button class="btn" onclick="openStorageModal('load')" title="Load a character">Load</button>
     <button class="btn btn-yellow" onclick="openStorageModal('save')" title="Save this character">Save</button>
-    <span id="gh-status" style="font-size:10px;color:var(--dim);min-width:110px;"></span>
+    <span id="edit-status" role="status"></span><span id="gh-status" role="status" style="font-size:10px;color:var(--dim);min-width:110px;"></span>
     <input type="file" id="importFile" accept=".json" style="display:none;">
   </div>
 </div>
@@ -775,13 +800,13 @@
 <!-- SHEET WRAPPER (used for PDF capture) -->
 <div id="sheet-wrapper">
 
-<div class="nickname-row" style="display:flex;align-items:center;gap:12px;flex-wrap:nowrap;">
+<div class="nickname-row" style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
     <label style="white-space:nowrap;">Handle</label>
     <input type="text" id="nickname" placeholder="Enter street name…" style="flex:1;">
     <span style="color:#444;font-size:16px;">|</span>
 
     <div style="display:flex;align-items:center;gap:6px;white-space:nowrap;">
-      <span class="dynamic-header" data-path="rules/nc-overdrive" style="color:var(--neon-cyan);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;">€$</span>
+      <span style="color:var(--neon-cyan);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;">€$</span>
       <input type="text" id="eddies-value" value="0" style="font-size:16px;font-weight:700;color:var(--accent-yellow);width:50px;text-align:center;background:none;border:none;padding:0;">
     </div>
     <span style="color:#444;font-size:16px;">|</span>
@@ -851,7 +876,7 @@
 
       <!-- CONDITIONS -->
       <div class="panel">
-        <h2 class="dynamic-header" data-path="rules/nc-overdrive/damage">Conditions</h2>
+        <h2 class="dynamic-header" data-path="rules/nc-overdrive">Conditions</h2>
         <div id="custom-conditions"></div>
         <button class="btn btn-small" onclick="addCondition()" style="margin-top:6px;">+ Condition</button>
       </div>
@@ -859,7 +884,7 @@
       <div class="trauma-flaw-grid">
       <!-- TRAUMAS -->
       <div class="panel red-border">
-        <h2 class="dynamic-header" data-path="rules/nc-overdrive/">Traumas</h2>
+        <h2 class="dynamic-header" data-path="rules/nc-overdrive/damage">Traumas</h2>
         <div id="traumas-container">
           <div class="trauma-row"><div class="trauma-mark empty" onclick="toggleTrauma(this)"></div><input type="text" placeholder="Trauma description…"></div>
           <div class="trauma-row"><div class="trauma-mark empty" onclick="toggleTrauma(this)"></div><input type="text" placeholder="Trauma description…"></div>
@@ -930,7 +955,7 @@
   <!-- CYBERWARE -->
   <div class="panel" style="border-color:var(--accent-yellow);">
     <div class="panel-header-row">
-      <h2 style="color:var(--accent-yellow);border-color:var(--accent-yellow);">Cyberware</h2>
+      <h2 class="dynamic-header" data-path="rules/nc-overdrive" style="color:var(--accent-yellow);border-color:var(--accent-yellow);">Cyberware</h2>
       <div class="compact-controls">
         <button class="btn btn-small" type="button" onclick="setListCompact('cyberware-container', 1)" style="border-color:var(--purple);color:var(--purple);">1 row</button>
         <button class="btn btn-small" type="button" onclick="setListCompact('cyberware-container', 2)" style="border-color:var(--purple);color:var(--purple);">2 rows</button>
@@ -944,12 +969,12 @@
 
   <!-- CYBERPSYCHOSIS TRACKERS -->
   <div class="panel" style="border-color:var(--purple);">
-    <h2 class="cyberpsy-title" style="color:var(--purple);border-color:var(--purple);"><a href="/rules/nc-overdrive/cyberware-nc-overdrive/" target="_blank" rel="noopener">Cyberpsychosis Trackers</a></h2>
+    <h2 class="cyberpsy-title dynamic-header" data-path="rules/cpred/cyberware" data-url-text="cyberpsychosis-symptoms" style="color:var(--purple);border-color:var(--purple);">Cyberpsychosis Trackers</h2>
     <div class="tracker-row">
       <span class="tracker-label" style="color:var(--danger-red);">Cyberpsychosis</span>
       <div class="tracker-controls">
         <button class="btn btn-small" onclick="changeTracker('cyberpsy', -1)" style="border-color:var(--danger-red);color:var(--danger-red);">−</button>
-        <span id="cyberpsy-value" class="tracker-value" style="color:var(--danger-red);">0</span>
+        <span id="cyberpsy-value" class="tracker-value" style="color:var(--danger-red);">0</span><small>/ 20</small>
         <button class="btn btn-small" onclick="changeTracker('cyberpsy', 1)" style="border-color:var(--danger-red);color:var(--danger-red);">+</button>
       </div>
       <div class="tracker-bar"><div class="tracker-bar-fill danger" id="cyberpsy-bar" style="width:0%;"></div></div>
@@ -958,7 +983,7 @@
       <span class="tracker-label">Humanity</span>
       <div class="tracker-controls">
         <button class="btn btn-small" onclick="changeTracker('humanity', -1)">−</button>
-        <span id="humanity-value" class="tracker-value">10</span>
+        <span id="humanity-value" class="tracker-value">10</span><small id="humanity-max">/ 10</small>
         <button class="btn btn-small" onclick="changeTracker('humanity', 1)">+</button>
       </div>
       <div class="tracker-bar"><div class="tracker-bar-fill" id="humanity-bar" style="width:100%;"></div></div>
@@ -1082,7 +1107,7 @@
     // (after a confirm). The gear-move-btn arrow always moves the row between
     // the two lists and is what refreshGearMoveButtons/setGearBlockList target.
     controls.innerHTML =
-      '<button class="btn btn-danger btn-small" type="button" title="' + (isInventory ? 'Return to Gear (Stashed)' : 'Delete gear') + '" onclick="event.stopPropagation(); ' + (isInventory ? 'returnGearToStash(this)' : 'removeGear(' + id + ')') + '">&#10005;</button>' +
+      '<button class="btn btn-danger btn-small" type="button" title="' + (isInventory ? 'Return to Gear (Stashed)' : 'Delete gear') + '" onclick="event.stopPropagation(); ' + 'removeOrReturnGear(this)' + '">&#10005;</button>' +
       '<button class="btn btn-move btn-small gear-move-btn" type="button" title="' + (isInventory ? 'Move back to Gear (Stashed)' : 'Move to Inventory') + '" onclick="event.stopPropagation(); moveGearItem(this)">' + (isInventory ? '&#8592;' : '&#8594;') + '</button>';
 
     header.innerHTML =
@@ -1104,7 +1129,7 @@
       const tagInput = document.createElement('input');
       tagInput.type = 'text';
       tagInput.className = 'gear-tags';
-      tagInput.placeholder = 'offensive, ranged, tech&#8230;';
+      tagInput.placeholder = 'offensive, ranged, tech…';
       tagInput.style.cssText = 'background:transparent;border:none;border-bottom:1px solid #444;color:var(--neon-pink);font-weight:700;font-size:11px;font-family:\'Lexend\', monospace;flex:1;padding:2px 4px;';
       tagInput.value = data.tags || '';
       tagsRow.appendChild(tagLabel);
@@ -1133,6 +1158,12 @@
     div.addEventListener('dragend', handleListDragEnd);
     container.appendChild(div);
     setListCompact(container.id, getListCompactLevel(container.id));
+  }
+
+  function removeOrReturnGear(button) {
+    const block = button.closest('.gear-block');
+    if (block.parentNode.id === 'inventory-container') returnGearToStash(button);
+    else removeGear(Number(block.id.replace('gear-block-', '')));
   }
 
   function removeGear(id) {
@@ -1397,6 +1428,11 @@
   // Drag-reorder resolves its container from parentNode at drop time, so it
   // keeps working in the new list; only the arrow and compact layout change.
   function setGearBlockList(block, target) {
+    const remove = block.querySelector('.btn-danger');
+    if (remove) {
+      remove.title = target.id === 'inventory-container' ? 'Return to Gear (Stashed)' : 'Delete gear';
+      remove.setAttribute('aria-label', remove.title);
+    }
     var toInventory = target.id === 'inventory-container';
     var btn = block.querySelector('.gear-move-btn');
     if (btn) {
@@ -1476,11 +1512,16 @@
   // TRAUMA / FLAW ADDERS
   // ═══════════════════════════════════════════════════════
 
-  function addTrauma() {
+  function addTrauma(data) {
+    data = data || {};
     const container = document.getElementById('traumas-container');
     const div = document.createElement('div');
     div.className = 'trauma-row';
-    div.innerHTML = '<div class="trauma-mark empty" onclick="toggleTrauma(this)"></div><input type="text" placeholder="Trauma description&#8230;">';
+    div.innerHTML = '<button type="button" class="trauma-mark empty" aria-label="Trauma active" aria-pressed="false" onclick="toggleTrauma(this)"></button><input type="text" placeholder="Trauma description&#8230;"><label class="trauma-humanity"><input type="checkbox" class="affects-humanity" onchange="updateHumanityLimit()">Affects Humanity</label>';
+    div.querySelector('input[type=text]').value = data.text || '';
+    div.querySelector('.affects-humanity').checked = data.affectsHumanity === true;
+    div.querySelector('.trauma-mark').classList.toggle('empty', !data.marked);
+    div.querySelector('.trauma-mark').setAttribute('aria-pressed', String(!!data.marked));
     container.appendChild(div);
   }
 
@@ -1502,23 +1543,32 @@
   // ═══════════════════════════════════════════════════════
   let hitsCount = 3;
 
-  function buildHitPips(count) {
+  function buildHitPips(count, marks) {
+    marks = marks || [];
     const container = document.getElementById('hits-pips');
     container.innerHTML = '';
     for (let i = 0; i < count; i++) {
-      const pip = document.createElement('div');
+      const pip = document.createElement('button');
+      pip.type = 'button';
       pip.className = 'hit-pip';
+      pip.classList.toggle('marked', !!marks[i]);
+      pip.setAttribute('aria-label', 'Hit ' + (i + 1));
+      pip.setAttribute('aria-pressed', String(!!marks[i]));
       pip.dataset.index = i;
       pip.innerHTML = '&#10005;';
-      pip.addEventListener('click', function () { this.classList.toggle('marked'); });
+      pip.addEventListener('click', function () { this.classList.toggle('marked'); this.setAttribute('aria-pressed', String(this.classList.contains('marked'))); });
       container.appendChild(pip);
     }
     document.getElementById('hits-count').textContent = count;
   }
 
   function changeHits(delta) {
-    hitsCount = Math.max(1, Math.min(10, hitsCount + delta));
-    buildHitPips(hitsCount);
+    const next = Math.max(1, Math.min(10, hitsCount + delta));
+    if (next === hitsCount) return;
+    const marks = Array.from(document.querySelectorAll('#hits-pips .hit-pip')).map(p => p.classList.contains('marked'));
+    if (marks.slice(next).some(Boolean) && !window.confirm('Reducing Hits will remove marked hits. Continue?')) return;
+    hitsCount = next;
+    buildHitPips(hitsCount, marks);
   }
 
   buildHitPips(hitsCount);
@@ -1526,12 +1576,12 @@
   // ═══════════════════════════════════════════════════════
   // CYBERPSYCHOSIS TRACKERS
   // ═══════════════════════════════════════════════════════
-  const trackerMax = 10;
+  const trackerMax = 20;
   const humanityBaseMax = 10;
   const cyberpsyMax = 20;
 
   function getActiveTraumaCount() {
-    return document.querySelectorAll('#traumas-container .trauma-mark:not(.empty)').length;
+    return Array.from(document.querySelectorAll('#traumas-container .trauma-row')).filter(row => !row.querySelector('.trauma-mark').classList.contains('empty') && row.querySelector('.affects-humanity').checked).length;
   }
 
   function getHumanityMax() {
@@ -1542,6 +1592,7 @@
     var humanityEl = document.getElementById('humanity-value');
     var humanityBar = document.getElementById('humanity-bar');
     var humanityMax = getHumanityMax();
+    document.getElementById('humanity-max').textContent = '/ ' + humanityMax;
     var humanity = Math.min(humanityMax, Math.max(0, parseInt(humanityEl.textContent) || 0));
     var traumaSlots = Math.min(humanityBaseMax, getActiveTraumaCount());
     humanityEl.textContent = humanity;
@@ -1585,10 +1636,13 @@
   function buildDrivePips() {
     const container = document.getElementById('drive-pips');
     for (let i = 0; i < 10; i++) {
-      const pip = document.createElement('div');
+      const pip = document.createElement('button');
+      pip.type = 'button';
       pip.className = 'pip';
+      pip.setAttribute('aria-label', 'Drive ' + (i + 1));
+      pip.setAttribute('aria-pressed', 'false');
       pip.dataset.index = i;
-      pip.addEventListener('click', function () { this.classList.toggle('marked'); });
+      pip.addEventListener('click', function () { this.classList.toggle('marked'); this.setAttribute('aria-pressed', String(this.classList.contains('marked'))); });
       container.appendChild(pip);
     }
   }
@@ -1616,6 +1670,7 @@
   // ═══════════════════════════════════════════════════════
   function toggleTrauma(el) {
     el.classList.toggle('empty');
+    el.setAttribute('aria-pressed', String(!el.classList.contains('empty')));
     updateHumanityLimit();
   }
 
@@ -1627,10 +1682,11 @@
     var rows = document.querySelectorAll('#' + containerId + ' ' + selector);
     rows.forEach(function (row) {
       var input = row.querySelector('input');
-      if (input && input.value.trim() === '') {
+      if (input && input.value.trim() === '' && !row.querySelector('.trauma-mark:not(.empty)') && !row.querySelector('.affects-humanity:checked') && !row.querySelector('.condition-pip[data-state=blue], .condition-pip[data-state=red]')) {
         row.remove();
       }
     });
+    if (containerId === 'traumas-container') updateHumanityLimit();
     // Restore minimum number of rows if needed
     var count = document.querySelectorAll('#' + containerId + ' ' + selector).length;
     if (minRows && count < minRows) {
@@ -1730,6 +1786,7 @@
     const traumas = Array.from(document.querySelectorAll('#traumas-container .trauma-row')).map(function (row) {
       return {
         marked: !row.querySelector('.trauma-mark').classList.contains('empty'),
+        affectsHumanity: row.querySelector('.affects-humanity').checked,
         text: row.querySelector('input') ? row.querySelector('input').value : ''
       };
     });
@@ -1746,7 +1803,7 @@
     const eddies = Number(String(document.getElementById('eddies-value').value || '0').replace(/[^0-9-]/g, '')) || 0;
 
     return {
-      _version: '1.0.1.3',
+      _version: '1.1.0',
       _game: 'Neon City Overdrive',
       nickname: val('nickname'),
       appearance: val('appearance'),
@@ -1824,7 +1881,7 @@
     const tagInput = document.createElement('input');
     tagInput.type = 'text';
     tagInput.className = 'cyberware-tags';
-    tagInput.placeholder = 'implant, cosmetic, combat, sensory&#8230;';
+    tagInput.placeholder = 'implant, cosmetic, combat, sensory…';
     tagInput.style.cssText = 'background:transparent;border:none;border-bottom:1px solid #444;color:var(--neon-pink);font-weight:700;font-size:11px;font-family:\'Lexend\', monospace;flex:1;padding:2px 4px;';
     tagInput.value = data.tags || '';
     tagsRow.appendChild(tagLabel);
@@ -1865,7 +1922,37 @@
   // ═══════════════════════════════════════════════════════
   // CONDITIONS SYSTEM
   // ═══════════════════════════════════════════════════════
+  function validateCharacter(input) {
+    const data = JSON.parse(JSON.stringify(input));
+    function fail(path) { throw new Error('Invalid character field: ' + path); }
+    function object(value, path) { if (!value || typeof value !== 'object' || Array.isArray(value)) fail(path); }
+    function text(value, path) { if (value !== undefined && typeof value !== 'string') fail(path); }
+    function number(value, path) { if (value !== undefined && (typeof value !== 'number' || !Number.isFinite(value) || !Number.isInteger(value))) fail(path); }
+    function bool(value, path) { if (value !== undefined && typeof value !== 'boolean') fail(path); }
+    function array(value, path, check) { if (value === undefined) return; if (!Array.isArray(value) || value.length > 1000) fail(path); value.forEach((v,i) => check(v, path + '[' + i + ']')); }
+    function fields(value, path, names) { object(value,path); names.forEach(name => text(value[name],path+'.'+name)); }
+    object(data, 'root');
+    if (data._version !== undefined && !/^1\./.test(data._version)) fail('_version (unsupported version)');
+    ['nickname','appearance','personality','description','gear_basic','gear_special','flaw1','flaw2','_game','_version'].forEach(k => text(data[k], k));
+    ['money','eddies','hitsCount'].forEach(k => number(data[k], k));
+    ['hits'].forEach(k => array(data[k],k,bool));
+    array(data.trademarks,'trademarks',(v,p) => { fields(v,p,['name']); array(v.triggers,p+'.triggers',text); array(v.edges,p+'.edges',text); });
+    function gear(v,p) { fields(v,p,['title','notes','tags','type']); number(v.size,p+'.size'); number(v.value,p+'.value'); }
+    array(data.gear,'gear',gear); array(data.cyberware,'cyberware',gear);
+    if(data.inventory !== undefined) { fields(data.inventory,'inventory',['container']); array(data.inventory.items,'inventory.items',gear); if(data.inventory.misc !== undefined) { object(data.inventory.misc,'inventory.misc'); bool(data.inventory.misc.enabled,'inventory.misc.enabled'); number(data.inventory.misc.value,'inventory.misc.value'); } }
+    if(data.trackers !== undefined) { object(data.trackers,'trackers'); ['cyberpsy','humanity'].forEach(k=>number(data.trackers[k],'trackers.'+k)); }
+    if(data.conditions !== undefined) { object(data.conditions,'conditions'); array(data.conditions.custom,'conditions.custom',(v,p) => { if(typeof v === 'string') return; fields(v,p,['text','state']); bool(v.checked,p+'.checked'); if(v.state !== undefined && !['off','blue','red'].includes(v.state)) fail(p+'.state'); }); }
+    array(data.traumas,'traumas',(v,p) => { fields(v,p,['text']); bool(v.marked,p+'.marked'); bool(v.affectsHumanity,p+'.affectsHumanity'); });
+    if(Array.isArray(data.flaws)) array(data.flaws,'flaws',(v,p)=>fields(v,p,['text']));
+    else if(data.flaws !== undefined) fields(data.flaws,'flaws',['flaw1','flaw2']);
+    if(data.drive !== undefined) { fields(data.drive,'drive',['text']); array(data.drive.pips,'drive.pips',bool); }
+    if(typeof data.stuntPoints === 'object') { object(data.stuntPoints,'stuntPoints'); number(data.stuntPoints.current,'stuntPoints.current'); } else number(data.stuntPoints,'stuntPoints');
+    if(Array.isArray(data.experiencePoints)) array(data.experiencePoints,'experiencePoints',bool); else number(data.experiencePoints,'experiencePoints');
+    return data;
+  }
+
   function applyImport(data) {
+    data = validateCharacter(data);
     set('nickname', data.nickname || '');
     set('appearance', data.appearance || '');
     set('personality', data.personality || '');
@@ -1912,16 +1999,22 @@
       data.cyberware.forEach(function (cw) { addCyberware(cw); });
     }
     // Hits (rebuild with saved count, then restore marks)
+    hitsCount = 3;
+    buildHitPips(hitsCount);
     if (typeof data.hitsCount === 'number') {
       hitsCount = Math.max(1, Math.min(10, data.hitsCount));
       buildHitPips(hitsCount);
     }
     document.querySelectorAll('#hits-pips .hit-pip').forEach(function (pip, i) {
       pip.classList.toggle('marked', !!(data.hits || [])[i]);
+      pip.setAttribute('aria-pressed', String(pip.classList.contains('marked')));
     });
 
     // Cyberpsychosis trackers
     var t = data.trackers || {};
+    document.getElementById('cyberpsy-value').textContent = 0;
+    document.getElementById('cyberpsy-bar').style.width = '0%';
+    document.getElementById('humanity-value').textContent = 10;
     if (typeof t.cyberpsy === 'number') {
       var cyberpsyValue = Math.max(0, Math.min(cyberpsyMax, t.cyberpsy));
       document.getElementById('cyberpsy-value').textContent = cyberpsyValue;
@@ -1954,15 +2047,11 @@
     }
 
     // Traumas
-    const traumaRows = document.querySelectorAll('#traumas-container .trauma-row');
-    (data.traumas || []).forEach(function (t, i) {
-      if (traumaRows[i]) {
-        const mark = traumaRows[i].querySelector('.trauma-mark');
-        if (t.marked) mark.classList.remove('empty'); else mark.classList.add('empty');
-        const inp = traumaRows[i].querySelector('input');
-        if (inp) inp.value = t.text || '';
-      }
+    document.getElementById('traumas-container').innerHTML = '';
+    (data.traumas || []).forEach(function (t) {
+      addTrauma({ ...t, affectsHumanity: t.affectsHumanity === undefined ? true : t.affectsHumanity });
     });
+    if (!data.traumas || !data.traumas.length) addTrauma();
     updateHumanityLimit();
 
     // Flaws
@@ -1977,7 +2066,7 @@
         { text: data.flaws.flaw2 || '', marked: !!data.flaws.marked2 }
       ];
     }
-    if (!flawRows.length && data.flaw1 !== undefined || data.flaw2 !== undefined) {
+    if (!flawRows.length && (data.flaw1 !== undefined || data.flaw2 !== undefined)) {
       flawRows = [
         { text: data.flaw1 || '', marked: !!data.marked1 },
         { text: data.flaw2 || '', marked: !!data.marked2 }
@@ -1993,6 +2082,8 @@
       addFlaw({ text: '', marked: false });
     }
 
+    document.getElementById('stunt-value').textContent = 0;
+    document.getElementById('exp-value').textContent = 0;
     // Stunt (numeric tracker)
     if (typeof data.stuntPoints === 'number') {
       document.getElementById('stunt-value').textContent = Math.max(0, Math.min(99, data.stuntPoints));
@@ -2005,6 +2096,7 @@
     set('drive-text', (data.drive || {}).text || '');
     document.querySelectorAll('#drive-pips .pip').forEach(function (pip, i) {
       pip.classList.toggle('marked', !!((data.drive || {}).pips || [])[i]);
+      pip.setAttribute('aria-pressed', String(pip.classList.contains('marked')));
     });
 
     // Exp (moved to Handle row, use new selector for backward compat)
@@ -2021,6 +2113,8 @@
   // SAVE / LOAD TO GITHUB (via serverless proxy at /api/character)
   // No token or repo config lives in this page — the server holds that.
   // ═══════════════════════════════════════════════════════
+  document.getElementById('traumas-container').innerHTML = '';
+  for (let i = 0; i < 4; i++) addTrauma();
   const characterApiUrl = 'https://gman-cyberpunk.vercel.app/api/character';
 
   function setGHStatus(msg, isError) {
@@ -2030,19 +2124,67 @@
   }
 
   let storageAction = '';
+  let storageFocus = null;
+  let storageBusy = false;
+  let loadedCharacterId = null;
+  let loadedRevision = null;
+  let cleanSnapshot = '';
+  let draftTimer = null;
+  const recoveryKey = 'nco-recovery-v1';
+  function slugCharacter(id) { return String(id || '').trim().toLowerCase().replace(/[^a-z0-9_-]+/g, '-').replace(/^-+|-+$/g, ''); }
+  function currentSnapshot() { return JSON.stringify(buildExport()); }
+  function isDirty() { return cleanSnapshot !== currentSnapshot(); }
+  function setClean(snapshot) {
+    cleanSnapshot = snapshot || currentSnapshot();
+    document.getElementById('edit-status').textContent = isDirty() ? 'Unsaved changes' : 'No unsaved changes';
+    if (!isDirty()) { try { localStorage.removeItem(recoveryKey); } catch (_) {} }
+  }
+  function trackChanges() {
+    if (!cleanSnapshot) return;
+    document.getElementById('edit-status').textContent = isDirty() ? 'Unsaved changes' : 'No unsaved changes';
+    clearTimeout(draftTimer);
+    draftTimer = setTimeout(storeRecovery, 250);
+  }
+  function storeRecovery() {
+    if (!isDirty()) return;
+    try { localStorage.setItem(recoveryKey, JSON.stringify({ data: buildExport(), id: loadedCharacterId, revision: loadedRevision, at: new Date().toISOString() })); }
+    catch (_) { document.getElementById('edit-status').textContent = 'Unsaved changes (recovery storage unavailable). Export JSON as backup.'; }
+  }
+  function mayReplace() { return !isDirty() || window.confirm('Replace unsaved changes? Export JSON first if you need a backup.'); }
+  window.addEventListener('beforeunload', function(event) {
+    if (!isDirty()) return;
+    storeRecovery();
+    event.preventDefault(); event.returnValue = '';
+  });
+  document.addEventListener('input', trackChanges);
+  document.addEventListener('change', trackChanges);
+  document.addEventListener('click', trackChanges);
+  document.addEventListener('drop', trackChanges);
+  document.getElementById('storage-modal').addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') { event.preventDefault(); closeStorageModal(); return; }
+    if (event.key !== 'Tab') return;
+    const buttons = Array.from(this.querySelectorAll('button:not([disabled])'));
+    const first = buttons[0], last = buttons[buttons.length - 1];
+    if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+    else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+  });
 
   function openStorageModal(action) {
+    if (storageBusy) return;
+    storageFocus = document.activeElement;
     storageAction = action;
     const loadMode = action === 'load';
     document.getElementById('storage-modal-title').textContent = loadMode ? 'Load Character' : 'Save Character';
     document.getElementById('storage-cloud-btn').textContent = loadMode ? '\u2601 From Cloud' : '\u2601 To Cloud';
     document.getElementById('storage-json-btn').textContent = loadMode ? '\u25A3 From JSON' : '\u25A3 To JSON';
     document.getElementById('storage-modal').classList.add('visible');
+    document.getElementById('storage-cloud-btn').focus();
   }
 
   function closeStorageModal() {
     document.getElementById('storage-modal').classList.remove('visible');
     storageAction = '';
+    if (storageFocus) storageFocus.focus();
   }
 
   function chooseStorageOption(source) {
@@ -2066,20 +2208,27 @@
       setGHStatus('Enter a Character ID', true);
       return;
     }
+    if (storageBusy) return;
+    storageBusy = true;
     setGHStatus('Saving…', false);
     try {
       const data = buildExport();
+      const sentSnapshot = JSON.stringify(data);
+      const expectedRevision = slugCharacter(charId) === loadedCharacterId ? loadedRevision : null;
       const resp = await fetch(characterApiUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ id: charId, data: data })
+        body: JSON.stringify({ id: charId, data: data, expectedRevision: expectedRevision })
       });
       const result = await resp.json().catch(function () { return {}; });
       if (!resp.ok) throw new Error(result.error || ('Server error ' + resp.status));
-      setGHStatus('Saved "' + (result.id || charId) + '" ✓', false);
+      loadedCharacterId = result.id || slugCharacter(charId);
+      loadedRevision = result.revision;
+      setClean(sentSnapshot);
+      setGHStatus('Saved "' + (result.id || charId) + '" at ' + new Date().toLocaleTimeString(), false);
     } catch (err) {
       setGHStatus('Save failed: ' + err.message, true);
-    }
+    } finally { storageBusy = false; trackChanges(); }
   }
 
   async function loadFromGitHub(characterId) {
@@ -2088,6 +2237,9 @@
       setGHStatus('Enter a Character ID', true);
       return;
     }
+    if (storageBusy || !mayReplace()) return;
+    storageBusy = true;
+    const beforeLoad = currentSnapshot();
     setGHStatus('Loading…', false);
     try {
       const resp = await fetch(characterApiUrl + '?id=' + encodeURIComponent(charId));
@@ -2097,11 +2249,16 @@
       }
       const result = await resp.json().catch(function () { return {}; });
       if (!resp.ok) throw new Error(result.error || ('Server error ' + resp.status));
-      applyImport(result.data);
+      const replacement = validateCharacter(result.data);
+      if (beforeLoad !== currentSnapshot() && !mayReplace()) return;
+      applyImport(replacement);
+      loadedCharacterId = result.id || slugCharacter(charId);
+      loadedRevision = result.revision;
+      setClean();
       setGHStatus('Loaded "' + (result.id || charId) + '" ✓', false);
     } catch (err) {
       setGHStatus('Load failed: ' + err.message, true);
-    }
+    } finally { storageBusy = false; trackChanges(); }
   }
 
   // ═══════════════════════════════════════════════════════
@@ -2121,16 +2278,24 @@
   }
 
   document.getElementById('importFile').addEventListener('change', function (e) {
+    if (storageBusy) return;
     const file = e.target.files[0];
     if (!file) return;
+    storageBusy = true;
     const reader = new FileReader();
     reader.onload = function (evt) {
       try {
-        applyImport(JSON.parse(evt.target.result));
+        const replacement = validateCharacter(JSON.parse(evt.target.result));
+        if (!mayReplace()) return;
+        applyImport(replacement);
+        loadedCharacterId = null; loadedRevision = null;
+        trackChanges();
+        setGHStatus('JSON loaded. Save to cloud or keep a JSON backup.', false);
       } catch (err) {
-        alert('\u26A0 Failed to parse JSON file. Is it a valid NCO character file?');
-      }
+        alert('Import failed: ' + err.message + '. Current character was kept.');
+      } finally { storageBusy = false; }
     };
+    reader.onerror = function () { storageBusy = false; setGHStatus('Could not read JSON file. Current character was kept.', true); };
     reader.readAsText(file);
     e.target.value = '';
   });
@@ -2273,6 +2438,32 @@
 
   setupSplitDivider('.main-grid', 'main-grid-divider', 240, 300);
   setupSplitDivider('.desc-grid', 'desc-grid-divider', 240, 240);
+
+  function labelSheetControls() {
+    if (!document) return;
+    document.querySelectorAll('button').forEach(button => {
+      if (button.hasAttribute('aria-label')) return;
+      const action = button.getAttribute('onclick') || '';
+      const match = action.match(/change(Stunt|Exp|Hits|Tracker)\((.*)\)/);
+      if (match) button.setAttribute('aria-label', (match[2].includes('-1') ? 'Decrease ' : 'Increase ') + (match[1] === 'Tracker' ? match[2].split(',')[0].replace(/['"]/g,'') : match[1]));
+      else if (button.title) button.setAttribute('aria-label', button.title);
+      else if (button.textContent.trim() === '✕') button.setAttribute('aria-label', 'Delete ' + (button.closest('.trademark-block') ? 'trademark' : 'cyberware'));
+    });
+  }
+  labelSheetControls();
+  new MutationObserver(labelSheetControls).observe(document.body, {childList:true,subtree:true});
+  cleanSnapshot = currentSnapshot();
+  document.getElementById('edit-status').textContent = 'No unsaved changes';
+  try {
+    const savedDraft = localStorage.getItem(recoveryKey);
+    if (savedDraft && window.confirm('An unsaved local recovery draft is available. Restore it?')) {
+      const draft = JSON.parse(savedDraft);
+      applyImport(draft.data);
+      loadedCharacterId = draft.id || null; loadedRevision = draft.revision || null;
+      trackChanges();
+      setGHStatus('Recovery draft restored. Check it, then save or export JSON.', false);
+    }
+  } catch (_) { setGHStatus('Recovery draft could not be restored. Current sheet was kept.', true); }
 </script>
 <script>
   const siteRoot = new URL('../', window.location.href);
