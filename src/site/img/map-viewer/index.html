@@ -43,8 +43,8 @@
     background: var(--panel-bg);
     border: 1px solid var(--border-color);
     color: var(--neon-cyan);
-    padding: 8px 14px;
-    font-size: 12px;
+    padding: 7px 12px;
+    font-size: 11px;
     font-family: 'Lexend', monospace;
     letter-spacing: 1px;
     text-transform: uppercase;
@@ -55,16 +55,17 @@
   #backBtn {
     position: absolute;
     z-index: 1000;
-    background: transparent;
+    background: var(--panel-bg);
     border: 1px solid var(--neon-cyan);
     color: var(--neon-cyan);
-    padding: 8px 14px;
-    font-size: 11px;
+    padding: 9px 16px;
+    font-size: 12px;
     letter-spacing: 1px;
     text-transform: uppercase;
     cursor: pointer;
     border-radius: 3px;
     font-family: 'Lexend', monospace;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
   }
   #resetBtn {
     top: 12px;
@@ -97,8 +98,8 @@
     background: transparent;
     border: 1px solid transparent;
     color: var(--neon-cyan);
-    padding: 6px 12px;
-    font-size: 11px;
+    padding: 8px 14px;
+    font-size: 12px;
     letter-spacing: 1px;
     text-transform: uppercase;
     cursor: pointer;
@@ -113,6 +114,184 @@
     color: #000;
     font-weight: 700;
     box-shadow: 0 0 10px var(--neon-cyan);
+  }
+
+  /* ── Timeline bar ─────────────────────────────────────────────── */
+  #timeline {
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    display: none;
+    align-items: center;
+    gap: 10px;
+    background: var(--panel-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 3px;
+    padding: 8px 14px;
+    color: var(--neon-cyan);
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-family: 'Lexend', monospace;
+  }
+  #timeline.visible {
+    display: flex;
+  }
+  #timeline button {
+    background: transparent;
+    border: 1px solid var(--neon-cyan);
+    color: var(--neon-cyan);
+    width: 26px;
+    height: 26px;
+    font-size: 13px;
+    cursor: pointer;
+    border-radius: 2px;
+    font-family: 'Lexend', monospace;
+    line-height: 1;
+    padding: 0;
+  }
+  #timeline button:hover:not(:disabled) {
+    background: var(--neon-cyan);
+    color: #000;
+  }
+  #timeline button:disabled {
+    border-color: var(--dim);
+    color: var(--dim);
+    cursor: default;
+  }
+  #timelineSlider {
+    width: 220px;
+    accent-color: var(--neon-cyan);
+    cursor: pointer;
+  }
+  #timelineSlider:disabled {
+    cursor: default;
+  }
+  #timelineDate {
+    min-width: 130px;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  /* ── Legend (dated vector layers) ─────────────────────────────── */
+  #legend {
+    position: absolute;
+    bottom: 16px;
+    left: 12px;
+    z-index: 1000;
+    display: none;
+    background: var(--panel-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 3px;
+    color: var(--text-color);
+    font-family: 'Lexend', monospace;
+    font-size: 11px;
+    max-width: 240px;
+  }
+  #legend.visible {
+    display: block;
+  }
+  #legendHeader {
+    color: var(--neon-cyan);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 8px 12px;
+    cursor: pointer;
+    user-select: none;
+  }
+  #legendBody {
+    max-height: 40vh;
+    overflow-y: auto;
+    padding: 0 12px 8px;
+  }
+  #legend.collapsed #legendBody {
+    display: none;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 2px 0;
+    white-space: nowrap;
+  }
+  .legend-chip {
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
+    flex: none;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+  }
+  .legend-item.extinct {
+    opacity: 0.45;
+  }
+  .legend-item.extinct .legend-note {
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #9aa0b4;
+  }
+
+  /* Dated vector overlays: hover affordance for region paths */
+  .map-region {
+    cursor: crosshair;
+  }
+  .map-region:hover {
+    stroke: rgba(255, 255, 255, 0.9);
+    stroke-width: 1.5;
+    vector-effect: non-scaling-stroke;
+  }
+
+  @media (max-width: 600px) {
+    #hud {
+      display: none; /* the preset switcher needs the top edge on small screens */
+    }
+    #presetSwitcher {
+      left: 8px;
+      right: 8px;
+      transform: none;
+      justify-content: center;
+    }
+    #resetBtn,
+    #backBtn {
+      top: 56px; /* same row, clear of the full-width switcher */
+      padding: 8px 12px;
+      font-size: 11px;
+    }
+    .preset-btn {
+      padding: 8px 10px;
+      font-size: 11px;
+    }
+    #timeline {
+      gap: 6px;
+      padding: 6px 8px;
+      font-size: 10px;
+      max-width: calc(100vw - 24px);
+      box-sizing: border-box;
+    }
+    #timelineSlider {
+      width: 26vw;
+      min-width: 72px;
+    }
+    #timelineDate {
+      min-width: 0;
+      font-size: 9px;
+      line-height: 1.3;
+      white-space: normal;
+      text-align: center;
+    }
+    #legend {
+      bottom: 92px; /* above the taller mobile timeline bar */
+      max-width: 56vw;
+    }
+    #legendBody {
+      max-height: 30vh;
+    }
+    .legend-item {
+      white-space: normal;
+      line-height: 1.3;
+    }
   }
 
   #mapTooltip {
@@ -141,6 +320,16 @@
 <div id="map"></div>
 <div id="hud">Night City // scroll or pinch to zoom</div>
 <div id="presetSwitcher"></div>
+<div id="timeline">
+  <button id="timelinePrev" aria-label="Previous date">&#9664;</button>
+  <input id="timelineSlider" type="range" min="0" max="0" step="1" value="0" aria-label="Timeline date">
+  <button id="timelineNext" aria-label="Next date">&#9654;</button>
+  <span id="timelineDate"></span>
+</div>
+<div id="legend">
+  <div id="legendHeader">Legend &#9662;</div>
+  <div id="legendBody"></div>
+</div>
 <div id="mapTooltip"></div>
 <button id="backBtn" aria-label="Return to previous page" onclick="returnToPreviousPage()">Back</button>
 <button id="resetBtn" onclick="resetView()">Reset View</button>
@@ -156,21 +345,32 @@
   const TILE_H = 960;
   const GRID_W = TILE_W * COLS.length; // 15360
   const GRID_H = TILE_H * ROWS.length; // 8640
+  // Leaflet bounds covering the full tile grid (CRS.Simple, y down = -lat).
+  const GRID_BOUNDS = [[0, 0], [-GRID_H, GRID_W]];
 
   // ── Layer presets ─────────────────────────────────────────────────
   // Each entry is one switchable map layer. `folder` is the tiles
   // directory for that preset (relative to this page), containing the
   // same A1..I16-style tiles as the others. Add/remove/reorder entries
   // here to change what shows up in the preset switcher.
+  //
+  // `dated` names the per-date vector layer (data/<date>/<dated>.svg)
+  // extracted from an FMG .map save by scripts/build-map-timeline.mjs.
+  // When the selected timeline date carries that layer, it renders as a
+  // vector overlay on top of the political base tiles instead of the
+  // preset's tile folder, and hover names come straight from the paths.
+  // Presets without dated data for the selected date keep their tiles.
   const TILE_SETS = [
     { key: 'political',  label: 'Political',  folder: 'tiles-pol' },
-    { key: 'socioeconomic',    label: 'Socioeconomic',    folder: 'tiles-socio' },
-    { key: 'influence',  label: 'Influence',  folder: 'tiles-infl' }
+    { key: 'socioeconomic',    label: 'Socioeconomic',    folder: 'tiles-socio', dated: 'cultures' },
+    { key: 'influence',  label: 'Influence',  folder: 'tiles-infl', dated: 'religions' }
   ];
 
-  // ── Hover labels ────────────────────────────────────────────────
+  // ── Hover labels (tile fallback only) ───────────────────────────
   // One label set per preset key. Colors are sampled from the socioeconomic
   // and influence map images; texture and lighting are handled below.
+  // Dated vector layers skip this entirely: their names and colors come
+  // from each date's own meta.json / path attributes.
   const MAP_LABELS = {
     political: { title: 'Political', items: [] },
     socioeconomic: {
@@ -215,6 +415,7 @@
   // ── Map setup (CRS.Simple = plain pixel-space, no geo projection) ──
   const map = L.map('map', {
     crs: L.CRS.Simple,
+    zoomControl: false,
     minZoom: -4,
     maxZoom: 0,
     zoomSnap: 0.25,
@@ -223,6 +424,7 @@
     wheelPxPerZoomLevel: 120
   });
 
+  L.control.zoom({ position: 'bottomright' }).addTo(map);
   map.setMaxBounds([[GRID_H * 0.25, -GRID_W * 0.25], [-GRID_H * 1.25, GRID_W * 1.25]]);
   map.options.maxBoundsViscosity = 1.0;
 
@@ -247,17 +449,283 @@
     layerGroups[preset.key] = buildLayerGroup(preset.folder);
   });
 
+  // ── Timeline state ───────────────────────────────────────────────
+  // `dates` comes from data/manifest.json (written by
+  // scripts/build-map-timeline.mjs). When it is missing or empty the
+  // timeline UI stays hidden and the viewer behaves exactly as before.
+  let dates = [];
+  let dateIndex = 0;
   let currentKey = TILE_SETS[0].key;
-  layerGroups[currentKey].addTo(map);
+  let datedOverlay = null;       // active fill L.SVGOverlay, if any
+  let extraOverlays = [];        // borders/zones/routes/labels stacked above fills
+  let usingDatedLayer = false;   // tooltip path: vector hover vs pixel sampling
+  let renderToken = 0;           // guards against out-of-order async renders
+  const svgCache = {};           // url -> Promise<SVGElement>
+  const metaCache = {};          // dateId -> Promise<meta.json object>
+
+  const timelineEl = document.getElementById('timeline');
+  const sliderEl = document.getElementById('timelineSlider');
+  const dateEl = document.getElementById('timelineDate');
+  const prevEl = document.getElementById('timelinePrev');
+  const nextEl = document.getElementById('timelineNext');
+  const legendEl = document.getElementById('legend');
+  const legendBodyEl = document.getElementById('legendBody');
+  const legendHeaderEl = document.getElementById('legendHeader');
+
+  function loadSvg(url) {
+    if (!svgCache[url]) {
+      svgCache[url] = fetch(url)
+        .then((res) => {
+          if (!res.ok) throw new Error(`${url}: ${res.status}`);
+          return res.text();
+        })
+        .then((text) => new DOMParser().parseFromString(text, 'image/svg+xml').documentElement);
+    }
+    return svgCache[url];
+  }
+
+  function loadMeta(dateId) {
+    if (!metaCache[dateId]) {
+      metaCache[dateId] = fetch(`data/${dateId}/meta.json`).then((res) => (res.ok ? res.json() : null));
+    }
+    return metaCache[dateId];
+  }
+
+  function datedFileFor(preset) {
+    const date = dates[dateIndex];
+    if (!date || !preset.dated || !date.layers.includes(preset.dated)) return null;
+    return { url: `data/${date.id}/${preset.dated}.svg`, date, tableKey: preset.dated };
+  }
+
+  // ── Main render: swap layers for the current preset + date ──────
+  async function render() {
+    const token = ++renderToken;
+    const preset = TILE_SETS.find((entry) => entry.key === currentKey);
+    const dated = datedFileFor(preset);
+
+    map.removeLayer(layerGroups[currentKey]);
+    if (datedOverlay) {
+      map.removeLayer(datedOverlay);
+      datedOverlay = null;
+    }
+    extraOverlays.forEach((overlay) => map.removeLayer(overlay));
+    extraOverlays = [];
+    usingDatedLayer = false;
+    legendEl.classList.remove('visible');
+    tooltipEl.classList.remove('visible');
+
+    if (!dated) {
+      // Tile fallback: original behaviour for this preset.
+      layerGroups[currentKey].addTo(map);
+      updateHash();
+      return;
+    }
+
+    const meta = await loadMeta(dated.date.id);
+    if (token !== renderToken) return;
+    const table = meta && meta.tables ? meta.tables[dated.tableKey] : null;
+    const namesById = new Map((table || []).map((entry) => [entry.i, entry.name]));
+    const prefix = dated.tableKey === 'cultures' ? 'culture' : 'religion';
+
+    // Adds one dated SVG layer as an overlay stretched onto the tile grid.
+    const addOverlay = async (name, interactive) => {
+      const el = (await loadSvg(`data/${dated.date.id}/${name}.svg`)).cloneNode(true);
+      if (token !== renderToken) return null;
+      el.setAttribute('width', GRID_W);
+      el.setAttribute('height', GRID_H);
+      el.setAttribute('preserveAspectRatio', 'none');
+      const overlay = L.svgOverlay(el, GRID_BOUNDS, { interactive });
+      overlay.addTo(map);
+      extraOverlays.push(overlay);
+      return el;
+    };
+
+    // Base: the same save's own basemap, so the older political tiles'
+    // baked-in labels/routes and historical geography never bleed through.
+    // Falls back to the political tiles when a date has no basemap yet.
+    let baseFromSave = false;
+    if (dated.date.layers.includes('basemap')) {
+      try { baseFromSave = !!(await addOverlay('basemap', false)); } catch (error) { /* tile base */ }
+    }
+    if (token !== renderToken) return;
+    if (!baseFromSave) layerGroups.political.addTo(map);
+
+    // Region fills: hover names joined from the save's own tables (paths
+    // carry culture<N>/religion<N> ids; "-gap" stroke twins are skipped).
+    let svgEl = null;
+    try { svgEl = await addOverlay(dated.tableKey, true); } catch (error) { /* fall back below */ }
+    if (token !== renderToken) return;
+    if (!svgEl) {
+      extraOverlays.forEach((overlay) => map.removeLayer(overlay));
+      extraOverlays = [];
+      layerGroups[currentKey].addTo(map); // fetch failed: fall back to tiles
+      updateHash();
+      return;
+    }
+    datedOverlay = extraOverlays[extraOverlays.length - 1];
+    svgEl.querySelectorAll('path').forEach((path) => {
+      const id = path.id || '';
+      if (!id.startsWith(prefix) || id.includes('-gap')) return;
+      if ((path.getAttribute('fill') || 'none') === 'none') return;
+      const name = namesById.get(Number(id.slice(prefix.length)));
+      if (!name) return;
+      path.classList.add('map-region');
+      path.addEventListener('mouseover', () => {
+        tooltipEl.textContent = name;
+        tooltipEl.classList.add('visible');
+      });
+      path.addEventListener('mousemove', (event) => {
+        tooltipEl.style.left = event.clientX + 'px';
+        tooltipEl.style.top = event.clientY + 'px';
+      });
+      path.addEventListener('mouseout', () => tooltipEl.classList.remove('visible'));
+    });
+
+    // Remaining layers in FMG draw order: zones, borders, routes, burg
+    // icons, labels. Non-interactive so region hover passes through.
+    for (const name of ['zones', 'borders', 'routes', 'burgicons', 'labels']) {
+      if (!dated.date.layers.includes(name)) continue;
+      try {
+        await addOverlay(name, false);
+        if (token !== renderToken) return;
+      } catch (error) {
+        // A missing listed file just skips that overlay.
+      }
+    }
+
+    usingDatedLayer = true;
+    updateHash();
+    renderLegend(dated, svgEl, token);
+  }
+
+  // ── Legend for dated layers (active + wiped-out entries) ────────
+  async function renderLegend(dated, svgEl, token) {
+    const meta = await loadMeta(dated.date.id);
+    if (token !== renderToken || !meta || !meta.tables || !meta.tables[dated.tableKey]) return;
+
+    const prefix = dated.tableKey === 'cultures' ? 'culture' : 'religion';
+    const activeIds = new Set();
+    svgEl.querySelectorAll('path').forEach((path) => {
+      const id = path.id || '';
+      if (!id.startsWith(prefix) || id.includes('-gap')) return;
+      if ((path.getAttribute('fill') || 'none') === 'none') return;
+      const idMatch = id.match(/(\d+)$/);
+      if (idMatch) activeIds.add(Number(idMatch[1]));
+    });
+
+    legendBodyEl.innerHTML = '';
+    // Socioeconomic zero-territory entries are earlier colors of the same
+    // categories (user clarification), not wiped categories: omit them.
+    // Influence keeps neutral "no territory" markers for vanished factions.
+    const showInactive = dated.tableKey === 'religions';
+    meta.tables[dated.tableKey]
+      .filter((entry) => entry.i !== 0) // skip "Default" / "No religion"
+      .filter((entry) => showInactive || activeIds.has(entry.i))
+      .forEach((entry) => {
+        const active = activeIds.has(entry.i);
+        const item = document.createElement('div');
+        item.className = 'legend-item' + (active ? '' : ' extinct');
+        const chip = document.createElement('span');
+        chip.className = 'legend-chip';
+        chip.style.background = entry.color;
+        const name = document.createElement('span');
+        name.textContent = entry.name;
+        item.appendChild(chip);
+        item.appendChild(name);
+        if (!active) {
+          const note = document.createElement('span');
+          note.className = 'legend-note';
+          note.textContent = 'no territory';
+          item.appendChild(note);
+        }
+        legendBodyEl.appendChild(item);
+      });
+    legendHeaderEl.innerHTML = 'Legend &#9662;';
+    legendEl.classList.add('visible');
+  }
+
+  legendHeaderEl.onclick = () => {
+    legendEl.classList.toggle('collapsed');
+    legendHeaderEl.innerHTML = legendEl.classList.contains('collapsed') ? 'Legend &#9656;' : 'Legend &#9662;';
+  };
+
+  // ── Timeline wiring ──────────────────────────────────────────────
+  function updateTimelineUI() {
+    if (!dates.length) {
+      timelineEl.classList.remove('visible');
+      return;
+    }
+    timelineEl.classList.add('visible');
+    sliderEl.max = dates.length - 1;
+    sliderEl.value = dateIndex;
+    sliderEl.disabled = dates.length < 2;
+    prevEl.disabled = dateIndex <= 0;
+    nextEl.disabled = dateIndex >= dates.length - 1;
+    dateEl.textContent = dates[dateIndex].label;
+  }
+
+  function setDateIndex(index) {
+    const next = Math.max(0, Math.min(dates.length - 1, index));
+    if (next === dateIndex) return;
+    dateIndex = next;
+    updateTimelineUI();
+    render();
+  }
+
+  prevEl.onclick = () => setDateIndex(dateIndex - 1);
+  nextEl.onclick = () => setDateIndex(dateIndex + 1);
+  sliderEl.oninput = () => setDateIndex(Number(sliderEl.value));
+
+  async function initTimeline() {
+    try {
+      const res = await fetch('data/manifest.json');
+      if (!res.ok) return;
+      const manifest = await res.json();
+      if (!manifest || !Array.isArray(manifest.dates) || !manifest.dates.length) return;
+      dates = manifest.dates;
+      dateIndex = dates.length - 1; // default to the latest snapshot
+      applyHash();
+      updateTimelineUI();
+      render();
+    } catch (error) {
+      // No dated data: tiles-only viewer, timeline stays hidden.
+    }
+  }
+
+  // ── Deep links: #layer=influence&date=2077-05 ────────────────────
+  function applyHash() {
+    const params = new URLSearchParams(location.hash.slice(1));
+    const layer = params.get('layer');
+    const date = params.get('date');
+    if (layer && layerGroups[layer]) {
+      currentKey = layer;
+      updatePresetButtons();
+    }
+    if (date) {
+      const idx = dates.findIndex((entry) => entry.id === date);
+      if (idx >= 0) dateIndex = idx;
+    }
+  }
+
+  function updatePresetButtons() {
+    document.querySelectorAll('.preset-btn').forEach((btn) => {
+      btn.classList.toggle('active', btn.dataset.key === currentKey);
+    });
+  }
+
+  function updateHash() {
+    const params = new URLSearchParams();
+    params.set('layer', currentKey);
+    if (dates.length) params.set('date', dates[dateIndex].id);
+    history.replaceState(null, '', '#' + params.toString());
+  }
 
   function switchTileSet(key) {
     if (key === currentKey || !layerGroups[key]) return;
     map.removeLayer(layerGroups[currentKey]);
     currentKey = key;
-    layerGroups[currentKey].addTo(map);
-    document.querySelectorAll('.preset-btn').forEach((btn) => {
-      btn.classList.toggle('active', btn.dataset.key === key);
-    });
+    updatePresetButtons();
+    render();
   }
 
   // ── Preset switcher UI ─────────────────────────────────────────────
@@ -288,10 +756,15 @@
     }
   }
 
+  applyHash(); // layer part works even without a timeline manifest
+  layerGroups[currentKey].addTo(map);
   resetView();
   window.addEventListener('load', resetView);
+  initTimeline();
 
   // ── Hover-to-identify: sample the tile pixel under the cursor ───
+  // Only used by tile-backed layers. Dated vector layers get exact
+  // names from path hover instead.
   const tooltipEl = document.getElementById('mapTooltip');
   const tileCanvasCache = {};
 
@@ -360,6 +833,7 @@
   }
 
   map.on('mousemove', (e) => {
+    if (usingDatedLayer) return; // vector paths report their own hover names
     const preset = TILE_SETS.find((entry) => entry.key === currentKey);
     const labels = MAP_LABELS[currentKey];
     if (!preset || !labels || !labels.items.length) {

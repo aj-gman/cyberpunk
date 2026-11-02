@@ -1,0 +1,18 @@
+{
+  "dates": [
+    {
+      "id": "2021-09",
+      "label": "September 2021",
+      "layers": [
+        "basemap",
+        "cultures",
+        "religions",
+        "zones",
+        "borders",
+        "routes",
+        "burgicons",
+        "labels"
+      ]
+    }
+  ]
+}
