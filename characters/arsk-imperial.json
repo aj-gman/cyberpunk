@@ -1,0 +1,126 @@
+{
+  "_version": "1.1.0",
+  "_game": "Neon City Overdrive",
+  "nickname": "IMPERIAL",
+  "appearance": "",
+  "personality": "",
+  "money": 0,
+  "eddies": 0,
+  "trademarks": [
+    {
+      "name": "",
+      "triggers": [],
+      "edges": []
+    },
+    {
+      "name": "",
+      "triggers": [],
+      "edges": []
+    },
+    {
+      "name": "",
+      "triggers": [],
+      "edges": []
+    },
+    {
+      "name": "",
+      "triggers": [],
+      "edges": []
+    },
+    {
+      "name": "",
+      "triggers": [],
+      "edges": []
+    }
+  ],
+  "gear": [
+    {
+      "type": "special",
+      "title": "Arasaka-made Militech \"Rioter II\" Shotgun",
+      "tags": "AP slug, buckshot (+1 AIM), suppressive fire (empty clip), refined, unbreakable",
+      "notes": "Can load slugs and buckshot alternatively using a double-clip, double-trigger system.",
+      "size": 2
+    },
+    {
+      "type": "special",
+      "title": "Arasaka-made Tsunami \"Billy\" Revolver",
+      "tags": "Long-Range, High-Damage, Scoped, Engraved Bullets, Accurate",
+      "notes": "Can be used for sniping. Has a built-in mechanism with two gyrojets that act like a bipod midair, stabilizing user's aim further.",
+      "size": 1
+    },
+    {
+      "type": "special",
+      "title": "Zetatech \"French Dispatch\" Trenchcoat",
+      "tags": "air-conditioned, deep pockets, microcommunicator in coat, invisibility cloak",
+      "notes": "Used by N54 operatives usually trying to get into high-tech high-risk scenes where being spotted means death.  Made by Zetatech using their patented Cloak technology. (fools humans, but not drones)",
+      "size": 1
+    },
+    {
+      "type": "special",
+      "title": "Jury-Rigged Arasaka TIER3 Armorjack",
+      "tags": "Heavy, Visible, Impenetrable, Damage-soaking",
+      "notes": "As long as the vest is on the user's chest and its the thing being shot at, the kinetic absorption plates guaranteed no HITS taken.",
+      "size": 1
+    }
+  ],
+  "inventory": {
+    "container": "jacket",
+    "misc": {
+      "enabled": false,
+      "value": 1
+    },
+    "items": []
+  },
+  "cyberware": [],
+  "hitsCount": 3,
+  "hits": [
+    false,
+    false,
+    false
+  ],
+  "trackers": {
+    "cyberpsy": 0,
+    "humanity": 10
+  },
+  "conditions": {
+    "custom": []
+  },
+  "traumas": [
+    {
+      "marked": false,
+      "text": ""
+    },
+    {
+      "marked": false,
+      "text": ""
+    },
+    {
+      "marked": false,
+      "text": ""
+    },
+    {
+      "marked": false,
+      "text": ""
+    }
+  ],
+  "flaws": [],
+  "flaw1": "",
+  "flaw2": "",
+  "stuntPoints": 0,
+  "drive": {
+    "text": "",
+    "pips": [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ]
+  },
+  "experiencePoints": 0
+}
