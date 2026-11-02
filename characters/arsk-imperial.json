@@ -9,7 +9,9 @@
   "trademarks": [
     {
       "name": "Old Dog",
-      "triggers": [],
+      "triggers": [
+        "new tricks, veterans, war, conflict, guns, special operations, secrecy, red dress"
+      ],
       "edges": [
         "Traditional Methodology",
         "Prediction of People",
@@ -19,7 +21,9 @@
     },
     {
       "name": "Weapon Expert",
-      "triggers": [],
+      "triggers": [
+        "guns, shooting, tension, defense systems, surveillance systems, "
+      ],
       "edges": [
         "Critical Shot",
         "Ricochet Angle",
@@ -29,7 +33,9 @@
     },
     {
       "name": "Strategic Mastermind",
-      "triggers": [],
+      "triggers": [
+        "violent outbursts, suspicious behavior, responsibility, team coordination, strategy, avoidance, stealth"
+      ],
       "edges": [
         "Flank Routes",
         "Architectural Prowess",
@@ -65,7 +71,7 @@
       "title": "Jury-Rigged Arasaka TIER3 Armorjack",
       "tags": "Heavy, Visible, Impenetrable, Damage-soaking",
       "notes": "As long as the vest is on the user's chest and its the thing being shot at, the kinetic absorption plates guaranteed no HITS taken.",
-      "size": 1
+      "size": 2
     }
   ],
   "inventory": {
@@ -76,7 +82,32 @@
     },
     "items": []
   },
-  "cyberware": [],
+  "cyberware": [
+    {
+      "title": "Gyrojet Throwing Knives",
+      "tags": "Poison, Puncture, Precise, Not Penetrating",
+      "notes": "Implanted in the knuckles, come back to user when called back.",
+      "value": 1
+    },
+    {
+      "title": "Augmented Senses Suite",
+      "tags": "enhanced hearing, taste, smell, vision (zoom, NV, Thermal, Infrared)",
+      "notes": "Increases your senses to the point of being able to mimic specialized animals - smell your environment like a dog, taste like a cat, hear like a bat etc.",
+      "value": 1
+    },
+    {
+      "title": "Hemorrhage AutoStitcher",
+      "tags": "cancels bleeding out conditions, autostabilizes",
+      "notes": "The newest in Rocklin tech, made in collaboration with TT's best surgeons, an implant that can stitch closed most wounds.",
+      "value": 1
+    },
+    {
+      "title": "Arasaka \"Pluto V\" Speedware",
+      "tags": "dodge bullets, extra action, enhanced perception (3) / sense danger",
+      "notes": "Dodge all bullets in the round OR take an extra action OR add +3 to your reflexes-related roll.",
+      "value": 3
+    }
+  ],
   "hitsCount": 4,
   "hits": [
     false,
@@ -107,7 +138,7 @@
   ],
   "flaw1": "Reliant on Omega Blockers",
   "flaw2": "Remember her?",
-  "stuntPoints": 0,
+  "stuntPoints": 1,
   "drive": {
     "text": "You've seen everything from the melted polar icecaps where there were once polar bears to the few dense jungles still in the Amazon. You've fought and killed countless guerillas, PMCs and armies. War is hate. War never changes.\n\nYou don't remember what it's like to live life beyond this. You've made a fortune doing what you're doing - killing, extracting, infiltrating - but it doesn't help. You keep saying you'll buy an island or something and retire, but you know you're just lying to yourself.\n\nYou keep looking for her. You'll never find her but if you do, you'll lay your arms in front of her. You'll bury every single bullet and skull just to be with her again.",
     "pips": [
