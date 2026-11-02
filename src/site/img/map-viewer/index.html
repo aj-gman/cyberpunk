@@ -236,6 +236,106 @@
     color: #9aa0b4;
   }
 
+  /* Legend entries that resolve to a wiki page */
+  .legend-link {
+    color: var(--neon-cyan);
+    text-decoration: none;
+    border-bottom: 1px dotted rgba(84, 193, 230, 0.6);
+    cursor: pointer;
+  }
+  .legend-link:hover {
+    border-bottom-style: solid;
+    text-shadow: 0 0 6px rgba(84, 193, 230, 0.8);
+  }
+
+  /* Political view: invisible clickable label layer over the baked tile
+     labels. Only labels that resolve to a wiki page get pointer events. */
+  .label-hit-layer {
+    opacity: 0;
+  }
+
+  /* ── In-map wiki panel (legend links + political label clicks) ── */
+  #wikiPanel {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 420px;
+    max-width: 100vw;
+    z-index: 1500;
+    display: flex;
+    flex-direction: column;
+    background: var(--panel-bg);
+    border-left: 1px solid var(--border-color);
+    box-shadow: -4px 0 16px rgba(0, 0, 0, 0.6);
+    transform: translateX(100%);
+    transition: transform 0.25s ease;
+    font-family: 'Lexend', monospace;
+  }
+  #wikiPanel.open {
+    transform: translateX(0);
+  }
+  #wikiPanelHeader {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--neon-cyan);
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  #wikiPanelTitle {
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  #wikiPanelOpen {
+    flex: none;
+    color: var(--accent-yellow);
+    font-size: 11px;
+    text-decoration: none;
+    border: 1px solid var(--accent-yellow);
+    border-radius: 2px;
+    padding: 3px 8px;
+  }
+  #wikiPanelOpen:hover {
+    background: var(--accent-yellow);
+    color: #000;
+  }
+  #wikiPanelClose {
+    flex: none;
+    background: transparent;
+    border: 1px solid var(--neon-cyan);
+    color: var(--neon-cyan);
+    width: 26px;
+    height: 26px;
+    font-size: 14px;
+    line-height: 1;
+    cursor: pointer;
+    border-radius: 2px;
+    font-family: 'Lexend', monospace;
+  }
+  #wikiPanelClose:hover {
+    background: var(--neon-cyan);
+    color: #000;
+  }
+  #wikiPanelFrame {
+    flex: 1 1 auto;
+    border: 0;
+    width: 100%;
+    background: #0b0d1e;
+  }
+  @media (max-width: 600px) {
+    #wikiPanel {
+      width: 100vw;
+      border-left: none;
+    }
+  }
+
   /* Dated vector overlays: hover affordance for region paths */
   .map-region {
     cursor: crosshair;
@@ -334,6 +434,14 @@
   <div id="legendBody"></div>
 </div>
 <div id="mapTooltip"></div>
+<div id="wikiPanel" aria-hidden="true">
+  <div id="wikiPanelHeader">
+    <span id="wikiPanelTitle"></span>
+    <a id="wikiPanelOpen" href="#" target="_blank" rel="noopener">Open page &#8599;</a>
+    <button id="wikiPanelClose" aria-label="Close panel">&times;</button>
+  </div>
+  <iframe id="wikiPanelFrame" title="Wiki page preview" loading="lazy"></iframe>
+</div>
 <button id="backBtn" aria-label="Return to previous page" onclick="returnToPreviousPage()">Back</button>
 <button id="resetBtn" onclick="resetView()">Reset View</button>
 
@@ -466,6 +574,76 @@
   const svgCache = {};           // url -> Promise<SVGElement>
   const metaCache = {};          // dateId -> Promise<meta.json object>
 
+  // ── Wiki page index (built at site build time) ─────────────────
+  // map-page-index.json lists every note's title + URL. Names are matched
+  // case-insensitively; titles shared by more than one page are treated as
+  // ambiguous and never linked. When a page moves, the next site build
+  // picks up its new URL without any change here.
+  let pageIndexPromise = null;   // null until first use, then Promise<Map|null>
+  function loadPageIndex() {
+    if (!pageIndexPromise) {
+      pageIndexPromise = fetch('../../map-page-index.json')
+        .then((res) => (res.ok ? res.json() : null))
+        .then((list) => {
+          if (!Array.isArray(list)) return null;
+          const byName = new Map();
+          const ambiguous = new Set();
+          // Whitespace-insensitive keys: multi-line SVG labels split words
+          // into tspans with no space (e.g. "Rancho" + "Coronado").
+          const normalize = (value) => value.toLowerCase().replace(/\s+/g, '');
+          list.forEach((entry) => {
+            if (!entry || typeof entry.title !== 'string' || !entry.url) return;
+            const key = normalize(entry.title);
+            if (!key) return;
+            if (byName.has(key)) {
+              if (byName.get(key) !== entry.url) ambiguous.add(key);
+            } else {
+              byName.set(key, entry.url);
+            }
+          });
+          ambiguous.forEach((key) => byName.delete(key));
+          return byName;
+        })
+        .catch(() => null);
+    }
+    return pageIndexPromise;
+  }
+
+  function lookupPage(pageIndex, name) {
+    if (!pageIndex || !name) return null;
+    return pageIndex.get(name.toLowerCase().replace(/\s+/g, '')) || null;
+  }
+
+  // ── In-map wiki panel: one shared embedded tab for legend links ──
+  // and political label clicks. The iframe only loads on demand and is
+  // unloaded on close, so an idle panel costs nothing.
+  const wikiPanelEl = document.getElementById('wikiPanel');
+  const wikiPanelTitleEl = document.getElementById('wikiPanelTitle');
+  const wikiPanelOpenEl = document.getElementById('wikiPanelOpen');
+  const wikiPanelCloseEl = document.getElementById('wikiPanelClose');
+  const wikiPanelFrameEl = document.getElementById('wikiPanelFrame');
+
+  function openWikiPanel(name, url) {
+    wikiPanelTitleEl.textContent = name;
+    wikiPanelOpenEl.href = url;
+    const absolute = new URL(url, location.href).href;
+    if (wikiPanelFrameEl.dataset.current !== absolute) {
+      wikiPanelFrameEl.src = absolute;
+      wikiPanelFrameEl.dataset.current = absolute;
+    }
+    wikiPanelEl.classList.add('open');
+    wikiPanelEl.setAttribute('aria-hidden', 'false');
+  }
+
+  function closeWikiPanel() {
+    wikiPanelEl.classList.remove('open');
+    wikiPanelEl.setAttribute('aria-hidden', 'true');
+    wikiPanelFrameEl.src = 'about:blank'; // unload so the panel idles free
+    delete wikiPanelFrameEl.dataset.current;
+  }
+
+  wikiPanelCloseEl.onclick = closeWikiPanel;
+
   const timelineEl = document.getElementById('timeline');
   const sliderEl = document.getElementById('timelineSlider');
   const dateEl = document.getElementById('timelineDate');
@@ -521,6 +699,7 @@
       // Tile fallback: original behaviour for this preset.
       layerGroups[currentKey].addTo(map);
       updateHash();
+      if (currentKey === 'political') setupPoliticalLabelLinks(token);
       return;
     }
 
@@ -601,10 +780,60 @@
     renderLegend(dated, svgEl, token);
   }
 
+  // ── Political view: clickable district/zone/state names ────────
+  // The political tiles bake their labels into the PNGs, so the current
+  // date's labels.svg is overlaid invisibly and each label that resolves
+  // to a wiki page becomes a hit target which opens the in-map panel.
+  async function setupPoliticalLabelLinks(token) {
+    const date = dates[dateIndex];
+    if (!date || !date.layers.includes('labels')) return;
+    const [pageIndex, labelSvg] = await Promise.all([
+      loadPageIndex(),
+      loadSvg(`data/${date.id}/labels.svg`).catch(() => null),
+    ]);
+    if (token !== renderToken || !pageIndex || !labelSvg) return;
+    if (currentKey !== 'political' || usingDatedLayer) return;
+
+    const el = labelSvg.cloneNode(true);
+    el.setAttribute('width', GRID_W);
+    el.setAttribute('height', GRID_H);
+    el.setAttribute('preserveAspectRatio', 'none');
+    el.classList.add('label-hit-layer');
+    el.style.pointerEvents = 'none'; // linked texts re-enable it below
+    let linked = 0;
+    el.querySelectorAll('text[data-label-type]').forEach((text) => {
+      const name = (text.textContent || '').trim();
+      const url = name && lookupPage(pageIndex, name);
+      if (!url) return;
+      linked++;
+      text.style.pointerEvents = 'all';
+      text.style.cursor = 'pointer';
+      text.addEventListener('mouseover', () => {
+        tooltipEl.textContent = name;
+        tooltipEl.classList.add('visible');
+      });
+      text.addEventListener('mousemove', (event) => {
+        tooltipEl.style.left = event.clientX + 'px';
+        tooltipEl.style.top = event.clientY + 'px';
+      });
+      text.addEventListener('mouseout', () => tooltipEl.classList.remove('visible'));
+      text.addEventListener('click', (event) => {
+        event.preventDefault();
+        openWikiPanel(name, url);
+      });
+    });
+    if (!linked) return;
+    const overlay = L.svgOverlay(el, GRID_BOUNDS, { interactive: true });
+    overlay.addTo(map);
+    extraOverlays.push(overlay);
+  }
+
   // ── Legend for dated layers (active + wiped-out entries) ────────
   async function renderLegend(dated, svgEl, token) {
     const meta = await loadMeta(dated.date.id);
     if (token !== renderToken || !meta || !meta.tables || !meta.tables[dated.tableKey]) return;
+    const pageIndex = await loadPageIndex();
+    if (token !== renderToken) return;
 
     const prefix = dated.tableKey === 'cultures' ? 'culture' : 'religion';
     const activeIds = new Set();
@@ -636,8 +865,18 @@
         const chip = document.createElement('span');
         chip.className = 'legend-chip';
         chip.style.background = entry.color;
-        const name = document.createElement('span');
+        const url = lookupPage(pageIndex, entry.name);
+        const name = document.createElement(url ? 'a' : 'span');
         name.textContent = entry.name;
+        if (url) {
+          name.className = 'legend-link';
+          name.href = url;
+          name.title = `Open the ${entry.name} page`;
+          name.addEventListener('click', (event) => {
+            event.preventDefault();
+            openWikiPanel(entry.name, url);
+          });
+        }
         item.appendChild(chip);
         item.appendChild(name);
         if (!active) {
@@ -842,6 +1081,9 @@
 
   map.on('mousemove', (e) => {
     if (usingDatedLayer) return; // vector paths report their own hover names
+    // Political label hit targets own the tooltip while hovered.
+    const hoverTarget = e.originalEvent && e.originalEvent.target;
+    if (hoverTarget && hoverTarget.closest && hoverTarget.closest('.label-hit-layer')) return;
     const preset = TILE_SETS.find((entry) => entry.key === currentKey);
     const labels = MAP_LABELS[currentKey];
     if (!preset || !labels || !labels.items.length) {
