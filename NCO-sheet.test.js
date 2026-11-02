@@ -29,10 +29,21 @@ describe('synthetic NCO character regressions', () => {
    expect(()=>w.applyImport(data)).toThrow(/Invalid character field/); expect(w.buildExport()).toEqual(before);
   }
  });
- it('separates active trauma from its explicit Humanity effect and preserves active blank rows', () => {
-  const w=sheet(); w.applyImport({traumas:[{text:'physical',marked:true,affectsHumanity:false},{text:'emotional',marked:true,affectsHumanity:true}]}); expect(w.getHumanityMax()).toBe(9);
+ it('counts every marked trauma against Humanity and ignores the legacy flag', () => {
+  const w=sheet(); expect(w.document.querySelector('.affects-humanity')).toBeNull(); expect(w.document.body.textContent).not.toContain('Affects Humanity');
+  w.applyImport({traumas:[{text:'physical',marked:true,affectsHumanity:false},{text:'emotional',marked:true},{text:'old',marked:false}]}); expect(w.getHumanityMax()).toBe(8);
+  expect(w.buildExport().traumas.every(x=>!('affectsHumanity' in x))).toBe(true); expect(w.document.querySelector('.logo-version').textContent).toBe('v1.3.0.0');
+  w.applyImport({traumas:[{text:'broken arm',marked:false},{text:'grief',marked:true}]}); expect(w.getHumanityMax()).toBe(9); expect(w.buildExport().traumas.map(x=>[x.text,x.marked])).toEqual([['broken arm',false],['grief',true]]);
+  w.cleanupEmpty('traumas-container','.trauma-row',1); expect(w.buildExport().traumas).toHaveLength(2); expect(w.document.querySelector('.trauma-mark').getAttribute('aria-label')).toBe('Trauma reduces Humanity');
   w.addTrauma({marked:true}); const n=w.buildExport().traumas.length; w.cleanupEmpty('traumas-container','.trauma-row',1); expect(w.buildExport().traumas).toHaveLength(n);
   w.addCondition(); const pip=w.document.querySelector('.condition-pip'); w.cycleConditionPip(pip); w.cleanupEmpty('custom-conditions','.custom-condition',1); expect(pip.isConnected).toBe(true);
+ });
+ it('adds a 1-9 counter right of each condition button and round-trips it', () => {
+  const w=sheet(); w.applyImport({conditions:{custom:[{text:'Sight of massacre',state:'red',count:3},{text:'legacy',state:'blue'}]}});
+  const rows=w.document.querySelectorAll('.custom-condition'); expect(rows[0].children[0].classList.contains('condition-pip')).toBe(true); expect(rows[0].children[1].classList.contains('condition-count')).toBe(true);
+  expect(rows[0].querySelectorAll('option')).toHaveLength(9); expect(rows[0].querySelector('select').value).toBe('3'); expect(rows[1].querySelector('select').value).toBe('1');
+  expect(w.buildExport().conditions.custom.map(c=>c.count)).toEqual([3,1]);
+  for(const count of [0,10,1.5]) expect(()=>w.applyImport({conditions:{custom:[{text:'x',count}]}})).toThrow(/Invalid character field/);
  });
  it('uses correct prefixed rule links and Symptoms destination', () => {
   const w=sheet(); const links=Array.from(w.document.querySelectorAll('a')).map(a=>a.href); for(const path of ['rules/nc-overdrive/cyberware/','rules/nc-overdrive/conditions/','rules/nc-overdrive/damage/traumas/','rules/cpred/cyberware/cyberpsychosis-symptoms/']) expect(links).toContain('https://example.test/cyberpunk/'+path);
