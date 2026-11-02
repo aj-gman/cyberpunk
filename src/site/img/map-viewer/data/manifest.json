@@ -1,6 +1,44 @@
 {
   "dates": [
     {
+      "id": "2021-05",
+      "label": "May 2021",
+      "layers": [
+        "basemap",
+        "cultures",
+        "religions",
+        "zones",
+        "borders",
+        "routes",
+        "burgicons",
+        "labels"
+      ]
+    },
+    {
+      "id": "2021-07",
+      "label": "July 2021",
+      "layers": [
+        "basemap",
+        "cultures",
+        "religions",
+        "zones",
+        "borders",
+        "routes",
+        "burgicons",
+        "labels"
+      ]
+    },
+    {
+      "id": "2021-08",
+      "label": "August 2021",
+      "layers": [],
+      "tiles": {
+        "political": "data/2021-08/tiles-pol",
+        "socioeconomic": "data/2021-08/tiles-socio",
+        "influence": "data/2021-08/tiles-infl"
+      }
+    },
+    {
       "id": "2021-09",
       "label": "September 2021",
       "layers": [
