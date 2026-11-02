@@ -1,0 +1,2483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neon City Overdrive — Character Sheet</title>
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-color: #000000;
+      --panel-bg: #171A39;
+      --accent-yellow: #FEE801;
+      --neon-cyan: #54C1E6;
+      --neon-pink: #FF2D78;
+      --text-color: #E2E8F0;
+      --border-color: #39C4B6;
+      --danger-red: #ff0055;
+      --net-green: #00ff41;
+      --purple: #a142ff;
+      --dim: #555;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: 'Lexend', 'Courier New', monospace;
+      margin: 0;
+      padding: 15px;
+      font-size: 13px;
+    }
+
+    h2 {
+      color: var(--neon-pink);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin: 0 0 10px 0;
+      border-bottom: 2px solid var(--neon-pink);
+      padding-bottom: 5px;
+      text-shadow: 0 0 10px rgba(255,45,120,0.5);
+      font-size: 13px;
+    }
+
+    h3 {
+      color: var(--accent-yellow);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin: 12px 0 6px 0;
+      font-size: 11px;
+      border-bottom: 1px solid var(--accent-yellow);
+      padding-bottom: 3px;
+      text-shadow: 0 0 8px rgba(254,232,1,0.4);
+    }
+
+    /* TOP BAR */
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--panel-bg);
+      padding: 12px 18px;
+      border-radius: 4px;
+      margin-bottom: 18px;
+      border: 1px solid var(--border-color);
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .top-bar-title {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .nco-logo {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .logo-neon { color: var(--neon-pink); font-weight: 700; font-size: 18px; letter-spacing: 3px; text-shadow: 0 0 12px var(--neon-pink); text-transform: uppercase; }
+    .logo-city { color: var(--accent-yellow); font-weight: 700; font-size: 18px; letter-spacing: 3px; text-shadow: 0 0 12px var(--accent-yellow); text-transform: uppercase; }
+    .logo-over { color: var(--neon-cyan); font-size: 11px; letter-spacing: 4px; text-transform: uppercase; opacity: 0.8; }
+    .logo-version { color: var(--neon-cyan); font-size: 9px; letter-spacing: 2px; text-transform: uppercase; opacity: 0.6; margin-top: 2px; }
+
+    .top-bar-actions { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+
+    /* BUTTONS */
+    .btn {
+      background: transparent;
+      color: var(--neon-cyan);
+      border: 1px solid var(--neon-cyan);
+      padding: 6px 14px;
+      cursor: pointer;
+      font-weight: 700;
+      text-transform: uppercase;
+      transition: all 0.2s;
+      font-family: 'Lexend', monospace;
+      font-size: 11px;
+      letter-spacing: 1px;
+    }
+    .btn:hover { background: var(--neon-cyan); color: #000; box-shadow: 0 0 12px var(--neon-cyan); }
+    .btn-pink { color: var(--neon-pink); border-color: var(--neon-pink); }
+    .btn-pink:hover { background: var(--neon-pink); color: #fff; box-shadow: 0 0 12px var(--neon-pink); }
+    .btn-yellow { color: var(--accent-yellow); border-color: var(--accent-yellow); }
+    .btn-yellow:hover { background: var(--accent-yellow); color: #000; box-shadow: 0 0 12px var(--accent-yellow); }
+    .btn-danger { color: var(--danger-red); border-color: var(--danger-red); }
+    .btn-danger:hover { background: var(--danger-red); color: #fff; box-shadow: 0 0 10px var(--danger-red); }
+    .btn-small { padding: 3px 8px; font-size: 10px; }
+
+    /* PANELS */
+    .panel {
+      background: var(--panel-bg);
+      border: 1px solid var(--border-color);
+      padding: 14px;
+      border-radius: 4px;
+      margin-bottom: 16px;
+    }
+
+    /* LAYOUT */
+    .main-grid {
+      display: grid;
+      grid-template-columns: minmax(240px, 1fr) 4px minmax(300px, 1fr);
+      gap: 16px;
+      align-items: start;
+    }
+
+    .split-divider {
+      align-self: stretch;
+      min-height: 100%;
+      background: var(--bg-color);
+      cursor: col-resize;
+      touch-action: none;
+      opacity: 0.8;
+      transition: opacity 0.2s, box-shadow 0.2s;
+    }
+    .split-divider:hover, .split-divider:focus-visible, .split-divider.dragging {
+      opacity: 1;
+      box-shadow: 0 0 10px rgba(84,193,230,0.7);
+      outline: none;
+    }
+
+    .desc-grid {
+      display: grid;
+      grid-template-columns: minmax(240px, 1fr) 4px minmax(240px, 1fr);
+      gap: 16px;
+      align-items: stretch;
+      margin-bottom: 16px;
+    }
+
+    .desc-divider {
+      align-self: stretch;
+      min-height: 100%;
+      background: var(--bg-color);
+      cursor: col-resize;
+      touch-action: none;
+      opacity: 0.8;
+      transition: opacity 0.2s, box-shadow 0.2s;
+    }
+    .desc-divider:hover, .desc-divider:focus-visible, .desc-divider.dragging {
+      opacity: 1;
+      box-shadow: 0 0 10px rgba(84,193,230,0.7);
+      outline: none;
+    }
+
+    .desc-grid .panel {
+      margin-bottom: 0;
+    }
+
+    .desc-grid > div:first-child {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .desc-grid > div:first-child .panel {
+      flex: 1;
+    }
+
+    .desc-grid > div:last-child {
+      display: flex;
+    }
+
+    .desc-grid > div:last-child .panel {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .desc-grid > div:last-child .panel textarea {
+      flex: 1;
+      min-height: 100px;
+    }
+
+    @media (max-width: 900px) {
+      .main-grid { grid-template-columns: 1fr; }
+      .split-divider { display: none; }
+      .desc-grid { grid-template-columns: 1fr; }
+      .desc-divider { display: none; }
+      .trauma-flaw-grid { grid-template-columns: 1fr; }
+    }
+
+    /* INPUTS */
+    input[type="text"], input[type="number"], textarea, select {
+      background: #000;
+      border: 1px solid #333;
+      color: var(--text-color);
+      font-family: 'Lexend', monospace;
+      font-size: 12px;
+      padding: 5px 7px;
+      width: 100%;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    input[type="text"]:focus, input[type="number"]:focus, textarea:focus {
+      border-color: var(--neon-cyan);
+      box-shadow: 0 0 6px rgba(84,193,230,0.2);
+    }
+    textarea { resize: vertical; }
+    input[type="number"] { -moz-appearance: textfield; }
+    input[type="number"]::-webkit-outer-spin-button,
+    input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+
+    /* FORM ROWS */
+    .field-row { display: flex; gap: 10px; margin-bottom: 10px; align-items: flex-start; }
+    .field-row label { color: var(--neon-cyan); font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; padding-top: 7px; min-width: 72px; }
+    .field-row input, .field-row textarea { flex: 1; }
+    .field-label { color: var(--neon-cyan); font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 4px; }
+
+    /* NICKNAME */
+    .nickname-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: #000;
+      border: 1px solid var(--neon-pink);
+      padding: 8px 14px;
+      margin-bottom: 14px;
+      border-radius: 3px;
+    }
+    .nickname-row label { color: var(--neon-pink); font-weight: 700; font-size: 12px; text-transform: uppercase; letter-spacing: 2px; white-space: nowrap; }
+    .nickname-row input { background: transparent; border: none; color: #fff; font-size: 20px; font-weight: 700; font-family: 'Lexend', monospace; flex: 1; padding: 0; }
+    .nickname-row input:focus { outline: none; border-bottom: 1px solid var(--neon-pink); }
+    .top-tracker { display: flex; align-items: center; gap: 6px; white-space: nowrap; }
+    .top-tracker-label { color: var(--neon-cyan); font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+    .top-tracker-value { color: var(--accent-yellow); font-size: 16px; font-weight: 700; min-width: 24px; text-align: center; }
+    .top-hits-pips { display: flex; gap: 3px; }
+    .top-hits-pips .hit-pip { width: 16px; height: 16px; font-size: 10px; }
+
+    /* TRADEMARKS */
+    .trademark-block {
+      background: #000;
+      border: 1px solid #2a2d50;
+      border-radius: 3px;
+      margin-bottom: 10px;
+      overflow: hidden;
+    }
+    .trademark-header {
+      display: flex;
+      align-items: center;
+      background: #0d0f22;
+      border-bottom: 1px solid #2a2d50;
+      padding: 6px 10px;
+      gap: 8px;
+      cursor: pointer;
+      user-select: none;
+    }
+    .trademark-toggle {
+      color: var(--neon-cyan);
+      font-size: 12px;
+      font-weight: 700;
+      min-width: 14px;
+      text-align: center;
+      transition: transform 0.2s;
+    }
+    .trademark-toggle.collapsed { transform: rotate(-90deg); }
+    .trademark-name-input {
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid #444;
+      color: var(--accent-yellow);
+      font-weight: 700;
+      font-size: 13px;
+      font-family: 'Lexend', monospace;
+      flex: 1;
+      padding: 2px 4px;
+      letter-spacing: 1px;
+    }
+    .trademark-name-input:focus { outline: none; border-bottom-color: var(--neon-pink); }
+    .trademark-name-input::placeholder { color: #333; font-weight: 400; }
+    .trademark-body { padding: 8px 10px; max-height: 500px; overflow: hidden; transition: all 0.3s; }
+    .trademark-body.collapsed { max-height: 0; padding: 0 8px; overflow: hidden; }
+    .trademark-body-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .edges-section label, .triggers-section label { color: var(--neon-cyan); font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; display: block; margin-bottom: 4px; }
+    .edges-section label { color: var(--neon-pink); }
+    .edges-section textarea, .triggers-section textarea {
+      width: 100%;
+      background: #0a0c1a;
+      border: 1px solid #1e2245;
+      color: var(--text-color);
+      font-size: 11px;
+      padding: 6px;
+      font-family: 'Lexend', monospace;
+      resize: vertical;
+      outline: none;
+      transition: border-color 0.2s;
+      min-height: 0;
+    }
+    .edges-section textarea:focus, .triggers-section textarea:focus { border-color: var(--neon-cyan); }
+
+    /* HITS */
+    .hits-row { display: flex; gap: 8px; align-items: center; margin-bottom: 10px; flex-wrap: wrap; }
+    .hit-pip {
+      width: 28px; height: 28px;
+      border: 2px solid var(--neon-pink);
+      border-radius: 3px;
+      cursor: pointer;
+      background: transparent;
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.15s;
+      font-size: 16px;
+      color: transparent;
+    }
+    .hit-pip.marked {
+      background: var(--neon-pink);
+      box-shadow: 0 0 10px var(--neon-pink);
+      color: #000;
+    }
+
+    /* DRIVE PIPS */
+    .pip-row { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 6px; }
+    .pip {
+      width: 20px; height: 20px;
+      border: 1px solid var(--border-color);
+      border-radius: 2px;
+      cursor: pointer;
+      background: transparent;
+      transition: all 0.15s;
+    }
+    .pip.marked { background: var(--neon-cyan); box-shadow: 0 0 6px var(--neon-cyan); border-color: var(--neon-cyan); }
+    /* EXP PIPS */
+    .exp-section { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .exp-group { display: flex; gap: 4px; }
+    .exp-divider { color: var(--dim); font-size: 18px; font-weight: 300; }
+
+    /* CONDITIONS */
+    .condition-pip {
+      width: 14px; height: 14px;
+      border: 1px solid #444;
+      background: transparent;
+      flex-shrink: 0;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .condition-pip.blue { background: var(--neon-cyan); border-color: var(--neon-cyan); box-shadow: 0 0 4px var(--neon-cyan); }
+    .condition-pip.red { background: var(--neon-pink); border-color: var(--neon-pink); box-shadow: 0 0 4px var(--neon-pink); }
+    .condition-item { display: flex; align-items: center; gap: 6px; }
+    .cond-label {
+      font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 1px;
+      font-family: 'Lexend', monospace; user-select: none;
+    }
+    .custom-condition { display: flex; gap: 5px; align-items: center; margin-top: 5px; }
+    .custom-condition .cond-mark { flex-shrink: 0; }
+    .custom-condition input[type="text"] { font-size: 11px; }
+    .conditions-add-row { display: flex; gap: 6px; align-items: center; }
+    .conditions-add-row input[type="text"] { flex: 1; font-size: 11px; }
+
+    .trauma-flaw-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; align-items: start; margin-bottom: 16px; }
+    .trauma-flaw-grid .panel { margin-bottom: 0; }
+
+    /* TRAUMAS */
+    .trauma-row { display: flex; align-items: center; gap: 6px; margin-bottom: 5px; }
+    .trauma-mark {
+      width: 14px; height: 14px;
+      background: var(--purple);
+      border: 1px solid var(--purple);
+      box-shadow: 0 0 4px var(--purple);
+      flex-shrink: 0;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .trauma-mark.empty { background: transparent; box-shadow: none; border-color: #444; }
+    .trauma-row input { flex: 1; font-size: 11px; }
+
+    /* FLAWS */
+    .flaw-row { display: flex; align-items: center; gap: 6px; margin-bottom: 5px; }
+    .flaw-mark {
+      width: 14px; height: 14px;
+      border: 1px solid var(--purple);
+      flex-shrink: 0;
+      cursor: pointer;
+      background: transparent;
+      transition: all 0.15s;
+    }
+    .flaw-mark.marked { background: var(--purple); box-shadow: 0 0 6px var(--purple); }
+    .flaw-row input { flex: 1; font-size: 11px; }
+
+    /* STUNT POINTS */
+    .stunt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .stunt-box { background: #000; border: 1px solid #2a2d50; padding: 6px 10px; text-align: center; }
+    .stunt-box label { display: block; color: var(--neon-cyan); font-size: 9px; font-weight: 700; letter-spacing: 2px; margin-bottom: 3px; }
+    .stunt-box input { background: transparent; border: none; color: var(--accent-yellow); font-size: 22px; font-weight: 700; text-align: center; font-family: 'Lexend', monospace; width: 100%; }
+
+    /* GEAR */
+    .gear-section { margin-bottom: 10px; }
+    .gear-section.compact-1 { max-width: 100%; margin: 0 auto 10px; }
+    .gear-section.compact-2 { margin: 0 0 10px 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-flow: row; gap: 8px; width: 100%; }
+    .gear-section.compact-3 { margin: 0 0 10px 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-auto-flow: row; gap: 8px; width: 100%; }
+    .gear-section.compact-2 .gear-block,
+    .gear-section.compact-3 .gear-block {
+      margin-bottom: 0;
+      min-width: 0;
+      width: 100%;
+    }
+    /* INVENTORY MODULE */
+    .inv-cap-row { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; margin-bottom: 8px; }
+    .inv-cap-btn.selected { background: var(--accent-yellow); color: #000; border-color: var(--accent-yellow); }
+    .inv-cap-btn.selected:hover { background: var(--accent-yellow); color: #000; box-shadow: 0 0 10px var(--accent-yellow); }
+    .inv-cap-btn.misc-on { background: var(--purple); color: #000; border-color: var(--purple); }
+    .inv-cap-btn.misc-on:hover { background: var(--purple); color: #000; box-shadow: 0 0 10px var(--purple); }
+    #inv-misc-value {
+      width: 46px;
+      background: #0a0c1a;
+      border: 1px solid var(--purple);
+      color: var(--accent-yellow);
+      font-family: 'Lexend', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 4px;
+      text-align: center;
+    }
+    .inv-counter-row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .inv-counter-label { color: var(--neon-cyan); font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+    .inv-counter { font-size: 16px; font-weight: 700; color: var(--accent-yellow); }
+    .inv-counter.over { color: var(--danger-red); text-shadow: 0 0 10px rgba(242,72,72,0.6); }
+    .panel-header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .panel-header-row h2 {
+      margin: 0;
+    }
+    .compact-controls {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    .compact-controls .btn {
+      padding: 2px 6px;
+      min-width: 44px;
+      font-size: 9px;
+    }
+    .gear-item-actions {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-left: auto;
+    }
+    .gear-drag-handle {
+      color: #444;
+      font-size: 13px;
+      line-height: 1;
+      cursor: grab;
+      user-select: none;
+      flex-shrink: 0;
+      padding: 0 2px;
+      transition: color 0.15s;
+    }
+    .gear-drag-handle:hover { color: var(--neon-cyan); }
+    .gear-block.dragging { opacity: 0.6; }
+    .gear-block.dragging .gear-drag-handle { cursor: grabbing; }
+
+    .gear-order-btn {
+      min-width: 22px;
+      padding: 2px 5px;
+      line-height: 1;
+      font-size: 10px;
+    }
+    .gear-block {
+      background: #000;
+      border: 1px solid #2a2d50;
+      border-radius: 3px;
+      margin-bottom: 8px;
+      overflow: hidden;
+    }
+    .gear-header {
+      display: flex;
+      align-items: center;
+      background: #0d0f22;
+      border-bottom: 1px solid #2a2d50;
+      padding: 6px 10px;
+      gap: 8px;
+    }
+    .gear-title-input {
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid #444;
+      color: var(--accent-yellow);
+      font-weight: 700;
+      font-size: 13px;
+      font-family: 'Lexend', monospace;
+      flex: 1;
+      padding: 2px 4px;
+      letter-spacing: 1px;
+    }
+    .gear-title-input:focus { outline: none; border-bottom-color: var(--neon-pink); }
+    .gear-title-input::placeholder { color: #333; font-weight: 400; }
+    .gear-type-tag {
+      color: var(--neon-cyan);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 2px 6px;
+      border: 1px solid var(--neon-cyan);
+      border-radius: 2px;
+    }
+    .gear-type-tag.special { color: var(--neon-pink); border-color: var(--neon-pink); }
+    /* Cyberware value chip (cycles 1-3), sits right of the purple CYBER tag */
+    .cyberware-value {
+      color: var(--purple);
+      border: 1px solid var(--purple);
+      background: transparent;
+      border-radius: 2px;
+      min-width: 18px;
+      padding: 2px 5px;
+      font-family: 'Lexend', monospace;
+      font-size: 9px;
+      font-weight: 700;
+      line-height: 1;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .cyberware-value:hover { background: var(--purple); color: #000; box-shadow: 0 0 8px var(--purple); }
+    /* Gear size chip (cycles 1-3), sits right of the Basic/Special tag */
+    .gear-size {
+      color: var(--neon-cyan);
+      border: 1px solid var(--neon-cyan);
+      background: transparent;
+      border-radius: 2px;
+      min-width: 18px;
+      padding: 2px 5px;
+      font-family: 'Lexend', monospace;
+      font-size: 9px;
+      font-weight: 700;
+      line-height: 1;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .gear-size:hover { background: var(--neon-cyan); color: #000; box-shadow: 0 0 8px var(--neon-cyan); }
+    /* Move between Gear (Stashed) and Inventory */
+    .btn-move { color: var(--net-green); border-color: var(--net-green); }
+    .btn-move:hover { background: var(--net-green); color: #000; box-shadow: 0 0 10px var(--net-green); }
+    .btn-move:disabled { opacity: 0.3; cursor: not-allowed; }
+    .btn-move:disabled:hover { background: transparent; color: var(--net-green); box-shadow: none; }
+    .gear-notes {
+      width: 100%;
+      background: #0a0c1a;
+      border: none;
+      color: var(--text-color);
+      font-size: 11px;
+      padding: 8px 10px;
+      font-family: 'Lexend', monospace;
+      resize: vertical;
+      outline: none;
+      min-height: 0;
+    }
+    .gear-notes:focus { background: #0e1124; }
+
+    /* DIVIDER */
+    .divider { height: 1px; background: linear-gradient(to right, transparent, var(--border-color), transparent); margin: 12px 0; }
+
+    /* PRINT STYLES */
+    @media print {
+      body { background: #fff !important; color: #000 !important; padding: 0; }
+      .top-bar, .no-print { display: none !important; }
+      .panel { background: #f5f5f5 !important; border: 1px solid #ccc !important; page-break-inside: avoid; }
+      .main-grid { display: grid !important; }
+      .desc-grid { display: grid !important; }
+      input, textarea { background: #fff !important; color: #000 !important; border: 1px solid #999 !important; }
+      h2 { color: #c00 !important; }
+      h3 { color: #333 !important; }
+    }
+
+    /* SCAN LINES EFFECT */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0,0,0,0.03) 2px,
+        rgba(0,0,0,0.03) 4px
+      );
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    /* SECTION ACCENT BORDER */
+    .panel.pink-border { border-color: var(--neon-pink); }
+    .panel.yellow-border { border-color: var(--accent-yellow); }
+    .panel.red-border { border-color: var(--danger-red); }
+    .panel.purple-border { border-color: var(--purple); }
+
+    /* TRACKERS MODULE */
+    .tracker-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+      padding: 6px 8px;
+      background: #0a0c1a;
+      border: 1px solid #1e2245;
+      border-radius: 3px;
+    }
+    .tracker-label {
+      color: var(--neon-cyan);
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      white-space: nowrap;
+      min-width: 110px;
+    }
+    .tracker-controls {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .tracker-controls .btn {
+      padding: 2px 6px;
+      font-size: 10px;
+    }
+    .tracker-value {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--accent-yellow);
+      min-width: 28px;
+      text-align: center;
+    }
+    .tracker-bar {
+      flex: 1;
+      height: 8px;
+      background: #111;
+      border: 1px solid #333;
+      border-radius: 2px;
+      overflow: hidden;
+      position: relative;
+    }
+    .tracker-bar-fill {
+      height: 100%;
+      background: var(--neon-cyan);
+      transition: width 0.2s;
+      border-radius: 2px;
+    }
+    .tracker-bar-fill.danger {
+      background: var(--danger-red);
+    }
+    .cyberpsy-warning,
+    .inv-warning {
+      display: none;
+      background: rgba(255, 0, 85, 0.15);
+      border: 1px solid var(--danger-red);
+      color: var(--danger-red);
+      padding: 8px 10px;
+      text-align: center;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border-radius: 3px;
+      margin-top: 6px;
+      animation: flashRed 0.8s ease-in-out infinite alternate;
+    }
+    .cyberpsy-warning.visible,
+    .inv-warning.visible { display: block; }
+    @keyframes flashRed {
+      from { background: rgba(255, 0, 85, 0.08); text-shadow: 0 0 6px rgba(255,0,85,0.3); }
+      to { background: rgba(255, 0, 85, 0.3); text-shadow: 0 0 14px rgba(255,0,85,0.8); }
+    }
+
+    /* HITS counter controls */
+    .hits-title-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .hits-counter {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .hits-counter .btn {
+      padding: 2px 6px;
+      font-size: 10px;
+    }
+    .hits-counter-label {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--accent-yellow);
+      min-width: 20px;
+      text-align: center;
+    }
+
+    /* Sheet wrapper */
+    #sheet-wrapper { max-width: 1200px; margin: 0 auto; }
+    #sheet-page2 { max-width: 1200px; margin: 0 auto; }
+    .dynamic-header a, .triggers-section label a, .edges-section label a, .cyberpsy-title a { color: inherit; text-decoration: none; transition: color 0.2s, text-shadow 0.2s; }
+    .dynamic-header a:hover, .triggers-section label a:hover, .edges-section label a:hover, .cyberpsy-title a:hover { color: var(--accent-yellow) !important; text-shadow: 0 0 10px var(--accent-yellow), 0 0 20px rgba(254,232,1,0.4); }
+
+    .page-break { page-break-before: always; break-before: page; }
+    @media screen { .page-break { margin-top: 24px; padding-top: 24px; border-top: 1px dashed #333; } }
+
+    /* Storage chooser */
+    .storage-modal { display: none; position: fixed; inset: 0; z-index: 10000; align-items: center; justify-content: center; background: rgba(0,0,0,0.8); padding: 20px; }
+    .storage-modal.visible { display: flex; }
+    .storage-dialog { width: min(360px, 100%); background: var(--panel-bg); border: 1px solid var(--neon-cyan); padding: 18px; box-shadow: 0 0 20px rgba(84,193,230,0.25); }
+    .storage-dialog h2 { margin-bottom: 14px; }
+    .storage-options { display: grid; gap: 8px; }
+    .storage-dialog .btn { width: 100%; }
+
+    button.hit-pip, button.pip, button.trauma-mark { padding:0; font:inherit; color:inherit; }
+    :focus-visible { outline:2px solid var(--neon-cyan); outline-offset:3px; }
+    .trauma-humanity { font-size:9px; display:flex; align-items:center; gap:3px; }
+    .trauma-humanity input { flex:none; width:auto; }
+    .top-bar-title { flex-wrap:wrap; min-width:0; }
+    input, textarea, .panel, .gear-block { min-width:0; }
+    @media(max-width:600px) {
+      body { padding:8px; }
+      .top-bar { padding:10px; }
+      .top-bar-title { gap:8px; }
+      .nickname-row { flex-wrap:wrap !important; padding:8px; }
+      .nickname-row > #nickname { flex:1 1 70% !important; width:0; }
+      .nickname-row > span { display:none; }
+      .top-tracker { flex-wrap:wrap; }
+      .tracker-row { flex-wrap:wrap; }
+      .tracker-bar { flex:1 1 100%; }
+      .trauma-row { flex-wrap:wrap; }
+      .trauma-row > input { flex:1; width:60%; }
+      .gear-header { flex-wrap:wrap; }
+      .gear-title-input { width:100%; flex:1 1 100%; order:5; }
+      .panel-header-row { flex-wrap:wrap; }
+      .trauma-flaw-grid { grid-template-columns:1fr; }
+      .gear-section { grid-template-columns:1fr !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- STORAGE CHOOSER -->
+<div id="storage-modal" class="storage-modal" role="dialog" aria-modal="true" aria-labelledby="storage-modal-title">
+  <div class="storage-dialog">
+    <h2 id="storage-modal-title">Storage</h2>
+    <div class="storage-options">
+      <button id="storage-cloud-btn" class="btn btn-yellow" type="button" onclick="chooseStorageOption('cloud')">☁ From Cloud</button>
+      <button id="storage-json-btn" class="btn" type="button" onclick="chooseStorageOption('json')">▣ From JSON</button>
+      <button class="btn btn-danger" type="button" onclick="closeStorageModal()">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOP BAR -->
+<div class="top-bar no-print">
+  <div class="top-bar-title">
+    <div class="nco-logo">
+      <span><span class="logo-neon">NIGHT </span><span class="logo-city">CITY</span></span>
+      <span class="logo-over">OVERDRIVE</span>
+      <span class="logo-version">v1.2.1.1</span>
+    </div>
+    <span style="color:#444;font-size:20px;">|</span>
+    <span style="color:var(--dim);font-size:11px;text-transform:uppercase;letter-spacing:1px;">Character Sheet</span>
+    <span style="color:#444;font-size:16px;margin-left:10px;">|</span>
+    <button class="btn btn-small" onclick="showPage(1)" id="btn-page1" style="border-color:var(--accent-yellow);color:var(--accent-yellow);">Core</button>
+    <button class="btn btn-small" onclick="showPage(2)" id="btn-page2" style="border-color:var(--accent-yellow);color:var(--accent-yellow);">Gear & Cyberware</button>
+    <button class="btn btn-small" onclick="showPage(3)" id="btn-page3" style="border-color:var(--accent-yellow);color:var(--accent-yellow);">Stash</button>
+    <a class="btn btn-small" href="https://www.owlbear.rodeo/room/KwPt706YcZQ_/The%20Afoot%20Doom" target="_blank" rel="noopener" style="border-color:var(--accent-yellow);color:var(--accent-yellow);text-decoration:none;display:inline-block;">OPEN OWLBEAR VTT</a>
+    <button class="btn btn-small" onclick="showPage(5)" id="btn-page5" style="border-color:var(--accent-yellow);color:var(--accent-yellow);">Wiki</button>
+  </div>
+  <div class="top-bar-actions">
+    <button class="btn" onclick="openStorageModal('load')" title="Load a character">Load</button>
+    <button class="btn btn-yellow" onclick="openStorageModal('save')" title="Save this character">Save</button>
+    <span id="edit-status" role="status"></span><span id="gh-status" role="status" style="font-size:10px;color:var(--dim);min-width:110px;"></span>
+    <input type="file" id="importFile" accept=".json" style="display:none;">
+  </div>
+</div>
+
+<!-- SHEET WRAPPER (used for PDF capture) -->
+<div id="sheet-wrapper">
+
+<div class="nickname-row" style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+    <label style="white-space:nowrap;">Handle</label>
+    <input type="text" id="nickname" placeholder="Enter street name…" style="flex:1;">
+    <span style="color:#444;font-size:16px;">|</span>
+
+    <div style="display:flex;align-items:center;gap:6px;white-space:nowrap;">
+      <span style="color:var(--neon-cyan);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;">€$</span>
+      <input type="text" id="eddies-value" value="0" style="font-size:16px;font-weight:700;color:var(--accent-yellow);width:50px;text-align:center;background:none;border:none;padding:0;">
+    </div>
+    <span style="color:#444;font-size:16px;">|</span>
+    <div class="top-tracker">
+      <span class="top-tracker-label dynamic-header" data-path="rules/nc-overdrive/">Stunts</span>
+      <button class="btn btn-small" onclick="changeStunt(-1)">−</button>
+      <span id="stunt-value" class="top-tracker-value">0</span>
+      <button class="btn btn-small" onclick="changeStunt(1)">+</button>
+    </div>
+    <span style="color:#444;font-size:16px;">|</span>
+    <div class="top-tracker">
+      <span class="top-tracker-label dynamic-header" data-path="rules/nc-overdrive/">XP</span>
+      <button class="btn btn-small" onclick="changeExp(-1)">−</button>
+      <span id="exp-value" class="top-tracker-value">0</span>
+      <button class="btn btn-small" onclick="changeExp(1)">+</button>
+    </div>
+    <span style="color:#444;font-size:16px;">|</span>
+    <div class="top-tracker">
+      <span class="top-tracker-label dynamic-header" data-path="rules/nc-overdrive/damage">Hits</span>
+      <button class="btn btn-small" onclick="changeHits(-1)">−</button>
+      <span id="hits-count" class="top-tracker-value">3</span>
+      <button class="btn btn-small" onclick="changeHits(1)">+</button>
+      <div class="top-hits-pips" id="hits-pips"></div>
+    </div>
+  </div>
+
+  <!-- APPEARANCE & PERSONALITY + DRIVE SIDE-BY-SIDE (equal height) -->
+  <div class="desc-grid">
+    <!-- LEFT COLUMN: Appearance + Personality -->
+    <div>
+      <div class="panel">
+        <h2>Appearance</h2>
+        <textarea id="appearance" rows="3" placeholder="What do you look like? Style, clothing, distinctive features…"></textarea>
+      </div>
+      <div class="panel">
+        <h2>Personality</h2>
+        <textarea id="personality" rows="3" placeholder="Who are you? Attitude, mannerisms, vibe…"></textarea>
+      </div>
+    </div>
+    <div class="desc-divider" id="desc-grid-divider" role="separator" aria-label="Resize appearance and Drive" aria-orientation="vertical" aria-valuemin="25" aria-valuemax="75" aria-valuenow="50" tabindex="0"></div>
+    <!-- RIGHT COLUMN: Drive (stretches to match combined height) -->
+    <div>
+      <div class="panel">
+        <h2 class="dynamic-header" data-path="rules/nc-overdrive/">Drive</h2>
+        <textarea id="drive-text" placeholder="What drives you? Your motivation…"></textarea>
+        <div class="pip-row" id="drive-pips" style="margin-top:8px;"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN GRID -->
+  <div class="main-grid">
+
+    <!-- LEFT COLUMN: Trademarks -->
+    <div>
+      <div class="panel">
+        <h2 class="dynamic-header" data-path="rules/nc-overdrive/trademarks">Trademarks</h2>
+        <div id="trademarks-container"></div>
+        <button class="btn btn-small" onclick="addTrademark()" style="margin-top:4px;">+ Add Trademark</button>
+      </div>
+    </div>
+
+    <div class="split-divider" id="main-grid-divider" role="separator" aria-label="Resize Trademarks and modules" aria-orientation="vertical" aria-valuemin="25" aria-valuemax="75" aria-valuenow="50" tabindex="0"></div>
+
+    <!-- RIGHT COLUMN -->
+    <div>
+
+      <!-- CONDITIONS -->
+      <div class="panel">
+        <h2 class="dynamic-header" data-path="rules/nc-overdrive">Conditions</h2>
+        <div id="custom-conditions"></div>
+        <button class="btn btn-small" onclick="addCondition()" style="margin-top:6px;">+ Condition</button>
+      </div>
+
+      <div class="trauma-flaw-grid">
+      <!-- TRAUMAS -->
+      <div class="panel red-border">
+        <h2 class="dynamic-header" data-path="rules/nc-overdrive/damage">Traumas</h2>
+        <div id="traumas-container">
+          <div class="trauma-row"><div class="trauma-mark empty" onclick="toggleTrauma(this)"></div><input type="text" placeholder="Trauma description…"></div>
+          <div class="trauma-row"><div class="trauma-mark empty" onclick="toggleTrauma(this)"></div><input type="text" placeholder="Trauma description…"></div>
+          <div class="trauma-row"><div class="trauma-mark empty" onclick="toggleTrauma(this)"></div><input type="text" placeholder="Trauma description…"></div>
+          <div class="trauma-row"><div class="trauma-mark empty" onclick="toggleTrauma(this)"></div><input type="text" placeholder="Trauma description…"></div>
+        </div>
+        <button class="btn btn-small" onclick="addTrauma()" style="margin-top:6px;">+ Trauma</button>
+      </div>
+
+      <!-- FLAWS -->
+      <div class="panel purple-border">
+        <h2 class="dynamic-header" data-path="rules/nc-overdrive/trademarks">Flaws</h2>
+        <div id="flaws-container">
+          <div class="flaw-row"><input type="text" placeholder="Flaw…"></div>
+          <div class="flaw-row" style="margin-top:5px;"><input type="text" placeholder="Flaw…"></div>
+        </div>
+        <button class="btn btn-small" onclick="addFlaw()" style="margin-top:6px;">+ Flaw</button>
+      </div>
+      </div>
+
+      <!-- INVENTORY -->
+      <div class="panel">
+        <h2>Inventory</h2>
+        <div class="inv-cap-row">
+          <button class="btn btn-small inv-cap-btn selected" type="button" data-base="5" onclick="setInvContainer(this)">Jacket (5)</button>
+          <button class="btn btn-small inv-cap-btn" type="button" data-base="8" onclick="setInvContainer(this)">Carryall (8)</button>
+          <button class="btn btn-small inv-cap-btn" type="button" id="inv-misc-toggle" onclick="toggleInvMisc()">Misc</button>
+          <input type="number" id="inv-misc-value" min="1" max="5" step="1" value="1" style="display:none;" aria-label="Misc bonus slots" oninput="onInvMiscInput(this)">
+        </div>
+        <div class="inv-counter-row">
+          <span class="inv-counter-label">Slots</span>
+          <span class="inv-counter" id="inv-counter"><span id="inv-used">0</span> / <span id="inv-total">5</span></span>
+        </div>
+        <div class="inv-warning" id="inv-warning">⚠ OVERENCUMBERED</div>
+        <div class="gear-section" id="inventory-container" data-compact-level="1">
+          <!-- Gear moved here from Gear (Stashed) -->
+        </div>
+      </div>
+
+      <!-- (STUNTS & XP moved to Handle row) -->
+
+    </div>
+  </div>
+
+</div><!-- end sheet-wrapper -->
+
+<!-- PAGE 2 -->
+<div id="sheet-page2">
+
+  <!-- PAGE BREAK HEADER -->
+  <div class="page-break"></div>
+
+  <!-- GEAR -->
+  <div class="panel">
+    <div class="panel-header-row">
+      <h2 class="dynamic-header" data-path="rules/nc-overdrive/" data-url-text="Gear">Gear (Stashed)</h2>
+      <div class="compact-controls">
+        <button class="btn btn-small" type="button" onclick="setListCompact('gear-container', 1)">1 row</button>
+        <button class="btn btn-small" type="button" onclick="setListCompact('gear-container', 2)">2 rows</button>
+        <button class="btn btn-small" type="button" onclick="setListCompact('gear-container', 3)">3 rows</button>
+      </div>
+    </div>
+    <div class="gear-section compact-2" id="gear-container">
+      <!-- Gear items are built by JavaScript -->
+    </div>
+  </div>
+
+  <!-- CYBERWARE -->
+  <div class="panel" style="border-color:var(--accent-yellow);">
+    <div class="panel-header-row">
+      <h2 class="dynamic-header" data-path="rules/nc-overdrive" style="color:var(--accent-yellow);border-color:var(--accent-yellow);">Cyberware</h2>
+      <div class="compact-controls">
+        <button class="btn btn-small" type="button" onclick="setListCompact('cyberware-container', 1)" style="border-color:var(--purple);color:var(--purple);">1 row</button>
+        <button class="btn btn-small" type="button" onclick="setListCompact('cyberware-container', 2)" style="border-color:var(--purple);color:var(--purple);">2 rows</button>
+        <button class="btn btn-small" type="button" onclick="setListCompact('cyberware-container', 3)" style="border-color:var(--purple);color:var(--purple);">3 rows</button>
+      </div>
+    </div>
+    <div class="gear-section compact-2" id="cyberware-container">
+      <!-- Cyberware items are built by JavaScript -->
+    </div>
+  </div>
+
+  <!-- CYBERPSYCHOSIS TRACKERS -->
+  <div class="panel" style="border-color:var(--purple);">
+    <h2 class="cyberpsy-title dynamic-header" data-path="rules/cpred/cyberware" data-url-text="cyberpsychosis-symptoms" style="color:var(--purple);border-color:var(--purple);">Cyberpsychosis Trackers</h2>
+    <div class="tracker-row">
+      <span class="tracker-label" style="color:var(--danger-red);">Cyberpsychosis</span>
+      <div class="tracker-controls">
+        <button class="btn btn-small" onclick="changeTracker('cyberpsy', -1)" style="border-color:var(--danger-red);color:var(--danger-red);">−</button>
+        <span id="cyberpsy-value" class="tracker-value" style="color:var(--danger-red);">0</span><small>/ 20</small>
+        <button class="btn btn-small" onclick="changeTracker('cyberpsy', 1)" style="border-color:var(--danger-red);color:var(--danger-red);">+</button>
+      </div>
+      <div class="tracker-bar"><div class="tracker-bar-fill danger" id="cyberpsy-bar" style="width:0%;"></div></div>
+    </div>
+    <div class="tracker-row">
+      <span class="tracker-label">Humanity</span>
+      <div class="tracker-controls">
+        <button class="btn btn-small" onclick="changeTracker('humanity', -1)">−</button>
+        <span id="humanity-value" class="tracker-value">10</span><small id="humanity-max">/ 10</small>
+        <button class="btn btn-small" onclick="changeTracker('humanity', 1)">+</button>
+      </div>
+      <div class="tracker-bar"><div class="tracker-bar-fill" id="humanity-bar" style="width:100%;"></div></div>
+    </div>
+    <div class="cyberpsy-warning" id="cyberpsy-warning">⚠ CYBERPSYCHOSIS THRESHOLD EXCEEDED</div>
+  </div>
+
+</div><!-- end sheet-page2 -->
+
+<!-- PAGE 3 -->
+<div id="sheet-page3" style="max-width:1200px;margin:0 auto;">
+
+  <div class="page-break"></div>
+
+  <!-- STASH (GOOGLE SHEETS) -->
+  <div style="padding:0;margin:0;height:calc(100vh - 120px);min-height:500px;">
+    <iframe src="https://docs.google.com/spreadsheets/d/1YpRERhKOoGxK3ybMjjvrwKSOPtKJGs3kU9BJT4o2yMI/edit?usp=sharing&rm=minimal&headers=false&chrome=false"
+            style="width:100%;height:100%;border:none;border-radius:2px;background:#1a1c2e;"
+            allowfullscreen>
+    </iframe>
+  </div>
+
+</div><!-- end sheet-page3 -->
+
+<!-- PAGE 5 -->
+<div id="sheet-page5" style="max-width:1200px;margin:0 auto;">
+  <div class="page-break"></div>
+  <div style="padding:0;margin:0;height:calc(100vh - 120px);min-height:500px;">
+    <iframe src="/" style="width:100%;height:100%;border:none;border-radius:2px;background:#1a1c2e;" allowfullscreen></iframe>
+  </div>
+</div><!-- end sheet-page5 -->
+
+
+<script>
+  // ═══════════════════════════════════════════════════════
+  // TRADEMARK SYSTEM
+  // ═══════════════════════════════════════════════════════
+
+  let trademarkCount = 0;
+
+  function addTrademark(data) {
+    if (!data) data = {};
+    trademarkCount++;
+    const id = trademarkCount;
+    const container = document.getElementById('trademarks-container');
+    const div = document.createElement('div');
+    div.className = 'trademark-block';
+    div.id = 'trademark-' + id;
+
+    const header = document.createElement('div');
+    header.className = 'trademark-header';
+    header.innerHTML =
+      '<span class="trademark-toggle">&#9660;</span>' +
+      '<input type="text" class="trademark-name-input tm-name" placeholder="Trademark name&#8230;" value="' + escHtml(data.name || '') + '" onclick="event.stopPropagation();">' +
+      '<button class="btn btn-danger btn-small" onclick="event.stopPropagation(); removeTrademark(' + id + ')">&#10005;</button>';
+    header.addEventListener('click', function () { toggleTrademarkBody(id); });
+    div.appendChild(header);
+
+    const body = document.createElement('div');
+    body.className = 'trademark-body';
+    body.innerHTML =
+      '<div class="trademark-body-grid">' +
+        '<div class="triggers-section">' +
+          '<label><a href="/rules/nc-overdrive/trademarks/triggers/" target="_blank" rel="noopener">&#9656; Triggers</a></label>' +
+          '<textarea class="tm-triggers" rows="5" placeholder="Enter triggers, one per line&#8230;">' + escHtml((data.triggers || []).join('\n')) + '</textarea>' +
+        '</div>' +
+        '<div class="edges-section">' +
+          '<label><a href="/rules/nc-overdrive/trademarks/edges/" target="_blank" rel="noopener">&#9672; Edges</a></label>' +
+          '<textarea class="tm-edges" rows="5" placeholder="Enter edges, one per line&#8230;">' + escHtml((data.edges || []).join('\n')) + '</textarea>' +
+        '</div>' +
+      '</div>';
+    div.appendChild(body);
+    container.appendChild(div);
+  }
+
+  function removeTrademark(id) {
+    const el = document.getElementById('trademark-' + id);
+    if (el) el.remove();
+  }
+
+  function toggleTrademarkBody(id) {
+    const body = document.querySelector('#trademark-' + id + ' .trademark-body');
+    const toggle = document.querySelector('#trademark-' + id + ' .trademark-toggle');
+    if (body) body.classList.toggle('collapsed');
+    if (toggle) toggle.classList.toggle('collapsed');
+  }
+
+  // Initialise with 5 trademarks (matching PDF)
+  for (let i = 0; i < 5; i++) addTrademark();
+
+  // ═══════════════════════════════════════════════════════
+  // GEAR SYSTEM
+  // ═══════════════════════════════════════════════════════
+
+  let gearCount = 0;
+
+  function addGear(data, containerId) {
+    if (!data) data = {};
+    gearCount++;
+    const id = gearCount;
+    const container = document.getElementById(containerId || 'gear-container');
+    const div = document.createElement('div');
+    div.className = 'gear-block';
+    div.id = 'gear-block-' + id;
+    makeListBlockReorderable(div);
+    div.dataset.kind = 'gear';
+
+    const isSpecial = data.type === 'special';
+    const isInventory = container.id === 'inventory-container';
+    const typeLabel = isSpecial ? 'Special' : 'Basic';
+    const typeClass = isSpecial ? 'special' : '';
+    const gSize = Math.min(3, Math.max(1, parseInt(data.size, 10) || 1));
+
+    const header = document.createElement('div');
+    header.className = 'gear-header';
+
+    const controls = document.createElement('div');
+    controls.className = 'gear-item-actions';
+    // Inventory rows: X returns the item to Gear (Stashed) so it can never be
+    // destroyed from the Jacket/Carryall by mistake. Stash rows: X deletes
+    // (after a confirm). The gear-move-btn arrow always moves the row between
+    // the two lists and is what refreshGearMoveButtons/setGearBlockList target.
+    controls.innerHTML =
+      '<button class="btn btn-danger btn-small" type="button" title="' + (isInventory ? 'Return to Gear (Stashed)' : 'Delete gear') + '" onclick="event.stopPropagation(); ' + 'removeOrReturnGear(this)' + '">&#10005;</button>' +
+      '<button class="btn btn-move btn-small gear-move-btn" type="button" title="' + (isInventory ? 'Move back to Gear (Stashed)' : 'Move to Inventory') + '" onclick="event.stopPropagation(); moveGearItem(this)">' + (isInventory ? '&#8592;' : '&#8594;') + '</button>';
+
+    header.innerHTML =
+      '<span class="gear-drag-handle" title="Drag to reorder" aria-hidden="true">&#10303;</span>' +
+      '<span class="gear-type-tag ' + typeClass + '">' + typeLabel + '</span>' +
+      '<button type="button" class="gear-size" data-value="' + gSize + '" title="Gear size (1-3)"' +
+      ' onclick="event.stopPropagation(); cycleGearSize(this)">' + gSize + '</button>' +
+      '<input type="text" class="gear-title-input gear-title" placeholder="Gear name&#8230;" value="' + escHtml(data.title || '') + '">';
+    header.appendChild(controls);
+    div.appendChild(header);
+
+    if (isSpecial) {
+      // Special: name row + tags row + notes row
+      const tagsRow = document.createElement('div');
+      tagsRow.style.cssText = 'display:flex;align-items:center;gap:8px;padding:4px 10px;background:#0a0c1a;border-bottom:1px solid #1e2245;';
+      const tagLabel = document.createElement('span');
+      tagLabel.style.cssText = 'color:var(--neon-cyan);font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;white-space:nowrap;';
+      tagLabel.textContent = 'Tags:';
+      const tagInput = document.createElement('input');
+      tagInput.type = 'text';
+      tagInput.className = 'gear-tags';
+      tagInput.placeholder = 'offensive, ranged, tech…';
+      tagInput.style.cssText = 'background:transparent;border:none;border-bottom:1px solid #444;color:var(--neon-pink);font-weight:700;font-size:11px;font-family:\'Lexend\', monospace;flex:1;padding:2px 4px;';
+      tagInput.value = data.tags || '';
+      tagsRow.appendChild(tagLabel);
+      tagsRow.appendChild(tagInput);
+      div.appendChild(tagsRow);
+
+      const notes = document.createElement('textarea');
+      notes.className = 'gear-notes';
+      notes.placeholder = 'Notes, description, stats&#8230;';
+      notes.rows = 3;
+      notes.value = data.notes || '';
+      div.appendChild(notes);
+    } else {
+      // Basic: 1-line notes
+      const notes = document.createElement('textarea');
+      notes.className = 'gear-notes';
+      notes.placeholder = 'Notes&#8230;';
+      notes.rows = 1;
+      notes.value = data.notes || '';
+      div.appendChild(notes);
+    }
+
+    div.addEventListener('dragstart', handleListDragStart);
+    div.addEventListener('dragover', handleListDragOver);
+    div.addEventListener('drop', handleListDrop);
+    div.addEventListener('dragend', handleListDragEnd);
+    container.appendChild(div);
+    setListCompact(container.id, getListCompactLevel(container.id));
+  }
+
+  function removeOrReturnGear(button) {
+    const block = button.closest('.gear-block');
+    if (block.parentNode.id === 'inventory-container') returnGearToStash(button);
+    else removeGear(Number(block.id.replace('gear-block-', '')));
+  }
+
+  function removeGear(id) {
+    const el = document.getElementById('gear-block-' + id);
+    if (!el) return;
+    const titleEl = el.querySelector('.gear-title');
+    const name = titleEl && titleEl.value.trim() ? titleEl.value.trim() : 'this gear item';
+    if (!window.confirm('Delete "' + name + '" from Gear (Stashed)?')) return;
+    el.remove();
+    updateInventoryCounts();
+  }
+
+  function setListCompact(containerId, rows) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    const level = Math.max(1, Math.min(3, Number(rows) || 2));
+    container.classList.remove('compact-1', 'compact-2', 'compact-3');
+    container.classList.add('compact-' + level);
+    container.dataset.compactLevel = String(level);
+    const blocks = container.querySelectorAll('.gear-block');
+    blocks.forEach(function (block) {
+      const notes = block.querySelector('.gear-notes');
+      if (notes) {
+        notes.rows = Math.max(1, Math.min(3, level));
+      }
+      block.style.width = '100%';
+    });
+
+    if (level > 1) {
+      container.style.display = 'grid';
+      const colCount = level === 2 ? 2 : 3;
+      container.style.gridTemplateColumns = 'repeat(' + colCount + ', minmax(0, 1fr))';
+      container.style.gridAutoFlow = 'row';
+      container.style.gap = '8px';
+      container.style.alignItems = 'stretch';
+      container.style.width = '100%';
+    } else {
+      container.style.display = '';
+      container.style.gridTemplateColumns = '';
+      container.style.gridAutoFlow = '';
+      container.style.gap = '';
+      container.style.alignItems = '';
+      container.style.width = '';
+    }
+  }
+
+  function getListCompactLevel(containerId) {
+    const container = document.getElementById(containerId);
+    if (!container) return 2;
+    const level = Number(container.dataset.compactLevel || 2);
+    return Math.max(1, Math.min(3, level));
+  }
+
+  // Only a mousedown on the .gear-drag-handle grip arms dragging: a draggable
+  // ancestor stops the browser from placing the caret / selecting text inside
+  // the block's inputs and textarea.
+  function makeListBlockReorderable(block) {
+    block.draggable = false;
+    block.addEventListener('mousedown', function (event) {
+      const target = event.target;
+      block.draggable = !!(target && target.closest && target.closest('.gear-drag-handle'));
+    });
+  }
+
+  function disarmListBlockDrag() {
+    document.querySelectorAll('.gear-block[draggable="true"]').forEach(function (block) {
+      block.draggable = false;
+    });
+  }
+
+  document.addEventListener('mouseup', disarmListBlockDrag);
+  document.addEventListener('dragend', disarmListBlockDrag);
+
+  function handleListDragStart(event) {
+    const item = event.currentTarget;
+    item.classList.add('dragging');
+    event.dataTransfer.effectAllowed = 'move';
+    event.dataTransfer.setData('text/plain', item.id);
+  }
+
+  function handleListDragOver(event) {
+    event.preventDefault();
+    event.dataTransfer.dropEffect = 'move';
+  }
+
+  function handleListDrop(event) {
+    event.preventDefault();
+    const sourceId = event.dataTransfer.getData('text/plain');
+    const source = document.getElementById(sourceId);
+    const target = event.currentTarget;
+    if (!source || !target || source === target || !source.parentNode || !target.parentNode) return;
+    const container = source.parentNode;
+    const sourceIndex = Array.from(container.children).indexOf(source);
+    const targetIndex = Array.from(container.children).indexOf(target);
+    const insertionIndex = sourceIndex < targetIndex ? targetIndex + 1 : targetIndex;
+    if (insertionIndex >= 0 && insertionIndex <= container.children.length) {
+      const refNode = container.children[insertionIndex] || null;
+      container.insertBefore(source, refNode);
+    }
+  }
+
+  function handleListDragEnd(event) {
+    const item = event.currentTarget;
+    item.classList.remove('dragging');
+  }
+
+  // Start with no gear items (players add via + buttons)
+
+  // ═══════════════════════════════════════════════════════
+  // INVENTORY (gear carried out of Gear (Stashed))
+  // Slots: Jacket 5 / Carryall 8, plus an optional Misc bonus (1-5).
+  // Used slots = sum of gear Size across the items in Inventory.
+  // Going over capacity is allowed — the module just flags it.
+  // ═══════════════════════════════════════════════════════
+
+  function getInvContainerKey() {
+    var btn = document.querySelector('.inv-cap-btn.selected[data-base]');
+    return btn && btn.dataset.base === '8' ? 'carryall' : 'jacket';
+  }
+
+  function getInvMiscEnabled() {
+    var toggle = document.getElementById('inv-misc-toggle');
+    return !!(toggle && toggle.classList.contains('misc-on'));
+  }
+
+  function getInvMiscValue() {
+    var input = document.getElementById('inv-misc-value');
+    return input ? Math.max(1, Math.min(5, parseInt(input.value, 10) || 1)) : 1;
+  }
+
+  function getInvTotal() {
+    var btn = document.querySelector('.inv-cap-btn.selected[data-base]');
+    var base = btn ? (parseInt(btn.dataset.base, 10) || 0) : 0;
+    var bonus = getInvMiscEnabled() ? getInvMiscValue() : 0;
+    return Math.max(0, base + bonus);
+  }
+
+  function getGearSize(block) {
+    var chip = block ? block.querySelector('.gear-size') : null;
+    return Math.min(3, Math.max(1, parseInt(chip ? chip.dataset.value : 1, 10) || 1));
+  }
+
+  function getInvUsed() {
+    var used = 0;
+    document.querySelectorAll('#inventory-container .gear-block').forEach(function (block) {
+      used += getGearSize(block);
+    });
+    return used;
+  }
+
+  var INVENTORY_WARNING_TEXT = '\u26A0 OVERENCUMBERED';
+  var invFlashTimer = null;
+
+  // Briefly show a one-off message in the inventory warning banner (e.g. a
+  // rejected move), then fall back to the persistent over-capacity state.
+  function flashInvWarning(msg) {
+    var warning = document.getElementById('inv-warning');
+    if (!warning) return;
+    if (invFlashTimer) clearTimeout(invFlashTimer);
+    warning.textContent = msg;
+    warning.classList.add('visible');
+    invFlashTimer = setTimeout(function () {
+      invFlashTimer = null;
+      updateInventoryCounts();
+    }, 1500);
+  }
+
+  function updateInventoryCounts() {
+    var used = getInvUsed();
+    var total = getInvTotal();
+    var over = used > total;
+    var usedEl = document.getElementById('inv-used');
+    var totalEl = document.getElementById('inv-total');
+    var counter = document.getElementById('inv-counter');
+    var warning = document.getElementById('inv-warning');
+    if (usedEl) usedEl.textContent = used;
+    if (totalEl) totalEl.textContent = total;
+    if (counter) counter.classList.toggle('over', over);
+    if (warning) {
+      if (!invFlashTimer) warning.textContent = INVENTORY_WARNING_TEXT;
+      warning.classList.toggle('visible', over || !!invFlashTimer);
+    }
+    refreshGearMoveButtons(used, total);
+  }
+
+  // A stashed item can only move in while it still fits; the button is
+  // disabled (and the handler re-checks) when it would overflow.
+  function refreshGearMoveButtons(used, total) {
+    document.querySelectorAll('#gear-container .gear-move-btn').forEach(function (btn) {
+      var size = getGearSize(btn.closest('.gear-block'));
+      var fits = used + size <= total;
+      btn.disabled = !fits;
+      btn.title = fits ? 'Move to Inventory' : 'Not enough slots (needs ' + size + ')';
+    });
+  }
+
+  function cycleGearSize(btn) {
+    var v = parseInt(btn.dataset.value, 10) || 1;
+    v = v >= 3 ? 1 : v + 1;
+    btn.dataset.value = v;
+    btn.textContent = v;
+    updateInventoryCounts();
+  }
+
+  function setInvContainer(btn) {
+    document.querySelectorAll('.inv-cap-btn[data-base]').forEach(function (b) {
+      b.classList.toggle('selected', b === btn);
+    });
+    updateInventoryCounts();
+  }
+
+  function toggleInvMisc() {
+    var toggle = document.getElementById('inv-misc-toggle');
+    var input = document.getElementById('inv-misc-value');
+    if (!toggle || !input) return;
+    var on = !toggle.classList.contains('misc-on');
+    toggle.classList.toggle('misc-on', on);
+    // The value itself is kept while hidden, so re-enabling restores it — and
+    // re-clamping here keeps the field and getInvMiscValue() in agreement.
+    input.style.display = on ? '' : 'none';
+    input.value = getInvMiscValue();
+    updateInventoryCounts();
+  }
+
+  function onInvMiscInput(input) {
+    var v = parseInt(input.value, 10);
+    if (isNaN(v)) v = 1;
+    input.value = Math.max(1, Math.min(5, v));
+    updateInventoryCounts();
+  }
+
+  // The button that sits next to each gear row's X: direction depends on
+  // which list the block currently lives in.
+  function moveGearItem(btn) {
+    var block = btn.closest('.gear-block');
+    if (!block) return;
+    var inInventory = block.parentNode && block.parentNode.id === 'inventory-container';
+    var target = document.getElementById(inInventory ? 'gear-container' : 'inventory-container');
+    if (!target) return;
+    if (!inInventory && getInvUsed() + getGearSize(block) > getInvTotal()) {
+      flashInvWarning('\u26A0 NOT ENOUGH SLOTS (needs ' + getGearSize(block) + ')');
+      updateInventoryCounts();
+      return;
+    }
+    setGearBlockList(block, target);
+    updateInventoryCounts();
+  }
+
+  // The Inventory's X: instead of destroying the row, send it back to Gear
+  // (Stashed) so an item can never be lost by accident from the Jacket/Carryall.
+  function returnGearToStash(btn) {
+    var block = btn.closest('.gear-block');
+    if (!block) return;
+    var target = document.getElementById('gear-container');
+    if (!target) return;
+    setGearBlockList(block, target);
+    updateInventoryCounts();
+  }
+
+  // Moving a gear item reparents the block itself, so its title, type, tags,
+  // notes and Size travel with it and it can never sit in both lists at once.
+  // Drag-reorder resolves its container from parentNode at drop time, so it
+  // keeps working in the new list; only the arrow and compact layout change.
+  function setGearBlockList(block, target) {
+    const remove = block.querySelector('.btn-danger');
+    if (remove) {
+      remove.title = target.id === 'inventory-container' ? 'Return to Gear (Stashed)' : 'Delete gear';
+      remove.setAttribute('aria-label', remove.title);
+    }
+    var toInventory = target.id === 'inventory-container';
+    var btn = block.querySelector('.gear-move-btn');
+    if (btn) {
+      btn.innerHTML = toInventory ? '&#8592;' : '&#8594;';
+      btn.title = toInventory ? 'Move back to Gear (Stashed)' : 'Move to Inventory';
+      btn.disabled = false;
+    }
+    target.appendChild(block);
+    setListCompact(target.id, getListCompactLevel(target.id));
+  }
+
+  function readGearBlocks(containerId) {
+    var container = document.getElementById(containerId);
+    if (!container) return [];
+    return Array.from(container.querySelectorAll('.gear-block')).map(function (block) {
+      var title = block.querySelector('.gear-title') ? block.querySelector('.gear-title').value : '';
+      var notes = block.querySelector('.gear-notes') ? block.querySelector('.gear-notes').value : '';
+      var tag = block.querySelector('.gear-type-tag');
+      var type = tag && tag.textContent.toLowerCase() === 'special' ? 'special' : 'basic';
+      var tags = block.querySelector('.gear-tags') ? block.querySelector('.gear-tags').value : '';
+      return { type: type, title: title, tags: tags, notes: notes, size: getGearSize(block) };
+    });
+  }
+
+  // Rebuild the Stash/Inventory split and its capacity controls from a save.
+  function applyInventory(inv) {
+    var data = inv && typeof inv === 'object' ? inv : {};
+    var container = document.getElementById('inventory-container');
+    if (container) container.innerHTML = '';
+    var base = data.container === 'carryall' ? '8' : '5';
+    document.querySelectorAll('.inv-cap-btn[data-base]').forEach(function (b) {
+      b.classList.toggle('selected', b.dataset.base === base);
+    });
+    var enabled = !!(data.misc && data.misc.enabled);
+    var value = data.misc && data.misc.value ? Math.max(1, Math.min(5, parseInt(data.misc.value, 10) || 1)) : 1;
+    var toggle = document.getElementById('inv-misc-toggle');
+    var input = document.getElementById('inv-misc-value');
+    if (toggle) toggle.classList.toggle('misc-on', enabled);
+    if (input) {
+      input.value = value;
+      input.style.display = enabled ? '' : 'none';
+    }
+    if (data.items && data.items.length) {
+      data.items.forEach(function (g) { addGear(g, 'inventory-container'); });
+    }
+    updateInventoryCounts();
+  }
+
+  // ═══════════════════════════════════════════════════════
+  // CONDITIONS SYSTEM
+  // ═══════════════════════════════════════════════════════
+
+  function addCondition() {
+    const container = document.getElementById('custom-conditions');
+    const div = document.createElement('div');
+    div.className = 'custom-condition';
+    div.innerHTML = '<div class="condition-pip" data-state="off" onclick="cycleConditionPip(this)" role="button" tabindex="0" aria-label="Condition severity: off"></div><input type="text" placeholder="Custom condition&#8230;" style="font-size:11px;">';
+    div.querySelector('.condition-pip').addEventListener('keydown', function (event) {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        cycleConditionPip(this);
+      }
+    });
+    container.appendChild(div);
+  }
+
+  function cycleConditionPip(pip) {
+    var states = ['off', 'blue', 'red'];
+    var nextState = states[(states.indexOf(pip.dataset.state || 'off') + 1) % states.length];
+    pip.dataset.state = nextState;
+    pip.classList.remove('blue', 'red');
+    if (nextState !== 'off') pip.classList.add(nextState);
+    pip.setAttribute('aria-label', 'Condition severity: ' + nextState);
+  }
+
+  // ═══════════════════════════════════════════════════════
+  // TRAUMA / FLAW ADDERS
+  // ═══════════════════════════════════════════════════════
+
+  function addTrauma(data) {
+    data = data || {};
+    const container = document.getElementById('traumas-container');
+    const div = document.createElement('div');
+    div.className = 'trauma-row';
+    div.innerHTML = '<button type="button" class="trauma-mark empty" aria-label="Trauma active" aria-pressed="false" onclick="toggleTrauma(this)"></button><input type="text" placeholder="Trauma description&#8230;"><label class="trauma-humanity"><input type="checkbox" class="affects-humanity" onchange="updateHumanityLimit()">Affects Humanity</label>';
+    div.querySelector('input[type=text]').value = data.text || '';
+    div.querySelector('.affects-humanity').checked = data.affectsHumanity === true;
+    div.querySelector('.trauma-mark').classList.toggle('empty', !data.marked);
+    div.querySelector('.trauma-mark').setAttribute('aria-pressed', String(!!data.marked));
+    container.appendChild(div);
+  }
+
+  function addFlaw(data) {
+    const container = document.getElementById('flaws-container');
+    const div = document.createElement('div');
+    div.className = 'flaw-row';
+    div.style.marginTop = '5px';
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.placeholder = 'Flaw…';
+    input.value = (data && data.text) ? data.text : '';
+    div.appendChild(input);
+    container.appendChild(div);
+  }
+
+  // ═══════════════════════════════════════════════════════
+  // HITS PIPS (adjustable count, default 3, max 10)
+  // ═══════════════════════════════════════════════════════
+  let hitsCount = 3;
+
+  function buildHitPips(count, marks) {
+    marks = marks || [];
+    const container = document.getElementById('hits-pips');
+    container.innerHTML = '';
+    for (let i = 0; i < count; i++) {
+      const pip = document.createElement('button');
+      pip.type = 'button';
+      pip.className = 'hit-pip';
+      pip.classList.toggle('marked', !!marks[i]);
+      pip.setAttribute('aria-label', 'Hit ' + (i + 1));
+      pip.setAttribute('aria-pressed', String(!!marks[i]));
+      pip.dataset.index = i;
+      pip.innerHTML = '&#10005;';
+      pip.addEventListener('click', function () { this.classList.toggle('marked'); this.setAttribute('aria-pressed', String(this.classList.contains('marked'))); });
+      container.appendChild(pip);
+    }
+    document.getElementById('hits-count').textContent = count;
+  }
+
+  function changeHits(delta) {
+    const next = Math.max(1, Math.min(10, hitsCount + delta));
+    if (next === hitsCount) return;
+    const marks = Array.from(document.querySelectorAll('#hits-pips .hit-pip')).map(p => p.classList.contains('marked'));
+    if (marks.slice(next).some(Boolean) && !window.confirm('Reducing Hits will remove marked hits. Continue?')) return;
+    hitsCount = next;
+    buildHitPips(hitsCount, marks);
+  }
+
+  buildHitPips(hitsCount);
+
+  // ═══════════════════════════════════════════════════════
+  // CYBERPSYCHOSIS TRACKERS
+  // ═══════════════════════════════════════════════════════
+  const trackerMax = 20;
+  const humanityBaseMax = 10;
+  const cyberpsyMax = 20;
+
+  function getActiveTraumaCount() {
+    return Array.from(document.querySelectorAll('#traumas-container .trauma-row')).filter(row => !row.querySelector('.trauma-mark').classList.contains('empty') && row.querySelector('.affects-humanity').checked).length;
+  }
+
+  function getHumanityMax() {
+    return Math.max(0, humanityBaseMax - getActiveTraumaCount());
+  }
+
+  function updateHumanityLimit() {
+    var humanityEl = document.getElementById('humanity-value');
+    var humanityBar = document.getElementById('humanity-bar');
+    var humanityMax = getHumanityMax();
+    document.getElementById('humanity-max').textContent = '/ ' + humanityMax;
+    var humanity = Math.min(humanityMax, Math.max(0, parseInt(humanityEl.textContent) || 0));
+    var traumaSlots = Math.min(humanityBaseMax, getActiveTraumaCount());
+    humanityEl.textContent = humanity;
+    var pinkStart = 100 - traumaSlots / humanityBaseMax * 100;
+    humanityBar.parentNode.style.background = 'linear-gradient(to right, #111 0 ' + pinkStart + '%, var(--neon-pink) ' + pinkStart + '% 100%)';
+    humanityBar.style.width = humanityBaseMax ? (humanity / humanityBaseMax * 100) + '%' : '0%';
+    checkCyberpsyThreshold();
+  }
+
+  function changeTracker(type, delta) {
+    var el = document.getElementById(type + '-value');
+    var val = parseInt(el.textContent) || 0;
+    var valueMax = type === 'cyberpsy' ? cyberpsyMax : getHumanityMax();
+    val = Math.max(0, Math.min(valueMax, val + delta));
+    el.textContent = val;
+    // Update bar fill
+    var bar = document.getElementById(type + '-bar');
+    var barMax = type === 'humanity' ? getHumanityMax() : trackerMax;
+    bar.style.width = barMax ? Math.min(100, val / barMax * 100) + '%' : '0%';
+    if (type === 'humanity') updateHumanityLimit();
+    // Check cyberpsy threshold
+    checkCyberpsyThreshold();
+  }
+
+  function checkCyberpsyThreshold() {
+    var cyberpsy = parseInt(document.getElementById('cyberpsy-value').textContent) || 0;
+    var humanity = parseInt(document.getElementById('humanity-value').textContent) || 0;
+    var warning = document.getElementById('cyberpsy-warning');
+    if (cyberpsy > humanity) {
+      warning.classList.add('visible');
+    } else {
+      warning.classList.remove('visible');
+    }
+  }
+
+  // (Stash pips removed — the Stash module no longer exists on page 2)
+
+  // ═══════════════════════════════════════════════════════
+  // DRIVE PIPS (10 pips)
+  // ═══════════════════════════════════════════════════════
+  function buildDrivePips() {
+    const container = document.getElementById('drive-pips');
+    for (let i = 0; i < 10; i++) {
+      const pip = document.createElement('button');
+      pip.type = 'button';
+      pip.className = 'pip';
+      pip.setAttribute('aria-label', 'Drive ' + (i + 1));
+      pip.setAttribute('aria-pressed', 'false');
+      pip.dataset.index = i;
+      pip.addEventListener('click', function () { this.classList.toggle('marked'); this.setAttribute('aria-pressed', String(this.classList.contains('marked'))); });
+      container.appendChild(pip);
+    }
+  }
+  buildDrivePips();
+
+  // ═══════════════════════════════════════════════════════
+  // EXPERIENCE PIPS (3 groups of 5)
+  // ═══════════════════════════════════════════════════════
+  function changeExp(delta) {
+    var el = document.getElementById('exp-value');
+    var val = parseInt(el.textContent) || 0;
+    val = Math.max(0, Math.min(15, val + delta));
+    el.textContent = val;
+  }
+
+  function changeStunt(delta) {
+    var el = document.getElementById('stunt-value');
+    var val = parseInt(el.textContent) || 0;
+    val = Math.max(0, Math.min(99, val + delta));
+    el.textContent = val;
+  }
+
+  // ═══════════════════════════════════════════════════════
+  // TRAUMA TOGGLE / FLAW TOGGLE
+  // ═══════════════════════════════════════════════════════
+  function toggleTrauma(el) {
+    el.classList.toggle('empty');
+    el.setAttribute('aria-pressed', String(!el.classList.contains('empty')));
+    updateHumanityLimit();
+  }
+
+  // ═══════════════════════════════════════════════════════
+  // AUTO-CLEANUP: remove empty rows on blur
+  // ═══════════════════════════════════════════════════════
+
+  function cleanupEmpty(containerId, selector, minRows) {
+    var rows = document.querySelectorAll('#' + containerId + ' ' + selector);
+    rows.forEach(function (row) {
+      var input = row.querySelector('input');
+      if (input && input.value.trim() === '' && !row.querySelector('.trauma-mark:not(.empty)') && !row.querySelector('.affects-humanity:checked') && !row.querySelector('.condition-pip[data-state=blue], .condition-pip[data-state=red]')) {
+        row.remove();
+      }
+    });
+    if (containerId === 'traumas-container') updateHumanityLimit();
+    // Restore minimum number of rows if needed
+    var count = document.querySelectorAll('#' + containerId + ' ' + selector).length;
+    if (minRows && count < minRows) {
+      for (var i = count; i < minRows; i++) {
+        // Add back via the appropriate function
+        if (containerId === 'traumas-container') addTrauma();
+        else if (containerId === 'flaws-container') addFlaw();
+      }
+    }
+  }
+
+  // Attach blur listeners via event delegation
+  document.addEventListener('focusout', function (e) {
+    if (e.target && e.target.parentNode) {
+      var parent = e.target.parentNode;
+      if (parent.classList.contains('trauma-row')) {
+        cleanupEmpty('traumas-container', '.trauma-row', 1);
+      } else if (parent.classList.contains('flaw-row')) {
+        cleanupEmpty('flaws-container', '.flaw-row', 1);
+      } else if (parent.classList.contains('custom-condition')) {
+        cleanupEmpty('custom-conditions', '.custom-condition', 1);
+      }
+    }
+  });
+
+  // ═══════════════════════════════════════════════════════
+  // HELPERS
+  // ═══════════════════════════════════════════════════════
+  function escHtml(str) {
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/"/g, '&quot;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
+  }
+
+  function val(id) {
+    const el = document.getElementById(id);
+    return el ? el.value : '';
+  }
+
+  function checked(id) {
+    const el = document.getElementById(id);
+    return el ? el.checked : false;
+  }
+
+  function set(id, v) {
+    const el = document.getElementById(id);
+    if (el) el.value = v;
+  }
+
+  function setChecked(id, v) {
+    const el = document.getElementById(id);
+    if (el) el.checked = v;
+  }
+
+  // ═══════════════════════════════════════════════════════
+  // BUILD EXPORT OBJECT
+  // ═══════════════════════════════════════════════════════
+  function buildExport() {
+    // Trademarks
+    const trademarks = [];
+    document.querySelectorAll('.trademark-block').forEach(function (block) {
+      const name = block.querySelector('.tm-name') ? block.querySelector('.tm-name').value : '';
+      const triggers = (block.querySelector('.tm-triggers') ? block.querySelector('.tm-triggers').value : '').split('\n').filter(function (t) { return t.trim(); });
+      const edges = (block.querySelector('.tm-edges') ? block.querySelector('.tm-edges').value : '').split('\n').filter(function (e) { return e.trim(); });
+      trademarks.push({ name: name, triggers: triggers, edges: edges });
+    });
+
+    // Gear (stashed) + Inventory
+    const gear = readGearBlocks('gear-container');
+
+    // Cyberware
+    const cyberware = [];
+    document.querySelectorAll('#cyberware-container .gear-block').forEach(function (block) {
+      const title = block.querySelector('.gear-title') ? block.querySelector('.gear-title').value : '';
+      const notes = block.querySelector('.gear-notes') ? block.querySelector('.gear-notes').value : '';
+      const tags = block.querySelector('.cyberware-tags') ? block.querySelector('.cyberware-tags').value : '';
+      const valueBtn = block.querySelector('.cyberware-value');
+      const value = Math.min(3, Math.max(1, parseInt(valueBtn ? valueBtn.dataset.value : 1, 10) || 1));
+      cyberware.push({ title: title, tags: tags, notes: notes, value: value });
+    });
+
+    // Hits
+    const hits = Array.from(document.querySelectorAll('#hits-pips .hit-pip')).map(function (p) { return p.classList.contains('marked'); });
+
+    // Cyberpsychosis trackers
+    var trackers = {
+      cyberpsy: parseInt(document.getElementById('cyberpsy-value').textContent) || 0,
+      humanity: parseInt(document.getElementById('humanity-value').textContent) || 0
+    };
+
+    // Drive
+    const drivePips = Array.from(document.querySelectorAll('#drive-pips .pip')).map(function (p) { return p.classList.contains('marked'); });
+
+    // Traumas
+    const traumas = Array.from(document.querySelectorAll('#traumas-container .trauma-row')).map(function (row) {
+      return {
+        marked: !row.querySelector('.trauma-mark').classList.contains('empty'),
+        affectsHumanity: row.querySelector('.affects-humanity').checked,
+        text: row.querySelector('input') ? row.querySelector('input').value : ''
+      };
+    });
+
+    const flaws = Array.from(document.querySelectorAll('#flaws-container .flaw-row')).map(function (row) {
+      const input = row.querySelector('input');
+      return {
+        text: input ? input.value : ''
+      };
+    }).filter(function (flaw) {
+      return flaw.text.trim();
+    });
+
+    const eddies = Number(String(document.getElementById('eddies-value').value || '0').replace(/[^0-9-]/g, '')) || 0;
+
+    return {
+      _version: '1.1.0',
+      _game: 'Neon City Overdrive',
+      nickname: val('nickname'),
+      appearance: val('appearance'),
+      personality: val('personality'),
+      money: eddies,
+      eddies: eddies,
+      trademarks: trademarks,
+      gear: gear,
+      inventory: {
+        container: getInvContainerKey(),
+        misc: { enabled: getInvMiscEnabled(), value: getInvMiscValue() },
+        items: readGearBlocks('inventory-container')
+      },
+      cyberware: cyberware,
+      hitsCount: hitsCount,
+      hits: hits,
+      trackers: trackers,
+      conditions: {
+        custom: Array.from(document.querySelectorAll('#custom-conditions .custom-condition input')).map(function (input) {
+          var pip = input.parentNode.querySelector('.condition-pip');
+          return { text: input.value, state: pip ? (pip.dataset.state || 'off') : 'off' };
+        }).filter(function (condition) { return condition.text.trim() || condition.state !== 'off'; })
+      },
+      traumas: traumas,
+      flaws: flaws,
+      flaw1: flaws[0] ? flaws[0].text : '',
+      flaw2: flaws[1] ? flaws[1].text : '',
+      stuntPoints: parseInt(document.getElementById('stunt-value').textContent) || 0,
+      drive: { text: val('drive-text'), pips: drivePips },
+      experiencePoints: parseInt(document.getElementById('exp-value').textContent) || 0
+    };
+  }
+
+  // ═══════════════════════════════════════════════════════
+  // CYBERWARE SYSTEM (replicates gear system)
+  // ═══════════════════════════════════════════════════════
+
+  let cyberwareCount = 0;
+
+  function addCyberware(data) {
+    if (!data) data = {};
+    const cwValue = Math.min(3, Math.max(1, parseInt(data.value, 10) || 1));
+    cyberwareCount++;
+    const id = cyberwareCount;
+    const container = document.getElementById('cyberware-container');
+    const div = document.createElement('div');
+    div.className = 'gear-block';
+    div.id = 'cyberware-block-' + id;
+    makeListBlockReorderable(div);
+    div.dataset.kind = 'cyberware';
+
+    const header = document.createElement('div');
+    header.className = 'gear-header';
+
+    const controls = document.createElement('div');
+    controls.className = 'gear-item-actions';
+    controls.innerHTML =
+      '<button class="btn btn-danger btn-small" type="button" onclick="event.stopPropagation(); removeCyberware(' + id + ')">&#10005;</button>';
+
+    header.innerHTML =
+      '<span class="gear-drag-handle" title="Drag to reorder" aria-hidden="true">&#10303;</span>' +
+      '<span class="gear-type-tag" style="color:var(--purple);border-color:var(--purple);">Cyber</span>' +
+      '<button type="button" class="cyberware-value" data-value="' + cwValue + '" title="Cyberware value (1-3)"' +
+      ' onclick="event.stopPropagation(); cycleCyberwareValue(this)">' + cwValue + '</button>' +
+      '<input type="text" class="gear-title-input gear-title" placeholder="Cyberware name&#8230;" value="' + escHtml(data.title || '') + '">';
+    header.appendChild(controls);
+    div.appendChild(header);
+
+    // Tags row
+    const tagsRow = document.createElement('div');
+    tagsRow.style.cssText = 'display:flex;align-items:center;gap:8px;padding:4px 10px;background:#0a0c1a;border-bottom:1px solid #1e2245;';
+    const tagLabel = document.createElement('span');
+    tagLabel.style.cssText = 'color:var(--neon-cyan);font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;white-space:nowrap;';
+    tagLabel.textContent = 'Tags:';
+    const tagInput = document.createElement('input');
+    tagInput.type = 'text';
+    tagInput.className = 'cyberware-tags';
+    tagInput.placeholder = 'implant, cosmetic, combat, sensory…';
+    tagInput.style.cssText = 'background:transparent;border:none;border-bottom:1px solid #444;color:var(--neon-pink);font-weight:700;font-size:11px;font-family:\'Lexend\', monospace;flex:1;padding:2px 4px;';
+    tagInput.value = data.tags || '';
+    tagsRow.appendChild(tagLabel);
+    tagsRow.appendChild(tagInput);
+    div.appendChild(tagsRow);
+
+    // Notes
+    const notes = document.createElement('textarea');
+    notes.className = 'gear-notes';
+    notes.placeholder = 'Description, effects, installation&#8230;';
+    notes.rows = 2;
+    notes.value = data.notes || '';
+    div.appendChild(notes);
+
+    div.addEventListener('dragstart', handleListDragStart);
+    div.addEventListener('dragover', handleListDragOver);
+    div.addEventListener('drop', handleListDrop);
+    div.addEventListener('dragend', handleListDragEnd);
+    container.appendChild(div);
+    setListCompact(container.id, getListCompactLevel(container.id));
+  }
+
+  function removeCyberware(id) {
+    const el = document.getElementById('cyberware-block-' + id);
+    if (el) el.remove();
+  }
+
+  // Value chip in each cyberware header: click cycles 1 -> 2 -> 3 -> 1.
+  function cycleCyberwareValue(btn) {
+    var v = parseInt(btn.dataset.value, 10) || 1;
+    v = v >= 3 ? 1 : v + 1;
+    btn.dataset.value = v;
+    btn.textContent = v;
+  }
+
+  // Start with no cyberware items (players add via + buttons)
+
+  // ═══════════════════════════════════════════════════════
+  // CONDITIONS SYSTEM
+  // ═══════════════════════════════════════════════════════
+  function validateCharacter(input) {
+    const data = JSON.parse(JSON.stringify(input));
+    function fail(path) { throw new Error('Invalid character field: ' + path); }
+    function object(value, path) { if (!value || typeof value !== 'object' || Array.isArray(value)) fail(path); }
+    function text(value, path) { if (value !== undefined && typeof value !== 'string') fail(path); }
+    function number(value, path) { if (value !== undefined && (typeof value !== 'number' || !Number.isFinite(value) || !Number.isInteger(value))) fail(path); }
+    function bool(value, path) { if (value !== undefined && typeof value !== 'boolean') fail(path); }
+    function array(value, path, check) { if (value === undefined) return; if (!Array.isArray(value) || value.length > 1000) fail(path); value.forEach((v,i) => check(v, path + '[' + i + ']')); }
+    function fields(value, path, names) { object(value,path); names.forEach(name => text(value[name],path+'.'+name)); }
+    object(data, 'root');
+    if (data._version !== undefined && !/^1\./.test(data._version)) fail('_version (unsupported version)');
+    ['nickname','appearance','personality','description','gear_basic','gear_special','flaw1','flaw2','_game','_version'].forEach(k => text(data[k], k));
+    ['money','eddies','hitsCount'].forEach(k => number(data[k], k));
+    ['hits'].forEach(k => array(data[k],k,bool));
+    array(data.trademarks,'trademarks',(v,p) => { fields(v,p,['name']); array(v.triggers,p+'.triggers',text); array(v.edges,p+'.edges',text); });
+    function gear(v,p) { fields(v,p,['title','notes','tags','type']); number(v.size,p+'.size'); number(v.value,p+'.value'); }
+    array(data.gear,'gear',gear); array(data.cyberware,'cyberware',gear);
+    if(data.inventory !== undefined) { fields(data.inventory,'inventory',['container']); array(data.inventory.items,'inventory.items',gear); if(data.inventory.misc !== undefined) { object(data.inventory.misc,'inventory.misc'); bool(data.inventory.misc.enabled,'inventory.misc.enabled'); number(data.inventory.misc.value,'inventory.misc.value'); } }
+    if(data.trackers !== undefined) { object(data.trackers,'trackers'); ['cyberpsy','humanity'].forEach(k=>number(data.trackers[k],'trackers.'+k)); }
+    if(data.conditions !== undefined) { object(data.conditions,'conditions'); array(data.conditions.custom,'conditions.custom',(v,p) => { if(typeof v === 'string') return; fields(v,p,['text','state']); bool(v.checked,p+'.checked'); if(v.state !== undefined && !['off','blue','red'].includes(v.state)) fail(p+'.state'); }); }
+    array(data.traumas,'traumas',(v,p) => { fields(v,p,['text']); bool(v.marked,p+'.marked'); bool(v.affectsHumanity,p+'.affectsHumanity'); });
+    if(Array.isArray(data.flaws)) array(data.flaws,'flaws',(v,p)=>fields(v,p,['text']));
+    else if(data.flaws !== undefined) fields(data.flaws,'flaws',['flaw1','flaw2']);
+    if(data.drive !== undefined) { fields(data.drive,'drive',['text']); array(data.drive.pips,'drive.pips',bool); }
+    if(typeof data.stuntPoints === 'object') { object(data.stuntPoints,'stuntPoints'); number(data.stuntPoints.current,'stuntPoints.current'); } else number(data.stuntPoints,'stuntPoints');
+    if(Array.isArray(data.experiencePoints)) array(data.experiencePoints,'experiencePoints',bool); else number(data.experiencePoints,'experiencePoints');
+    return data;
+  }
+
+  function applyImport(data) {
+    data = validateCharacter(data);
+    set('nickname', data.nickname || '');
+    set('appearance', data.appearance || '');
+    set('personality', data.personality || '');
+    const moneyValue = Number.isFinite(Number(data.money)) ? Number(data.money) : (Number.isFinite(Number(data.eddies)) ? Number(data.eddies) : 0);
+    const moneyField = document.getElementById('eddies-value');
+    if (moneyField) moneyField.value = moneyValue || 0;
+    // Backward compatibility: if old 'description' field exists, use it
+    if (!data.appearance && !data.personality && data.description) {
+      set('appearance', data.description);
+    }
+
+    // Trademarks
+    document.getElementById('trademarks-container').innerHTML = '';
+    trademarkCount = 0;
+    if (data.trademarks && data.trademarks.length) {
+      data.trademarks.forEach(function (tm) { addTrademark(tm); });
+    }
+    if (trademarkCount === 0) {
+      for (let i = 0; i < 5; i++) addTrademark();
+    }
+
+    // Gear
+    document.getElementById('gear-container').innerHTML = '';
+    gearCount = 0;
+    if (data.gear && data.gear.length) {
+      data.gear.forEach(function (g) { addGear(g); });
+    }
+    // Backward compatibility: import old gear-basic / gear-special fields
+    // Backward compatibility: import old gear-basic / gear-special fields (only if new gear is empty)
+    if ((!data.gear || data.gear.length === 0) && (data.gear_basic || data.gear_special)) {
+      document.getElementById('gear-container').innerHTML = '';
+      gearCount = 0;
+      if (data.gear_basic) addGear({ type: 'basic', title: data.gear_basic });
+      if (data.gear_special) addGear({ type: 'special', title: data.gear_special });
+    }
+
+    // Inventory (carried gear + capacity controls)
+    applyInventory(data.inventory);
+
+    // Cyberware
+    document.getElementById('cyberware-container').innerHTML = '';
+    cyberwareCount = 0;
+    if (data.cyberware && data.cyberware.length) {
+      data.cyberware.forEach(function (cw) { addCyberware(cw); });
+    }
+    // Hits (rebuild with saved count, then restore marks)
+    hitsCount = 3;
+    buildHitPips(hitsCount);
+    if (typeof data.hitsCount === 'number') {
+      hitsCount = Math.max(1, Math.min(10, data.hitsCount));
+      buildHitPips(hitsCount);
+    }
+    document.querySelectorAll('#hits-pips .hit-pip').forEach(function (pip, i) {
+      pip.classList.toggle('marked', !!(data.hits || [])[i]);
+      pip.setAttribute('aria-pressed', String(pip.classList.contains('marked')));
+    });
+
+    // Cyberpsychosis trackers
+    var t = data.trackers || {};
+    document.getElementById('cyberpsy-value').textContent = 0;
+    document.getElementById('cyberpsy-bar').style.width = '0%';
+    document.getElementById('humanity-value').textContent = 10;
+    if (typeof t.cyberpsy === 'number') {
+      var cyberpsyValue = Math.max(0, Math.min(cyberpsyMax, t.cyberpsy));
+      document.getElementById('cyberpsy-value').textContent = cyberpsyValue;
+      document.getElementById('cyberpsy-bar').style.width = Math.min(100, cyberpsyValue / trackerMax * 100) + '%';
+    }
+    if (typeof t.humanity === 'number') {
+      document.getElementById('humanity-value').textContent = Math.max(0, Math.min(humanityBaseMax, t.humanity));
+    }
+
+    // Conditions
+    const c = data.conditions || {};
+    // Import custom conditions
+    var customContainer = document.getElementById('custom-conditions');
+    customContainer.innerHTML = '';
+    if (c.custom && c.custom.length) {
+      c.custom.forEach(function (cc) {
+        var div = document.createElement('div');
+        div.className = 'custom-condition';
+        var text = typeof cc === 'string' ? cc : (cc.text || '');
+        var state = typeof cc === 'string' ? 'off' : (cc.state || (cc.checked ? 'blue' : 'off'));
+        div.innerHTML = '<div class="condition-pip ' + (state === 'blue' || state === 'red' ? state : '') + '" data-state="' + (state === 'blue' || state === 'red' ? state : 'off') + '" onclick="cycleConditionPip(this)" role="button" tabindex="0" aria-label="Condition severity: ' + (state || 'off') + '"></div><input type="text" placeholder="Custom condition&#8230;" style="font-size:11px;" value="' + escHtml(text) + '">';
+        div.querySelector('.condition-pip').addEventListener('keydown', function (event) {
+          if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            cycleConditionPip(this);
+          }
+        });
+        customContainer.appendChild(div);
+      });
+    }
+
+    // Traumas
+    document.getElementById('traumas-container').innerHTML = '';
+    (data.traumas || []).forEach(function (t) {
+      addTrauma({ ...t, affectsHumanity: t.affectsHumanity === undefined ? true : t.affectsHumanity });
+    });
+    if (!data.traumas || !data.traumas.length) addTrauma();
+    updateHumanityLimit();
+
+    // Flaws
+    const flawContainer = document.getElementById('flaws-container');
+    flawContainer.innerHTML = '';
+    let flawRows = [];
+    if (Array.isArray(data.flaws)) {
+      flawRows = data.flaws;
+    } else if (data.flaws && typeof data.flaws === 'object') {
+      flawRows = [
+        { text: data.flaws.flaw1 || '', marked: !!data.flaws.marked1 },
+        { text: data.flaws.flaw2 || '', marked: !!data.flaws.marked2 }
+      ];
+    }
+    if (!flawRows.length && (data.flaw1 !== undefined || data.flaw2 !== undefined)) {
+      flawRows = [
+        { text: data.flaw1 || '', marked: !!data.marked1 },
+        { text: data.flaw2 || '', marked: !!data.marked2 }
+      ];
+    }
+    if (!flawRows.length) {
+      flawRows = [{}, {}];
+    }
+    flawRows.forEach(function (flaw) {
+      addFlaw({ text: flaw.text || '', marked: !!flaw.marked });
+    });
+    while (flawContainer.children.length < 2) {
+      addFlaw({ text: '', marked: false });
+    }
+
+    document.getElementById('stunt-value').textContent = 0;
+    document.getElementById('exp-value').textContent = 0;
+    // Stunt (numeric tracker)
+    if (typeof data.stuntPoints === 'number') {
+      document.getElementById('stunt-value').textContent = Math.max(0, Math.min(99, data.stuntPoints));
+    } else if (data.stuntPoints && typeof data.stuntPoints === 'object') {
+      // Backward compat with old {base, current}
+      document.getElementById('stunt-value').textContent = Math.max(0, Math.min(99, parseInt(data.stuntPoints.current) || 0));
+    }
+
+    // Drive
+    set('drive-text', (data.drive || {}).text || '');
+    document.querySelectorAll('#drive-pips .pip').forEach(function (pip, i) {
+      pip.classList.toggle('marked', !!((data.drive || {}).pips || [])[i]);
+      pip.setAttribute('aria-pressed', String(pip.classList.contains('marked')));
+    });
+
+    // Exp (moved to Handle row, use new selector for backward compat)
+    var expVal = data.experiencePoints;
+    if (typeof expVal === 'number') {
+      document.getElementById('exp-value').textContent = Math.max(0, Math.min(15, expVal));
+    } else if (Array.isArray(expVal)) {
+      // Backward compat: count marked pips
+      document.getElementById('exp-value').textContent = expVal.filter(Boolean).length;
+    }
+  }
+
+  // ═══════════════════════════════════════════════════════
+  // SAVE / LOAD TO GITHUB (via serverless proxy at /api/character)
+  // No token or repo config lives in this page — the server holds that.
+  // ═══════════════════════════════════════════════════════
+  document.getElementById('traumas-container').innerHTML = '';
+  for (let i = 0; i < 4; i++) addTrauma();
+  const characterApiUrl = 'https://gman-cyberpunk.vercel.app/api/character';
+
+  function setGHStatus(msg, isError) {
+    const el = document.getElementById('gh-status');
+    el.textContent = msg;
+    el.style.color = isError ? 'var(--danger-red)' : 'var(--net-green)';
+  }
+
+  let storageAction = '';
+  let storageFocus = null;
+  let storageBusy = false;
+  let loadedCharacterId = null;
+  let loadedRevision = null;
+  let cleanSnapshot = '';
+  let draftTimer = null;
+  const recoveryKey = 'nco-recovery-v1';
+  function slugCharacter(id) { return String(id || '').trim().toLowerCase().replace(/[^a-z0-9_-]+/g, '-').replace(/^-+|-+$/g, ''); }
+  function currentSnapshot() { return JSON.stringify(buildExport()); }
+  function isDirty() { return cleanSnapshot !== currentSnapshot(); }
+  function setClean(snapshot) {
+    cleanSnapshot = snapshot || currentSnapshot();
+    document.getElementById('edit-status').textContent = isDirty() ? 'Unsaved changes' : 'No unsaved changes';
+    if (!isDirty()) { try { localStorage.removeItem(recoveryKey); } catch (_) {} }
+  }
+  function trackChanges() {
+    if (!cleanSnapshot) return;
+    document.getElementById('edit-status').textContent = isDirty() ? 'Unsaved changes' : 'No unsaved changes';
+    clearTimeout(draftTimer);
+    draftTimer = setTimeout(storeRecovery, 250);
+  }
+  function storeRecovery() {
+    if (!isDirty()) return;
+    try { localStorage.setItem(recoveryKey, JSON.stringify({ data: buildExport(), id: loadedCharacterId, revision: loadedRevision, at: new Date().toISOString() })); }
+    catch (_) { document.getElementById('edit-status').textContent = 'Unsaved changes (recovery storage unavailable). Export JSON as backup.'; }
+  }
+  function mayReplace() { return !isDirty() || window.confirm('Replace unsaved changes? Export JSON first if you need a backup.'); }
+  window.addEventListener('beforeunload', function(event) {
+    if (!isDirty()) return;
+    storeRecovery();
+    event.preventDefault(); event.returnValue = '';
+  });
+  document.addEventListener('input', trackChanges);
+  document.addEventListener('change', trackChanges);
+  document.addEventListener('click', trackChanges);
+  document.addEventListener('drop', trackChanges);
+  document.getElementById('storage-modal').addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') { event.preventDefault(); closeStorageModal(); return; }
+    if (event.key !== 'Tab') return;
+    const buttons = Array.from(this.querySelectorAll('button:not([disabled])'));
+    const first = buttons[0], last = buttons[buttons.length - 1];
+    if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+    else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+  });
+
+  function openStorageModal(action) {
+    if (storageBusy) return;
+    storageFocus = document.activeElement;
+    storageAction = action;
+    const loadMode = action === 'load';
+    document.getElementById('storage-modal-title').textContent = loadMode ? 'Load Character' : 'Save Character';
+    document.getElementById('storage-cloud-btn').textContent = loadMode ? '\u2601 From Cloud' : '\u2601 To Cloud';
+    document.getElementById('storage-json-btn').textContent = loadMode ? '\u25A3 From JSON' : '\u25A3 To JSON';
+    document.getElementById('storage-modal').classList.add('visible');
+    document.getElementById('storage-cloud-btn').focus();
+  }
+
+  function closeStorageModal() {
+    document.getElementById('storage-modal').classList.remove('visible');
+    storageAction = '';
+    if (storageFocus) storageFocus.focus();
+  }
+
+  function chooseStorageOption(source) {
+    const action = storageAction;
+    closeStorageModal();
+    if (source === 'json') {
+      if (action === 'load') document.getElementById('importFile').click();
+      else saveJSON();
+      return;
+    }
+
+    const characterId = window.prompt('Character ID:');
+    if (!characterId || !characterId.trim()) return;
+    if (action === 'load') loadFromGitHub(characterId.trim());
+    else saveToGitHub(characterId.trim());
+  }
+
+  async function saveToGitHub(characterId) {
+    const charId = characterId || val('nickname');
+    if (!charId) {
+      setGHStatus('Enter a Character ID', true);
+      return;
+    }
+    if (storageBusy) return;
+    storageBusy = true;
+    setGHStatus('Saving…', false);
+    try {
+      const data = buildExport();
+      const sentSnapshot = JSON.stringify(data);
+      const expectedRevision = slugCharacter(charId) === loadedCharacterId ? loadedRevision : null;
+      const resp = await fetch(characterApiUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: charId, data: data, expectedRevision: expectedRevision })
+      });
+      const result = await resp.json().catch(function () { return {}; });
+      if (!resp.ok) throw new Error(result.error || ('Server error ' + resp.status));
+      loadedCharacterId = result.id || slugCharacter(charId);
+      loadedRevision = result.revision;
+      setClean(sentSnapshot);
+      setGHStatus('Saved "' + (result.id || charId) + '" at ' + new Date().toLocaleTimeString(), false);
+    } catch (err) {
+      setGHStatus('Save failed: ' + err.message, true);
+    } finally { storageBusy = false; trackChanges(); }
+  }
+
+  async function loadFromGitHub(characterId) {
+    const charId = characterId || val('nickname');
+    if (!charId) {
+      setGHStatus('Enter a Character ID', true);
+      return;
+    }
+    if (storageBusy || !mayReplace()) return;
+    storageBusy = true;
+    const beforeLoad = currentSnapshot();
+    setGHStatus('Loading…', false);
+    try {
+      const resp = await fetch(characterApiUrl + '?id=' + encodeURIComponent(charId));
+      if (resp.status === 404) {
+        setGHStatus('No save found for "' + charId + '"', true);
+        return;
+      }
+      const result = await resp.json().catch(function () { return {}; });
+      if (!resp.ok) throw new Error(result.error || ('Server error ' + resp.status));
+      const replacement = validateCharacter(result.data);
+      if (beforeLoad !== currentSnapshot() && !mayReplace()) return;
+      applyImport(replacement);
+      loadedCharacterId = result.id || slugCharacter(charId);
+      loadedRevision = result.revision;
+      setClean();
+      setGHStatus('Loaded "' + (result.id || charId) + '" ✓', false);
+    } catch (err) {
+      setGHStatus('Load failed: ' + err.message, true);
+    } finally { storageBusy = false; trackChanges(); }
+  }
+
+  // ═══════════════════════════════════════════════════════
+  // SAVE / LOAD JSON
+  // ═══════════════════════════════════════════════════════
+  function saveJSON() {
+    const data = buildExport();
+    const nickname = (data.nickname || 'character').replace(/\s+/g, '_').replace(/[^a-zA-Z0-9_]/g, '') || 'character';
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = nickname + '_nco.json';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(a.href);
+  }
+
+  document.getElementById('importFile').addEventListener('change', function (e) {
+    if (storageBusy) return;
+    const file = e.target.files[0];
+    if (!file) return;
+    storageBusy = true;
+    const reader = new FileReader();
+    reader.onload = function (evt) {
+      try {
+        const replacement = validateCharacter(JSON.parse(evt.target.result));
+        if (!mayReplace()) return;
+        applyImport(replacement);
+        loadedCharacterId = null; loadedRevision = null;
+        trackChanges();
+        setGHStatus('JSON loaded. Save to cloud or keep a JSON backup.', false);
+      } catch (err) {
+        alert('Import failed: ' + err.message + '. Current character was kept.');
+      } finally { storageBusy = false; }
+    };
+    reader.onerror = function () { storageBusy = false; setGHStatus('Could not read JSON file. Current character was kept.', true); };
+    reader.readAsText(file);
+    e.target.value = '';
+  });
+
+  // ═══════════════════════════════════════════════════════
+  // PAGE NAVIGATION
+  // ═══════════════════════════════════════════════════════
+
+  function showPage(num) {
+    var p1 = document.getElementById('sheet-wrapper');
+    var p2 = document.getElementById('sheet-page2');
+    var p3 = document.getElementById('sheet-page3');
+    var p5 = document.getElementById('sheet-page5');
+    var b1 = document.getElementById('btn-page1');
+    var b2 = document.getElementById('btn-page2');
+    var b3 = document.getElementById('btn-page3');
+    var b5 = document.getElementById('btn-page5');
+    p1.style.display = 'none';
+    p2.style.display = 'none';
+    p3.style.display = 'none';
+    p5.style.display = 'none';
+    if (b1) b1.style.cssText = 'border-color:var(--accent-yellow);color:var(--accent-yellow);background:transparent;';
+    if (b2) b2.style.cssText = 'border-color:var(--accent-yellow);color:var(--accent-yellow);background:transparent;';
+    if (b3) b3.style.cssText = 'border-color:var(--accent-yellow);color:var(--accent-yellow);background:transparent;';
+    if (b5) b5.style.cssText = 'border-color:var(--accent-yellow);color:var(--accent-yellow);background:transparent;';
+    if (num === 1) {
+      p1.style.display = 'block';
+      if (b1) b1.style.cssText = 'border-color:var(--accent-yellow);color:#000;background:var(--accent-yellow);';
+    } else if (num === 2) {
+      p2.style.display = 'block';
+      if (b2) b2.style.cssText = 'border-color:var(--accent-yellow);color:#000;background:var(--accent-yellow);';
+    } else if (num === 3) {
+      p3.style.display = 'block';
+      if (b3) b3.style.cssText = 'border-color:var(--accent-yellow);color:#000;background:var(--accent-yellow);';
+    } else if (num === 5) {
+      p5.style.display = 'block';
+      if (b5) b5.style.cssText = 'border-color:var(--accent-yellow);color:#000;background:var(--accent-yellow);';
+    }
+  }
+
+  // Init: show page 1, hide the other pages
+  document.getElementById('sheet-page2').style.display = 'none';
+  document.getElementById('sheet-page3').style.display = 'none';
+  document.getElementById('sheet-page5').style.display = 'none';
+  showPage(1);
+
+  // ═══════════════════════════════════════════════════════
+  // ADD GEAR BUTTON
+  // ═══════════════════════════════════════════════════════
+  (function addGearButtons() {
+    var container = document.getElementById('gear-container');
+    var btnWrap = document.createElement('div');
+    btnWrap.style.cssText = 'display:flex;gap:8px;margin-top:4px;';
+    var btnBasic = document.createElement('button');
+    btnBasic.className = 'btn btn-small';
+    btnBasic.textContent = '+ Basic Gear';
+    btnBasic.onclick = function () { addGear({ type: 'basic' }); };
+    var btnSpecial = document.createElement('button');
+    btnSpecial.className = 'btn btn-small btn-pink';
+    btnSpecial.textContent = '+ Special Gear';
+    btnSpecial.onclick = function () { addGear({ type: 'special' }); };
+    btnWrap.appendChild(btnBasic);
+    btnWrap.appendChild(btnSpecial);
+    container.parentNode.insertBefore(btnWrap, container.nextSibling);
+  })();
+
+  // ═══════════════════════════════════════════════════════
+  // ADD CYBERWARE BUTTON
+  // ═══════════════════════════════════════════════════════
+  (function addCyberwareButtons() {
+    var container = document.getElementById('cyberware-container');
+    var btnWrap = document.createElement('div');
+    btnWrap.style.cssText = 'display:flex;gap:8px;margin-top:4px;';
+    var btnAdd = document.createElement('button');
+    btnAdd.className = 'btn btn-small';
+    btnAdd.style.cssText += 'border-color:var(--purple);color:var(--purple);';
+    btnAdd.textContent = '+ Cyberware';
+    btnAdd.onclick = function () { addCyberware({}); };
+    btnWrap.appendChild(btnAdd);
+    container.parentNode.insertBefore(btnWrap, container.nextSibling);
+  })();
+
+  // Init: render the Inventory counter (Jacket 5 by default)
+  updateInventoryCounts();
+
+  function setupSplitDivider(gridSelector, dividerId, minLeft, minRight) {
+    var grid = document.querySelector(gridSelector);
+    var divider = document.getElementById(dividerId);
+    if (!grid || !divider) return;
+
+    var dividerWidth = 4;
+    var gap = 16;
+
+    function isDesktop() {
+      return window.matchMedia('(min-width: 901px)').matches;
+    }
+
+    function setSplitFromClientX(clientX) {
+      if (!isDesktop()) return;
+      var rect = grid.getBoundingClientRect();
+      var available = rect.width - dividerWidth - (gap * 2);
+      var leftWidth = Math.max(minLeft, Math.min(available - minRight, clientX - rect.left - gap));
+      var percentage = Math.round(leftWidth / available * 100);
+      grid.style.gridTemplateColumns = leftWidth + 'px ' + dividerWidth + 'px minmax(0, 1fr)';
+      divider.setAttribute('aria-valuenow', percentage);
+    }
+
+    divider.addEventListener('pointerdown', function (event) {
+      if (!isDesktop()) return;
+      divider.classList.add('dragging');
+      divider.setPointerCapture(event.pointerId);
+      setSplitFromClientX(event.clientX);
+    });
+
+    divider.addEventListener('pointermove', function (event) {
+      if (divider.classList.contains('dragging')) setSplitFromClientX(event.clientX);
+    });
+
+    divider.addEventListener('pointerup', function (event) {
+      divider.classList.remove('dragging');
+      if (divider.hasPointerCapture(event.pointerId)) divider.releasePointerCapture(event.pointerId);
+    });
+
+    divider.addEventListener('keydown', function (event) {
+      if (!isDesktop()) return;
+      var current = Number(divider.getAttribute('aria-valuenow')) || 50;
+      if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+        event.preventDefault();
+        var delta = event.key === 'ArrowLeft' ? -2 : 2;
+        var rect = grid.getBoundingClientRect();
+        var available = rect.width - dividerWidth - (gap * 2);
+        setSplitFromClientX(rect.left + gap + (available * (current + delta) / 100));
+      }
+    });
+
+    window.addEventListener('resize', function () {
+      if (!isDesktop()) grid.style.gridTemplateColumns = '';
+    });
+  }
+
+  setupSplitDivider('.main-grid', 'main-grid-divider', 240, 300);
+  setupSplitDivider('.desc-grid', 'desc-grid-divider', 240, 240);
+
+  function labelSheetControls() {
+    if (!document) return;
+    document.querySelectorAll('button').forEach(button => {
+      if (button.hasAttribute('aria-label')) return;
+      const action = button.getAttribute('onclick') || '';
+      const match = action.match(/change(Stunt|Exp|Hits|Tracker)\((.*)\)/);
+      if (match) button.setAttribute('aria-label', (match[2].includes('-1') ? 'Decrease ' : 'Increase ') + (match[1] === 'Tracker' ? match[2].split(',')[0].replace(/['"]/g,'') : match[1]));
+      else if (button.title) button.setAttribute('aria-label', button.title);
+      else if (button.textContent.trim() === '✕') button.setAttribute('aria-label', 'Delete ' + (button.closest('.trademark-block') ? 'trademark' : 'cyberware'));
+    });
+  }
+  labelSheetControls();
+  new MutationObserver(labelSheetControls).observe(document.body, {childList:true,subtree:true});
+  cleanSnapshot = currentSnapshot();
+  document.getElementById('edit-status').textContent = 'No unsaved changes';
+  try {
+    const savedDraft = localStorage.getItem(recoveryKey);
+    if (savedDraft && window.confirm('An unsaved local recovery draft is available. Restore it?')) {
+      const draft = JSON.parse(savedDraft);
+      applyImport(draft.data);
+      loadedCharacterId = draft.id || null; loadedRevision = draft.revision || null;
+      trackChanges();
+      setGHStatus('Recovery draft restored. Check it, then save or export JSON.', false);
+    }
+  } catch (_) { setGHStatus('Recovery draft could not be restored. Current sheet was kept.', true); }
+</script>
+<script>
+  const siteRoot = new URL('../', window.location.href);
+  
+  document.querySelectorAll('.dynamic-header').forEach(element => {
+    const title = (element.getAttribute('data-url-text') || element.textContent).trim().toLowerCase();
+    const folderPath = element.getAttribute('data-path');
+    const fullUrl = new URL(
+      `${folderPath.replace(/^\/+/, '').replace(/\/+$/, '')}/${encodeURIComponent(title)}/`,
+      siteRoot
+    ).href;
+    
+    element.innerHTML = `<a href="${fullUrl}" style="color: inherit; text-decoration: none; display: inline-block;">${element.textContent}</a>`;
+  });
+</script>
+</body>
+</html>
