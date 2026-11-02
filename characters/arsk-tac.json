@@ -1,0 +1,144 @@
+{
+  "_version": "1.1.0",
+  "_game": "Neon City Overdrive",
+  "nickname": "TAC",
+  "appearance": "Pink eyeshadow and visible tattoos on right hand. Long platinum blonde hair tied in a low bun. Always with a earpiece. Long trenchcoat, thick turtleneck underneath. Comfortable trousers that look like jeans but are sportswear.",
+  "personality": "Angry at it all and willing to use this newfound power to screw over the idiots who are fucking up the world. The Bauhaus movement only came after the War. That's what we have to do, you tell yourself: destroy so we can rebuild. Opportunistic in that sense, but morally dubious even to herself.",
+  "money": 0,
+  "eddies": 0,
+  "trademarks": [
+    {
+      "name": "Insurrectionist Zealot",
+      "triggers": [
+        "injustice, conflict, reasons to fight, debates, false information, need to make sense, hypocrite, class struggle, snowball"
+      ],
+      "edges": [
+        "Rage against the Machine",
+        "Identify Firebrands",
+        "Justify",
+        "Never back down"
+      ]
+    },
+    {
+      "name": "Jury-rigged Techie",
+      "triggers": [
+        "netrunners, ice baths, devices, electronic systems, basic tech, surveillance/defense systems, drones, wires, screens"
+      ],
+      "edges": [
+        "Drone Expertise",
+        "Layers of Systems Of Wires and Plugs",
+        "Old-School Hacker",
+        "Disconnect, Fry, Jack Out"
+      ]
+    },
+    {
+      "name": "Corpo-Groomed",
+      "triggers": [
+        "corpo interactions, hierarchy, suits, boardrooms, luxury, addiction, fake wealth, personas, crashing out"
+      ],
+      "edges": [
+        "Manners & Flattery",
+        "Streetwise (Corporate)",
+        "Attractive, Alluring",
+        "Highly Educated"
+      ]
+    }
+  ],
+  "gear": [
+    {
+      "type": "special",
+      "title": "Multitool Terminal",
+      "tags": "Interface Plugs, Repair, Alter, Diagnose, Destroy Hardware",
+      "notes": "Small laptop-like device that can plug into any terminal or machine and alter its physical components' inner workflow.",
+      "size": 1
+    },
+    {
+      "type": "special",
+      "title": "Setsuko-Arasaka PMS SMG",
+      "tags": "Concealed, Suppressed, Caseless, Tranq Darts, Sleek, Compact",
+      "notes": "Subsonic, caseless 7mm bullet paired with a built-in Sonex suppressor. \nCan be switched to fire tranquilizer darts, although penetration is quite mediocre.",
+      "size": 1
+    },
+    {
+      "type": "special",
+      "title": "Arasaka-Made Zetatech \"Icarus Beta\" Drone",
+      "tags": "Interface Plugs, Remote Connect, Remote Camera, Silent",
+      "notes": "Brick-sized drone capable of flying ~100m away from the user terminal. Has interface functionality. If destroyed, user can trigger a self-destruct mode that activates a flashbang and destroys integral parts of the drone, making a tech scavenge impossible.",
+      "size": 1
+    }
+  ],
+  "inventory": {
+    "container": "jacket",
+    "misc": {
+      "enabled": false,
+      "value": 1
+    },
+    "items": []
+  },
+  "cyberware": [
+    {
+      "title": "Kiroshi \"Medusa\" Predictive Modelling System",
+      "tags": "prediction, anticipation, modelling of situations",
+      "notes": "Capable of detecting anomalies and analyzing opportunities after studying patterns - patrol routes, typical behaviors, cigarette breaks etc.",
+      "value": 1
+    },
+    {
+      "title": "Militech \"Exceptionalle\" RAM Accelerator",
+      "tags": "+ performance, ignore risk, enhance control",
+      "notes": "Activate to reduce self-generated danger dice, for example from dual wielding, multitasking etc.",
+      "value": 2
+    },
+    {
+      "title": "Sandevistan \"Sandevistan\" Speedware",
+      "tags": "",
+      "notes": "The go-to in Speedware, allows the user to perceive reality ",
+      "value": 2
+    }
+  ],
+  "hitsCount": 3,
+  "hits": [
+    false,
+    false,
+    false
+  ],
+  "trackers": {
+    "cyberpsy": 0,
+    "humanity": 7
+  },
+  "conditions": {
+    "custom": []
+  },
+  "traumas": [
+    {
+      "marked": false,
+      "text": ""
+    }
+  ],
+  "flaws": [
+    {
+      "text": "FUCK THE SYSTEM"
+    },
+    {
+      "text": "Depersonalized"
+    }
+  ],
+  "flaw1": "FUCK THE SYSTEM",
+  "flaw2": "Depersonalized",
+  "stuntPoints": 1,
+  "drive": {
+    "text": "Listen, when you're standing to be kicked out from the Beaverville where you grew up, where you made friends, where you had your first crush and your college diploma you have to do something.\n\nAnd something you did. You fuckin' fried that desk jockey who found out what your Dad did to secure that cushy job at that corp. And not in Netspace either. You fucked with his hardware, straight up making his cyberdeck explode.\n\nThat's when Arasaka first noticed you. Then, it was a tango, until they eventually promised you what you really wanted: a cushy life, as long as you'd sometimes attend their \"special shows\". And you really know how to put on fireworks.",
+    "pips": [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ]
+  },
+  "experiencePoints": 0
+}
