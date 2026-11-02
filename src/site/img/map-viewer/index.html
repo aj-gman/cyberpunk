@@ -865,7 +865,10 @@
         const chip = document.createElement('span');
         chip.className = 'legend-chip';
         chip.style.background = entry.color;
-        const url = lookupPage(pageIndex, entry.name);
+        // Strata pages are plural ("Edgerunners") while legend names are
+        // singular: socioeconomic entries retry with a plural -s.
+        const url = lookupPage(pageIndex, entry.name)
+          || (dated.tableKey === 'cultures' ? lookupPage(pageIndex, entry.name + 's') : null);
         const name = document.createElement(url ? 'a' : 'span');
         name.textContent = entry.name;
         if (url) {
