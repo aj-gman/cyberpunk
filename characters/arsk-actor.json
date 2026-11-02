@@ -9,7 +9,9 @@
   "trademarks": [
     {
       "name": "Just Another Corpo",
-      "triggers": [],
+      "triggers": [
+        "in the crowd, leaving work, business casual, corpo slang, streetwise (corp), opinions"
+      ],
       "edges": [
         "Blending In",
         "Annoying Small Talk",
@@ -19,7 +21,9 @@
     },
     {
       "name": "Special Operations Training",
-      "triggers": [],
+      "triggers": [
+        "shooting, violence, anger, armored goons, surveillance tech, focus, execution"
+      ],
       "edges": [
         "Shoot to Kill",
         "Human Terrain",
@@ -40,7 +44,15 @@
       ]
     }
   ],
-  "gear": [],
+  "gear": [
+    {
+      "type": "special",
+      "title": "Non-descript SMG",
+      "tags": "9mm, Precise, Sleek, Concealed (Pop-up), Internally Suppressed",
+      "notes": "Made by Arasaka, appears to be Constitutional Arms but heavily modified.",
+      "size": 1
+    }
+  ],
   "inventory": {
     "container": "jacket",
     "misc": {
@@ -49,7 +61,38 @@
     },
     "items": []
   },
-  "cyberware": [],
+  "cyberware": [
+    {
+      "title": "Operative Kit Hand",
+      "tags": "sonar mapping, tactile boost, picklock finger",
+      "notes": "Concealed under RealSkinn, can pass through most scans. Made by Arasaka, but appears Petrochem in design.",
+      "value": 1
+    },
+    {
+      "title": "Microfacial Gesture Control",
+      "tags": "subconscious implantation, perception altering",
+      "notes": "Imperceptible unless carefully examined. Causes people that interact with the user to treat them differently when activated.",
+      "value": 1
+    },
+    {
+      "title": "Pain Annulator",
+      "tags": "Biomonitor, Increase Hits",
+      "notes": "Use it to boost your HITS.",
+      "value": 1
+    },
+    {
+      "title": "Pop-up SMG",
+      "tags": "concealed",
+      "notes": "Hidden in forearm, assembles as its popping out.",
+      "value": 1
+    },
+    {
+      "title": "Arasaka \"Mjolnir\" Berserker MK3",
+      "tags": "frenzy, increased combat prowess, awareness, bloodlust",
+      "notes": "Inflicts Trauma after ending: Bloodlust.",
+      "value": 1
+    }
+  ],
   "hitsCount": 3,
   "hits": [
     false,
@@ -57,8 +100,8 @@
     false
   ],
   "trackers": {
-    "cyberpsy": 0,
-    "humanity": 10
+    "cyberpsy": 1,
+    "humanity": 4
   },
   "conditions": {
     "custom": []
