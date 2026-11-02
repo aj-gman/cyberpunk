@@ -1,13 +1,13 @@
 {#- Expects stockTickerSlot to be set by the caller: "navbar", "filetree", or "content". -#}
 {% macro tickerItem(item, linked) %}
 <span class="stock-ticker__item">
-  {% if linked %}<a class="stock-ticker__link" href="{{ item.href }}">{% else %}<span class="stock-ticker__link">{% endif %}
+  {% if linked %}<a class="stock-ticker__link" href="{{ item.href }}">{% else %}<a class="stock-ticker__link" href="{{ item.href }}" tabindex="-1">{% endif %}
     <span class="stock-ticker__symbol">{{ item.ticker }}</span>
     {%- if item.direction != "neutral" %}
     <span class="stock-ticker__arrow stock-ticker__change--{{ item.direction }}" aria-hidden="true">{{ "▲" if item.direction == "positive" else "▼" }}</span>
     {%- endif %}
     <span class="stock-ticker__change stock-ticker__change--{{ item.direction }}">{{ item.amount }}%</span>
-  {% if linked %}</a>{% else %}</span>{% endif %}
+  {% if linked %}</a>{% else %}</a>{% endif %}
 </span>
 {% endmacro %}
 {% if stockTicker.items.length and page.url != "/night-city/organizations/corporations/stock/" %}
