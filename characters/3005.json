@@ -1,5 +1,5 @@
 {
-  "_version": "1.0.1.3",
+  "_version": "1.1.0",
   "_game": "Neon City Overdrive",
   "nickname": "Ray Null",
   "appearance": "Latin complexion, Bohemian clothing style, long and ratty hair. His outfit consists of the Nolasco Family gang colors. He has ritual scars on the inside of his palms - the mark that he is able to pilot a vehicle while wounded.",
@@ -206,14 +206,15 @@
     false
   ],
   "trackers": {
-    "cyberpsy": 4,
+    "cyberpsy": 1,
     "humanity": 6
   },
   "conditions": {
     "custom": [
       {
         "text": "Sight of massacre x3",
-        "state": "red"
+        "state": "red",
+        "count": 1
       }
     ]
   },
@@ -261,5 +262,5 @@
       false
     ]
   },
-  "experiencePoints": 7
+  "experiencePoints": 8
 }
