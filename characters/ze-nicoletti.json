@@ -1,5 +1,5 @@
 {
-  "_version": "1.0.1.3",
+  "_version": "1.1.0",
   "_game": "Neon City Overdrive",
   "nickname": "Azelia 'Ze' Nicoletti",
   "appearance": "Ze is an Italian-American woman of average height and build, with short black hair and dark emerald eyes. Her typical outfit is comprised of a flannels, cargo pants, and combat boots.",
@@ -20,11 +20,12 @@
     {
       "name": "Street Reporter",
       "triggers": [
-        "Video Editing, Candid Filming, Independent"
+        "Video Editing, Independent"
       ],
       "edges": [
         "Worth a Thousand Words",
-        "Nightcrawler"
+        "Nightcrawler",
+        "Candid Filming"
       ]
     },
     {
@@ -32,7 +33,8 @@
       "triggers": [],
       "edges": [
         "Word on the Street",
-        "Face in the Crowd"
+        "Face in the Crowd",
+        "Wannabe Fixer"
       ]
     },
     {
@@ -125,18 +127,20 @@
     false
   ],
   "trackers": {
-    "cyberpsy": 1,
+    "cyberpsy": 0,
     "humanity": 9
   },
   "conditions": {
     "custom": [
       {
-        "text": "Stressed (3)",
-        "state": "red"
+        "text": "Stressed",
+        "state": "red",
+        "count": 3
       },
       {
-        "text": "Need to Publish (1)",
-        "state": "red"
+        "text": "Need to Publish",
+        "state": "red",
+        "count": 1
       }
     ]
   },
@@ -156,7 +160,7 @@
   ],
   "flaw1": "Obvious Mark",
   "flaw2": "Enemies in low places",
-  "stuntPoints": 2,
+  "stuntPoints": 4,
   "drive": {
     "text": "",
     "pips": [
