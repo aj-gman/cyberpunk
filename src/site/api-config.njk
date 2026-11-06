@@ -1,0 +1,9 @@
+---
+permalink: /img/api-config.js
+eleventyExcludeFromCollections: true
+---
+// Generated from src/site/api-config.njk - edit there, not here.
+// Shared cloud-save API base for the character sheets (NCO-sheet.html,
+// CPRED-sheet.html), supplied by the deployment (SHEET_API_BASE) so the
+// host is defined in exactly one place.
+window.CYBERPUNK_API_BASE = {{ sheetApi.base | jsonify | safe }};
