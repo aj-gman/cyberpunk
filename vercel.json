@@ -2,5 +2,9 @@
 	"$schema": "https://openapi.vercel.sh/vercel.json",
 	"framework": null,
 	"buildCommand": "",
-	"outputDirectory": "public"
+	"outputDirectory": "public",
+	"functions": {
+		"api/gm/page.js": { "includeFiles": "api/gm/_gm.html" }
+	},
+	"rewrites": [{ "source": "/gm", "destination": "/api/gm/page" }]
 }
