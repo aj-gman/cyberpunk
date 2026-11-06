@@ -1,6 +1,7 @@
 // api/save-character.js — Vercel Serverless Function
 // Saves a character JSON to the GitHub repo under saves/characters/{username}.json
-// Password is SHA-256 hashed (server-side) before storage — never stored in plaintext.
+// Password is hashed server-side with scrypt and a per-save random salt —
+// never stored in plaintext.
 
 const crypto = require('crypto');
 const GITHUB_OWNER = 'aj-gman';
@@ -26,9 +27,8 @@ module.exports = async function handler(req, res) {
     return res.status(500).json({ error: 'Server misconfiguration: missing GITHUB_TOKEN' });
   }
 
-  // Hash password with a fixed salt so it's never stored in plaintext
-  const SALT = 'cyberpunk-red-salt-2077-night-city';
-  const hashHex = crypto.createHash('sha256').update(password + SALT).digest('hex');
+  // scrypt with a per-save random salt; the salt is stored next to the hash
+  const newSalt = crypto.randomBytes(16).toString('hex');
 
   // Sanitise username — letters, numbers, underscores, hyphens only
   const safeUsername = username.toLowerCase().replace(/[^a-z0-9_-]/g, '_').slice(0, 64);
@@ -43,7 +43,7 @@ module.exports = async function handler(req, res) {
 
   // ── Check whether a save already exists ──────────────────────────────────
   let existingSha  = null;
-  let existingHash = null;
+  let existingSave = null;
 
   try {
     const checkRes = await fetch(
@@ -55,20 +55,26 @@ module.exports = async function handler(req, res) {
       const fileData = await checkRes.json();
       existingSha = fileData.sha;
       const decoded = Buffer.from(fileData.content.replace(/\n/g, ''), 'base64').toString('utf8');
-      const existing = JSON.parse(decoded);
-      existingHash = existing.passwordHash;
+      existingSave = JSON.parse(decoded);
     }
     // 404 means it's a brand-new character — that's fine
   } catch (_) { /* ignore */ }
 
   // ── Verify password if save already exists ───────────────────────────────
-  if (existingHash && existingHash !== hashHex) {
-    return res.status(401).json({ error: 'Incorrect access code for this callsign.' });
+  if (existingSave && existingSave.passwordHash) {
+    const existingSalt = existingSave.passwordSalt || '';
+    const attempt = crypto.scryptSync(password, existingSalt, 64);
+    const stored = Buffer.from(existingSave.passwordHash, 'hex');
+    if (stored.length !== attempt.length || !crypto.timingSafeEqual(stored, attempt)) {
+      return res.status(401).json({ error: 'Incorrect access code for this callsign.' });
+    }
   }
 
   // ── Build the save payload ────────────────────────────────────────────────
   const saveData = {
-    passwordHash: hashHex,
+    kdf: 'scrypt',
+    passwordSalt: newSalt,
+    passwordHash: crypto.scryptSync(password, newSalt, 64).toString('hex'),
     username: safeUsername,
     lastSaved: new Date().toISOString(),
     characterData,
