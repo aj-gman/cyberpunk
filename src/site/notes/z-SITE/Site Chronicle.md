@@ -25,7 +25,7 @@
 - Published [[Night City/Organizations/Corporations/N54\|N54]]'s page, as well as relevant characters: [[Night City/Characters/2021/corpos/Howard Wong\|Howard Wong]], [[Night City/Characters/2021/edgerunners/Bes Isis\|Bes Isis]], [[Night City/Characters/2021/edgerunners/Fiona Hayes\|Fiona Hayes]], [[Night City/Characters/2021/edgerunners/Lyle McClellan\|Lyle McClellan]]
 - Created [[Night City/Organizations/Corporations/!stock\|!stock]] and [[Night City/Organizations/Corporations/!stock-code\|!stock-code]], which are used to display current publicly-traded companies' value increases per month;
 - Fixed bugs on the website like the buttons displaying with errors.
-- Added new locations: [[Night City/Locations/Buildings/Company Headquarters (Heywood)\|Company Headquarters (Heywood)]], [[Night City/Locations/Buildings/Midnight Slut\|Midnight Slut]], [[Night City/Locations/Buildings/Afterlife\|Afterlife]]
+- Added new locations: [[Night City/Locations/Buildings/ASG Headquarters (Heywood)\|ASG Headquarters (Heywood)]], [[Night City/Locations/Buildings/Midnight Slut\|Midnight Slut]], [[Night City/Locations/Buildings/Afterlife\|Afterlife]]
 - Published information about the [[Night City/Others/Technology/NET\|NET]], [[Night City/Others/Technology/IntraNET\|IntraNET]] and [[Night City/Others/Technology/Data Fortress\|Data Fortress]]
 #### 16.10
 - Added [[Night City/Others/News\|News]] page that displays all news by date and campaign + random news

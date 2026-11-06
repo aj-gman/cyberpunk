@@ -1,8 +1,8 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/locations/buildings/afterlife/","dg-note-properties":{}}
+{"dg-publish":true,"permalink":"/night-city/locations/buildings/afterlife/","tags":["#location","#4cw"],"dg-note-properties":{"tags":["#location","#4cw"]}}
 ---
 
-#location #4cw [[Night City/Locations/Night City\|Night City]] [[Night City/Locations/Districts/City Center#Medical Center\|City Center#Medical Center]]
+#4cw [[Night City/Locations/Night City\|Night City]] [[Night City/Locations/Districts/City Center#Medical Center\|City Center#Medical Center]]
 
 Getting its named from being a former mortuary converted into a bar, the [[Night City/Locations/Buildings/Afterlife\|Afterlife]] is a second home to the [[Night City/!society/Strata/Edgerunners\|Edgerunner]] community of [[Night City/Locations/Night City\|Night City]]. [[Rules/CPRED/Roles/Solo\|Solos]] and [[Rules/CPRED/Roles/Netrunner\|Netrunners]] are the most common patrons. There exists a strict code among those who enter - and not all are allowed in. The occasional brawl is never intended to maim or kill, just to test limits.
 

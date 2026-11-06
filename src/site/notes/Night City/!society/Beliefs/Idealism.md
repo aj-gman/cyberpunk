@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-path":"Night City/Society/Beliefs/Idealism.md","permalink":"/night-city/society/beliefs/idealism/","tags":["ideology"],"dg-note-properties":{"tags":["ideology"]}}
+{"dg-publish":true,"dg-path":"Night City/Society/Beliefs/Idealism.md","permalink":"/night-city/society/beliefs/idealism/","tags":["#ideology"],"dg-note-properties":{"tags":["#ideology"]}}
 ---
 
 Idealism in the [[Rules/Cyberpunk Universe\|Cyberpunk Universe]] refers to the belief that corporations are mostly forces for positive change. It posits that [captains of industry](https://en.wikipedia.org/wiki/Captain_of_industry) are taking the charge in making the world a better place.
@@ -17,7 +17,7 @@ For an [[Night City/!society/Beliefs/Idealism\|Idealist]], an unfair valuation, 
 
 [[Night City/!society/Beliefs/Idealism\|Idealists]] can be found across all Corporations, but often have to be tied to some sort of connection to said company - **loyalty via dependance, conditioning, education.** 
 For example, many Corporations prefer to have **private schooling options** for their most loyal [[Night City/!society/Strata/Corpzoners\|Corpzoners]] in order to preemptively indoctrinate their children - [[Night City/Organizations/Corporations/Arasaka\|Arasaka School of Economics]], [[Night City/Organizations/Corporations/Militech\|Militech Academy of Engineering]] and so on.
-Loyalty can also be bought via supplying the worker with **a comfortable lifestyle** inevitably tied to the corporation. A [[Biotehnica\|Biotehnica]] [[Night City/!society/Strata/Beavers\|Beaver]] living in [[Night City/Locations/Dependencies/Rancho Coronado\|Rancho Coronado]] would stand to lose more than just their source of income if they quit or betrayed the Corp - they'd lose their house, their car, the respect of their peers.
+Loyalty can also be bought via supplying the worker with **a comfortable lifestyle** inevitably tied to the corporation. A [[Night City/Organizations/Corporations/Biotechnica\|Biotechnica]] [[Night City/!society/Strata/Beavers\|Beaver]] living in [[Night City/Locations/Dependencies/Rancho Coronado\|Rancho Coronado]] would stand to lose more than just their source of income if they quit or betrayed the Corp - they'd lose their house, their car, the respect of their peers.
 
 ### Patrons
 Although many believers of [[Night City/!society/Beliefs/Idealism\|Idealism]] look up to these individuals, they are not necessarily believers in the ideology as well. Many CEOs merely construct a cult of personality around themselves to the point of veneration.

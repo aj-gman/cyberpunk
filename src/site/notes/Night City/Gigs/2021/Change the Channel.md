@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-path":"Night City/Gigs/Change the Channel.md","permalink":"/night-city/gigs/change-the-channel/","tags":["#gig","#4cw"],"dg-note-properties":{"tags":["#gig","#4cw"]}}
+{"dg-publish":true,"dg-path":"Night City/Gigs/Change the Channel.md","permalink":"/night-city/gigs/change-the-channel/","tags":["gig","4cw"],"dg-note-properties":{"tags":["gig","4cw"]}}
 ---
 
 **System:** [[Rules/NCOverdrive/Neon City Overdrive (HUB)\|Neon City Overdrive (HUB)]]

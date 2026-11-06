@@ -1,8 +1,8 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/locations/buildings/midnight-slut/","dg-note-properties":{}}
+{"dg-publish":true,"permalink":"/night-city/locations/buildings/midnight-slut/","tags":["#location"],"dg-note-properties":{"tags":["#location"]}}
 ---
 
-#location [[Night City/Locations/Districts/Nightlife District#Upper Eastside\|Nightlife District#Upper Eastside]]
+[[Night City/Locations/Districts/Nightlife District#Upper Eastside\|Nightlife District#Upper Eastside]]
 
 [[Night City/Organizations/Gangs/Maelstrom\|Maelstrom]]-ran [[Joytoy\|Joytoy]] brothel. Suspected hangout spot of [[Night City/Characters/2021/corpos/Iwasao Koremichi\|Iwasao Koremichi]].
 

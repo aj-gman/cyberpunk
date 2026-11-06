@@ -1,11 +1,11 @@
 ---
-{"dg-publish":true,"dg-path":"Night City/Characters/edgerunners/Big Wu.md","permalink":"/night-city/characters/edgerunners/big-wu/","dg-note-properties":{}}
+{"dg-publish":true,"dg-path":"Night City/Characters/edgerunners/Big Wu.md","permalink":"/night-city/characters/edgerunners/big-wu/","tags":["#npc","#4cw"],"dg-note-properties":{"tags":["#npc","#4cw"]}}
 ---
 
 #npc #4cw [[Night City/Locations/Night City\|Night City]]
 Artisan (Innovative, Trust) | Deliberate, Thoughtful, Flexible
 
-Originally from Tokyo, Oshima Wu was born to a Hong Kong expat and a Japanese [[Rules/CPRED/Roles/Exec\|Exec]]. He attended prestigious academies growing up and eventually got a [[Biotehnica\|Biotehnica]] certification allowing him to grow his own produce (under license).
+Originally from Tokyo, Oshima Wu was born to a Hong Kong expat and a Japanese [[Rules/CPRED/Roles/Exec\|Exec]]. He attended prestigious academies growing up and eventually got a [[Night City/Organizations/Corporations/Biotechnica\|Biotechnica]] certification allowing him to grow his own produce (under license).
 
 [[Night City/Characters/2021/edgerunners/Big Wu\|Big Wu]] used to cook for the [[Night City/Characters/!pc/Hex\|Michaels family]]. Eventually, after the twins ([[Night City/Characters/!pc/Relevant NPCs/Nat\|Nat]] & [[Night City/Characters/!pc/Hex\|Hex]]) went to school, he took the savings he had, took a loan out from an AgriCorp ([[Continental Brands\|Continental Brands]]) and became a well-respected sushi chef with his own restaurant in the BosWash area. 
 

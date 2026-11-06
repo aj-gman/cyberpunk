@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/locations/kill-da-germs-laundromat-little-italy/","tags":["#location"],"dg-note-properties":{"tags":["#location"]}}
+{"dg-publish":true,"permalink":"/night-city/locations/kill-da-germs-laundromat-little-italy/","dg-note-properties":{}}
 ---
 
 #location 

@@ -6,7 +6,7 @@
 
 ### Principles
 - Poach [[Night City/!society/Strata/Corpzoners\|Corpzoners]], [[Night City/!society/Strata/Beavers\|Beavers]], [[Night City/!society/Strata/Movers\|Movers]] and turn them into [[Night City/!society/Strata/Edgerunners\|Edgerunners]];
-- Provide medical coverage (see [[Night City/Organizations/ASG#Medtechie MEDTECHIES\|Medtechies]]) and housing (if needed) at the [[Night City/Locations/Buildings/Company Headquarters (Heywood)\|Company Headquarters (Heywood)]]
+- Provide medical coverage (see [[Night City/Organizations/ASG#Medtechie MEDTECHIES\|Medtechies]]) and housing (if needed) at the [[Night City/Locations/Buildings/ASG Headquarters (Heywood)\|ASG Headquarters (Heywood)]]
 - No Strings Attached policy - quit whenever, keep your gear ([[Rules/NCOverdrive/Cyberware\|Cyberware]] etc.)
 
 ### Security
@@ -17,11 +17,11 @@
 - Early Warning Network: [[Rules/CPRED/Roles/Media\|Media]] + [[Rules/CPRED/Roles/Netrunner\|Netrunner]]
 
 ### Locations
-- [[Night City/Locations/Buildings/Company Headquarters (Heywood)\|Company Headquarters (Heywood)]]
+- [[Night City/Locations/Buildings/ASG Headquarters (Heywood)\|ASG Headquarters (Heywood)]]
 - [[Night City/Locations/Kill-Da-Germs Laundromat (Little Italy)\|Kill-Da-Germs Laundromat (Little Italy)]] - safehouse
 
 ### Wealth Distribution
-- Retainers to [[Night City/!society/Strata/Edgerunners\|Edgerunners]] that work off-gig on-site at [[Night City/Locations/Buildings/Company Headquarters (Heywood)\|Company Headquarters (Heywood)]] or elsewhere;
+- Retainers to [[Night City/!society/Strata/Edgerunners\|Edgerunners]] that work off-gig on-site at [[Night City/Locations/Buildings/ASG Headquarters (Heywood)\|ASG Headquarters (Heywood)]] or elsewhere;
 - Retainers to a few loyal [[Rules/CPRED/Roles/Fixer\|Fixers]] + 10% on individual gigs
 - [[Night City/Organizations/ASG\|ASG]] tax (20%) on all gig total profits, redistributed as profits to [[Night City/Characters/!pc/The Gang\|The Gang]] and funneled back into [[Night City/Organizations/ASG\|ASG]] for upgrades
 - [[Night City/!society/Strata/Edgerunners\|Edgerunners]]'s pay, 70% of the gig's total profits, split equally as a rule, with exceptions for Critical Roles (1.5 shares instead of regular 1) and Support (0.5 shares instead of regular 1 + retainer); [[Night City/!society/Strata/Edgerunners\|Edgerunners]] get paid 1k each minimum (if the profits aren't enough to cover it, see [[Night City/Organizations/ASG\|ASG]] tax) on a succesful gig
