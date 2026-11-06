@@ -1,0 +1,32 @@
+name: PR build check
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pr-build-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - run: npm run build
+        env:
+          SITE_BASE_URL: https://aj-gman.github.io
+          SITE_PATH_PREFIX: /cyberpunk/
+      - name: Verify built Pages site
+        run: node scripts/verify-pages-build.js
+        env:
+          SITE_PATH_PREFIX: /cyberpunk/
