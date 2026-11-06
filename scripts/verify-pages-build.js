@@ -35,6 +35,21 @@ for (const href of [
     throw new Error(`The glitch-header homepage is missing its local link to ${href}`);
   }
 }
+// GM screen: only the public search index and the redirect stub may ship to Pages.
+{
+  const gmIndex = path.join(outputDir, "gm-index.json");
+  if (!fs.existsSync(gmIndex)) throw new Error("dist/gm-index.json is missing");
+  const parsed = JSON.parse(fs.readFileSync(gmIndex, "utf8"));
+  if (!Array.isArray(parsed.rules) || !parsed.rules.length || !Array.isArray(parsed.npcs)) {
+    throw new Error("dist/gm-index.json is malformed");
+  }
+  const walk = (d) => fs.readdirSync(d, { withFileTypes: true }).flatMap((e) => e.isDirectory() ? walk(path.join(d, e.name)) : [path.join(d, e.name)]);
+  for (const f of walk(outputDir)) {
+    if (/\.(html|js|json)$/.test(f) && /gm_session|GM_PASSHASH|GM_SESSION_KEY|api\/gm\/login/.test(fs.readFileSync(f, "utf8"))) {
+      throw new Error(`GM auth code leaked into the Pages build: ${f}`);
+    }
+  }
+}
 if (html.includes("Jekyll v")) {
   throw new Error("dist/index.html contains Jekyll output instead of the garden");
 }
