@@ -168,7 +168,7 @@ describe("renderViews", () => {
 	});
 
 	describe("array values", () => {
-		it("renders arrays joined with comma-space", () => {
+		it("renders arrays as per-value tag links", () => {
 			const rows = [
 				makeRow("Test", "/notes/test/", {
 					tags: ["fiction", "classic"],
@@ -186,7 +186,8 @@ describe("renderViews", () => {
 					),
 				]),
 			);
-			expect(result).toContain("fiction, classic");
+			expect(result).toContain('<a class="tag" data-content="#fiction">');
+			expect(result).toContain('<a class="tag" data-content="#classic">');
 		});
 	});
 

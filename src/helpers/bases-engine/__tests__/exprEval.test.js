@@ -91,8 +91,13 @@ describe("exprEval", () => {
 					mtime: "2024-06-01",
 				},
 			};
-			expect(evaluate("file.ctime", note)).toBe("2024-01-01");
-			expect(evaluate("file.mtime", note)).toBe("2024-06-01");
+			const ctime = evaluate("file.ctime", note);
+			const mtime = evaluate("file.mtime", note);
+			// Timestamps are coerced to local-midnight Date objects
+			expect(ctime).toBeInstanceOf(Date);
+			expect([ctime.getFullYear(), ctime.getMonth(), ctime.getDate()]).toEqual([2024, 0, 1]);
+			expect(mtime).toBeInstanceOf(Date);
+			expect([mtime.getFullYear(), mtime.getMonth(), mtime.getDate()]).toEqual([2024, 5, 1]);
 		});
 	});
 
