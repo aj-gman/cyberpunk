@@ -9,7 +9,7 @@
 
 The [[Night City/Fourth Corporate War\|Fourth Corporate War]] is the current campaign ran by [[z-SITE/G-man\|G-man]] following the end of the [[Eurotour/Eurotour\|Eurotour]].
 
-Settle into the Free State of [[Night City/Locations/Night City\|Night City]], home to both the world's first [[Combat Zone\|Combat Zone]] and [[Night City/Organizations/Corporations/Arasaka\|it's largest Corporate HQ]]. Start your [[Night City/Characters/!pc/The Gang\|own faction]] from the ground up and choose between one of four #ideology. 
+Settle into the Free State of [[Night City/Locations/Night City\|Night City]], home to both the world's first [[Night City/Others/Combat Zone\|Combat Zone]] and [[Night City/Organizations/Corporations/Arasaka\|it's largest Corporate HQ]]. Start your [[Night City/Characters/!pc/The Gang\|own faction]] from the ground up and choose between one of four #ideology. 
 
 [[Rules/NCOverdrive/Basebuilding\|Build your own base]] and grow your ideas into reality, doing more than just Edgerunner gigs. Learn to really *live* in this world. 
 
@@ -35,11 +35,11 @@ As the war entered its fifth month, both sides began to show signs of exhaustion
 > [!abstract] [[Night City/Locations/Night City\|Learn about Night City]]
 
 >[!example] Past Adventures
->1. [[Night City/Gigs/2021/Plastic Euphoria\|Plastic Euphoria]]
->2. [[Night City/Gigs/2021/Free Reign\|Free Reign]]
->3. [[Night City/Gigs/2021/Into the Lion's Den\|Into the Lion's Den]]
->4. [[Night City/Gigs/2021/Deep Six\|Deep Six]]
->5. [[Night City/Gigs/2021/Seven Nation Army\|Seven Nation Army]]
+>1. [[Night City/Gigs/2021/past/Plastic Euphoria\|Plastic Euphoria]]
+>2. [[Night City/Gigs/2021/past/Free Reign\|Free Reign]]
+>3. [[Night City/Gigs/2021/past/Into the Lion's Den\|Into the Lion's Den]]
+>4. [[Night City/Gigs/2021/past/Deep Six\|Deep Six]]
+>5. [[Night City/Gigs/2021/past/Seven Nation Army\|Seven Nation Army]]
 >6. [[Night City/Gigs/2021/Fated, Faithful, Fatal\|Fated, Faithful, Fatal]]
 >7. [[Night City/Gigs/2021/Man That You Fear\|Man That You Fear]]
 

@@ -3,7 +3,7 @@
 ---
 
 #news #4cw [[Night City/Organizations/Corporations/N54\|N54]]
-**July 2021**, [[Night City/Gigs/2021/Into the Lion's Den\|Into the Lion's Den]]
+**July 2021**, [[Night City/Gigs/2021/past/Into the Lion's Den\|Into the Lion's Den]]
 
 The following statement was issued by [[Night City/Characters/2021/corpos/Elizabeth Kress\|Elizabeth Kress]], [[Night City/Organizations/States/NUSA\|President of the USA]], following [[Night City/Others/Events/Militech Executives Die in Poison Attack\|Gen. D. Lundee's declaration regarding the death of 17 Militech executives]].
 

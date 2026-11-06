@@ -2,7 +2,7 @@
 {"dg-publish":true,"permalink":"/night-city/others/events/usa-statement-response-to-the-arasaka-files/","dg-note-properties":{}}
 ---
 
-#news #4cw [[Night City/Organizations/Corporations/N54\|N54]], **July 2021**, [[Night City/Gigs/2021/Deep Six\|Deep Six]]
+#news #4cw [[Night City/Organizations/Corporations/N54\|N54]], **July 2021**, [[Night City/Gigs/2021/past/Deep Six\|Deep Six]]
 
 The following statement was issued by [[Night City/Characters/2021/corpos/Elizabeth Kress\|Elizabeth Kress]], [[Night City/Organizations/States/NUSA\|President of the USA]], following [[Night City/Others/Events/Arasaka in Maelstrom\|the massive Arasaka data leak]].
 

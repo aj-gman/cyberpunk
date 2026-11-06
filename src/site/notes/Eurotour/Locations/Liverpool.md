@@ -17,7 +17,7 @@ Despite this obvious crime problem, the [[Eurotour/Organizations/MLA\|MLA]] repo
 Worse, government agents are embedded and "fixing" (read: overwhelmed by) different problems, but most of their uniforms have the same color, lettering (big, bold MLA on the back). Some will stand up for the [[Eurotour/Organizations/MLA\|MLA]], but most are easily swayed by money, but they'll also try to peddle to [[Eurotour/The Crew\|The Crew]], gauging them as foreigners.
 
 > FEATURES \\\ FEATURES \\\ FEATURES \\\ FEATURES
-> Liverpool [[Combat Zone\|Combat Zone]] - 3 square kilometeres abandoned by the [[Eurotour/Organizations/MLA\|MLA]], protected by gangs and scavengers | HIGH RISK, DO NOT ENTER IF CIVILLIAN/TOURIST
+> Liverpool [[Night City/Others/Combat Zone\|Combat Zone]] - 3 square kilometeres abandoned by the [[Eurotour/Organizations/MLA\|MLA]], protected by gangs and scavengers | HIGH RISK, DO NOT ENTER IF CIVILLIAN/TOURIST
 > Levels of Crime Rate: 9/10 according to [[Eurotour/Organizations/MLA\|MLA]] estimations. Most frequent crime: violent protest, illegal organization, "rights-taking"
 > [[Eurotour/Organizations/MLA\|MLA]] (MARTIAL LAW AUTHORITY) recommends foreigners to stay away from all low-income areas, as "the poor" are unpredictable. Low-income areas are also frequently raided by [[Eurotour/Organizations/PKY\|PKY]] troops, the UK's premiere task force.
 

@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/others/events/first-edgerunner-arrest/","tags":["#news","#4cw","#corporation"],"dg-note-properties":{"tags":["#news","#4cw","#corporation"]}}
+{"dg-publish":true,"permalink":"/night-city/others/events/first-edgerunner-arrest/","tags":["news","4cw"],"dg-note-properties":{"tags":["news","4cw"]}}
 ---
 
 **September 2021, [[Night City/Gigs/2021/Man That You Fear\|Man That You Fear]], [[Night City/Characters/2021/edgerunners/Toshi News\|Toshi News]]**

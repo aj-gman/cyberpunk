@@ -2,7 +2,7 @@
 {"dg-publish":true,"permalink":"/night-city/others/events/arasaka-in-maelstrom/","dg-note-properties":{}}
 ---
 
-#news #4cw [[Night City/Organizations/Corporations/N54\|N54]], **July 2021**, [[Night City/Gigs/2021/Deep Six\|Deep Six]]
+#news #4cw [[Night City/Organizations/Corporations/N54\|N54]], **July 2021**, [[Night City/Gigs/2021/past/Deep Six\|Deep Six]]
 
 [[Night City/Organizations/Corporations/Arasaka\|Arasaka]]'s stock has fallen by 10.5%, causing massive loses to the company's planned projects, including the shutdown of many construction projects in [[LEO\|LEO]] and in the eastern [[Eurotour/Organizations/Neo-Sov\|Neo-Sov]].
 

@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-path":"Site Chronicle.md","permalink":"/site-chronicle/","dg-note-properties":{}}
+{"dg-publish":true,"dg-path":"Site Chronicle.md","permalink":"/site-chronicle/","tags":["#fashion","#ideology","#npc","#news","#district","#dependency","#stratum","#boostergang","#role"],"dg-note-properties":{"tags":["#fashion","#ideology","#npc","#news","#district","#dependency","#stratum","#boostergang","#role"]}}
 ---
 
 
@@ -16,30 +16,30 @@
 #### 1.11
 - Updated Landing Page to be more visual and also digestible.
 - Update [Map](https://aj-gman.github.io/cyberpunk/img/map-viewer/#layer=political&date=2021-09) to also include a TIMELINE so you can see how it looked way back when;
-	- This timeline is a bit WIP since i dont have some of the files from August 2021
+	- This timeline is a ~~bit WIP since i dont have some of the files from August 2021~~ (August 2021 is now being served as tiles, so old format)
 - Added new [[Night City/Others/News\|News]], of course.
-- Began writing on the new adventure, [[Mirrorshades pt. 1\|Mirrorshades pt. 1]]
+- Began writing on the new adventure, [[Night City/Gigs/2021/Change the Channel\|Change the Channel]]
 ### October 2026
 #### 22.10
 - Wrote and published the After Action Report for [[Night City/Gigs/2021/Fated, Faithful, Fatal\|Fated, Faithful, Fatal]];
 - Published [[Night City/Organizations/Corporations/N54\|N54]]'s page, as well as relevant characters: [[Night City/Characters/2021/corpos/Howard Wong\|Howard Wong]], [[Night City/Characters/2021/edgerunners/Bes Isis\|Bes Isis]], [[Night City/Characters/2021/edgerunners/Fiona Hayes\|Fiona Hayes]], [[Night City/Characters/2021/edgerunners/Lyle McClellan\|Lyle McClellan]]
 - Created [[Night City/Organizations/Corporations/!stock\|!stock]] and [[Night City/Organizations/Corporations/!stock-code\|!stock-code]], which are used to display current publicly-traded companies' value increases per month;
 - Fixed bugs on the website like the buttons displaying with errors.
-- Added new locations: [[Night City/Locations/Buildings/HQ (Heywood)\|HQ (Heywood)]], [[Night City/Locations/Buildings/Midnight Slut\|Midnight Slut]], [[Night City/Locations/Buildings/Afterlife\|Afterlife]]
+- Added new locations: [[Night City/Locations/Buildings/Company Headquarters (Heywood)\|Company Headquarters (Heywood)]], [[Night City/Locations/Buildings/Midnight Slut\|Midnight Slut]], [[Night City/Locations/Buildings/Afterlife\|Afterlife]]
 - Published information about the [[Night City/Others/Technology/NET\|NET]], [[Night City/Others/Technology/IntraNET\|IntraNET]] and [[Night City/Others/Technology/Data Fortress\|Data Fortress]]
 #### 16.10
 - Added [[Night City/Others/News\|News]] page that displays all news by date and campaign + random news
 - Finished all #ideology write-up
 - Ported website for quicker uploads from Vercel to GithubPages
-- Published [[Night City/Gigs/2021/Seven Nation Army\|Seven Nation Army]] webpage
+- Published [[Night City/Gigs/2021/past/Seven Nation Army\|Seven Nation Army]] webpage
 - Modified and updated [map](/img/map-viewer/)
 - Added more #npc: [[Night City/Characters/2021/edgerunners/Johnny Silverhand\|Johnny Silverhand]], [[Night City/Characters/2021/edgerunners/Morgan Blackhand\|Morgan Blackhand]], [[Night City/Characters/2021/edgerunners/Rache Bartmoss\|Rache Bartmoss]] 
 #### 12.10
 - Added new #news and tagged it with the relevant session it appeared in.
 - Added page for [[Night City/Characters/2021/corpos/Elizabeth Kress\|Elizabeth Kress]]
-- Wrote up the premise of 13.10 session, [[Night City/Gigs/2021/Seven Nation Army\|Seven Nation Army]];
+- Wrote up the premise of 13.10 session, [[Night City/Gigs/2021/past/Seven Nation Army\|Seven Nation Army]];
 #### 09.10
-- Updated [map](/img/map-viewer/) to match events in [[Night City/Gigs/2021/Deep Six\|Deep Six]]
+- Updated [map](/img/map-viewer/) to match events in [[Night City/Gigs/2021/past/Deep Six\|Deep Six]]
 
 ### September 2026
 #### 28.09
