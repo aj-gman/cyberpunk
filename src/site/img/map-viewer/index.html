@@ -539,19 +539,67 @@
   map.setMaxBounds([[GRID_H * 0.25, -GRID_W * 0.25], [-GRID_H * 1.25, GRID_W * 1.25]]);
   map.options.maxBoundsViscosity = 1.0;
 
-  // ── Build one tile layerGroup per preset (lazy: images only fetch ──
-  // once their layerGroup is actually added to the map).
+  // ── Tile layers: one overview image zoomed out, viewport tiles ──
+  // zoomed in.
+  // Zoomed out, a single downscaled overview.webp renders the whole
+  // grid (1 request instead of 145 tile PNGs). Past OVERVIEW_MAX_ZOOM
+  // only the tiles intersecting the viewport (plus a prefetch margin)
+  // are added, and tiles panned back out of view are removed again.
+  // The overview stays underneath at every zoom, so tiles loading in
+  // never expose the black background. overview.webp is generated
+  // from the folder's own tiles by scripts/build-map-overviews.py.
+  const OVERVIEW_MAX_ZOOM = -2;
+  const VIEWPORT_PREFETCH = 0.3; // viewport fraction added per side
+
   function buildLayerGroup(folder) {
-    const group = L.layerGroup();
-    ROWS.forEach((row, ri) => {
-      COLS.forEach((col, ci) => {
+    const group = L.layerGroup([L.imageOverlay(`${folder}/overview.webp`, GRID_BOUNDS)]);
+    const overlays = {};       // 'A1' -> L.ImageOverlay, created on demand
+    const visible = new Set(); // tile keys currently on the map
+
+    function tileOverlayFor(key) {
+      if (!overlays[key]) {
+        const ri = ROWS.indexOf(key[0]);
+        const ci = COLS.indexOf(key.slice(1));
         const north = -ri * TILE_H;
         const south = -(ri + 1) * TILE_H;
         const west = ci * TILE_W;
         const east = (ci + 1) * TILE_W;
-        L.imageOverlay(`${folder}/${row}${col}.png`, [[north, west], [south, east]]).addTo(group);
+        overlays[key] = L.imageOverlay(`${folder}/${key}.png`, [[north, west], [south, east]]);
+      }
+      return overlays[key];
+    }
+
+    group.updateTiles = function () {
+      if (map.getZoom() === undefined || !map.hasLayer(group)) return;
+      if (map.getZoom() <= OVERVIEW_MAX_ZOOM) {
+        visible.forEach((key) => group.removeLayer(overlays[key]));
+        visible.clear();
+        return;
+      }
+      const bounds = map.getBounds().pad(VIEWPORT_PREFETCH);
+      // CRS.Simple: lat is -y, so the north edge is the smaller y.
+      const colMin = Math.max(0, Math.floor(bounds.getWest() / TILE_W));
+      const colMax = Math.min(COLS.length - 1, Math.floor(bounds.getEast() / TILE_W));
+      const rowMin = Math.max(0, Math.floor(-bounds.getNorth() / TILE_H));
+      const rowMax = Math.min(ROWS.length - 1, Math.floor(-bounds.getSouth() / TILE_H));
+      const needed = new Set();
+      for (let ri = rowMin; ri <= rowMax; ri++) {
+        for (let ci = colMin; ci <= colMax; ci++) needed.add(ROWS[ri] + COLS[ci]);
+      }
+      visible.forEach((key) => {
+        if (!needed.has(key)) {
+          group.removeLayer(overlays[key]);
+          visible.delete(key);
+        }
       });
-    });
+      needed.forEach((key) => {
+        if (!visible.has(key)) {
+          tileOverlayFor(key).addTo(group);
+          visible.add(key);
+        }
+      });
+    };
+    group.on('add', () => group.updateTiles());
     return group;
   }
 
@@ -1050,6 +1098,14 @@
   shownGroup = layerGroups[currentKey];
   shownGroup.addTo(map);
   resetView();
+  // Viewport tile culling: refresh which detail tiles are loaded after
+  // every pan/zoom/resize of the active tile-backed layer.
+  const refreshShownTiles = () => {
+    if (shownGroup && shownGroup.updateTiles) shownGroup.updateTiles();
+  };
+  map.on('moveend', refreshShownTiles);
+  map.on('resize', refreshShownTiles);
+  refreshShownTiles();
   window.addEventListener('load', resetView);
   initTimeline();
 
@@ -1057,7 +1113,25 @@
   // Only used by tile-backed layers. Dated vector layers get exact
   // names from path hover instead.
   const tooltipEl = document.getElementById('mapTooltip');
-  const tileCanvasCache = {};
+  // Hover sampling draws tiles into 960x960 canvases (~3.7 MB each);
+  // keep only the most recently used few so long hover sessions can't
+  // grow memory without limit.
+  const TILE_CANVAS_CACHE_MAX = 8;
+  const tileCanvasCache = new Map(); // LRU: most recently used last
+
+  function tileCanvasCacheSet(cacheKey, value) {
+    tileCanvasCache.delete(cacheKey);
+    tileCanvasCache.set(cacheKey, value);
+    while (tileCanvasCache.size > TILE_CANVAS_CACHE_MAX) {
+      const oldestKey = tileCanvasCache.keys().next().value;
+      const oldest = tileCanvasCache.get(oldestKey);
+      if (oldest && oldest.ctx) {
+        oldest.ctx.canvas.width = 0; // release the pixel buffer
+        oldest.ctx.canvas.height = 0;
+      }
+      tileCanvasCache.delete(oldestKey);
+    }
+  }
 
   function hexToRgb(hex) {
     const value = hex.replace('#', '');
@@ -1102,13 +1176,14 @@
 
   function getTileCanvas(folder, row, col, onReady) {
     const cacheKey = `${folder}/${row}${col}`;
-    const cached = tileCanvasCache[cacheKey];
+    const cached = tileCanvasCache.get(cacheKey);
     if (cached && cached.ctx) {
+      tileCanvasCacheSet(cacheKey, cached); // refresh LRU position
       onReady(cached.ctx);
       return;
     }
     if (cached === 'loading') return;
-    tileCanvasCache[cacheKey] = 'loading';
+    tileCanvasCacheSet(cacheKey, 'loading');
     const image = new Image();
     image.onload = () => {
       const canvas = document.createElement('canvas');
@@ -1116,10 +1191,10 @@
       canvas.height = image.naturalHeight;
       const context = canvas.getContext('2d', { willReadFrequently: true });
       context.drawImage(image, 0, 0);
-      tileCanvasCache[cacheKey] = { ctx: context };
+      tileCanvasCacheSet(cacheKey, { ctx: context });
       onReady(context);
     };
-    image.onerror = () => { tileCanvasCache[cacheKey] = null; };
+    image.onerror = () => { tileCanvasCacheSet(cacheKey, null); };
     image.src = `${folder}/${row}${col}.png`;
   }
 
