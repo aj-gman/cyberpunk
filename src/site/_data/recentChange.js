@@ -18,10 +18,7 @@ function stripWikilinks(text) {
     .replace(/\[\^\d+\]/g, "");                      // strip footnote refs
 }
 
-module.exports = () => {
-  const chroniclePath = path.join(__dirname, "../notes/z-SITE/Site Chronicle.md");
-  const raw = fs.readFileSync(chroniclePath, "utf8");
-
+function parseChronicle(raw) {
   const entries = [];
   let currentMonth = "";
 
@@ -72,4 +69,11 @@ module.exports = () => {
 
   // Return the most recent 3 entries
   return entries.slice(0, 3);
+}
+
+module.exports = () => {
+  const chroniclePath = path.join(__dirname, "../notes/z-SITE/Site Chronicle.md");
+  const raw = fs.readFileSync(chroniclePath, "utf8");
+  return parseChronicle(raw);
 };
+module.exports.parseChronicle = parseChronicle;

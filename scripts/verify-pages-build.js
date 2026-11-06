@@ -1,6 +1,6 @@
 const fs = require("fs");
 const path = require("path");
-require("dotenv").config();
+require("dotenv").config({ path: [".env", "site.env"] });
 const {
   normalizeSitePathPrefix,
   prefixRootRelativeUrl,
@@ -10,12 +10,10 @@ const prefix = normalizeSitePathPrefix(process.env.SITE_PATH_PREFIX || "/");
 const outputDir = path.resolve("dist");
 const indexPath = path.join(outputDir, "index.html");
 const legacyHost = "gman-cyberpunk.vercel.app";
-const characterApiUrl = `https://${legacyHost}/api/character`;
-const sheetApiUrls = [
-  characterApiUrl,
-  `https://${legacyHost}/api/save-character`,
-  `https://${legacyHost}/api/load-character`,
-];
+const expectedSheetApiBase =
+  process.env.SHEET_API_BASE || `https://${legacyHost}/api`;
+const apiConfigRelativePath = path.join("img", "api-config.js");
+const sheetApiConfigRef = 'src="api-config.js"';
 
 if (!fs.existsSync(indexPath)) {
   throw new Error("The Pages build did not produce dist/index.html");
@@ -148,15 +146,22 @@ for (const asset of ["styles/digital-garden-base.css", "styles/custom-style.css"
 const urlAttributePattern =
   /\b(href|src|action|formaction|poster|cite|background|data-src|data-href|xlink:href|srcset|imagesrcset)(\s*=\s*)(["'])(\/(?!\/)[^"']*)\3/gi;
 
+const apiConfigPath = path.join(outputDir, apiConfigRelativePath);
+if (
+  !fs.existsSync(apiConfigPath) ||
+  !fs.readFileSync(apiConfigPath, "utf8").includes(expectedSheetApiBase)
+) {
+  throw new Error(
+    "The sheets' generated API config is missing from the build or lost the cloud-save API host"
+  );
+}
+
 for (const htmlFile of findHtmlFiles(outputDir)) {
+  if (htmlFile === apiConfigPath) continue; // the one allowed home of the API host
   const pageHtml = fs.readFileSync(htmlFile, "utf8");
-  let htmlWithoutSheetApis = pageHtml;
-  for (const apiUrl of sheetApiUrls) {
-    htmlWithoutSheetApis = htmlWithoutSheetApis.replaceAll(apiUrl, "");
-  }
-  if (htmlWithoutSheetApis.includes(legacyHost)) {
+  if (pageHtml.includes(legacyHost)) {
     throw new Error(
-      `A generated page still references the old site: ${path.relative(outputDir, htmlFile)}`
+      `A generated page hardcodes the API host instead of using img/api-config.js: ${path.relative(outputDir, htmlFile)}`
     );
   }
   for (const match of pageHtml.matchAll(urlAttributePattern)) {
@@ -181,19 +186,17 @@ for (const htmlFile of findHtmlFiles(outputDir)) {
 const overdriveSheetPath = path.join(outputDir, "img/NCO-sheet.html");
 if (
   !fs.existsSync(overdriveSheetPath) ||
-  !fs.readFileSync(overdriveSheetPath, "utf8").includes(characterApiUrl)
+  !fs.readFileSync(overdriveSheetPath, "utf8").includes(sheetApiConfigRef)
 ) {
-  throw new Error("The NCO sheet is missing its Vercel cloud-save API endpoint");
+  throw new Error("The NCO sheet is missing its shared cloud-save API config");
 }
 
 const cpredSheetPath = path.join(outputDir, "img/CPRED-sheet.html");
 if (
   !fs.existsSync(cpredSheetPath) ||
-  !fs.readFileSync(cpredSheetPath, "utf8").includes(
-    `https://${legacyHost}/api/save-character`
-  )
+  !fs.readFileSync(cpredSheetPath, "utf8").includes(sheetApiConfigRef)
 ) {
-  throw new Error("The CPRED sheet is missing its Vercel cloud-save API endpoint");
+  throw new Error("The CPRED sheet is missing its shared cloud-save API config");
 }
 
 const digitalGardenStylesheet = fs.readFileSync(

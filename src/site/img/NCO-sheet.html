@@ -1016,6 +1016,7 @@
 </div><!-- end sheet-page5 -->
 
 
+<script src="api-config.js"></script>
 <script>
   // ═══════════════════════════════════════════════════════
   // TRADEMARK SYSTEM
@@ -2120,7 +2121,7 @@
   // ═══════════════════════════════════════════════════════
   document.getElementById('traumas-container').innerHTML = '';
   for (let i = 0; i < 4; i++) addTrauma();
-  const characterApiUrl = 'https://gman-cyberpunk.vercel.app/api/character';
+  const characterApiUrl = window.CYBERPUNK_API_BASE + '/character';
 
   function setGHStatus(msg, isError) {
     const el = document.getElementById('gh-status');

@@ -25,9 +25,6 @@ module.exports = async function handler(req, res) {
     return res.status(500).json({ error: 'Server misconfiguration: missing GITHUB_TOKEN.' });
   }
 
-  const SALT   = 'cyberpunk-red-salt-2077-night-city';
-  const hashHex = crypto.createHash('sha256').update(password + SALT).digest('hex');
-
   const safeUsername = username.toLowerCase().replace(/[^a-z0-9_-]/g, '_').slice(0, 64);
   const filePath = `saves/characters/${safeUsername}.json`;
 
@@ -54,7 +51,10 @@ module.exports = async function handler(req, res) {
     const decoded  = Buffer.from(fileData.content.replace(/\n/g, ''), 'base64').toString('utf8');
     const saveData = JSON.parse(decoded);
 
-    if (saveData.passwordHash !== hashHex) {
+    const salt = saveData.passwordSalt || '';
+    const attempt = crypto.scryptSync(password, salt, 64);
+    const stored = Buffer.from(saveData.passwordHash || '', 'hex');
+    if (stored.length !== attempt.length || !crypto.timingSafeEqual(stored, attempt)) {
       return res.status(401).json({ error: 'Access denied — incorrect access code.' });
     }
 

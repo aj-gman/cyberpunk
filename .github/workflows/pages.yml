@@ -3,6 +3,11 @@ name: Deploy GitHub Pages
 on:
   push:
     branches: [main]
+    # Character saves are committed to main by the sheets' API; a push that
+    # only touches save files must not rebuild the site.
+    paths-ignore:
+      - "characters/**"
+      - "saves/**"
   workflow_dispatch:
 
 permissions:
