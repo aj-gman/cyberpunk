@@ -5,13 +5,11 @@
         "src/site/index.11tydata.js",
         "src/site/_data/filetree.js",
         "api/search.js",
-        "netlify/functions/search/search.js",
         "src/site/versionednote.njk",
         "src/site/_includes/layouts/versionednote.njk",
         "src/site/lunr-index.js",
         "src/site/_data/versionednotes.js",
         "src/site/lunr.njk"
-        
     ],
     "filesToAdd": [
         "src/site/styles/custom-style.scss",
@@ -24,7 +22,6 @@
         "src/helpers/userUtils.js",
         "src/helpers/userSetup.js",
         "vercel.json",
-        "netlify.toml",
         "src/site/_includes/layouts/random.njk",
         "src/site/random.md",
         "src/helpers/bases-engine/index.js",
