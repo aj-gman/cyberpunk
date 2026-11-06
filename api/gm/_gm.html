@@ -1,0 +1,114 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GM Screen</title>
+<style>
+:root{--y:#fee801;--c:#54c1e6;--r:#ff0055;--bg:#07070c;--p:rgba(10,10,18,.92)}
+*{box-sizing:border-box}html,body{margin:0;height:100%;overflow:hidden;background:var(--bg);color:#d8d8e0;font:14px/1.4 'Lexend',system-ui,monospace}
+#map{position:fixed;inset:0;z-index:0;overflow:hidden;display:none;background:#000}
+#map.on{display:block}
+#map iframe{position:absolute;left:0;top:0;width:calc(100% + 24px);height:calc(100% + 24px);border:0;pointer-events:none;filter:brightness(.4) saturate(.8)}
+header{position:fixed;top:0;left:0;right:0;z-index:5;display:flex;gap:12px;align-items:center;padding:8px 14px;background:var(--p);border-bottom:2px solid var(--y)}
+header h1{margin:0;font-size:16px;letter-spacing:3px;color:var(--y);text-shadow:0 0 8px rgba(254,232,1,.5)}
+header .sp{flex:1}
+button,.btn{font:inherit;background:#000;color:var(--c);border:1px solid var(--c);padding:4px 10px;cursor:pointer;text-transform:uppercase;letter-spacing:1px;font-size:12px}
+button:hover{background:var(--c);color:#000}
+#mapbtn.on{background:var(--y);color:#000;border-color:var(--y)}
+main{position:fixed;inset:0;z-index:2;padding:64px 14px 14px;overflow:auto}
+.add{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;background:var(--p);border:1px solid #333;padding:8px}
+.add input,.add select{background:#000;color:#fff;border:1px solid var(--c);padding:5px;font:inherit}
+#cards{display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start}
+.card{width:210px;background:var(--p);border:2px solid var(--r);box-shadow:0 0 10px rgba(255,0,85,.25);padding:6px 8px}
+.card h3{margin:0 0 4px;display:flex;justify-content:space-between;font-size:13px;color:var(--y);line-height:1.2}
+.card h3 button{border-color:var(--r);color:var(--r);padding:0 6px;line-height:16px;height:18px}
+.row{display:flex;align-items:center;justify-content:space-between;margin:3px 0}
+.lab{font-size:10px;letter-spacing:1px;color:#999}
+.ctr{display:flex;align-items:center;gap:4px}
+.ctr b{min-width:38px;text-align:center;font-size:16px;line-height:24px;color:var(--c);background:#000;border:1px solid var(--c);text-shadow:0 0 8px rgba(84,193,230,.6);font-variant-numeric:tabular-nums}
+.ctr.hit b{color:var(--r);border-color:var(--r);text-shadow:0 0 8px rgba(255,0,85,.6);min-width:26px}
+.ctr button{width:22px;height:26px;font-size:14px;padding:0;line-height:1}
+textarea{width:100%;min-height:36px;height:44px;font-size:12px;resize:both;background:#000;color:#ddd;border:1px solid #444;padding:6px;font:inherit;max-width:none}
+#dock{position:fixed;z-index:10;left:12px;right:12px;bottom:12px;display:flex;justify-content:space-between;align-items:flex-end;gap:8px;pointer-events:none}
+#dock>aside{pointer-events:auto}
+@media (max-width:900px){#dock{flex-direction:column;align-items:stretch}#dock>aside{width:100%!important}#rules{max-height:16vh!important}#tags{max-height:20vh!important}}
+#rules{width:min(40vw,520px);max-height:41vh;background:var(--p);border:2px solid var(--y);display:flex;flex-direction:column}
+#rules .bar{display:flex;justify-content:space-between;align-items:center;padding:6px 10px;cursor:pointer;color:var(--y);letter-spacing:2px;font-size:12px;user-select:none}
+#rules .body{display:none;padding:0 10px 10px;overflow:auto}
+#rules.open .body{display:block}
+#rules input{width:100%;background:#000;color:#fff;border:1px solid var(--y);padding:5px;font:inherit}
+#rules li{margin:6px 0;list-style:none}#rules ul{padding:0;margin:8px 0 0}
+#rules a{color:var(--c)}#rules small{display:block;color:#888}
+#cards.folded{flex-direction:column;flex-wrap:nowrap;gap:5px;width:96px}
+#cards.folded .card{display:none}
+.strip{display:none}
+#cards.folded .strip{display:block;cursor:default}
+.strip span{display:block;font-size:9px;line-height:11px;color:#ff6b95;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-shadow:0 0 4px #000}
+.strip i{display:block;height:3px;background:var(--r);box-shadow:0 0 6px var(--r)}
+#foldbtn.on{background:var(--r);color:#000;border-color:var(--r)}
+#tags{width:min(40vw,320px);max-height:41vh;background:var(--p);border:2px solid var(--c);display:flex;flex-direction:column}
+#tags .bar{display:flex;justify-content:space-between;padding:6px 10px;cursor:pointer;color:var(--c);letter-spacing:2px;font-size:12px;user-select:none}
+#tags .body{display:none;padding:0 10px 10px;overflow:auto}
+#tags.open .body{display:block}
+#tags .lab{display:block;margin:6px 0 2px;color:var(--c)}
+#tags textarea{height:48px;min-height:30px;border-color:var(--c)}
+.empty{color:#777;padding:20px}
+</style></head><body>
+<div id="map"></div>
+<header><h1>GM SCREEN</h1><span class="sp"></span><button id="foldbtn">NPCs: fold</button><button id="mapbtn">Map: off</button></header>
+<main>
+<div class="add"><select id="wiki"><option value="">Wiki NPC (#npc)...</option></select><button id="addwiki">Add</button>
+<input id="newname" placeholder="New NPC name"><button id="addnew">Create</button></div>
+<div id="cards"></div></main>
+<div id="dock"><aside id="tags"><div class="bar" id="tbar"><span>TAGS</span><span id="tarrow">▲ unfold</span></div>
+<div class="body" id="tbody"></div></aside>
+<aside id="rules"><div class="bar" id="rbar"><span>RULES</span><span id="rarrow">▲ unfold</span></div>
+<div class="body"><input id="rq" placeholder="Search rules only..." autocomplete="off"><ul id="rres"></ul></div></aside></div>
+<script>
+const PAGES=(window.GM_PAGES||'https://aj-gman.github.io/cyberpunk/');const ORIGIN=new URL(PAGES).origin;
+let RULES=[],NPCS=[],state=(()=>{try{const v=JSON.parse(localStorage.getItem('gm-state')||'');return v&&Array.isArray(v.npcs)?v:{npcs:[]}}catch{return{npcs:[]}}})();
+const save=()=>localStorage.setItem('gm-state',JSON.stringify(state));
+const clean=t=>t.replace(/\[\[([^\]|]*\\?\|)?([^\]]*)\]\]/g,'$2').replace(/[#*\\]/g,'');
+const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+function render(){const c=document.getElementById('cards');c.innerHTML='';
+ if(!state.npcs.length)c.innerHTML='<div class="empty">No NPCs tracked. Add one above.</div>';
+ state.npcs.forEach((n,i)=>{const d=document.createElement('div');d.className='card';
+ d.innerHTML=`<h3><span></span><button title="Remove">×</button></h3>
+ <div class="row"><span class="lab">ACTIONS</span><div class="ctr"><button data-a="c-">−</button><b>${String(n.c).padStart(2,'0')}</b><button data-a="c+">+</button></div></div>
+ <div class="row"><span class="lab">HITS</span><div class="ctr hit"><button data-a="h-">−</button><b>${n.h}</b><button data-a="h+">+</button></div></div>
+ <textarea placeholder="Short description..."></textarea>`;
+ d.querySelector('h3 span').textContent=n.name+(n.url?'':' (new)');
+ const ta=d.querySelector('textarea');ta.value=n.d||'';if(n.w)ta.style.width=n.w+'px';if(n.ht)ta.style.height=n.ht+'px';
+ ta.oninput=()=>{n.d=ta.value;save()};ta.onmouseup=()=>{n.w=ta.offsetWidth;n.ht=ta.offsetHeight;save()};
+ d.querySelector('h3 button').onclick=()=>{state.npcs.splice(i,1);save();render()};
+ d.querySelectorAll('.ctr button').forEach(b=>b.onclick=()=>{const a=b.dataset.a;
+  if(a[0]=='c')n.c=clamp(n.c+(a[1]=='+'?1:-1),0,99);else n.h=clamp(n.h+(a[1]=='+'?1:-1),0,9);save();render()});
+ c.appendChild(d);
+ const st=document.createElement('div');st.className='strip';st.title=n.name+' | Actions '+n.c+' | Hits '+n.h;
+ const sp=document.createElement('span');sp.textContent=n.name;st.append(sp,document.createElement('i'));c.appendChild(st)});
+ c.classList.toggle('folded',!!state.folded);const fb=document.getElementById('foldbtn');fb.classList.toggle('on',!!state.folded);fb.textContent=state.folded?'NPCs: unfold':'NPCs: fold'}
+document.getElementById('foldbtn').onclick=()=>{state.folded=!state.folded;save();render()};
+const TAGS=['NET','Location','Enemy'];
+(()=>{const b=document.getElementById('tbody');state.tags=state.tags||{};
+ TAGS.forEach(k=>{const l=document.createElement('label');l.className='lab';l.textContent=k;const t=document.createElement('textarea');t.setAttribute('aria-label',k);
+  const v=state.tags[k]=(state.tags[k]&&typeof state.tags[k]==='object')?state.tags[k]:{};
+  t.value=typeof v.v==='string'?v.v:'';if(v.w)t.style.width=v.w+'px';if(v.h)t.style.height=v.h+'px';
+  t.oninput=()=>{v.v=t.value;save()};t.onmouseup=()=>{v.w=t.offsetWidth;v.h=t.offsetHeight;save()};
+  l.appendChild(t);b.appendChild(l)});
+ const T=document.getElementById('tags'),ar=document.getElementById('tarrow');
+ const sync=()=>{T.classList.toggle('open',!!state.tagsOpen);ar.textContent=state.tagsOpen?'▼ fold':'▲ unfold'};sync();
+ document.getElementById('tbar').onclick=()=>{state.tagsOpen=!state.tagsOpen;save();sync()}})();
+const add=(name,url)=>{state.npcs.push({name,url,c:0,h:3,d:''});save();render()};
+document.getElementById('addwiki').onclick=()=>{const s=document.getElementById('wiki');if(s.value){const n=NPCS[s.value];add(n.name,n.url)}};
+document.getElementById('addnew').onclick=()=>{const i=document.getElementById('newname');if(i.value.trim()){add(i.value.trim(),null);i.value=''}};
+const mapEl=document.getElementById('map'),mb=document.getElementById('mapbtn');
+mb.onclick=()=>{const on=!mapEl.classList.contains('on');mapEl.classList.toggle('on',on);mb.classList.toggle('on',on);mb.textContent='Map: '+(on?'on':'off');
+ mapEl.innerHTML=on?'<iframe src="'+PAGES+'img/map-viewer/index.html" title="Map" loading="lazy"></iframe>':''};
+const R=document.getElementById('rules');document.getElementById('rbar').onclick=()=>{R.classList.toggle('open');document.getElementById('rarrow').textContent=R.classList.contains('open')?'▼ fold':'▲ unfold'};
+document.getElementById('rq').oninput=e=>{const q=e.target.value.trim().toLowerCase(),ul=document.getElementById('rres');ul.innerHTML='';if(!q)return;
+ RULES.filter(r=>(r.title+' '+r.text).toLowerCase().includes(q)).slice(0,20).forEach(r=>{const li=document.createElement('li');const a=document.createElement('a');a.href=r.url.startsWith('/')?ORIGIN+r.url:'#';a.target='_blank';a.textContent=r.title;const s=document.createElement('small');const k=r.text.toLowerCase().indexOf(q);s.textContent=k>=0?'…'+r.text.slice(Math.max(0,k-30),k+70)+'…':r.path;li.append(a,s);ul.appendChild(li)})};
+const note=m=>{const l=document.getElementById('rres');l.innerHTML='';const li=document.createElement('li');li.textContent=m;li.style.color='#ff0055';l.appendChild(li);document.getElementById('wiki').options[0].textContent='Wiki NPC list unavailable'};
+fetch(PAGES+'gm-index.json').then(r=>{if(!r.ok)throw new Error('HTTP '+r.status);return r.json()}).then(d=>{
+ const ok=x=>Array.isArray(x)&&x.every(i=>i&&typeof i.url==='string'&&typeof (i.title||i.name)==='string');
+ if(!d||!ok(d.rules)||!ok(d.npcs))throw new Error('bad index');
+ RULES=d.rules.map(x=>({title:String(x.title),url:x.url,text:String(x.text||'')}));NPCS=d.npcs.slice().sort((a,b)=>a.name.localeCompare(b.name));
+ const s=document.getElementById('wiki');NPCS.forEach((x,i)=>{const o=document.createElement('option');o.value=i;o.textContent=x.name;s.appendChild(o)})}).catch(()=>note('Rules/NPC index could not be loaded.'));
+render();
+</script></body></html>
