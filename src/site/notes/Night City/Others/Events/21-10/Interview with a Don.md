@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/others/events/21-10/interview-with-a-don/","tags":["4cw","news"],"dg-note-properties":{"tags":["4cw","news"]}}
+{"dg-publish":true,"permalink":"/night-city/others/events/21-10/interview-with-a-don/","tags":["#4cw","#news"],"dg-note-properties":{"tags":["#4cw","#news"]}}
 ---
 
 **October 2021, [[Night City/Organizations/Corporations/N54\|N54]], [[Night City/Characters/2021/edgerunners/Fiona Hayes\|Fiona Hayes]]**
@@ -20,4 +20,4 @@
 **[[Night City/Organizations/Corporations/N54\|N54]]:** You did, in fact, cause the death of that man, whether you intended to or not.
 **[[Night City/Characters/2021/corpos/Bruce Skiv\|Skiv]]:** Guess it's up to [[Night City/Organizations/States/NCPD\|the coppers]] to decide, then.
 
-![Pasted image 20261106195404.png](/img/user/Pasted%20image%2020261106195404.png)
+![npc-don.png](/img/user/Pictures/npc-don.png)

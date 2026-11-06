@@ -4,7 +4,7 @@
 
 
 ### To-Do
-- [ ] Create an interactive *by month/week* map of [[Night City/Locations/Night City\|Night City]]
+- [x] Create an interactive *by month/week* map of [[Night City/Locations/Night City\|Night City]]
 - [ ] Finish write-up for #fashion 
 	- [ ] #fashion
 - [ ] Briefly write the most important details of [[Night City/Locations/Night City\|Night City]]
@@ -13,6 +13,11 @@
 	- [ ] Transportation
 
 ### November 2026
+#### 6.11
+- Added a passkey-gated GM screen
+- [Cleaned up the repo](https://github.com/aj-gman/cyberpunk/commit/2ac645ffe7adbafd91455ba9fa578fad2355cb52)
+- Wrote new [[Night City/Others/News\|News]] for **October 2021** + updated stock tickers
+- Updated the map for **October 2021**
 #### 1.11
 - Updated Landing Page to be more visual and also digestible.
 - Update [Map](https://aj-gman.github.io/cyberpunk/img/map-viewer/#layer=political&date=2021-09) to also include a TIMELINE so you can see how it looked way back when;

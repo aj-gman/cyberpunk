@@ -47,6 +47,3 @@
 - [[Rules/CPRED/Roles/Exec\|Execs]]: Criminal Lawyer, Legal Harassment Buffer (Shell Companies etc.)
 
 ## Gear
-
-[[Night City/Characters/!pc/Ray Null\|Ray Null]]'s presentation:
-<iframe src="/img/user/presentation.pdf" width="100%" height="900px" title="presentation.pdf" style="border:1px solid #ccc;"></iframe>
