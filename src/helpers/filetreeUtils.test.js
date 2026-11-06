@@ -1,4 +1,7 @@
-const { getFileTree } = require("./filetreeUtils");
+import { describe, expect, it } from "vitest";
+import filetreeUtils from "./filetreeUtils.js";
+
+const { getFileTree } = filetreeUtils;
 
 // Helper to build a minimal note object for testing
 function makeNote(filePathStem, data = {}) {
