@@ -16,7 +16,7 @@ Artificial Intelligence tools like Google Gemini, Claude AI, GitHub Copilot & Cl
 This includes but is not limited to: CSS personalization, custom JavaScript code, HTML pages for interactive character sheets, modifying the Digital Garden plugin.
 
 Artificial Intelligence has not aided in the creation or the modification of any creative content. 
-No AI was used when writing/creating any of the user-facing text or images. 
+No AI was used when writing/creating any of the user-facing text. 
 
 Since this is the case, we do not claim any authorship of the codebase for this website.
 [The GitHub Repo for the published version of the website is available under MIT license.](https://github.com/aj-gman/cyberpunk-ttrpg)
