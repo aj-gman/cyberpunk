@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/fourth-corporate-war/","tags":["campaign","4cw"],"dg-note-properties":{"tags":["campaign","4cw"]}}
+{"dg-publish":true,"permalink":"/night-city/fourth-corporate-war/","tags":["#campaign","#4cw","#ideology"],"dg-note-properties":{"tags":["#campaign","#4cw","#ideology"]}}
 ---
 
 ![pic-4cw.jpg\|386](/img/user/Pictures/pic-4cw.jpg)
@@ -42,4 +42,5 @@ As the war entered its fifth month, both sides began to show signs of exhaustion
 >5. [[Night City/Gigs/2021/past/Seven Nation Army\|Seven Nation Army]]
 >6. [[Night City/Gigs/2021/past/Fated, Faithful, Fatal\|Fated, Faithful, Fatal]]
 >7. [[Night City/Gigs/2021/past/Man That You Fear\|Man That You Fear]]
+>8. [[Night City/Gigs/2021/Change the Channel\|Change the Channel]]
 

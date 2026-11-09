@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/billy-night/","dg-note-properties":{}}
+{"dg-publish":true,"permalink":"/billy-night/","tags":["#npc","#4cw"],"dg-note-properties":{"tags":["#npc","#4cw"]}}
 ---
 
 #npc #4cw 
