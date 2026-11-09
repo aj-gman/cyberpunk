@@ -40,6 +40,6 @@ As the war entered its fifth month, both sides began to show signs of exhaustion
 >3. [[Night City/Gigs/2021/past/Into the Lion's Den\|Into the Lion's Den]]
 >4. [[Night City/Gigs/2021/past/Deep Six\|Deep Six]]
 >5. [[Night City/Gigs/2021/past/Seven Nation Army\|Seven Nation Army]]
->6. [[Night City/Gigs/2021/Fated, Faithful, Fatal\|Fated, Faithful, Fatal]]
->7. [[Night City/Gigs/2021/Man That You Fear\|Man That You Fear]]
+>6. [[Night City/Gigs/2021/past/Fated, Faithful, Fatal\|Fated, Faithful, Fatal]]
+>7. [[Night City/Gigs/2021/past/Man That You Fear\|Man That You Fear]]
 

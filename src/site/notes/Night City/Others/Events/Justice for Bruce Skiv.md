@@ -2,7 +2,7 @@
 {"dg-publish":true,"permalink":"/night-city/others/events/justice-for-bruce-skiv/","dg-note-properties":{}}
 ---
 
-#news #4cw [[Night City/Characters/2021/edgerunners/Volk\|Volk]], **August 2021**, [[Night City/Gigs/2021/Fated, Faithful, Fatal\|Fated, Faithful, Fatal]]
+#news #4cw [[Night City/Characters/2021/edgerunners/Volk\|Volk]], **August 2021**, [[Night City/Gigs/2021/past/Fated, Faithful, Fatal\|Fated, Faithful, Fatal]]
 
 [[Night City/Characters/2021/corpos/Bruce Skiv\|Bruce Skiv]], renowned Don of the [[Night City/Organizations/Gangs/The Mob\|NC Mob]], has finally been arrested following an altercation at the [[Night City/Locations/Buildings/NC Columbarium\|NC Columbarium]]. Details on the actual reason are unclear, but your boy [[Night City/Characters/2021/edgerunners/Volk\|Volk]] has taken it out of his day to go 'round the [[Night City/Organizations/States/NCPD\|PD]] to ask questions about publicly-available information.
 

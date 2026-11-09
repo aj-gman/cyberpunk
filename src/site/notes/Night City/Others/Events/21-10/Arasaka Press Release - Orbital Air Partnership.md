@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/others/events/21-10/arasaka-press-release-orbital-air-partnership/","tags":["#4cw","#news"],"dg-note-properties":{"tags":["#4cw","#news"]}}
+{"dg-publish":true,"permalink":"/night-city/others/events/21-10/arasaka-press-release-orbital-air-partnership/","tags":["4cw","news"],"dg-note-properties":{"tags":["4cw","news"]}}
 ---
 
 **October 2021, [[Night City/Organizations/Corporations/Arasaka\|Arasaka]] Press Release**

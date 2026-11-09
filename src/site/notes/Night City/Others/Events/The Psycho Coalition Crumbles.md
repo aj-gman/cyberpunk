@@ -2,7 +2,7 @@
 {"dg-publish":true,"permalink":"/night-city/others/events/the-psycho-coalition-crumbles/","tags":["news","4cw"],"dg-note-properties":{"tags":["news","4cw"]}}
 ---
 
-**September 2021, [[Night City/Gigs/2021/Man That You Fear\|Man That You Fear]], [[Night City/Organizations/Corporations/N54\|N54]]**
+**September 2021, [[Night City/Gigs/2021/past/Man That You Fear\|Man That You Fear]], [[Night City/Organizations/Corporations/N54\|N54]]**
 
 *Hello, hello, everyone!* `explosions in the background` This is [[Night City/Characters/2021/edgerunners/Lyle McClellan\|Lyle McClellan]], live from [[Night City/Locations/Districts/South Night City\|South Night City]]!!! `a UAV flies above` As you can see `moving into a building, with the camera-drone following` the situation is dire. You'd think this is because of the [[Night City/Organizations/Gangs/Blood Razors\|Blood Razors]] putting up their last stand against [[Night City/Organizations/Corporations/Militech\|Militech]], but no. `A Maelstromite yells, Mantis Blades out` Turns out, the Psycho Coalition isn't doing too well, with many of its `Lyle puts two .45cal bullets into the psycho's skull` most notable members running scared. For example, no one has heard from [[Night City/Characters/2021/gangers/Lithibus the 2nd\|Lithibus the 2nd]] after an incident involving what we believe to be [[Night City/Characters/!pc/Ray Null\|Ray Null]] and a lot of [[Night City/Organizations/Corporations/Militech\|Militech]] soldiers - fighting together, no less. `Lyle comes out of the building`.
 

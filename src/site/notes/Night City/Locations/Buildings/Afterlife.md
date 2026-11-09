@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/locations/buildings/afterlife/","tags":["#location","#4cw"],"dg-note-properties":{"tags":["#location","#4cw"]}}
+{"dg-publish":true,"permalink":"/night-city/locations/buildings/afterlife/","tags":["location","4cw"],"dg-note-properties":{"tags":["location","4cw"]}}
 ---
 
 #4cw [[Night City/Locations/Night City\|Night City]] [[Night City/Locations/Districts/City Center#Medical Center\|City Center#Medical Center]]

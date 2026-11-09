@@ -29,7 +29,7 @@ The years since the new millennium saw Corporate [[Night City/Locations/Night Ci
 By 2009, [[Night City/Locations/Night City\|Night City]] became renowned for its violence come sundown - drugs, prostitution, racketeering, random violence and cybernetic terrorism were all commonplace occurrences, to the point that [[Night City/Organizations/Gangs/The Mob\|The Mob]] seized on this by bankrolling a betting company that would become the [[Body Lotto\|Body Lotto]]. The [[Night City/Locations/Night City#Government & Politics\|City Council]] was controlled by organized crime and everything was going to shit.
 
 ### Resurgence
-In May of 2009, [[Night City/Organizations/Corporations/Arasaka\|Arasaka]] had had enough. [[Night City/Locations/Night City\|Night City]] was a project they'd invested quite a hefty sum in and, backed by [[Merill, Asukaga & Finch\|Merill, Asukaga & Finch]] and [[Night City/Organizations/Corporations/EBM\|EBM]], they initiated an extensive counterattack against [[Night City/Organizations/Gangs/The Mob\|The Mob]] in what is known as [the Mob War](https://cyberpunk.fandom.com/wiki/Night_City/History#Mob_War_(2009_-_2011)). This meant tanks in the streets, hired mercenaries, paramilitary troops coming down in [[Night City/Others/Technology/AV\|Aerodynes]] and even strategic bombings.
+In May of 2009, [[Night City/Organizations/Corporations/Arasaka\|Arasaka]] had had enough. [[Night City/Locations/Night City\|Night City]] was a project they'd invested quite a hefty sum in and, backed by [[Night City/Organizations/Merill, Asukaga & Finch\|Merill, Asukaga & Finch]] and [[Night City/Organizations/Corporations/EBM\|EBM]], they initiated an extensive counterattack against [[Night City/Organizations/Gangs/The Mob\|The Mob]] in what is known as [the Mob War](https://cyberpunk.fandom.com/wiki/Night_City/History#Mob_War_(2009_-_2011)). This meant tanks in the streets, hired mercenaries, paramilitary troops coming down in [[Night City/Others/Technology/AV\|Aerodynes]] and even strategic bombings.
 
 Since the end of the Mob War in 2011, [[Night City/Organizations/Corporations/Arasaka\|Arasaka]] has been largely seen as the guardian angel of [[Night City/Locations/Night City\|Night City]], taking a guiding role in both politics and business. 
 ## Government & Politics
@@ -115,6 +115,6 @@ Most officially-sanctioned sports events take place in [McCartney Stadium](https
 
 
 
-[^1]: [[Night City/Organizations/Corporations/Arasaka\|Arasaka]], [[Merill, Asukaga & Finch\|Merill, Asukaga & Finch]], [[Night City/Organizations/Corporations/EBM\|EBM]], [[Night City/Organizations/Corporations/Night Corp\|Night Corp]], [[Night City/Organizations/Corporations/Petrochem\|Petrochem]].
+[^1]: [[Night City/Organizations/Corporations/Arasaka\|Arasaka]], [[Night City/Organizations/Merill, Asukaga & Finch\|Merill, Asukaga & Finch]], [[Night City/Organizations/Corporations/EBM\|EBM]], [[Night City/Organizations/Corporations/Night Corp\|Night Corp]], [[Night City/Organizations/Corporations/Petrochem\|Petrochem]].
 
 [^2]: Currently, [[Night City/Organizations/Corporations/Arasaka\|Arasaka]] holds a chokehold on government contracts in the area.

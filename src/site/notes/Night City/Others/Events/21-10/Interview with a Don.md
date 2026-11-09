@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/others/events/21-10/interview-with-a-don/","tags":["#4cw","#news"],"dg-note-properties":{"tags":["#4cw","#news"]}}
+{"dg-publish":true,"permalink":"/night-city/others/events/21-10/interview-with-a-don/","tags":["4cw","news"],"dg-note-properties":{"tags":["4cw","news"]}}
 ---
 
 **October 2021, [[Night City/Organizations/Corporations/N54\|N54]], [[Night City/Characters/2021/edgerunners/Fiona Hayes\|Fiona Hayes]]**

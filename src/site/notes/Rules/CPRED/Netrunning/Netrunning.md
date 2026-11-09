@@ -9,9 +9,11 @@ Also see:
 - [[Rules/CPRED/Netrunning/Netrunner Gear\|Netrunner Gear]]
 - [[Rules/CPRED/Netrunning/ICE\|NET Enemies]]
 
-Netrunning is **a form of hacking**[^1] that requires the user to disconnect themselves from **meatspace** in order to enter an altered state of consciousness allowing them to parse large amounts of data at much faster speeds, quite literally "connecting" their brain to the grid.
+[[Rules/CPRED/Netrunning/Netrunning\|Netrunning]] is **a form of hacking**[^1] that requires the user to disconnect themselves from **meatspace** in order to enter an altered state of consciousness allowing them to parse large amounts of data at much faster speeds, quite literally "connecting" their brain to the grid.
 
-Netrunning is **software-oriented**, meaning that whenever an electronic system can be bypassed through Netrunning, the character interfaces with the given system, altering little about its hardware (as opposed to a [[Rules/CPRED/Roles/Techie\|Techie]] hotwiring the same electronic lock).
+[[Rules/CPRED/Netrunning/Netrunning\|Netrunning]] is **software-oriented**, meaning that whenever an electronic system can be bypassed through Netrunning, the character interfaces with the given system, altering little about its hardware (as opposed to a [[Rules/CPRED/Roles/Techie\|Techie]] hotwiring the same electronic lock).
+
+[[Rules/CPRED/Netrunning/Netrunning\|Netrunning]] requires the constant cooling of the user's body, since continued dives overheat their [[Rules/NCOverdrive/Cyberware\|Cyberware]] and can "fry" them from the inside. [[Rules/CPRED/Roles/Netrunner\|Runners]] who prefer splitting their consciousness to both **meatspace** and **cyberspace** prefer the use of specially-made [bodyweight suits](https://cyberpunk.fandom.com/wiki/Heat-resistant_hybridweave_netrunning_suit) that have built in AC constantly monitoring their body temp. Others prefer the safety of an ice bath in a remote location - more processing power, but larger delay.
 
 When trying to netrun, there are two types of systems one can interact with:
 - a [[Rules/CPRED/Netrunning/Netrunning#Clear Systems\|Clear System]] requires a cyberdeck, but doesn't require an [[Rules/CPRED/Cyberware/Cyberware#Psychological and Neural\|Operating System]]; these systems operate similarly to other digital spaces, which just require some patience to infiltrate

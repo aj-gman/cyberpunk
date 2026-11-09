@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/locations/districts/city-center/","tags":["#district","#location"],"dg-note-properties":{"tags":["#district","#location"]}}
+{"dg-publish":true,"permalink":"/night-city/locations/districts/city-center/","tags":["district","location"],"dg-note-properties":{"tags":["district","location"]}}
 ---
 
 

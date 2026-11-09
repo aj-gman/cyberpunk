@@ -1,10 +1,9 @@
 ---
-{"dg-publish":true,"dg-path":"Site Chronicle.md","permalink":"/site-chronicle/","tags":["#fashion","#ideology","#npc","#news","#district","#dependency","#stratum","#boostergang","#role"],"dg-note-properties":{"tags":["#fashion","#ideology","#npc","#news","#district","#dependency","#stratum","#boostergang","#role"]}}
+{"dg-publish":true,"dg-path":"Site Chronicle.md","permalink":"/site-chronicle/","tags":["#fashion","#npc","#ideology","#news","#district","#dependency","#stratum","#boostergang","#role"],"dg-note-properties":{"tags":["#fashion","#npc","#ideology","#news","#district","#dependency","#stratum","#boostergang","#role"]}}
 ---
 
 
 ### To-Do
-- [x] Create an interactive *by month/week* map of [[Night City/Locations/Night City\|Night City]]
 - [ ] Finish write-up for #fashion 
 	- [ ] #fashion
 - [ ] Briefly write the most important details of [[Night City/Locations/Night City\|Night City]]
@@ -13,6 +12,9 @@
 	- [ ] Transportation
 
 ### November 2026
+#### 9.11
+- Began work on [[Night City/Gigs/2021/Thugs\|Thugs]], the 10.11.2026 session;
+- Added new #npc for [[Night City/Organizations/ASG\|ASG]]'s team, as well as [[Night City/Characters/2021/corpos/Mbole Ebunike\|Mbole Ebunike]];
 #### 6.11
 - Added a passkey-gated GM screen
 - [Cleaned up the repo](https://github.com/aj-gman/cyberpunk/commit/2ac645ffe7adbafd91455ba9fa578fad2355cb52)
@@ -26,7 +28,7 @@
 - Began writing on the new adventure, [[Night City/Gigs/2021/Change the Channel\|Change the Channel]]
 ### October 2026
 #### 22.10
-- Wrote and published the After Action Report for [[Night City/Gigs/2021/Fated, Faithful, Fatal\|Fated, Faithful, Fatal]];
+- Wrote and published the After Action Report for [[Night City/Gigs/2021/past/Fated, Faithful, Fatal\|Fated, Faithful, Fatal]];
 - Published [[Night City/Organizations/Corporations/N54\|N54]]'s page, as well as relevant characters: [[Night City/Characters/2021/corpos/Howard Wong\|Howard Wong]], [[Night City/Characters/2021/edgerunners/Bes Isis\|Bes Isis]], [[Night City/Characters/2021/edgerunners/Fiona Hayes\|Fiona Hayes]], [[Night City/Characters/2021/edgerunners/Lyle McClellan\|Lyle McClellan]]
 - Created [[Night City/Organizations/Corporations/!stock\|!stock]] and [[Night City/Organizations/Corporations/!stock-code\|!stock-code]], which are used to display current publicly-traded companies' value increases per month;
 - Fixed bugs on the website like the buttons displaying with errors.
