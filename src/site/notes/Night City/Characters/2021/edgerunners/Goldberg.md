@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-path":"Night City/Characters/edgerunners/Goldberg.md","permalink":"/night-city/characters/edgerunners/goldberg/","tags":["#npc","#4cw"],"dg-note-properties":{"tags":["#npc","#4cw"]}}
+{"dg-publish":true,"dg-path":"Night City/Characters/edgerunners/Goldberg.md","permalink":"/night-city/characters/edgerunners/goldberg/","dg-note-properties":{}}
 ---
 
 #npc #4cw 

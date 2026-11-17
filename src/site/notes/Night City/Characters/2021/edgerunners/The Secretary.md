@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-path":"Night City/Characters/edgerunners/The Secretary.md","permalink":"/night-city/characters/edgerunners/the-secretary/","tags":["#npc","#4cw"],"dg-note-properties":{"tags":["#npc","#4cw"]}}
+{"dg-publish":true,"dg-path":"Night City/Characters/edgerunners/The Secretary.md","permalink":"/night-city/characters/edgerunners/the-secretary/","dg-note-properties":{}}
 ---
 
 #npc #4cw 

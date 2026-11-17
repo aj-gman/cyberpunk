@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-path":"Site Chronicle.md","permalink":"/site-chronicle/","tags":["#fashion","#npc","#ideology","#news","#district","#dependency","#stratum","#boostergang","#role"],"dg-note-properties":{"tags":["#fashion","#npc","#ideology","#news","#district","#dependency","#stratum","#boostergang","#role"]}}
+{"dg-publish":true,"dg-path":"Site Chronicle.md","permalink":"/site-chronicle/","dg-note-properties":{}}
 ---
 
 

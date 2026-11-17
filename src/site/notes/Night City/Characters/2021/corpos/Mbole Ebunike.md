@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-path":"Night City/Characters/corpos/Mbole Ebunike.md","permalink":"/night-city/characters/corpos/mbole-ebunike/","tags":["#npc","#4cw"],"dg-note-properties":{"tags":["#npc","#4cw"]}}
+{"dg-publish":true,"dg-path":"Night City/Characters/corpos/Mbole Ebunike.md","permalink":"/night-city/characters/corpos/mbole-ebunike/","dg-note-properties":{}}
 ---
 
 

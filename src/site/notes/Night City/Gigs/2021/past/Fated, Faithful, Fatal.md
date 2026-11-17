@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-path":"Night City/Gigs/past/Fated, Faithful, Fatal.md","permalink":"/night-city/gigs/past/fated-faithful-fatal/","tags":["#gig","#4cw"],"dg-note-properties":{"tags":["#gig","#4cw"]}}
+{"dg-publish":true,"dg-path":"Night City/Gigs/past/Fated, Faithful, Fatal.md","permalink":"/night-city/gigs/past/fated-faithful-fatal/","dg-note-properties":{}}
 ---
 
 #gig #4cw [[Rules/NCOverdrive/Neon City Overdrive (HUB)\|Neon City Overdrive]] [[Night City/Fourth Corporate War\|Fourth Corporate War]]

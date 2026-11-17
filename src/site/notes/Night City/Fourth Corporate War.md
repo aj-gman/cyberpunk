@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/fourth-corporate-war/","tags":["#campaign","#4cw","#ideology"],"dg-note-properties":{"tags":["#campaign","#4cw","#ideology"]}}
+{"dg-publish":true,"permalink":"/night-city/fourth-corporate-war/","tags":["campaign","4cw"],"dg-note-properties":{"tags":["campaign","4cw"]}}
 ---
 
 ![pic-4cw.jpg\|386](/img/user/Pictures/pic-4cw.jpg)

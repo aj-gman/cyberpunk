@@ -32,19 +32,19 @@
 ## [[Rules/CPRED/Roles/Medtechie\|MEDTECHIES]]
 - [[Night City/Characters/2021/gangers/Takano\|Takano]], [[Night City/Organizations/Gangs/Tyger Clawz\|Tyger Clawz]] ==[[Rules/CPRED/Roles/Medtechie\|Ripperdoc]]== specialized in installing jury-rigged [[Rules/NCOverdrive/Cyberware\|Cyberware]] with minimal [[Rules/CPRED/Cyberware/Humanity\|Humanity]] loss; is able to understand most [[Rules/NCOverdrive/Cyberware\|Cyberware]], even uniques or prototypes
 - [[Night City/Characters/2021/gangers/Big Shark\|Big Shark]], [[Night City/Organizations/Gangs/Piranhas\|Piranhas]] [[Rules/CPRED/Roles/Solo\|Solo]], exceptional ==[[Rules/CPRED/Roles/Medtechie\|pharmaceuticals specialist]]==, with a special focus on combat [[Rules/NCOverdrive/Drugs\|Drugs]], stimulants and pain editors;
-- Surgeon
-- Field Medic
-- R&D specialist
+- [[Night City/Characters/2021/edgerunners/Saffron\|Saffron]], Ex-[[Night City/Organizations/Corporations/Night Corp\|NC]] ==[[Rules/CPRED/Roles/Medtechie\|Surgeon]]==, with great capabilities of post-traumatic care, from saving lives via precise surgery to the use of [[Braindance\|Braindance]] tech to prevent early onset of PTSD;
+- ==(Currently searching for)== Field Medic
+- ==(Currently searching for)== R&D specialist
 
 ## [[Rules/CPRED/Roles/Techie\|TECHIES]]
-- Vehicle engineer
-- Security engineer
-- Field engineer
+- ==(Currently searching for)== Vehicle engineer
+- [[Night City/Characters/2021/edgerunners/Roko\|Roko]], ex-[[Night City/Organizations/Corporations/Petrochem\|Petrochem]] ==Security engineer== specialized in perimeter defense and OPSEC especially relating to social infiltrations and leakages;
+- ==(Currently searching for)== Field engineer
 
 ## OTHERS
 - [[Night City/Characters/2021/edgerunners/The Secretary\|The Secretary]], an [[Night City/Organizations/States/NCPD\|NCPD]] contractor with ties to [[Night City/Locations/Night City#Government & Politics\|City Hall]]; worked as advisor to [[Night City/Characters/2021/corpos/Mbole Ebunike\|Mbole Ebunike]]; an ==experienced [[Rules/CPRED/Roles/Lawman\|Lawman]] capable of swindling the entire [[Night City/Organizations/States/NCPD\|NCPD]]== thanks to favors, in-house knowledge and her excruciating desire to "do good"
 - [[Night City/Characters/2021/edgerunners/Goldberg\|Goldberg]], ex-[[Night City/Organizations/Corporations/Arasaka\|Arasaka]] and ex-[[Night City/Organizations/Merill, Asukaga & Finch\|Merill, Asukaga & Finch]] ==[[Rules/CPRED/Roles/Exec\|Exec]], financial, banking & legal expert== who signed up due to ideological reasons and his opposition to [[Night City/Fourth Corporate War\|all-out war]]
 	- currently serving as both accountant and criminal proceedings lawyer, since neither position is too demanding at this time
-- a [[Rules/CPRED/Roles/Media\|Media]]
+- ==(Currently searching for)== a [[Rules/CPRED/Roles/Media\|Media]]
 
 ## Gear

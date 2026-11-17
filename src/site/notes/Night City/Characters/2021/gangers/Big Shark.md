@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-path":"Night City/Characters/gangers/Big Shark.md","permalink":"/night-city/characters/gangers/big-shark/","tags":["#npc","#4cw"],"dg-note-properties":{"tags":["#npc","#4cw"]}}
+{"dg-publish":true,"dg-path":"Night City/Characters/gangers/Big Shark.md","permalink":"/night-city/characters/gangers/big-shark/","dg-note-properties":{}}
 ---
 
 #npc #4cw 

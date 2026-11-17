@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-path":"Night City/Characters/edgerunners/Earhart.md","permalink":"/night-city/characters/edgerunners/earhart/","tags":["#npc","#4cw"],"dg-note-properties":{"tags":["#npc","#4cw"]}}
+{"dg-publish":true,"dg-path":"Night City/Characters/edgerunners/Earhart.md","permalink":"/night-city/characters/edgerunners/earhart/","dg-note-properties":{}}
 ---
 
 #npc #4cw 
