@@ -1086,12 +1086,26 @@
     map.setView(center, DEFAULT_ZOOM, { animate: false });
   }
 
-  function returnToPreviousPage() {
-    if (window.history.length > 1) {
-      window.history.back();
-    } else {
-      window.location.href = '../../night-city/locations/night-city/';
+  // The Back button must never leave this site: an unconditional
+  // history.back() exits to whatever page was previously in the tab (e.g. the
+  // Vercel GM screen). Capture the in-site referring page on load and navigate
+  // to it explicitly instead of traversing the joint history.
+  const SITE_BASE_PATH = new URL('../../', window.location.href).pathname;
+  function inSiteUrl(url) {
+    try {
+      const u = new URL(url, window.location.href);
+      if (u.origin !== window.location.origin || !u.pathname.startsWith(SITE_BASE_PATH)) return null;
+      // Never point Back at the viewer itself.
+      if (u.pathname === window.location.pathname) return null;
+      return u.href;
+    } catch (_) {
+      return null;
     }
+  }
+  const returnTarget = inSiteUrl(document.referrer);
+
+  function returnToPreviousPage() {
+    window.location.href = returnTarget || '../../night-city/locations/night-city/';
   }
 
   applyHash(); // layer part works even without a timeline manifest
