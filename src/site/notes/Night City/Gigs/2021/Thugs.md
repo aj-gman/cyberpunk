@@ -6,6 +6,7 @@
 **Campaign:** [[Night City/Fourth Corporate War\|Fourth Corporate War]]
 
 **GM Screen:** [[Night City/Gigs/2021/Thugs.canvas\|Thugs.canvas]]
+https://gman-cyberpunk.vercel.app/gm
 ## Premise
 [[Night City/Characters/!pc/The Gang\|The Gang]] begins investigating ways to gain influence for their new organization, [[Night City/Organizations/ASG\|ASG]]. They look for support with [[Night City/Organizations/Corporations/Night Corp\|Night Corp]] (perchance through [[Night City/Characters/2021/edgerunners/Billy Night\|Billy Night]]?) and with [[Night City/Characters/2021/corpos/Bruce Skiv\|Bruce Skiv]].
 

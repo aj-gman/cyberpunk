@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/organizations/gangs/organitskaya/","tags":["#boostergang"],"dg-note-properties":{"tags":["#boostergang"]}}
+{"dg-publish":true,"permalink":"/night-city/organizations/gangs/organitskaya/","dg-note-properties":{}}
 ---
 
 #boostergang 

@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-path":"Night City/Characters/edgerunners/Roko.md","permalink":"/night-city/characters/edgerunners/roko/","tags":["#npc","#4cw"],"dg-note-properties":{"tags":["#npc","#4cw"]}}
+{"dg-publish":true,"dg-path":"Night City/Characters/edgerunners/Roko.md","permalink":"/night-city/characters/edgerunners/roko/","dg-note-properties":{}}
 ---
 
 #npc #4cw 

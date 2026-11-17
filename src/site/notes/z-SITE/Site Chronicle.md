@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-path":"Site Chronicle.md","permalink":"/site-chronicle/","dg-note-properties":{}}
+{"dg-publish":true,"dg-path":"Site Chronicle.md","permalink":"/site-chronicle/","tags":["#fashion","#npc","#ideology","#news","#district","#dependency","#stratum","#boostergang","#role"],"dg-note-properties":{"tags":["#fashion","#npc","#ideology","#news","#district","#dependency","#stratum","#boostergang","#role"]}}
 ---
 
 
@@ -12,6 +12,9 @@
 	- [ ] Transportation
 
 ### November 2026
+#### 17.11
+- added new #npc relevant to [[Night City/Gigs/2021/Thugs\|Thugs]]
+- finished [[Night City/Gigs/2021/Thugs\|Thugs]] story
 #### 9.11
 - Began work on [[Night City/Gigs/2021/Thugs\|Thugs]], the 10.11.2026 session;
 - Added new #npc for [[Night City/Organizations/ASG\|ASG]]'s team, as well as [[Night City/Characters/2021/corpos/Mbole Ebunike\|Mbole Ebunike]];

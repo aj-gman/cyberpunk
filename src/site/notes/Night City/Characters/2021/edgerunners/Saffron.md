@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-path":"Night City/Characters/edgerunners/Saffron.md","permalink":"/night-city/characters/edgerunners/saffron/","tags":["#npc","#4cw"],"dg-note-properties":{"tags":["#npc","#4cw"]}}
+{"dg-publish":true,"dg-path":"Night City/Characters/edgerunners/Saffron.md","permalink":"/night-city/characters/edgerunners/saffron/","dg-note-properties":{}}
 ---
 
 #npc #4cw 

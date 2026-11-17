@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-path":"Night City/Characters/edgerunners/Billy Night.md","permalink":"/night-city/characters/edgerunners/billy-night/","tags":["#npc","#4cw"],"dg-note-properties":{"tags":["#npc","#4cw"]}}
+{"dg-publish":true,"dg-path":"Night City/Characters/edgerunners/Billy Night.md","permalink":"/night-city/characters/edgerunners/billy-night/","dg-note-properties":{}}
 ---
 
 #npc #4cw 
