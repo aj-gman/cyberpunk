@@ -4,8 +4,8 @@
   "nickname": "Ray Null",
   "appearance": "Latin complexion, Bohemian clothing style, long and ratty hair. His outfit consists of the Nolasco Family gang colors. He has ritual scars on the inside of his palms - the mark that he is able to pilot a vehicle while wounded.",
   "personality": "Rebellious, antisocial, violent. He uses people for his goals, but is loyal to the end for his proven friends.",
-  "money": 198,
-  "eddies": 198,
+  "money": 148,
+  "eddies": 148,
   "trademarks": [
     {
       "name": "Nomad",
@@ -206,31 +206,24 @@
     false
   ],
   "trackers": {
-    "cyberpsy": 1,
+    "cyberpsy": 3,
     "humanity": 6
   },
   "conditions": {
     "custom": [
       {
-        "text": "Sight of massacre x3",
+        "text": "Sight of massacre x1",
+        "state": "red",
+        "count": 1
+      },
+      {
+        "text": "Whiplash x1",
         "state": "red",
         "count": 1
       }
     ]
   },
   "traumas": [
-    {
-      "marked": false,
-      "text": ""
-    },
-    {
-      "marked": false,
-      "text": ""
-    },
-    {
-      "marked": false,
-      "text": ""
-    },
     {
       "marked": false,
       "text": ""
@@ -262,5 +255,5 @@
       false
     ]
   },
-  "experiencePoints": 3
+  "experiencePoints": 5
 }
