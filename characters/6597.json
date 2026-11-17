@@ -1,5 +1,5 @@
 {
-  "_version": "1.0.1.3",
+  "_version": "1.1.0",
   "_game": "Neon City Overdrive",
   "nickname": "Hex",
   "appearance": "Tall muscular, orange pink mohawk",
@@ -197,29 +197,16 @@
     false
   ],
   "trackers": {
-    "cyberpsy": 0,
+    "cyberpsy": 2,
     "humanity": 4
   },
   "conditions": {
-    "custom": [
-      {
-        "text": "grieving x1",
-        "state": "red"
-      },
-      {
-        "text": "Righteous Wrath x1",
-        "state": "blue"
-      }
-    ]
+    "custom": []
   },
   "traumas": [
     {
       "marked": false,
       "text": "Tenitis"
-    },
-    {
-      "marked": false,
-      "text": "paranoid"
     },
     {
       "marked": false,
@@ -252,5 +239,5 @@
       false
     ]
   },
-  "experiencePoints": 1
+  "experiencePoints": 3
 }
