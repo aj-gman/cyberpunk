@@ -58,9 +58,9 @@
     },
     {
       "type": "basic",
-      "title": "$1 million",
+      "title": "Contact with FACS",
       "tags": "",
-      "notes": "Basically Fuck You money",
+      "notes": "anti-Arasaka business conglomerate that mainly server East/SE Asia",
       "size": 1
     },
     {
@@ -122,7 +122,7 @@
   ],
   "hitsCount": 3,
   "hits": [
-    false,
+    true,
     false,
     false
   ],
@@ -135,12 +135,7 @@
       {
         "text": "Stressed",
         "state": "red",
-        "count": 3
-      },
-      {
-        "text": "Need to Publish",
-        "state": "red",
-        "count": 1
+        "count": 2
       }
     ]
   },
