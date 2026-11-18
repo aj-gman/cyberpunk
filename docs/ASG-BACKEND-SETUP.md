@@ -16,12 +16,26 @@ Architecture (approved 2026-11-18): a **split backend**.
    The browser posts straight to `script.google.com`; the script verifies
    the token and reads/writes the workbook as the backend Google account.
 
-There is **no service account, no private key, and no Google Cloud
-project**: the standalone script runs under the separate Google account
-chosen for the backend, and the workbook's third-party owner shares the
-workbook with that account as Editor. What the script can reach is exactly
-what that Google account can reach, so keep the backend account's access
-limited to this workbook.
+## Privacy boundary in v1.3.1.3
+
+The backend uses the **Advanced Sheets API with `drive.file`**, not the
+account-wide SpreadsheetApp service. Google permits this app to access only
+files explicitly selected for it (or created by it). Select only the existing
+ASG workbook. `ASG_SHEET_ID` plus `ASG_SELECTED_SHEET_ID` also form a server-side
+allowlist; callers cannot choose another workbook. Access covers the entire
+workbook, including History, not one tab. Do not select extra files later.
+
+There is no service account or service-account private key. This design does
+require a standard Google Cloud project for the one-time Google Picker setup.
+It does not require moving the existing workbook or sharing it publicly.
+Google's file grant still permits modifying or deleting a selected file in
+principle; this application implements only the documented cell/tab operations.
+
+If upgrading from v1.3.1.2: archive every older active web-app deployment and
+remove the exact ASG app connection in Google Account > Security > connections
+to third-party apps and services. Preserve the script project and properties.
+An edited manifest alone is not evidence that an old broad grant was removed.
+Do not redeploy the old code or re-grant account-wide Sheets/Drive access.
 
 Everything in the workbook stays normal, directly editable rows and cells:
 the script reads and writes the same cells a person would, so the admin can
@@ -121,27 +135,76 @@ Ask the workbook's owner to share it with the **backend Google account's
 email address** as **Editor**, and copy the workbook's ID from its URL:
 `https://docs.google.com/spreadsheets/d/<THIS LONG ID>/edit`.
 
-## 3. Deploy the Apps Script web app (backend Google account)
+## 3. Install file-only code and privately select the workbook
 
-Do this signed in as the separate backend Google account, not a personal
-one.
+Do these account actions yourself, with guidance if needed. No automated
+account changes or deployments are part of publishing the source commit.
 
-1. Go to https://script.google.com/ and create a **New project** (a
-   standalone script, not bound to the workbook).
-2. Paste the contents of `apps-script/asg.gs` into the editor.
-3. Open **Project Settings > Script Properties** and add:
+1. Keep the existing standalone ASG Backend project. Replace Code.gs with
+   `apps-script/asg.gs`. Add an HTML file named `Setup` containing
+   `apps-script/Setup.html`. Show the manifest through Project Settings and
+   replace appsscript.json with `apps-script/appsscript.json`.
+2. Verify Overview > Project OAuth Scopes shows **drive.file plus userinfo.email**. It must
+   not request broad `spreadsheets`, `drive`, Gmail, or read-only account-wide
+   scopes. The email scope is necessary for the owner identity check. Stop if the actual prompt differs.
+3. Create/select a standard Google Cloud project and associate it with this
+   Apps Script project in Project Settings. Configure the OAuth consent screen
+   for your own account. Enable **Google Sheets API** and **Google Picker API**.
+   Enable the Sheets v4 advanced service in Apps Script (the manifest names it).
+   Changing Cloud-project association changes the OAuth identity, so selection
+   and authorization must use the same associated project throughout.
+4. Create a browser API key for Picker in that Cloud project, restrict its API
+   access to Google Picker API, and set website referrers to `*.google.com` and
+   `*.googleusercontent.com` per Google's Apps Script Picker guide. Never paste
+   API keys, OAuth tokens, group passwords or signing keys into chat or Git.
+5. Preserve `ASG_SHEET_ID` (the existing workbook ID) and `ASG_TOKEN_KEY` (same
+   private random secret later used in Vercel). Add these Script Properties:
 
    | Property | Value |
    |----------|-------|
-   | `ASG_SHEET_ID` | the workbook ID from step 2 |
-   | `ASG_TOKEN_KEY` | the random shared secret from step 4 below |
+   | ASG_OWNER_EMAIL | your exact signed-in main Google account email |
+   | ASG_CLOUD_PROJECT_NUMBER | numeric project number, not project ID |
+   | ASG_PICKER_API_KEY | restricted browser API key from step 4 |
+   | ASG_SETUP_ENABLED | true, temporarily |
 
-4. **Deploy > New deployment > Web app**: *Execute as* **Me**, *Who has
-   access* **Anyone**. Authorize the script when Google asks (it needs the
-   spreadsheets scope to open the shared workbook).
-5. Copy the web app URL ending in `/exec`. Every redeploy after editing the
-   script needs **Deploy > Manage deployments > edit > new version**,
-   otherwise the old code keeps serving.
+6. Use **Deploy > Test deployments > Web app** to obtain the editor-only `/dev`
+   test URL. Open it yourself, signed in as the script owner, with `?setup=1`.
+   Do not put this setup URL on the player page. The setup checks BOTH the
+   active user and executor against ASG_OWNER_EMAIL and fails closed when
+   Google supplies no active-user email. If setup is denied, stop, do not weaken
+   the check or expose OAuth tokens through a public fallback.
+7. Authorize only the requested file-specific permission and owner email identity. Click **Select ASG
+   workbook**, pick the existing ASG workbook, and verify it is the intended
+   file. Picker, not a pasted ID, grants the app file access. Selection is
+   rejected unless its ID equals ASG_SHEET_ID. Successful selection records
+   ASG_SELECTED_SHEET_ID and automatically sets ASG_SETUP_ENABLED to false.
+   Close the setup window. Verify the property is false without sharing
+   property screenshots. Keep the private setup disabled.
+8. Before a player deployment, perform the permission checks below. The
+   owner-only Picker integration and actual consent flow remain **unverified
+   until run on the real account**. A source commit is not a successful setup.
+9. Once checks pass, deploy a **new version** as Web app, **Execute as: Me**,
+   **Who has access: Anyone**. This opens only the token-gated endpoint, not
+   workbook Drive sharing. Keep old broad-scope versions archived. Copy its
+   `/exec` URL for step 6. Do not use `/dev` on the player page.
+
+### Required privacy checks
+
+- Confirm the old broad grant is removed and fresh consent is file-specific.
+- Verify selected ASG values load and a reversible test edit writes correctly.
+- Test journal recovery and history recording with disposable ASG test data.
+- Using only a separately approved, non-sensitive test workbook that was NOT
+  selected for this app, verify a direct Advanced Sheets read is denied. Do not
+  inspect another private workbook as a test. Local allowlist tests alone do
+  not prove Google's grant boundary.
+- Verify the private setup URL and each setup RPC reject anonymous and other
+  accounts, even if ASG_SETUP_ENABLED was accidentally true. The player endpoint
+  must never return a Google OAuth token, Picker key or saved property values.
+- Disable setup, then verify normal player loads/saves without Google sign-in.
+
+References: [file scopes](https://developers.google.com/workspace/sheets/api/scopes),
+[Picker requirements](https://developers.google.com/apps-script/guides/dialogs#file-open_dialogs),
+[advanced services](https://developers.google.com/apps-script/guides/services/advanced).
 
 ## 4. Choose the group password and the shared secret
 
@@ -247,13 +310,18 @@ for its whole window, no detection needed. A player's own saves never count
 as detected changes.
 
 Every poll is one script execution that returns the full state (a few KB).
-Apps Script executions do not consume Sheets API quota, so there is no
-change-detection gate: the page simply compares the returned state with
-what it has and re-renders only when something actually changed.
+The Advanced Sheets API **does consume Sheets API quota**. Each ordinary load
+uses one batched snapshot read, shared across all modules. Five open players at
+8-second polling produce approximately 37.5 reads/minute before saves, setup,
+other callers and retries. The published per-user/project read limit is 60/min;
+this estimate is headroom, not a capacity guarantee. Saves also need a snapshot
+and writes, and completions use several journal phases. Quota failures return
+rate_limited; stop/reduce load rather than promising 8 seconds under all traffic.
+The page compares snapshots and re-renders only when something changed.
 
 Saves are granular: the page sends only the rows the player actually
-changed (changed/added/deleted rows, keyed by id), and the script updates,
-appends or blanks exactly those cells. Hand edits elsewhere in a tab are
+changed (changed/added/deleted rows, keyed by id), and the script batches granular RAW value writes to update,
+append or blank exactly those cells. Formula-looking input stays text. Hand edits elsewhere in a tab are
 never disturbed. Two players editing different things touch different
 cells.
 
@@ -304,20 +372,22 @@ truth on the next poll, which is the reconciliation path. All open pages
 converge within one poll cycle (8 seconds during a session, 60 seconds
 idle) because every response carries the fresh full state.
 
-## Costs
+## Costs and quotas
 
-- Apps Script: a no-charge Google service; a standalone script requires
-  no Cloud project that you create or manage (Apps Script keeps its own
-  hidden default project) and no billing. Relevant quotas from the
-  published table: 6 minutes max per execution (ours should take about a
-  second) and 30 simultaneous executions per user (a 6-player table peaks
-  near 1). The published table lists no daily cap on web-app invocations.
-  (https://developers.google.com/apps-script/guides/services/quotas)
-- Vercel: only the password check runs there - one call per player per
-  session (plus a rare token re-mint after 12 hours). The free Hobby plan
-  currently includes the first 1,000,000 function invocations per month;
-  the ASG volume is a handful per day. Check the linked page for the
-  current number. (https://vercel.com/docs/plans/hobby)
+Advanced Sheets API quotas now apply: 60 read and 60 write requests per minute
+per user/project, and 300 each per project, according to the current published
+table. All execute-as-me players share the owner's quota. Standard API use is
+listed at no additional cost; Google's current page also warns that over-quota
+charges are planned later in 2026. Check current terms and project billing before
+changing quota or enabling paid services. Do not enable billing, request paid
+quota or buy capacity as part of setup without approval.
+
+Apps Script runtime quotas also remain. The 8-second fast poll is retained at
+the user's request for at most five concurrent users, subject to the mandatory
+real latency/quota test. Keep idle polling at 60 seconds. Do not claim verified
+performance before testing. Sources:
+https://developers.google.com/workspace/sheets/api/limits and
+https://developers.google.com/apps-script/guides/services/quotas .
 
 ## Security notes
 
@@ -342,5 +412,5 @@ idle) because every response carries the fresh full state.
 - Migrating the existing compound stash tab (stash items, roster/jobs,
   base) into the tabs above is a manual, one-time task; this change does
   not touch the existing tab.
-- The 8-second play-session rate is a proposal pending the live latency
-  check in step 7.
+- The user selected 8-second play-session polling for at most five concurrent
+  users. Live latency and quota headroom still need checking in step 7.
