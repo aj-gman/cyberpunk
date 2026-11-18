@@ -485,3 +485,52 @@ describe('apps-script rejection responses (reaudit R2)', () => {
     expect(res.state).toBeTruthy();
   });
 });
+
+describe('editable HQ upgrades protocol', () => {
+  beforeEach(() => {
+    setup();
+    world.sheets['HQ Upgrades'] = makeSheet([
+      ['supplies', 'Armory', 'keep note', 'u-one', 0],
+      ['supplies', '', 'note-only slot', 'u-two', 1],
+      ['culture', 'Studio', '', 'u-three', 0],
+    ]);
+    world.sheets['HQ Upgrades'].data[0] = ['category','name','note','id','position'];
+  });
+  const save = (upserts = [], deletes = []) => authPost({action:'save',ops:{upgrades:{upserts,deletes}}});
+  it('advertises editing only for migrated valid rows and keeps blank-name slots', () => {
+    let out = authPost({action:'load'});
+    expect(out.upgradeEditVersion).toBe(1);
+    expect(out.hqUpgrades.supplies[1]).toMatchObject({id:'u-two',name:'',note:'note-only slot'});
+    world.sheets['HQ Upgrades'].data[1][3] = '';
+    out = authPost({action:'load'});
+    expect(out.upgradeEditVersion).toBe(0);
+    expect(save([{id:'new',category:'supplies',position:2,name:'x',note:''}]).error).toBe('invalid_ops');
+  });
+  it('applies granular rename, note and reorder without changing other upgrades or HQ values', () => {
+    const out=save([{id:'u-one',category:'supplies',position:1,name:'Renamed',note:'new note'}]);
+    expect(out.error).toBeUndefined();
+    expect(out.hqUpgrades.supplies.find(u=>u.id==='u-one')).toMatchObject({name:'Renamed',note:'new note'});
+    expect(out.hqUpgrades.culture[0]).toMatchObject({id:'u-three',name:'Studio'});
+    expect(world.sheets.HQ.data).toEqual([['<header>'],['supplies',7],['culture',3],['technology',0],['security',99]]);
+  });
+  it('allows name-empty deletion even with a note, rejects named deletion and cross-category moves', () => {
+    expect(save([],['u-one']).error).toBe('invalid_ops');
+    expect(save([{id:'u-one',category:'culture',position:0,name:'Armory',note:''}]).error).toBe('invalid_ops');
+    expect(save([],['u-two']).error).toBeUndefined();
+    expect(authPost({action:'load'}).hqUpgrades.supplies.map(u=>u.id)).toEqual(['u-one']);
+    expect(save([],['u-two']).error).toBeUndefined(); // idempotent retry
+  });
+  it('rejects malformed operations before any stash or upgrade write', () => {
+    const before=JSON.stringify(world.sheets);
+    for (const u of [{id:'new',category:'unknown',position:0,name:'x',note:''},{id:'new',category:'culture',position:-1,name:'x',note:''},null])
+      expect(save([u]).error).toBe('invalid_ops');
+    expect(JSON.stringify(world.sheets)).toBe(before);
+  });
+  it('preserves unrelated concurrent edits to different upgrade IDs', () => {
+    save([{id:'u-one',category:'supplies',position:0,name:'A',note:'a'}]);
+    save([{id:'u-three',category:'culture',position:0,name:'B',note:'b'}]);
+    const out=authPost({action:'load'});
+    expect(out.hqUpgrades.supplies[0].name).toBe('A');
+    expect(out.hqUpgrades.culture[0].name).toBe('B');
+  });
+});
