@@ -44,7 +44,7 @@ always open the spreadsheet and see or change the data by hand.
 ## 1. Create the seven tabs the backend expects
 
 In the shared workbook, add seven tabs (exact names), each with the header
-row below. Everything except the two admin-only tabs is also edited by the
+row below. Everything except the Roster tab is also edited by the
 backend on the players' behalf.
 
 - **Roster** (admin-only) — the NPC roster. The ASG page never writes here.
@@ -73,13 +73,17 @@ backend on the players' behalf.
 
   `supplies`, `culture`, `technology`, `security`.
 
-- **HQ Upgrades** (admin-only) — the base upgrade slots:
+- **HQ Upgrades** — player-edited upgrade slots after the explicit migration:
 
-  | category | name | note |
-  |----------|------|------|
+  | category | name | note | id | position |
+  |----------|------|------|----|----------|
 
-  `category` is one of the four above (case-insensitive); `note` is the
-  hover tooltip text.
+  `category` is one of the four lowercase values above; `note` is the hover
+  tooltip text. `id` is unique and stable; `position` is zero-based within
+  its category. Existing A:C workbooks stay readable but upgrades are
+  read-only until migrated. Follow [ASG-UPGRADE-ROLLOUT.md](ASG-UPGRADE-ROLLOUT.md)
+  for the explicit backup, dry run, migration and deployment order. Do not
+  simply add empty D:E headers to an existing populated workbook.
 
 - **Future Upgrades** — player-edited, one planned upgrade per row (single
   column, no dashes needed):
