@@ -90,20 +90,30 @@ backend on the players' behalf.
   gigs); `npc` is a roster id (empty = unassigned); `role` is an optional
   required role for that gig position.
 
-- **Assignment History** (GM record, created automatically) — one row is
-  appended when a player presses **Completed** on a gig or project and
+- **Assignment History** (GM record, created automatically) — one row per
+  completed gig or project, written when a player presses **Completed** and
   answers *Successful* or *Failed*:
 
-  | id | kind | number | name | description | result | completed_at | crew |
-  |----|------|--------|------|-------------|--------|--------------|------|
+  | id | kind | number | name | description | result | completed_at | crew | status |
+  |----|------|--------|------|-------------|--------|--------------|------|--------|
 
   `result` is `success` or `failed`; `completed_at` is UTC (ISO); `crew` lists
-  the assigned NPCs (with required gig roles) at completion. The card leaves
-  the players' view and its NPCs return to Available, in the same save. The
-  tab is append-only and the players' page never reads it. You may create it
-  yourself with the header above, or let the first completion create it.
-  The page offers **Completed** only when the deployed script supports it,
-  so after updating `asg.gs` you must redeploy (step 3, **new version**).
+  the assigned NPCs (with required gig roles) at completion; `status` is
+  `pending` while a completion is being applied and `done` once the card and
+  its slots are removed (a blank status in an older row counts as done). The
+  card leaves the players' view and its NPCs return to Available. The players'
+  page never reads this tab. You may create it yourself with the header above,
+  or let the first completion create it.
+
+  Google Sheets writes are not transactions, so a completion is **not**
+  all-or-nothing. The script writes the row as `pending`, clears the card's
+  slots and then the card, and marks the row `done`. If a write fails in
+  between, the row stays `pending` and the next load or save finishes the
+  removal from that row; a half-cleared card can be visible until then. The
+  card id identifies the completion, so repeating it is safe, and the first
+  recorded result is kept (a retry with the other answer does not change it).
+  The page only offers **Completed** against a script that does this, so after
+  updating `asg.gs` you must redeploy it (step 3, **new version**).
 
 ## 2. Share the workbook
 
