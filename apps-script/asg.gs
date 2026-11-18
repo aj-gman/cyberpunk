@@ -18,9 +18,11 @@
 //   Future Upgrades   A2:A  one planned upgrade per row (no dash)
 //   Assignment Cards  A2:F  id | kind(project/gig) | position | number | name | description
 //   Assignment Slots  A2:E  key(card:slot) | card | slot | npc | role
-//   Assignment History A2:H id | kind | number | name | description | result(success/failed) | completed_at | crew
-//                     (append-only GM record of completed gigs/projects; created on
-//                     first completion; never read by the players' page)
+//   Assignment History A2:I id | kind | number | name | description | result(success/failed) | completed_at | crew | status
+//                     (GM record of completed gigs/projects; created on first
+//                     completion; never read by the players' page. status is
+//                     'pending' while a completion is being applied and 'done'
+//                     after; a blank status in older rows counts as done)
 //
 // Concurrency: every save runs under LockService - read, validate the shared
 // invariants (an NPC holds at most one slot, capacities hold, cards exist),
@@ -38,7 +40,7 @@ var TAB = {
   roster: 'Roster',
   history: 'Assignment History',
 };
-var HISTORY_HEADER = ['id', 'kind', 'number', 'name', 'description', 'result', 'completed_at', 'crew'];
+var HISTORY_HEADER = ['id', 'kind', 'number', 'name', 'description', 'result', 'completed_at', 'crew', 'status'];
 var HISTORY_RESULTS = ['success', 'failed'];
 
 // ── Small helpers (dual-compatible with node for the test suite) ──
@@ -216,8 +218,9 @@ function loadState(ss) {
   };
   if (warnings.length) out.warnings = warnings;
   // Capability flag: the page only offers Completed against a script that
-  // records history, so an old deployment can never drop a card unrecorded.
-  out.completionHistory = true;
+  // journals and recovers completions, so an older deployment can never drop
+  // a card unrecorded or half-applied.
+  out.completionVersion = 2;
   return out;
 }
 
@@ -233,7 +236,11 @@ function rejectWithState(ss, code, detail) {
 // ── Granular save under a real mutex ──
 
 function saveOps(ss, ops) {
-  // Read current state once; everything below is atomic under the lock.
+  // A completion interrupted by an earlier failure is rolled forward first.
+  recoverPending(ss);
+  // Read current state once; the script lock serializes callers. Sheets
+  // writes are NOT transactional: completions are journaled and idempotent
+  // (see completeCard) instead of relying on all-or-nothing writes.
   var stashRows = readTab(ss, TAB.stash, 6);
   var cardRowsNow = readTab(ss, TAB.cards, 6);
   var slotRowsNow = readTab(ss, TAB.slots, 5);
@@ -242,6 +249,10 @@ function saveOps(ss, ops) {
   cardRowsNow.forEach(function (r) { if (str(r[0])) existingCards[str(r[0])] = true; });
   (ops.cards && ops.cards.upserts || []).forEach(function (u) { existingCards[str(u.id)] = true; });
   (ops.cards && ops.cards.deletes || []).forEach(function (id) { delete existingCards[String(id)]; });
+  // A completing card (and its slots) leaves the projection: the server
+  // removes it itself, and no other op may assign into it.
+  var completingId = ops.complete && ops.complete.id !== undefined ? str(ops.complete.id) : '';
+  if (completingId) delete existingCards[completingId];
 
   // Project the slot table after the ops, then check the shared invariants
   // against the projection: an NPC holds at most one slot, cards exist,
@@ -250,6 +261,7 @@ function saveOps(ss, ops) {
   slotRowsNow.forEach(function (r) {
     if (str(r[0])) projected[str(r[0])] = { card: str(r[1]), slot: num(r[2]), npc: str(r[3]), role: str(r[4]) };
   });
+  if (completingId) Object.keys(projected).forEach(function (k) { if (projected[k].card === completingId) delete projected[k]; });
   (ops.slots && ops.slots.deletes || []).forEach(function (k) { delete projected[String(k)]; });
   var slotUpserts = (ops.slots && ops.slots.upserts || []);
   for (var uu = 0; uu < slotUpserts.length; uu++) {
@@ -283,27 +295,25 @@ function saveOps(ss, ops) {
     if (slotCount[cardIds[j]] > cap) return rejectWithState(ss, 'invariant', 'card is full');
   }
 
-  // Completed gigs/projects: validate before any write. A completion must
-  // remove its card in the same save, so a record never exists next to a
-  // live card (and a card never vanishes unrecorded).
-  var historyAppends = [];
-  if (ops.history !== undefined) {
-    var raw = ops.history && ops.history.appends;
-    if (!Array.isArray(raw) || raw.length > 20) return rejectWithState(ss, 'invalid_ops', 'invalid history ops');
-    for (var h = 0; h < raw.length; h++) {
-      var a = raw[h] || {};
-      var hid = str(a.id);
-      if (!hid || (a.kind !== 'gig' && a.kind !== 'project') || HISTORY_RESULTS.indexOf(a.result) < 0) {
-        return rejectWithState(ss, 'invalid_ops', 'history entry needs id, kind and result success|failed');
-      }
-      if (existingCards[hid]) return rejectWithState(ss, 'invalid_ops', 'a completed card must be removed in the same save');
-      var crew = Array.isArray(a.crew) ? a.crew.map(function (c) { return str(c).slice(0, 120); }).join('; ') : str(a.crew);
-      historyAppends.push([hid, a.kind, num(a.number), str(a.name).slice(0, 200), str(a.description).slice(0, 500), a.result, new Date().toISOString(), crew.slice(0, 1000)]);
+  // Completed gig/project: validate before any write. The server removes the
+  // card itself, so other ops must not touch it.
+  var completion = null;
+  if (ops.complete !== undefined) {
+    var cc = ops.complete || {};
+    var cid = str(cc.id);
+    if (!cid || (cc.kind !== 'gig' && cc.kind !== 'project') || HISTORY_RESULTS.indexOf(cc.result) < 0) {
+      return rejectWithState(ss, 'invalid_ops', 'completion needs id, kind and result success|failed');
     }
+    var hist = readHistory(ss);
+    if (!cardRowsNow.some(function (r) { return str(r[0]) === cid; }) && !(hist && hist.byId[cid])) {
+      return rejectWithState(ss, 'invalid_ops', 'completion for an unknown card');
+    }
+    var crew = Array.isArray(cc.crew) ? cc.crew.map(function (c) { return str(c).slice(0, 120); }).join('; ') : str(cc.crew);
+    completion = { id: cid, kind: cc.kind, number: num(cc.number), name: str(cc.name).slice(0, 200), description: str(cc.description).slice(0, 500), result: cc.result, crew: crew.slice(0, 1000) };
   }
-  // History first: if anything fails after this point the card still
-  // exists and a retry is deduplicated by card id.
-  if (historyAppends.length) appendHistory(ss, historyAppends);
+
+  var completed = null;
+  if (completion) completed = completeCard(ss, completion);
 
   if (ops.stash) applyTabOps(ss, TAB.stash, 6, stashRows, (ops.stash.deletes || []).map(String), (ops.stash.upserts || []).map(function (u) {
     return { id: str(u.id), cells: [str(u.id), u.type === 'group' ? 'group' : 'item', str(u.group), num(u.position), str(u.name), str(u.note)] };
@@ -334,26 +344,90 @@ function saveOps(ss, ops) {
     for (var k = 0; k < span; k++) fsh.getRange(k + 2, 1).setValue(lines[k] || '');
   }
   SpreadsheetApp.flush();
-  return loadState(ss);
+  var fresh = loadState(ss);
+  if (completed) fresh.completed = completed;
+  return fresh;
 }
 
-// Append-only GM record. The tab is created with its header on first use.
-// A card id already recorded is skipped, so a retried save cannot duplicate.
-function appendHistory(ss, rows) {
+// ── Completed gigs/projects (journaled, idempotent, roll-forward) ──
+//
+// Google Sheets writes are not transactional, so a completion is not
+// all-or-nothing. It is a journal entry plus idempotent steps:
+//   1. write the card's history row with status 'pending' (the intent),
+//   2. clear the card's slot rows, then the card row,
+//   3. mark the history row 'done'.
+// If anything fails in between, the row stays 'pending' and the next load or
+// save (recoverPending) finishes steps 2-3 from the journal, so the card
+// ends up removed with its recorded result; a half-cleared card can be
+// visible in the meantime. The card id is the operation id: replaying a
+// completion is safe, and once a card is recorded the FIRST recorded result
+// wins (a retry with another answer gets the recorded one back).
+
+function readHistory(ss) {
   var sh = ss.getSheetByName(TAB.history);
+  if (!sh) return null;
+  var last = sh.getLastRow();
+  var byId = {};
+  if (last >= 2) {
+    sh.getRange(2, 1, last - 1, HISTORY_HEADER.length).getValues().forEach(function (r, i) {
+      if (!str(r[0])) return;
+      byId[str(r[0])] = { row: i + 2, result: str(r[5]), status: str(r[8]) === 'pending' ? 'pending' : 'done' };
+    });
+  }
+  return { sh: sh, byId: byId };
+}
+
+function hasPending(ss) {
+  var h = readHistory(ss);
+  return !!h && Object.keys(h.byId).some(function (k) { return h.byId[k].status === 'pending'; });
+}
+
+// Idempotent: clears every slot row of the card, then the card row.
+function finishCompletion(ss, id) {
+  var slotSheet = sheetByName(ss, TAB.slots);
+  readTab(ss, TAB.slots, 5).forEach(function (r, i) {
+    if (str(r[1]) === id || str(r[0]).indexOf(id + ':') === 0) slotSheet.getRange(i + 2, 1, 1, 5).clearContent();
+  });
+  var cardSheet = sheetByName(ss, TAB.cards);
+  readTab(ss, TAB.cards, 6).forEach(function (r, i) {
+    if (str(r[0]) === id) cardSheet.getRange(i + 2, 1, 1, 6).clearContent();
+  });
+}
+
+function markDone(sh, row) {
+  sh.getRange(row, 7).setValue(new Date().toISOString());
+  sh.getRange(row, 9).setValue('done');
+}
+
+function recoverPending(ss) {
+  var h = readHistory(ss);
+  if (!h) return;
+  Object.keys(h.byId).forEach(function (id) {
+    var e = h.byId[id];
+    if (e.status !== 'pending') return;
+    finishCompletion(ss, id);
+    markDone(h.sh, e.row);
+  });
+}
+
+function completeCard(ss, c) {
+  var h = readHistory(ss);
+  var e = h && h.byId[c.id];
+  if (e && e.status === 'done') {
+    finishCompletion(ss, c.id); // harmless cleanup if a hand edit brought it back
+    return { id: c.id, result: e.result, status: 'done' };
+  }
+  var sh = h && h.sh;
   if (!sh) {
     sh = ss.insertSheet(TAB.history);
     sh.getRange(1, 1, 1, HISTORY_HEADER.length).setValues([HISTORY_HEADER]);
   }
-  var last = sh.getLastRow();
-  var seen = {};
-  if (last >= 2) sh.getRange(2, 1, last - 1, 1).getValues().forEach(function (r) { if (str(r[0])) seen[str(r[0])] = true; });
-  var next = Math.max(last, 1) + 1;
-  rows.forEach(function (r) {
-    if (seen[r[0]]) return;
-    seen[r[0]] = true;
-    sh.getRange(next++, 1, 1, r.length).setValues([r]);
-  });
+  var cells = [c.id, c.kind, c.number, c.name, c.description, c.result, '', c.crew, 'pending'];
+  var row = e ? e.row : Math.max(sh.getLastRow(), 1) + 1;
+  sh.getRange(row, 1, 1, cells.length).setValues([cells]); // 1. journal the intent
+  finishCompletion(ss, c.id); // 2. remove slots, then card
+  markDone(sh, row); // 3. close the journal entry
+  return { id: c.id, result: c.result, status: 'done' };
 }
 
 // Update the rows that changed, append new ones, blank deleted ones. Each
@@ -394,6 +468,12 @@ function doPost(e) {
     if (!checkToken(body.token)) return jsonOut({ error: 'bad_token' });
     var ss = SpreadsheetApp.openById(sheetId);
     if (body.action === 'load') {
+      if (hasPending(ss)) {
+        // Finish an interrupted completion before answering.
+        var rl = LockService.getScriptLock();
+        rl.waitLock(10000);
+        try { recoverPending(ss); } finally { rl.releaseLock(); }
+      }
       out = loadState(ss);
     } else if (body.action === 'save') {
       if (!body.ops || typeof body.ops !== 'object') return jsonOut({ error: 'invalid_ops' });
