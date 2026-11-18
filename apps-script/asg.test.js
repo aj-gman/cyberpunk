@@ -386,6 +386,31 @@ describe('apps-script asg backend', () => {
     expect(authPost({ action: 'load' }).error).toBeUndefined();
   });
 
+  it('load advertises the history capability flag', () => {
+    expect(authPost({ action: 'load' }).historyVersion).toBe(1);
+  });
+
+  it('history action returns done gigs only, projected to name/description/result, newest first', () => {
+    world.sheets['Assignment History'] = makeSheet([
+      ['gig-1', 'gig', 1, 'Records job', 'quietly\nfast', 'success', '2026-11-18T00:00:00Z', 'Lappo', 'done'],
+      ['proj-1', 'project', 1, 'Secret project', 'hidden', 'success', '2026-11-18T01:00:00Z', '', 'done'],
+      ['gig-2', 'gig', 2, 'Data heist', '', 'failed', '2026-11-18T02:00:00Z', '', 'pending'],
+      ['gig-3', 'gig', 3, 'Old gig', 'no status column row', 'success', '2026-11-18T03:00:00Z', ''],
+    ]);
+    const out = authPost({ action: 'history' });
+    expect(out.error).toBeUndefined();
+    expect(out.historyVersion).toBe(1);
+    expect(out.history).toHaveLength(2); // project rows and pending rows stay server-side
+    expect(out.history[0]).toEqual({ name: 'Old gig', description: 'no status column row', result: 'success' }); // newest first
+    expect(out.history[1]).toEqual({ name: 'Records job', description: 'quietly\nfast', result: 'success' });
+  });
+
+  it('history action answers an empty list when the tab does not exist yet', () => {
+    const out = authPost({ action: 'history' });
+    expect(out.error).toBeUndefined();
+    expect(out.history).toEqual([]);
+  });
+
   it('rejects a bad result, an unknown card, or an edit to the completing card, without writing', () => {
     expect(authPost(completeProj('maybe')).error).toBe('invalid_ops');
     const ghost = authPost({ action: 'save', ops: { complete: { id: 'nope', kind: 'gig', result: 'success' } } });
