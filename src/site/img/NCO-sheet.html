@@ -755,6 +755,90 @@
       .trauma-flaw-grid { grid-template-columns:1fr; }
       .gear-section { grid-template-columns:1fr !important; }
     }
+
+    /* ═══ ASG (PAGE 3): STASH / HQ / ASSIGNMENTS ═══ */
+    .asg-status { min-height: 14px; color: var(--accent-yellow); font-size: 11px; margin: 0 0 8px 2px; }
+    .asg-module { margin-bottom: 14px; }
+    .asg-module-header { display: flex; align-items: center; gap: 10px; cursor: pointer; user-select: none; }
+    .asg-module-header h2 { margin: 0; border-bottom: none; padding-bottom: 0; }
+    .asg-caret { color: var(--accent-yellow); font-size: 12px; width: 12px; flex: none; }
+    .asg-fold-hint { margin-left: auto; color: var(--dim); font-size: 10px; letter-spacing: 1px; }
+    .asg-header-btn { margin-left: auto; }
+    .asg-help-btn { color: var(--neon-cyan); border-color: var(--neon-cyan); border-radius: 50%; padding: 0 7px; }
+    .asg-module-body { margin-top: 12px; }
+
+    .asg-drag-grip { cursor: grab; color: var(--dim); font-size: 12px; flex: none; user-select: none; }
+    .asg-drag-grip:hover { color: var(--neon-cyan); }
+    .dragging { opacity: 0.6; }
+    .asg-drop-before { border-top: 2px solid var(--neon-cyan) !important; box-shadow: 0 -2px 8px rgba(84,193,230,.5); }
+    .asg-drop-after { border-bottom: 2px solid var(--neon-cyan) !important; box-shadow: 0 2px 8px rgba(84,193,230,.5); }
+    .asg-drop-inside { outline: 1px dashed var(--neon-cyan); outline-offset: -3px; }
+
+    /* ASG Stash */
+    .asg-group { border: 1px solid var(--border-color); border-radius: 4px; margin-bottom: 10px; background: #10122b; }
+    .asg-group-header { display: flex; align-items: center; gap: 8px; padding: 8px 10px 4px 10px; border-bottom: 1px solid var(--accent-yellow); }
+    .asg-group-name { background: transparent; border: none; color: var(--accent-yellow); text-transform: uppercase; letter-spacing: 2px; font-size: 11px; font-weight: 700; font-family: 'Lexend', monospace; text-shadow: 0 0 8px rgba(254,232,1,.4); flex: 1; min-width: 0; }
+    .asg-item { display: flex; align-items: center; gap: 8px; padding: 6px 10px; border-bottom: 1px dashed #1e2245; position: relative; flex-wrap: wrap; }
+    .asg-item:last-child { border-bottom: none; }
+    .asg-item-name { background: transparent; border: none; color: var(--text-color); font-size: 13px; font-family: 'Lexend', monospace; flex: 1; min-width: 0; }
+    .asg-item-name:focus, .asg-group-name:focus { outline: none; border-bottom: 1px solid var(--neon-cyan); }
+    .asg-note-tip { position: absolute; right: 170px; top: -8px; z-index: 30; background: var(--panel-bg); border: 1px solid var(--neon-cyan); border-radius: 4px; padding: 8px 10px; max-width: 260px; box-shadow: 0 0 14px rgba(84,193,230,.4); display: none; pointer-events: none; }
+    .asg-item:hover .asg-note-tip { display: block; }
+    .asg-note-tip-title { color: var(--neon-cyan); font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
+    .asg-note-tip-body { color: var(--text-color); font-size: 12px; line-height: 1.45; white-space: pre-wrap; }
+    .asg-note-editor { flex-basis: 100%; margin: 2px 0 4px 22px; }
+    .asg-note-editor textarea { width: 100%; }
+
+    /* ASG HQ */
+    .asg-hq-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+    .asg-hq-col { border: 1px solid var(--border-color); border-radius: 4px; padding: 10px; }
+    .asg-hq-col h3 { text-align: center; }
+    .asg-hq-value { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 6px 0 10px 0; }
+    .asg-hq-num { font-size: 20px; font-weight: 700; color: var(--accent-yellow); min-width: 34px; text-align: center; background: #0a0c1a; border: 1px solid #2a2f55; border-radius: 3px; padding: 4px 0; }
+    .asg-hq-steppers { display: flex; flex-direction: column; gap: 2px; }
+    .asg-upgrade { border: 1px solid #2a2f55; border-radius: 3px; padding: 5px 8px; margin-bottom: 5px; background: #0a0c1a; position: relative; font-size: 12px; }
+    .asg-upgrade .asg-note-tip { right: 0; }
+    .asg-upgrade:hover .asg-note-tip { display: block; }
+    .asg-future { margin-top: 12px; }
+    .asg-future textarea { width: 100%; }
+    .asg-chip-hint { color: var(--dim); font-size: 10px; margin-top: 6px; }
+    .asg-chip { display: inline-block; border: 1px solid var(--purple); color: #c9a0ff; border-radius: 3px; padding: 2px 8px; margin: 4px 4px 0 0; font-size: 11px; }
+
+    /* ASG Assignments */
+    .asg-totals { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
+    .asg-total-chip { border: 1px solid #2a2f55; border-radius: 3px; padding: 3px 8px; font-size: 11px; }
+    .asg-total-chip b { color: var(--accent-yellow); }
+    .asg-order-row { display: flex; align-items: center; gap: 6px; margin-bottom: 10px; }
+    .asg-order-label { color: var(--dim); font-size: 10px; text-transform: uppercase; letter-spacing: 1px; }
+    .asg-order-active { background: var(--neon-cyan) !important; color: #000 !important; }
+    .asg-assign-grid { display: grid; grid-template-columns: 1fr 1.2fr 1.2fr; gap: 12px; }
+    .asg-col { border: 1px solid var(--border-color); border-radius: 4px; padding: 10px; min-height: 120px; }
+    .asg-col h3 { display: flex; justify-content: space-between; align-items: baseline; }
+    .asg-col-cap, .asg-col-count { color: var(--dim); font-size: 9px; letter-spacing: 1px; text-transform: uppercase; }
+    .asg-npc { display: flex; align-items: center; gap: 6px; padding: 5px 8px; border: 1px solid #2a2f55; border-radius: 3px; margin-bottom: 6px; background: #0a0c1a; font-size: 12px; }
+    .asg-npc.named .asg-npc-label { color: var(--neon-cyan); text-decoration: underline dotted; cursor: pointer; }
+    .asg-card { border: 1px solid var(--purple); border-radius: 4px; padding: 8px 10px; margin-bottom: 10px; }
+    .asg-card-head { display: flex; align-items: center; gap: 8px; }
+    .asg-card-label { color: var(--purple); font-weight: 700; letter-spacing: 1px; font-size: 11px; text-transform: uppercase; }
+    .asg-card-cap { margin-left: auto; color: var(--dim); font-size: 10px; }
+    .asg-card-name { font-size: 13px; margin-top: 4px; }
+    .asg-card-name-input { width: 100%; font-size: 13px; }
+    .asg-card-desc { width: 100%; background: transparent; border: none; color: var(--dim); font-style: italic; font-size: 11px; font-family: 'Lexend', monospace; padding: 2px 0; }
+    .asg-card-desc:focus { outline: none; border-bottom: 1px solid var(--neon-cyan); }
+    .asg-slot { border: 1px dashed #2a2f55; border-radius: 3px; padding: 4px 8px; margin-top: 5px; min-height: 26px; color: var(--dim); font-size: 11px; display: flex; align-items: center; gap: 6px; }
+    .asg-slot .asg-npc { flex: 1; margin-bottom: 0; }
+    .asg-slot-pos { flex: none; color: var(--dim); }
+
+    /* ASG small window (info modal) */
+    .asg-modal-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,.7); z-index: 1000; display: flex; align-items: center; justify-content: center; }
+    .asg-modal { width: min(720px, 92vw); height: min(520px, 85vh); background: var(--panel-bg); border: 1px solid var(--neon-pink); border-radius: 4px; display: flex; flex-direction: column; box-shadow: 0 0 24px rgba(255,45,120,.35); }
+    .asg-modal-head { display: flex; justify-content: space-between; align-items: center; padding: 6px 10px; border-bottom: 1px solid var(--neon-pink); color: var(--neon-pink); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; font-size: 11px; }
+    .asg-modal iframe { flex: 1; border: none; background: #fff; }
+
+    @media (max-width: 900px) {
+      .asg-hq-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .asg-assign-grid { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
@@ -784,7 +868,7 @@
     <span style="color:#444;font-size:16px;margin-left:10px;">|</span>
     <button class="btn btn-small" onclick="showPage(1)" id="btn-page1" style="border-color:var(--accent-yellow);color:var(--accent-yellow);">Core</button>
     <button class="btn btn-small" onclick="showPage(2)" id="btn-page2" style="border-color:var(--accent-yellow);color:var(--accent-yellow);">Gear & Cyberware</button>
-    <button class="btn btn-small" onclick="showPage(3)" id="btn-page3" style="border-color:var(--accent-yellow);color:var(--accent-yellow);">Stash</button>
+    <button class="btn btn-small" onclick="showPage(3)" id="btn-page3" style="border-color:var(--accent-yellow);color:var(--accent-yellow);">ASG</button>
     <a class="btn btn-small" href="https://www.owlbear.rodeo/room/KwPt706YcZQ_/The%20Afoot%20Doom" target="_blank" rel="noopener" style="border-color:var(--accent-yellow);color:var(--accent-yellow);text-decoration:none;display:inline-block;">OPEN OWLBEAR VTT</a>
     <button class="btn btn-small" onclick="showPage(5)" id="btn-page5" style="border-color:var(--accent-yellow);color:var(--accent-yellow);">Wiki</button>
   </div>
@@ -997,12 +1081,75 @@
 
   <div class="page-break"></div>
 
-  <!-- STASH (GOOGLE SHEETS) -->
-  <div style="padding:0;margin:0;height:calc(100vh - 120px);min-height:500px;">
-    <iframe src="https://docs.google.com/spreadsheets/d/1YpRERhKOoGxK3ybMjjvrwKSOPtKJGs3kU9BJT4o2yMI/edit?usp=sharing&rm=minimal&headers=false&chrome=false"
-            style="width:100%;height:100%;border:none;border-radius:2px;background:#1a1c2e;"
-            allowfullscreen>
-    </iframe>
+  <!-- ASG backend status: the shared-workbook backend is configured separately;
+       until it is connected, everything on this page is a browser-local draft. -->
+  <div class="asg-backend-row" style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+    <span id="asg-backend-status" class="asg-status" role="status" style="margin:0;">Shared workbook not connected - this page saves to this browser only.</span>
+    <button class="btn btn-small" type="button" id="asg-connect-btn" onclick="asgConnectClick()">Connect shared workbook</button>
+  </div>
+  <div id="asg-status" class="asg-status" role="status"></div>
+
+  <!-- ASG: STASH -->
+  <div class="panel asg-module">
+    <div class="asg-module-header" onclick="asgToggleModule('asg-stash-body', this)">
+      <span class="asg-caret">&#9656;</span><h2>Stash</h2>
+      <span class="asg-fold-hint">folded</span>
+      <button class="btn btn-small asg-header-btn" type="button" style="display:none;" onclick="event.stopPropagation(); asgAddGroup()">+ New group</button>
+    </div>
+    <div class="asg-module-body" id="asg-stash-body" style="display:none;">
+      <div id="asg-stash-groups"></div>
+    </div>
+  </div>
+
+  <!-- ASG: HQ -->
+  <div class="panel asg-module">
+    <div class="asg-module-header" onclick="asgToggleModule('asg-hq-body', this)">
+      <span class="asg-caret">&#9656;</span><h2>HQ</h2>
+      <button class="btn btn-small asg-help-btn" type="button" title="Open the Basebuilding rules in a small window" onclick="event.stopPropagation(); asgOpenBasebuilding()">?</button>
+      <span class="asg-fold-hint">folded</span>
+    </div>
+    <div class="asg-module-body" id="asg-hq-body" style="display:none;">
+      <div class="asg-hq-grid" id="asg-hq-grid"></div>
+      <div class="asg-future">
+        <h3>Future upgrades</h3>
+        <textarea id="asg-future-text" rows="3" placeholder="- one upgrade idea per line&#8230;"></textarea>
+        <div class="asg-chip-hint">Each dash line becomes a suggestion:</div>
+        <div id="asg-future-chips"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ASG: ASSIGNMENTS -->
+  <div class="panel asg-module">
+    <div class="asg-module-header" onclick="asgToggleModule('asg-assign-body', this)">
+      <span class="asg-caret">&#9656;</span><h2>Assignments</h2>
+      <span class="asg-fold-hint">folded</span>
+    </div>
+    <div class="asg-module-body" id="asg-assign-body" style="display:none;">
+      <h3>Crew totals</h3>
+      <div class="asg-totals" id="asg-crew-totals"></div>
+      <div class="asg-order-row">
+        <span class="asg-order-label">Order:</span>
+        <button class="btn btn-small" id="asg-order-role" type="button" onclick="asgSetOrder('role')">By role</button>
+        <button class="btn btn-small" id="asg-order-skill" type="button" onclick="asgSetOrder('skill')">By skill</button>
+      </div>
+      <div class="asg-assign-grid">
+        <div class="asg-col" id="asg-available-col">
+          <h3>Available <span class="asg-col-count" id="asg-available-count"></span></h3>
+          <div id="asg-available-list"></div>
+        </div>
+        <div class="asg-col">
+          <h3>Projects <span class="asg-col-cap">max 2 each</span></h3>
+          <div id="asg-projects-list"></div>
+          <button class="btn btn-small" type="button" onclick="asgAddProject()">+ New project</button>
+        </div>
+        <div class="asg-col">
+          <h3>Gigs <span class="asg-col-cap">max 4 each</span></h3>
+          <div id="asg-gigs-list"></div>
+          <button class="btn btn-small" type="button" onclick="asgAddGig()">+ New gig</button>
+        </div>
+      </div>
+    </div>
   </div>
 
 </div><!-- end sheet-page3 -->
@@ -2470,6 +2617,1670 @@
       setGHStatus('Recovery draft restored. Check it, then save or export JSON.', false);
     }
   } catch (_) { setGHStatus('Recovery draft could not be restored. Current sheet was kept.', true); }
+  // ═══════════════════════════════════════════════════════
+  // ASG (PAGE 3): STASH / HQ / ASSIGNMENTS
+  // Group-level modules for the Assertive Security Group.
+  //
+  // STORAGE BOUNDARY. The ASG data is meant to be shared by the whole group:
+  // ONE Google Sheets workbook behind ONE backend Google connection (service
+  // account on the Vercel API), gated by a shared group password — players
+  // never sign in with Google. That backend is configured separately (see
+  // docs/ASG-BACKEND-SETUP.md); until it is connected, everything on this
+  // page is a browser-local draft (localStorage key 'nco-asg-v1') and the NPC
+  // roster is the clearly-labelled SAMPLE below.
+  //
+  // NPCs are admin-only: they are created, deleted and edited (name, role,
+  // skill, page link) in the spreadsheet itself, never through this UI, so
+  // the roster is read-only here.
+  //
+  // Touch dragging is an open question: drag and drop currently uses the
+  // same mouse grip pattern as the Gear lists (HTML5 drag events).
+  // ═══════════════════════════════════════════════════════
+
+  var ASG_STORAGE_KEY = 'nco-asg-v1';
+  // The group password and the minted token live in memory only - never in
+  // sessionStorage/localStorage - so a page reload asks for the password
+  // again and nothing credential-shaped persists on disk.
+  var asgPassword = '';
+  // Refresh cadence (user direction 2026-11-18): the sheet polls the shared
+  // workbook; two remote changes detected less than five minutes apart mean a
+  // play session, so the interface refreshes as fast as practical. Concrete
+  // rates: 60s idle, 8s in a play session. Every poll is one Apps Script web
+  // app execution that returns the full state (a few KB); Apps Script does
+  // not consume Sheets API quota, so there is no version gate or partial
+  // poll. A session ends after five minutes without a detected remote change
+  // (each change resets the timer). The sheet's own saves never count as
+  // detected changes — it already applied their fresh-state responses.
+  var ASG_IDLE_REFRESH_MS = 60000;
+  var ASG_SESSION_REFRESH_MS = 8000;
+  // Saving: text fields batch keystrokes (trailing debounce), discrete edits
+  // batch briefly, and only one save request is ever in flight. A failed
+  // save retries on this cadence until it lands or the page disconnects.
+  var ASG_TEXT_DEBOUNCE_MS = 800;
+  var ASG_SAVE_BATCH_MS = 150;
+  var ASG_SAVE_RETRY_MS = 15000;
+  var ASG_SESSION_WINDOW_MS = 5 * 60 * 1000;
+  // Scheduled play sessions (confirmed by the user 2026-11-18: Tuesdays
+  // 17:30-00:00 Europe/Bucharest). During the window the sheet polls at the
+  // session rate even without detected changes; outside it, the
+  // change-detection rule above governs.
+  var ASG_SESSION_SCHEDULE = { timezone: 'Europe/Bucharest', weekday: 'Tue', startMinutes: 17 * 60 + 30, endMinutes: 24 * 60 };
+
+  function asgInScheduledSession(date) {
+    var s = ASG_SESSION_SCHEDULE;
+    if (!s) return false;
+    try {
+      var parts = new Intl.DateTimeFormat('en-US', { timeZone: s.timezone, weekday: 'short', hour: 'numeric', minute: 'numeric', hour12: false }).formatToParts(date);
+      var weekday = '', hour = -1, minute = 0;
+      for (var i = 0; i < parts.length; i++) {
+        if (parts[i].type === 'weekday') weekday = parts[i].value;
+        if (parts[i].type === 'hour') hour = parseInt(parts[i].value, 10);
+        if (parts[i].type === 'minute') minute = parseInt(parts[i].value, 10);
+      }
+      var minutes = hour * 60 + minute;
+      return weekday === s.weekday && minutes >= s.startMinutes && minutes < s.endMinutes;
+    } catch (_) { return false; }
+  }
+  var ASG_PROJECT_CAPACITY = 2;
+  var ASG_GIG_CAPACITY = 4;
+
+  // SAMPLE roster — illustrative only. Replaced by the spreadsheet roster
+  // (tab "Roster") once the shared backend is connected. Named NPCs carry a
+  // pageUrl to their public page (double-click opens it in the small window);
+  // the real URLs come from the roster sheet.
+  var ASG_SAMPLE_ROSTER = [
+    { id: 'npc-lappo',       role: 'Rockerboy', number: 2, skill: 3, name: 'Lappo', pageUrl: null },
+    { id: 'npc-rockerboy-1', role: 'Rockerboy', number: 1, skill: 1 },
+    { id: 'npc-techie-4',    role: 'Techie',    number: 4, skill: 2 },
+    { id: 'npc-lawman-2',    role: 'Lawman',    number: 2, skill: 0 },
+    { id: 'npc-solo-5',      role: 'Solo',      number: 5, skill: 0 },
+    { id: 'npc-media-1',     role: 'Media',     number: 1, skill: 3 },
+    { id: 'npc-solo-1',      role: 'Solo',      number: 1, skill: 2 },
+    { id: 'npc-netrunner-1', role: 'Netrunner', number: 1, skill: 0 },
+    { id: 'npc-techie-1',    role: 'Techie',    number: 1, skill: 2 },
+    { id: 'npc-nomad-1',     role: 'Nomad',     number: 1, skill: 1 },
+    { id: 'npc-netrunner-2', role: 'Netrunner', number: 2, skill: 0 },
+    { id: 'npc-media-2',     role: 'Media',     number: 2, skill: 0 },
+    { id: 'npc-solo-3',      role: 'Solo',      number: 3, skill: 0 },
+    { id: 'npc-fixer-1',     role: 'Fixer',     number: 1, skill: 0 }
+  ];
+
+  // SAMPLE state — illustrative stash/HQ/assignments content matching the
+  // approved mockups. Replaced by the shared workbook when connected.
+  function asgSampleState() {
+    return {
+      stash: { groups: [
+        { id: 'grp-weapons', name: 'Weapons', items: [
+          { id: 'itm-1', name: 'Malorian Heavy Sniper', note: '' },
+          { id: 'itm-2', name: 'ATGM', note: 'One-use launcher. Kept for vehicular targets.' },
+          { id: 'itm-3', name: 'Very Heavy Pistol', note: '' },
+          { id: 'itm-4', name: 'Knife', note: '' }
+        ]},
+        { id: 'grp-armor', name: 'Armor', items: [
+          { id: 'itm-5', name: 'Metalgear', note: '' },
+          { id: 'itm-6', name: 'Nomad Flak Armor', note: '' }
+        ]},
+        { id: 'grp-gear', name: 'Gear', items: [
+          { id: 'itm-7', name: 'Recon Drone', note: '' },
+          { id: 'itm-8', name: 'Microtorch cutter', note: '' }
+        ]}
+      ]},
+      hq: {
+        supplies:   { value: 10, upgrades: [{ id: 'up-1', name: 'Biolocked Armory', note: '' }, { id: 'up-2', name: 'Large Multimodal Garage', note: 'Fits the AV and ground vehicles. Upkeep 2 SUP.' }] },
+        culture:    { value: 10, upgrades: [{ id: 'up-3', name: 'Media Center', note: '' }, { id: 'up-4', name: 'Common Room', note: '' }, { id: 'up-5', name: 'Lounge', note: '' }] },
+        technology: { value: 10, upgrades: [{ id: 'up-6', name: 'Tier 1 Tech Bench', note: '' }, { id: 'up-7', name: 'Tier 1 Server Room', note: '' }, { id: 'up-8', name: 'Tier 1 Medbay', note: '' }] },
+        security:   { value: 10, upgrades: [{ id: 'up-9', name: 'Tier 2 Defense System', note: '' }, { id: 'up-10', name: 'Tier 2 Security System', note: '' }] },
+        futureUpgrades: '- armory\n- big nuclear facility'
+      },
+      assignments: {
+        order: 'role',
+        available: ['npc-lappo', 'npc-rockerboy-1', 'npc-techie-4', 'npc-lawman-2', 'npc-solo-5'],
+        projects: [{ id: 'proj-1', number: 1, name: 'New project', description: '', slots: ['npc-media-1', null] }],
+        gigs: [
+          { id: 'gig-1', number: 1, name: 'Obtain records of personal communications', description: '', slots: [{ role: 'Solo', npc: 'npc-solo-1' }, { role: 'Netrunner', npc: 'npc-netrunner-1' }, { role: 'Techie', npc: 'npc-techie-1' }, { role: 'Nomad', npc: 'npc-nomad-1' }] },
+          { id: 'gig-3', number: 3, name: 'Gather intel on an offline database', description: '', slots: [{ role: 'Netrunner', npc: 'npc-netrunner-2' }, { role: 'Media', npc: 'npc-media-2' }, { role: 'Solo', npc: 'npc-solo-3' }, { role: 'Fixer', npc: 'npc-fixer-1' }] }
+        ]
+      },
+      roster: ASG_SAMPLE_ROSTER
+    };
+  }
+
+  var asgState = null;
+  var asgIdCounter = 0;
+  var asgDragPayload = null;
+  var asgRefreshTimer = null;
+  var asgSessionMode = false;
+  var asgLastChangeAt = 0;
+  // Save queue state (see asgScheduleSave/asgFlushSave).
+  var asgSaveTimer = null;
+  var asgSaveInFlight = false;
+  var asgSavePending = false;
+  var asgEditSeq = 0;
+  var asgEditSeqAtSend = 0;
+  var asgSaveRetryTimer = null;
+  var asgDeferredRemote = null; // poll response held back while a save is in flight
+  var asgPrevChangeAt = 0;
+
+  function asgNewId(prefix) {
+    asgIdCounter++;
+    return prefix + '-' + Date.now().toString(36) + '-' + asgIdCounter;
+  }
+
+  // ── Backend client (split architecture, approved 2026-11-18) ──
+  // Step 1: Vercel (api/asg-auth.js) checks the shared group password and
+  // mints a short-lived HMAC token. Step 2: every spreadsheet read/write goes
+  // straight from this page to the Apps Script web app
+  // (window.CYBERPUNK_ASG_SCRIPT_URL), which verifies the token. No sheet
+  // traffic passes through Vercel. The text/plain content type keeps the
+  // Apps Script POST a CORS-simple request (Apps Script cannot answer
+  // preflights). Until docs/ASG-BACKEND-SETUP.md is done on the deployment,
+  // the script URL is unset and every request falls back to the
+  // browser-local draft.
+  var AsgBackend = {
+    connected: false,
+    token: '',
+    tokenExpiresAt: 0,
+    lastHash: '',
+    password: function () {
+      return asgPassword;
+    },
+    login: function (onDone) {
+      if (!window.CYBERPUNK_API_BASE || !AsgBackend.password()) { onDone('unconfigured'); return; }
+      fetch(window.CYBERPUNK_API_BASE + '/asg-auth', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password: AsgBackend.password() })
+      }).then(function (resp) {
+        if (resp.status === 404 || resp.status === 503) { onDone('unconfigured'); return null; }
+        if (resp.status === 429) { onDone('rate_limited'); return null; }
+        if (resp.status === 401) { onDone('bad_password'); return null; }
+        if (!resp.ok) { onDone('offline'); return null; }
+        return resp.json().then(function (data) {
+          AsgBackend.token = (data && data.token) || '';
+          AsgBackend.tokenExpiresAt = (data && data.expiresAt) || 0;
+          onDone(AsgBackend.token ? null : 'offline');
+        });
+      }).catch(function () { onDone('offline'); });
+    },
+    ensureToken: function (onDone) {
+      if (AsgBackend.token && Date.now() < AsgBackend.tokenExpiresAt - 60000) { onDone(null); return; }
+      AsgBackend.login(onDone);
+    },
+    request: function (payload, onDone, retried) {
+      if (!window.CYBERPUNK_ASG_SCRIPT_URL) { onDone(null, 'unconfigured'); return; }
+      AsgBackend.ensureToken(function (loginErr) {
+        if (loginErr) { onDone(null, loginErr); return; }
+        payload.token = AsgBackend.token;
+        fetch(window.CYBERPUNK_ASG_SCRIPT_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'text/plain' },
+          body: JSON.stringify(payload)
+        }).then(function (resp) {
+          return resp.json().then(function (data) {
+            if (data && data.error === 'bad_token' && !retried) {
+              AsgBackend.token = ''; // expired mid-session: re-mint once, silently
+              AsgBackend.request(payload, onDone, true);
+              return;
+            }
+            if (data && data.error) onDone(data, data.error);
+            else onDone(data, null);
+          });
+        }).catch(function () { onDone(null, 'offline'); });
+      });
+    },
+    load: function (onDone) {
+      AsgBackend.request({ action: 'load' }, onDone);
+    },
+    save: function (onDone) {
+      AsgBackend.saveWithOps(asgDiffOps(asgLoadedSnapshot, asgSharedPart()), onDone);
+    },
+    saveWithOps: function (ops, onDone) {
+      AsgBackend.request({ action: 'save', ops: ops }, onDone);
+    }
+  };
+
+  function asgRemoteHash(data) {
+    return JSON.stringify([data.state, data.roster, data.hqUpgrades]);
+  }
+
+  function asgSharedPart() {
+    // HQ upgrade slots live in the workbook's HQ Upgrades tab (admin-edited),
+    // so the synced part carries only the 0-15 values and the future text.
+    // assignments.order is a per-browser view preference and stays local;
+    // assignments.available is derived from the roster and slots, not synced.
+    var hq = { futureUpgrades: asgState.hq.futureUpgrades };
+    ASG_HQ_CATEGORIES.forEach(function (cat) {
+      hq[cat.key] = { value: (asgState.hq[cat.key] || {}).value || 0 };
+    });
+    return {
+      stash: asgState.stash,
+      hq: hq,
+      assignments: { projects: asgState.assignments.projects, gigs: asgState.assignments.gigs }
+    };
+  }
+
+  // The last shared state this browser loaded from (or saved to) the
+  // workbook; asgDiffOps compares it with the current state, so a save only
+  // ever writes the rows this player actually changed.
+  var asgLoadedSnapshot = null;
+
+  function asgDeepCopy(v) { return JSON.parse(JSON.stringify(v)); }
+
+  function asgTakeSnapshot() { asgLoadedSnapshot = asgDeepCopy(asgSharedPart()); }
+
+  // Serialize state into the workbook's row shape (mirrors the API's tabs).
+  function asgRowsFromState(state) {
+    var stash = [];
+    (state.stash.groups || []).forEach(function (g, i) {
+      stash.push({ id: g.id, type: 'group', group: '', position: i, name: g.name || '', note: '' });
+      (g.items || []).forEach(function (it, j) {
+        stash.push({ id: it.id, type: 'item', group: g.id, position: j, name: it.name || '', note: it.note || '' });
+      });
+    });
+    var cards = [], slots = [];
+    ['projects', 'gigs'].forEach(function (listKey) {
+      var kind = listKey === 'gigs' ? 'gig' : 'project';
+      (state.assignments[listKey] || []).forEach(function (c, i) {
+        cards.push({ id: c.id, kind: kind, position: i, number: c.number || 0, name: c.name || '', description: c.description || '' });
+        (c.slots || []).forEach(function (s, j) {
+          if (kind === 'gig') {
+            var role = s && s.role ? s.role : '', npc = s && s.npc ? s.npc : '';
+            if (!role && !npc) return;
+            slots.push({ key: c.id + ':' + j, card: c.id, slot: j, npc: npc, role: role });
+          } else {
+            var npcId = typeof s === 'string' ? s : (s && s.npc) || '';
+            if (!npcId) return;
+            slots.push({ key: c.id + ':' + j, card: c.id, slot: j, npc: npcId, role: '' });
+          }
+        });
+      });
+    });
+    var hq = {};
+    ASG_HQ_CATEGORIES.forEach(function (cat) { hq[cat.key] = (state.hq[cat.key] || {}).value || 0; });
+    return { stash: stash, cards: cards, slots: slots, hq: hq, future: state.hq.futureUpgrades || '' };
+  }
+
+  function asgRowKey(r) { return JSON.stringify(r); }
+
+  function asgDiffList(prev, next, keyOf) {
+    var prevById = {}, nextById = {};
+    prev.forEach(function (r) { prevById[keyOf(r)] = r; });
+    next.forEach(function (r) { nextById[keyOf(r)] = r; });
+    var upserts = [], deletes = [];
+    next.forEach(function (r) {
+      var p = prevById[keyOf(r)];
+      if (!p || asgRowKey(p) !== asgRowKey(r)) upserts.push(r);
+    });
+    prev.forEach(function (r) { if (!nextById[keyOf(r)]) deletes.push(keyOf(r)); });
+    if (!upserts.length && !deletes.length) return null;
+    return { upserts: upserts, deletes: deletes };
+  }
+
+  // Granular ops: only rows that differ between the last loaded shared state
+  // and now. Editing different things than another player touches different
+  // rows, so concurrent edits do not overwrite each other.
+  function asgDiffOps(prevState, nextState) {
+    if (!prevState) {
+      var all = asgRowsFromState(nextState);
+      return {
+        stash: { upserts: all.stash, deletes: [] },
+        cards: { upserts: all.cards, deletes: [] },
+        slots: { upserts: all.slots, deletes: [] },
+        hq: all.hq,
+        futureUpgrades: all.future
+      };
+    }
+    var a = asgRowsFromState(prevState), b = asgRowsFromState(nextState);
+    var ops = {};
+    var stash = asgDiffList(a.stash, b.stash, function (r) { return r.id; });
+    if (stash) ops.stash = stash;
+    var cards = asgDiffList(a.cards, b.cards, function (r) { return r.id; });
+    if (cards) ops.cards = cards;
+    var slots = asgDiffList(a.slots, b.slots, function (r) { return r.key; });
+    if (slots) ops.slots = slots;
+    var hq;
+    ASG_HQ_CATEGORIES.forEach(function (cat) {
+      if (a.hq[cat.key] !== b.hq[cat.key]) { hq = hq || {}; hq[cat.key] = b.hq[cat.key]; }
+    });
+    if (hq) ops.hq = hq;
+    if (a.future !== b.future) ops.futureUpgrades = b.future;
+    return ops;
+  }
+
+  // Admin-owned tabs (roster, HQ upgrades). The roster applies even when it
+  // is empty: an emptied remote roster clears the local one (including the
+  // sample data) instead of leaving stale NPCs behind. Applied BEFORE the
+  // player tabs so Available derives from the fresh roster.
+  function asgApplyMeta(data) {
+    if (data.roster) asgState.roster = data.roster;
+    if (data.hqUpgrades) {
+      ASG_HQ_CATEGORIES.forEach(function (cat) {
+        if (!asgState.hq[cat.key]) asgState.hq[cat.key] = { value: 0, upgrades: [] };
+        asgState.hq[cat.key].upgrades = data.hqUpgrades[cat.key] || [];
+      });
+    }
+  }
+
+  // The shared part of a backend response, in exactly the asgSharedPart()
+  // shape (HQ values only, no upgrade slots, no derived data).
+  function asgSharedFromData(data) {
+    var s = data.state || {};
+    var hq = { futureUpgrades: (s.hq || {}).futureUpgrades };
+    ASG_HQ_CATEGORIES.forEach(function (cat) {
+      hq[cat.key] = { value: ((s.hq || {})[cat.key] || {}).value };
+    });
+    return {
+      stash: s.stash || { groups: [] },
+      hq: hq,
+      assignments: { projects: (s.assignments || {}).projects || [], gigs: (s.assignments || {}).gigs || [] }
+    };
+  }
+
+  // Write a shared-part object into asgState (inverse of asgSharedPart).
+  // HQ upgrade slots survive: they are admin-owned and not in the shared part.
+  function asgSetSharedPart(shared) {
+    asgState.stash = shared.stash;
+    asgState.assignments.projects = shared.assignments.projects || [];
+    asgState.assignments.gigs = shared.assignments.gigs || [];
+    // The wire shape (and stale browser drafts) use null for empty gig
+    // positions; in memory every gig slot is a {role, npc} object.
+    asgState.assignments.gigs.forEach(function (c) {
+      c.slots = (c.slots || []).map(function (s) { return s || { role: '', npc: '' }; });
+    });
+    var assigned = {};
+    ['projects', 'gigs'].forEach(function (listKey) {
+      (asgState.assignments[listKey] || []).forEach(function (c) {
+        (c.slots || []).forEach(function (s) {
+          var npc = typeof s === 'string' ? s : (s && s.npc) || null;
+          if (npc) assigned[npc] = true;
+        });
+      });
+    });
+    asgState.assignments.available = (asgState.roster || [])
+      .map(function (n) { return n.id; })
+      .filter(function (id) { return !assigned[id]; });
+    ASG_HQ_CATEGORIES.forEach(function (cat) {
+      var current = asgState.hq[cat.key] || { value: 0, upgrades: [] };
+      var incoming = (shared.hq[cat.key] || {}).value;
+      asgState.hq[cat.key] = {
+        value: incoming !== undefined ? incoming : current.value,
+        upgrades: current.upgrades || []
+      };
+    });
+    if (shared.hq.futureUpgrades !== undefined) asgState.hq.futureUpgrades = shared.hq.futureUpgrades;
+  }
+
+  function asgApplyRowOps(rows, ops) {
+    var byId = {};
+    rows.forEach(function (r) { byId[String(r.id !== undefined ? r.id : r.key)] = r; });
+    (ops.deletes || []).forEach(function (id) { delete byId[String(id)]; });
+    (ops.upserts || []).forEach(function (u) { byId[String(u.id !== undefined ? u.id : u.key)] = u; });
+    return Object.keys(byId).map(function (k) { return byId[k]; });
+  }
+
+  // Inverse of asgRowsFromState: rebuild the shared part from workbook rows.
+  function asgSharedFromRows(rows) {
+    var groups = {};
+    rows.stash.forEach(function (r) {
+      if (r.type === 'group') groups[r.id] = { id: r.id, name: r.name, position: r.position, items: [] };
+    });
+    rows.stash.forEach(function (r) {
+      if (r.type !== 'group' && groups[r.group]) groups[r.group].items.push({ id: r.id, name: r.name, note: r.note, position: r.position });
+    });
+    var groupList = Object.keys(groups).map(function (k) { return groups[k]; }).sort(function (a, b) { return a.position - b.position; });
+    groupList.forEach(function (g) {
+      g.items.sort(function (a, b) { return a.position - b.position; }).forEach(function (it) { delete it.position; });
+      delete g.position;
+    });
+    var byCard = {};
+    rows.slots.forEach(function (s) { (byCard[s.card] = byCard[s.card] || {})[s.slot] = s; });
+    var projects = [], gigs = [];
+    rows.cards.slice().sort(function (a, b) { return a.position - b.position; }).forEach(function (c) {
+      var cap = c.kind === 'gig' ? 4 : 2;
+      var mine = byCard[c.id] || {};
+      var slots = [];
+      for (var i = 0; i < cap; i++) {
+        var s = mine[i];
+        if (c.kind === 'gig') slots.push(s && (s.npc || s.role) ? { role: s.role || '', npc: s.npc || null } : null);
+        else slots.push(s && s.npc ? s.npc : null);
+      }
+      (c.kind === 'gig' ? gigs : projects).push({ id: c.id, number: c.number, name: c.name, description: c.description, slots: slots });
+    });
+    var hq = { futureUpgrades: rows.future };
+    ASG_HQ_CATEGORIES.forEach(function (cat) { hq[cat.key] = { value: rows.hq[cat.key] || 0 }; });
+    return { stash: { groups: groupList }, hq: hq, assignments: { projects: projects, gigs: gigs } };
+  }
+
+  // Replay row ops onto a shared part (per-row last-writer-wins, the same
+  // granularity the backend itself saves with).
+  function asgApplyOpsToShared(shared, ops) {
+    var rows = asgRowsFromState(shared);
+    if (ops.stash) rows.stash = asgApplyRowOps(rows.stash, ops.stash);
+    if (ops.cards) rows.cards = asgApplyRowOps(rows.cards, ops.cards);
+    if (ops.slots) rows.slots = asgApplyRowOps(rows.slots, ops.slots);
+    if (ops.hq) Object.keys(ops.hq).forEach(function (cat) { rows.hq[cat] = ops.hq[cat]; });
+    if (ops.futureUpgrades !== undefined) rows.future = ops.futureUpgrades;
+    return asgSharedFromRows(rows);
+  }
+
+  // Merge a backend load/save response into local state. Roster and HQ
+  // upgrades come from the workbook's admin-edited tabs; the player-edited
+  // tabs own stash, assignments, HQ values and the future-upgrades text.
+  // Available NPCs are derived, never synced.
+  function asgApplySharedState(data) {
+    asgApplyMeta(data);
+    if (data.state) {
+      asgSetSharedPart(asgSharedFromData(data));
+      asgTakeSnapshot();
+    }
+  }
+
+  // Apply a remote (poll or save) response WITHOUT clobbering edits that are
+  // not saved yet: when the local state diverges from the last synced
+  // snapshot, the remote state becomes the new base and the unwritten local
+  // rows are replayed on top of it (rebase). Returns true when a rebase kept
+  // pending local edits.
+  function asgMergeRemoteState(data) {
+    var localOps = asgLoadedSnapshot ? asgDiffOps(asgLoadedSnapshot, asgSharedPart()) : null;
+    if (!localOps || Object.keys(localOps).length === 0) {
+      asgApplySharedState(data);
+      asgDetectWarnings(data);
+      return false;
+    }
+    asgApplyMeta(data);
+    var remoteShared = asgSharedFromData(data);
+    asgSetSharedPart(asgApplyOpsToShared(remoteShared, localOps));
+    // The new sync base is the remote truth; what still differs locally is
+    // exactly the unwritten work, which the save queue will send next.
+    asgLoadedSnapshot = asgDeepCopy(remoteShared);
+    asgDetectWarnings(data);
+    return true;
+  }
+
+  // Surface invalid/orphan workbook data instead of hiding it (once per
+  // distinct message, so polls do not spam).
+  var asgLastWarning = '';
+  function asgWarn(msg) {
+    if (msg && msg !== asgLastWarning) { asgLastWarning = msg; asgFlash('Workbook warning: ' + msg); }
+  }
+  function asgDetectWarnings(data) {
+    var w = [];
+    if (data && data.warnings) w = w.concat(data.warnings);
+    var orphan = 0;
+    ['projects', 'gigs'].forEach(function (listKey) {
+      (asgState.assignments[listKey] || []).forEach(function (c) {
+        (c.slots || []).forEach(function (s) {
+          var id = typeof s === 'string' ? s : (s && s.npc);
+          if (id && !asgRosterLookup(id)) orphan++;
+        });
+      });
+    });
+    if (orphan) w.push(orphan + ' assignment(s) reference NPCs missing from the roster');
+    if (w.length) asgWarn(w.join(' - '));
+  }
+
+  function asgBackendStatus(msg) {
+    var el = document.getElementById('asg-backend-status');
+    if (el) el.textContent = msg;
+    var btn = document.getElementById('asg-connect-btn');
+    if (btn) btn.textContent = AsgBackend.connected ? 'Disconnect shared workbook' : 'Connect shared workbook';
+  }
+
+  function asgConnectClick() {
+    if (AsgBackend.connected) {
+      AsgBackend.connected = false;
+      asgSessionMode = false;
+      if (asgRefreshTimer) clearTimeout(asgRefreshTimer);
+      if (asgSaveTimer) clearTimeout(asgSaveTimer);
+      if (asgSaveRetryTimer) clearTimeout(asgSaveRetryTimer);
+      asgSaveInFlight = false;
+      asgSavePending = false;
+      asgDeferredRemote = null;
+      asgPassword = '';
+      AsgBackend.token = '';
+      AsgBackend.tokenExpiresAt = 0;
+      asgBackendStatus('Shared workbook not connected - this page saves to this browser only.');
+      return;
+    }
+    var password = window.prompt('Group password for the shared ASG workbook:');
+    if (!password) return;
+    asgPassword = password;
+    asgConnect();
+  }
+
+  function asgConnect() {
+    asgBackendStatus('Connecting to the shared workbook…');
+    AsgBackend.load(function (data, err) {
+      if (err === 'unconfigured') {
+        asgPassword = '';
+        asgBackendStatus('Shared backend is not configured on the server yet - this page saves to this browser only.');
+        return;
+      }
+      if (err === 'offline') {
+        asgBackendStatus('Shared workbook unreachable - this page saves to this browser only.');
+        return;
+      }
+      if (err === 'rate_limited') {
+        asgBackendStatus('Too many wrong password attempts - wait about a minute and try again.');
+        return;
+      }
+      if (err) {
+        asgPassword = '';
+        asgBackendStatus('Shared workbook refused the password - this page saves to this browser only.');
+        return;
+      }
+      // Connecting replaces the browser-local draft with the shared
+      // workbook. If a saved draft diverges from the remote state, say so
+      // and ask first instead of silently discarding it. Both sides are
+      // compared through the workbook-row serialization, so equivalent
+      // shapes (wire null slot vs local {role:'',npc:''}) do not prompt.
+      var hasDraft = false;
+      try { hasDraft = localStorage.getItem(ASG_STORAGE_KEY) !== null; } catch (_) {}
+      if (hasDraft && data && data.state
+          && JSON.stringify(asgRowsFromState(asgSharedFromData(data))) !== JSON.stringify(asgRowsFromState(asgSharedPart()))) {
+        if (!window.confirm('Connecting replaces the draft saved in this browser with the shared workbook. Local draft changes that are not in the workbook will be discarded. Continue?')) {
+          asgPassword = '';
+          AsgBackend.token = '';
+          AsgBackend.tokenExpiresAt = 0;
+          asgBackendStatus('Shared workbook not connected - this page saves to this browser only.');
+          return;
+        }
+      }
+      AsgBackend.connected = true;
+      AsgBackend.lastHash = asgRemoteHash(data);
+      asgMergeRemoteState(data);
+      asgSaveLocal();
+      asgRenderAll();
+      asgBackendStatus('Shared workbook connected.');
+      asgScheduleRefresh(ASG_IDLE_REFRESH_MS);
+    });
+  }
+
+  function asgScheduleRefresh(delay) {
+    if (asgRefreshTimer) clearTimeout(asgRefreshTimer);
+    asgRefreshTimer = setTimeout(asgPollRefresh, delay);
+  }
+
+  function asgPollRefresh() {
+    if (!AsgBackend.connected) return;
+    if (document.hidden) {
+      var idleFast = asgSessionMode || asgInScheduledSession(new Date());
+      asgScheduleRefresh(idleFast ? ASG_SESSION_REFRESH_MS : ASG_IDLE_REFRESH_MS);
+      return;
+    }
+    AsgBackend.load(function (data, err) {
+      var now = Date.now();
+      if (!err && data) {
+        var hash = asgRemoteHash(data);
+        if (hash !== AsgBackend.lastHash) {
+          if (asgSaveInFlight) {
+            // Do not race our own save: its response carries the fresh full
+            // state (fresher than this poll), so hold this response only as
+            // the fallback for a failed save.
+            asgDeferredRemote = data;
+          } else {
+            AsgBackend.lastHash = hash;
+            asgFlash('Shared workbook reloaded - it changed elsewhere.');
+            asgMergeRemoteState(data); // may replace this flash with a workbook warning
+            asgSaveLocal();
+            asgRenderAll();
+            asgPrevChangeAt = asgLastChangeAt;
+            asgLastChangeAt = now;
+            if (asgLastChangeAt - asgPrevChangeAt < ASG_SESSION_WINDOW_MS) asgSessionMode = true;
+          }
+        } else if (now - asgLastChangeAt > ASG_SESSION_WINDOW_MS) {
+          asgSessionMode = false;
+        }
+      }
+      var fast = asgSessionMode || asgInScheduledSession(new Date());
+      asgScheduleRefresh(fast ? ASG_SESSION_REFRESH_MS : ASG_IDLE_REFRESH_MS);
+    });
+  }
+
+  // Every local edit flows through here. State and the browser-local copy
+  // update immediately; the shared save is batched so a burst of edits (or
+  // keystrokes) becomes one request carrying only the final rows.
+  function asgSaveState() {
+    asgSaveLocal();
+    asgEditSeq++;
+    asgScheduleSave(ASG_SAVE_BATCH_MS);
+  }
+
+  // Text fields: wait for a pause in typing before writing to the workbook.
+  function asgSaveStateDebounced() {
+    asgSaveLocal();
+    asgEditSeq++;
+    asgScheduleSave(ASG_TEXT_DEBOUNCE_MS);
+  }
+
+  function asgScheduleSave(delay) {
+    if (!AsgBackend.connected) return;
+    if (asgSaveTimer) clearTimeout(asgSaveTimer);
+    asgSaveTimer = setTimeout(asgFlushSave, delay);
+  }
+
+  function asgScheduleSaveRetry() {
+    if (asgSaveRetryTimer) clearTimeout(asgSaveRetryTimer);
+    asgSaveRetryTimer = setTimeout(function () {
+      asgSaveRetryTimer = null;
+      asgFlushSave();
+    }, ASG_SAVE_RETRY_MS);
+  }
+
+  // Row-level subtraction: the local ops that were NOT part of a rejected
+  // send. A row re-edited after the send survives (its content differs from
+  // what was rejected); the rejected rows themselves drop out.
+  function asgSubtractOps(localOps, sentOps) {
+    var out = {};
+    ['stash', 'cards', 'slots'].forEach(function (sec) {
+      var l = localOps[sec];
+      if (!l) return;
+      var s = sentOps[sec] || {};
+      var sentUp = {};
+      (s.upserts || []).forEach(function (u) { sentUp[JSON.stringify(u)] = true; });
+      var sentDel = {};
+      (s.deletes || []).forEach(function (d) { sentDel[String(d)] = true; });
+      var upserts = (l.upserts || []).filter(function (u) { return !sentUp[JSON.stringify(u)]; });
+      var deletes = (l.deletes || []).filter(function (d) { return !sentDel[String(d)]; });
+      if (upserts.length || deletes.length) out[sec] = { upserts: upserts, deletes: deletes };
+    });
+    if (localOps.hq) {
+      var hq;
+      Object.keys(localOps.hq).forEach(function (cat) {
+        if (!sentOps.hq || sentOps.hq[cat] !== localOps.hq[cat]) { hq = hq || {}; hq[cat] = localOps.hq[cat]; }
+      });
+      if (hq) out.hq = hq;
+    }
+    if (localOps.futureUpgrades !== undefined && localOps.futureUpgrades !== sentOps.futureUpgrades) out.futureUpgrades = localOps.futureUpgrades;
+    return out;
+  }
+
+  // Send the pending diff exactly once; only one request is in flight at a
+  // time, so responses can never arrive or apply out of order. Edits made
+  // during a flight rebase onto its response (asgMergeRemoteState) and are
+  // sent by the immediately following flush (latest-pending wins, never a
+  // stale intermediate state).
+  function asgFlushSave() {
+    if (asgSaveTimer) { clearTimeout(asgSaveTimer); asgSaveTimer = null; }
+    if (!AsgBackend.connected) return;
+    if (asgSaveInFlight) { asgSavePending = true; return; }
+    var ops = asgDiffOps(asgLoadedSnapshot, asgSharedPart());
+    if (Object.keys(ops).length === 0) return;
+    asgSaveInFlight = true;
+    asgEditSeqAtSend = asgEditSeq;
+    AsgBackend.saveWithOps(ops, function (data, err) {
+      asgSaveInFlight = false;
+      if (err) {
+        // Permanent rejection (invariant / invalid_ops): the backend applied
+        // NOTHING of this batch and answers with the fresh shared state.
+        // Rebase onto it with only the edits that were not part of the
+        // rejected send, and never retry - a permanent code cannot succeed.
+        if ((err === 'invariant' || err === 'invalid_ops')) {
+          asgSavePending = false;
+          asgDeferredRemote = null;
+          if (data && data.state) {
+            var freshShared = asgSharedFromData(data);
+            var localOps = asgDiffOps(asgLoadedSnapshot, asgSharedPart());
+            var keep = asgSubtractOps(localOps, ops);
+            asgApplyMeta(data);
+            asgSetSharedPart(asgApplyOpsToShared(freshShared, keep));
+            asgLoadedSnapshot = asgDeepCopy(freshShared);
+            asgDetectWarnings(data);
+            asgFlash('Shared workbook rejected the last change (' + (data.detail || err) + ') - it was reverted. Your other edits are kept.');
+            asgSaveLocal();
+            asgRenderAll();
+            if (Object.keys(keep).length) asgScheduleSave(50); // surviving edits still go out
+          } else {
+            asgFlash('Shared workbook rejected the last change (' + err + '). Reload the page to resync.');
+          }
+          return;
+        }
+        // Transient failure: the edit stays in state and localStorage; polls
+        // rebase around it (asgMergeRemoteState) so it is never silently
+        // lost, and the retry timer keeps trying while the page stays
+        // connected.
+        if (asgDeferredRemote) { var held = asgDeferredRemote; asgDeferredRemote = null; asgMergeRemoteState(held); asgSaveLocal(); }
+        asgFlash('Shared save failed (' + err + ') - the edit is kept in this browser and retried.');
+        asgScheduleSaveRetry();
+        return;
+      }
+      asgDeferredRemote = null; // the save response is fresher than any held poll
+      AsgBackend.lastHash = asgRemoteHash(data);
+      var rebased = asgMergeRemoteState(data); // the backend answers with the fresh full state
+      asgSaveLocal();
+      if (rebased || asgSavePending || asgEditSeq !== asgEditSeqAtSend) {
+        // Edits kept happening during the flight: send them now.
+        asgSavePending = false;
+        asgScheduleSave(50);
+      }
+      asgRenderAll();
+    });
+  }
+
+  function asgSaveLocal() {
+    try { localStorage.setItem(ASG_STORAGE_KEY, JSON.stringify(asgState)); } catch (_) {}
+  }
+
+  function asgLoadLocal() {
+    try {
+      var raw = localStorage.getItem(ASG_STORAGE_KEY);
+      if (raw) {
+        var parsed = JSON.parse(raw);
+        if (parsed && parsed.stash && parsed.hq && parsed.assignments && parsed.roster) return parsed;
+      }
+    } catch (_) { /* corrupt draft: fall through to the sample */ }
+    return asgSampleState();
+  }
+
+  function asgFlash(msg) {
+    var el = document.getElementById('asg-status');
+    if (!el) return;
+    el.textContent = msg;
+    clearTimeout(el._asgFlashTimer);
+    el._asgFlashTimer = setTimeout(function () { el.textContent = ''; }, 4000);
+  }
+
+  function asgToggleModule(bodyId, headerEl) {
+    var body = document.getElementById(bodyId);
+    if (!body) return;
+    var open = body.style.display === 'none';
+    body.style.display = open ? '' : 'none';
+    var caret = headerEl.querySelector('.asg-caret');
+    if (caret) caret.textContent = open ? '▾' : '▸';
+    var hint = headerEl.querySelector('.asg-fold-hint');
+    if (hint) hint.style.display = open ? 'none' : '';
+    var btn = headerEl.querySelector('.asg-header-btn');
+    if (btn) btn.style.display = open ? '' : 'none';
+  }
+
+  // ── Small window (info modal) ──────────────────────────
+  function asgOpenInfo(url, title) {
+    asgCloseInfo();
+    var back = document.createElement('div');
+    back.className = 'asg-modal-backdrop';
+    back.id = 'asg-info-modal';
+    var modal = document.createElement('div');
+    modal.className = 'asg-modal';
+    var head = document.createElement('div');
+    head.className = 'asg-modal-head';
+    var label = document.createElement('span');
+    label.textContent = title || 'Info';
+    var close = document.createElement('button');
+    close.className = 'btn btn-danger btn-small';
+    close.type = 'button';
+    close.title = 'Close';
+    close.textContent = '✕';
+    close.addEventListener('click', asgCloseInfo);
+    head.appendChild(label);
+    head.appendChild(close);
+    var frame = document.createElement('iframe');
+    frame.src = url;
+    frame.title = title || 'Info';
+    modal.appendChild(head);
+    modal.appendChild(frame);
+    back.appendChild(modal);
+    back.addEventListener('click', function (e) { if (e.target === back) asgCloseInfo(); });
+    document.body.appendChild(back);
+  }
+
+  function asgCloseInfo() {
+    var modal = document.getElementById('asg-info-modal');
+    if (modal) modal.remove();
+  }
+
+  function asgOpenBasebuilding() {
+    asgOpenInfo(new URL('../rules/nc-overdrive/basebuilding/', window.location.href).href, 'Basebuilding');
+  }
+
+  // ── Drag helpers (same mouse-grip pattern as the Gear lists) ──
+  function asgArmDrag(el, kind, id) {
+    el.draggable = false;
+    el.addEventListener('mousedown', function (e) {
+      el.draggable = !!(e.target && e.target.closest && e.target.closest('.asg-drag-grip'));
+    });
+    el.addEventListener('dragstart', function (e) {
+      el.classList.add('dragging');
+      asgDragPayload = { kind: kind, id: id };
+      e.dataTransfer.effectAllowed = 'move';
+      e.dataTransfer.setData('text/plain', kind + ':' + id);
+    });
+    el.addEventListener('dragend', function () {
+      el.classList.remove('dragging');
+      el.draggable = false;
+      asgDragPayload = null;
+      asgClearDropMarks();
+    });
+  }
+
+  function asgClearDropMarks() {
+    document.querySelectorAll('.asg-drop-before, .asg-drop-after, .asg-drop-inside').forEach(function (el) {
+      el.classList.remove('asg-drop-before', 'asg-drop-after', 'asg-drop-inside');
+    });
+  }
+
+  function asgDropPosition(e, el) {
+    var rect = el.getBoundingClientRect();
+    if (!rect.height) return true;
+    return (e.clientY - rect.top) < rect.height / 2 ? 'before' : 'after';
+  }
+
+  // ── STASH ──────────────────────────────────────────────
+  function asgFindGroup(groupId) {
+    for (var i = 0; i < asgState.stash.groups.length; i++) {
+      if (asgState.stash.groups[i].id === groupId) return asgState.stash.groups[i];
+    }
+    return null;
+  }
+
+  function asgFindItem(itemId) {
+    for (var g = 0; g < asgState.stash.groups.length; g++) {
+      var items = asgState.stash.groups[g].items;
+      for (var i = 0; i < items.length; i++) {
+        if (items[i].id === itemId) return { group: asgState.stash.groups[g], index: i, item: items[i] };
+      }
+    }
+    return null;
+  }
+
+  function asgAddGroup() {
+    var group = { id: asgNewId('grp'), name: 'New group', items: [] };
+    asgState.stash.groups.push(group);
+    asgSaveState();
+    asgRenderStash();
+  }
+
+  function asgDeleteGroup(groupId) {
+    var group = asgFindGroup(groupId);
+    if (!group) return;
+    var count = group.items.length;
+    var label = group.name.trim() || 'this group';
+    if (!window.confirm('Delete "' + label + '"' + (count ? ' and its ' + count + ' item(s)' : '') + '?')) return;
+    asgState.stash.groups.splice(asgState.stash.groups.indexOf(group), 1);
+    asgSaveState();
+    asgRenderStash();
+  }
+
+  function asgAddItem(groupId) {
+    var group = asgFindGroup(groupId);
+    if (!group) return;
+    var item = { id: asgNewId('itm'), name: '', note: '' };
+    group.items.push(item);
+    asgSaveState();
+    asgRenderStash();
+    var row = document.querySelector('#asg-stash-groups .asg-item[data-item-id="' + item.id + '"] .asg-item-name');
+    if (row) row.focus();
+  }
+
+  function asgDeleteItem(groupId, itemId) {
+    var group = asgFindGroup(groupId);
+    if (!group) return;
+    var index = group.items.findIndex(function (it) { return it.id === itemId; });
+    if (index < 0) return;
+    var name = group.items[index].name.trim() || 'this item';
+    if (!window.confirm('Delete "' + name + '" from the stash?')) return;
+    group.items.splice(index, 1);
+    asgSaveState();
+    asgRenderStash();
+  }
+
+  // The open note editor is transient DOM, but its id is remembered so a
+  // re-render (own save response or remote poll) recreates it; the textarea
+  // writes item.note on every keystroke, so the recreated editor already
+  // holds the latest text, and asgRenderAll restores focus and caret.
+  var asgOpenNoteId = null;
+  function asgOpenNoteEditor(row, item) {
+    var editor = document.createElement('div');
+    editor.className = 'asg-note-editor';
+    var area = document.createElement('textarea');
+    area.rows = 2;
+    area.placeholder = 'Hover note…';
+    area.value = item.note || '';
+    area.setAttribute('data-asg-key', 'note-' + item.id);
+    area.addEventListener('input', function () { item.note = area.value; asgSaveStateDebounced(); });
+    var done = document.createElement('button');
+    done.className = 'btn btn-small';
+    done.type = 'button';
+    done.textContent = 'Done';
+    done.addEventListener('click', function () { asgOpenNoteId = null; asgRenderStash(); });
+    editor.appendChild(area);
+    editor.appendChild(done);
+    row.appendChild(editor);
+  }
+  function asgToggleNoteEditor(row, item) {
+    if (row.querySelector('.asg-note-editor')) { asgOpenNoteId = null; asgRenderStash(); return; }
+    asgOpenNoteId = item.id;
+    asgOpenNoteEditor(row, item);
+    row.querySelector('.asg-note-editor textarea').focus();
+  }
+
+  function asgMoveItem(itemId, toGroupId, refItemId, insertBefore) {
+    var found = asgFindItem(itemId);
+    var toGroup = asgFindGroup(toGroupId);
+    if (!found || !toGroup || itemId === refItemId) return;
+    found.group.items.splice(found.index, 1);
+    var at = toGroup.items.length;
+    if (refItemId) {
+      var refIndex = toGroup.items.findIndex(function (it) { return it.id === refItemId; });
+      if (refIndex >= 0) at = insertBefore ? refIndex : refIndex + 1;
+    }
+    toGroup.items.splice(at, 0, found.item);
+    asgSaveState();
+    asgRenderStash();
+  }
+
+  function asgMoveGroup(groupId, refGroupId, insertBefore) {
+    var groups = asgState.stash.groups;
+    var from = groups.findIndex(function (g) { return g.id === groupId; });
+    var to = groups.findIndex(function (g) { return g.id === refGroupId; });
+    if (from < 0 || to < 0 || from === to) return;
+    var moved = groups.splice(from, 1)[0];
+    if (from < to) to--;
+    groups.splice(insertBefore ? to : to + 1, 0, moved);
+    asgSaveState();
+    asgRenderStash();
+  }
+
+  function asgBuildItemRow(groupId, item) {
+    var row = document.createElement('div');
+    row.className = 'asg-item';
+    row.dataset.itemId = item.id;
+    row.innerHTML =
+      '<span class="asg-drag-grip" title="Drag to move or reorder" aria-hidden="true">&#10303;</span>' +
+      '<input type="text" class="asg-item-name" value="' + escHtml(item.name) + '" placeholder="Item name&#8230;" aria-label="Item name">' +
+      '<button class="btn btn-small" type="button" title="Rename item">&#9998;</button>' +
+      '<button class="btn btn-small" type="button" title="Edit hover note">note</button>' +
+      '<button class="btn btn-danger btn-small" type="button" title="Delete item">&#10005;</button>';
+    var nameInput = row.querySelector('.asg-item-name');
+    nameInput.setAttribute('data-asg-key', 'item-' + item.id + '-name');
+    nameInput.addEventListener('input', function () { item.name = nameInput.value; asgSaveStateDebounced(); });
+    row.querySelector('[title="Rename item"]').addEventListener('click', function () { nameInput.focus(); nameInput.select(); });
+    row.querySelector('[title="Edit hover note"]').addEventListener('click', function () { asgToggleNoteEditor(row, item); });
+    row.querySelector('[title="Delete item"]').addEventListener('click', function () { asgDeleteItem(groupId, item.id); });
+    if (asgOpenNoteId === item.id) asgOpenNoteEditor(row, item); // rebuild keeps the open editor
+    if (item.note) {
+      var tip = document.createElement('div');
+      tip.className = 'asg-note-tip';
+      var tipTitle = document.createElement('div');
+      tipTitle.className = 'asg-note-tip-title';
+      tipTitle.textContent = 'Item note - shows on hover';
+      var tipBody = document.createElement('div');
+      tipBody.className = 'asg-note-tip-body';
+      tipBody.textContent = item.note;
+      tip.appendChild(tipTitle);
+      tip.appendChild(tipBody);
+      row.appendChild(tip);
+    }
+    asgArmDrag(row, 'asg-item', item.id);
+    row.addEventListener('dragover', function (e) {
+      if (!asgDragPayload || asgDragPayload.kind !== 'asg-item') return;
+      e.preventDefault();
+      e.stopPropagation();
+      e.dataTransfer.dropEffect = 'move';
+      var pos = asgDropPosition(e, row);
+      row.classList.toggle('asg-drop-before', pos === 'before');
+      row.classList.toggle('asg-drop-after', pos === 'after');
+    });
+    row.addEventListener('drop', function (e) {
+      if (!asgDragPayload || asgDragPayload.kind !== 'asg-item') return;
+      e.preventDefault();
+      e.stopPropagation();
+      asgMoveItem(asgDragPayload.id, groupId, item.id, asgDropPosition(e, row) === 'before');
+      asgClearDropMarks();
+    });
+    return row;
+  }
+
+  function asgRenderStash() {
+    var wrap = document.getElementById('asg-stash-groups');
+    if (!wrap) return;
+    if (asgOpenNoteId && !asgFindItem(asgOpenNoteId)) asgOpenNoteId = null; // item deleted elsewhere
+    wrap.innerHTML = '';
+    asgState.stash.groups.forEach(function (group) {
+      var g = document.createElement('div');
+      g.className = 'asg-group';
+      g.dataset.groupId = group.id;
+      var header = document.createElement('div');
+      header.className = 'asg-group-header';
+      header.innerHTML =
+        '<span class="asg-drag-grip" title="Drag to reorder group" aria-hidden="true">&#10303;</span>' +
+        '<input type="text" class="asg-group-name" value="' + escHtml(group.name) + '" aria-label="Group name">' +
+        '<button class="btn btn-danger btn-small" type="button" title="Delete group">&#10005;</button>';
+      header.querySelector('.asg-group-name').setAttribute('data-asg-key', 'group-' + group.id + '-name');
+      header.querySelector('.asg-group-name').addEventListener('input', function (e) {
+        group.name = e.target.value;
+        asgSaveStateDebounced();
+      });
+      header.querySelector('[title="Delete group"]').addEventListener('click', function () { asgDeleteGroup(group.id); });
+      header.addEventListener('dragover', function (e) {
+        if (!asgDragPayload || asgDragPayload.kind !== 'asg-group') return;
+        e.preventDefault();
+        e.dataTransfer.dropEffect = 'move';
+        g.classList.add('asg-drop-before');
+      });
+      header.addEventListener('drop', function (e) {
+        if (!asgDragPayload || asgDragPayload.kind !== 'asg-group') return;
+        e.preventDefault();
+        asgMoveGroup(asgDragPayload.id, group.id, true);
+        asgClearDropMarks();
+      });
+      g.appendChild(header);
+      var list = document.createElement('div');
+      list.className = 'asg-item-list';
+      group.items.forEach(function (item) { list.appendChild(asgBuildItemRow(group.id, item)); });
+      list.addEventListener('dragover', function (e) {
+        if (!asgDragPayload || asgDragPayload.kind !== 'asg-item') return;
+        e.preventDefault();
+        e.dataTransfer.dropEffect = 'move';
+        list.classList.add('asg-drop-inside');
+      });
+      list.addEventListener('dragleave', function (e) {
+        if (e.target === list) list.classList.remove('asg-drop-inside');
+      });
+      list.addEventListener('drop', function (e) {
+        if (!asgDragPayload || asgDragPayload.kind !== 'asg-item') return;
+        e.preventDefault();
+        asgMoveItem(asgDragPayload.id, group.id, null, false);
+        asgClearDropMarks();
+      });
+      g.appendChild(list);
+      var addBtn = document.createElement('button');
+      addBtn.className = 'btn btn-small';
+      addBtn.type = 'button';
+      addBtn.style.margin = '8px 10px';
+      addBtn.textContent = '+ Add item';
+      addBtn.addEventListener('click', function () { asgAddItem(group.id); });
+      g.appendChild(addBtn);
+      asgArmDrag(g, 'asg-group', group.id);
+      wrap.appendChild(g);
+    });
+  }
+
+  // ── HQ ─────────────────────────────────────────────────
+  var ASG_HQ_CATEGORIES = [
+    { key: 'supplies', label: 'Supplies' },
+    { key: 'culture', label: 'Culture' },
+    { key: 'technology', label: 'Technology' },
+    { key: 'security', label: 'Security' }
+  ];
+
+  function asgHqSetValue(key, value) {
+    if (!asgState.hq[key]) return;
+    asgState.hq[key].value = Math.max(0, Math.min(15, parseInt(value, 10) || 0));
+    asgSaveState();
+    asgRenderHq();
+  }
+
+  function asgFutureSuggestions() {
+    return (asgState.hq.futureUpgrades || '').split('\n')
+      .map(function (line) { var m = line.match(/^\s*-\s*(.+?)\s*$/); return m ? m[1] : null; })
+      .filter(function (text) { return !!text; });
+  }
+
+  function asgRenderFutureChips() {
+    var chips = document.getElementById('asg-future-chips');
+    if (!chips) return;
+    chips.innerHTML = '';
+    asgFutureSuggestions().forEach(function (text) {
+      var chip = document.createElement('span');
+      chip.className = 'asg-chip';
+      chip.textContent = text;
+      chips.appendChild(chip);
+    });
+  }
+
+  function asgRenderHq() {
+    var grid = document.getElementById('asg-hq-grid');
+    if (!grid) return;
+    grid.innerHTML = '';
+    ASG_HQ_CATEGORIES.forEach(function (cat) {
+      var data = asgState.hq[cat.key] || { value: 0, upgrades: [] };
+      var col = document.createElement('div');
+      col.className = 'asg-hq-col';
+      var title = document.createElement('h3');
+      title.textContent = cat.label;
+      col.appendChild(title);
+      var valueRow = document.createElement('div');
+      valueRow.className = 'asg-hq-value';
+      var num = document.createElement('span');
+      num.className = 'asg-hq-num';
+      num.id = 'asg-hq-' + cat.key + '-value';
+      num.textContent = data.value;
+      var steppers = document.createElement('div');
+      steppers.className = 'asg-hq-steppers';
+      var up = document.createElement('button');
+      up.className = 'btn btn-small';
+      up.type = 'button';
+      up.title = 'Increase ' + cat.label + ' (max 15)';
+      up.textContent = '▲';
+      up.addEventListener('click', function () { asgHqSetValue(cat.key, data.value + 1); });
+      var down = document.createElement('button');
+      down.className = 'btn btn-small';
+      down.type = 'button';
+      down.title = 'Decrease ' + cat.label + ' (min 0)';
+      down.textContent = '▼';
+      down.addEventListener('click', function () { asgHqSetValue(cat.key, data.value - 1); });
+      steppers.appendChild(up);
+      steppers.appendChild(down);
+      valueRow.appendChild(num);
+      valueRow.appendChild(steppers);
+      col.appendChild(valueRow);
+      // Upgrade slots: the base's facilities, admin-managed in the workbook
+      // (like the roster); shown here with their hover notes.
+      (data.upgrades || []).forEach(function (upgrade) {
+        var row = document.createElement('div');
+        row.className = 'asg-upgrade';
+        row.textContent = upgrade.name;
+        if (upgrade.note) {
+          var tip = document.createElement('div');
+          tip.className = 'asg-note-tip';
+          var tipTitle = document.createElement('div');
+          tipTitle.className = 'asg-note-tip-title';
+          tipTitle.textContent = 'Upgrade note - shows on hover';
+          var tipBody = document.createElement('div');
+          tipBody.className = 'asg-note-tip-body';
+          tipBody.textContent = upgrade.note;
+          tip.appendChild(tipTitle);
+          tip.appendChild(tipBody);
+          row.appendChild(tip);
+        }
+        col.appendChild(row);
+      });
+      grid.appendChild(col);
+    });
+    var futureText = document.getElementById('asg-future-text');
+    if (futureText && futureText.value !== (asgState.hq.futureUpgrades || '')) {
+      futureText.value = asgState.hq.futureUpgrades || '';
+    }
+    asgRenderFutureChips();
+  }
+
+  // ── ASSIGNMENTS ────────────────────────────────────────
+  function asgRosterLookup(id) {
+    for (var i = 0; i < asgState.roster.length; i++) {
+      if (asgState.roster[i].id === id) return asgState.roster[i];
+    }
+    return null;
+  }
+
+  function asgNpcLabel(npc) {
+    var base = npc.name || (npc.role + ' #' + npc.number);
+    return base + ' (Skill ' + npc.skill + ')';
+  }
+
+  function asgCrewTotals() {
+    var totals = {};
+    asgState.roster.forEach(function (npc) {
+      totals[npc.role] = (totals[npc.role] || 0) + 1;
+    });
+    return totals;
+  }
+
+  function asgSortedAvailable() {
+    var mode = asgState.assignments.order;
+    var npcs = asgState.assignments.available.map(asgRosterLookup).filter(function (npc) { return !!npc; });
+    npcs.sort(function (a, b) {
+      if (mode === 'skill') {
+        return (b.skill - a.skill) || a.role.localeCompare(b.role) || (a.number - b.number);
+      }
+      return a.role.localeCompare(b.role) || (a.number - b.number);
+    });
+    return npcs;
+  }
+
+  function asgFindNpcLocation(npcId) {
+    if (asgState.assignments.available.indexOf(npcId) >= 0) return { type: 'available' };
+    var i, j;
+    for (i = 0; i < asgState.assignments.projects.length; i++) {
+      j = asgState.assignments.projects[i].slots.indexOf(npcId);
+      if (j >= 0) return { type: 'project', card: asgState.assignments.projects[i], slotIndex: j };
+    }
+    for (i = 0; i < asgState.assignments.gigs.length; i++) {
+      var slots = asgState.assignments.gigs[i].slots;
+      for (j = 0; j < slots.length; j++) {
+        if (slots[j] && slots[j].npc === npcId) return { type: 'gig', card: asgState.assignments.gigs[i], slotIndex: j };
+      }
+    }
+    return null;
+  }
+
+  function asgRemoveNpc(npcId) {
+    var loc = asgFindNpcLocation(npcId);
+    if (!loc) return null;
+    if (loc.type === 'available') {
+      asgState.assignments.available.splice(asgState.assignments.available.indexOf(npcId), 1);
+    } else if (loc.type === 'project') {
+      loc.card.slots[loc.slotIndex] = null;
+    } else {
+      loc.card.slots[loc.slotIndex].npc = null;
+    }
+    return loc;
+  }
+
+  function asgRestoreNpc(npcId, loc) {
+    if (!loc) { asgState.assignments.available.push(npcId); return; }
+    if (loc.type === 'available') asgState.assignments.available.push(npcId);
+    else if (loc.type === 'project') loc.card.slots[loc.slotIndex] = npcId;
+    else loc.card.slots[loc.slotIndex].npc = npcId;
+  }
+
+  // Assign an NPC to a project/gig slot. slotIndex is optional: without it the
+  // first compatible empty slot is used. Enforces capacity and gig position
+  // role requirements. Returns true on success.
+  function asgAssignNpc(npcId, targetType, cardId, slotIndex) {
+    var npc = asgRosterLookup(npcId);
+    var cards = targetType === 'project' ? asgState.assignments.projects : asgState.assignments.gigs;
+    var card = null;
+    for (var i = 0; i < cards.length; i++) if (cards[i].id === cardId) card = cards[i];
+    if (!npc || !card) return false;
+    var origin = asgRemoveNpc(npcId);
+    var label = targetType === 'project' ? 'Project' : 'Gig';
+    var capacity = targetType === 'project' ? ASG_PROJECT_CAPACITY : ASG_GIG_CAPACITY;
+    var target = -1;
+    var indexes = (slotIndex === undefined || slotIndex === null)
+      ? card.slots.map(function (_, j) { return j; })
+      : [slotIndex];
+    for (var k = 0; k < indexes.length; k++) {
+      var j = indexes[k];
+      if (j < 0 || j >= capacity) continue;
+      var slot = targetType === 'project' ? { npc: card.slots[j] } : (card.slots[j] || { role: '', npc: '' });
+      if (slot.npc) continue;
+      if (targetType === 'gig' && slot.role && slot.role !== npc.role) continue;
+      target = j;
+      break;
+    }
+    if (target < 0) {
+      asgRestoreNpc(npcId, origin);
+      var full = targetType === 'project'
+        ? card.slots.every(function (s) { return !!s; })
+        : card.slots.every(function (s) { return !!(s && s.npc); });
+      if (full) asgFlash(label + 's hold at most ' + capacity + ' NPCs.');
+      else asgFlash('No open ' + label.toLowerCase() + ' position for a ' + npc.role + '.');
+      return false;
+    }
+    if (targetType === 'project') card.slots[target] = npcId;
+    else {
+      if (!card.slots[target]) card.slots[target] = { role: '', npc: '' };
+      card.slots[target].npc = npcId;
+    }
+    asgSaveState();
+    asgRenderAssignments();
+    return true;
+  }
+
+  function asgUnassignNpc(npcId) {
+    if (!asgRemoveNpc(npcId)) return;
+    asgState.assignments.available.push(npcId);
+    asgSaveState();
+    asgRenderAssignments();
+  }
+
+  function asgReorderAvailable(npcId, refNpcId, insertBefore) {
+    var list = asgState.assignments.available;
+    if (npcId === refNpcId) return;
+    var loc = asgRemoveNpc(npcId);
+    var at = list.indexOf(refNpcId);
+    if (at < 0) { asgRestoreNpc(npcId, loc); return; }
+    list.splice(insertBefore ? at : at + 1, 0, npcId);
+    asgSaveState();
+    asgRenderAssignments();
+  }
+
+  function asgNextCardNumber(cards) {
+    var max = 0;
+    cards.forEach(function (c) { if (c.number > max) max = c.number; });
+    return max + 1;
+  }
+
+  function asgAddProject() {
+    var projects = asgState.assignments.projects;
+    projects.push({ id: asgNewId('proj'), number: asgNextCardNumber(projects), name: '', description: '', slots: [null, null] });
+    asgSaveState();
+    asgRenderAssignments();
+  }
+
+  function asgAddGig() {
+    var gigs = asgState.assignments.gigs;
+    var slots = [];
+    for (var i = 0; i < ASG_GIG_CAPACITY; i++) slots.push({ role: null, npc: null });
+    gigs.push({ id: asgNewId('gig'), number: asgNextCardNumber(gigs), name: '', description: '', slots: slots });
+    asgSaveState();
+    asgRenderAssignments();
+  }
+
+  function asgDeleteCard(targetType, cardId) {
+    var cards = targetType === 'project' ? asgState.assignments.projects : asgState.assignments.gigs;
+    var index = cards.findIndex(function (c) { return c.id === cardId; });
+    if (index < 0) return;
+    var card = cards[index];
+    var label = (targetType === 'project' ? 'PROJECT' : 'GIG') + ' #' + card.number;
+    // Deleting a gig/project returns its NPCs to Available automatically.
+    var returning = targetType === 'project'
+      ? card.slots.filter(function (s) { return !!s; })
+      : card.slots.map(function (s) { return s.npc; }).filter(function (s) { return !!s; });
+    var title = card.name.trim() ? ' "' + card.name.trim() + '"' : '';
+    if (!window.confirm('Delete ' + label + title + '?' + (returning.length ? ' Its ' + returning.length + ' NPC(s) return to Available.' : ''))) return;
+    cards.splice(index, 1);
+    returning.forEach(function (npcId) { asgState.assignments.available.push(npcId); });
+    asgSaveState();
+    asgRenderAssignments();
+  }
+
+  function asgReorderCard(targetType, cardId, refCardId, insertBefore) {
+    var cards = targetType === 'project' ? asgState.assignments.projects : asgState.assignments.gigs;
+    var from = cards.findIndex(function (c) { return c.id === cardId; });
+    var to = cards.findIndex(function (c) { return c.id === refCardId; });
+    if (from < 0 || to < 0 || from === to) return;
+    var moved = cards.splice(from, 1)[0];
+    if (from < to) to--;
+    cards.splice(insertBefore ? to : to + 1, 0, moved);
+    asgSaveState();
+    asgRenderAssignments();
+  }
+
+  function asgSetOrder(mode) {
+    asgState.assignments.order = mode === 'skill' ? 'skill' : 'role';
+    asgSaveState();
+    asgRenderAssignments();
+  }
+
+  // An in-progress rename is transient DOM; its draft text lives here so a
+  // re-render (own save response or remote poll) recreates the input with
+  // the uncommitted text, and asgRenderAll restores focus and caret. The
+  // name only reaches state (and the save queue) on commit.
+  var asgRenameCard = null; // { targetType, cardId, value }
+  function asgOpenRenameInput(targetType, card, nameEl) {
+    var input = document.createElement('input');
+    input.type = 'text';
+    input.className = 'asg-card-name-input';
+    input.value = asgRenameCard && asgRenameCard.cardId === card.id ? asgRenameCard.value : card.name;
+    input.placeholder = (targetType === 'project' ? 'Project' : 'Gig') + ' name…';
+    input.setAttribute('data-asg-key', 'card-' + card.id + '-rename');
+    input.addEventListener('input', function () {
+      if (asgRenameCard && asgRenameCard.cardId === card.id) asgRenameCard.value = input.value;
+    });
+    var commit = function () {
+      if (!input.isConnected) return; // teardown blur from a re-render is not a commit
+      card.name = input.value;
+      asgRenameCard = null;
+      asgSaveState();
+      asgRenderAssignments();
+    };
+    input.addEventListener('blur', commit);
+    input.addEventListener('keydown', function (e) { if (e.key === 'Enter') input.blur(); });
+    nameEl.textContent = '';
+    nameEl.appendChild(input);
+    return input;
+  }
+  function asgStartRename(targetType, cardId) {
+    var cards = targetType === 'project' ? asgState.assignments.projects : asgState.assignments.gigs;
+    var card = cards.find(function (c) { return c.id === cardId; });
+    var nameEl = document.querySelector('.asg-card[data-card-id="' + cardId + '"] .asg-card-name');
+    if (!card || !nameEl || nameEl.querySelector('input')) return;
+    asgRenameCard = { targetType: targetType, cardId: cardId, value: card.name };
+    var input = asgOpenRenameInput(targetType, card, nameEl);
+    input.focus();
+    input.select();
+  }
+
+  function asgBuildNpcChip(npc) {
+    var chip = document.createElement('div');
+    chip.className = 'asg-npc' + (npc.name ? ' named' : '');
+    chip.dataset.npcId = npc.id;
+    var grip = document.createElement('span');
+    grip.className = 'asg-drag-grip';
+    grip.title = 'Drag to assign';
+    grip.setAttribute('aria-hidden', 'true');
+    grip.textContent = '⥱';
+    var label = document.createElement('span');
+    label.className = 'asg-npc-label';
+    label.textContent = asgNpcLabel(npc);
+    chip.appendChild(grip);
+    chip.appendChild(label);
+    if (npc.name) {
+      chip.title = npc.pageUrl ? 'Double-click to open ' + npc.name + "'s page" : npc.name;
+      chip.addEventListener('dblclick', function () {
+        if (npc.pageUrl) asgOpenInfo(npc.pageUrl, npc.name);
+        else asgFlash('No webpage link set for ' + npc.name + ' - set it in the roster sheet.');
+      });
+    }
+    asgArmDrag(chip, 'asg-npc', npc.id);
+    return chip;
+  }
+
+  function asgBuildCard(targetType, card) {
+    var capacity = targetType === 'project' ? ASG_PROJECT_CAPACITY : ASG_GIG_CAPACITY;
+    var label = (targetType === 'project' ? 'PROJECT' : 'GIG') + ' #' + card.number;
+    var el = document.createElement('div');
+    el.className = 'asg-card asg-' + targetType;
+    el.dataset.cardId = card.id;
+    var head = document.createElement('div');
+    head.className = 'asg-card-head';
+    head.innerHTML =
+      '<span class="asg-drag-grip" title="Drag to reorder" aria-hidden="true">&#10303;</span>' +
+      '<span class="asg-card-label">' + label + '</span>' +
+      '<span class="asg-card-cap"></span>' +
+      '<button class="btn btn-small" type="button" title="Rename">Rename</button>' +
+      '<button class="btn btn-danger btn-small" type="button" title="Delete">&#10005;</button>';
+    head.querySelector('[title="Rename"]').addEventListener('click', function () { asgStartRename(targetType, card.id); });
+    head.querySelector('[title="Delete"]').addEventListener('click', function () { asgDeleteCard(targetType, card.id); });
+    el.appendChild(head);
+    var name = document.createElement('div');
+    name.className = 'asg-card-name';
+    name.textContent = card.name || 'Unnamed';
+    if (!card.name) name.style.color = 'var(--dim)';
+    el.appendChild(name);
+    if (asgRenameCard && asgRenameCard.cardId === card.id) asgOpenRenameInput(targetType, card, name); // rebuild keeps the in-progress rename
+    var desc = document.createElement('input');
+    desc.type = 'text';
+    desc.className = 'asg-card-desc';
+    desc.placeholder = 'short description…';
+    desc.value = card.description || '';
+    desc.setAttribute('aria-label', label + ' short description');
+    desc.setAttribute('data-asg-key', 'card-' + card.id + '-desc');
+    desc.addEventListener('input', function () { card.description = desc.value; asgSaveStateDebounced(); });
+    el.appendChild(desc);
+
+    var filled = 0;
+    card.slots.forEach(function (slot, i) {
+      // Empty gig slots are null after a backend round-trip (the workbook
+      // only stores rows for positions that have an npc or a role).
+      var npcId = targetType === 'project' ? slot : (slot && slot.npc);
+      var slotEl = document.createElement('div');
+      slotEl.className = 'asg-slot';
+      var pos = document.createElement('span');
+      pos.className = 'asg-slot-pos';
+      pos.textContent = 'Pos ' + (i + 1) + ' ·';
+      slotEl.appendChild(pos);
+      // An occupied position counts toward capacity: an assigned NPC
+      // (roster-known or not) or a gig slot with a required role. Only
+      // truly empty positions stay uncounted (matches the backend's row
+      // count, which skips rows with neither npc nor role).
+      var occupied = npcId || (targetType === 'gig' && slot && slot.role);
+      if (occupied) filled++;
+      if (npcId) {
+        var npc = asgRosterLookup(npcId);
+        if (npc) {
+          slotEl.appendChild(asgBuildNpcChip(npc));
+        } else {
+          var gone = document.createElement('span');
+          gone.textContent = 'unknown NPC (removed from roster)';
+          slotEl.appendChild(gone);
+        }
+      } else {
+        var empty = document.createElement('span');
+        empty.textContent = targetType === 'gig' && slot && slot.role ? slot.role + ' - empty' : 'empty slot';
+        slotEl.appendChild(empty);
+      }
+      slotEl.addEventListener('dragover', function (e) {
+        if (!asgDragPayload || asgDragPayload.kind !== 'asg-npc') return;
+        e.preventDefault();
+        e.stopPropagation();
+        e.dataTransfer.dropEffect = 'move';
+        slotEl.classList.add('asg-drop-inside');
+      });
+      slotEl.addEventListener('drop', function (e) {
+        if (!asgDragPayload || asgDragPayload.kind !== 'asg-npc') return;
+        e.preventDefault();
+        e.stopPropagation();
+        asgAssignNpc(asgDragPayload.id, targetType, card.id, i);
+        asgClearDropMarks();
+      });
+      el.appendChild(slotEl);
+    });
+    head.querySelector('.asg-card-cap').textContent = filled + '/' + capacity;
+    el.addEventListener('dragover', function (e) {
+      if (asgDragPayload && asgDragPayload.kind === 'asg-npc') {
+        e.preventDefault();
+        e.dataTransfer.dropEffect = 'move';
+      } else if (asgDragPayload && asgDragPayload.kind === 'asg-' + targetType) {
+        e.preventDefault();
+        e.dataTransfer.dropEffect = 'move';
+        var pos = asgDropPosition(e, el);
+        el.classList.toggle('asg-drop-before', pos === 'before');
+        el.classList.toggle('asg-drop-after', pos === 'after');
+      }
+    });
+    el.addEventListener('drop', function (e) {
+      if (!asgDragPayload) return;
+      if (asgDragPayload.kind === 'asg-npc') {
+        e.preventDefault();
+        asgAssignNpc(asgDragPayload.id, targetType, card.id, null);
+        asgClearDropMarks();
+      } else if (asgDragPayload.kind === 'asg-' + targetType) {
+        e.preventDefault();
+        asgReorderCard(targetType, asgDragPayload.id, card.id, asgDropPosition(e, el) === 'before');
+        asgClearDropMarks();
+      }
+    });
+    asgArmDrag(el, 'asg-' + targetType, card.id);
+    return el;
+  }
+
+  function asgRenderAssignments() {
+    var totalsEl = document.getElementById('asg-crew-totals');
+    if (!totalsEl) return;
+    if (asgRenameCard) { // card deleted elsewhere: drop the in-progress rename
+      var stillThere = (asgRenameCard.targetType === 'project' ? asgState.assignments.projects : asgState.assignments.gigs)
+        .some(function (c) { return c.id === asgRenameCard.cardId; });
+      if (!stillThere) asgRenameCard = null;
+    }
+    var totals = asgCrewTotals();
+    totalsEl.innerHTML = '';
+    // Totals follow roster order (roles as they appear in the sheet).
+    var roles = [];
+    asgState.roster.forEach(function (npc) {
+      if (roles.indexOf(npc.role) < 0) roles.push(npc.role);
+    });
+    roles.forEach(function (role) {
+      var chip = document.createElement('span');
+      chip.className = 'asg-total-chip';
+      chip.textContent = role + ' ';
+      var count = document.createElement('b');
+      count.textContent = totals[role];
+      chip.appendChild(count);
+      totalsEl.appendChild(chip);
+    });
+    var mode = asgState.assignments.order;
+    var roleBtn = document.getElementById('asg-order-role');
+    var skillBtn = document.getElementById('asg-order-skill');
+    if (roleBtn) roleBtn.classList.toggle('asg-order-active', mode !== 'skill');
+    if (skillBtn) skillBtn.classList.toggle('asg-order-active', mode === 'skill');
+
+    var availEl = document.getElementById('asg-available-list');
+    availEl.innerHTML = '';
+    var npcs = asgSortedAvailable();
+    npcs.forEach(function (npc) {
+      var chip = asgBuildNpcChip(npc);
+      chip.addEventListener('dragover', function (e) {
+        if (!asgDragPayload || asgDragPayload.kind !== 'asg-npc') return;
+        e.preventDefault();
+        e.stopPropagation();
+        e.dataTransfer.dropEffect = 'move';
+        var pos = asgDropPosition(e, chip);
+        chip.classList.toggle('asg-drop-before', pos === 'before');
+        chip.classList.toggle('asg-drop-after', pos === 'after');
+      });
+      chip.addEventListener('drop', function (e) {
+        if (!asgDragPayload || asgDragPayload.kind !== 'asg-npc') return;
+        e.preventDefault();
+        e.stopPropagation();
+        var wasAvailable = asgState.assignments.available.indexOf(asgDragPayload.id) >= 0;
+        if (wasAvailable) asgReorderAvailable(asgDragPayload.id, npc.id, asgDropPosition(e, chip) === 'before');
+        else { asgUnassignNpc(asgDragPayload.id); }
+        asgClearDropMarks();
+      });
+      availEl.appendChild(chip);
+    });
+    document.getElementById('asg-available-count').textContent = String(npcs.length);
+    var availCol = document.getElementById('asg-available-col');
+    availCol.ondragover = function (e) {
+      if (!asgDragPayload || asgDragPayload.kind !== 'asg-npc') return;
+      e.preventDefault();
+      e.dataTransfer.dropEffect = 'move';
+      availCol.classList.add('asg-drop-inside');
+    };
+    availCol.ondragleave = function (e) {
+      if (e.target === availCol) availCol.classList.remove('asg-drop-inside');
+    };
+    availCol.ondrop = function (e) {
+      if (!asgDragPayload || asgDragPayload.kind !== 'asg-npc') return;
+      e.preventDefault();
+      asgUnassignNpc(asgDragPayload.id);
+      asgClearDropMarks();
+    };
+
+    var projEl = document.getElementById('asg-projects-list');
+    projEl.innerHTML = '';
+    asgState.assignments.projects.forEach(function (card) { projEl.appendChild(asgBuildCard('project', card)); });
+    var gigsEl = document.getElementById('asg-gigs-list');
+    gigsEl.innerHTML = '';
+    asgState.assignments.gigs.forEach(function (card) { gigsEl.appendChild(asgBuildCard('gig', card)); });
+  }
+
+  // Re-renders rebuild the module DOM. Keep the editor the player is typing
+  // in alive across remote applies: remember the focused field by its
+  // data-asg-key (and caret) and put it back afterwards.
+  function asgCaptureFocus() {
+    var el = document.activeElement;
+    if (!el || !el.getAttribute || !el.getAttribute('data-asg-key')) return null;
+    return { key: el.getAttribute('data-asg-key'), start: el.selectionStart, end: el.selectionEnd };
+  }
+  function asgRestoreFocus(f) {
+    if (!f) return;
+    var el = document.querySelector('[data-asg-key="' + f.key + '"]');
+    if (!el) return; // the row was deleted elsewhere; nothing to restore
+    el.focus();
+    try { el.setSelectionRange(f.start, f.end); } catch (_) {}
+  }
+
+  function asgRenderAll() {
+    var focus = asgCaptureFocus();
+    asgRenderStash();
+    asgRenderHq();
+    asgRenderAssignments();
+    asgRestoreFocus(focus);
+  }
+
+  function asgInit() {
+    asgState = asgLoadLocal();
+    asgRenderAll();
+    var futureText = document.getElementById('asg-future-text');
+    if (futureText) {
+      futureText.setAttribute('data-asg-key', 'hq-future');
+      futureText.value = asgState.hq.futureUpgrades || '';
+      futureText.addEventListener('input', function () {
+        asgState.hq.futureUpgrades = futureText.value;
+        asgSaveStateDebounced();
+        asgRenderFutureChips();
+      });
+    }
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') asgCloseInfo(); });
+    asgBackendStatus('Shared workbook not connected - this page saves to this browser only.');
+    if (AsgBackend.password()) asgConnect();
+  }
+
+  asgInit();
+
 </script>
 <script>
   const siteRoot = new URL('../', window.location.href);

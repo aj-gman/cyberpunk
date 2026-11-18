@@ -37,6 +37,9 @@ jobs:
         env:
           SITE_BASE_URL: https://aj-gman.github.io
           SITE_PATH_PREFIX: /cyberpunk/
+          # Shared ASG workbook backend URL (Apps Script /exec). Empty or
+          # unset keeps the ASG page in browser-local draft mode.
+          ASG_SCRIPT_URL: ${{ vars.ASG_SCRIPT_URL }}
       - name: Verify built Pages site
         id: verify
         run: node scripts/verify-pages-build.js
