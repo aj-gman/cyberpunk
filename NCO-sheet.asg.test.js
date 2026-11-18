@@ -104,7 +104,7 @@ describe('ASG HQ', () => {
   const w=sheet();
   const rows=Array.from(w.document.querySelectorAll('#asg-hq-grid .asg-hq-col'))[0].querySelectorAll('.asg-upgrade');
   expect(rows).toHaveLength(2);
-  expect(rows[0].textContent).toContain('Biolocked Armory');
+  expect(rows[0].querySelector('.asg-upgrade-name').value).toBe('Biolocked Armory');
   expect(rows[1].querySelector('.asg-note-tip .asg-note-tip-body').textContent).toBe('Fits the AV and ground vehicles. Upkeep 2 SUP.');
  });
  it('parses dash-prefixed Future Upgrades lines into suggestion chips', () => {
@@ -259,7 +259,7 @@ describe('ASG Assignments', () => {
   await Promise.resolve();
   expect(w.asgState.hq.supplies.value).toBe(9);
   expect(w.asgState.hq.supplies.upgrades).toEqual([{name:'Tab Armory',note:'from tab'}]); // not clobbered
-  expect(w.asgSharedPart().hq.supplies.upgrades).toBeUndefined(); // upgrades stay out of the synced part
+  expect(w.asgSharedPart().hq.supplies.upgrades).toEqual([{name:'Tab Armory',note:'from tab'}]); // upgrades stay out of the synced part
  });
  it('produces granular ops containing only the changed rows', () => {
   const w=sheet();
@@ -739,5 +739,99 @@ describe('ASG completed gigs and projects', () => {
   w.asgCompleteCard('project', proj.id, 'success');
   expect(calls).toHaveLength(0);
   expect(w.asgState.assignments.projects.some(c=>c.id===proj.id)).toBe(true);
+ });
+});
+
+describe('stash columns, editable upgrade slots, and occupied position labels', () => {
+ function upgraded(w) {
+  w.asgState.hq.supplies.upgrades=[{id:'u-a',name:'Armory',note:'old'},{id:'u-b',name:'Garage',note:''}];
+  w.asgState.hq.culture.upgrades=[{id:'u-c',name:'Studio',note:''}];
+  w.AsgBackend.upgradeEditVersion=1;
+  w.asgRenderHq();
+ }
+ it('uses responsive column layout and hides Pos only for assigned NPC slots', () => {
+  const w=sheet();
+  expect(w.document.querySelector('style').textContent).toContain('repeat(auto-fit, minmax(min(100%, 330px), 1fr))');
+  w.document.querySelectorAll('.asg-slot').forEach(slot=>{
+   if(slot.querySelector('.asg-npc-chip')) expect(slot.querySelector('.asg-slot-pos')).toBeNull();
+  });
+  expect(w.document.querySelectorAll('.asg-slot-pos').length).toBeGreaterThan(0);
+ });
+ it('adds, renames, notes and explicitly deletes only name-empty slots, even with notes', () => {
+  const w=sheet();upgraded(w);
+  w.asgAddUpgrade('supplies'); const list=w.asgState.hq.supplies.upgrades, u=list.at(-1);
+  expect(w.document.activeElement.getAttribute('data-asg-key')).toBe('upgrade-'+u.id);
+  u.name='Keep';u.note='valuable';w.asgDeleteUpgrade('supplies',u.id);expect(list).toHaveLength(3);
+  const name=w.document.querySelector('[data-asg-key="upgrade-'+u.id+'"]'); name.value='';name.dispatchEvent(new w.Event('input'));
+  expect(list).toHaveLength(3); // never auto-delete on clear/blur
+  w.asgDeleteUpgrade('supplies',u.id);expect(list).toHaveLength(2);
+  const row=w.document.querySelector('[data-upgrade-id="u-a"]');row.querySelector('[aria-label="Edit upgrade hover note"]').click();
+  const area=w.document.querySelector('[data-asg-key="upgrade-note-u-a"]');area.value='new note';area.dispatchEvent(new w.Event('input'));
+  expect(w.asgState.hq.supplies.upgrades[0].note).toBe('new note');
+  w.asgRenderHq();expect(w.document.querySelector('[data-asg-key="upgrade-note-u-a"]').value).toBe('new note');
+ });
+ it('blocks editing on old backends but preserves upgrade display', () => {
+  const w=sheet();upgraded(w);w.AsgBackend.connected=true;w.AsgBackend.upgradeEditVersion=0;w.asgRenderHq();
+  expect(w.document.querySelector('.asg-upgrade-name').disabled).toBe(true);
+  expect(w.document.querySelector('.asg-upgrade-name').value).toBe('Armory');
+  w.asgAddUpgrade('supplies');expect(w.asgState.hq.supplies.upgrades).toHaveLength(2);
+  expect(w.document.querySelector('.asg-upgrade-add').disabled).toBe(true);
+ });
+ it('reorders only within category and supports keyboard alternative', () => {
+  const w=sheet();upgraded(w);w.asgMoveUpgrade('supplies','u-a','u-c',false);
+  expect(w.asgState.hq.supplies.upgrades.map(u=>u.id)).toEqual(['u-a','u-b']);
+  w.document.querySelector('[data-upgrade-id="u-b"] .asg-upgrade-grip').dispatchEvent(new w.KeyboardEvent('keydown',{key:'ArrowUp',bubbles:true}));
+  expect(w.asgState.hq.supplies.upgrades.map(u=>u.id)).toEqual(['u-b','u-a']);
+ });
+ it('rebases pending notes around a concurrent rename of another ID and sends granular rows', () => {
+  const w=sheet();upgraded(w);w.AsgBackend.connected=true;w.asgTakeSnapshot();
+  w.asgState.hq.supplies.upgrades[0].note='pending';
+  const remote=JSON.parse(JSON.stringify(w.asgLoadedSnapshot));remote.hq.supplies.upgrades[1].name='Remote Garage';
+  w.asgMergeRemoteState({state:remote,upgradeEditVersion:1});
+  expect(w.asgState.hq.supplies.upgrades[0].note).toBe('pending');
+  expect(w.asgState.hq.supplies.upgrades[1].name).toBe('Remote Garage');
+  const ops=w.asgDiffOps(w.asgLoadedSnapshot,w.asgSharedPart());expect(ops.upgrades.upserts).toHaveLength(1);expect(ops.upgrades.upserts[0].id).toBe('u-a');
+ });
+ it('does not silently submit upgrades after backend capability disappears', () => {
+  const w=sheet();upgraded(w);w.AsgBackend.connected=true;w.asgTakeSnapshot();w.asgState.hq.supplies.upgrades[0].name='Pending';
+  w.AsgBackend.upgradeEditVersion=0;w.AsgBackend.saveWithOps=vi.fn();w.asgFlushSave();
+  expect(w.AsgBackend.saveWithOps).not.toHaveBeenCalled();expect(w.document.getElementById('asg-status').textContent).toContain('updated backend');
+ });
+});
+
+describe('nested edgerunner drag ownership',()=>{
+ it('does not let assigned NPC drag bubble into dragging its parent card',()=>{
+  const w=sheet(); const chip=w.document.querySelector('.asg-card .asg-npc');expect(chip).toBeTruthy();
+  const grip=chip.querySelector('.asg-drag-grip');grip.dispatchEvent(new w.MouseEvent('mousedown',{bubbles:true}));
+  const event=new w.Event('dragstart',{bubbles:true});event.dataTransfer={effectAllowed:'',setData:vi.fn()};chip.dispatchEvent(event);
+  expect(w.asgDragPayload).toEqual({kind:'asg-npc',id:chip.dataset.npcId});
+  expect(chip.closest('.asg-card').classList.contains('dragging')).toBe(false);
+ });
+ it('moves between compatible empty slots and restores origin for occupied/incompatible targets',()=>{
+  const w=sheet();const npc=w.asgState.roster.find(n=>n.id==='npc-solo-1');expect(npc).toBeTruthy();
+  w.asgUnassignNpc(npc.id);const project=w.asgState.assignments.projects[0];project.slots=[null,null];
+  w.asgAssignNpc(npc.id,'project',project.id,0);expect(project.slots[0]).toBe(npc.id);
+  const gig=w.asgState.assignments.gigs[0];gig.slots[0]={role:'Solo',npc:''};
+  expect(w.asgAssignNpc(npc.id,'gig',gig.id,0)).toBe(true);expect(project.slots[0]).toBeNull();
+  project.slots[0]='npc-techie-1';expect(w.asgAssignNpc(npc.id,'project',project.id,0)).toBe(false);expect(gig.slots[0].npc).toBe(npc.id);
+ });
+});
+
+describe('approved assignment swaps and unassignment',()=>{
+ it('swaps occupied positions only inside same card with compatible roles; rejects cross-card displacement',()=>{
+  const w=sheet();const project=w.asgState.assignments.projects[0];
+  const a='npc-solo-1',b='npc-techie-1';w.asgUnassignNpc(a);w.asgUnassignNpc(b);
+  project.slots=[a,b];w.asgState.assignments.available=w.asgState.assignments.available.filter(id=>id!==a&&id!==b);
+  expect(w.asgAssignNpc(a,'project',project.id,1)).toBe(true);expect(project.slots).toEqual([b,a]);
+  const gig=w.asgState.assignments.gigs[0];gig.slots=[{role:'Solo',npc:a},{role:'Techie',npc:b},{role:'',npc:''},{role:'',npc:''}];project.slots=[null,null];
+  expect(w.asgAssignNpc(a,'gig',gig.id,1)).toBe(false);expect(gig.slots[0].npc).toBe(a);
+  gig.slots[0].role='';gig.slots[1].role='';expect(w.asgAssignNpc(a,'gig',gig.id,1)).toBe(true);expect(gig.slots[0].npc).toBe(b);
+  project.slots[0]='npc-media-1';expect(w.asgAssignNpc(a,'project',project.id,0)).toBe(false);expect(gig.slots[1].npc).toBe(a);
+ });
+ it('drop back into Available unassigns without removing roster person; outside drop changes nothing',()=>{
+  const w=sheet(),npc=w.asgState.roster.find(n=>n.id==='npc-solo-1');const roster=w.asgState.roster.length;
+  const before=JSON.stringify(w.asgState.assignments);const outside=new w.Event('drop',{bubbles:true});w.document.body.dispatchEvent(outside);expect(JSON.stringify(w.asgState.assignments)).toBe(before);
+  w.asgDragPayload={kind:'asg-npc',id:npc.id};const drop=new w.Event('drop',{bubbles:true,cancelable:true});w.document.getElementById('asg-available-col').dispatchEvent(drop);
+  expect(w.asgState.assignments.available).toContain(npc.id);expect(w.asgState.roster).toHaveLength(roster);expect(w.asgRosterLookup(npc.id)).toBeTruthy();
  });
 });
