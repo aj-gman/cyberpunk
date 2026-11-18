@@ -18,6 +18,9 @@
 //   Future Upgrades   A2:A  one planned upgrade per row (no dash)
 //   Assignment Cards  A2:F  id | kind(project/gig) | position | number | name | description
 //   Assignment Slots  A2:E  key(card:slot) | card | slot | npc | role
+//   Assignment History A2:H id | kind | number | name | description | result(success/failed) | completed_at | crew
+//                     (append-only GM record of completed gigs/projects; created on
+//                     first completion; never read by the players' page)
 //
 // Concurrency: every save runs under LockService - read, validate the shared
 // invariants (an NPC holds at most one slot, capacities hold, cards exist),
@@ -33,7 +36,10 @@ var TAB = {
   cards: 'Assignment Cards',
   slots: 'Assignment Slots',
   roster: 'Roster',
+  history: 'Assignment History',
 };
+var HISTORY_HEADER = ['id', 'kind', 'number', 'name', 'description', 'result', 'completed_at', 'crew'];
+var HISTORY_RESULTS = ['success', 'failed'];
 
 // ── Small helpers (dual-compatible with node for the test suite) ──
 
@@ -209,6 +215,9 @@ function loadState(ss) {
     hqUpgrades: parseUpgrades(readTab(ss, TAB.upgrades, 3)),
   };
   if (warnings.length) out.warnings = warnings;
+  // Capability flag: the page only offers Completed against a script that
+  // records history, so an old deployment can never drop a card unrecorded.
+  out.completionHistory = true;
   return out;
 }
 
@@ -274,6 +283,28 @@ function saveOps(ss, ops) {
     if (slotCount[cardIds[j]] > cap) return rejectWithState(ss, 'invariant', 'card is full');
   }
 
+  // Completed gigs/projects: validate before any write. A completion must
+  // remove its card in the same save, so a record never exists next to a
+  // live card (and a card never vanishes unrecorded).
+  var historyAppends = [];
+  if (ops.history !== undefined) {
+    var raw = ops.history && ops.history.appends;
+    if (!Array.isArray(raw) || raw.length > 20) return rejectWithState(ss, 'invalid_ops', 'invalid history ops');
+    for (var h = 0; h < raw.length; h++) {
+      var a = raw[h] || {};
+      var hid = str(a.id);
+      if (!hid || (a.kind !== 'gig' && a.kind !== 'project') || HISTORY_RESULTS.indexOf(a.result) < 0) {
+        return rejectWithState(ss, 'invalid_ops', 'history entry needs id, kind and result success|failed');
+      }
+      if (existingCards[hid]) return rejectWithState(ss, 'invalid_ops', 'a completed card must be removed in the same save');
+      var crew = Array.isArray(a.crew) ? a.crew.map(function (c) { return str(c).slice(0, 120); }).join('; ') : str(a.crew);
+      historyAppends.push([hid, a.kind, num(a.number), str(a.name).slice(0, 200), str(a.description).slice(0, 500), a.result, new Date().toISOString(), crew.slice(0, 1000)]);
+    }
+  }
+  // History first: if anything fails after this point the card still
+  // exists and a retry is deduplicated by card id.
+  if (historyAppends.length) appendHistory(ss, historyAppends);
+
   if (ops.stash) applyTabOps(ss, TAB.stash, 6, stashRows, (ops.stash.deletes || []).map(String), (ops.stash.upserts || []).map(function (u) {
     return { id: str(u.id), cells: [str(u.id), u.type === 'group' ? 'group' : 'item', str(u.group), num(u.position), str(u.name), str(u.note)] };
   }));
@@ -304,6 +335,25 @@ function saveOps(ss, ops) {
   }
   SpreadsheetApp.flush();
   return loadState(ss);
+}
+
+// Append-only GM record. The tab is created with its header on first use.
+// A card id already recorded is skipped, so a retried save cannot duplicate.
+function appendHistory(ss, rows) {
+  var sh = ss.getSheetByName(TAB.history);
+  if (!sh) {
+    sh = ss.insertSheet(TAB.history);
+    sh.getRange(1, 1, 1, HISTORY_HEADER.length).setValues([HISTORY_HEADER]);
+  }
+  var last = sh.getLastRow();
+  var seen = {};
+  if (last >= 2) sh.getRange(2, 1, last - 1, 1).getValues().forEach(function (r) { if (str(r[0])) seen[str(r[0])] = true; });
+  var next = Math.max(last, 1) + 1;
+  rows.forEach(function (r) {
+    if (seen[r[0]]) return;
+    seen[r[0]] = true;
+    sh.getRange(next++, 1, 1, r.length).setValues([r]);
+  });
 }
 
 // Update the rows that changed, append new ones, blank deleted ones. Each
