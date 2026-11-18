@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-path":"Site Chronicle.md","permalink":"/site-chronicle/","tags":["#fashion","#npc","#ideology","#news","#district","#dependency","#stratum","#boostergang","#role"],"dg-note-properties":{"tags":["#fashion","#npc","#ideology","#news","#district","#dependency","#stratum","#boostergang","#role"]}}
+{"dg-publish":true,"dg-path":"Site Chronicle.md","permalink":"/site-chronicle/","dg-note-properties":{}}
 ---
 
 
@@ -10,8 +10,16 @@
 	- [ ] Education
 	- [ ] Economy
 	- [ ] Transportation
-
+- [ ] Mechanics: [[Rules/NCOverdrive/Drive\|Drive]] and Darkest Cyberpunk
+- [ ] Write up the After-Action Report for [[Night City/Gigs/2021/Thugs\|Thugs]]
 ### November 2026
+#### 18.11
+- Brought NCO Character Sheet to v.1.3.1.X, introducing the spreadsheet feature as a full-blown UI interface linked via Google Cloud and some APIs;
+	- **Neat Features include**
+	- adjustable stash with notes
+	- assignments and edgerunners you can drag and drop
+	- HQ upgrades with their descriptions
+	- password-locked workbook
 #### 17.11
 - added new #npc relevant to [[Night City/Gigs/2021/Thugs\|Thugs]]
 - finished [[Night City/Gigs/2021/Thugs\|Thugs]] story
