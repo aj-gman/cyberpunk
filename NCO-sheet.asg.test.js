@@ -673,7 +673,7 @@ describe('ASG completed gigs and projects', () => {
   const w=sheet();
   Object.defineProperty(w.document, 'hidden', {get:()=>false, configurable:true});
   w.AsgBackend.connected=true;
-  w.AsgBackend.completionHistory=true;
+  w.AsgBackend.completionVersion=2;
   w.asgTakeSnapshot();
   return w;
  }
@@ -695,36 +695,48 @@ describe('ASG completed gigs and projects', () => {
   expect(w.document.querySelector('.asg-complete-ask')).toBeNull();
   expect(calls).toHaveLength(0);
  });
- it('completing a gig sends one save with history, then removes it and frees its NPCs', () => {
+ it('completing a gig sends one completion request (no card edits), then removes it only after confirmation', () => {
   const w=connected();
   const gig=w.asgState.assignments.gigs[0];
   const npcs=gig.slots.map(s=>s.npc).filter(Boolean);
   const calls=[];
-  w.AsgBackend.saveWithOps=(ops,cb)=>{ calls.push(ops); const shared=clone(w.asgSharedPart()); shared.assignments.gigs=shared.assignments.gigs.filter(c=>c.id!==gig.id); cb({state:shared, roster:w.asgState.roster, completionHistory:true}, null); };
+  w.AsgBackend.saveWithOps=(ops,cb)=>{ calls.push(ops); expect(w.asgState.assignments.gigs.some(c=>c.id===gig.id)).toBe(true); const shared=clone(w.asgSharedPart()); shared.assignments.gigs=shared.assignments.gigs.filter(c=>c.id!==gig.id); cb({state:shared, roster:w.asgState.roster, completionVersion:2, completed:{id:gig.id,result:'success',status:'done'}}, null); };
   w.asgAskComplete('gig', gig.id);
   w.document.querySelector('.asg-complete-ask [data-result="success"]').click();
   expect(calls).toHaveLength(1);
-  expect(calls[0].cards.deletes).toContain(gig.id);
-  expect(calls[0].history.appends[0]).toMatchObject({ id: gig.id, kind: 'gig', result: 'success', name: gig.name });
-  expect(calls[0].history.appends[0].crew.length).toBe(npcs.length);
+  expect(calls[0].complete).toMatchObject({ id: gig.id, kind: 'gig', result: 'success', name: gig.name });
+  expect(calls[0].complete.crew.length).toBe(npcs.length);
+  expect(JSON.stringify(calls[0])).not.toContain('"deletes":["'+gig.id);
   expect(w.asgState.assignments.gigs.some(c=>c.id===gig.id)).toBe(false);
   npcs.forEach(id=>expect(w.asgState.assignments.available).toContain(id));
  });
- it('a failed backend save leaves the card in place and says so', () => {
+ it('reports when the backend kept an earlier recorded result', () => {
+  const w=connected();
+  const proj=w.asgState.assignments.projects[0];
+  w.AsgBackend.saveWithOps=(ops,cb)=>{ const shared=clone(w.asgSharedPart()); shared.assignments.projects=[]; cb({state:shared, roster:w.asgState.roster, completionVersion:2, completed:{id:proj.id,result:'failed',status:'done'}}, null); };
+  w.asgCompleteCard('project', proj.id, 'success');
+  expect(w.document.getElementById('asg-status').textContent).toContain('already recorded as failed');
+ });
+ it('an unconfirmed save keeps the card, says it may still finish, and refreshes', () => {
   const w=connected();
   const proj=w.asgState.assignments.projects[0];
   w.AsgBackend.saveWithOps=(ops,cb)=>cb(null,'offline');
+  let loads=0; w.AsgBackend.load=(cb)=>{ loads++; cb({state:clone(w.asgSharedPart()), roster:w.asgState.roster, completionVersion:2}, null); };
   w.asgCompleteCard('project', proj.id, 'failed');
   expect(w.asgState.assignments.projects.some(c=>c.id===proj.id)).toBe(true);
-  expect(w.document.getElementById('asg-status').textContent).toContain('not recorded');
+  expect(loads).toBe(1);
+  const msg=w.document.getElementById('asg-status').textContent;
+  expect(msg).toContain('not confirmed'); expect(msg).toContain('may still finish');
  });
- it('refuses without a connected workbook or without a history-capable backend, before any save', () => {
+ it('refuses without a connected workbook or without a journaling backend, before any save', () => {
   const w=sheet();
   const calls=[]; w.AsgBackend.saveWithOps=(ops,cb)=>calls.push(ops);
   const proj=w.asgState.assignments.projects[0];
   w.asgCompleteCard('project', proj.id, 'success'); // not connected
   w.AsgBackend.connected=true; w.asgTakeSnapshot();
-  w.asgCompleteCard('project', proj.id, 'success'); // old script: no completionHistory flag
+  w.asgCompleteCard('project', proj.id, 'success'); // older script: no completionVersion 2
+  w.AsgBackend.completionVersion=1;
+  w.asgCompleteCard('project', proj.id, 'success');
   expect(calls).toHaveLength(0);
   expect(w.asgState.assignments.projects.some(c=>c.id===proj.id)).toBe(true);
  });
