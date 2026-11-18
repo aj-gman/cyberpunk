@@ -862,7 +862,7 @@
     <div class="nco-logo">
       <span><span class="logo-neon">NIGHT </span><span class="logo-city">CITY</span></span>
       <span class="logo-over">OVERDRIVE</span>
-      <span class="logo-version">v1.3.1.1</span>
+      <span class="logo-version">v1.3.1.2</span>
     </div>
     <span style="color:#444;font-size:20px;">|</span>
     <span style="color:var(--dim);font-size:11px;text-transform:uppercase;letter-spacing:1px;">Character Sheet</span>
@@ -2954,7 +2954,7 @@
   // player tabs so Available derives from the fresh roster.
   function asgApplyMeta(data) {
     // Only a script that answers with this flag records completion history.
-    AsgBackend.completionHistory = !!(data && data.completionHistory === true);
+    AsgBackend.completionVersion = (data && data.completionVersion) || 0;
     if (data.roster) asgState.roster = data.roster;
     if (data.hqUpgrades) {
       ASG_HQ_CATEGORIES.forEach(function (cat) {
@@ -3950,12 +3950,15 @@
     asgRenderAssignments();
   }
 
-  // Completed gig/project: asks the outcome, then in ONE backend save removes
-  // the card (its NPCs return to Available) and appends the card, result and
-  // crew to the workbook's Assignment History tab for the GM. Nothing changes
-  // locally unless the shared workbook confirms the save: no browser-only
-  // completion, and an old script that cannot record history is refused
-  // before any write.
+  // Completed gig/project: asks the outcome, then sends ONE completion
+  // request. The backend journals it (card id = operation id), removes the
+  // card and its slots, and records the result for the GM in the Assignment
+  // History tab. Sheets writes are not transactional, so this is not
+  // all-or-nothing: an interrupted completion is finished by the backend on
+  // the next load or save, and replaying it is safe (the first recorded
+  // result wins). Locally the card only disappears once the backend confirms
+  // it. There is no browser-only completion, and a script that cannot journal
+  // completions (older deployment) is refused before any write.
   var asgCompleteAsk = null; // { targetType, cardId }
   function asgAskComplete(targetType, cardId) {
     asgCompleteAsk = { targetType: targetType, cardId: cardId };
@@ -3971,7 +3974,7 @@
     var card = cards[index];
     var fail = function (msg) { asgFlash(msg); asgRenderAssignments(); };
     if (!AsgBackend.connected) return fail('Completed needs the shared workbook - connect it first. Nothing was changed.');
-    if (!AsgBackend.completionHistory) return fail('The shared workbook backend does not record completed gigs/projects yet - ask the admin to redeploy the script. Nothing was changed.');
+    if (!(AsgBackend.completionVersion >= 2)) return fail('The shared workbook backend cannot record completions safely yet - ask the admin to redeploy the script. Nothing was changed.');
     if (asgSaveInFlight) return fail('A save is in progress - try Completed again in a moment. Nothing was changed.');
     var npcIds = targetType === 'project'
       ? card.slots.filter(function (s) { return !!s; })
@@ -3983,26 +3986,44 @@
       var who = npc ? asgNpcLabel(npc) : 'unknown NPC ' + id;
       return targetType === 'gig' && s.role ? s.role + ': ' + who : who;
     }).filter(function (c) { return !!c; });
-    // Pending edits ride along; the card is just gone from the next state.
-    var nextShared = asgDeepCopy(asgSharedPart());
-    var list = nextShared.assignments[targetType === 'project' ? 'projects' : 'gigs'];
-    list.splice(list.findIndex(function (c) { return c.id === cardId; }), 1);
-    var ops = asgDiffOps(asgLoadedSnapshot, nextShared);
-    ops.history = { appends: [{
+    // Other pending edits ride along; the completing card is the backend's
+    // to remove, so no row of it is sent as an ordinary edit.
+    var ops = asgDiffOps(asgLoadedSnapshot, asgSharedPart()) || {};
+    if (ops.cards) {
+      ops.cards.upserts = (ops.cards.upserts || []).filter(function (r) { return r.id !== cardId; });
+      ops.cards.deletes = (ops.cards.deletes || []).filter(function (id) { return id !== cardId; });
+      if (!ops.cards.upserts.length && !ops.cards.deletes.length) delete ops.cards;
+    }
+    if (ops.slots) {
+      ops.slots.upserts = (ops.slots.upserts || []).filter(function (r) { return r.card !== cardId; });
+      ops.slots.deletes = (ops.slots.deletes || []).filter(function (k) { return String(k).indexOf(cardId + ':') !== 0; });
+      if (!ops.slots.upserts.length && !ops.slots.deletes.length) delete ops.slots;
+    }
+    ops.complete = {
       id: card.id, kind: targetType, number: card.number, name: card.name || '', description: card.description || '',
       result: result, crew: crew
-    }] };
+    };
     asgSaveInFlight = true;
     asgEditSeqAtSend = asgEditSeq;
     AsgBackend.saveWithOps(ops, function (data, err) {
       asgSaveInFlight = false;
-      if (err) {
-        if ((err === 'invariant' || err === 'invalid_ops') && data && data.state) {
-          asgMergeRemoteState(data);
-          asgSaveLocal();
-        }
-        asgFlash('Completion was not recorded (' + (data && data.detail || err) + '). The ' + targetType + ' is unchanged.');
+      if (err || !data || !data.completed || data.completed.id !== cardId) {
+        // Unconfirmed. It may still finish on the backend (an interrupted
+        // completion is rolled forward on the next load), so do not claim it
+        // failed: drop this card's unsent local edits, refresh from the
+        // workbook, and let the player check before retrying (retrying is safe).
+        var snapCard = ((asgLoadedSnapshot.assignments || {})[targetType === 'project' ? 'projects' : 'gigs'] || []).find(function (c) { return c.id === cardId; });
+        var at0 = cards.findIndex(function (c) { return c.id === cardId; });
+        if (snapCard && at0 >= 0) cards[at0] = asgDeepCopy(snapCard);
+        asgFlash('Completion not confirmed (' + (data && data.detail || err || 'no confirmation') + '). It may still finish - refreshing; check the card before trying again.');
         asgRenderAll();
+        AsgBackend.load(function (fresh, loadErr) {
+          if (loadErr || !fresh) return;
+          AsgBackend.lastHash = asgRemoteHash(fresh);
+          asgMergeRemoteState(fresh);
+          asgSaveLocal();
+          asgRenderAll();
+        });
         return;
       }
       // Confirmed: drop the card locally, then merge the fresh state (other
@@ -4013,7 +4034,10 @@
       AsgBackend.lastHash = asgRemoteHash(data);
       asgMergeRemoteState(data);
       asgSaveLocal();
-      asgFlash((targetType === 'project' ? 'Project' : 'Gig') + ' completed (' + result + ') and recorded for the GM.');
+      var label = targetType === 'project' ? 'Project' : 'Gig';
+      asgFlash(data.completed.result === result
+        ? label + ' completed (' + result + ') and recorded for the GM.'
+        : label + ' was already recorded as ' + data.completed.result + ' - that result was kept.');
       if (asgSavePending || asgEditSeq !== asgEditSeqAtSend) { asgSavePending = false; asgScheduleSave(50); }
       asgRenderAll();
     });
