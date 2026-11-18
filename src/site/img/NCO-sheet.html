@@ -775,6 +775,21 @@
     .asg-drop-inside { outline: 1px dashed var(--neon-cyan); outline-offset: -3px; }
 
     /* ASG Stash */
+    #asg-stash-groups { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 330px), 1fr)); gap: 12px; align-items: start; }
+    #asg-stash-groups > .asg-group { min-width: 0; margin-bottom: 0; }
+    .asg-group-header.asg-drop-left { border-left: 3px solid var(--neon-cyan); }
+    .asg-group-header.asg-drop-right { border-right: 3px solid var(--neon-cyan); }
+    .asg-upgrade { position: relative; display: flex; gap: 5px; align-items: center; flex-wrap: wrap; }
+    .asg-upgrade-name { min-width: 0; width: 0; flex: 1 0 calc(100% - 35px); background: transparent; border: 0; color: var(--text-color); font: inherit; }
+    @media (max-width: 600px) { .asg-hq-grid { grid-template-columns: 1fr !important; } }
+    .asg-upgrade-add { opacity: .7; width: 100%; margin-top: 8px; }
+    .asg-upgrade:hover > .asg-note-tip { display: block; right: 0; top: 100%; }
+    .asg-upgrade .asg-note-editor { margin-left: 0; }
+    .asg-upgrade-grip { cursor: grab; touch-action: none; user-select: none; }
+    .asg-upgrade.dragging { opacity: .5; }
+    .asg-upgrade [disabled] { cursor: not-allowed; }
+    .asg-upgrade-drag-hint { font-size: 10px; color: var(--neon-cyan); }
+
     .asg-group { border: 1px solid var(--border-color); border-radius: 4px; margin-bottom: 10px; background: #10122b; }
     .asg-group-header { display: flex; align-items: center; gap: 8px; padding: 8px 10px 4px 10px; border-bottom: 1px solid var(--accent-yellow); }
     .asg-group-name { background: transparent; border: none; color: var(--accent-yellow); text-transform: uppercase; letter-spacing: 2px; font-size: 11px; font-weight: 700; font-family: 'Lexend', monospace; text-shadow: 0 0 8px rgba(254,232,1,.4); flex: 1; min-width: 0; }
@@ -2845,13 +2860,12 @@
   }
 
   function asgSharedPart() {
-    // HQ upgrade slots live in the workbook's HQ Upgrades tab (admin-edited),
-    // so the synced part carries only the 0-15 values and the future text.
+    // HQ upgrades use stable workbook IDs when the backend supports editing.
     // assignments.order is a per-browser view preference and stays local;
     // assignments.available is derived from the roster and slots, not synced.
     var hq = { futureUpgrades: asgState.hq.futureUpgrades };
     ASG_HQ_CATEGORIES.forEach(function (cat) {
-      hq[cat.key] = { value: (asgState.hq[cat.key] || {}).value || 0 };
+      hq[cat.key] = { value: (asgState.hq[cat.key] || {}).value || 0, upgrades: asgDeepCopy((asgState.hq[cat.key] || {}).upgrades || []) };
     });
     return {
       stash: asgState.stash,
@@ -2898,7 +2912,13 @@
     });
     var hq = {};
     ASG_HQ_CATEGORIES.forEach(function (cat) { hq[cat.key] = (state.hq[cat.key] || {}).value || 0; });
-    return { stash: stash, cards: cards, slots: slots, hq: hq, future: state.hq.futureUpgrades || '' };
+    var upgrades = [];
+    ASG_HQ_CATEGORIES.forEach(function (cat) {
+      ((state.hq[cat.key] || {}).upgrades || []).forEach(function (u, i) {
+        if (u.id) upgrades.push({ id: u.id, category: cat.key, position: i, name: u.name || '', note: u.note || '' });
+      });
+    });
+    return { stash: stash, cards: cards, slots: slots, upgrades: upgrades, legacyUpgrades: ASG_HQ_CATEGORIES.reduce(function (out, cat) { out[cat.key] = ((state.hq[cat.key] || {}).upgrades || []).filter(function (u) { return !u.id; }); return out; }, {}), hq: hq, future: state.hq.futureUpgrades || '' };
   }
 
   function asgRowKey(r) { return JSON.stringify(r); }
@@ -2924,6 +2944,7 @@
     if (!prevState) {
       var all = asgRowsFromState(nextState);
       return {
+        upgrades: { upserts: all.upgrades, deletes: [] },
         stash: { upserts: all.stash, deletes: [] },
         cards: { upserts: all.cards, deletes: [] },
         slots: { upserts: all.slots, deletes: [] },
@@ -2933,6 +2954,8 @@
     }
     var a = asgRowsFromState(prevState), b = asgRowsFromState(nextState);
     var ops = {};
+    var upgrades = asgDiffList(a.upgrades, b.upgrades, function (r) { return r.id; });
+    if (upgrades) ops.upgrades = upgrades;
     var stash = asgDiffList(a.stash, b.stash, function (r) { return r.id; });
     if (stash) ops.stash = stash;
     var cards = asgDiffList(a.cards, b.cards, function (r) { return r.id; });
@@ -2948,29 +2971,24 @@
     return ops;
   }
 
-  // Admin-owned tabs (roster, HQ upgrades). The roster applies even when it
+  // Roster metadata and upgrade editing capability. The roster applies even when it
   // is empty: an emptied remote roster clears the local one (including the
   // sample data) instead of leaving stale NPCs behind. Applied BEFORE the
   // player tabs so Available derives from the fresh roster.
   function asgApplyMeta(data) {
     // Only a script that answers with this flag records completion history.
     AsgBackend.completionVersion = (data && data.completionVersion) || 0;
+    AsgBackend.upgradeEditVersion = (data && data.upgradeEditVersion) || 0;
     if (data.roster) asgState.roster = data.roster;
-    if (data.hqUpgrades) {
-      ASG_HQ_CATEGORIES.forEach(function (cat) {
-        if (!asgState.hq[cat.key]) asgState.hq[cat.key] = { value: 0, upgrades: [] };
-        asgState.hq[cat.key].upgrades = data.hqUpgrades[cat.key] || [];
-      });
-    }
   }
 
   // The shared part of a backend response, in exactly the asgSharedPart()
-  // shape (HQ values only, no upgrade slots, no derived data).
+  // shape (HQ values and upgrade slots, no derived Available list).
   function asgSharedFromData(data) {
     var s = data.state || {};
     var hq = { futureUpgrades: (s.hq || {}).futureUpgrades };
     ASG_HQ_CATEGORIES.forEach(function (cat) {
-      hq[cat.key] = { value: ((s.hq || {})[cat.key] || {}).value };
+      hq[cat.key] = { value: ((s.hq || {})[cat.key] || {}).value, upgrades: asgDeepCopy(data.hqUpgrades ? (data.hqUpgrades[cat.key] || []) : (((s.hq || {})[cat.key] || {}).upgrades || [])) };
     });
     return {
       stash: s.stash || { groups: [] },
@@ -2980,7 +2998,7 @@
   }
 
   // Write a shared-part object into asgState (inverse of asgSharedPart).
-  // HQ upgrade slots survive: they are admin-owned and not in the shared part.
+  // HQ upgrade slots participate in the same granular rebase as player edits.
   function asgSetSharedPart(shared) {
     asgState.stash = shared.stash;
     asgState.assignments.projects = shared.assignments.projects || [];
@@ -3007,7 +3025,7 @@
       var incoming = (shared.hq[cat.key] || {}).value;
       asgState.hq[cat.key] = {
         value: incoming !== undefined ? incoming : current.value,
-        upgrades: current.upgrades || []
+        upgrades: asgDeepCopy((shared.hq[cat.key] || {}).upgrades || [])
       };
     });
     if (shared.hq.futureUpgrades !== undefined) asgState.hq.futureUpgrades = shared.hq.futureUpgrades;
@@ -3050,7 +3068,11 @@
       (c.kind === 'gig' ? gigs : projects).push({ id: c.id, number: c.number, name: c.name, description: c.description, slots: slots });
     });
     var hq = { futureUpgrades: rows.future };
-    ASG_HQ_CATEGORIES.forEach(function (cat) { hq[cat.key] = { value: rows.hq[cat.key] || 0 }; });
+    ASG_HQ_CATEGORIES.forEach(function (cat) {
+      hq[cat.key] = { value: rows.hq[cat.key] || 0, upgrades: (rows.upgrades || []).filter(function (u) { return u.category === cat.key; })
+        .sort(function (a, b) { return a.position - b.position || a.id.localeCompare(b.id); })
+        .map(function (u) { return { id: u.id, name: u.name, note: u.note, position: u.position }; }).concat((rows.legacyUpgrades || {})[cat.key] || []) };
+    });
     return { stash: { groups: groupList }, hq: hq, assignments: { projects: projects, gigs: gigs } };
   }
 
@@ -3058,6 +3080,7 @@
   // granularity the backend itself saves with).
   function asgApplyOpsToShared(shared, ops) {
     var rows = asgRowsFromState(shared);
+    if (ops.upgrades) rows.upgrades = asgApplyRowOps(rows.upgrades, ops.upgrades);
     if (ops.stash) rows.stash = asgApplyRowOps(rows.stash, ops.stash);
     if (ops.cards) rows.cards = asgApplyRowOps(rows.cards, ops.cards);
     if (ops.slots) rows.slots = asgApplyRowOps(rows.slots, ops.slots);
@@ -3275,7 +3298,7 @@
   // what was rejected); the rejected rows themselves drop out.
   function asgSubtractOps(localOps, sentOps) {
     var out = {};
-    ['stash', 'cards', 'slots'].forEach(function (sec) {
+    ['stash', 'cards', 'slots', 'upgrades'].forEach(function (sec) {
       var l = localOps[sec];
       if (!l) return;
       var s = sentOps[sec] || {};
@@ -3309,6 +3332,10 @@
     if (asgSaveInFlight) { asgSavePending = true; return; }
     var ops = asgDiffOps(asgLoadedSnapshot, asgSharedPart());
     if (Object.keys(ops).length === 0) return;
+    if (ops.upgrades && !AsgBackend.upgradeEditVersion) {
+      asgFlash('HQ upgrade editing requires the updated backend and workbook migration. Edits remain in this browser.');
+      return;
+    }
     asgSaveInFlight = true;
     asgEditSeqAtSend = asgEditSeq;
     AsgBackend.saveWithOps(ops, function (data, err) {
@@ -3439,15 +3466,21 @@
   function asgArmDrag(el, kind, id) {
     el.draggable = false;
     el.addEventListener('mousedown', function (e) {
+      if (e.target.closest('.asg-npc, .asg-card, .asg-item, .asg-group') !== el) return;
+      e.stopPropagation();
       el.draggable = !!(e.target && e.target.closest && e.target.closest('.asg-drag-grip'));
     });
     el.addEventListener('dragstart', function (e) {
+      if (e.target !== el) return;
+      e.stopPropagation();
       el.classList.add('dragging');
       asgDragPayload = { kind: kind, id: id };
       e.dataTransfer.effectAllowed = 'move';
       e.dataTransfer.setData('text/plain', kind + ':' + id);
     });
-    el.addEventListener('dragend', function () {
+    el.addEventListener('dragend', function (e) {
+      if (e.target !== el) return;
+      e.stopPropagation();
       el.classList.remove('dragging');
       el.draggable = false;
       asgDragPayload = null;
@@ -3456,8 +3489,8 @@
   }
 
   function asgClearDropMarks() {
-    document.querySelectorAll('.asg-drop-before, .asg-drop-after, .asg-drop-inside').forEach(function (el) {
-      el.classList.remove('asg-drop-before', 'asg-drop-after', 'asg-drop-inside');
+    document.querySelectorAll('.asg-drop-before, .asg-drop-after, .asg-drop-inside, .asg-drop-left, .asg-drop-right').forEach(function (el) {
+      el.classList.remove('asg-drop-before', 'asg-drop-after', 'asg-drop-inside', 'asg-drop-left', 'asg-drop-right');
     });
   }
 
@@ -3658,12 +3691,13 @@
         if (!asgDragPayload || asgDragPayload.kind !== 'asg-group') return;
         e.preventDefault();
         e.dataTransfer.dropEffect = 'move';
-        g.classList.add('asg-drop-before');
+        var left = e.clientX < header.getBoundingClientRect().left + header.getBoundingClientRect().width / 2;
+        header.classList.toggle('asg-drop-left', left); header.classList.toggle('asg-drop-right', !left);
       });
       header.addEventListener('drop', function (e) {
         if (!asgDragPayload || asgDragPayload.kind !== 'asg-group') return;
         e.preventDefault();
-        asgMoveGroup(asgDragPayload.id, group.id, true);
+        asgMoveGroup(asgDragPayload.id, group.id, e.clientX < header.getBoundingClientRect().left + header.getBoundingClientRect().width / 2);
         asgClearDropMarks();
       });
       g.appendChild(header);
@@ -3731,6 +3765,103 @@
     });
   }
 
+  var asgUpgradeNoteId = null;
+  function asgCanEditUpgrades() { return !AsgBackend.connected || AsgBackend.upgradeEditVersion === 1; }
+  function asgUpgradeList(cat) { return (asgState.hq[cat] || {}).upgrades || []; }
+  function asgAddUpgrade(cat) {
+    if (!asgCanEditUpgrades()) return;
+    var u = { id: asgNewId('upg'), name: '', note: '' };
+    asgUpgradeList(cat).push(u); asgSaveState(); asgRenderHq();
+    var input = document.querySelector('[data-asg-key="upgrade-' + u.id + '"]');
+    if (input) input.focus();
+  }
+  function asgDeleteUpgrade(cat, id) {
+    if (!asgCanEditUpgrades()) return;
+    var list = asgUpgradeList(cat), index = list.findIndex(function (u) { return u.id === id; });
+    if (index < 0 || list[index].name.trim()) return;
+    if (AsgBackend.connected && asgLoadedSnapshot) {
+      var saved = ((asgLoadedSnapshot.hq[cat] || {}).upgrades || []).find(function (u) { return u.id === id; });
+      if (saved && saved.name.trim()) { asgFlash('Wait for the cleared upgrade name to save before deleting.'); return; }
+    }
+    list.splice(index, 1); asgSaveState(); asgRenderHq();
+  }
+  function asgMoveUpgrade(cat, id, targetId, before) {
+    if (!asgCanEditUpgrades() || id === targetId) return;
+    var list = asgUpgradeList(cat), from = list.findIndex(function (u) { return u.id === id; });
+    var to = list.findIndex(function (u) { return u.id === targetId; });
+    if (from < 0 || to < 0) return; // never move between categories
+    var item = list.splice(from, 1)[0]; if (from < to) to--;
+    list.splice(before ? to : to + 1, 0, item); asgSaveState(); asgRenderHq();
+  }
+  function asgHoldUpgrade(grip, row, cat, id) {
+    var timer = null, held = false, startX = 0, startY = 0;
+    function clear() { clearTimeout(timer); timer = null; held = false; row.classList.remove('dragging'); asgClearDropMarks(); }
+    grip.addEventListener('pointerdown', function (e) {
+      if (e.button !== 0 || !asgCanEditUpgrades()) return;
+      startX = e.clientX; startY = e.clientY;
+      grip.setPointerCapture(e.pointerId);
+      timer = setTimeout(function () { held = true; row.classList.add('dragging'); }, 350);
+    });
+    grip.addEventListener('pointermove', function (e) {
+      if (!held) { if (Math.abs(e.clientX-startX) + Math.abs(e.clientY-startY) > 10) clear(); return; }
+      e.preventDefault(); asgClearDropMarks();
+      var hit = document.elementFromPoint(e.clientX, e.clientY), target = hit && hit.closest('.asg-upgrade');
+      if (target && target.dataset.category === cat && target.dataset.upgradeId !== id)
+        target.classList.add(asgDropPosition(e, target) === 'before' ? 'asg-drop-before' : 'asg-drop-after');
+    });
+    grip.addEventListener('pointerup', function (e) {
+      if (held) {
+        var hit = document.elementFromPoint(e.clientX, e.clientY), target = hit && hit.closest('.asg-upgrade');
+        if (target && target.dataset.category === cat) asgMoveUpgrade(cat, id, target.dataset.upgradeId, asgDropPosition(e, target) === 'before');
+      }
+      clear();
+    });
+    grip.addEventListener('pointercancel', clear); grip.addEventListener('lostpointercapture', clear);
+    // Keyboard alternative to a pointer hold.
+    grip.addEventListener('keydown', function (e) {
+      if (e.key !== 'ArrowUp' && e.key !== 'ArrowDown') return;
+      e.preventDefault(); var list = asgUpgradeList(cat), at = list.findIndex(function (u) { return u.id === id; });
+      var target = list[at + (e.key === 'ArrowUp' ? -1 : 1)];
+      if (target) asgMoveUpgrade(cat, id, target.id, e.key === 'ArrowUp');
+    });
+  }
+  function asgRenderUpgrades(col, cat, upgrades) {
+    var editable = asgCanEditUpgrades();
+    upgrades.forEach(function (u) {
+      if (editable && !u.id) u.id = asgNewId('upg');
+      var row = document.createElement('div'); row.className = 'asg-upgrade';
+      row.dataset.upgradeId = u.id || ''; row.dataset.category = cat;
+      var grip = document.createElement('button'); grip.type = 'button'; grip.className = 'btn btn-small asg-upgrade-grip';
+      grip.textContent = '⠿'; grip.title = 'Hold to reorder within this category; arrow keys also reorder'; grip.disabled = !editable;
+      grip.setAttribute('aria-label', 'Reorder ' + (u.name || 'empty upgrade')); row.appendChild(grip);
+      asgHoldUpgrade(grip, row, cat, u.id);
+      var name = document.createElement('input'); name.type = 'text'; name.className = 'asg-upgrade-name'; name.value = u.name;
+      name.placeholder = 'Upgrade name'; name.setAttribute('aria-label', 'Upgrade name'); name.setAttribute('data-asg-key', 'upgrade-' + u.id); name.disabled = !editable;
+      name.addEventListener('input', function () { u.name = name.value; del.disabled = !editable || !!u.name.trim(); asgSaveStateDebounced(); }); row.appendChild(name);
+      var note = document.createElement('button'); note.type = 'button'; note.className = 'btn btn-small'; note.textContent = 'note'; note.disabled = !editable;
+      note.setAttribute('aria-label', 'Edit upgrade hover note'); note.addEventListener('click', function () { asgUpgradeNoteId = asgUpgradeNoteId === u.id ? null : u.id; asgRenderHq();
+        var area = document.querySelector('[data-asg-key="upgrade-note-' + u.id + '"]'); if (area) area.focus(); }); row.appendChild(note);
+      var del = document.createElement('button'); del.type = 'button'; del.className = 'btn btn-danger btn-small'; del.textContent = '×';
+      del.title = 'Delete only when name is empty (also removes its note)'; del.setAttribute('aria-label', 'Delete empty upgrade'); del.disabled = !editable || !!u.name.trim();
+      del.addEventListener('click', function () { asgDeleteUpgrade(cat, u.id); }); row.appendChild(del);
+      if (u.note) {
+        var tip = document.createElement('div'); tip.className = 'asg-note-tip';
+        var text = document.createElement('div'); text.className = 'asg-note-tip-body'; text.textContent = u.note; tip.appendChild(text); row.appendChild(tip);
+      }
+      if (asgUpgradeNoteId === u.id && editable) {
+        var editor = document.createElement('div'); editor.className = 'asg-note-editor'; var area = document.createElement('textarea'); area.rows = 2; area.value = u.note || '';
+        area.setAttribute('aria-label', 'Upgrade hover note'); area.setAttribute('data-asg-key', 'upgrade-note-' + u.id);
+        area.addEventListener('input', function () { u.note = area.value; asgSaveStateDebounced(); }); editor.appendChild(area);
+        var done = document.createElement('button'); done.type = 'button'; done.className = 'btn btn-small'; done.textContent = 'Done';
+        done.addEventListener('click', function () { asgUpgradeNoteId = null; asgRenderHq(); }); editor.appendChild(done); row.appendChild(editor);
+      }
+      col.appendChild(row);
+    });
+    var add = document.createElement('button'); add.type = 'button'; add.className = 'btn asg-upgrade-add'; add.textContent = '+';
+    add.setAttribute('aria-label', 'Add ' + cat + ' upgrade'); add.disabled = !editable; add.addEventListener('click', function () { asgAddUpgrade(cat); }); col.appendChild(add);
+    if (!editable) { var hint = document.createElement('p'); hint.className = 'asg-upgrade-drag-hint'; hint.textContent = 'Upgrade editing needs the updated backend and workbook migration.'; col.appendChild(hint); }
+  }
+
   function asgRenderHq() {
     var grid = document.getElementById('asg-hq-grid');
     if (!grid) return;
@@ -3767,27 +3898,7 @@
       valueRow.appendChild(num);
       valueRow.appendChild(steppers);
       col.appendChild(valueRow);
-      // Upgrade slots: the base's facilities, admin-managed in the workbook
-      // (like the roster); shown here with their hover notes.
-      (data.upgrades || []).forEach(function (upgrade) {
-        var row = document.createElement('div');
-        row.className = 'asg-upgrade';
-        row.textContent = upgrade.name;
-        if (upgrade.note) {
-          var tip = document.createElement('div');
-          tip.className = 'asg-note-tip';
-          var tipTitle = document.createElement('div');
-          tipTitle.className = 'asg-note-tip-title';
-          tipTitle.textContent = 'Upgrade note - shows on hover';
-          var tipBody = document.createElement('div');
-          tipBody.className = 'asg-note-tip-body';
-          tipBody.textContent = upgrade.note;
-          tip.appendChild(tipTitle);
-          tip.appendChild(tipBody);
-          row.appendChild(tip);
-        }
-        col.appendChild(row);
-      });
+      asgRenderUpgrades(col, cat.key, data.upgrades || []);
       grid.appendChild(col);
     });
     var futureText = document.getElementById('asg-future-text');
@@ -3875,6 +3986,20 @@
     var card = null;
     for (var i = 0; i < cards.length; i++) if (cards[i].id === cardId) card = cards[i];
     if (!npc || !card) return false;
+    var current = asgFindNpcLocation(npcId);
+    if (current && current.type === targetType && current.card.id === cardId && slotIndex !== undefined && slotIndex !== null) {
+      var otherId = targetType === 'project' ? card.slots[slotIndex] : (card.slots[slotIndex] || {}).npc;
+      if (otherId && otherId !== npcId) {
+        var other = asgRosterLookup(otherId);
+        var fromSlot = card.slots[current.slotIndex], toSlot = card.slots[slotIndex];
+        if (targetType === 'gig' && (!other || (toSlot.role && toSlot.role !== npc.role) || (fromSlot.role && fromSlot.role !== other.role))) {
+          asgFlash('Both edgerunners must match the gig position roles to swap.'); return false;
+        }
+        if (targetType === 'project') { card.slots[current.slotIndex] = otherId; card.slots[slotIndex] = npcId; }
+        else { fromSlot.npc = otherId; toSlot.npc = npcId; }
+        asgSaveState(); asgRenderAssignments(); return true;
+      }
+    }
     var origin = asgRemoveNpc(npcId);
     var label = targetType === 'project' ? 'Project' : 'Gig';
     var capacity = targetType === 'project' ? ASG_PROJECT_CAPACITY : ASG_GIG_CAPACITY;
@@ -4003,6 +4128,10 @@
       id: card.id, kind: targetType, number: card.number, name: card.name || '', description: card.description || '',
       result: result, crew: crew
     };
+    if (ops.upgrades && !AsgBackend.upgradeEditVersion) {
+      asgFlash('HQ upgrade editing requires the updated backend and workbook migration. Edits remain in this browser.');
+      return;
+    }
     asgSaveInFlight = true;
     asgEditSeqAtSend = asgEditSeq;
     AsgBackend.saveWithOps(ops, function (data, err) {
@@ -4202,7 +4331,7 @@
       var pos = document.createElement('span');
       pos.className = 'asg-slot-pos';
       pos.textContent = 'Pos ' + (i + 1) + ' ·';
-      slotEl.appendChild(pos);
+      if (!npcId) slotEl.appendChild(pos);
       // An occupied position counts toward capacity: an assigned NPC
       // (roster-known or not) or a gig slot with a required role. Only
       // truly empty positions stay uncounted (matches the backend's row
@@ -4409,4 +4538,4 @@
   });
 </script>
 </body>
-</html>
+  </html>
