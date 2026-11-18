@@ -114,17 +114,42 @@ function setup(opts) {
   const lock = { held: false, waits: 0 };
   const sandbox = {
     module: { exports: {} },
-    SpreadsheetApp: {
-      openById(id) {
-        if (opts.breakOpen) throw new Error('boom: /home/internal/secret-path failure');
-        if (id !== 'sheet-123') throw new Error('unknown spreadsheet');
-        return world.ss;
-      },
-      flush() {},
+    Sheets: {
+      Spreadsheets: {
+        get(id) {
+          if (opts.breakOpen) throw new Error('boom: /home/internal/secret-path failure');
+          if (id !== 'sheet-123') throw new Error('unknown spreadsheet');
+          return { sheets: Object.entries(world.sheets).map(([title, sh], i) => ({
+            properties: { sheetId: i + 1, title, gridProperties: { rowCount: 1000, columnCount: 26 } },
+            data: [{ rowData: sh.data.map(r => ({ values: r.map(v => ({ effectiveValue: typeof v === 'number' ? {numberValue:v} : {stringValue:String(v ?? '')} })) })) }]
+          })) };
+        },
+        batchUpdate(body) {
+          for (const req of body.requests) if (req.addSheet) {
+            const title = req.addSheet.properties.title;
+            world.sheets[title] = makeSheet([]);
+          }
+        },
+        Values: {
+          batchUpdate(body, id) {
+            if (id !== 'sheet-123') throw new Error('unknown spreadsheet');
+            expect(body.valueInputOption).toBe('RAW');
+            for (const entry of body.data) {
+              const match = entry.range.match(/^'((?:[^']|'')+)'!([A-Z]+)([0-9]+):/);
+              const title = match[1].replace(/''/g, "'");
+              let col = 0; for (const c of match[2]) col = col * 26 + c.charCodeAt(0) - 64;
+              const values = entry.values;
+              const range = world.sheets[title].getRange(Number(match[3]), col, values.length, values[0].length);
+              if (values.every(r => r.every(v => v === ''))) range.clearContent();
+              else range.setValues(values);
+            }
+          }
+        }
+      }
     },
     PropertiesService: {
       getScriptProperties() {
-        const props = { ASG_SHEET_ID: 'sheet-123', ASG_TOKEN_KEY: TOKEN_KEY };
+        const props = { ASG_SHEET_ID: 'sheet-123', ASG_SELECTED_SHEET_ID: 'sheet-123', ASG_TOKEN_KEY: TOKEN_KEY };
         return { getProperty(k) { return props[k] !== undefined ? props[k] : null; } };
       },
     },
