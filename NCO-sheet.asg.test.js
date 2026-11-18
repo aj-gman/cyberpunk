@@ -105,6 +105,7 @@ describe('ASG HQ', () => {
   const rows=Array.from(w.document.querySelectorAll('#asg-hq-grid .asg-hq-col'))[0].querySelectorAll('.asg-upgrade');
   expect(rows).toHaveLength(2);
   expect(rows[0].querySelector('.asg-upgrade-name').value).toBe('Biolocked Armory');
+  rows.forEach(r=>expect(r.querySelector('[aria-label="Delete empty upgrade"]').hidden).toBe(true)); // x hidden while a name exists
   expect(rows[1].querySelector('.asg-note-tip .asg-note-tip-body').textContent).toBe('Fits the AV and ground vehicles. Upkeep 2 SUP.');
  });
  it('parses dash-prefixed Future Upgrades lines into suggestion chips', () => {
@@ -762,7 +763,11 @@ describe('stash columns, editable upgrade slots, and occupied position labels', 
   w.asgAddUpgrade('supplies'); const list=w.asgState.hq.supplies.upgrades, u=list.at(-1);
   expect(w.document.activeElement.getAttribute('data-asg-key')).toBe('upgrade-'+u.id);
   u.name='Keep';u.note='valuable';w.asgDeleteUpgrade('supplies',u.id);expect(list).toHaveLength(3);
-  const name=w.document.querySelector('[data-asg-key="upgrade-'+u.id+'"]'); name.value='';name.dispatchEvent(new w.Event('input'));
+  const name=w.document.querySelector('[data-asg-key="upgrade-'+u.id+'"]');
+  const del=()=>w.document.querySelector('[data-upgrade-id="'+u.id+'"] [aria-label="Delete empty upgrade"]');
+  expect(del().hidden).toBe(false); // empty name -> x visible
+  name.value='Keep';name.dispatchEvent(new w.Event('input'));expect(del().hidden).toBe(true); // text -> x hidden
+  name.value='';name.dispatchEvent(new w.Event('input'));expect(del().hidden).toBe(false);
   expect(list).toHaveLength(3); // never auto-delete on clear/blur
   w.asgDeleteUpgrade('supplies',u.id);expect(list).toHaveLength(2);
   const row=w.document.querySelector('[data-upgrade-id="u-a"]');row.querySelector('[aria-label="Edit upgrade hover note"]').click();
