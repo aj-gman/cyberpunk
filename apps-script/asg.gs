@@ -16,7 +16,7 @@
 //   Roster            A2:F  id | role | number | skill | name | page_url   (admin-only)
 //   Stash             A2:F  id | type(group/item) | group | position | name | note
 //   HQ                A2:B  category | value (0-15)
-//   HQ Upgrades       A2:C  category | name | note                        (admin-only)
+//   HQ Upgrades       A2:E  category | name | note | id | position (after explicit migration)
 //   Future Upgrades   A2:A  one planned upgrade per row (no dash)
 //   Assignment Cards  A2:F  id | kind(project/gig) | position | number | name | description
 //   Assignment Slots  A2:E  key(card:slot) | card | slot | npc | role
@@ -119,12 +119,33 @@ function parseHq(rows) {
   return hq;
 }
 
-function parseUpgrades(rows) {
+function upgradeSchemaReady(ss) {
+  var sh = ss.getSheetByName(TAB.upgrades);
+  if (!sh) return false;
+  var header = sh.getRange(1, 1, 1, 5).getValues()[0];
+  if (header.join('|') !== 'category|name|note|id|position') return false;
+  var seen = Object.create(null);
+  return readTab(ss, TAB.upgrades, 5).every(function (r) {
+    if (!r.some(function (v) { return v !== ''; })) return true;
+    var id = str(r[3]), pos = r[4];
+    if (!/^[a-zA-Z0-9_-]{1,100}$/.test(id) || seen[id] || HQ_CATEGORIES.indexOf(str(r[0])) < 0 ||
+        typeof pos !== 'number' || !isFinite(pos) || pos < 0 || Math.floor(pos) !== pos) return false;
+    seen[id] = true; return true;
+  });
+}
+
+function parseUpgrades(rows, editable) {
   var out = {};
   HQ_CATEGORIES.forEach(function (c) { out[c] = []; });
   rows.forEach(function (r) {
     var cat = str(r[0]).toLowerCase();
-    if (HQ_CATEGORIES.indexOf(cat) !== -1 && str(r[1])) out[cat].push({ name: str(r[1]), note: str(r[2]) });
+    if (HQ_CATEGORIES.indexOf(cat) < 0 || (!str(r[1]) && !(editable && str(r[3])))) return;
+    var upgrade = { name: str(r[1]), note: str(r[2]) };
+    if (editable) { upgrade.id = str(r[3]); upgrade.position = r[4]; }
+    out[cat].push(upgrade);
+  });
+  if (editable) HQ_CATEGORIES.forEach(function (cat) {
+    out[cat].sort(function (a, b) { return a.position - b.position || a.id.localeCompare(b.id); });
   });
   return out;
 }
@@ -216,7 +237,8 @@ function loadState(ss) {
       assignments: buildAssignments(cardRows, slotRows),
     },
     roster: parseRoster(readTab(ss, TAB.roster, 6)),
-    hqUpgrades: parseUpgrades(readTab(ss, TAB.upgrades, 3)),
+    hqUpgrades: parseUpgrades(readTab(ss, TAB.upgrades, 5), upgradeSchemaReady(ss)),
+    upgradeEditVersion: upgradeSchemaReady(ss) ? 1 : 0,
   };
   if (warnings.length) out.warnings = warnings;
   // Capability flag: the page only offers Completed against a script that
@@ -235,9 +257,49 @@ function rejectWithState(ss, code, detail) {
   return fresh;
 }
 
+// Upgrade IDs remain stable across rename/reorder; cross-category moves are rejected.
+function validateUpgradeOps(rows, ops) {
+  if (!ops || !Array.isArray(ops.upserts) || !Array.isArray(ops.deletes)) return 'invalid upgrade operations';
+  var byId = Object.create(null), touched = Object.create(null);
+  rows.forEach(function (r) { if (str(r[3])) byId[str(r[3])] = r; });
+  for (var i = 0; i < ops.upserts.length; i++) {
+    var u = ops.upserts[i];
+    if (!u || !/^[a-zA-Z0-9_-]{1,100}$/.test(str(u.id)) || touched[u.id] ||
+        HQ_CATEGORIES.indexOf(u.category) < 0 || typeof u.name !== 'string' || typeof u.note !== 'string' ||
+        typeof u.position !== 'number' || !isFinite(u.position) || u.position < 0 || Math.floor(u.position) !== u.position) return 'invalid upgrade row';
+    if (byId[u.id] && byId[u.id][0] !== u.category) return 'upgrade category cannot change';
+    touched[u.id] = true;
+  }
+  for (var j = 0; j < ops.deletes.length; j++) {
+    var id = ops.deletes[j];
+    if (typeof id !== 'string' || touched[id]) return 'invalid upgrade deletion';
+    // Missing IDs are already deleted: retries remain idempotent.
+    if (byId[id] && str(byId[id][1]).trim()) return 'clear and save upgrade name before deleting';
+    touched[id] = true;
+  }
+  return '';
+}
+
+function applyUpgradeOps(ss, rows, ops) {
+  var sh = sheetByName(ss, TAB.upgrades), rowById = Object.create(null), free = [];
+  rows.forEach(function (r, i) { if (str(r[3])) rowById[str(r[3])] = i + 2; else if (!r.some(function (v) { return v !== ''; })) free.push(i + 2); });
+  (ops.deletes || []).forEach(function (id) { if (rowById[id]) sh.getRange(rowById[id], 1, 1, 5).clearContent(); });
+  var next = rows.length + 2;
+  (ops.upserts || []).forEach(function (u) {
+    var row = rowById[u.id] || free.shift() || next++;
+    sh.getRange(row, 1, 1, 5).setValues([[u.category, u.name, u.note, u.id, u.position]]);
+  });
+}
+
 // ── Granular save under a real mutex ──
 
 function saveOps(ss, ops) {
+  var upgradeRows = readTab(ss, TAB.upgrades, 5);
+  if (ops.upgrades !== undefined) {
+    if (!upgradeSchemaReady(ss)) return rejectWithState(ss, 'invalid_ops', 'HQ upgrade migration required');
+    var invalidUpgrade = validateUpgradeOps(upgradeRows, ops.upgrades);
+    if (invalidUpgrade) return rejectWithState(ss, 'invalid_ops', invalidUpgrade);
+  }
   // A completion interrupted by an earlier failure is rolled forward first.
   recoverPending(ss);
   // Read current state once; the script lock serializes callers. Sheets
@@ -326,6 +388,7 @@ function saveOps(ss, ops) {
   if (ops.slots) applyTabOps(ss, TAB.slots, 5, slotRowsNow, (ops.slots.deletes || []).map(String), (ops.slots.upserts || []).map(function (u) {
     return { id: str(u.key), cells: [str(u.key), str(u.card), num(u.slot), str(u.npc), str(u.role)] };
   }));
+  if (ops.upgrades) applyUpgradeOps(ss, upgradeRows, ops.upgrades);
   if (ops.hq) {
     var sh = sheetByName(ss, TAB.hq);
     var rows = readTab(ss, TAB.hq, 2);
@@ -525,7 +588,7 @@ function openAsgWorkbook_(id) {
   });
   var sheets = {}, pending = [], structural = [];
   var widths = {};
-  widths[TAB.stash] = 6; widths[TAB.hq] = 2; widths[TAB.upgrades] = 3;
+  widths[TAB.stash] = 6; widths[TAB.hq] = 2; widths[TAB.upgrades] = 5;
   widths[TAB.future] = 1; widths[TAB.cards] = 6; widths[TAB.slots] = 5;
   widths[TAB.roster] = 6; widths[TAB.history] = HISTORY_HEADER.length;
   function quote(name) { return "'" + name.replace(/'/g, "''") + "'"; }
