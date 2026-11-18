@@ -96,7 +96,10 @@ function makeWorkbook() {
   };
   return {
     sheets,
-    ss: { getSheetByName(name) { return sheets[name] || null; } },
+    ss: {
+      getSheetByName(name) { return sheets[name] || null; },
+      insertSheet(name) { sheets[name] = makeSheet([]); return sheets[name]; },
+    },
   };
 }
 
@@ -278,6 +281,50 @@ describe('apps-script asg backend', () => {
     expect(res.error).toBeUndefined();
     expect(res.state.assignments.projects).toHaveLength(0);
     expect(res.state.assignments.gigs[0].slots[3]).toEqual({ role: '', npc: 'npc-media-1' });
+  });
+
+  it('advertises completion history on load', () => {
+    expect(authPost({ action: 'load' }).completionHistory).toBe(true);
+  });
+
+  it('records a completed card in Assignment History and removes it in one save', () => {
+    const res = authPost({
+      action: 'save',
+      ops: {
+        cards: { deletes: ['proj-1'] },
+        slots: { deletes: ['proj-1:0'] },
+        history: { appends: [{ id: 'proj-1', kind: 'project', number: 1, name: 'New project', description: 'd', result: 'failed', crew: ['Lappo (Skill 3)'] }] },
+      },
+    });
+    expect(res.error).toBeUndefined();
+    expect(res.state.assignments.projects).toHaveLength(0);
+    expect(res.state.history).toBeUndefined();
+    const rows = world.sheets['Assignment History'].data;
+    expect(rows[0]).toEqual(['id', 'kind', 'number', 'name', 'description', 'result', 'completed_at', 'crew']);
+    expect(rows).toHaveLength(2);
+    expect(rows[1].slice(0, 6)).toEqual(['proj-1', 'project', 1, 'New project', 'd', 'failed']);
+    expect(rows[1][7]).toBe('Lappo (Skill 3)');
+    expect(Number.isNaN(Date.parse(rows[1][6]))).toBe(false);
+  });
+
+  it('does not duplicate a history row when a completion save is retried', () => {
+    const ops = {
+      cards: { deletes: ['gig-1'] },
+      slots: { deletes: ['gig-1:0', 'gig-1:2'] },
+      history: { appends: [{ id: 'gig-1', kind: 'gig', number: 1, name: 'Records job', result: 'success', crew: [] }] },
+    };
+    expect(authPost({ action: 'save', ops }).error).toBeUndefined();
+    expect(authPost({ action: 'save', ops }).error).toBeUndefined();
+    expect(world.sheets['Assignment History'].data).toHaveLength(2);
+  });
+
+  it('rejects a bad result or a completion that leaves the card in place, without writing', () => {
+    const bad = authPost({ action: 'save', ops: { cards: { deletes: ['proj-1'] }, slots: { deletes: ['proj-1:0'] }, history: { appends: [{ id: 'proj-1', kind: 'project', result: 'maybe' }] } } });
+    expect(bad.error).toBe('invalid_ops');
+    const kept = authPost({ action: 'save', ops: { history: { appends: [{ id: 'proj-1', kind: 'project', result: 'success' }] } } });
+    expect(kept.error).toBe('invalid_ops');
+    expect(world.sheets['Assignment History']).toBeUndefined();
+    expect(kept.state.assignments.projects).toHaveLength(1);
   });
 
   it('futureLines strips dashes and blanks', () => {
