@@ -90,6 +90,21 @@ backend on the players' behalf.
   gigs); `npc` is a roster id (empty = unassigned); `role` is an optional
   required role for that gig position.
 
+- **Assignment History** (GM record, created automatically) — one row is
+  appended when a player presses **Completed** on a gig or project and
+  answers *Successful* or *Failed*:
+
+  | id | kind | number | name | description | result | completed_at | crew |
+  |----|------|--------|------|-------------|--------|--------------|------|
+
+  `result` is `success` or `failed`; `completed_at` is UTC (ISO); `crew` lists
+  the assigned NPCs (with required gig roles) at completion. The card leaves
+  the players' view and its NPCs return to Available, in the same save. The
+  tab is append-only and the players' page never reads it. You may create it
+  yourself with the header above, or let the first completion create it.
+  The page offers **Completed** only when the deployed script supports it,
+  so after updating `asg.gs` you must redeploy (step 3, **new version**).
+
 ## 2. Share the workbook
 
 Ask the workbook's owner to share it with the **backend Google account's
