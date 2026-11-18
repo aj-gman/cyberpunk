@@ -5,8 +5,10 @@
 // which issues a short-lived HMAC token; this script verifies that token and
 // does every spreadsheet read/write directly.
 //
+// File-only backend v1.3.1.3. Use appsscript.json and the private Picker setup.
 // Deploy: paste into a standalone Apps Script project under the backend
-// Google account, set Script Properties ASG_SHEET_ID / ASG_TOKEN_KEY (the
+// Google account, install the file-only manifest and private setup, and set
+// Script Properties ASG_SHEET_ID / ASG_TOKEN_KEY (the
 // same random secret as the Vercel env var), deploy as web app (execute as:
 // me, access: anyone). Details in docs/ASG-BACKEND-SETUP.md.
 //
@@ -24,9 +26,9 @@
 //                     'pending' while a completion is being applied and 'done'
 //                     after; a blank status in older rows counts as done)
 //
-// Concurrency: every save runs under LockService - read, validate the shared
-// invariants (an NPC holds at most one slot, capacities hold, cards exist),
-// write - atomically. Hand edits in the spreadsheet and other players' saves
+// Concurrency: snapshot reads and saves run under LockService.
+// Granular API writes are batched; journal phases make completion recoverable.
+// This lock serializes script requests, not direct human spreadsheet edits. Hand edits in the spreadsheet and other players' saves
 // appear in the next poll; every response carries the full fresh state.
 
 var HQ_CATEGORIES = ['supplies', 'culture', 'technology', 'security'];
@@ -343,7 +345,7 @@ function saveOps(ss, ops) {
     var span = Math.max(old.length, lines.length);
     for (var k = 0; k < span; k++) fsh.getRange(k + 2, 1).setValue(lines[k] || '');
   }
-  SpreadsheetApp.flush();
+  ss.flush();
   var fresh = loadState(ss);
   if (completed) fresh.completed = completed;
   return fresh;
@@ -406,7 +408,9 @@ function recoverPending(ss) {
     var e = h.byId[id];
     if (e.status !== 'pending') return;
     finishCompletion(ss, id);
+    ss.flush(); // persist removals before marking the journal done
     markDone(h.sh, e.row);
+    ss.flush();
   });
 }
 
@@ -425,8 +429,11 @@ function completeCard(ss, c) {
   var cells = [c.id, c.kind, c.number, c.name, c.description, c.result, '', c.crew, 'pending'];
   var row = e ? e.row : Math.max(sh.getLastRow(), 1) + 1;
   sh.getRange(row, 1, 1, cells.length).setValues([cells]); // 1. journal the intent
+  ss.flush(); // persist intent before removal; retries recover it
   finishCompletion(ss, c.id); // 2. remove slots, then card
+  ss.flush(); // persist removals before closing the journal
   markDone(sh, row); // 3. close the journal entry
+  ss.flush();
   return { id: c.id, result: c.result, status: 'done' };
 }
 
@@ -454,7 +461,11 @@ function jsonOut(obj) {
   return ContentService.createTextOutput(JSON.stringify(obj)).setMimeType(ContentService.MimeType.JSON);
 }
 
-function doGet() {
+function doGet(e) {
+  if (e && e.parameter && e.parameter.setup === '1') {
+    requireSetupOwner_();
+    return HtmlService.createHtmlOutputFromFile('Setup').setTitle('ASG private workbook setup');
+  }
   return jsonOut({ ok: true, service: 'asg' });
 }
 
@@ -466,32 +477,29 @@ function doPost(e) {
     var sheetId = props.getProperty('ASG_SHEET_ID');
     if (!sheetId) return jsonOut({ error: 'unconfigured' });
     if (!checkToken(body.token)) return jsonOut({ error: 'bad_token' });
-    var ss = SpreadsheetApp.openById(sheetId);
-    if (body.action === 'load') {
-      if (hasPending(ss)) {
-        // Finish an interrupted completion before answering.
-        var rl = LockService.getScriptLock();
-        rl.waitLock(10000);
-        try { recoverPending(ss); } finally { rl.releaseLock(); }
-      }
-      out = loadState(ss);
-    } else if (body.action === 'save') {
-      if (!body.ops || typeof body.ops !== 'object') return jsonOut({ error: 'invalid_ops' });
-      var lock = LockService.getScriptLock();
-      lock.waitLock(10000);
-      try {
+    if (body.action !== 'load' && body.action !== 'save') return jsonOut({ error: 'unknown_action' });
+    if (body.action === 'save' && (!body.ops || typeof body.ops !== 'object')) return jsonOut({ error: 'invalid_ops' });
+    // Read only after acquiring the mutex, so concurrent saves never stage
+    // writes from a snapshot taken before the preceding save committed.
+    var lock = LockService.getScriptLock();
+    lock.waitLock(10000);
+    try {
+      var ss = openAsgWorkbook_(sheetId);
+      if (body.action === 'load') {
+        recoverPending(ss);
+        out = loadState(ss);
+      } else {
         out = saveOps(ss, body.ops);
-      } finally {
-        lock.releaseLock();
       }
-    } else {
-      out = { error: 'unknown_action' };
+    } finally {
+      lock.releaseLock();
     }
   } catch (err) {
     // Full detail stays in the script owner's execution log; clients get a
     // generic error so internals (paths, ids, stack fragments) never leak.
     try { Logger.log('ASG backend error: ' + (err && err.stack || err)); } catch (_) {}
-    out = { error: 'backend_error', detail: 'unexpected backend error' };
+    var quota = /429|quota|rate.?limit|too many requests/i.test(str(err && err.message));
+    out = { error: quota ? 'rate_limited' : 'backend_error', detail: quota ? 'Google quota reached; wait before retrying' : 'unexpected backend error' };
   }
   return jsonOut(out);
 }
@@ -499,4 +507,144 @@ function doPost(e) {
 // Node test harness (ignored by Apps Script).
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = { doPost: doPost, doGet: doGet, loadState: loadState, saveOps: saveOps, futureLines: futureLines, checkToken: checkToken };
+}
+
+
+// Advanced Sheets API adapter. The only data scope is drive.file. Google
+// enforces file selection; the property is a second, application-level allowlist.
+// One snapshot read per request, with staged granular writes. No OAuth token is
+// ever returned by the player endpoint. RAW writes keep names such as =IMPORT...
+// as text rather than spreadsheet formulas.
+function openAsgWorkbook_(id) {
+  var props = PropertiesService.getScriptProperties();
+  if (!id || id !== props.getProperty('ASG_SHEET_ID') ||
+      id !== props.getProperty('ASG_SELECTED_SHEET_ID')) throw new Error('Workbook selection required');
+  var snapshot = Sheets.Spreadsheets.get(id, {
+    includeGridData: true,
+    fields: 'sheets(properties(sheetId,title,gridProperties),data(startRow,startColumn,rowData(values(effectiveValue))))'
+  });
+  var sheets = {}, pending = [], structural = [];
+  var widths = {};
+  widths[TAB.stash] = 6; widths[TAB.hq] = 2; widths[TAB.upgrades] = 3;
+  widths[TAB.future] = 1; widths[TAB.cards] = 6; widths[TAB.slots] = 5;
+  widths[TAB.roster] = 6; widths[TAB.history] = HISTORY_HEADER.length;
+  function quote(name) { return "'" + name.replace(/'/g, "''") + "'"; }
+  function column(n) {
+    var v = ''; while (n) { n--; v = String.fromCharCode(65 + n % 26) + v; n = Math.floor(n / 26); } return v;
+  }
+  function wrap(meta, data) {
+    var name = meta.title;
+    function range(row, col, nr, nc) {
+      nr = nr || 1; nc = nc || 1;
+      function set(vals) {
+        var endRow = row + vals.length - 1;
+        var endCol = col + (vals[0] || []).length - 1;
+        if (endRow > meta.gridProperties.rowCount || endCol > meta.gridProperties.columnCount) {
+          meta.gridProperties.rowCount = Math.max(endRow, meta.gridProperties.rowCount);
+          meta.gridProperties.columnCount = Math.max(endCol, meta.gridProperties.columnCount);
+          structural.push({ updateSheetProperties: { properties: {
+            sheetId: meta.sheetId, gridProperties: meta.gridProperties
+          }, fields: 'gridProperties.rowCount,gridProperties.columnCount' } });
+        }
+        vals.forEach(function (r, i) {
+          while (data.length < row + i) data.push([]);
+          r.forEach(function (v, j) { data[row - 1 + i][col - 1 + j] = v; });
+        });
+        pending.push({ range: quote(name) + '!' + column(col) + row + ':' + column(endCol) + endRow, values: vals });
+      }
+      return {
+        getValues: function () {
+          var out = [];
+          for (var r = 0; r < nr; r++) {
+            var line = [];
+            for (var c = 0; c < nc; c++) {
+              var v = (data[row - 1 + r] || [])[col - 1 + c];
+              line.push(v === undefined || v === null ? '' : v);
+            }
+            out.push(line);
+          }
+          return out;
+        },
+        setValues: set,
+        setValue: function (v) { set([[v]]); },
+        clearContent: function () {
+          var vals = []; for (var r = 0; r < nr; r++) { var a = []; for (var c = 0; c < nc; c++) a.push(''); vals.push(a); } set(vals);
+        }
+      };
+    }
+    return {
+      getLastRow: function () {
+        for (var i = data.length - 1; i >= 0; i--) {
+          if (data[i].some(function (v) { return v !== '' && v !== null && v !== undefined; })) return i + 1;
+        }
+        return 0;
+      },
+      getRange: range
+    };
+  }
+  (snapshot.sheets || []).forEach(function (sheet) {
+    var meta = sheet.properties;
+    if (!widths[meta.title]) return;
+    var rows = [];
+    (sheet.data || []).forEach(function (block) {
+      (block.rowData || []).forEach(function (r, i) {
+        var target = (block.startRow || 0) + i;
+        rows[target] = rows[target] || [];
+        (r.values || []).slice(0, widths[meta.title]).forEach(function (cell, j) {
+          var v = cell.effectiveValue || {};
+          rows[target][(block.startColumn || 0) + j] = v.stringValue !== undefined ? v.stringValue :
+            v.numberValue !== undefined ? v.numberValue : v.boolValue !== undefined ? v.boolValue : '';
+        });
+      });
+    });
+    sheets[meta.title] = wrap(meta, rows);
+  });
+  return {
+    getSheetByName: function (name) { return sheets[name] || null; },
+    insertSheet: function (name) {
+      if (name !== TAB.history || sheets[name]) throw new Error('Unexpected sheet creation');
+      var used = (snapshot.sheets || []).map(function (s) { return s.properties.sheetId; });
+      var sid = 1; while (used.indexOf(sid) !== -1) sid++;
+      var meta = { sheetId: sid, title: name, gridProperties: { rowCount: 1000, columnCount: 26 } };
+      structural.push({ addSheet: { properties: meta } });
+      sheets[name] = wrap(meta, []); return sheets[name];
+    },
+    flush: function () {
+      if (structural.length) { Sheets.Spreadsheets.batchUpdate({ requests: structural }, id); structural = []; }
+      if (pending.length) { Sheets.Spreadsheets.Values.batchUpdate({ valueInputOption: 'RAW', data: pending }, id); pending = []; }
+    }
+  };
+}
+
+// Only the signed-in script owner may enable/use setup. Anonymous execute-as-me
+// requests have no active-user identity and fail closed. Equal effective user
+// alone is NOT sufficient: every anonymous player request executes as owner.
+function requireSetupOwner_() {
+  var props = PropertiesService.getScriptProperties();
+  var owner = str(props.getProperty('ASG_OWNER_EMAIL')).trim().toLowerCase();
+  var active = str(Session.getActiveUser().getEmail()).toLowerCase();
+  var effective = str(Session.getEffectiveUser().getEmail()).toLowerCase();
+  if (props.getProperty('ASG_SETUP_ENABLED') !== 'true' || !owner || active !== owner || effective !== owner) {
+    throw new Error('Private owner setup is disabled or unavailable');
+  }
+}
+
+// These RPCs are callable from Setup.html but each independently checks identity.
+// Use the editor-only /dev test deployment, never the anonymous player URL.
+function getAsgSetupConfig() {
+  requireSetupOwner_();
+  var p = PropertiesService.getScriptProperties();
+  return { projectNumber: p.getProperty('ASG_CLOUD_PROJECT_NUMBER'),
+    developerKey: p.getProperty('ASG_PICKER_API_KEY'), token: ScriptApp.getOAuthToken() };
+}
+
+function selectAsgWorkbook(id) {
+  requireSetupOwner_();
+  var p = PropertiesService.getScriptProperties();
+  if (!id || id !== p.getProperty('ASG_SHEET_ID')) throw new Error('Select the configured ASG workbook only');
+  // Selection through Picker must grant Google-level file access first.
+  Sheets.Spreadsheets.get(id, { fields: 'spreadsheetId' });
+  p.setProperty('ASG_SELECTED_SHEET_ID', id);
+  p.setProperty('ASG_SETUP_ENABLED', 'false');
+  return 'Workbook selected. Private setup is now disabled. Close this window.';
 }
