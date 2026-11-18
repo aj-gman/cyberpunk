@@ -780,12 +780,15 @@
     .asg-group-header.asg-drop-left { border-left: 3px solid var(--neon-cyan); }
     .asg-group-header.asg-drop-right { border-right: 3px solid var(--neon-cyan); }
     .asg-upgrade { position: relative; display: flex; gap: 5px; align-items: center; flex-wrap: wrap; }
-    .asg-upgrade-name { min-width: 0; width: 0; flex: 1 0 calc(100% - 35px); background: transparent; border: 0; color: var(--text-color); font: inherit; }
+    .asg-upgrade-name { min-width: 0; width: 0; flex: 1 1 auto; background: transparent; border: 0; color: var(--text-color); font: inherit; }
     @media (max-width: 600px) { .asg-hq-grid { grid-template-columns: 1fr !important; } }
     .asg-upgrade-add { opacity: .7; width: 100%; margin-top: 8px; }
     .asg-upgrade:hover > .asg-note-tip { display: block; right: 0; top: 100%; }
     .asg-upgrade .asg-note-editor { margin-left: 0; }
-    .asg-upgrade-grip { cursor: grab; touch-action: none; user-select: none; }
+    .asg-upgrade-grip { cursor: grab; touch-action: none; user-select: none; background: transparent; border: 0; color: var(--dim); padding: 0 3px; font-size: 12px; line-height: 1.4; flex: none; }
+    .asg-upgrade-grip:hover:not([disabled]) { color: var(--neon-cyan); }
+    .asg-upgrade-grip:disabled { opacity: .35; }
+    .asg-upgrade [hidden] { display: none; }
     .asg-upgrade.dragging { opacity: .5; }
     .asg-upgrade [disabled] { cursor: not-allowed; }
     .asg-upgrade-drag-hint { font-size: 10px; color: var(--neon-cyan); }
@@ -3831,18 +3834,18 @@
       if (editable && !u.id) u.id = asgNewId('upg');
       var row = document.createElement('div'); row.className = 'asg-upgrade';
       row.dataset.upgradeId = u.id || ''; row.dataset.category = cat;
-      var grip = document.createElement('button'); grip.type = 'button'; grip.className = 'btn btn-small asg-upgrade-grip';
+      var grip = document.createElement('button'); grip.type = 'button'; grip.className = 'asg-upgrade-grip';
       grip.textContent = '⠿'; grip.title = 'Hold to reorder within this category; arrow keys also reorder'; grip.disabled = !editable;
       grip.setAttribute('aria-label', 'Reorder ' + (u.name || 'empty upgrade')); row.appendChild(grip);
       asgHoldUpgrade(grip, row, cat, u.id);
       var name = document.createElement('input'); name.type = 'text'; name.className = 'asg-upgrade-name'; name.value = u.name;
       name.placeholder = 'Upgrade name'; name.setAttribute('aria-label', 'Upgrade name'); name.setAttribute('data-asg-key', 'upgrade-' + u.id); name.disabled = !editable;
-      name.addEventListener('input', function () { u.name = name.value; del.disabled = !editable || !!u.name.trim(); asgSaveStateDebounced(); }); row.appendChild(name);
+      name.addEventListener('input', function () { u.name = name.value; del.hidden = !!u.name.trim(); asgSaveStateDebounced(); }); row.appendChild(name);
       var note = document.createElement('button'); note.type = 'button'; note.className = 'btn btn-small'; note.textContent = 'note'; note.disabled = !editable;
       note.setAttribute('aria-label', 'Edit upgrade hover note'); note.addEventListener('click', function () { asgUpgradeNoteId = asgUpgradeNoteId === u.id ? null : u.id; asgRenderHq();
         var area = document.querySelector('[data-asg-key="upgrade-note-' + u.id + '"]'); if (area) area.focus(); }); row.appendChild(note);
       var del = document.createElement('button'); del.type = 'button'; del.className = 'btn btn-danger btn-small'; del.textContent = '×';
-      del.title = 'Delete only when name is empty (also removes its note)'; del.setAttribute('aria-label', 'Delete empty upgrade'); del.disabled = !editable || !!u.name.trim();
+      del.title = 'Delete only when name is empty (also removes its note)'; del.setAttribute('aria-label', 'Delete empty upgrade'); del.hidden = !!u.name.trim(); del.disabled = !editable;
       del.addEventListener('click', function () { asgDeleteUpgrade(cat, u.id); }); row.appendChild(del);
       if (u.note) {
         var tip = document.createElement('div'); tip.className = 'asg-note-tip';
@@ -4538,4 +4541,4 @@
   });
 </script>
 </body>
-  </html>
+                       </html>
