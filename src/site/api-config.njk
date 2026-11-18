@@ -7,3 +7,4 @@ eleventyExcludeFromCollections: true
 // CPRED-sheet.html), supplied by the deployment (SHEET_API_BASE) so the
 // host is defined in exactly one place.
 window.CYBERPUNK_API_BASE = {{ sheetApi.base | jsonify | safe }};
+window.CYBERPUNK_ASG_SCRIPT_URL = {{ sheetApi.asgScript | jsonify | safe }};

@@ -4,4 +4,8 @@
 // verifies the sheets load the generated img/api-config.js.
 module.exports = {
   base: process.env.SHEET_API_BASE || "https://gman-cyberpunk.vercel.app/api",
+  // Apps Script web app URL (/exec) for the shared ASG workbook. Supplied by
+  // the deployment (ASG_SCRIPT_URL); empty means the shared backend is not
+  // configured and the sheet keeps its browser-local draft.
+  asgScript: process.env.ASG_SCRIPT_URL || "",
 };
