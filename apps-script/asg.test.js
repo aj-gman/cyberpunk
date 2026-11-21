@@ -309,26 +309,34 @@ describe('apps-script asg backend', () => {
   });
 
   it('advertises journaled completion support on load', () => {
-    expect(authPost({ action: 'load' }).completionVersion).toBe(2);
+    expect(authPost({ action: 'load' }).completionVersion).toBe(3);
   });
 
+  // d10 + crew bonus - difficulty for each outcome: totals 13, 8, 5, 2.
+  const ROLLS = {
+    success: { roll: 10, bonus: 3, difficulty: 0, total: 13 },
+    complications: { roll: 6, bonus: 3, difficulty: 1, total: 8 },
+    failed: { roll: 3, bonus: 3, difficulty: 1, total: 5 },
+    disaster: { roll: 1, bonus: 3, difficulty: 2, total: 2 },
+  };
   const completeProj = (result, extra) => ({
     action: 'save',
-    ops: { complete: { id: 'proj-1', kind: 'project', number: 1, name: 'New project', description: 'd', result, crew: ['Lappo (Skill 3)'] }, ...(extra || {}) },
+    ops: { complete: { id: 'proj-1', kind: 'project', number: 1, name: 'New project', description: 'd', result, crew: ['Lappo (Skill 3)'], ...(ROLLS[result] || ROLLS.failed) }, ...(extra || {}) },
   });
 
   it('completes a card: history row done, card and its slots removed, result echoed', () => {
     const res = authPost(completeProj('failed'));
     expect(res.error).toBeUndefined();
-    expect(res.completed).toEqual({ id: 'proj-1', result: 'failed', status: 'done' });
+    expect(res.completed).toEqual({ id: 'proj-1', result: 'failed', status: 'done', roll: 3, bonus: 3, difficulty: 1, total: 5 });
     expect(res.state.assignments.projects).toHaveLength(0);
     expect(world.sheets['Assignment Slots'].data.some((r) => r[1] === 'proj-1' && String(r[0]) !== '')).toBe(false);
     const rows = world.sheets['Assignment History'].data;
-    expect(rows[0]).toEqual(['id', 'kind', 'number', 'name', 'description', 'result', 'completed_at', 'crew', 'status']);
+    expect(rows[0]).toEqual(['id', 'kind', 'number', 'name', 'description', 'result', 'completed_at', 'crew', 'status', 'roll', 'crew_bonus', 'difficulty', 'total']);
     expect(rows).toHaveLength(2);
     expect(rows[1].slice(0, 6)).toEqual(['proj-1', 'project', 1, 'New project', 'd', 'failed']);
     expect(rows[1][7]).toBe('Lappo (Skill 3)');
     expect(rows[1][8]).toBe('done');
+    expect(rows[1].slice(9)).toEqual([3, 3, 1, 5]);
     expect(Number.isNaN(Date.parse(rows[1][6]))).toBe(false);
   });
 
@@ -336,7 +344,7 @@ describe('apps-script asg backend', () => {
     expect(authPost(completeProj('failed')).completed.result).toBe('failed');
     const again = authPost(completeProj('success')); // e.g. the response was lost
     expect(again.error).toBeUndefined();
-    expect(again.completed).toEqual({ id: 'proj-1', result: 'failed', status: 'done' });
+    expect(again.completed).toEqual({ id: 'proj-1', result: 'failed', status: 'done', roll: 3, bonus: 3, difficulty: 1, total: 5 });
     expect(world.sheets['Assignment History'].data).toHaveLength(2);
   });
 
@@ -373,7 +381,7 @@ describe('apps-script asg backend', () => {
     expect(authPost(completeProj('failed')).error).toBe('backend_error');
     expect(world.sheets['Assignment Slots'].data.some((r) => r[1] === 'proj-1' && String(r[0]) !== '')).toBe(false);
     const retry = authPost(completeProj('success')); // a retry recovers the pending row first, recorded result wins
-    expect(retry.completed).toEqual({ id: 'proj-1', result: 'failed', status: 'done' });
+    expect(retry.completed).toEqual({ id: 'proj-1', result: 'failed', status: 'done', roll: 3, bonus: 3, difficulty: 1, total: 5 });
     expect(retry.state.assignments.projects).toHaveLength(0);
     expect(world.sheets['Assignment History'].data).toHaveLength(2);
   });
@@ -387,7 +395,7 @@ describe('apps-script asg backend', () => {
   });
 
   it('load advertises the history capability flag', () => {
-    expect(authPost({ action: 'load' }).historyVersion).toBe(1);
+    expect(authPost({ action: 'load' }).historyVersion).toBe(2);
   });
 
   it('history action returns done gigs only, projected to name/description/result, newest first', () => {
@@ -399,10 +407,48 @@ describe('apps-script asg backend', () => {
     ]);
     const out = authPost({ action: 'history' });
     expect(out.error).toBeUndefined();
-    expect(out.historyVersion).toBe(1);
+    expect(out.historyVersion).toBe(2);
     expect(out.history).toHaveLength(2); // project rows and pending rows stay server-side
     expect(out.history[0]).toEqual({ name: 'Old gig', description: 'no status column row', result: 'success' }); // newest first
     expect(out.history[1]).toEqual({ name: 'Records job', description: 'quietly\nfast', result: 'success' });
+  });
+
+  it('history rows with a roll carry the breakdown; older rows do not', () => {
+    world.sheets['Assignment History'] = makeSheet([
+      ['gig-1', 'gig', 1, 'Rolled', '', 'complications', '2026-11-21T00:00:00Z', 'Lappo', 'done', 6, 3, 1, 8],
+    ]);
+    expect(authPost({ action: 'history' }).history[0]).toEqual({ name: 'Rolled', description: '', result: 'complications', roll: 6, bonus: 3, difficulty: 1, total: 8 });
+  });
+
+  it('labels the new history columns on a tab created before the dice roll', () => {
+    world.sheets['Assignment History'] = makeSheet([]);
+    world.sheets['Assignment History'].data[0] = ['id', 'kind', 'number', 'name', 'description', 'result', 'completed_at', 'crew', 'status'];
+    expect(authPost(completeProj('success')).error).toBeUndefined();
+    const rows = world.sheets['Assignment History'].data;
+    expect(rows[0].slice(9)).toEqual(['roll', 'crew_bonus', 'difficulty', 'total']);
+    expect(rows[1].slice(5, 6).concat(rows[1].slice(9))).toEqual(['success', 10, 3, 0, 13]);
+  });
+
+  it('classifies every total: 10+ success, 7-9 complications, 4-6 failure, 3 or less disaster', () => {
+    const cases = [[13, 'success'], [10, 'success'], [9, 'complications'], [7, 'complications'], [6, 'failed'], [4, 'failed'], [3, 'disaster'], [1, 'disaster'], [0, 'disaster'], [-4, 'disaster']];
+    cases.forEach(([total, outcome]) => {
+      expect(backend.outcomeForTotal(total)).toBe(outcome);
+    });
+  });
+
+  it('rejects an inconsistent roll: wrong total, wrong outcome, out-of-range d10 or difficulty', () => {
+    const bad = (patch) => {
+      const body = completeProj('success');
+      Object.assign(body.ops.complete, patch);
+      return authPost(body).error;
+    };
+    expect(bad({ total: 20 })).toBe('invalid_ops');
+    expect(bad({ result: 'failed' })).toBe('invalid_ops');
+    expect(bad({ roll: 11, total: 14 })).toBe('invalid_ops');
+    expect(bad({ roll: 0, total: 3 })).toBe('invalid_ops');
+    expect(bad({ difficulty: 6, total: 7 })).toBe('invalid_ops');
+    expect(bad({ roll: undefined })).toBe('invalid_ops');
+    expect(world.sheets['Assignment History']).toBeUndefined();
   });
 
   it('history action answers an empty list when the tab does not exist yet', () => {
@@ -413,7 +459,7 @@ describe('apps-script asg backend', () => {
 
   it('rejects a bad result, an unknown card, or an edit to the completing card, without writing', () => {
     expect(authPost(completeProj('maybe')).error).toBe('invalid_ops');
-    const ghost = authPost({ action: 'save', ops: { complete: { id: 'nope', kind: 'gig', result: 'success' } } });
+    const ghost = authPost({ action: 'save', ops: { complete: { id: 'nope', kind: 'gig', result: 'success', ...ROLLS.success } } });
     expect(ghost.error).toBe('invalid_ops');
     const assign = authPost(completeProj('success', { slots: { upserts: [{ key: 'proj-1:1', card: 'proj-1', slot: 1, npc: 'npc-solo-9', role: '' }] } }));
     expect(assign.error).toBe('invariant');
