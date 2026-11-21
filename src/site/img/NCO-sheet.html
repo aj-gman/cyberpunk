@@ -842,8 +842,14 @@
     .asg-card-name { font-size: 13px; margin-top: 4px; }
     .asg-complete-ask { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 6px; font-size: 13px; }
     .asg-card-name-input { width: 100%; font-size: 13px; }
-    .asg-card-desc { width: 100%; background: transparent; border: none; color: var(--dim); font-style: italic; font-size: 11px; font-family: 'Lexend', monospace; padding: 2px 0; }
+    .asg-card-desc { width: 100%; background: transparent; border: none; color: var(--dim); font-style: italic; font-size: 11px; font-family: 'Lexend', monospace; padding: 2px 0; display: block; resize: none; overflow: hidden; line-height: 1.35; }
     .asg-card-desc:focus { outline: none; border-bottom: 1px solid var(--neon-cyan); }
+    .asg-history-item { border-top: 1px solid var(--border, #333); padding: 6px 2px; }
+    .asg-history-name { font-size: 12px; }
+    .asg-history-result { font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px; margin-left: 6px; }
+    .asg-history-result.success { color: var(--neon-green, #39ff14); }
+    .asg-history-result.failed { color: var(--neon-red, #ff3131); }
+    .asg-history-desc { color: var(--dim); font-style: italic; font-size: 11px; white-space: pre-wrap; margin-top: 2px; }
     .asg-slot { border: 1px dashed #2a2f55; border-radius: 3px; padding: 4px 8px; margin-top: 5px; min-height: 26px; color: var(--dim); font-size: 11px; display: flex; align-items: center; gap: 6px; }
     .asg-slot .asg-npc { flex: 1; margin-bottom: 0; }
     .asg-slot-pos { flex: none; color: var(--dim); }
@@ -1100,14 +1106,24 @@
 
   <div class="page-break"></div>
 
-  <!-- ASG backend status: the shared-workbook backend is configured separately;
-       until it is connected, everything on this page is a browser-local draft. -->
+  <!-- ASG is online-only: nothing from the shared workbook renders until a
+       fresh authenticated load succeeds in this page session, and no browser
+       copy of it is kept. -->
   <div class="asg-backend-row" style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
-    <span id="asg-backend-status" class="asg-status" role="status" style="margin:0;">Shared workbook not connected - this page saves to this browser only.</span>
+    <span id="asg-backend-status" class="asg-status" role="status" style="margin:0;">Shared workbook not connected.</span>
     <button class="btn btn-small" type="button" id="asg-connect-btn" onclick="asgConnectClick()">Connect shared workbook</button>
   </div>
   <div id="asg-status" class="asg-status" role="status"></div>
 
+  <!-- Shown while the workbook is gated: no cached or sample data, ever. -->
+  <div class="panel asg-module" id="asg-gate">
+    <div style="padding:28px 16px;text-align:center;">
+      <p id="asg-gate-reason" style="margin:0 0 12px;">Enter the group password to open the shared workbook.</p>
+      <button class="btn" type="button" id="asg-gate-connect-btn" onclick="asgPromptPassword()">Enter password</button>
+    </div>
+  </div>
+
+  <div id="asg-workbook" style="display:none;">
   <!-- ASG: STASH -->
   <div class="panel asg-module">
     <div class="asg-module-header" onclick="asgToggleModule('asg-stash-body', this)">
@@ -1161,6 +1177,8 @@
           <h3>Gigs <span class="asg-col-cap">max 4 each</span></h3>
           <div id="asg-gigs-list"></div>
           <button class="btn btn-small" type="button" onclick="asgAddGig()">+ New gig</button>
+          <button class="btn btn-small" type="button" id="asg-history-btn" onclick="asgToggleHistory()">History</button>
+          <div id="asg-history-panel" style="display:none;"></div>
         </div>
         <div class="asg-col">
           <h3>Projects <span class="asg-col-cap">max 2 each</span></h3>
@@ -1170,6 +1188,7 @@
       </div>
     </div>
   </div>
+  </div><!-- end asg-workbook -->
 
 </div><!-- end sheet-page3 -->
 
@@ -2426,6 +2445,7 @@
       applyImport(replacement);
       loadedCharacterId = result.id || slugCharacter(charId);
       loadedRevision = result.revision;
+      if (typeof asgOnCharacterOpened === 'function') asgOnCharacterOpened();
       setClean();
       setGHStatus('Loaded "' + (result.id || charId) + '" ✓', false);
     } catch (err) {
@@ -2461,6 +2481,7 @@
         if (!mayReplace()) return;
         applyImport(replacement);
         loadedCharacterId = null; loadedRevision = null;
+        if (typeof asgOnCharacterOpened === 'function') asgOnCharacterOpened();
         trackChanges();
         setGHStatus('JSON loaded. Save to cloud or keep a JSON backup.', false);
       } catch (err) {
@@ -2641,12 +2662,11 @@
   // Group-level modules for the Assertive Security Group.
   //
   // STORAGE BOUNDARY. The ASG data is meant to be shared by the whole group:
-  // ONE Google Sheets workbook behind ONE backend Google connection (service
-  // account on the Vercel API), gated by a shared group password — players
-  // never sign in with Google. That backend is configured separately (see
-  // docs/ASG-BACKEND-SETUP.md); until it is connected, everything on this
-  // page is a browser-local draft (localStorage key 'nco-asg-v1') and the NPC
-  // roster is the clearly-labelled SAMPLE below.
+  // ONE Google Sheets workbook behind ONE backend Google connection (the
+  // split backend in docs/ASG-BACKEND-SETUP.md), gated by a shared group
+  // password — players never sign in with Google. The page is online-only:
+  // until a fresh authenticated load succeeds, the modules stay hidden
+  // behind the password gate and nothing is kept in the browser.
   //
   // NPCs are admin-only: they are created, deleted and edited (name, role,
   // skill, page link) in the spreadsheet itself, never through this UI, so
@@ -2656,6 +2676,10 @@
   // same mouse grip pattern as the Gear lists (HTML5 drag events).
   // ═══════════════════════════════════════════════════════
 
+  // Online-only (owner direction 2026-11-19): the shared workbook is never
+  // persisted in this browser and never rendered until a fresh authenticated
+  // load succeeds in this page session. The key is kept only to purge drafts
+  // saved by older versions (purge approved 2026-11-19).
   var ASG_STORAGE_KEY = 'nco-asg-v1';
   // The group password and the minted token live in memory only - never in
   // sessionStorage/localStorage - so a page reload asks for the password
@@ -2677,7 +2701,6 @@
   // save retries on this cadence until it lands or the page disconnects.
   var ASG_TEXT_DEBOUNCE_MS = 800;
   var ASG_SAVE_BATCH_MS = 150;
-  var ASG_SAVE_RETRY_MS = 15000;
   var ASG_SESSION_WINDOW_MS = 5 * 60 * 1000;
   // Scheduled play sessions (confirmed by the user 2026-11-18: Tuesdays
   // 17:30-00:00 Europe/Bucharest). During the window the sheet polls at the
@@ -2707,60 +2730,17 @@
   // (tab "Roster") once the shared backend is connected. Named NPCs carry a
   // pageUrl to their public page (double-click opens it in the small window);
   // the real URLs come from the roster sheet.
-  var ASG_SAMPLE_ROSTER = [
-    { id: 'npc-lappo',       role: 'Rockerboy', number: 2, skill: 3, name: 'Lappo', pageUrl: null },
-    { id: 'npc-rockerboy-1', role: 'Rockerboy', number: 1, skill: 1 },
-    { id: 'npc-techie-4',    role: 'Techie',    number: 4, skill: 2 },
-    { id: 'npc-lawman-2',    role: 'Lawman',    number: 2, skill: 0 },
-    { id: 'npc-solo-5',      role: 'Solo',      number: 5, skill: 0 },
-    { id: 'npc-media-1',     role: 'Media',     number: 1, skill: 3 },
-    { id: 'npc-solo-1',      role: 'Solo',      number: 1, skill: 2 },
-    { id: 'npc-netrunner-1', role: 'Netrunner', number: 1, skill: 0 },
-    { id: 'npc-techie-1',    role: 'Techie',    number: 1, skill: 2 },
-    { id: 'npc-nomad-1',     role: 'Nomad',     number: 1, skill: 1 },
-    { id: 'npc-netrunner-2', role: 'Netrunner', number: 2, skill: 0 },
-    { id: 'npc-media-2',     role: 'Media',     number: 2, skill: 0 },
-    { id: 'npc-solo-3',      role: 'Solo',      number: 3, skill: 0 },
-    { id: 'npc-fixer-1',     role: 'Fixer',     number: 1, skill: 0 }
-  ];
-
-  // SAMPLE state — illustrative stash/HQ/assignments content matching the
-  // approved mockups. Replaced by the shared workbook when connected.
-  function asgSampleState() {
+  // Blank in-memory state behind the gate. Nothing from the workbook (or a
+  // made-up sample of it) exists in the page until the first authenticated
+  // load of this session fills it.
+  function asgEmptyState() {
+    var hq = { futureUpgrades: '' };
+    ASG_HQ_CATEGORIES.forEach(function (cat) { hq[cat.key] = { value: 0, upgrades: [] }; });
     return {
-      stash: { groups: [
-        { id: 'grp-weapons', name: 'Weapons', items: [
-          { id: 'itm-1', name: 'Malorian Heavy Sniper', note: '' },
-          { id: 'itm-2', name: 'ATGM', note: 'One-use launcher. Kept for vehicular targets.' },
-          { id: 'itm-3', name: 'Very Heavy Pistol', note: '' },
-          { id: 'itm-4', name: 'Knife', note: '' }
-        ]},
-        { id: 'grp-armor', name: 'Armor', items: [
-          { id: 'itm-5', name: 'Metalgear', note: '' },
-          { id: 'itm-6', name: 'Nomad Flak Armor', note: '' }
-        ]},
-        { id: 'grp-gear', name: 'Gear', items: [
-          { id: 'itm-7', name: 'Recon Drone', note: '' },
-          { id: 'itm-8', name: 'Microtorch cutter', note: '' }
-        ]}
-      ]},
-      hq: {
-        supplies:   { value: 10, upgrades: [{ id: 'up-1', name: 'Biolocked Armory', note: '' }, { id: 'up-2', name: 'Large Multimodal Garage', note: 'Fits the AV and ground vehicles. Upkeep 2 SUP.' }] },
-        culture:    { value: 10, upgrades: [{ id: 'up-3', name: 'Media Center', note: '' }, { id: 'up-4', name: 'Common Room', note: '' }, { id: 'up-5', name: 'Lounge', note: '' }] },
-        technology: { value: 10, upgrades: [{ id: 'up-6', name: 'Tier 1 Tech Bench', note: '' }, { id: 'up-7', name: 'Tier 1 Server Room', note: '' }, { id: 'up-8', name: 'Tier 1 Medbay', note: '' }] },
-        security:   { value: 10, upgrades: [{ id: 'up-9', name: 'Tier 2 Defense System', note: '' }, { id: 'up-10', name: 'Tier 2 Security System', note: '' }] },
-        futureUpgrades: '- armory\n- big nuclear facility'
-      },
-      assignments: {
-        order: 'role',
-        available: ['npc-lappo', 'npc-rockerboy-1', 'npc-techie-4', 'npc-lawman-2', 'npc-solo-5'],
-        projects: [{ id: 'proj-1', number: 1, name: 'New project', description: '', slots: ['npc-media-1', null] }],
-        gigs: [
-          { id: 'gig-1', number: 1, name: 'Obtain records of personal communications', description: '', slots: [{ role: 'Solo', npc: 'npc-solo-1' }, { role: 'Netrunner', npc: 'npc-netrunner-1' }, { role: 'Techie', npc: 'npc-techie-1' }, { role: 'Nomad', npc: 'npc-nomad-1' }] },
-          { id: 'gig-3', number: 3, name: 'Gather intel on an offline database', description: '', slots: [{ role: 'Netrunner', npc: 'npc-netrunner-2' }, { role: 'Media', npc: 'npc-media-2' }, { role: 'Solo', npc: 'npc-solo-3' }, { role: 'Fixer', npc: 'npc-fixer-1' }] }
-        ]
-      },
-      roster: ASG_SAMPLE_ROSTER
+      stash: { groups: [] },
+      hq: hq,
+      assignments: { order: 'role', available: [], projects: [], gigs: [] },
+      roster: []
     };
   }
 
@@ -2792,14 +2772,16 @@
   // (window.CYBERPUNK_ASG_SCRIPT_URL), which verifies the token. No sheet
   // traffic passes through Vercel. The text/plain content type keeps the
   // Apps Script POST a CORS-simple request (Apps Script cannot answer
-  // preflights). Until docs/ASG-BACKEND-SETUP.md is done on the deployment,
-  // the script URL is unset and every request falls back to the
-  // browser-local draft.
+  // preflights). The workbook is online-only: when the script URL is unset
+  // or any request fails, the ASG modules stay gated and show nothing.
   var AsgBackend = {
     connected: false,
     token: '',
     tokenExpiresAt: 0,
     lastHash: '',
+    completionVersion: 0,
+    upgradeEditVersion: 0,
+    historyVersion: 0,
     password: function () {
       return asgPassword;
     },
@@ -2982,6 +2964,8 @@
     // Only a script that answers with this flag records completion history.
     AsgBackend.completionVersion = (data && data.completionVersion) || 0;
     AsgBackend.upgradeEditVersion = (data && data.upgradeEditVersion) || 0;
+    // Only a script that answers with this flag serves gig history.
+    AsgBackend.historyVersion = (data && data.historyVersion) || 0;
     if (data.roster) asgState.roster = data.roster;
   }
 
@@ -3155,74 +3139,145 @@
     if (btn) btn.textContent = AsgBackend.connected ? 'Disconnect shared workbook' : 'Connect shared workbook';
   }
 
-  function asgConnectClick() {
-    if (AsgBackend.connected) {
-      AsgBackend.connected = false;
-      asgSessionMode = false;
-      if (asgRefreshTimer) clearTimeout(asgRefreshTimer);
-      if (asgSaveTimer) clearTimeout(asgSaveTimer);
-      if (asgSaveRetryTimer) clearTimeout(asgSaveRetryTimer);
-      asgSaveInFlight = false;
-      asgSavePending = false;
-      asgDeferredRemote = null;
-      asgPassword = '';
-      AsgBackend.token = '';
-      AsgBackend.tokenExpiresAt = 0;
-      asgBackendStatus('Shared workbook not connected - this page saves to this browser only.');
-      return;
-    }
+  // Accurate gate reasons: never claim a network problem was a refused
+  // password or vice versa, and never imply the page works offline.
+  function asgGateReason(err) {
+    if (err === 'unconfigured') return 'The shared workbook is not configured on the server yet.';
+    if (err === 'rate_limited') return 'Too many attempts - wait about a minute and try again.';
+    if (err === 'bad_password') return 'The shared workbook refused that password.';
+    return 'The shared workbook is unreachable - check the connection and try again.';
+  }
+
+  // The gate: while it is up the workbook modules render NOTHING - no cached
+  // copy, no sample data. Only a fresh authenticated load in this page
+  // session lifts it.
+  function asgRenderGate(reason) {
+    var wb = document.getElementById('asg-workbook');
+    var gate = document.getElementById('asg-gate');
+    if (wb) wb.style.display = 'none';
+    if (gate) gate.style.display = '';
+    var el = document.getElementById('asg-gate-reason');
+    if (el && reason !== undefined) el.textContent = reason || 'Enter the group password to open the shared workbook.';
+  }
+
+  function asgLiftGate() {
+    var wb = document.getElementById('asg-workbook');
+    var gate = document.getElementById('asg-gate');
+    if (wb) wb.style.display = '';
+    if (gate) gate.style.display = 'none';
+  }
+
+  function asgPromptPassword() {
     var password = window.prompt('Group password for the shared ASG workbook:');
     if (!password) return;
     asgPassword = password;
     asgConnect();
   }
 
+  // Drop every in-memory trace of the workbook: the page goes back to the
+  // blank gated state as if just opened.
+  function asgClearConnection() {
+    AsgBackend.connected = false;
+    asgSessionMode = false;
+    if (asgRefreshTimer) { clearTimeout(asgRefreshTimer); asgRefreshTimer = null; }
+    if (asgSaveTimer) { clearTimeout(asgSaveTimer); asgSaveTimer = null; }
+    if (asgSaveRetryTimer) { clearTimeout(asgSaveRetryTimer); asgSaveRetryTimer = null; }
+    if (asgReconnectTimer) { clearTimeout(asgReconnectTimer); asgReconnectTimer = null; }
+    asgSaveInFlight = false;
+    asgSavePending = false;
+    asgDeferredRemote = null;
+    asgLoadedSnapshot = null;
+    AsgBackend.token = '';
+    AsgBackend.tokenExpiresAt = 0;
+  }
+
+  function asgConnectClick() {
+    if (AsgBackend.connected) {
+      asgClearConnection();
+      asgPassword = '';
+      asgState = asgEmptyState();
+      asgBackendStatus('Shared workbook not connected.');
+      asgRenderGate('');
+      return;
+    }
+    asgPromptPassword();
+  }
+
   function asgConnect() {
     asgBackendStatus('Connecting to the shared workbook…');
     AsgBackend.load(function (data, err) {
-      if (err === 'unconfigured') {
-        asgPassword = '';
-        asgBackendStatus('Shared backend is not configured on the server yet - this page saves to this browser only.');
-        return;
-      }
-      if (err === 'offline') {
-        asgBackendStatus('Shared workbook unreachable - this page saves to this browser only.');
-        return;
-      }
-      if (err === 'rate_limited') {
-        asgBackendStatus('Too many wrong password attempts - wait about a minute and try again.');
-        return;
-      }
       if (err) {
-        asgPassword = '';
-        asgBackendStatus('Shared workbook refused the password - this page saves to this browser only.');
+        if (err === 'bad_password') asgPassword = '';
+        if (AsgBackend.connected) { asgDropConnection(err); return; }
+        var reason = asgGateReason(err);
+        asgBackendStatus(reason);
+        asgRenderGate(reason);
         return;
       }
-      // Connecting replaces the browser-local draft with the shared
-      // workbook. If a saved draft diverges from the remote state, say so
-      // and ask first instead of silently discarding it. Both sides are
-      // compared through the workbook-row serialization, so equivalent
-      // shapes (wire null slot vs local {role:'',npc:''}) do not prompt.
-      var hasDraft = false;
-      try { hasDraft = localStorage.getItem(ASG_STORAGE_KEY) !== null; } catch (_) {}
-      if (hasDraft && data && data.state
-          && JSON.stringify(asgRowsFromState(asgSharedFromData(data))) !== JSON.stringify(asgRowsFromState(asgSharedPart()))) {
-        if (!window.confirm('Connecting replaces the draft saved in this browser with the shared workbook. Local draft changes that are not in the workbook will be discarded. Continue?')) {
+      asgApplyLoad(data);
+    });
+  }
+
+  // A fresh authenticated load: the only path that lifts the gate.
+  function asgApplyLoad(data) {
+    AsgBackend.connected = true;
+    AsgBackend.lastHash = asgRemoteHash(data);
+    asgMergeRemoteState(data); // rebases edits still only in memory, if any
+    asgRenderAll();
+    asgLiftGate();
+    asgBackendStatus('Shared workbook connected.');
+    asgScheduleRefresh(ASG_IDLE_REFRESH_MS);
+  }
+
+  // Mid-session loss of the authenticated channel: hide the workbook and
+  // block access until a fresh load succeeds. Edits that are only in memory
+  // are kept and replayed by the first flush after reconnecting.
+  var ASG_RECONNECT_MS = 10000;
+  var asgReconnectTimer = null;
+  function asgDropConnection(err) {
+    if (!AsgBackend.connected) return;
+    AsgBackend.connected = false;
+    if (asgRefreshTimer) { clearTimeout(asgRefreshTimer); asgRefreshTimer = null; }
+    if (asgSaveRetryTimer) { clearTimeout(asgSaveRetryTimer); asgSaveRetryTimer = null; }
+    var reason = asgGateReason(err) + ' Reconnecting…';
+    asgBackendStatus(reason);
+    asgRenderGate(reason);
+    asgScheduleReconnect();
+  }
+  function asgScheduleReconnect() {
+    if (asgReconnectTimer) clearTimeout(asgReconnectTimer);
+    asgReconnectTimer = setTimeout(asgAttemptReconnect, ASG_RECONNECT_MS);
+  }
+  function asgAttemptReconnect() {
+    asgReconnectTimer = null;
+    if (AsgBackend.connected || !asgPassword) return;
+    AsgBackend.load(function (data, err) {
+      if (err) {
+        if (err === 'bad_password') {
           asgPassword = '';
-          AsgBackend.token = '';
-          AsgBackend.tokenExpiresAt = 0;
-          asgBackendStatus('Shared workbook not connected - this page saves to this browser only.');
+          var reason = 'The shared workbook refused the password - enter it again.';
+          asgBackendStatus(reason);
+          asgRenderGate(reason);
           return;
         }
+        asgScheduleReconnect();
+        return;
       }
-      AsgBackend.connected = true;
-      AsgBackend.lastHash = asgRemoteHash(data);
-      asgMergeRemoteState(data);
-      asgSaveLocal();
-      asgRenderAll();
-      asgBackendStatus('Shared workbook connected.');
-      asgScheduleRefresh(ASG_IDLE_REFRESH_MS);
+      asgApplyLoad(data);
+      asgFlushSave(); // replay edits kept in memory across the drop
     });
+  }
+
+  // Every character-sheet opening re-gates the workbook: no previous
+  // workbook view carries over, and the password is asked again. Edits not
+  // yet written to the workbook are discarded, exactly as on a page reload.
+  function asgOnCharacterOpened() {
+    asgClearConnection();
+    asgPassword = '';
+    asgState = asgEmptyState();
+    asgBackendStatus('Shared workbook not connected.');
+    asgRenderGate('');
+    asgPromptPassword();
   }
 
   function asgScheduleRefresh(delay) {
@@ -3238,8 +3293,9 @@
       return;
     }
     AsgBackend.load(function (data, err) {
+      if (err) { asgDropConnection(err); return; }
       var now = Date.now();
-      if (!err && data) {
+      if (data) {
         var hash = asgRemoteHash(data);
         if (hash !== AsgBackend.lastHash) {
           if (asgSaveInFlight) {
@@ -3251,7 +3307,6 @@
             AsgBackend.lastHash = hash;
             asgFlash('Shared workbook reloaded - it changed elsewhere.');
             asgMergeRemoteState(data); // may replace this flash with a workbook warning
-            asgSaveLocal();
             asgRenderAll();
             asgPrevChangeAt = asgLastChangeAt;
             asgLastChangeAt = now;
@@ -3266,18 +3321,16 @@
     });
   }
 
-  // Every local edit flows through here. State and the browser-local copy
-  // update immediately; the shared save is batched so a burst of edits (or
+  // Every local edit flows through here. State updates in memory
+  // immediately; the shared save is batched so a burst of edits (or
   // keystrokes) becomes one request carrying only the final rows.
   function asgSaveState() {
-    asgSaveLocal();
     asgEditSeq++;
     asgScheduleSave(ASG_SAVE_BATCH_MS);
   }
 
   // Text fields: wait for a pause in typing before writing to the workbook.
   function asgSaveStateDebounced() {
-    asgSaveLocal();
     asgEditSeq++;
     asgScheduleSave(ASG_TEXT_DEBOUNCE_MS);
   }
@@ -3286,14 +3339,6 @@
     if (!AsgBackend.connected) return;
     if (asgSaveTimer) clearTimeout(asgSaveTimer);
     asgSaveTimer = setTimeout(asgFlushSave, delay);
-  }
-
-  function asgScheduleSaveRetry() {
-    if (asgSaveRetryTimer) clearTimeout(asgSaveRetryTimer);
-    asgSaveRetryTimer = setTimeout(function () {
-      asgSaveRetryTimer = null;
-      asgFlushSave();
-    }, ASG_SAVE_RETRY_MS);
   }
 
   // Row-level subtraction: the local ops that were NOT part of a rejected
@@ -3360,7 +3405,6 @@
             asgLoadedSnapshot = asgDeepCopy(freshShared);
             asgDetectWarnings(data);
             asgFlash('Shared workbook rejected the last change (' + (data.detail || err) + ') - it was reverted. Your other edits are kept.');
-            asgSaveLocal();
             asgRenderAll();
             if (Object.keys(keep).length) asgScheduleSave(50); // surviving edits still go out
           } else {
@@ -3368,19 +3412,17 @@
           }
           return;
         }
-        // Transient failure: the edit stays in state and localStorage; polls
-        // rebase around it (asgMergeRemoteState) so it is never silently
-        // lost, and the retry timer keeps trying while the page stays
-        // connected.
-        if (asgDeferredRemote) { var held = asgDeferredRemote; asgDeferredRemote = null; asgMergeRemoteState(held); asgSaveLocal(); }
-        asgFlash('Shared save failed (' + err + ') - the edit is kept in this browser and retried.');
-        asgScheduleSaveRetry();
+        // Transient failure: the edit stays in memory and the connection
+        // drops behind the gate until a fresh load succeeds; the reconnect
+        // then replays the pending edits (asgAttemptReconnect).
+        if (asgDeferredRemote) { var held = asgDeferredRemote; asgDeferredRemote = null; asgMergeRemoteState(held); }
+        asgFlash('Shared save failed (' + err + ') - the edit is kept in memory and retried on reconnect.');
+        asgDropConnection(err);
         return;
       }
       asgDeferredRemote = null; // the save response is fresher than any held poll
       AsgBackend.lastHash = asgRemoteHash(data);
       var rebased = asgMergeRemoteState(data); // the backend answers with the fresh full state
-      asgSaveLocal();
       if (rebased || asgSavePending || asgEditSeq !== asgEditSeqAtSend) {
         // Edits kept happening during the flight: send them now.
         asgSavePending = false;
@@ -3388,21 +3430,6 @@
       }
       asgRenderAll();
     });
-  }
-
-  function asgSaveLocal() {
-    try { localStorage.setItem(ASG_STORAGE_KEY, JSON.stringify(asgState)); } catch (_) {}
-  }
-
-  function asgLoadLocal() {
-    try {
-      var raw = localStorage.getItem(ASG_STORAGE_KEY);
-      if (raw) {
-        var parsed = JSON.parse(raw);
-        if (parsed && parsed.stash && parsed.hq && parsed.assignments && parsed.roster) return parsed;
-      }
-    } catch (_) { /* corrupt draft: fall through to the sample */ }
-    return asgSampleState();
   }
 
   function asgFlash(msg) {
@@ -4087,6 +4114,73 @@
   // result wins). Locally the card only disappears once the backend confirms
   // it. There is no browser-only completion, and a script that cannot journal
   // completions (older deployment) is refused before any write.
+  // Multiline description auto-height: shrink to fit, then grow to the
+  // content. jsdom reports scrollHeight 0; browsers give the real height.
+  function asgAutoHeight(el) {
+    el.style.height = 'auto';
+    el.style.height = el.scrollHeight + 'px';
+  }
+
+  // HISTORY: completed gigs from the workbook's Assignment History tab,
+  // fetched only on click (never on the polling path) and only from a
+  // backend new enough to answer the history action.
+  function asgToggleHistory() {
+    var panel = document.getElementById('asg-history-panel');
+    if (!panel) return;
+    if (panel.style.display !== 'none') { panel.style.display = 'none'; panel.textContent = ''; return; }
+    if (!(AsgBackend.historyVersion >= 1)) { asgFlash('Gig history needs the updated backend - ask the GM to deploy the latest Apps Script.'); return; }
+    panel.style.display = '';
+    panel.textContent = '';
+    var loading = document.createElement('div');
+    loading.className = 'asg-status';
+    loading.textContent = 'Loading gig history…';
+    panel.appendChild(loading);
+    AsgBackend.request({ action: 'history' }, function (data, err) {
+      panel.textContent = '';
+      if (err) {
+        var e = document.createElement('div');
+        e.className = 'asg-status';
+        e.textContent = 'Could not load gig history (' + err + ').';
+        panel.appendChild(e);
+        if (err !== 'unknown_action') asgDropConnection(err);
+        return;
+      }
+      asgRenderHistory(panel, (data && data.history) || []);
+    });
+  }
+
+  function asgRenderHistory(panel, rows) {
+    if (!rows.length) {
+      var empty = document.createElement('div');
+      empty.className = 'asg-status';
+      empty.textContent = 'No completed gigs recorded yet.';
+      panel.appendChild(empty);
+      return;
+    }
+    rows.forEach(function (row) {
+      var item = document.createElement('div');
+      item.className = 'asg-history-item';
+      var head = document.createElement('div');
+      var name = document.createElement('span');
+      name.className = 'asg-history-name';
+      name.textContent = row.name || 'Unnamed gig';
+      head.appendChild(name);
+      var result = document.createElement('span');
+      var ok = row.result === 'success';
+      result.className = 'asg-history-result ' + (ok ? 'success' : 'failed');
+      result.textContent = ok ? 'Success' : 'Failed';
+      head.appendChild(result);
+      item.appendChild(head);
+      if (row.description) {
+        var desc = document.createElement('div');
+        desc.className = 'asg-history-desc';
+        desc.textContent = row.description;
+        item.appendChild(desc);
+      }
+      panel.appendChild(item);
+    });
+  }
+
   var asgCompleteAsk = null; // { targetType, cardId }
   function asgAskComplete(targetType, cardId) {
     asgCompleteAsk = { targetType: targetType, cardId: cardId };
@@ -4149,11 +4243,12 @@
         if (snapCard && at0 >= 0) cards[at0] = asgDeepCopy(snapCard);
         asgFlash('Completion not confirmed (' + (data && data.detail || err || 'no confirmation') + '). It may still finish - refreshing; check the card before trying again.');
         asgRenderAll();
+        if (err) { asgDropConnection(err); return; }
         AsgBackend.load(function (fresh, loadErr) {
-          if (loadErr || !fresh) return;
+          if (loadErr) { asgDropConnection(loadErr); return; }
+          if (!fresh) return;
           AsgBackend.lastHash = asgRemoteHash(fresh);
           asgMergeRemoteState(fresh);
-          asgSaveLocal();
           asgRenderAll();
         });
         return;
@@ -4165,7 +4260,6 @@
       npcIds.forEach(function (npcId) { if (asgState.assignments.available.indexOf(npcId) < 0) asgState.assignments.available.push(npcId); });
       AsgBackend.lastHash = asgRemoteHash(data);
       asgMergeRemoteState(data);
-      asgSaveLocal();
       var label = targetType === 'project' ? 'Project' : 'Gig';
       asgFlash(data.completed.result === result
         ? label + ' completed (' + result + ') and recorded for the GM.'
@@ -4314,15 +4408,18 @@
     if (!card.name) name.style.color = 'var(--dim)';
     el.appendChild(name);
     if (asgRenameCard && asgRenameCard.cardId === card.id) asgOpenRenameInput(targetType, card, name); // rebuild keeps the in-progress rename
-    var desc = document.createElement('input');
-    desc.type = 'text';
+    // Multiline description: grows with its content on typing, on every
+    // render that sets a value, and on window resize (asgAutoHeight).
+    var desc = document.createElement('textarea');
+    desc.rows = 1;
     desc.className = 'asg-card-desc';
-    desc.placeholder = 'short description…';
+    desc.placeholder = 'description…';
     desc.value = card.description || '';
-    desc.setAttribute('aria-label', label + ' short description');
+    desc.setAttribute('aria-label', label + ' description');
     desc.setAttribute('data-asg-key', 'card-' + card.id + '-desc');
-    desc.addEventListener('input', function () { card.description = desc.value; asgSaveStateDebounced(); });
+    desc.addEventListener('input', function () { card.description = desc.value; asgAutoHeight(desc); asgSaveStateDebounced(); });
     el.appendChild(desc);
+    asgAutoHeight(desc);
 
     var filled = 0;
     card.slots.forEach(function (slot, i) {
@@ -4506,8 +4603,11 @@
   }
 
   function asgInit() {
-    asgState = asgLoadLocal();
-    asgRenderAll();
+    // Purge any browser copy of the workbook saved by an older version
+    // (approved 2026-11-19), then boot blank behind the gate.
+    try { localStorage.removeItem(ASG_STORAGE_KEY); } catch (_) {}
+    asgState = asgEmptyState();
+    asgRenderGate('');
     var futureText = document.getElementById('asg-future-text');
     if (futureText) {
       futureText.setAttribute('data-asg-key', 'hq-future');
@@ -4519,8 +4619,13 @@
       });
     }
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') asgCloseInfo(); });
-    asgBackendStatus('Shared workbook not connected - this page saves to this browser only.');
-    if (AsgBackend.password()) asgConnect();
+    window.addEventListener('resize', function () {
+      document.querySelectorAll('.asg-card-desc').forEach(asgAutoHeight);
+    });
+    asgBackendStatus('Shared workbook not connected.');
+    // Every page opening asks for the password: nothing renders before a
+    // fresh authenticated load, and the password lives in memory only.
+    asgPromptPassword();
   }
 
   asgInit();
@@ -4541,4 +4646,4 @@
   });
 </script>
 </body>
-                       </html>
+  </html>

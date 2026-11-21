@@ -245,6 +245,9 @@ function loadState(ss) {
   // journals and recovers completions, so an older deployment can never drop
   // a card unrecorded or half-applied.
   out.completionVersion = 2;
+  // Capability flag: the page only offers gig HISTORY against a script that
+  // answers the history action, so an older deployment hides the button.
+  out.historyVersion = 1;
   return out;
 }
 
@@ -442,6 +445,20 @@ function readHistory(ss) {
   return { sh: sh, byId: byId };
 }
 
+// Gig completion history for the page's HISTORY button: done rows only
+// (pending rows are interrupted completions, not results), projected to
+// exactly the three fields the panel shows. Newest completion first.
+function readGigHistory(ss) {
+  var sh = ss.getSheetByName(TAB.history);
+  if (!sh) return [];
+  var last = sh.getLastRow();
+  if (last < 2) return [];
+  return sh.getRange(2, 1, last - 1, HISTORY_HEADER.length).getValues()
+    .filter(function (r) { return str(r[0]) && str(r[1]) === 'gig' && str(r[8]) !== 'pending'; })
+    .reverse()
+    .map(function (r) { return { name: str(r[3]), description: str(r[4]), result: str(r[5]) }; });
+}
+
 function hasPending(ss) {
   var h = readHistory(ss);
   return !!h && Object.keys(h.byId).some(function (k) { return h.byId[k].status === 'pending'; });
@@ -540,7 +557,7 @@ function doPost(e) {
     var sheetId = props.getProperty('ASG_SHEET_ID');
     if (!sheetId) return jsonOut({ error: 'unconfigured' });
     if (!checkToken(body.token)) return jsonOut({ error: 'bad_token' });
-    if (body.action !== 'load' && body.action !== 'save') return jsonOut({ error: 'unknown_action' });
+    if (body.action !== 'load' && body.action !== 'save' && body.action !== 'history') return jsonOut({ error: 'unknown_action' });
     if (body.action === 'save' && (!body.ops || typeof body.ops !== 'object')) return jsonOut({ error: 'invalid_ops' });
     // Read only after acquiring the mutex, so concurrent saves never stage
     // writes from a snapshot taken before the preceding save committed.
@@ -551,6 +568,8 @@ function doPost(e) {
       if (body.action === 'load') {
         recoverPending(ss);
         out = loadState(ss);
+      } else if (body.action === 'history') {
+        out = { history: readGigHistory(ss), historyVersion: 1 };
       } else {
         out = saveOps(ss, body.ops);
       }

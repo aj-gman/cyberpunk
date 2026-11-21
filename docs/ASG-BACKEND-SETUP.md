@@ -1,7 +1,10 @@
 # ASG shared-workbook backend setup
 
-The ASG page (sheet page 3) works out of the box as a browser-local draft.
-These steps connect it to the shared Google Sheets workbook so the whole
+The ASG page (sheet page 3) is online-only: it shows a blank workbook with
+a password prompt until it connects to the shared Google Sheets workbook,
+and it asks for the password on every opening. Nothing is cached or backed
+up in the browser, so a lost connection hides the workbook until the page
+reconnects. These steps connect it to the shared workbook so the whole
 group sees and edits the same Stash, HQ and Assignments. Players never sign
 in with Google: the sheet asks for the shared group password, and only the
 backend Google account ever talks to Google.
@@ -97,7 +100,8 @@ backend on the players' behalf.
   |----|------|----------|--------|------|-------------|
 
   `kind` is `project` or `gig`; `position` is the display order; `number` is
-  the stable card number shown in the UI.
+  the stable card number shown in the UI. `description` holds multiline
+  text; the page grows the field to fit it.
 
 - **Assignment Slots** — player-edited NPC assignments:
 
@@ -132,6 +136,15 @@ backend on the players' behalf.
   recorded result is kept (a retry with the other answer does not change it).
   The page only offers **Completed** against a script that does this, so after
   updating `asg.gs` you must redeploy it (step 3, **new version**).
+
+  The players' page reads this tab only through the backend's `history`
+  action, which serves the History button in the Gigs module. It returns
+  completed gigs only (status `done` or blank), projected to exactly the
+  name, description and result fields, newest first. Projects and pending
+  rows never leave the server through this action. The `history` action
+  exists only after the current `asg.gs` is deployed as a **new version**;
+  against an older deployment the History button reports that the backend
+  is out of date instead of showing entries.
 
 ## 2. Share the workbook
 
@@ -184,7 +197,10 @@ account changes or deployments are part of publishing the source commit.
    ASG_SELECTED_SHEET_ID and automatically sets ASG_SETUP_ENABLED to false.
    Close the setup window. Verify the property is false without sharing
    property screenshots. Keep the private setup disabled.
-8. Before a player deployment, perform the permission checks below. The
+8. Any update to `asg.gs` takes effect only after **Deploy > New version**;
+   editing the code alone changes nothing live. The Gigs History button and
+   the online-only gate both require a new-version deployment of the current
+   code. Before a player deployment, perform the permission checks below. The
    owner-only Picker integration and actual consent flow remain **unverified
    until run on the real account**. A source commit is not a successful setup.
 9. Once checks pass, deploy a **new version** as Web app, **Execute as: Me**,
@@ -267,8 +283,7 @@ the repo go to **Settings > Secrets and variables > Actions > Variables >
 New repository variable**, name it `ASG_SCRIPT_URL`, paste the `/exec` URL
 from step 3, then rerun the Pages workflow (Actions > Deploy GitHub Pages
 > Run workflow) or push any change. While the variable is empty or absent,
-the ASG page stays in browser-local draft mode and says the shared backend
-is not configured.
+the ASG page stays blank and says the shared backend is not configured.
 
 ## 7. Mandatory first live verification (do this before game night)
 
@@ -295,12 +310,15 @@ without a security review.
 
 ## 8. Use it
 
-Each player opens the sheet's ASG page, taps **Connect shared workbook**
-and enters the group password. The password and the token live in memory
-only: nothing credential-shaped is stored in the browser, so a page reload
-asks for the password again. The status line above the modules says whether
-the shared workbook is connected; without it, everything stays a
-browser-local draft.
+Each player opens the sheet's ASG page and enters the group password at the
+prompt; the page shows nothing until the password check and the first load
+succeed. The password and the token live in memory
+only: nothing credential-shaped is stored in the browser, there is no local
+copy or backup of the workbook, and every opening (including opening a
+character) asks for the password again and discards unsaved in-memory edits.
+If the connection drops mid-session, the workbook hides and editing is
+blocked until the page reconnects with a fresh authenticated load (retried
+every 10 seconds); edits made before the drop are replayed after reconnect.
 
 ## How updates flow
 
@@ -331,9 +349,11 @@ cells.
 
 A burst of edits batches into one save 150ms after the last change (text
 fields wait 800ms for a typing pause), and only one save is in flight at a
-time. Transient failures (offline, unreachable) keep the edit in the
-browser and retry every 15 seconds; permanent rejections (invariant or
-invalid ops) are never retried - see Conflicts and invariants below.
+time. A failed save or poll (offline, unreachable) drops the connection:
+the workbook hides, editing is blocked, and the page retries a fresh
+authenticated load every 10 seconds, replaying the pending in-memory edits
+after it reconnects. Permanent rejections (invariant or invalid ops) are
+never retried - see Conflicts and invariants below.
 
 ## Conflicts and invariants
 

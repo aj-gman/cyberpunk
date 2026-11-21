@@ -2,10 +2,78 @@ import { readFileSync } from 'node:fs';
 import { JSDOM } from 'jsdom';
 import { describe, it, expect, vi, afterEach } from 'vitest';
 const windows = [];
-function sheet() {
-  const dom = new JSDOM(readFileSync('src/site/img/NCO-sheet.html','utf8'), { runScripts:'dangerously', url:'https://example.test/cyberpunk/img/NCO-sheet.html', beforeParse(w) { w.confirm=()=>true; w.alert=vi.fn(); w.prompt=()=>null; } });
+// What the backend's load answers with: the old sample content as REMOTE
+// workbook data (the page itself no longer carries a sample or a local copy).
+function sampleRemote() {
+  return {
+    state: {
+      stash: { groups: [
+        { id: 'grp-weapons', name: 'Weapons', items: [
+          { id: 'itm-1', name: 'Malorian Heavy Sniper', note: '' },
+          { id: 'itm-2', name: 'ATGM', note: 'One-use launcher. Kept for vehicular targets.' },
+          { id: 'itm-3', name: 'Very Heavy Pistol', note: '' },
+          { id: 'itm-4', name: 'Knife', note: '' }
+        ]},
+        { id: 'grp-armor', name: 'Armor', items: [
+          { id: 'itm-5', name: 'Metalgear', note: '' },
+          { id: 'itm-6', name: 'Nomad Flak Armor', note: '' }
+        ]},
+        { id: 'grp-gear', name: 'Gear', items: [
+          { id: 'itm-7', name: 'Recon Drone', note: '' },
+          { id: 'itm-8', name: 'Microtorch cutter', note: '' }
+        ]}
+      ]},
+      hq: { supplies: { value: 10 }, culture: { value: 10 }, technology: { value: 10 }, security: { value: 10 }, futureUpgrades: '- armory\n- big nuclear facility' },
+      assignments: {
+        projects: [{ id: 'proj-1', number: 1, name: 'New project', description: '', slots: ['npc-media-1', null] }],
+        gigs: [
+          { id: 'gig-1', number: 1, name: 'Obtain records of personal communications', description: '', slots: [{ role: 'Solo', npc: 'npc-solo-1' }, { role: 'Netrunner', npc: 'npc-netrunner-1' }, { role: 'Techie', npc: 'npc-techie-1' }, { role: 'Nomad', npc: 'npc-nomad-1' }] },
+          { id: 'gig-3', number: 3, name: 'Gather intel on an offline database', description: '', slots: [{ role: 'Netrunner', npc: 'npc-netrunner-2' }, { role: 'Media', npc: 'npc-media-2' }, { role: 'Solo', npc: 'npc-solo-3' }, { role: 'Fixer', npc: 'npc-fixer-1' }] }
+        ]
+      }
+    },
+    roster: [
+      { id: 'npc-lappo',       role: 'Rockerboy', number: 2, skill: 3, name: 'Lappo', pageUrl: null },
+      { id: 'npc-rockerboy-1', role: 'Rockerboy', number: 1, skill: 1 },
+      { id: 'npc-techie-4',    role: 'Techie',    number: 4, skill: 2 },
+      { id: 'npc-lawman-2',    role: 'Lawman',    number: 2, skill: 0 },
+      { id: 'npc-solo-5',      role: 'Solo',      number: 5, skill: 0 },
+      { id: 'npc-media-1',     role: 'Media',     number: 1, skill: 3 },
+      { id: 'npc-solo-1',      role: 'Solo',      number: 1, skill: 2 },
+      { id: 'npc-netrunner-1', role: 'Netrunner', number: 1, skill: 0 },
+      { id: 'npc-techie-1',    role: 'Techie',    number: 1, skill: 2 },
+      { id: 'npc-nomad-1',     role: 'Nomad',     number: 1, skill: 1 },
+      { id: 'npc-netrunner-2', role: 'Netrunner', number: 2, skill: 0 },
+      { id: 'npc-media-2',     role: 'Media',     number: 2, skill: 0 },
+      { id: 'npc-solo-3',      role: 'Solo',      number: 3, skill: 0 },
+      { id: 'npc-fixer-1',     role: 'Fixer',     number: 1, skill: 0 }
+    ],
+    hqUpgrades: {
+      supplies:   [{ id: 'up-1', name: 'Biolocked Armory', note: '' }, { id: 'up-2', name: 'Large Multimodal Garage', note: 'Fits the AV and ground vehicles. Upkeep 2 SUP.' }],
+      culture:    [{ id: 'up-3', name: 'Media Center', note: '' }, { id: 'up-4', name: 'Common Room', note: '' }, { id: 'up-5', name: 'Lounge', note: '' }],
+      technology: [{ id: 'up-6', name: 'Tier 1 Tech Bench', note: '' }, { id: 'up-7', name: 'Tier 1 Server Room', note: '' }, { id: 'up-8', name: 'Tier 1 Medbay', note: '' }],
+      security:   [{ id: 'up-9', name: 'Tier 2 Defense System', note: '' }, { id: 'up-10', name: 'Tier 2 Security System', note: '' }]
+    },
+    upgradeEditVersion: 1,
+    completionVersion: 2,
+    historyVersion: 1
+  };
+}
+// Raw boot: gated, blank, auto-prompting (prompt cancelled by default).
+function rawSheet(promptReply) {
+  const dom = new JSDOM(readFileSync('src/site/img/NCO-sheet.html','utf8'), { runScripts:'dangerously', url:'https://example.test/cyberpunk/img/NCO-sheet.html', beforeParse(w) { w.confirm=()=>true; w.alert=vi.fn(); w.prompt=vi.fn(()=>promptReply||null); w.matchMedia=w.matchMedia||(()=>({matches:false,addEventListener(){},removeEventListener(){},addListener(){},removeListener(){}})); } });
   windows.push(dom.window);
   return dom.window;
+}
+// Connected boot: the usual test starting point - a fresh authenticated
+// load of the sample workbook lifts the gate.
+function sheet() {
+  const w = rawSheet();
+  w.AsgBackend.load = (cb)=>cb(sampleRemote(), null);
+  w.asgConnect();
+  w.asgPassword = 'pw'; // a real connected session always carries one in memory
+  w.clearTimeout(w.asgRefreshTimer);
+  return w;
 }
 afterEach(async () => { await Promise.resolve(); windows.splice(0).forEach(w=>w.close()); vi.unstubAllGlobals(); vi.unstubAllEnvs(); });
 
@@ -82,12 +150,11 @@ describe('ASG Stash', () => {
   w.asgToggleNoteEditor(empty,item); // closes -> re-renders with tooltip
   expect(w.document.querySelector('.asg-item[data-item-id="itm-1"] .asg-note-tip')).not.toBeNull();
  });
- it('persists stash edits to the browser-local draft', () => {
+ it('never persists a browser copy of the workbook (online-only)', () => {
   const w=sheet();
   w.asgAddGroup();
-  const raw=JSON.parse(w.localStorage.getItem('nco-asg-v1'));
-  expect(raw.stash.groups).toHaveLength(4);
-  expect(w.AsgBackend.connected).toBe(false); // unconfigured backend: local only
+  expect(w.localStorage.getItem('nco-asg-v1')).toBeNull();
+  expect(w.AsgBackend.connected).toBe(true);
  });
 });
 
@@ -396,7 +463,7 @@ describe('ASG sync robustness (independent audit)', () => {
   expect(calls[0].stash.upserts.find(r=>r.id==='itm-2').name).toBe('ATGM++');
  });
 
- it('keeps failed saves local, schedules a retry, and never lets a poll clobber them', () => {
+ it('gates the workbook on a failed save and replays the kept edit after reconnect', () => {
   const w=connectedClean();
   const base=clone(w.asgSharedPart()); // pristine remote truth without our edit
   const pending=[];
@@ -404,20 +471,21 @@ describe('ASG sync robustness (independent audit)', () => {
   w.asgState.stash.groups[0].items[0].name='My Sniper';
   w.asgSaveState(); w.asgFlushSave();
   expect(pending).toHaveLength(1);
-  pending[0](null, 'offline'); // save fails
-  expect(w.asgState.stash.groups[0].items[0].name).toBe('My Sniper'); // edit kept locally
+  pending[0](null, 'offline'); // save fails: the connection drops behind the gate
+  expect(w.AsgBackend.connected).toBe(false);
+  expect(w.document.getElementById('asg-workbook').style.display).toBe('none');
+  expect(w.document.getElementById('asg-gate').style.display).toBe('');
+  expect(w.asgState.stash.groups[0].items[0].name).toBe('My Sniper'); // edit kept in memory
   expect(w.document.getElementById('asg-status').textContent).toContain('Shared save failed');
-  expect(w.asgSaveRetryTimer).toBeTruthy(); // retry scheduled
-  w.clearTimeout(w.asgSaveRetryTimer);
-  const remote=clone(base); remote.hq.culture.value=2; // someone else's change meanwhile
-  w.AsgBackend.load=(cb)=>cb({state:remote, roster:w.asgState.roster}, null);
-  w.asgPollRefresh(); w.clearTimeout(w.asgRefreshTimer);
-  expect(w.asgState.stash.groups[0].items[0].name).toBe('My Sniper'); // poll did not clobber it
-  expect(w.asgState.hq.culture.value).toBe(2); // their change applied around it
+  // reconnect: a fresh authenticated load lifts the gate and the pending edit replays
+  w.AsgBackend.load=(cb)=>cb({state:base, roster:w.asgState.roster}, null);
   const calls=[];
   w.AsgBackend.saveWithOps=(ops,cb)=>{ calls.push(ops); cb({state:clone(w.asgSharedPart()), roster:w.asgState.roster}, null); };
-  w.asgFlushSave(); // retry path writes exactly the failed row
-  expect(calls).toHaveLength(1);
+  w.asgAttemptReconnect();
+  expect(w.AsgBackend.connected).toBe(true);
+  expect(w.document.getElementById('asg-workbook').style.display).toBe('');
+  expect(w.asgState.stash.groups[0].items[0].name).toBe('My Sniper'); // poll did not clobber it
+  expect(calls).toHaveLength(1); // the retry writes exactly the failed row
   expect(calls[0].stash.upserts).toHaveLength(1);
   expect(calls[0].stash.upserts[0].name).toBe('My Sniper');
  });
@@ -482,18 +550,19 @@ describe('ASG sync robustness (independent audit)', () => {
  });
 
  it('maps a 429 from the password gate to a rate-limit message, not a wrong-password message', async () => {
-  const w=sheet();
+  const w=rawSheet();
   w.AsgBackend.load=(cb)=>cb(null,'rate_limited');
   w.asgPassword='whatever';
   w.asgConnect();
   await Promise.resolve();
-  expect(w.document.getElementById('asg-backend-status').textContent).toContain('Too many wrong password attempts');
+  expect(w.document.getElementById('asg-backend-status').textContent).toContain('Too many attempts');
+  expect(w.document.getElementById('asg-backend-status').textContent).not.toContain('password');
   expect(w.AsgBackend.connected).toBe(false);
  });
 });
 
 
-describe('ASG reaudit repairs (R1 transient editors, R2 rejection reconcile, R4 connect confirm)', () => {
+describe('ASG reaudit repairs (R1 transient editors, R2 rejection reconcile)', () => {
  function connectedClean2() {
   const w=sheet();
   Object.defineProperty(w.document, 'hidden', {get:()=>false, configurable:true});
@@ -597,74 +666,158 @@ describe('ASG reaudit repairs (R1 transient editors, R2 rejection reconcile, R4 
   expect(w.asgSaveRetryTimer).toBe(null); // no retry loop
  });
 
- it('R4: connect asks before replacing a diverging browser-local draft; declining keeps it', async () => {
-  const w=sheet();
-  w.localStorage.setItem('nco-asg-v1', JSON.stringify(w.asgState)); // a saved draft exists
-  const remote={ state: { stash: {groups: []}, hq: { supplies:{value:1}, culture:{value:0}, technology:{value:0}, security:{value:0}, futureUpgrades:'' }, assignments: { projects: [], gigs: [] } }, roster: [] };
-  w.AsgBackend.load=(cb)=>cb(remote, null);
-  w.confirm=()=>false;
-  w.asgPassword='pw';
-  w.asgConnect();
-  await Promise.resolve();
-  expect(w.AsgBackend.connected).toBe(false); // declined: not connected
-  expect(w.asgState.stash.groups).toHaveLength(3); // local draft untouched
-  expect(w.document.getElementById('asg-backend-status').textContent).toContain('not connected');
+});
+
+describe('ASG online-only gate (owner direction 2026-11-19)', () => {
+ it('boots blank behind the gate and asks for the password', () => {
+  const w=rawSheet();
+  expect(w.document.getElementById('asg-gate').style.display).toBe('');
+  expect(w.document.getElementById('asg-workbook').style.display).toBe('none');
+  expect(w.document.getElementById('asg-gigs-list').children).toHaveLength(0); // nothing rendered
+  expect(w.prompt).toHaveBeenCalled(); // asked on every page opening
+  expect(w.AsgBackend.connected).toBe(false);
  });
 
- it('R4: connect does not ask when the draft matches the workbook', async () => {
-  const w=sheet();
-  w.localStorage.setItem('nco-asg-v1', JSON.stringify(w.asgState));
-  w.AsgBackend.load=(cb)=>cb({state:clone2(w.asgSharedPart()), roster:w.asgState.roster}, null);
-  let asked=0; w.confirm=()=>{ asked++; return true; };
-  w.asgPassword='pw';
+ it('purges a browser copy saved by an older version on boot', () => {
+  const dom = new JSDOM(readFileSync('src/site/img/NCO-sheet.html','utf8'), { runScripts:'dangerously', url:'https://example.test/cyberpunk/img/NCO-sheet.html', beforeParse(w) { w.confirm=()=>true; w.alert=vi.fn(); w.prompt=()=>null; try { w.localStorage.setItem('nco-asg-v1','{"stash":{}}'); } catch (_) {} } });
+  windows.push(dom.window);
+  expect(dom.window.localStorage.getItem('nco-asg-v1')).toBeNull();
+ });
+
+ it('stays gated when the prompt is cancelled; the gate button asks again', () => {
+  const w=rawSheet();
+  expect(w.AsgBackend.connected).toBe(false);
+  w.document.getElementById('asg-gate-connect-btn').click();
+  expect(w.prompt).toHaveBeenCalledTimes(2);
+ });
+
+ it('refused password leaves the gate up with the real reason', () => {
+  const w=rawSheet('pw');
+  w.AsgBackend.load=(cb)=>cb(null,'bad_password');
   w.asgConnect();
-  await Promise.resolve();
-  expect(asked).toBe(0); // nothing diverges: no prompt
+  expect(w.AsgBackend.connected).toBe(false);
+  expect(w.document.getElementById('asg-gate-reason').textContent).toContain('refused that password');
+  expect(w.document.getElementById('asg-workbook').style.display).toBe('none');
+ });
+
+ it('unreachable backend says so instead of blaming the password', () => {
+  const w=rawSheet('pw');
+  w.AsgBackend.load=(cb)=>cb(null,'offline');
+  w.asgConnect();
+  expect(w.document.getElementById('asg-gate-reason').textContent).toContain('unreachable');
+  expect(w.document.getElementById('asg-gate-reason').textContent).not.toContain('password');
+ });
+
+ it('a fresh authenticated load lifts the gate and renders the workbook', () => {
+  const w=rawSheet();
+  w.AsgBackend.load=(cb)=>cb(sampleRemote(), null);
+  w.asgConnect();
   expect(w.AsgBackend.connected).toBe(true);
+  expect(w.document.getElementById('asg-workbook').style.display).toBe('');
+  expect(w.document.getElementById('asg-gate').style.display).toBe('none');
+  expect(w.document.querySelectorAll('.asg-card').length).toBeGreaterThan(0);
   w.clearTimeout(w.asgRefreshTimer);
+ });
+
+ it('disconnect hides the workbook again and keeps nothing in storage', () => {
+  const w=sheet();
+  w.asgConnectClick(); // connected -> disconnect
+  expect(w.AsgBackend.connected).toBe(false);
+  expect(w.document.getElementById('asg-workbook').style.display).toBe('none');
+  expect(w.document.getElementById('asg-gate').style.display).toBe('');
+  expect(w.localStorage.getItem('nco-asg-v1')).toBeNull();
+ });
+
+ it('opening a character re-gates the workbook and asks the password again', () => {
+  const w=sheet();
+  expect(w.AsgBackend.connected).toBe(true);
+  w.prompt.mockClear();
+  w.asgOnCharacterOpened();
+  expect(w.AsgBackend.connected).toBe(false);
+  expect(w.document.getElementById('asg-workbook').style.display).toBe('none');
+  expect(w.prompt).toHaveBeenCalledTimes(1);
+ });
+
+ it('a failed poll drops the workbook behind the gate until a fresh load succeeds', () => {
+  const w=sheet();
+  Object.defineProperty(w.document, 'hidden', {get:()=>false, configurable:true});
+  w.AsgBackend.load=(cb)=>cb(null,'offline');
+  w.asgPollRefresh();
+  expect(w.AsgBackend.connected).toBe(false);
+  expect(w.document.getElementById('asg-workbook').style.display).toBe('none');
+  w.AsgBackend.load=(cb)=>cb(sampleRemote(), null);
+  w.asgAttemptReconnect();
+  expect(w.AsgBackend.connected).toBe(true);
+  expect(w.document.getElementById('asg-workbook').style.display).toBe('');
+  w.clearTimeout(w.asgRefreshTimer);
+ });
+
+ it('a refused password on reconnect clears it and asks for it again', () => {
+  const w=sheet();
+  Object.defineProperty(w.document, 'hidden', {get:()=>false, configurable:true});
+  w.asgPassword='stale';
+  w.AsgBackend.load=(cb)=>cb(null,'bad_password');
+  w.asgPollRefresh();
+  expect(w.AsgBackend.connected).toBe(false);
+  w.asgAttemptReconnect();
+  expect(w.asgPassword).toBe('');
+  expect(w.document.getElementById('asg-gate-reason').textContent).toContain('enter it again');
  });
 });
 
-describe('ASG reaudit nit: connect divergence compare is shape-normalized', () => {
- const clone3=(o)=>JSON.parse(JSON.stringify(o));
- function wireShaped(w) {
-  // What the backend actually sends: empty gig slots are null, empty npc null.
-  const remote=clone3(w.asgSharedPart());
-  remote.assignments.gigs[2]={ id:'gig-9', number:9, name:'New gig', description:'', slots:[{role:'Solo',npc:null},null,null,null] };
-  return remote;
- }
- function localWithGig9(w) {
-  w.asgState.assignments.gigs.push({ id:'gig-9', number:9, name:'New gig', description:'', slots:[{role:'Solo',npc:''},{role:'',npc:''},{role:'',npc:''},{role:'',npc:''}] });
-  w.localStorage.setItem('nco-asg-v1', JSON.stringify(w.asgState));
- }
-
- it('no false replace prompt when the wire-shaped remote matches the normalized local state', async () => {
+describe('ASG gig history', () => {
+ it('shows completed gigs with result and description', () => {
   const w=sheet();
-  localWithGig9(w);
-  w.AsgBackend.load=(cb)=>cb({state:wireShaped(w), roster:w.asgState.roster}, null);
-  let asked=0; w.confirm=()=>{ asked++; return true; };
-  w.asgPassword='pw';
-  w.asgConnect();
-  await Promise.resolve();
-  expect(asked).toBe(0); // same content, different shape: no prompt
-  expect(w.AsgBackend.connected).toBe(true);
-  w.clearTimeout(w.asgRefreshTimer);
+  w.AsgBackend.request=(payload,cb)=>cb({ history:[
+    { name:'Data heist', description:'line one\nline two', result:'failed' },
+    { name:'Records job', description:'', result:'success' }
+  ], historyVersion:1 }, null);
+  w.document.getElementById('asg-history-btn').click();
+  const items=w.document.querySelectorAll('#asg-history-panel .asg-history-item');
+  expect(items).toHaveLength(2);
+  expect(items[0].querySelector('.asg-history-name').textContent).toBe('Data heist');
+  expect(items[0].querySelector('.asg-history-result').textContent).toBe('Failed');
+  expect(items[0].querySelector('.asg-history-desc').textContent).toBe('line one\nline two');
+  expect(items[1].querySelector('.asg-history-result').textContent).toBe('Success');
+  expect(items[1].querySelector('.asg-history-desc')).toBeNull(); // no empty description block
  });
-
- it('still prompts on actual divergence (wire-shaped remote with different content)', async () => {
+ it('flashes a deploy hint on an old backend instead of fetching', () => {
   const w=sheet();
-  localWithGig9(w);
-  const remote=wireShaped(w);
-  remote.assignments.gigs[2].name='Changed elsewhere';
-  w.AsgBackend.load=(cb)=>cb({state:remote, roster:w.asgState.roster}, null);
-  let asked=0; w.confirm=()=>{ asked++; return true; };
-  w.asgPassword='pw';
-  w.asgConnect();
-  await Promise.resolve();
-  expect(asked).toBe(1); // real difference: prompt
-  expect(w.AsgBackend.connected).toBe(true);
-  expect(w.asgState.assignments.gigs[2].name).toBe('Changed elsewhere'); // remote won
-  w.clearTimeout(w.asgRefreshTimer);
+  w.AsgBackend.historyVersion=0;
+  let called=0; w.AsgBackend.request=(p,cb)=>{ called++; cb({history:[]},null); };
+  w.document.getElementById('asg-history-btn').click();
+  expect(called).toBe(0);
+  expect(w.document.getElementById('asg-status').textContent).toContain('needs the updated backend');
+ });
+ it('shows an empty note when no gigs are recorded and toggles closed', () => {
+  const w=sheet();
+  w.AsgBackend.request=(p,cb)=>cb({history:[], historyVersion:1}, null);
+  w.document.getElementById('asg-history-btn').click();
+  expect(w.document.getElementById('asg-history-panel').textContent).toContain('No completed gigs recorded yet');
+  w.document.getElementById('asg-history-btn').click();
+  expect(w.document.getElementById('asg-history-panel').style.display).toBe('none');
+ });
+});
+
+describe('ASG multiline descriptions', () => {
+ it('gig and project descriptions are auto-height textareas, not single-line inputs', () => {
+  const w=sheet();
+  const desc=w.document.querySelector('.asg-card[data-card-id="gig-1"] .asg-card-desc');
+  expect(desc.tagName).toBe('TEXTAREA');
+  desc.value='first line\nsecond line';
+  desc.dispatchEvent(new w.Event('input',{bubbles:true}));
+  expect(w.asgState.assignments.gigs[0].description).toBe('first line\nsecond line');
+  expect(desc.style.height).not.toBe(''); // auto-height applied on typing
+  desc.style.height='';
+  w.dispatchEvent(new w.Event('resize'));
+  expect(desc.style.height).not.toBe(''); // and on window resize
+ });
+ it('multiline descriptions survive the save ops round-trip', () => {
+  const w=sheet();
+  w.asgState.assignments.gigs[0].description='a\nb';
+  const ops=w.asgDiffOps(w.asgLoadedSnapshot, w.asgSharedPart());
+  const row=ops.cards.upserts.find(r=>r.id==='gig-1');
+  expect(row.description).toBe('a\nb');
  });
 });
 
@@ -718,26 +871,30 @@ describe('ASG completed gigs and projects', () => {
   w.asgCompleteCard('project', proj.id, 'success');
   expect(w.document.getElementById('asg-status').textContent).toContain('already recorded as failed');
  });
- it('an unconfirmed save keeps the card, says it may still finish, and refreshes', () => {
+ it('an unconfirmed save keeps the card, says it may still finish, and gates until a fresh load', () => {
   const w=connected();
   const proj=w.asgState.assignments.projects[0];
   w.AsgBackend.saveWithOps=(ops,cb)=>cb(null,'offline');
-  let loads=0; w.AsgBackend.load=(cb)=>{ loads++; cb({state:clone(w.asgSharedPart()), roster:w.asgState.roster, completionVersion:2}, null); };
   w.asgCompleteCard('project', proj.id, 'failed');
-  expect(w.asgState.assignments.projects.some(c=>c.id===proj.id)).toBe(true);
-  expect(loads).toBe(1);
+  expect(w.asgState.assignments.projects.some(c=>c.id===proj.id)).toBe(true); // card kept
   const msg=w.document.getElementById('asg-status').textContent;
   expect(msg).toContain('not confirmed'); expect(msg).toContain('may still finish');
+  expect(w.AsgBackend.connected).toBe(false); // gated until a fresh load
+  let loads=0; w.AsgBackend.load=(cb)=>{ loads++; cb({state:clone(w.asgSharedPart()), roster:w.asgState.roster, completionVersion:2}, null); };
+  w.asgAttemptReconnect();
+  expect(loads).toBe(1); // the confirming refresh happens on reconnect
+  expect(w.AsgBackend.connected).toBe(true);
+  w.clearTimeout(w.asgRefreshTimer);
  });
  it('refuses without a connected workbook or without a journaling backend, before any save', () => {
   const w=sheet();
   const calls=[]; w.AsgBackend.saveWithOps=(ops,cb)=>calls.push(ops);
   const proj=w.asgState.assignments.projects[0];
+  w.AsgBackend.connected=false;
   w.asgCompleteCard('project', proj.id, 'success'); // not connected
   w.AsgBackend.connected=true; w.asgTakeSnapshot();
-  w.asgCompleteCard('project', proj.id, 'success'); // older script: no completionVersion 2
   w.AsgBackend.completionVersion=1;
-  w.asgCompleteCard('project', proj.id, 'success');
+  w.asgCompleteCard('project', proj.id, 'success'); // older script: no completionVersion 2
   expect(calls).toHaveLength(0);
   expect(w.asgState.assignments.projects.some(c=>c.id===proj.id)).toBe(true);
  });

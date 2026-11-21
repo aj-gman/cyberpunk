@@ -4,7 +4,7 @@ import { describe, it, expect, vi, afterEach } from 'vitest';
 import handler from './api/character.js';
 const windows = [];
 function sheet() {
-  const dom = new JSDOM(readFileSync('src/site/img/NCO-sheet.html','utf8'), { runScripts:'dangerously', url:'https://example.test/cyberpunk/img/NCO-sheet.html', beforeParse(w) { w.confirm=()=>true; w.alert=vi.fn(); } });
+  const dom = new JSDOM(readFileSync('src/site/img/NCO-sheet.html','utf8'), { runScripts:'dangerously', url:'https://example.test/cyberpunk/img/NCO-sheet.html', beforeParse(w) { w.confirm=()=>true; w.alert=vi.fn(); w.prompt=()=>null; } });
   windows.push(dom.window);
   return dom.window;
 }
@@ -55,7 +55,7 @@ describe('synthetic NCO character regressions', () => {
  });
  it('stores and restores a browser-local recovery draft', () => {
   const w=sheet(); w.document.getElementById('nickname').value='Recovered'; w.storeRecovery(); const raw=w.localStorage.getItem('nco-recovery-v1'); expect(JSON.parse(raw).data.nickname).toBe('Recovered');
-  const dom=new JSDOM(readFileSync('src/site/img/NCO-sheet.html','utf8'), {runScripts:'dangerously',url:'https://example.test/cyberpunk/img/NCO-sheet.html',beforeParse(v){v.localStorage.setItem('nco-recovery-v1',raw);v.confirm=()=>true;}}); windows.push(dom.window); expect(dom.window.buildExport().nickname).toBe('Recovered'); expect(dom.window.isDirty()).toBe(true);
+  const dom=new JSDOM(readFileSync('src/site/img/NCO-sheet.html','utf8'), {runScripts:'dangerously',url:'https://example.test/cyberpunk/img/NCO-sheet.html',beforeParse(v){v.localStorage.setItem('nco-recovery-v1',raw);v.confirm=()=>true;v.prompt=()=>null;}}); windows.push(dom.window); expect(dom.window.buildExport().nickname).toBe('Recovered'); expect(dom.window.isDirty()).toBe(true);
  });
  it('prompts on dirty replacement and stores a recovery draft when leaving', () => {
   const w=sheet(); w.document.getElementById('nickname').value='Unsaved'; w.confirm=()=>false; expect(w.mayReplace()).toBe(false); const e=new w.Event('beforeunload',{cancelable:true});w.dispatchEvent(e);expect(e.defaultPrevented).toBe(true); expect(w.localStorage.getItem('nco-recovery-v1')).toContain('Unsaved');
