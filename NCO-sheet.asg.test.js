@@ -766,6 +766,19 @@ describe('ASG online-only gate (owner direction 2026-11-19)', () => {
 });
 
 describe('ASG gig history', () => {
+ it('renders the breakdown for every outcome with a zero crew bonus and never shows undefined', () => {
+  const w=sheet();
+  w.AsgBackend.request=(payload,cb)=>cb({ history:[
+    { name:'A', description:'', result:'success', roll:10, bonus:0, difficulty:0, total:10 },
+    { name:'B', description:'', result:'complications', roll:8, bonus:0, difficulty:1, total:7 },
+    { name:'C', description:'', result:'failed', roll:5, bonus:0, difficulty:1, total:4 },
+    { name:'D', description:'', result:'disaster', roll:2, bonus:0, difficulty:0, total:2 }
+  ], historyVersion:2 }, null);
+  w.document.getElementById('asg-history-btn').click();
+  const lines=Array.from(w.document.querySelectorAll('#asg-history-panel .asg-history-roll')).map(e=>e.textContent);
+  expect(lines).toEqual(['d10 10 + crew 0 - difficulty 0 = 10','d10 8 + crew 0 - difficulty 1 = 7','d10 5 + crew 0 - difficulty 1 = 4','d10 2 + crew 0 - difficulty 0 = 2']);
+  expect(w.document.getElementById('asg-history-panel').textContent).not.toMatch(/undefined|NaN|null/);
+ });
  it('shows completed gigs with result and description', () => {
   const w=sheet();
   w.AsgBackend.request=(payload,cb)=>cb({ history:[
