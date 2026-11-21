@@ -413,6 +413,19 @@ describe('apps-script asg backend', () => {
     expect(out.history[1]).toEqual({ name: 'Records job', description: 'quietly\nfast', result: 'success' });
   });
 
+  const zero = { success: [10, 0, 0, 10], complications: [8, 0, 1, 7], failed: [5, 0, 1, 4], disaster: [2, 0, 0, 2] };
+  Object.keys(zero).forEach((result) => {
+    it(`round trips a ${result} outcome with a zero crew bonus through completion and history`, () => {
+      const [roll, bonus, difficulty, total] = zero[result];
+      const res = authPost({ action: 'save', ops: { complete: { id: 'gig-1', kind: 'gig', number: 1, name: 'Zero crew', description: '', result, crew: [], roll, bonus, difficulty, total } } });
+      expect(res.error).toBeUndefined();
+      expect(res.completed).toEqual({ id: 'gig-1', result, status: 'done', roll, bonus, difficulty, total });
+      const row = authPost({ action: 'history' }).history.find((h) => h.name === 'Zero crew');
+      expect(row).toMatchObject({ result, roll, bonus: 0, difficulty, total });
+      expect(JSON.stringify(row)).not.toMatch(/undefined|null|NaN/);
+    });
+  });
+
   it('history rows with a roll carry the breakdown; older rows do not', () => {
     world.sheets['Assignment History'] = makeSheet([
       ['gig-1', 'gig', 1, 'Rolled', '', 'complications', '2026-11-21T00:00:00Z', 'Lappo', 'done', 6, 3, 1, 8],
