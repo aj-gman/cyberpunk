@@ -1057,3 +1057,29 @@ describe('approved assignment swaps and unassignment',()=>{
   expect(w.asgState.assignments.available).toContain(npc.id);expect(w.asgState.roster).toHaveLength(roster);expect(w.asgRosterLookup(npc.id)).toBeTruthy();
  });
 });
+
+describe('ASG visibility-return refresh (owner direction 2026-11-21)', () => {
+ it('polls immediately when the tab becomes visible again, and not while hidden', () => {
+  const w=sheet();
+  let hidden=true;
+  Object.defineProperty(w.document,'hidden',{get:()=>hidden,configurable:true});
+  let loads=0;
+  w.AsgBackend.load=(cb)=>{loads++;cb(sampleRemote(),null);};
+  // hidden: the cadence poll reschedules without fetching
+  w.asgPollRefresh();w.clearTimeout(w.asgRefreshTimer);
+  expect(loads).toBe(0);
+  // returning to the tab fetches immediately
+  hidden=false;
+  w.document.dispatchEvent(new w.Event('visibilitychange'));
+  expect(loads).toBe(1);
+  w.clearTimeout(w.asgRefreshTimer);
+ });
+ it('does not fetch on visibility return while disconnected', () => {
+  const w=sheet();
+  w.AsgBackend.connected=false;
+  let loads=0;
+  w.AsgBackend.load=(cb)=>{loads++;cb(sampleRemote(),null);};
+  w.document.dispatchEvent(new w.Event('visibilitychange'));
+  expect(loads).toBe(0);
+ });
+});
