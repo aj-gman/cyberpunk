@@ -902,7 +902,7 @@
     <div class="nco-logo">
       <span><span class="logo-neon">NIGHT </span><span class="logo-city">CITY</span></span>
       <span class="logo-over">OVERDRIVE</span>
-      <span class="logo-version">v1.3.2.0</span>
+      <span class="logo-version">v1.3.2.1</span>
     </div>
     <span style="color:#444;font-size:20px;">|</span>
     <span style="color:var(--dim);font-size:11px;text-transform:uppercase;letter-spacing:1px;">Character Sheet</span>
@@ -4718,6 +4718,12 @@
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') asgCloseInfo(); });
     window.addEventListener('resize', function () {
       document.querySelectorAll('.asg-card-desc').forEach(asgAutoHeight);
+    });
+    // Poll immediately when the tab becomes visible again (user direction
+    // 2026-11-21): one extra backend request per tab return, so workbook
+    // edits made in another tab appear without waiting for the idle timer.
+    document.addEventListener('visibilitychange', function () {
+      if (!document.hidden && AsgBackend.connected) asgPollRefresh();
     });
     asgBackendStatus('Shared workbook not connected.');
     // Every page opening asks for the password: nothing renders before a
