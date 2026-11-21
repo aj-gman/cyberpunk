@@ -113,13 +113,18 @@ backend on the players' behalf.
   required role for that gig position.
 
 - **Assignment History** (GM record, created automatically) — one row per
-  completed gig or project, written when a player presses **Completed** and
-  answers *Successful* or *Failed*:
+  completed gig or project, written when a player presses **Completed**,
+  picks a difficulty (0-5, default 1) and the page rolls a d10:
 
-  | id | kind | number | name | description | result | completed_at | crew | status |
-  |----|------|--------|------|-------------|--------|--------------|------|--------|
+  | id | kind | number | name | description | result | completed_at | crew | status | roll | crew_bonus | difficulty | total |
+  |----|------|--------|------|-------------|--------|--------------|------|--------|------|------------|------------|-------|
 
-  `result` is `success` or `failed`; `completed_at` is UTC (ISO); `crew` lists
+  `total` = `roll` + `crew_bonus` (sum of the assigned edgerunners' skill) -
+  `difficulty`. 10 or more is `success`, 7-9 is `complications` (success with
+  complications), 4-6 is `failed`, 3 or less is `disaster`. Older rows have
+  `success` or `failed` and blank roll columns.
+
+  `completed_at` is UTC (ISO); `crew` lists
   the assigned NPCs (with required gig roles) at completion; `status` is
   `pending` while a completion is being applied and `done` once the card and
   its slots are removed (a blank status in an older row counts as done). The

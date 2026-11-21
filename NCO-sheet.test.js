@@ -29,10 +29,69 @@ describe('synthetic NCO character regressions', () => {
    expect(()=>w.applyImport(data)).toThrow(/Invalid character field/); expect(w.buildExport()).toEqual(before);
   }
  });
+ it('shows "X Danger Dice" beside the Traumas heading only while traumas are marked', () => {
+  const w=sheet(); const el=w.document.getElementById('danger-dice');
+  expect(el.classList.contains('visible')).toBe(false);
+  expect(w.document.querySelector('#danger-dice').previousElementSibling.textContent.trim()).toBe('Traumas');
+  w.applyImport({traumas:[{text:'a',marked:true},{text:'b',marked:true},{text:'c',marked:false}]});
+  expect(el.classList.contains('visible')).toBe(true); expect(el.textContent).toBe('2 Danger Dice');
+  w.toggleTrauma(w.document.querySelector('#traumas-container .trauma-mark'));
+  expect(el.textContent).toBe('1 Danger Dice');
+  w.applyImport({traumas:[{text:'c',marked:false}]});
+  expect(el.classList.contains('visible')).toBe(false);
+ });
+ it('opens every sheet link in a new tab and keeps in-sheet controls as buttons', () => {
+  const w=sheet(); const links=Array.from(w.document.querySelectorAll('a[href]')).filter(a=>!a.href.startsWith('blob:')&&!/\.(ico|svg|png)$/.test(a.getAttribute('href')));
+  expect(links.length).toBeGreaterThan(5);
+  links.forEach(a=>{ expect(a.getAttribute('target')).toBe('_blank'); expect(a.getAttribute('rel')).toContain('noopener'); });
+  expect(w.document.querySelector('.dynamic-header a')).not.toBeNull();
+  expect(w.document.getElementById('btn-page5').tagName).toBe('BUTTON');
+ });
+ it('Drive pips fill and clear in order only', () => {
+  const w=sheet(); const pips=Array.from(w.document.querySelectorAll('#drive-pips .pip')); const state=()=>pips.map(p=>p.classList.contains('marked')?1:0).join('');
+  expect(pips).toHaveLength(10);
+  pips[2].click(); expect(state()).toBe('0000000000'); // cannot skip ahead
+  pips[0].click(); pips[1].click(); pips[2].click(); expect(state()).toBe('1110000000');
+  pips[0].click(); expect(state()).toBe('1110000000'); // cannot clear from the middle
+  pips[1].click(); expect(state()).toBe('1110000000');
+  pips[2].click(); pips[1].click(); pips[0].click(); expect(state()).toBe('0000000000');
+  pips[0].click(); expect(pips[0].getAttribute('aria-pressed')).toBe('true'); expect(w.buildExport().drive.pips.slice(0,2)).toEqual([true,false]);
+ });
+ it('Drive has a collapsed ideology selector with the four ideologies, saved and restored', () => {
+  const w=sheet(); const sel=w.document.getElementById('drive-ideology');
+  expect(Array.from(sel.options).map(o=>o.value)).toEqual(['','Idealism','Insurrectionism','Parallelism','Realism']);
+  expect(sel.value).toBe('');
+  sel.value='Parallelism'; sel.dispatchEvent(new w.Event('change',{bubbles:true}));
+  expect(w.buildExport().drive.ideology).toBe('Parallelism');
+  sel.value='Realism'; sel.dispatchEvent(new w.Event('change',{bubbles:true}));
+  const data=w.buildExport(); expect(data.drive.ideology).toBe('Realism');
+  const w2=sheet(); w2.applyImport(data); expect(w2.document.getElementById('drive-ideology').value).toBe('Realism');
+  w2.applyImport({drive:{text:'',pips:[],ideology:'Nonsense'}}); expect(w2.document.getElementById('drive-ideology').value).toBe('');
+  w2.applyImport({drive:{text:'old'}}); expect(w2.document.getElementById('drive-ideology').value).toBe('');
+ });
+ it('Danger Dice pulses with the same flashRed animation as the cyberpsychosis warning and history roll text is readable', () => {
+  const html=require('fs').readFileSync(require('path').join(__dirname,'src/site/img/NCO-sheet.html'),'utf8');
+  expect(html).toMatch(/\.danger-dice \{[^}]*animation: flashRed 0\.8s ease-in-out infinite alternate/);
+  expect(html).toMatch(/\.cyberpsy-warning[\s\S]{0,600}animation: flashRed 0\.8s ease-in-out infinite alternate/);
+  expect(html).toMatch(/\.asg-history-roll \{ color: #d6e2f0; font-size: 12px/);
+});
+ it('Drive reveals empty boxes at the 4th, 6th, 8th and 10th active pip', () => {
+  const w=sheet(); const pips=Array.from(w.document.querySelectorAll('#drive-pips .pip')); const boxes=Array.from(w.document.querySelectorAll('.drive-powerup'));
+  const shown=()=>boxes.map(b=>b.classList.contains('visible')?1:0).join('');
+  expect(boxes).toHaveLength(4); expect(boxes.every(b=>b.value==='')).toBe(true); expect(shown()).toBe('0000');
+  const expected={1:'0000',2:'0000',3:'0000',4:'1000',5:'1000',6:'1100',7:'1100',8:'1110',9:'1110',10:'1111'};
+  for(let n=1;n<=10;n++){ pips[n-1].click(); expect(shown()).toBe(expected[n]); }
+  for(let n=10;n>=1;n--){ pips[n-1].click(); expect(shown()).toBe(n>1?expected[n-1]:'0000'); }
+  w.applyImport({drive:{text:'',pips:[true,true,true,true,true,true,false,false,false,false]}}); expect(shown()).toBe('1100');
+  w.applyImport({drive:{text:'',pips:[]}}); expect(shown()).toBe('0000');
+  // boxes sit between the description and the pips
+  const order=Array.from(w.document.querySelector('#drive-text').parentElement.children).map(e=>e.id||e.className);
+  expect(order.indexOf('drive-text')).toBeLessThan(order.indexOf('drive-powerup-4')); expect(order.indexOf('drive-powerup-10')).toBeLessThan(order.indexOf('drive-pips'));
+ });
  it('counts every marked trauma against Humanity and ignores the legacy flag', () => {
   const w=sheet(); expect(w.document.querySelector('.affects-humanity')).toBeNull(); expect(w.document.body.textContent).not.toContain('Affects Humanity');
   w.applyImport({traumas:[{text:'physical',marked:true,affectsHumanity:false},{text:'emotional',marked:true},{text:'old',marked:false}]}); expect(w.getHumanityMax()).toBe(8);
-  expect(w.buildExport().traumas.every(x=>!('affectsHumanity' in x))).toBe(true); expect(w.document.querySelector('.logo-version').textContent).toBe('v1.3.1.3');
+  expect(w.buildExport().traumas.every(x=>!('affectsHumanity' in x))).toBe(true); expect(w.document.querySelector('.logo-version').textContent).toBe('v1.3.2.0');
   w.applyImport({traumas:[{text:'broken arm',marked:false},{text:'grief',marked:true}]}); expect(w.getHumanityMax()).toBe(9); expect(w.buildExport().traumas.map(x=>[x.text,x.marked])).toEqual([['broken arm',false],['grief',true]]);
   w.cleanupEmpty('traumas-container','.trauma-row',1); expect(w.buildExport().traumas).toHaveLength(2); expect(w.document.querySelector('.trauma-mark').getAttribute('aria-label')).toBe('Trauma reduces Humanity');
   w.addTrauma({marked:true}); const n=w.buildExport().traumas.length; w.cleanupEmpty('traumas-container','.trauma-row',1); expect(w.buildExport().traumas).toHaveLength(n);

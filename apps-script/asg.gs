@@ -5,7 +5,7 @@
 // which issues a short-lived HMAC token; this script verifies that token and
 // does every spreadsheet read/write directly.
 //
-// File-only backend v1.3.1.3. Use appsscript.json and the private Picker setup.
+// File-only backend v1.3.2.0. Use appsscript.json and the private Picker setup.
 // Deploy: paste into a standalone Apps Script project under the backend
 // Google account, install the file-only manifest and private setup, and set
 // Script Properties ASG_SHEET_ID / ASG_TOKEN_KEY (the
@@ -20,7 +20,7 @@
 //   Future Upgrades   A2:A  one planned upgrade per row (no dash)
 //   Assignment Cards  A2:F  id | kind(project/gig) | position | number | name | description
 //   Assignment Slots  A2:E  key(card:slot) | card | slot | npc | role
-//   Assignment History A2:I id | kind | number | name | description | result(success/failed) | completed_at | crew | status
+//   Assignment History A2:M id | kind | number | name | description | result(success/complications/failed/disaster; older rows success/failed) | completed_at | crew | status | roll | crew_bonus | difficulty | total
 //                     (GM record of completed gigs/projects; created on first
 //                     completion; never read by the players' page. status is
 //                     'pending' while a completion is being applied and 'done'
@@ -42,8 +42,18 @@ var TAB = {
   roster: 'Roster',
   history: 'Assignment History',
 };
-var HISTORY_HEADER = ['id', 'kind', 'number', 'name', 'description', 'result', 'completed_at', 'crew', 'status'];
-var HISTORY_RESULTS = ['success', 'failed'];
+var HISTORY_HEADER = ['id', 'kind', 'number', 'name', 'description', 'result', 'completed_at', 'crew', 'status', 'roll', 'crew_bonus', 'difficulty', 'total'];
+var HISTORY_RESULTS = ['success', 'complications', 'failed', 'disaster'];
+
+// d10 + crew skill total - difficulty: 10+ success, 7-9 success with
+// complications, 4-6 failure, 3 or less disaster.
+function outcomeForTotal(total) {
+  if (total >= 10) return 'success';
+  if (total >= 7) return 'complications';
+  if (total >= 4) return 'failed';
+  return 'disaster';
+}
+function intIn(v, lo, hi) { return typeof v === 'number' && isFinite(v) && Math.floor(v) === v && v >= lo && v <= hi; }
 
 // ── Small helpers (dual-compatible with node for the test suite) ──
 
@@ -244,10 +254,10 @@ function loadState(ss) {
   // Capability flag: the page only offers Completed against a script that
   // journals and recovers completions, so an older deployment can never drop
   // a card unrecorded or half-applied.
-  out.completionVersion = 2;
+  out.completionVersion = 3;
   // Capability flag: the page only offers gig HISTORY against a script that
   // answers the history action, so an older deployment hides the button.
-  out.historyVersion = 1;
+  out.historyVersion = 2;
   return out;
 }
 
@@ -369,14 +379,18 @@ function saveOps(ss, ops) {
     var cc = ops.complete || {};
     var cid = str(cc.id);
     if (!cid || (cc.kind !== 'gig' && cc.kind !== 'project') || HISTORY_RESULTS.indexOf(cc.result) < 0) {
-      return rejectWithState(ss, 'invalid_ops', 'completion needs id, kind and result success|failed');
+      return rejectWithState(ss, 'invalid_ops', 'completion needs id, kind and result success|complications|failed|disaster');
+    }
+    if (!intIn(cc.roll, 1, 10) || !intIn(cc.bonus, 0, 12) || !intIn(cc.difficulty, 0, 5) ||
+        cc.total !== cc.roll + cc.bonus - cc.difficulty || cc.result !== outcomeForTotal(cc.total)) {
+      return rejectWithState(ss, 'invalid_ops', 'completion needs a consistent d10 roll, crew bonus, difficulty, total and result');
     }
     var hist = readHistory(ss);
     if (!cardRowsNow.some(function (r) { return str(r[0]) === cid; }) && !(hist && hist.byId[cid])) {
       return rejectWithState(ss, 'invalid_ops', 'completion for an unknown card');
     }
     var crew = Array.isArray(cc.crew) ? cc.crew.map(function (c) { return str(c).slice(0, 120); }).join('; ') : str(cc.crew);
-    completion = { id: cid, kind: cc.kind, number: num(cc.number), name: str(cc.name).slice(0, 200), description: str(cc.description).slice(0, 500), result: cc.result, crew: crew.slice(0, 1000) };
+    completion = { id: cid, kind: cc.kind, number: num(cc.number), name: str(cc.name).slice(0, 200), description: str(cc.description).slice(0, 500), result: cc.result, crew: crew.slice(0, 1000), roll: cc.roll, bonus: cc.bonus, difficulty: cc.difficulty, total: cc.total };
   }
 
   var completed = null;
@@ -439,10 +453,21 @@ function readHistory(ss) {
   if (last >= 2) {
     sh.getRange(2, 1, last - 1, HISTORY_HEADER.length).getValues().forEach(function (r, i) {
       if (!str(r[0])) return;
-      byId[str(r[0])] = { row: i + 2, result: str(r[5]), status: str(r[8]) === 'pending' ? 'pending' : 'done' };
+      byId[str(r[0])] = { row: i + 2, result: str(r[5]), status: str(r[8]) === 'pending' ? 'pending' : 'done', roll: rollParts(r) };
     });
   }
   return { sh: sh, byId: byId };
+}
+
+// The roll breakdown of a history row, or null for older rows without one.
+function rollParts(r) {
+  if (r[9] === '' || r[9] === undefined || r[9] === null) return null;
+  return { roll: num(r[9]), bonus: num(r[10]), difficulty: num(r[11]), total: num(r[12]) };
+}
+
+function withRoll(out, parts) {
+  if (parts) { out.roll = parts.roll; out.bonus = parts.bonus; out.difficulty = parts.difficulty; out.total = parts.total; }
+  return out;
 }
 
 // Gig completion history for the page's HISTORY button: done rows only
@@ -456,7 +481,7 @@ function readGigHistory(ss) {
   return sh.getRange(2, 1, last - 1, HISTORY_HEADER.length).getValues()
     .filter(function (r) { return str(r[0]) && str(r[1]) === 'gig' && str(r[8]) !== 'pending'; })
     .reverse()
-    .map(function (r) { return { name: str(r[3]), description: str(r[4]), result: str(r[5]) }; });
+    .map(function (r) { return withRoll({ name: str(r[3]), description: str(r[4]), result: str(r[5]) }, rollParts(r)); });
 }
 
 function hasPending(ss) {
@@ -499,14 +524,17 @@ function completeCard(ss, c) {
   var e = h && h.byId[c.id];
   if (e && e.status === 'done') {
     finishCompletion(ss, c.id); // harmless cleanup if a hand edit brought it back
-    return { id: c.id, result: e.result, status: 'done' };
+    return withRoll({ id: c.id, result: e.result, status: 'done' }, e.roll);
   }
   var sh = h && h.sh;
   if (!sh) {
     sh = ss.insertSheet(TAB.history);
     sh.getRange(1, 1, 1, HISTORY_HEADER.length).setValues([HISTORY_HEADER]);
+  } else {
+    // A tab created before the d10 mechanic: label the new columns J:M.
+    sh.getRange(1, 10, 1, 4).setValues([HISTORY_HEADER.slice(9)]);
   }
-  var cells = [c.id, c.kind, c.number, c.name, c.description, c.result, '', c.crew, 'pending'];
+  var cells = [c.id, c.kind, c.number, c.name, c.description, c.result, '', c.crew, 'pending', c.roll, c.bonus, c.difficulty, c.total];
   var row = e ? e.row : Math.max(sh.getLastRow(), 1) + 1;
   sh.getRange(row, 1, 1, cells.length).setValues([cells]); // 1. journal the intent
   ss.flush(); // persist intent before removal; retries recover it
@@ -514,7 +542,7 @@ function completeCard(ss, c) {
   ss.flush(); // persist removals before closing the journal
   markDone(sh, row); // 3. close the journal entry
   ss.flush();
-  return { id: c.id, result: c.result, status: 'done' };
+  return withRoll({ id: c.id, result: c.result, status: 'done' }, { roll: c.roll, bonus: c.bonus, difficulty: c.difficulty, total: c.total });
 }
 
 // Update the rows that changed, append new ones, blank deleted ones. Each
@@ -569,7 +597,7 @@ function doPost(e) {
         recoverPending(ss);
         out = loadState(ss);
       } else if (body.action === 'history') {
-        out = { history: readGigHistory(ss), historyVersion: 1 };
+        out = { history: readGigHistory(ss), historyVersion: 2 };
       } else {
         out = saveOps(ss, body.ops);
       }
@@ -588,7 +616,7 @@ function doPost(e) {
 
 // Node test harness (ignored by Apps Script).
 if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { doPost: doPost, doGet: doGet, loadState: loadState, saveOps: saveOps, futureLines: futureLines, checkToken: checkToken };
+  module.exports = { doPost: doPost, doGet: doGet, loadState: loadState, saveOps: saveOps, futureLines: futureLines, outcomeForTotal: outcomeForTotal, checkToken: checkToken };
 }
 
 

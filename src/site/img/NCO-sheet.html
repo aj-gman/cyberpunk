@@ -196,6 +196,17 @@
       min-height: 100px;
     }
 
+    .desc-grid > div:last-child .panel textarea#drive-text {
+      flex: none;
+      min-height: 56px;
+      height: 64px;
+    }
+    .drive-title-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+    .drive-title-row h2 { flex: 1; }
+    #drive-ideology { max-width: 55%; font-size: 11px; background: #0a0a14; color: var(--neon-cyan); border: 1px solid var(--border-color); border-radius: 3px; padding: 3px 6px; }
+    .desc-grid > div:last-child .panel textarea.drive-powerup { display: none; flex: none; width: 100%; min-height: 36px; height: 44px; margin-top: 8px; }
+    .desc-grid > div:last-child .panel textarea.drive-powerup.visible { display: block; }
+
     @media (max-width: 900px) {
       .main-grid { grid-template-columns: 1fr; }
       .split-divider { display: none; }
@@ -374,6 +385,9 @@
     .trauma-flaw-grid .panel { margin-bottom: 0; }
 
     /* TRAUMAS */
+    .traumas-title-row { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 12px; }
+    .danger-dice { display: none; color: var(--danger-red); border: 1px solid var(--danger-red); border-radius: 3px; padding: 1px 8px; font-size: 11px; font-weight: 700; letter-spacing: 1px; animation: flashRed 0.8s ease-in-out infinite alternate; }
+    .danger-dice.visible { display: inline-block; }
     .trauma-row { display: flex; align-items: center; gap: 6px; margin-bottom: 5px; }
     .trauma-mark {
       width: 14px; height: 14px;
@@ -848,7 +862,9 @@
     .asg-history-name { font-size: 12px; }
     .asg-history-result { font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px; margin-left: 6px; }
     .asg-history-result.success { color: var(--neon-green, #39ff14); }
-    .asg-history-result.failed { color: var(--neon-red, #ff3131); }
+    .asg-history-result.failed, .asg-history-result.disaster { color: var(--neon-red, #ff3131); }
+    .asg-history-result.complications { color: var(--neon-yellow, #ffd400); }
+    .asg-history-roll { color: #d6e2f0; font-size: 12px; margin-top: 3px; font-variant-numeric: tabular-nums; }
     .asg-history-desc { color: var(--dim); font-style: italic; font-size: 11px; white-space: pre-wrap; margin-top: 2px; }
     .asg-slot { border: 1px dashed #2a2f55; border-radius: 3px; padding: 4px 8px; margin-top: 5px; min-height: 26px; color: var(--dim); font-size: 11px; display: flex; align-items: center; gap: 6px; }
     .asg-slot .asg-npc { flex: 1; margin-bottom: 0; }
@@ -886,7 +902,7 @@
     <div class="nco-logo">
       <span><span class="logo-neon">NIGHT </span><span class="logo-city">CITY</span></span>
       <span class="logo-over">OVERDRIVE</span>
-      <span class="logo-version">v1.3.1.3</span>
+      <span class="logo-version">v1.3.2.0</span>
     </div>
     <span style="color:#444;font-size:20px;">|</span>
     <span style="color:var(--dim);font-size:11px;text-transform:uppercase;letter-spacing:1px;">Character Sheet</span>
@@ -958,8 +974,21 @@
     <!-- RIGHT COLUMN: Drive (stretches to match combined height) -->
     <div>
       <div class="panel">
-        <h2 class="dynamic-header" data-path="rules/nc-overdrive/">Drive</h2>
+        <div class="drive-title-row">
+          <h2 class="dynamic-header" data-path="rules/nc-overdrive/">Drive</h2>
+          <select id="drive-ideology" aria-label="Ideology">
+            <option value="">Ideology</option>
+            <option value="Idealism">Idealism</option>
+            <option value="Insurrectionism">Insurrectionism</option>
+            <option value="Parallelism">Parallelism</option>
+            <option value="Realism">Realism</option>
+          </select>
+        </div>
         <textarea id="drive-text" placeholder="What drives you? Your motivation…"></textarea>
+        <textarea class="drive-powerup" id="drive-powerup-4" data-at="4" readonly aria-label="Drive 4 power-up" placeholder="Drive 4 power-up (not linked yet)"></textarea>
+        <textarea class="drive-powerup" id="drive-powerup-6" data-at="6" readonly aria-label="Drive 6 power-up" placeholder="Drive 6 power-up (not linked yet)"></textarea>
+        <textarea class="drive-powerup" id="drive-powerup-8" data-at="8" readonly aria-label="Drive 8 power-up" placeholder="Drive 8 power-up (not linked yet)"></textarea>
+        <textarea class="drive-powerup" id="drive-powerup-10" data-at="10" readonly aria-label="Drive 10 power-up" placeholder="Drive 10 power-up (not linked yet)"></textarea>
         <div class="pip-row" id="drive-pips" style="margin-top:8px;"></div>
       </div>
     </div>
@@ -992,7 +1021,10 @@
       <div class="trauma-flaw-grid">
       <!-- TRAUMAS -->
       <div class="panel red-border">
-        <h2 class="dynamic-header" data-path="rules/nc-overdrive/damage">Traumas</h2>
+        <div class="traumas-title-row">
+          <h2 class="dynamic-header" data-path="rules/nc-overdrive/damage">Traumas</h2>
+          <span class="danger-dice" id="danger-dice" aria-live="polite"></span>
+        </div>
         <div id="traumas-container">
           <div class="trauma-row"><div class="trauma-mark empty" onclick="toggleTrauma(this)"></div><input type="text" placeholder="Trauma description…"></div>
           <div class="trauma-row"><div class="trauma-mark empty" onclick="toggleTrauma(this)"></div><input type="text" placeholder="Trauma description…"></div>
@@ -1779,6 +1811,16 @@
     return Math.max(0, humanityBaseMax - getActiveTraumaCount());
   }
 
+  // "X Danger Dice" beside the Traumas heading: one per marked trauma (the
+  // traumas that reduce Humanity); hidden when there are none.
+  function updateDangerDice() {
+    var el = document.getElementById('danger-dice');
+    if (!el) return;
+    var n = getActiveTraumaCount();
+    el.textContent = n + ' Danger Dice';
+    el.classList.toggle('visible', n > 0);
+  }
+
   function updateHumanityLimit() {
     var humanityEl = document.getElementById('humanity-value');
     var humanityBar = document.getElementById('humanity-bar');
@@ -1790,6 +1832,7 @@
     var pinkStart = 100 - traumaSlots / humanityBaseMax * 100;
     humanityBar.parentNode.style.background = 'linear-gradient(to right, #111 0 ' + pinkStart + '%, var(--neon-pink) ' + pinkStart + '% 100%)';
     humanityBar.style.width = humanityBaseMax ? (humanity / humanityBaseMax * 100) + '%' : '0%';
+    updateDangerDice();
     checkCyberpsyThreshold();
   }
 
@@ -1833,9 +1876,28 @@
       pip.setAttribute('aria-label', 'Drive ' + (i + 1));
       pip.setAttribute('aria-pressed', 'false');
       pip.dataset.index = i;
-      pip.addEventListener('click', function () { this.classList.toggle('marked'); this.setAttribute('aria-pressed', String(this.classList.contains('marked'))); });
+      // Drive pips change in order only: fill the next empty pip or clear
+      // the last filled one.
+      pip.addEventListener('click', function () {
+        const pips = Array.from(container.querySelectorAll('.pip'));
+        const i = pips.indexOf(this);
+        const marked = this.classList.contains('marked');
+        if (marked ? (pips[i + 1] && pips[i + 1].classList.contains('marked')) : (i > 0 && !pips[i - 1].classList.contains('marked'))) return;
+        this.classList.toggle('marked');
+        this.setAttribute('aria-pressed', String(this.classList.contains('marked')));
+        updateDrivePowerups();
+      });
       container.appendChild(pip);
     }
+  }
+
+  // The four empty boxes appear once the 4th, 6th, 8th and 10th Drive pip is
+  // active (pips fill in order, so the active count is the pip number).
+  function updateDrivePowerups() {
+    const active = document.querySelectorAll('#drive-pips .pip.marked').length;
+    document.querySelectorAll('.drive-powerup').forEach(function (box) {
+      box.classList.toggle('visible', active >= parseInt(box.dataset.at, 10));
+    });
   }
   buildDrivePips();
 
@@ -2023,7 +2085,7 @@
       flaw1: flaws[0] ? flaws[0].text : '',
       flaw2: flaws[1] ? flaws[1].text : '',
       stuntPoints: parseInt(document.getElementById('stunt-value').textContent) || 0,
-      drive: { text: val('drive-text'), pips: drivePips },
+      drive: { text: val('drive-text'), pips: drivePips, ideology: val('drive-ideology') },
       experiencePoints: parseInt(document.getElementById('exp-value').textContent) || 0
     };
   }
@@ -2136,7 +2198,7 @@
     array(data.traumas,'traumas',(v,p) => { fields(v,p,['text']); bool(v.marked,p+'.marked'); bool(v.affectsHumanity,p+'.affectsHumanity'); });
     if(Array.isArray(data.flaws)) array(data.flaws,'flaws',(v,p)=>fields(v,p,['text']));
     else if(data.flaws !== undefined) fields(data.flaws,'flaws',['flaw1','flaw2']);
-    if(data.drive !== undefined) { fields(data.drive,'drive',['text']); array(data.drive.pips,'drive.pips',bool); }
+    if(data.drive !== undefined) { fields(data.drive,'drive',['text','ideology']); array(data.drive.pips,'drive.pips',bool); }
     if(typeof data.stuntPoints === 'object') { object(data.stuntPoints,'stuntPoints'); number(data.stuntPoints.current,'stuntPoints.current'); } else number(data.stuntPoints,'stuntPoints');
     if(Array.isArray(data.experiencePoints)) array(data.experiencePoints,'experiencePoints',bool); else number(data.experiencePoints,'experiencePoints');
     return data;
@@ -2289,6 +2351,10 @@
       pip.classList.toggle('marked', !!((data.drive || {}).pips || [])[i]);
       pip.setAttribute('aria-pressed', String(pip.classList.contains('marked')));
     });
+    updateDrivePowerups();
+    var ideology = (data.drive || {}).ideology || '';
+    var ideologySelect = document.getElementById('drive-ideology');
+    ideologySelect.value = Array.from(ideologySelect.options).some(function (o) { return o.value === ideology; }) ? ideology : '';
 
     // Exp (moved to Handle row, use new selector for backward compat)
     var expVal = data.experiencePoints;
@@ -4166,11 +4232,17 @@
       name.textContent = row.name || 'Unnamed gig';
       head.appendChild(name);
       var result = document.createElement('span');
-      var ok = row.result === 'success';
-      result.className = 'asg-history-result ' + (ok ? 'success' : 'failed');
-      result.textContent = ok ? 'Success' : 'Failed';
+      var outcome = ASG_OUTCOMES[row.result] ? row.result : 'failed';
+      result.className = 'asg-history-result ' + outcome;
+      result.textContent = ASG_OUTCOMES[outcome];
       head.appendChild(result);
       item.appendChild(head);
+      if (typeof row.roll === 'number') {
+        var roll = document.createElement('div');
+        roll.className = 'asg-history-roll';
+        roll.textContent = asgRollText(row);
+        item.appendChild(roll);
+      }
       if (row.description) {
         var desc = document.createElement('div');
         desc.className = 'asg-history-desc';
@@ -4181,22 +4253,35 @@
     });
   }
 
+  // d10 + crew skill total - difficulty (0-5): 10+ success, 7-9 success with
+  // complications, 4-6 failure, 3 or less disaster.
+  var ASG_OUTCOMES = { success: 'Success', complications: 'Success with complications', failed: 'Failure', disaster: 'Disaster' };
+  function asgOutcomeForTotal(total) {
+    if (total >= 10) return 'success';
+    if (total >= 7) return 'complications';
+    if (total >= 4) return 'failed';
+    return 'disaster';
+  }
+  function asgRollD10() { return Math.floor(Math.random() * 10) + 1; }
+  function asgRollText(r) {
+    return 'd10 ' + r.roll + ' + crew ' + r.bonus + ' - difficulty ' + r.difficulty + ' = ' + r.total;
+  }
   var asgCompleteAsk = null; // { targetType, cardId }
   function asgAskComplete(targetType, cardId) {
-    asgCompleteAsk = { targetType: targetType, cardId: cardId };
+    asgCompleteAsk = { targetType: targetType, cardId: cardId, difficulty: 1 };
     asgRenderAssignments();
   }
 
-  function asgCompleteCard(targetType, cardId, result) {
+  function asgCompleteCard(targetType, cardId, difficulty) {
     asgCompleteAsk = null;
-    if (result !== 'success' && result !== 'failed') { asgRenderAssignments(); return; }
+    if (!(difficulty >= 0 && difficulty <= 5 && Math.floor(difficulty) === difficulty)) { asgRenderAssignments(); return; }
     var cards = targetType === 'project' ? asgState.assignments.projects : asgState.assignments.gigs;
     var index = cards.findIndex(function (c) { return c.id === cardId; });
     if (index < 0) { asgRenderAssignments(); return; }
     var card = cards[index];
     var fail = function (msg) { asgFlash(msg); asgRenderAssignments(); };
     if (!AsgBackend.connected) return fail('Completed needs the shared workbook - connect it first. Nothing was changed.');
-    if (!(AsgBackend.completionVersion >= 2)) return fail('The shared workbook backend cannot record completions safely yet - ask the admin to redeploy the script. Nothing was changed.');
+    if (!(AsgBackend.completionVersion >= 3)) return fail('The shared workbook backend cannot record dice-roll completions yet - ask the admin to redeploy the script. Nothing was changed.');
     if (asgSaveInFlight) return fail('A save is in progress - try Completed again in a moment. Nothing was changed.');
     var npcIds = targetType === 'project'
       ? card.slots.filter(function (s) { return !!s; })
@@ -4221,9 +4306,14 @@
       ops.slots.deletes = (ops.slots.deletes || []).filter(function (k) { return String(k).indexOf(cardId + ':') !== 0; });
       if (!ops.slots.upserts.length && !ops.slots.deletes.length) delete ops.slots;
     }
+    var bonus = npcIds.reduce(function (sum, id) { var npc = asgRosterLookup(id); return sum + (npc ? npc.skill : 0); }, 0);
+    var roll = asgRollD10();
+    var total = roll + bonus - difficulty;
+    var result = asgOutcomeForTotal(total);
+    var rolled = { roll: roll, bonus: bonus, difficulty: difficulty, total: total };
     ops.complete = {
       id: card.id, kind: targetType, number: card.number, name: card.name || '', description: card.description || '',
-      result: result, crew: crew
+      result: result, crew: crew, roll: roll, bonus: bonus, difficulty: difficulty, total: total
     };
     if (ops.upgrades && !AsgBackend.upgradeEditVersion) {
       asgFlash('HQ upgrade editing requires the updated backend and workbook migration. Edits remain in this browser.');
@@ -4261,9 +4351,11 @@
       AsgBackend.lastHash = asgRemoteHash(data);
       asgMergeRemoteState(data);
       var label = targetType === 'project' ? 'Project' : 'Gig';
-      asgFlash(data.completed.result === result
-        ? label + ' completed (' + result + ') and recorded for the GM.'
-        : label + ' was already recorded as ' + data.completed.result + ' - that result was kept.');
+      var done = data.completed;
+      var doneText = ASG_OUTCOMES[done.result] || done.result;
+      asgFlash(done.result === result
+        ? label + ' completed: ' + doneText + ' (' + asgRollText(rolled) + '). Recorded for the GM.'
+        : label + ' was already recorded as ' + doneText + (typeof done.roll === 'number' ? ' (' + asgRollText(done) + ')' : '') + ' - that result was kept.');
       if (asgSavePending || asgEditSeq !== asgEditSeqAtSend) { asgSavePending = false; asgScheduleSave(50); }
       asgRenderAll();
     });
@@ -4391,14 +4483,19 @@
     if (asgCompleteAsk && asgCompleteAsk.cardId === card.id) {
       var ask = document.createElement('div');
       ask.className = 'asg-complete-ask';
-      ask.innerHTML = '<span>Successful or failed?</span>' +
-        '<button class="btn btn-small" type="button" data-result="success">Successful</button>' +
-        '<button class="btn btn-small" type="button" data-result="failed">Failed</button>' +
+      ask.innerHTML = '<span>Difficulty (0-5)</span>' +
+        '<select class="asg-difficulty" aria-label="Difficulty">' +
+        [0, 1, 2, 3, 4, 5].map(function (d) { return '<option value="' + d + '"' + (d === asgCompleteAsk.difficulty ? ' selected' : '') + '>' + d + '</option>'; }).join('') +
+        '</select>' +
+        '<button class="btn btn-small" type="button" data-result="roll">Roll d10</button>' +
         '<button class="btn btn-small" type="button" data-result="cancel">Cancel</button>';
+      ask.addEventListener('change', function (e) {
+        if (e.target && e.target.classList && e.target.classList.contains('asg-difficulty')) asgCompleteAsk.difficulty = parseInt(e.target.value, 10);
+      });
       ask.addEventListener('click', function (e) {
         var r = e.target && e.target.getAttribute && e.target.getAttribute('data-result');
         if (r === 'cancel') { asgCompleteAsk = null; asgRenderAssignments(); }
-        else if (r) asgCompleteCard(targetType, card.id, r);
+        else if (r === 'roll') asgCompleteCard(targetType, card.id, parseInt(ask.querySelector('.asg-difficulty').value, 10));
       });
       el.appendChild(ask);
     }
@@ -4642,7 +4739,7 @@
       siteRoot
     ).href;
     
-    element.innerHTML = `<a href="${fullUrl}" style="color: inherit; text-decoration: none; display: inline-block;">${element.textContent}</a>`;
+    element.innerHTML = `<a href="${fullUrl}" target="_blank" rel="noopener" style="color: inherit; text-decoration: none; display: inline-block;">${element.textContent}</a>`;
   });
 </script>
 </body>

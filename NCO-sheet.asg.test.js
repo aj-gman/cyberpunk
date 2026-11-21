@@ -766,20 +766,40 @@ describe('ASG online-only gate (owner direction 2026-11-19)', () => {
 });
 
 describe('ASG gig history', () => {
+ it('renders the breakdown for every outcome with a zero crew bonus and never shows undefined', () => {
+  const w=sheet();
+  w.AsgBackend.request=(payload,cb)=>cb({ history:[
+    { name:'A', description:'', result:'success', roll:10, bonus:0, difficulty:0, total:10 },
+    { name:'B', description:'', result:'complications', roll:8, bonus:0, difficulty:1, total:7 },
+    { name:'C', description:'', result:'failed', roll:5, bonus:0, difficulty:1, total:4 },
+    { name:'D', description:'', result:'disaster', roll:2, bonus:0, difficulty:0, total:2 }
+  ], historyVersion:2 }, null);
+  w.document.getElementById('asg-history-btn').click();
+  const lines=Array.from(w.document.querySelectorAll('#asg-history-panel .asg-history-roll')).map(e=>e.textContent);
+  expect(lines).toEqual(['d10 10 + crew 0 - difficulty 0 = 10','d10 8 + crew 0 - difficulty 1 = 7','d10 5 + crew 0 - difficulty 1 = 4','d10 2 + crew 0 - difficulty 0 = 2']);
+  expect(w.document.getElementById('asg-history-panel').textContent).not.toMatch(/undefined|NaN|null/);
+ });
  it('shows completed gigs with result and description', () => {
   const w=sheet();
   w.AsgBackend.request=(payload,cb)=>cb({ history:[
     { name:'Data heist', description:'line one\nline two', result:'failed' },
-    { name:'Records job', description:'', result:'success' }
-  ], historyVersion:1 }, null);
+    { name:'Records job', description:'', result:'success' },
+    { name:'Rolled job', description:'', result:'complications', roll:6, bonus:3, difficulty:1, total:8 },
+    { name:'Blown job', description:'', result:'disaster', roll:1, bonus:0, difficulty:2, total:-1 }
+  ], historyVersion:2 }, null);
   w.document.getElementById('asg-history-btn').click();
   const items=w.document.querySelectorAll('#asg-history-panel .asg-history-item');
-  expect(items).toHaveLength(2);
+  expect(items).toHaveLength(4);
   expect(items[0].querySelector('.asg-history-name').textContent).toBe('Data heist');
-  expect(items[0].querySelector('.asg-history-result').textContent).toBe('Failed');
+  expect(items[0].querySelector('.asg-history-result').textContent).toBe('Failure');
+  expect(items[0].querySelector('.asg-history-roll')).toBeNull(); // older rows have no roll
   expect(items[0].querySelector('.asg-history-desc').textContent).toBe('line one\nline two');
   expect(items[1].querySelector('.asg-history-result').textContent).toBe('Success');
   expect(items[1].querySelector('.asg-history-desc')).toBeNull(); // no empty description block
+  expect(items[2].querySelector('.asg-history-result').textContent).toBe('Success with complications');
+  expect(items[2].querySelector('.asg-history-roll').textContent).toBe('d10 6 + crew 3 - difficulty 1 = 8');
+  expect(items[3].querySelector('.asg-history-result').textContent).toBe('Disaster');
+  expect(items[3].querySelector('.asg-history-roll').textContent).toBe('d10 1 + crew 0 - difficulty 2 = -1');
  });
  it('flashes a deploy hint on an old backend instead of fetching', () => {
   const w=sheet();
@@ -827,7 +847,7 @@ describe('ASG completed gigs and projects', () => {
   const w=sheet();
   Object.defineProperty(w.document, 'hidden', {get:()=>false, configurable:true});
   w.AsgBackend.connected=true;
-  w.AsgBackend.completionVersion=2;
+  w.AsgBackend.completionVersion=3;
   w.asgTakeSnapshot();
   return w;
  }
@@ -839,48 +859,88 @@ describe('ASG completed gigs and projects', () => {
   expect(cards.length).toBeGreaterThan(0);
   cards.forEach(c=>expect(c.querySelector('[title="Completed"]')).not.toBeNull());
  });
- it('asks successful or failed, and Cancel changes nothing', () => {
+ it('asks for a difficulty (default 1) instead of successful or failed, and Cancel changes nothing', () => {
   const w=connected();
   const calls=[]; w.AsgBackend.saveWithOps=(ops,cb)=>calls.push(ops);
   w.document.querySelector('.asg-card.asg-gig [title="Completed"]').click();
   const ask=w.document.querySelector('.asg-complete-ask');
-  expect(ask.textContent).toContain('Successful or failed?');
+  expect(ask.textContent).not.toContain('Successful');
+  const sel=ask.querySelector('.asg-difficulty');
+  expect(Array.from(sel.options).map(o=>o.value)).toEqual(['0','1','2','3','4','5']);
+  expect(sel.value).toBe('1');
   ask.querySelector('[data-result="cancel"]').click();
   expect(w.document.querySelector('.asg-complete-ask')).toBeNull();
   expect(calls).toHaveLength(0);
  });
- it('completing a gig sends one completion request (no card edits), then removes it only after confirmation', () => {
+ it('keeps the chosen difficulty across a re-render', () => {
+  const w=connected();
+  const gig=w.asgState.assignments.gigs[0];
+  w.asgAskComplete('gig', gig.id);
+  const sel=w.document.querySelector('.asg-complete-ask .asg-difficulty');
+  sel.value='4'; sel.dispatchEvent(new w.Event('change',{bubbles:true}));
+  w.asgRenderAssignments();
+  expect(w.document.querySelector('.asg-complete-ask .asg-difficulty').value).toBe('4');
+ });
+ it('maps every total to its outcome', () => {
+  const w=connected();
+  const cases=[[13,'success'],[10,'success'],[9,'complications'],[7,'complications'],[6,'failed'],[4,'failed'],[3,'disaster'],[0,'disaster'],[-4,'disaster']];
+  cases.forEach(([t,o])=>expect(w.asgOutcomeForTotal(t)).toBe(o));
+ });
+ function complete(w, kind, card, difficulty, roll, answer) {
+  w.asgRollD10=()=>roll;
+  const calls=[];
+  w.AsgBackend.saveWithOps=(ops,cb)=>{ calls.push(ops); const shared=clone(w.asgSharedPart()); const key=kind==='gig'?'gigs':'projects'; shared.assignments[key]=shared.assignments[key].filter(c=>c.id!==card.id); cb({state:shared, roster:w.asgState.roster, completionVersion:3, completed:Object.assign({id:card.id,status:'done'}, answer||{result:ops.complete.result})}, null); };
+  w.asgCompleteCard(kind, card.id, difficulty);
+  return calls;
+ }
+ it('rolling a gig sends the d10, crew bonus, difficulty, total and outcome in one completion, and removes it only after confirmation', () => {
   const w=connected();
   const gig=w.asgState.assignments.gigs[0];
   const npcs=gig.slots.map(s=>s.npc).filter(Boolean);
-  const calls=[];
-  w.AsgBackend.saveWithOps=(ops,cb)=>{ calls.push(ops); expect(w.asgState.assignments.gigs.some(c=>c.id===gig.id)).toBe(true); const shared=clone(w.asgSharedPart()); shared.assignments.gigs=shared.assignments.gigs.filter(c=>c.id!==gig.id); cb({state:shared, roster:w.asgState.roster, completionVersion:2, completed:{id:gig.id,result:'success',status:'done'}}, null); };
-  w.asgAskComplete('gig', gig.id);
-  w.document.querySelector('.asg-complete-ask [data-result="success"]').click();
+  const bonus=npcs.reduce((n,id)=>n+w.asgRosterLookup(id).skill,0);
+  const calls=complete(w,'gig',gig,2,6);
   expect(calls).toHaveLength(1);
-  expect(calls[0].complete).toMatchObject({ id: gig.id, kind: 'gig', result: 'success', name: gig.name });
+  const total=6+bonus-2;
+  expect(calls[0].complete).toMatchObject({ id: gig.id, kind: 'gig', name: gig.name, roll: 6, bonus, difficulty: 2, total, result: w.asgOutcomeForTotal(total) });
   expect(calls[0].complete.crew.length).toBe(npcs.length);
   expect(JSON.stringify(calls[0])).not.toContain('"deletes":["'+gig.id);
   expect(w.asgState.assignments.gigs.some(c=>c.id===gig.id)).toBe(false);
   npcs.forEach(id=>expect(w.asgState.assignments.available).toContain(id));
+  expect(w.document.getElementById('asg-status').textContent).toContain('d10 6 + crew '+bonus+' - difficulty 2 = '+total);
+ });
+ it('counts only occupied slots toward the crew bonus and works for projects', () => {
+  const w=connected();
+  const proj=w.asgState.assignments.projects[0];
+  const ids=proj.slots.filter(Boolean);
+  const bonus=ids.reduce((n,id)=>n+w.asgRosterLookup(id).skill,0);
+  const calls=complete(w,'project',proj,0,10);
+  expect(calls[0].complete).toMatchObject({ kind:'project', roll:10, bonus, difficulty:0, total:10+bonus, result:'success' });
+ });
+ it('rejects an invalid difficulty before any save', () => {
+  const w=connected();
+  const proj=w.asgState.assignments.projects[0];
+  const calls=complete(w,'project',proj,9,5);
+  expect(calls).toHaveLength(0);
+  expect(w.asgState.assignments.projects.some(c=>c.id===proj.id)).toBe(true);
  });
  it('reports when the backend kept an earlier recorded result', () => {
   const w=connected();
   const proj=w.asgState.assignments.projects[0];
-  w.AsgBackend.saveWithOps=(ops,cb)=>{ const shared=clone(w.asgSharedPart()); shared.assignments.projects=[]; cb({state:shared, roster:w.asgState.roster, completionVersion:2, completed:{id:proj.id,result:'failed',status:'done'}}, null); };
-  w.asgCompleteCard('project', proj.id, 'success');
-  expect(w.document.getElementById('asg-status').textContent).toContain('already recorded as failed');
+  complete(w,'project',proj,1,10,{result:'failed',roll:2,bonus:0,difficulty:1,total:1});
+  const msg=w.document.getElementById('asg-status').textContent;
+  expect(msg).toContain('already recorded as Failure');
+  expect(msg).toContain('d10 2 + crew 0 - difficulty 1 = 1');
  });
  it('an unconfirmed save keeps the card, says it may still finish, and gates until a fresh load', () => {
   const w=connected();
   const proj=w.asgState.assignments.projects[0];
   w.AsgBackend.saveWithOps=(ops,cb)=>cb(null,'offline');
-  w.asgCompleteCard('project', proj.id, 'failed');
+  w.asgCompleteCard('project', proj.id, 1);
   expect(w.asgState.assignments.projects.some(c=>c.id===proj.id)).toBe(true); // card kept
   const msg=w.document.getElementById('asg-status').textContent;
   expect(msg).toContain('not confirmed'); expect(msg).toContain('may still finish');
   expect(w.AsgBackend.connected).toBe(false); // gated until a fresh load
-  let loads=0; w.AsgBackend.load=(cb)=>{ loads++; cb({state:clone(w.asgSharedPart()), roster:w.asgState.roster, completionVersion:2}, null); };
+  let loads=0; w.AsgBackend.load=(cb)=>{ loads++; cb({state:clone(w.asgSharedPart()), roster:w.asgState.roster, completionVersion:3}, null); };
   w.asgAttemptReconnect();
   expect(loads).toBe(1); // the confirming refresh happens on reconnect
   expect(w.AsgBackend.connected).toBe(true);
@@ -891,10 +951,10 @@ describe('ASG completed gigs and projects', () => {
   const calls=[]; w.AsgBackend.saveWithOps=(ops,cb)=>calls.push(ops);
   const proj=w.asgState.assignments.projects[0];
   w.AsgBackend.connected=false;
-  w.asgCompleteCard('project', proj.id, 'success'); // not connected
+  w.asgCompleteCard('project', proj.id, 1); // not connected
   w.AsgBackend.connected=true; w.asgTakeSnapshot();
-  w.AsgBackend.completionVersion=1;
-  w.asgCompleteCard('project', proj.id, 'success'); // older script: no completionVersion 2
+  w.AsgBackend.completionVersion=2;
+  w.asgCompleteCard('project', proj.id, 1); // older script: no completionVersion 3
   expect(calls).toHaveLength(0);
   expect(w.asgState.assignments.projects.some(c=>c.id===proj.id)).toBe(true);
  });
