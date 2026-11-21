@@ -5,7 +5,6 @@
 
 Home to [[NorCal Military Base\|NorCal Military Base]].
 
-
 ```image-layout
 ---
 layout: d

@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-path":"Night City/Characters/edgerunners/Lowkey.md","permalink":"/night-city/characters/edgerunners/lowkey/","tags":["#npc","#4cw"],"dg-note-properties":{"tags":["#npc","#4cw"]}}
+{"dg-publish":true,"dg-path":"Night City/Characters/edgerunners/Lowkey.md","permalink":"/night-city/characters/edgerunners/lowkey/","dg-note-properties":{}}
 ---
 
 #npc #4cw

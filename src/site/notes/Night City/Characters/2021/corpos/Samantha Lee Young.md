@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-path":"Night City/Characters/corpos/Samantha Lee Young.md","permalink":"/night-city/characters/corpos/samantha-lee-young/","tags":["#npc","#4cw"],"dg-note-properties":{"tags":["#npc","#4cw"]}}
+{"dg-publish":true,"dg-path":"Night City/Characters/corpos/Samantha Lee Young.md","permalink":"/night-city/characters/corpos/samantha-lee-young/","dg-note-properties":{}}
 ---
 
 #npc #4cw 

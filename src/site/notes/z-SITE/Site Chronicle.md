@@ -1,8 +1,10 @@
 ---
-{"dg-publish":true,"dg-path":"Site Chronicle.md","permalink":"/site-chronicle/","dg-note-properties":{}}
+{"dg-publish":true,"dg-path":"Site Chronicle.md","permalink":"/site-chronicle/","tags":["#fashion","#npc","#ideology","#news","#district","#dependency","#stratum","#boostergang","#role"],"dg-note-properties":{"tags":["#fashion","#npc","#ideology","#news","#district","#dependency","#stratum","#boostergang","#role"]}}
 ---
 
-
+ok, add a new mechanic for the completed gigs and projects via a dice roll
+when completing a gig or a projects, roll a number of dice;
+this number 
 ### To-Do
 - [ ] Finish write-up for #fashion 
 	- [ ] #fashion
