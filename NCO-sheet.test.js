@@ -69,6 +69,12 @@ describe('synthetic NCO character regressions', () => {
   w2.applyImport({drive:{text:'',pips:[],ideology:'Nonsense'}}); expect(w2.document.getElementById('drive-ideology').value).toBe('');
   w2.applyImport({drive:{text:'old'}}); expect(w2.document.getElementById('drive-ideology').value).toBe('');
  });
+ it('Danger Dice pulses with the same flashRed animation as the cyberpsychosis warning and history roll text is readable', () => {
+  const html=require('fs').readFileSync(require('path').join(__dirname,'src/site/img/NCO-sheet.html'),'utf8');
+  expect(html).toMatch(/\.danger-dice \{[^}]*animation: flashRed 0\.8s ease-in-out infinite alternate/);
+  expect(html).toMatch(/\.cyberpsy-warning[\s\S]{0,600}animation: flashRed 0\.8s ease-in-out infinite alternate/);
+  expect(html).toMatch(/\.asg-history-roll \{ color: #d6e2f0; font-size: 12px/);
+});
  it('Drive reveals empty boxes at the 4th, 6th, 8th and 10th active pip', () => {
   const w=sheet(); const pips=Array.from(w.document.querySelectorAll('#drive-pips .pip')); const boxes=Array.from(w.document.querySelectorAll('.drive-powerup'));
   const shown=()=>boxes.map(b=>b.classList.contains('visible')?1:0).join('');
