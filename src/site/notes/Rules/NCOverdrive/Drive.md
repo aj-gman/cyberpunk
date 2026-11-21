@@ -1,10 +1,12 @@
 ---
-{"dg-publish":true,"permalink":"/rules/nc-overdrive/drive/","dg-note-properties":{}}
+{"dg-publish":true,"permalink":"/rules/nc-overdrive/drive/","tags":["#ideology"],"dg-note-properties":{"tags":["#ideology"]}}
 ---
 
-Your drive is what keeps you hitting the streets, throwing yourself into danger and pushing through the hard stuff. It is a deep-seated desire or important personal goal that you constantly strive for. You continue to risk yourself in the hope of one day accruing enough money, resources or influence to see this thing come about. 
+Your [[Rules/NCOverdrive/Drive\|Drive]] is what keeps you going. It's what drags you into the bleeding edge of the city's worst, hoping to come out on top. It's a deep-seated **desire** to see *it* through, whatever *it* is.
 
-**Examples:** Debts, Lifestyle, Survival, Vengeance
-When everyone has determined drives ask each other questions. Why is this goal so important? Why [[Night City/Organizations/Corporations/SovOil\|SovOil]] and not [[Night City/Organizations/Corporations/Petrochem\|Petrochem]]? Why do you owe the [[Night City/Organizations/Gangs/Maelstrom\|Maelstrom]] specifically? Flesh out your character’s backstory.
+Your [[Rules/NCOverdrive/Drive\|Drive]] is always linked to a #ideology. The deeper you go to achieve that ultimate goal, you gain bonuses to your rolls. This entrenchment shows that your character is becoming a fanatic for his ideals - a person at 10/10 points in any [[Rules/NCOverdrive/Drive\|Drive]] is far gone and won't be able to see reason in any other #ideology.
 
-Your drive has ten boxes called a drive track. Sometimes you will get to “tick” a box, indicating you are making progress towards your goal. At other times you will “cross out” a box, representing missed opportunities or obstacles. Each box crossed out reduces the chance of you ever achieving your goal.
+- [[Night City/!society/Beliefs/Insurrectionism\|Insurrectionism]] gives bonuses to violence against specific "enemies", anti-authority actions, populist discourse.
+- [[Night City/!society/Beliefs/Idealism\|Idealism]] gives bonuses to 
+- [[Night City/!society/Beliefs/Realism\|Realism]] gives bonuses to
+- [[Night City/!society/Beliefs/Parallelism\|Parallelism]] gives bonuses to
