@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/organizations/gangs/maelstrom/","tags":["boostergang"],"dg-note-properties":{"tags":["boostergang"]}}
+{"dg-publish":true,"permalink":"/night-city/organizations/gangs/maelstrom/","tags":["#boostergang"],"dg-note-properties":{"tags":["#boostergang"]}}
 ---
 
 >[!info] [[Night City/Organizations/States/NCPD\|NCPD]] DATA
@@ -8,13 +8,22 @@
 >**Structure:** Kratocratic Feudalism[^1]
 >**Activities:** Scavenging, Trade of [[Rules/NCOverdrive/Drugs\|Illegal Substances]] and [[Rules/NCOverdrive/Cyberware\|Cyberware]], [Nihilistic violent extremism](https://en.wikipedia.org/wiki/Nihilistic_violent_extremism), Neo-Satanism[^2]
 
+>[!danger] MECHANICS
+>- Melee Combat: 2-3 Danger Dice
+>- Ranged Combat (Pistols, Shotguns, ARs): 3-4 Danger Dice
+>- On Drugs: +1/+2 Danger Dice
+>- Activating Certain [[Rules/NCOverdrive/Cyberware\|Cyberware]] (Reflexware, SmartAim Optics): +1/+2 Danger Dice
+>- Possible Other Cyberware: Pop-up Weapons (Grenade Launchers, Guns, Knives, Hooks, Mantis Blades, Chainsaws), Subdermal Armor
+>- Fullborg: +3 Danger Dice
+>- [[Rules/CPRED/Cyberware/Cyberpsychosis\|Cyberpsycho]]: +2 Danger Dice to everyone around
+
 >[!warning] Areas of operation
 >- [[Night City/Locations/Districts/Little Asia\|Japantown]] - encroaching presence in western part;
 >- [[Night City/Locations/Districts/Nightlife District\|Studio City]] - spotty presence alongside [[Night City/Organizations/Gangs/Red Chrome Legion\|Red Chrome Legion]] members;
 >- [[Night City/Locations/Districts/South Night City\|South Night City]] - multiple strongholds of influence; so-called "home turf";
 
 >[!tip] Known Members
->- [[Night City/Characters/2021/gangers/Easy\|Easy]], leader of the [[Rules/NCOverdrive/Cyberware\|ripper]] faction
+>- ~~[[Night City/Characters/2021/gangers/Easy\|Easy]], leader of the [[Rules/NCOverdrive/Cyberware\|ripper]] faction~~
 >- [[Night City/Characters/2021/gangers/Skell\|Skell]], leader of the raider faction
 >- [[Night City/Characters/2021/gangers/Lithibus the 2nd\|Lithibus the 2nd]], leader of the cult faction
 

@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-path":"Gallery Assets.md","permalink":"/gallery-assets/","hide":true,"tags":["site/internal"],"dg-note-properties":{"tags":["site/internal"]}}
+{"dg-publish":true,"dg-path":"Gallery Assets.md","permalink":"/gallery-assets/","hide":true,"tags":["#site/internal"],"dg-note-properties":{"tags":["#site/internal"]}}
 ---
 
 # Gallery Assets Registry
@@ -21,9 +21,9 @@
 
 
 
-
-
-
+![NPC-WildThings.png\|235](/img/user/Pictures/NPC-WildThings.png)
+![npc-wildthings2.png\|350](/img/user/Pictures/npc-wildthings2.png)
+![Pasted image 20261101161257.png\|394](/img/user/Pasted%20image%2020261101161257.png)
 ![loc-westside3.png](/img/user/Pictures/loc-westside3.png)
 ![loc-studiocity3.png](/img/user/Pictures/loc-studiocity3.png)
 ![loc-rancho6.png](/img/user/Pictures/loc-rancho6.png)
