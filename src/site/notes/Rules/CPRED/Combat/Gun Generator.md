@@ -16,6 +16,6 @@ Picks fron the [[Rules/CPRED/Combat/Combat#Gun Brands\|Brands]], [[Rules/CPRED/C
 
 
 ### Generator
-<div><div><b>Brand:</b> <a href="Techtronika" class="internal-link">Techtronika</a></div><div><b>Archetype:</b> Medium Pistol</div><div><b>Gun Type:</b> <a href="Power" class="internal-link">Power</a></div><div><b>Price:</b> 50 eb</div></div><button class="gun-gen-btn"><span>Regenerate</span></button>
+<div><div><b>Brand:</b> <a href="Techtronika" class="internal-link">Techtronika</a></div><div><b>Archetype:</b> Assault Rifle</div><div><b>Gun Type:</b> <a href="Tech" class="internal-link">Tech</a></div><div><b>Price:</b> 750 eb</div></div><button class="gun-gen-btn"><span>Regenerate</span></button>
 
 

@@ -28,22 +28,22 @@
 ## [[Rules/CPRED/Roles/Netrunner\|NETRUNNERS]]
 - [[Night City/Characters/2021/edgerunners/Deadmeat\|Deadmeat]], ==specialized in offensive Architecture demolitions==; she is able to understand and affect large swarms of overlayed systems at once; strongly prefers [[Rules/CPRED/Netrunning/Netrunning\|remote dives]].
 - [[Night City/Characters/2021/edgerunners/Lowkey\|Lowkey]], ==professional protector==, able to design complex geometries via [[Rules/CPRED/Netrunning/Netrunning#The Mist\|the Mist interface]] to trap even the best of [[Rules/CPRED/Roles/Netrunner\|Netrunners]]; operating as **the SysAdmin** of [[Night City/Organizations/ASG\|ASG]]'s [[Night City/Others/Technology/Data Fortress\|Data Fortress]];
-- [[Night City/Characters/2021/edgerunners/Earhart\|Earhart]], ==field [[Rules/CPRED/Roles/Netrunner\|Netrunner]]==, known for risky extractions while under fire; has one or two [[Rules/CPRED/Netrunning/Quickhacks\|Quickhacks]] available to her; she can break systems fast and loud; her [[Rules/CPRED/Netrunning/Netrunner Gear\|Netrunner Gear]] often gets fried on the riskiest encounters
+- [[Night City/Characters/2021/edgerunners/Earhart\|Earhart]], ==field[[Rules/CPRED/Roles/Netrunner\|Netrunner]]==, known for risky extractions while under fire; has one or two [[Rules/CPRED/Netrunning/Quickhacks\|Quickhacks]] available to her; she can break systems fast and loud; her [[Rules/CPRED/Netrunning/Netrunner Gear\|Netrunner Gear]] often gets fried on the riskiest encounters
 ## [[Rules/CPRED/Roles/Medtechie\|MEDTECHIES]]
 - [[Night City/Characters/2021/gangers/Takano\|Takano]], [[Night City/Organizations/Gangs/Tyger Clawz\|Tyger Clawz]] ==[[Rules/CPRED/Roles/Medtechie\|Ripperdoc]]== specialized in installing jury-rigged [[Rules/NCOverdrive/Cyberware\|Cyberware]] with minimal [[Rules/CPRED/Cyberware/Humanity\|Humanity]] loss; is able to understand most [[Rules/NCOverdrive/Cyberware\|Cyberware]], even uniques or prototypes
 - [[Night City/Characters/2021/gangers/Big Shark\|Big Shark]], [[Night City/Organizations/Gangs/Piranhas\|Piranhas]] [[Rules/CPRED/Roles/Solo\|Solo]], exceptional ==[[Rules/CPRED/Roles/Medtechie\|pharmaceuticals specialist]]==, with a special focus on combat [[Rules/NCOverdrive/Drugs\|Drugs]], stimulants and pain editors;
-- [[Night City/Characters/2021/edgerunners/Saffron\|Saffron]], Ex-[[Night City/Organizations/Corporations/Night Corp\|NC]] ==[[Rules/CPRED/Roles/Medtechie\|Surgeon]]==, with great capabilities of post-traumatic care, from saving lives via precise surgery to the use of [[Braindance\|Braindance]] tech to prevent early onset of PTSD;
-- [[Joe Rolack\|Joe Rolack]], Field Medic
+- [[Night City/Characters/2021/edgerunners/Saffron\|Saffron]], Ex-[[Night City/Organizations/Corporations/Night Corp\|NC]] ==[[Rules/CPRED/Roles/Medtechie\|Surgeon]]==, with great capabilities of post-traumatic care, from saving lives via precise surgery to the use of [[Night City/Others/Technology/Braindance\|Braindance]] tech to prevent early onset of PTSD;
+- [[Night City/Characters/2021/edgerunners/Joe Rolack\|Joe Rolack]], Field Medic
 - ==(Currently searching for)== R&D specialist
 
 ## [[Rules/CPRED/Roles/Techie\|TECHIES]]
 - ==(Currently searching for)== Vehicle engineer
 - [[Night City/Characters/2021/edgerunners/Roko\|Roko]], ex-[[Night City/Organizations/Corporations/Petrochem\|Petrochem]] ==Security engineer== specialized in perimeter defense and OPSEC especially relating to social infiltrations and leakages;
-- [[Suzy Clove\|Suzy Clove]], Field engineer
+- [[Night City/Characters/2021/edgerunners/Suzy Clove\|Suzy Clove]], Field engineer
 
 ## OTHERS
 - [[Night City/Characters/2021/edgerunners/The Secretary\|The Secretary]], an [[Night City/Organizations/States/NCPD\|NCPD]] contractor with ties to [[Night City/Locations/Night City#Government & Politics\|City Hall]]; worked as advisor to [[Night City/Characters/2021/corpos/Mbole Ebunike\|Mbole Ebunike]]; an ==experienced [[Rules/CPRED/Roles/Lawman\|Lawman]] capable of swindling the entire [[Night City/Organizations/States/NCPD\|NCPD]]== thanks to favors, in-house knowledge and her excruciating desire to "do good"
-- [[Night City/Characters/2021/edgerunners/Goldberg\|Goldberg]], ex-[[Night City/Organizations/Corporations/Arasaka\|Arasaka]] and ex-[[Night City/Organizations/Merill, Asukaga & Finch\|Merill, Asukaga & Finch]] ==[[Rules/CPRED/Roles/Exec\|Exec]], financial, banking & legal expert== who signed up due to ideological reasons and his opposition to [[Night City/Fourth Corporate War\|all-out war]]
+- [[Night City/Characters/2021/edgerunners/Goldberg\|Goldberg]], ex-[[Night City/Organizations/Corporations/Arasaka\|Arasaka]] and ex-[[Night City/Organizations/Corporations/Merill, Asukaga & Finch\|Merill, Asukaga & Finch]] ==[[Rules/CPRED/Roles/Exec\|Exec]], financial, banking & legal expert== who signed up due to ideological reasons and his opposition to [[Night City/Fourth Corporate War\|all-out war]]
 	- currently serving as both accountant and criminal proceedings lawyer, since neither position is too demanding at this time
 - ==(Currently searching for)== a [[Rules/CPRED/Roles/Media\|Media]]
 

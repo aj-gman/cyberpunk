@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/valerie-wildner/","tags":["#npc","#4cw"],"dg-note-properties":{"tags":["#npc","#4cw"]}}
+{"dg-publish":true,"dg-path":"Night City/Characters/corpos/Valerie Wildner.md","permalink":"/night-city/characters/corpos/valerie-wildner/","dg-note-properties":{}}
 ---
 
 #npc #4cw 

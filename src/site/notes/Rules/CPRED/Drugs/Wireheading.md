@@ -12,7 +12,7 @@ A standard wire, as found on the streets, is not a precision piece of electronic
 
 **Many wireheads who use lower-key wires also jack into simstim recordings to enhance the experience, but hard-core wireheads find more than enough to entertain them on the stronger wires.**
 
-Although not a [[Rules/CPRED/Drugs/Drugs\|drug]] in the traditional sense, [[Rules/CPRED/Drugs/Wireheading\|Wireheading]] is coupled with [[Braindance\|Braindance sims]] in order to deride both pleasure and satisfaction from the experience. Through this, many deal with their [[Rules/CPRED/Cyberware/Cyberware#Cyberpsychosis\|Cyberpsychosis symptoms]] instead of going to expensive therapy or taking [[Rules/CPRED/Drugs/Omega Blockers\|Omega Blockers]]. 
+Although not a [[Rules/CPRED/Drugs/Drugs\|drug]] in the traditional sense, [[Rules/CPRED/Drugs/Wireheading\|Wireheading]] is coupled with [[Night City/Others/Technology/Braindance\|Braindance sims]] in order to deride both pleasure and satisfaction from the experience. Through this, many deal with their [[Rules/CPRED/Cyberware/Cyberware#Cyberpsychosis\|Cyberpsychosis symptoms]] instead of going to expensive therapy or taking [[Rules/CPRED/Drugs/Omega Blockers\|Omega Blockers]]. 
 
 ## Rules
 Wires come in varying shapes and sizes, which determines their **Strength**, as well as their availability, safety and general experience. Risky Wires may provide you with a unique experience, but might [[Rules/CPRED/Drugs/Drug Effects/Nerve Degeneration\|fry your brain]] in the process. The best way to do [[Rules/CPRED/Drugs/Wireheading\|Wireheading]] is to not do it at all, but it's benefits are powerful.

@@ -6,7 +6,7 @@
 **Noun:** Enhanced
 **Symbols:** Brains, Wiring, Short-circuits, "Zapping"
 >**Structure:** Accelerationist Doomsday Cult[^1]
->**Activities:** [[Rules/NCOverdrive/Damage/Weapon Tags\|Gun trafficking]], Black-hat [[Rules/CPRED/Netrunning/Netrunning\|Netrunning]], terrorism, [nihilistic violent extremism](https://en.wikipedia.org/wiki/Nihilistic_violent_extremism), [[Rules/CPRED/Drugs/Wireheading\|facilitation of Wireheading]], [[Braindance\|BD production and distribution]]
+>**Activities:** [[Rules/NCOverdrive/Damage/Weapon Tags\|Gun trafficking]], Black-hat [[Rules/CPRED/Netrunning/Netrunning\|Netrunning]], terrorism, [nihilistic violent extremism](https://en.wikipedia.org/wiki/Nihilistic_violent_extremism), [[Rules/CPRED/Drugs/Wireheading\|facilitation of Wireheading]], [[Night City/Others/Technology/Braindance\|BD production and distribution]]
 
 >[!warning] Areas of operation
 >- [[Night City/Locations/Districts/City Center\|Corporate Center]], across various corporate headquarters, as well as parks or shops;

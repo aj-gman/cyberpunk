@@ -18,12 +18,12 @@ Premise: [[Eurotour/The Crew\|The Crew]] stops for the final show in the [[Eurot
 	- [x] She is keeping [[Eurotour/Characters/Core Crew/Jack Entropy\|Jack]] on a strict "no-[[Rules/CPRED/Drugs/SynthCoke\|SynthCoke]]" policy, which means that he's even more paranoid than usual
 - **[[Eurotour/Characters/Core Crew/Jimenez\|Jimenez]] has had it with the backstage dealings** and wants to settle things straight. He's shifting back into gear.
 	- [x] "You're professionals, I'm a professional. I'll coordinate you - that's what I do."
-	- [x] He reveals that somebody went through [[Eurotour/Characters/Core Crew/Jack Entropy\|Jack's]] personal [[Braindance\|Braindance]] stash at some point and he slotted something that *definitely* shouldn't have been there. Foul play?
+	- [x] He reveals that somebody went through [[Eurotour/Characters/Core Crew/Jack Entropy\|Jack's]] personal [[Night City/Others/Technology/Braindance\|Braindance]] stash at some point and he slotted something that *definitely* shouldn't have been there. Foul play?
 - **[[Eurotour/Characters/Core Crew/Ace McLeod\|Ace McLeod]] is stressed out of his mind** and he's suspecting that the [[Rules/CPRED/Roles/Exec\|Corpos]] have had it with [[Eurotour/Characters/Core Crew/Jack Entropy\|Entropy]] and want to give him one last hurrah
 	- [x] He's especially concerned about [[Eurotour/Characters/Core Crew/Jack Entropy\|Jack's]] fight with [[Eurotour/Characters/Core Crew/Angus Kessler\|Angus]], 
 	- [ ] "I've seen [[Rules/CPRED/Roles/Solo\|soldiers]] lose it 'cause their bride at home perished. [[Eurotour/Characters/Core Crew/Jack Entropy\|Jack Entropy]] needs to be grieving, not to be doing concerts"
 - **[[Eurotour/Characters/Core Crew/Tinker\|Tinker]] has been steering clear of [[Eurotour/Characters/Core Crew/Jack Entropy\|Jack Entropy]] and [[Eurotour/Characters/Core Crew/Jimenez\|Jimenez]] more than usual.** She's always sitting by or around [[Eurotour/Characters/Core Crew/Ace McLeod\|Ace McLeod]] and you get the feeling that something *is going on*.
-	- [x] She doesn't talk unless spoken to and she "can't wait for all of this to be over". [[Eurotour/Characters/Core Crew/Jimenez\|Jimenez]] has blamed her for the [[Braindance\|Braindance]] incident.
+	- [x] She doesn't talk unless spoken to and she "can't wait for all of this to be over". [[Eurotour/Characters/Core Crew/Jimenez\|Jimenez]] has blamed her for the [[Night City/Others/Technology/Braindance\|Braindance]] incident.
 - **[[Eurotour/Characters/Core Crew/Jack Entropy\|Jack Entropy]] has been losing it.** He's singing to himself in the bathroom, he's sitting on his back at 3am reading haikus and crying, he has bruises on his knuckles.
 	- [ ] Given the opportunity, he'll try to ruffle up anybody, including [[Eurotour/The Crew\|The Crew]] or some odd [[Rules/CPRED/Roles/Nomad\|roadie]]
 
