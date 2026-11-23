@@ -3,10 +3,9 @@ const listRoot = document.querySelector("[data-news-list]");
 if (!listRoot) return;
 
 const siteBaseUrl = new URL("../", document.currentScript.src);
-const typeButtons = document.querySelectorAll("[data-news-type-filter]");
 const campaignButtons = document.querySelectorAll("[data-news-campaign-filter]");
 
-const state = { type: "corporate", campaign: "all" };
+const state = { campaign: "all" };
 let items = null;
 
 function showMessage(message, role = "status") {
@@ -16,19 +15,11 @@ notice.textContent = message;
 listRoot.replaceChildren(notice);
 }
 
-function matchesType(item) {
-if (state.type === "corporate") return item.isCorporateNews;
-return !item.isCorporateNews;
-}
-
 function matchesCampaign(item) {
 return state.campaign === "all" || (Array.isArray(item.tags) && item.tags.includes(state.campaign));
 }
 
 function syncButtons() {
-typeButtons.forEach((button) => {
-button.setAttribute("aria-pressed", String(button.dataset.newsTypeFilter === state.type));
-});
 campaignButtons.forEach((button) => {
 button.setAttribute("aria-pressed", String(button.dataset.newsCampaignFilter === state.campaign));
 });
@@ -38,7 +29,7 @@ function render() {
 if (!items) return;
 syncButtons();
 
-const filtered = items.filter((item) => matchesType(item) && matchesCampaign(item));
+const filtered = items.filter((item) => matchesCampaign(item));
 if (filtered.length === 0) {
 showMessage("No news articles found.");
 return;
@@ -63,13 +54,6 @@ list.append(entry);
 
 listRoot.replaceChildren(list);
 }
-
-typeButtons.forEach((button) => {
-button.addEventListener("click", () => {
-state.type = button.dataset.newsTypeFilter;
-render();
-});
-});
 
 campaignButtons.forEach((button) => {
 button.addEventListener("click", () => {

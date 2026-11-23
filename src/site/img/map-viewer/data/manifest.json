@@ -51,6 +51,20 @@
         "burgicons",
         "labels"
       ]
+    },
+    {
+      "id": "2021-11",
+      "label": "November 2021",
+      "layers": [
+        "basemap",
+        "cultures",
+        "religions",
+        "zones",
+        "borders",
+        "routes",
+        "burgicons",
+        "labels"
+      ]
     }
   ]
 }
