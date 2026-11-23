@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-path":"Site Chronicle.md","permalink":"/site-chronicle/","tags":["#fashion","#ideology","#npc","#news","#district","#dependency","#stratum","#boostergang","#role"],"dg-note-properties":{"tags":["#fashion","#ideology","#npc","#news","#district","#dependency","#stratum","#boostergang","#role"]}}
+{"dg-publish":true,"dg-path":"Site Chronicle.md","permalink":"/site-chronicle/","tags":["#fashion","#news","#ideology","#npc","#district","#dependency","#stratum","#boostergang","#role"],"dg-note-properties":{"tags":["#fashion","#news","#ideology","#npc","#district","#dependency","#stratum","#boostergang","#role"]}}
 ---
 
 ### To-Do
@@ -9,9 +9,14 @@
 	- [ ] Education
 	- [ ] Economy
 	- [ ] Transportation
-- [x] Mechanics: [[Rules/NCOverdrive/Drive\|Drive]] and Darkest Cyberpunk
+- [ ] Mechanics: [[Rules/NCOverdrive/Drive\|Drive]] and Darkest Cyberpunk
 - [x] Write up the After-Action Report for [[Night City/Gigs/2021/Thugs\|Thugs]]
 ### November 2026
+#### 23.11
+- Updated map to November 2021
+- Updated stock ticker & #news to November 2021
+- Wrote for [[Night City/Gigs/2021/The Four of Us Are Dying\|The Four of Us Are Dying]]
+- Started the basis for [[Rules/NCOverdrive/Drive\|Drive]]
 #### 21.11
 - Brought NCO Character Sheet to v.1.3.2.X, fixing issues with the [[Night City/Organizations/ASG\|ASG]] Workbook and adding features to facilitate sending out Edgerunners on missions + changes to [[Rules/NCOverdrive/Drive\|Drive]] to give bonuses to **becoming a fanatic** for your chosen #ideology 
 #### 18.11
@@ -37,7 +42,7 @@
 - Update [Map](https://aj-gman.github.io/cyberpunk/img/map-viewer/#layer=political&date=2021-09) to also include a TIMELINE so you can see how it looked way back when;
 	- This timeline is a ~~bit WIP since i dont have some of the files from August 2021~~ (August 2021 is now being served as tiles, so old format)
 - Added new [[Night City/Others/News\|News]], of course.
-- Began writing on the new adventure, [[Night City/Gigs/2021/Change the Channel\|Change the Channel]]
+- Began writing on the new adventure, [[Night City/Gigs/2021/past/Change the Channel\|Change the Channel]]
 ### October 2026
 #### 22.10
 - Wrote and published the After Action Report for [[Night City/Gigs/2021/past/Fated, Faithful, Fatal\|Fated, Faithful, Fatal]];

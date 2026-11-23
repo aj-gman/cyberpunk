@@ -11,4 +11,4 @@ What about the [[Night City/Organizations/Corporations/Petrochem\|Petrochem]]-sp
 
 *P.S. If you need something done, just [[Night City/Organizations/ASG\|ASG]].*
 
-![Pasted image 20261121164926.png](/img/user/Pasted%20image%2020261121164926.png)
+![PIC-raynullnews.png](/img/user/Pictures/PIC-raynullnews.png)

@@ -42,5 +42,5 @@ As the war entered its fifth month, both sides began to show signs of exhaustion
 >5. [[Night City/Gigs/2021/past/Seven Nation Army\|Seven Nation Army]]
 >6. [[Night City/Gigs/2021/past/Fated, Faithful, Fatal\|Fated, Faithful, Fatal]]
 >7. [[Night City/Gigs/2021/past/Man That You Fear\|Man That You Fear]]
->8. [[Night City/Gigs/2021/Change the Channel\|Change the Channel]]
+>8. [[Night City/Gigs/2021/past/Change the Channel\|Change the Channel]]
 

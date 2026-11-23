@@ -2,7 +2,7 @@
 {"dg-publish":true,"permalink":"/night-city/organizations/asg/","dg-note-properties":{}}
 ---
 
-**Assertive Security Group** ([pronounced /æsk/](https://en.wiktionary.org/wiki/ask#Pronunciation)) is the organization founded by [[Night City/Characters/!pc/The Gang\|The Gang]] in **September 2021** during [[Night City/Gigs/2021/Change the Channel\|Change the Channel]] with the various funds acquired in the previous gigs.
+**Assertive Security Group** ([pronounced /æsk/](https://en.wiktionary.org/wiki/ask#Pronunciation)) is the organization founded by [[Night City/Characters/!pc/The Gang\|The Gang]] in **September 2021** during [[Night City/Gigs/2021/past/Change the Channel\|Change the Channel]] with the various funds acquired in the previous gigs.
 
 ### **Principles**
 - Poach [[Night City/!society/Strata/Corpzoners\|Corpzoners]], [[Night City/!society/Strata/Beavers\|Beavers]], [[Night City/!society/Strata/Movers\|Movers]] and turn them into [[Night City/!society/Strata/Edgerunners\|Edgerunners]];
