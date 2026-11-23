@@ -496,6 +496,7 @@
       ]
     },
     influence: { title: 'Influences', items: [
+        { label: 'Assertive Security Group', color: '#b05aaa' },
         // Cults
         { label: 'Arasaka Loyalty',      color: '#ffffff' },
         { label: 'Militech Superiority', color: '#ffe135' },
@@ -950,7 +951,7 @@
         // Faction legends map to their parent organization's page
         // (user-specified 2026-11-02): Statism -> NUSA, Arasaka Loyalty ->
         // Arasaka, Militech Superiority -> Militech.
-        const LEGEND_PAGE_ALIASES = { 'Statism': 'NUSA', 'Arasaka Loyalty': 'Arasaka', 'Militech Superiority': 'Militech' };
+        const LEGEND_PAGE_ALIASES = { 'Assertive Security Group': 'ASG', 'Statism': 'NUSA', 'Arasaka Loyalty': 'Arasaka', 'Militech Superiority': 'Militech' };
         const url = lookupPage(pageIndex, entry.name)
           || (dated.tableKey === 'cultures' ? lookupPage(pageIndex, entry.name + 's') : null)
           || (LEGEND_PAGE_ALIASES[entry.name] ? lookupPage(pageIndex, LEGEND_PAGE_ALIASES[entry.name]) : null);
