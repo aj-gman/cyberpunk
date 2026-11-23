@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/others/events/21-11/a-message-from-ray-null/","tags":["4cw","news"],"dg-note-properties":{"tags":["4cw","news"]}}
+{"dg-publish":true,"permalink":"/night-city/others/events/21-11/a-message-from-ray-null/","tags":["#4cw","#news"],"dg-note-properties":{"tags":["#4cw","#news"]}}
 ---
 
 **November 2021, [[Night City/Organizations/ASG\|ASG]], [[Night City/Characters/!pc/Ze\|Ze]]**
@@ -9,6 +9,6 @@ What about the [[Night City/Organizations/Corporations/Petrochem\|Petrochem]]-sp
 
 ==Don't fuck with us, corpo.==
 
-P.S. If you need something done, just [[Night City/Organizations/ASG\|ASG]].
+*P.S. If you need something done, just [[Night City/Organizations/ASG\|ASG]].*
 
 ![Pasted image 20261121164926.png](/img/user/Pasted%20image%2020261121164926.png)

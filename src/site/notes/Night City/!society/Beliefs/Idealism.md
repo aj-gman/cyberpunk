@@ -21,7 +21,7 @@ Loyalty can also be bought via supplying the worker with **a comfortable lifesty
 
 ### Patrons
 Although many believers of [[Night City/!society/Beliefs/Idealism\|Idealism]] look up to these individuals, they are not necessarily believers in the ideology as well. Many CEOs merely construct a cult of personality around themselves to the point of veneration.
-- [[Saburo Arasaka\|Saburo Arasaka]], the CEO of [[Night City/Organizations/Corporations/Arasaka\|Arasaka]]
+- [[Night City/Characters/2021/corpos/Saburo Arasaka\|Saburo Arasaka]], the CEO of [[Night City/Organizations/Corporations/Arasaka\|Arasaka]]
 - [[Donald Lundee\|Donald Lundee]], the CEO of [[Night City/Organizations/Corporations/Militech\|Militech]] and ex-director of the [Pentagon](https://en.wikipedia.org/wiki/United_States_Department_of_Defense)
 - [[Night City/Characters/2021/corpos/Elizabeth Kress\|Elizabeth Kress]], ex-president of [[Night City/Organizations/Corporations/Militech\|Militech]] and Acting President of the [[Night City/Organizations/States/NUSA\|NUSA]]
 ### Further Reading

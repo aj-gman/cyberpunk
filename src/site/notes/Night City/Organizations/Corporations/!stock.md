@@ -9,22 +9,22 @@
 | ------------------------------ | ---------- |
 | [[Night City/Organizations/Corporations/Constitutional Arms\|2NDAM]] | +1%        |
 | [[Night City/Organizations/Corporations/Arasaka\|ARSKA]]             | -6.8%      |
-| [[Night City/Organizations/Corporations/Budget Arms\|BDGT]]          | +1%        |
-| [[Night City/Organizations/Corporations/Biotechnica\|BIOTC]]         | +1%        |
+| [[Night City/Organizations/Corporations/Budget Arms\|BDGT]]          | +21.9%     |
+| [[Night City/Organizations/Corporations/Biotechnica\|BIOTC]]         | -12.3%     |
 | [[Night City/Organizations/Corporations/IEC\|ELECTRIC]]              | +10.2%     |
 | [[Night City/Organizations/Corporations/EBM\|EUROTC]]                | +9.1%      |
-| [[Night City/Organizations/Corporations/Kendachi\|KTN]]              | +1%        |
-| [[Night City/Organizations/Corporations/Lazarus PMC\|LZRS]]          | +1%        |
+| [[Night City/Organizations/Corporations/Kendachi\|KTN]]              | -2.1%      |
+| [[Night City/Organizations/Corporations/Lazarus PMC\|LZRS]]          | -5.8%      |
 | [[Night City/Organizations/Corporations/Militech\|MILTC]]            | -7.4%      |
 | [[Night City/Organizations/Corporations/N54\|N54]]                   | -0.7%      |
-| [[Night City/Organizations/Corporations/Night Corp\|NIGHT]]          | +1%        |
-| [[Night City/Organizations/Corporations/Orbital Air\|ORBITL]]        | +1%        |
-| [[Night City/Organizations/Corporations/Petrochem\|PTRCHM]]          | +1%        |
-| [[Night City/Organizations/Corporations/Kang Tao\|SMRT]]             | +1%        |
-| [[Night City/Organizations/Corporations/SovOil\|SOV]]                | +1%        |
-| [[Night City/Organizations/Corporations/Techtronika\|TCHNK]]         | +1%        |
-| [[Night City/Organizations/Corporations/Trauma Team\|TT]]            | +1%        |
-| [[Night City/Organizations/Corporations/Zetatech\|ZTC]]              | +1%        |
+| [[Night City/Organizations/Corporations/Night Corp\|NIGHT]]          | -1.0%      |
+| [[Night City/Organizations/Corporations/Orbital Air\|ORBITL]]        | -3.1%      |
+| [[Night City/Organizations/Corporations/Petrochem\|PTRCHM]]          | -14.6%     |
+| [[Night City/Organizations/Corporations/Kang Tao\|SMRT]]             | +5.7%      |
+| [[Night City/Organizations/Corporations/SovOil\|SOV]]                | -19.8%     |
+| [[Night City/Organizations/Corporations/Techtronika\|TCHNK]]         | -5.9%      |
+| [[Night City/Organizations/Corporations/Trauma Team\|TT]]            | +3.5%      |
+| [[Night City/Organizations/Corporations/Zetatech\|ZTC]]              | +0.1%      |
 
 
 **Ticker snapshot (October 2021)**
