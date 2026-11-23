@@ -1,8 +1,8 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/others/events/21-11/interview-with-a-bastard/","tags":["#4cw","#news"],"dg-note-properties":{"tags":["#4cw","#news"]}}
+{"dg-publish":true,"permalink":"/night-city/others/events/21-11/interview-with-a-bastard/","tags":["4cw","news"],"dg-note-properties":{"tags":["4cw","news"]}}
 ---
 
-**October 2021, [[Night City/Organizations/Corporations/N54\|N54]], [[Night City/Characters/2021/edgerunners/Fiona Hayes\|Fiona Hayes]]**
+**November 2021, [[Night City/Organizations/Corporations/N54\|N54]], [[Night City/Characters/2021/edgerunners/Fiona Hayes\|Fiona Hayes]]**
 
 **[[Night City/Organizations/Corporations/N54\|N54]]:** Do you hate your father?
 **[[Night City/Characters/2021/edgerunners/Yorinobu Arasaka\|Y. A.]]:** No. I despise his actions and his ancient way of thinking, but I do not hate him.
