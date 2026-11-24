@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-path":"Night City/Gigs/past/Change the Channel.md","permalink":"/night-city/gigs/past/change-the-channel/","tags":["#gig","#4cw"],"dg-note-properties":{"tags":["#gig","#4cw"]}}
+{"dg-publish":true,"dg-path":"Night City/Gigs/past/Change the Channel.md","permalink":"/night-city/gigs/past/change-the-channel/","tags":["gig","4cw"],"dg-note-properties":{"tags":["gig","4cw"]}}
 ---
 
 **System:** [[Rules/NCOverdrive/Neon City Overdrive (HUB)\|Neon City Overdrive (HUB)]]
@@ -26,7 +26,7 @@ Retrieve the explosives, plant them in specific locations, then fuck off.
 
 "I don't feel safe with the Militech Scum... I don't feel safe with the Arasaka rats."
 
-Endorsements: [[Night City/Characters/2021/corpos/Bruce Skiv\|Bruce Skiv]], [[Night City/Organizations/Corporations/Night Corp\|Night Corp]] (?), [[Night City/Organizations/Gangs/Aldecaldos\|Aldecaldos]], [[Eurotour/Characters/Core Crew/Jack Entropy\|Jack Entropy]]
+Endorsements: [[Night City/Characters/2021-2023/corpos/Bruce Skiv\|Bruce Skiv]], [[Night City/Organizations/Corporations/Night Corp\|Night Corp]] (?), [[Night City/Organizations/Gangs/Aldecaldos\|Aldecaldos]], [[Eurotour/Characters/Core Crew/Jack Entropy\|Jack Entropy]]
 
 Push for a press release
 

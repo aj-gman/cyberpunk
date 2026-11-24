@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/others/events/21-11/war-of-the-worlds/","tags":["#4cw","#news"],"dg-note-properties":{"tags":["#4cw","#news"]}}
+{"dg-publish":true,"permalink":"/night-city/others/events/21-11/war-of-the-worlds/","tags":["4cw","news"],"dg-note-properties":{"tags":["4cw","news"]}}
 ---
 
 **November 2021, [[WMS\|WMS]]**

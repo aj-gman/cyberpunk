@@ -16,6 +16,6 @@ Picks fron the [[Rules/CPRED/Combat/Combat#Gun Brands\|Brands]], [[Rules/CPRED/C
 
 
 ### Generator
-<div><div><b>Brand:</b> <a href="Budget Arms" class="internal-link">Budget Arms</a></div><div><b>Archetype:</b> Medium Pistol</div><div><b>Gun Type:</b> <a href="Power" class="internal-link">Power</a></div><div><b>Price:</b> 25 eb</div></div><button class="gun-gen-btn"><span>Regenerate</span></button>
+<div><div><b>Brand:</b> <a href="Budget Arms" class="internal-link">Budget Arms</a></div><div><b>Archetype:</b> Shotgun</div><div><b>Gun Type:</b> <a href="Power" class="internal-link">Power</a></div><div><b>Price:</b> 250 eb</div></div><button class="gun-gen-btn"><span>Regenerate</span></button>
 
 

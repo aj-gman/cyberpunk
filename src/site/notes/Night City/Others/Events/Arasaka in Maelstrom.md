@@ -8,7 +8,7 @@
 
 While the claims are still disputed, data (emails, videos, shards) have been leaked anonymously on the [[Night City/Others/Technology/NET\|NET]], gaining virality after the [[Night City/Others/Technology/NET\|NET]] crashed for 29.3 minutes. When it came back, [[NetWatch\|NetWatch]] was not able to remove the pop-up appearing on every browser instance: *"Read the [[Night City/Organizations/Corporations/Arasaka\|Arasaka]] Files"*.
 
-The files contain supposed links between the heir to the empire, [[Night City/Characters/2021/corpos/Kei Arasaka\|Kei Arasaka]], and the [[Night City/Organizations/Gangs/Boostergangs of Night City\|CZ gang]] known as [[Night City/Organizations/Gangs/Maelstrom\|Maelstrom]]. While weak evidence, these have stirred quite the outrage amongst the general populace of [[Night City/Locations/Night City\|Night City]].
+The files contain supposed links between the heir to the empire, [[Night City/Characters/2021-2023/corpos/Kei Arasaka\|Kei Arasaka]], and the [[Night City/Organizations/Gangs/Boostergangs of Night City\|CZ gang]] known as [[Night City/Organizations/Gangs/Maelstrom\|Maelstrom]]. While weak evidence, these have stirred quite the outrage amongst the general populace of [[Night City/Locations/Night City\|Night City]].
 
 We reached out to Lucas Yang-Zho, one of [[Night City/Organizations/Corporations/Arasaka\|Arasaka]]'s key negotiators in the recent economic investments into [[Night City/Organizations/Corporations/Night Corp\|Night Corp]]. He issued a formal apology to the shareholders affected by this sudden influx of false information and assured us that all of these claims would be disproven with time.
 

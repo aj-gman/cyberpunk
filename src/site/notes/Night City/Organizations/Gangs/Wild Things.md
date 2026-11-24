@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/organizations/gangs/wild-things/","tags":["#boostergang"],"dg-note-properties":{"tags":["#boostergang"]}}
+{"dg-publish":true,"permalink":"/night-city/organizations/gangs/wild-things/","tags":["boostergang"],"dg-note-properties":{"tags":["boostergang"]}}
 ---
 
 >[!info] [[Night City/Organizations/States/NCPD\|NCPD]] DATA

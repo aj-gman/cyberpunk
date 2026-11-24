@@ -15,7 +15,7 @@
 #### 23.11
 - Updated map to November 2021
 - Updated stock ticker & #news to November 2021
-- Wrote for [[Night City/Gigs/2021/The Four of Us Are Dying\|The Four of Us Are Dying]]
+- Wrote for [[Night City/Gigs/2021/Killing Strangers\|Killing Strangers]]
 - Started the basis for [[Rules/NCOverdrive/Drive\|Drive]]
 #### 21.11
 - Brought NCO Character Sheet to v.1.3.2.X, fixing issues with the [[Night City/Organizations/ASG\|ASG]] Workbook and adding features to facilitate sending out Edgerunners on missions + changes to [[Rules/NCOverdrive/Drive\|Drive]] to give bonuses to **becoming a fanatic** for your chosen #ideology 
@@ -31,7 +31,7 @@
 - finished [[Night City/Gigs/2021/Thugs\|Thugs]] story
 #### 9.11
 - Began work on [[Night City/Gigs/2021/Thugs\|Thugs]], the 10.11.2026 session;
-- Added new #npc for [[Night City/Organizations/ASG\|ASG]]'s team, as well as [[Night City/Characters/2021/corpos/Mbole Ebunike\|Mbole Ebunike]];
+- Added new #npc for [[Night City/Organizations/ASG\|ASG]]'s team, as well as [[Night City/Characters/2021-2023/corpos/Mbole Ebunike\|Mbole Ebunike]];
 #### 6.11
 - Added a passkey-gated GM screen
 - [Cleaned up the repo](https://github.com/aj-gman/cyberpunk/commit/2ac645ffe7adbafd91455ba9fa578fad2355cb52)
@@ -46,7 +46,7 @@
 ### October 2026
 #### 22.10
 - Wrote and published the After Action Report for [[Night City/Gigs/2021/past/Fated, Faithful, Fatal\|Fated, Faithful, Fatal]];
-- Published [[Night City/Organizations/Corporations/N54\|N54]]'s page, as well as relevant characters: [[Night City/Characters/2021/corpos/Howard Wong\|Howard Wong]], [[Night City/Characters/2021/edgerunners/Bes Isis\|Bes Isis]], [[Night City/Characters/2021/edgerunners/Fiona Hayes\|Fiona Hayes]], [[Night City/Characters/2021/edgerunners/Lyle McClellan\|Lyle McClellan]]
+- Published [[Night City/Organizations/Corporations/N54\|N54]]'s page, as well as relevant characters: [[Night City/Characters/2021-2023/corpos/Howard Wong\|Howard Wong]], [[Night City/Characters/2021-2023/edgerunners/Bes Isis\|Bes Isis]], [[Night City/Characters/2021-2023/edgerunners/Fiona Hayes\|Fiona Hayes]], [[Night City/Characters/2021-2023/edgerunners/Lyle McClellan\|Lyle McClellan]]
 - Created [[Night City/Organizations/Corporations/!stock\|!stock]] and [[Night City/Organizations/Corporations/!stock-code\|!stock-code]], which are used to display current publicly-traded companies' value increases per month;
 - Fixed bugs on the website like the buttons displaying with errors.
 - Added new locations: [[Night City/Locations/Buildings/ASG Headquarters (Heywood)\|ASG Headquarters (Heywood)]], [[Night City/Locations/Buildings/Midnight Slut\|Midnight Slut]], [[Night City/Locations/Buildings/Afterlife\|Afterlife]]
@@ -57,10 +57,10 @@
 - Ported website for quicker uploads from Vercel to GithubPages
 - Published [[Night City/Gigs/2021/past/Seven Nation Army\|Seven Nation Army]] webpage
 - Modified and updated [map](/img/map-viewer/)
-- Added more #npc: [[Night City/Characters/2021/edgerunners/Johnny Silverhand\|Johnny Silverhand]], [[Night City/Characters/2021/edgerunners/Morgan Blackhand\|Morgan Blackhand]], [[Night City/Characters/2021/edgerunners/Rache Bartmoss\|Rache Bartmoss]] 
+- Added more #npc: [[Night City/Characters/2021-2023/edgerunners/Johnny Silverhand\|Johnny Silverhand]], [[Night City/Characters/2021-2023/edgerunners/Morgan Blackhand\|Morgan Blackhand]], [[Night City/Characters/2021-2023/edgerunners/Rache Bartmoss\|Rache Bartmoss]] 
 #### 12.10
 - Added new #news and tagged it with the relevant session it appeared in.
-- Added page for [[Night City/Characters/2021/corpos/Elizabeth Kress\|Elizabeth Kress]]
+- Added page for [[Night City/Characters/2021-2023/corpos/Elizabeth Kress\|Elizabeth Kress]]
 - Wrote up the premise of 13.10 session, [[Night City/Gigs/2021/past/Seven Nation Army\|Seven Nation Army]];
 #### 09.10
 - Updated [map](/img/map-viewer/) to match events in [[Night City/Gigs/2021/past/Deep Six\|Deep Six]]
@@ -118,7 +118,7 @@
 - Added #ideology : full write-up for [[Night City/!society/Beliefs/Idealism\|Idealism]], half-write-up for [[Night City/!society/Beliefs/Insurrectionism\|Insurrectionism]], [[Night City/!society/Beliefs/Parallelism\|Parallelism]], [[Night City/!society/Beliefs/Realism\|Realism]]
 - Added #stratum : needs write-up for all
 - Added fashion folder, as each #ideology  is associated with an aesthetic
-- Published character profiles for [[Night City/Characters/2021/edgerunners/Big Wu\|Big Wu]], [[Night City/Characters/2021/edgerunners/Theresa Valentino\|Theresa Valentino]], [[Night City/Characters/2021/corpos/Victor Campbell\|Victor Campbell]], [[Night City/Characters/2021/gangers/Corpse Reviver\|Corpse Reviver]].
+- Published character profiles for [[Night City/Characters/2021-2023/edgerunners/Big Wu\|Big Wu]], [[Night City/Characters/2021-2023/edgerunners/Theresa Valentino\|Theresa Valentino]], [[Night City/Characters/2021-2023/corpos/Victor Campbell\|Victor Campbell]], [[Night City/Characters/2021-2023/gangers/Corpse Reviver\|Corpse Reviver]].
 - Added permanent Header & Footer on webpages (shouldn't break on Digital Garden template update)
 - Reorganized folders & webpages for clearer navigation
 #### 02.09

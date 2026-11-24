@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/rules/nc-overdrive/drive/","tags":["#ideology"],"dg-note-properties":{"tags":["#ideology"]}}
+{"dg-publish":true,"permalink":"/rules/nc-overdrive/drive/","dg-note-properties":{}}
 ---
 
 Your [[Rules/NCOverdrive/Drive\|Drive]] is what keeps you going. It's what drags you into the bleeding edge of the city's worst, hoping to come out on top. It's a deep-seated **desire** to see *it* through, whatever *it* is.

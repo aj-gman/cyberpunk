@@ -2,7 +2,7 @@
 {"dg-publish":true,"permalink":"/night-city/others/events/21-10/shanghai-firefights/","tags":["4cw","news"],"dg-note-properties":{"tags":["4cw","news"]}}
 ---
 
-**October 2021, [[Night City/Organizations/Corporations/N54\|N54]], [[Night City/Characters/2021/edgerunners/Lyle McClellan\|Lyle McClellan]]**
+**October 2021, [[Night City/Organizations/Corporations/N54\|N54]], [[Night City/Characters/2021-2023/edgerunners/Lyle McClellan\|Lyle McClellan]]**
 
 In the [[Night City/Locations/Districts/City Center#Bank Block\|Bank Block]], a few tuned out cars are parked in front of [[Night City/Locations/Night City\|the city]]'s greatest BBQ (real or not, for a price): the [[Sunset Bar & Grill\|Sunset Bar & Grill]]'s near-permanent imperial guard, comprised of tattooed honchos hailing directly from Hong Kong or American born'n'raised, all part of the [[Night City/Organizations/Gangs/Sun On Yee\|Sun On Yee]] [[Triads\|Triads]]. They're still licking their wounds after a battle just a few hours ago...
 

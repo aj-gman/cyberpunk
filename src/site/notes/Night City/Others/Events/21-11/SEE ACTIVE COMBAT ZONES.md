@@ -1,8 +1,8 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/others/events/21-11/see-active-combat-zones/","tags":["#4cw","#news"],"dg-note-properties":{"tags":["#4cw","#news"]}}
+{"dg-publish":true,"permalink":"/night-city/others/events/21-11/see-active-combat-zones/","tags":["4cw","news"],"dg-note-properties":{"tags":["4cw","news"]}}
 ---
 
-**November 2021, [[Night City/Characters/2021/corpos/AAP\|AAP]]**
+**November 2021, [[Night City/Characters/2021-2023/corpos/AAP\|AAP]]**
 
 ==The situation is currently evolving at an impossible pace.==
 ==These are data-based suggestions but keep in mind they may not be fully up-to-date.==

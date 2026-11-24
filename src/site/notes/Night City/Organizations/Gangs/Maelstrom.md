@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/organizations/gangs/maelstrom/","tags":["#boostergang"],"dg-note-properties":{"tags":["#boostergang"]}}
+{"dg-publish":true,"permalink":"/night-city/organizations/gangs/maelstrom/","tags":["boostergang"],"dg-note-properties":{"tags":["boostergang"]}}
 ---
 
 >[!info] [[Night City/Organizations/States/NCPD\|NCPD]] DATA
@@ -23,9 +23,9 @@
 >- [[Night City/Locations/Districts/South Night City\|South Night City]] - multiple strongholds of influence; so-called "home turf";
 
 >[!tip] Known Members
->- ~~[[Night City/Characters/2021/gangers/Easy\|Easy]], leader of the [[Rules/NCOverdrive/Cyberware\|ripper]] faction~~
->- [[Night City/Characters/2021/gangers/Skell\|Skell]], leader of the raider faction
->- [[Night City/Characters/2021/gangers/Lithibus the 2nd\|Lithibus the 2nd]], leader of the cult faction
+>- ~~[[Night City/Characters/2021-2023/gangers/Easy\|Easy]], leader of the [[Rules/NCOverdrive/Cyberware\|ripper]] faction~~
+>- [[Night City/Characters/2021-2023/gangers/Skell\|Skell]], leader of the raider faction
+>- [[Night City/Characters/2021-2023/gangers/Lithibus the 2nd\|Lithibus the 2nd]], leader of the cult faction
 
 ![FAC-Maelstrom.png](/img/user/Pictures/FAC-Maelstrom.png)
 

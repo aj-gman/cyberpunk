@@ -6,4 +6,4 @@
 
 This gangs are only the silver of the full scope. There are also Chechen, Azerbaijan, Armenian gangs etc. All of them have their traditions. Many of the Russian mafia gangs have connections in Europe. 
 
-**Leader:** [[Night City/Characters/2021/edgerunners/Stanislavski\|Stanislavski]]
+**Leader:** [[Night City/Characters/2021-2023/edgerunners/Stanislavski\|Stanislavski]]

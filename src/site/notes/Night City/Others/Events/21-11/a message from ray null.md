@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/others/events/21-11/a-message-from-ray-null/","tags":["#4cw","#news"],"dg-note-properties":{"tags":["#4cw","#news"]}}
+{"dg-publish":true,"permalink":"/night-city/others/events/21-11/a-message-from-ray-null/","tags":["4cw","news"],"dg-note-properties":{"tags":["4cw","news"]}}
 ---
 
 **November 2021, [[Night City/Organizations/ASG\|ASG]], [[Night City/Characters/!pc/Ze\|Ze]]**

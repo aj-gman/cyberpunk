@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/night-city/others/events/21-11/neutrality-of-the-cross/","tags":["#4cw","#news"],"dg-note-properties":{"tags":["#4cw","#news"]}}
+{"dg-publish":true,"permalink":"/night-city/others/events/21-11/neutrality-of-the-cross/","tags":["4cw","news"],"dg-note-properties":{"tags":["4cw","news"]}}
 ---
 
 **November 2021, [[WMS\|WMS]]**

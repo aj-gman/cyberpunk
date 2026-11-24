@@ -4,7 +4,7 @@
 
 #news #4cw [[Night City/Organizations/Corporations/N54\|N54]], **July 2021**, [[Night City/Gigs/2021/past/Deep Six\|Deep Six]]
 
-The following statement was issued by [[Night City/Characters/2021/corpos/Elizabeth Kress\|Elizabeth Kress]], [[Night City/Organizations/States/NUSA\|President of the USA]], following [[Night City/Others/Events/Arasaka in Maelstrom\|the massive Arasaka data leak]].
+The following statement was issued by [[Night City/Characters/2021-2023/corpos/Elizabeth Kress\|Elizabeth Kress]], [[Night City/Organizations/States/NUSA\|President of the USA]], following [[Night City/Others/Events/Arasaka in Maelstrom\|the massive Arasaka data leak]].
 
 *What we are seeing right now is a brave attempt by bad actors to destabilize our strategic partners on the West Coast
 An attempt that, of course, will fail, like all those before it.
