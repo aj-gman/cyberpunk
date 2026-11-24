@@ -1,0 +1,186 @@
+{
+  "_version": "1.1.0",
+  "_game": "Neon City Overdrive",
+  "nickname": "Max Grauer",
+  "appearance": "Max Grauer is a broad-shouldered merc with medium-length, straight black hair and a clean-shaven face when he has time to shave between gigs. Both his eyes are cybernetic, featuring glowing yellow caution-symbol pupils set against black sclera. His left arm has been replaced with a reinforced combat cyberarm housing concealed weaponry, its armour plating finished in Corsa red to match the bodywork of his modified Mitsuzuki MSX900 \"Bakushin\" cyberbike. \n\nHe wears a sleeveless armoured riding jacket with a raised collar over a plain white tee, reinforced riding denim and heavy motorcycle boots. His smart-linked \"Spitfire\" battle pistol rests in a holster strapped to his right thigh. ",
+  "personality": "",
+  "money": 0,
+  "eddies": 0,
+  "trademarks": [
+    {
+      "name": "Gunfighter",
+      "triggers": [
+        "Quick Draw",
+        "Guns Akimbo",
+        "Steely-Eyed Stare",
+        "Custom Pistol",
+        "Dodge",
+        "Flashy Tricks",
+        "Gun-Fu"
+      ],
+      "edges": [
+        "Quick Draw",
+        "Custom Pistol"
+      ]
+    },
+    {
+      "name": "Enforcer",
+      "triggers": [
+        "Shakedowns",
+        "Threaten with Violence",
+        "Melee",
+        "Break Stuff",
+        "Human Shield",
+        "Stare Down",
+        "Underworld Contacts"
+      ],
+      "edges": [
+        "Threaten with Violence",
+        "Human Shield"
+      ]
+    },
+    {
+      "name": "Revhead",
+      "triggers": [
+        "Hot-wiring",
+        "Custom Ride",
+        "Stunt Driving",
+        "Ramming Speed",
+        "Grease Monkey",
+        "Know the Streets",
+        "Daredevil",
+        "Vehicular Weapons"
+      ],
+      "edges": [
+        "Custom Ride",
+        "Vehicular Weapons"
+      ]
+    },
+    {
+      "name": "Bounty Hunter",
+      "triggers": [
+        "Tracking",
+        "Informants",
+        "Dead or Alive",
+        "Stalking",
+        "Read the Scene",
+        "Weapons Training",
+        "Law Enforcement Contacts"
+      ],
+      "edges": [
+        "Tracking",
+        "Dead or Alive"
+      ]
+    }
+  ],
+  "gear": [
+    {
+      "type": "special",
+      "title": "SAS Royal Enfield Ordnance \"Spitfire\" 12mm Battle Pistol",
+      "tags": "High Caliber, Smartgun Compatible, Double-Tap, Precision Shooting",
+      "notes": "A powerful 12mm semi-automatic battle pistol designed for military and specialist operations. The SAS configuration incorporates a modified firing mechanism capable of double-tap operation (ROF 2) and an integrated smartchip for compatibility with neural targeting systems.",
+      "size": 3
+    },
+    {
+      "type": "special",
+      "title": "Kendachi Monomolecular Combat Knife",
+      "tags": "Monomolecular Edge, Concealable, Precision Cutting, Armour Penetration",
+      "notes": "A compact combat knife featuring an exceptionally sharp monomolecular cutting edge. Designed for close-quarters fighting, the blade provides superior cutting performance against conventional materials and protective equipment.",
+      "size": 3
+    },
+    {
+      "type": "special",
+      "title": "Mitsuzuki MSX900 \"Bakushin\" Custom ",
+      "tags": "Cyberbike, Neural Vehicle Control, High-Speed, Enhanced Maneuverability, Armoured Chassis",
+      "notes": "A heavily modified high-performance cyberbike engineered for exceptional speed, maneuverability, and combat survivability. Enhanced neural interface systems allow direct connection to a compatible vehicle link, while reinforced chassis armour provides additional protection. An integrated machine gun supplies offensive capability during high-speed engagements. ",
+      "size": 3
+    }
+  ],
+  "inventory": {
+    "container": "jacket",
+    "misc": {
+      "enabled": false,
+      "value": 1
+    },
+    "items": []
+  },
+  "cyberware": [
+    {
+      "title": "Zetatech \"Synapse-N7\" Neural Interface Suite",
+      "tags": "Neural Interface, Direct Control, Smartgun Integration, Vehicle Interface",
+      "notes": "A Zetatech neural processing system designed to establish direct communication between the nervous system and compatible electronic devices. Interface plugs enable physical connections, while dedicated smartgun and vehicle links facilitate neural control of firearms and vehicles. ",
+      "value": 3
+    },
+    {
+      "title": "Kiroshi \"Sentinel-4\" Dual Cyberoptics ",
+      "tags": "Target Acquisition, Infrared Vision, Flash Protection, Enhanced Vision, Smartgun Integration",
+      "notes": "A pair of advanced Kiroshi cybernetic eyes equipped with infrared imaging, automatic brightness compensation, and integrated targeting overlays. The system supports enhanced visual processing and compatibility with linked smart weapon systems.",
+      "value": 3
+    },
+    {
+      "title": "Dynalar \"Striker-L\" Combat Cyberarm (Left)",
+      "tags": "Cybernetic Strength, Concealed Weaponry, Explosive Projectiles, Pop-up Blade",
+      "notes": "A reinforced Dynalar cybernetic arm incorporating two independent concealed weapon systems. An integrated Militech MML-4 Micromissile Launcher provides ranged explosive capability, while a retractable Kendachi Monomolecular Combat Knife deploys from the forearm for close-quarters combat.",
+      "value": 3
+    }
+  ],
+  "hitsCount": 3,
+  "hits": [
+    false,
+    false,
+    false
+  ],
+  "trackers": {
+    "cyberpsy": 0,
+    "humanity": 10
+  },
+  "conditions": {
+    "custom": []
+  },
+  "traumas": [
+    {
+      "marked": false,
+      "text": ""
+    },
+    {
+      "marked": false,
+      "text": ""
+    },
+    {
+      "marked": false,
+      "text": ""
+    },
+    {
+      "marked": false,
+      "text": ""
+    }
+  ],
+  "flaws": [
+    {
+      "text": "Hair-Trigger Temper"
+    },
+    {
+      "text": "Corporate Blacklist"
+    }
+  ],
+  "flaw1": "Hair-Trigger Temper",
+  "flaw2": "Corporate Blacklist",
+  "stuntPoints": 0,
+  "drive": {
+    "text": "Survival: An opportunist by nature, Grauer sought profit from corporate rivalries, accepting contracts from competing megacorporations with little regard for where his loyalties supposedly lay - and for a time, his gamble paid off. However, his duplicity, compounded by a tendency to shoot first and ask questions later, eventually caught up with him. Blacklisted and marked for elimination by two of his former employers, Grauer now finds himself in a state of perpetual flight. What was once a lucrative career has become a desperate struggle for self-preservation. He seeks patronage from anyone powerful enough to offer him sanctuary and protection in exchange for his services. Money remains a motivator, but survival has become his foremost concern.",
+    "pips": [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    "ideology": "Realism"
+  },
+  "experiencePoints": 0
+}
