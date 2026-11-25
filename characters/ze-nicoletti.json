@@ -122,7 +122,7 @@
   ],
   "hitsCount": 3,
   "hits": [
-    true,
+    false,
     false,
     false
   ],
@@ -133,9 +133,9 @@
   "conditions": {
     "custom": [
       {
-        "text": "Stressed",
+        "text": "Smog",
         "state": "red",
-        "count": 2
+        "count": 1
       }
     ]
   },
@@ -155,7 +155,7 @@
   ],
   "flaw1": "Obvious Mark",
   "flaw2": "Enemies in low places",
-  "stuntPoints": 4,
+  "stuntPoints": 0,
   "drive": {
     "text": "",
     "pips": [
@@ -169,7 +169,8 @@
       false,
       false,
       false
-    ]
+    ],
+    "ideology": "Realism"
   },
-  "experiencePoints": 3
+  "experiencePoints": 5
 }
