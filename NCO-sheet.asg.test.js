@@ -207,9 +207,9 @@ describe('ASG Assignments', () => {
  it('labels unnamed NPCs as Role #N (Skill N) and named NPCs by name', () => {
   const w=sheet();
   expect(w.asgNpcLabel(w.asgRosterLookup('npc-solo-5'))).toBe('Solo #5 (Skill 0)');
-  expect(w.asgNpcLabel(w.asgRosterLookup('npc-lappo'))).toBe('Lappo (Skill 3)');
+  expect(w.asgNpcLabel(w.asgRosterLookup('npc-lappo'))).toBe('Lappo (Rockerboy) (Skill 3)');
   const named=w.document.querySelector('.asg-npc.named');
-  expect(named.textContent).toContain('Lappo (Skill 3)');
+  expect(named.textContent).toContain('Lappo (Rockerboy) (Skill 3)');
  });
  it('orders Available by role or by skill', () => {
   const w=sheet();
