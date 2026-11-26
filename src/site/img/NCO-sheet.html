@@ -902,7 +902,7 @@
     <div class="nco-logo">
       <span><span class="logo-neon">NIGHT </span><span class="logo-city">CITY</span></span>
       <span class="logo-over">OVERDRIVE</span>
-      <span class="logo-version">v1.3.2.1</span>
+      <span class="logo-version">v1.3.2.2</span>
     </div>
     <span style="color:#444;font-size:20px;">|</span>
     <span style="color:var(--dim);font-size:11px;text-transform:uppercase;letter-spacing:1px;">Character Sheet</span>
@@ -4013,7 +4013,9 @@
   }
 
   function asgNpcLabel(npc) {
-    var base = npc.name || (npc.role + ' #' + npc.number);
+    // Named edgerunners get their role in parentheses; unnamed ones already
+    // carry it in "Role #N".
+    var base = npc.name ? npc.name + ' (' + npc.role + ')' : (npc.role + ' #' + npc.number);
     return base + ' (Skill ' + npc.skill + ')';
   }
 
