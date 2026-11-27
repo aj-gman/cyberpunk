@@ -780,6 +780,12 @@
       return;
     }
 
+    // Start every layer download at once; the awaits below then hit the
+    // cache instead of fetching one file after another.
+    ['basemap', dated.tableKey, 'zones', 'borders', 'routes', 'burgicons', 'labels']
+      .filter((name) => dated.date.layers.includes(name))
+      .forEach((name) => { loadSvg(`data/${dated.date.id}/${name}.svg`).catch(() => {}); });
+
     const meta = await loadMeta(dated.date.id);
     if (token !== renderToken) return;
     const table = meta && meta.tables ? meta.tables[dated.tableKey] : null;
@@ -1011,6 +1017,18 @@
   prevEl.onclick = () => setDateIndex(dateIndex - 1);
   nextEl.onclick = () => setDateIndex(dateIndex + 1);
   sliderEl.oninput = () => setDateIndex(Number(sliderEl.value));
+
+  // Left/Right arrows step to the previous/next month. Up/Down still pan
+  // (Leaflet's keyboard handler); keys typed into form fields are ignored.
+  document.addEventListener('keydown', (event) => {
+    if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+    if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
+    const target = event.target;
+    if (target && target.closest && target.closest('input, select, textarea, [contenteditable]')) return;
+    event.preventDefault();
+    event.stopPropagation(); // keep Leaflet from also panning sideways
+    if (dates.length) setDateIndex(dateIndex + (event.key === 'ArrowRight' ? 1 : -1));
+  }, true);
 
   async function initTimeline() {
     try {
